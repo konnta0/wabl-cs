@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    image: mcr.microsoft.com/dotnet/sdk:6.0
+  db:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+  prometheus:
+    image: prom/prometheus:v2.31.1
+  grafana:
+    image: grafana/grafana:8.2.5
