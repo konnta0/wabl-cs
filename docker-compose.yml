@@ -1,7 +1,16 @@
 version: '3'
 services:
   app:
-    image: mcr.microsoft.com/dotnet/sdk:6.0
+    build: ./dotnet-metric-test
+    tty: true
+    working_dir: /source
+    ports:
+      # for https
+      - 7253:7253
+      # for http
+      - 5176:5176
+    volumes:
+      - ./dotnet-metric-test:/source
   db:
     image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
   prometheus:
