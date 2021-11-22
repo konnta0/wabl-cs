@@ -11,6 +11,11 @@ services:
       - 5176:5176
     volumes:
       - ./dotnet-metric-test:/source
+    depends_on:
+      - db
+      - webserver
+  webserver:
+    image: nginx:1.21.4-alpine
   db:
     image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
   prometheus:
