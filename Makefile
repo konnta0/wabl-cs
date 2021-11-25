@@ -4,7 +4,8 @@ build:
 
 .PHONY: up
 up:
-	docker compose up -d 
+	docker compose up -d
+	docker compose exec app dotnet dev-certs https  
 
 .PHONY: ps
 ps:
@@ -14,8 +15,8 @@ ps:
 down:
 	docker compose down
 
-.PHONY: bash
-bash:
+.PHONY: app-sh
+app-sh:
 	docker compose exec -w /source app /bin/sh
 
 .PHONY: app-build
@@ -24,4 +25,8 @@ app-build:
 
 .PHONY: app-run
 app-run:
-	docker compose exec -w /source app dotnet run
+	docker compose exec -w /source app dotnet run --no-build
+
+.PHONY: web-sh
+web-sh:
+	docker compose exec app_web /bin/sh
