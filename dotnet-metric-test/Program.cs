@@ -1,10 +1,23 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.HttpOverrides;
-
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Trace;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddOpenTelemetryTracing(provider =>
+{
+    provider.SetSampler(new AlwaysOnSampler());
+    provider.AddSource("TEST_PRODUCT");
+});
+
+builder.Services.AddOpenTelemetryMetrics(providerBuilder =>
+{
+    providerBuilder.AddPrometheusExporter();
+});
+
 
 var app = builder.Build();
 

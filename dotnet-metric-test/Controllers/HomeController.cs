@@ -15,6 +15,13 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        using (var activity = new ActivitySource(
+                   "TEST_PRODUCT").StartActivity("SayHello"))
+        {
+            activity?.SetTag("foo", 1);
+            activity?.SetTag("bar", "Hello, World!");
+            activity?.SetTag("baz", new int[] { 1, 2, 3 });
+        }
         return View();
     }
 
