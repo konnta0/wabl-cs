@@ -23,5 +23,9 @@ services:
     image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
   metric_prometheus:
     image: prom/prometheus:v2.31.1
+    ports:
+      - 9090:9090
+    volumes:
+      - ./metric/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
   metric_grafana:
     image: grafana/grafana:8.2.5
