@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using dotnet_metric_test.APM.Metrics.Counter;
+using dotnet_metric_test.APM.Metrics.Meter;
 using Microsoft.AspNetCore.Mvc;
 using dotnet_metric_test.Models;
 
@@ -7,14 +9,17 @@ namespace dotnet_metric_test.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IMyCounter _myCounter;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IMyCounter myCounter)
     {
         _logger = logger;
+        _myCounter = myCounter;
     }
 
     public IActionResult Index()
     {
+        _myCounter.Counter.Add(1);
         using (var activity = new ActivitySource(
                    "TEST_PRODUCT").StartActivity("SayHello"))
         {

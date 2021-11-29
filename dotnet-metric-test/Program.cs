@@ -1,4 +1,5 @@
-using System.Diagnostics;
+using dotnet_metric_test.APM.Metrics.Counter;
+using dotnet_metric_test.APM.Metrics.Meter;
 using Microsoft.AspNetCore.HttpOverrides;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
@@ -15,8 +16,18 @@ builder.Services.AddOpenTelemetryTracing(provider =>
 
 builder.Services.AddOpenTelemetryMetrics(providerBuilder =>
 {
-    providerBuilder.AddPrometheusExporter();
+    providerBuilder.AddMeter(MyMeter.Name);
+    providerBuilder.AddPrometheusExporter(options =>
+    {
+        options.StartHttpListener = true;
+        options.HttpListenerPrefixes = new string[] { $"http://*:8888/" };
+        options.ScrapeEndpointPath = "/metrics";
+        options.ScrapeResponseCacheDurationMilliseconds = 0;
+    });
 });
+
+builder.Services.AddSingleton<IMyMeter, MyMeter>();
+builder.Services.AddSingleton<IMyCounter, MyCounter>();
 
 
 var app = builder.Build();
