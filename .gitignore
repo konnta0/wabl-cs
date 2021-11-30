@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 .DS_Store
 dotnet-metric-test/.idea
+metric/.data

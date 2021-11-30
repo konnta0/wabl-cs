@@ -11,6 +11,10 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:5000;
       - DOTNET_GENERATE_ASPNET_CERTIFICATE=false
+    networks:
+      - default
+      - shared-network
+
   app_web:
     image: nginx:1.21.4-alpine
     volumes:
@@ -21,11 +25,7 @@ services:
       - app
   app_db:
     image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
-  metric_prometheus:
-    image: prom/prometheus:v2.31.1
-    ports:
-      - 9090:9090
-    volumes:
-      - ./metric/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-  metric_grafana:
-    image: grafana/grafana:8.2.5
+
+networks:
+  shared-network:
+    external: true

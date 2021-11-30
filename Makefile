@@ -1,11 +1,15 @@
+NETWORK_NAME?=shared-network
+
 .PHONY: build
 build:
 	docker compose build --no-cache
 
 .PHONY: up
 up:
-	docker compose up -d
-	docker compose exec app dotnet dev-certs https  
+	@if [ -z "`docker network ls | grep $(NETWORK_NAME)`" ]; then docker network create $(NETWORK_NAME); fi
+	docker compose -f ./docker-compose.yml up -d
+	docker compose -f ./docker-compose.yml exec app dotnet dev-certs https
+	docker compose -f ./metric/docker-compose.yml up -d
 
 .PHONY: ps
 ps:
@@ -13,7 +17,10 @@ ps:
 
 .PHONY: down
 down:
-	docker compose down
+	docker compose -f ./docker-compose.yml down
+	docker compose -f ./metric/docker-compose.yml down
+	@if [ -n "`docker network inspect $(NETWORK_NAME) | grep \"\\"Containers\\": {}\"`" ]; then docker network rm $(NETWORK_NAME); fi
+
 
 .PHONY: app-sh
 app-sh:
