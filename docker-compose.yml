@@ -23,6 +23,10 @@ services:
       - 8080:80
     depends_on:
       - app
+    networks:
+      - default
+      - shared-network
+
   app_db:
     image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
 
