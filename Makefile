@@ -13,7 +13,8 @@ up:
 
 .PHONY: ps
 ps:
-	docker compose ps -a
+	docker compose -f ./docker-compose.yml ps -a
+	docker compose -f ./metric/docker-compose.yml ps -a
 
 .PHONY: down
 down:
