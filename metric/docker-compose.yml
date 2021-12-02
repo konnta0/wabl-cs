@@ -87,6 +87,10 @@ services:
       clickhouse:
         condition: service_healthy
 
+    networks:
+      - default
+      - shared-network
+
   otel-collector-metrics:
     image: signoz/otelcontribcol:0.4.2
     command:
