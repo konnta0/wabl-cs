@@ -1,13 +1,9 @@
 version: '3'
 services:
   app:
-    build: ./dotnet-metric-test
-    tty: true
-    working_dir: /source
-    volumes:
-      - ./dotnet-metric-test:/source
-    depends_on:
-      - app_db
+    build:
+      context: ./dotnet-metric-test
+      target: runtime
     environment:
       - ASPNETCORE_URLS=http://+:5000;
       - DOTNET_GENERATE_ASPNET_CERTIFICATE=false
@@ -20,7 +16,7 @@ services:
     volumes:
       - ./webserver/app.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - 8080:80
+      - "8080:80"
     depends_on:
       - app
     networks:
@@ -29,6 +25,18 @@ services:
 
   app_db:
     image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+
+  workspace:
+    build:
+      context: ./dotnet-metric-test
+      target: workspace
+    tty: true
+    working_dir: /source
+    volumes:
+      - ./dotnet-metric-test:/source
+    networks:
+      - default
+      - shared-network
 
 networks:
   shared-network:

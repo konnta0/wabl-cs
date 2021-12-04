@@ -8,7 +8,6 @@ build:
 up:
 	@if [ -z "`docker network ls | grep $(NETWORK_NAME)`" ]; then docker network create $(NETWORK_NAME); fi
 	docker compose -f ./docker-compose.yml up -d
-	docker compose -f ./docker-compose.yml exec app dotnet dev-certs https
 	docker compose -f ./metric/docker-compose.yml up -d
 
 .PHONY: ps
