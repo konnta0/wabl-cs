@@ -4,11 +4,15 @@ NETWORK_NAME?=shared-network
 build:
 	docker compose build --no-cache
 
-.PHONY: up
-up:
+.PHONY: all
+all:
 	@if [ -z "`docker network ls | grep $(NETWORK_NAME)`" ]; then docker network create $(NETWORK_NAME); fi
 	docker compose -f ./docker-compose.yml up -d
 	docker compose -f ./metric/docker-compose.yml up -d
+
+.PHONY: app
+app:
+	docker compose -f ./docker-compose.yml up -d --build app
 
 .PHONY: ps
 ps:
