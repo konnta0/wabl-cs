@@ -10,10 +10,6 @@ all:
 	docker compose -f ./docker-compose.yml up -d
 	docker compose -f ./metric/docker-compose.yml up -d
 
-.PHONY: app
-app:
-	docker compose -f ./docker-compose.yml up -d --build app
-
 .PHONY: ps
 ps:
 	docker compose -f ./docker-compose.yml ps -a
@@ -26,18 +22,18 @@ down:
 	@if [ -n "`docker network inspect $(NETWORK_NAME) | grep \"\\"Containers\\": {}\"`" ]; then docker network rm $(NETWORK_NAME); fi
 
 
-.PHONY: app-sh
-app-sh:
-	docker compose exec -w /source app /bin/sh
+.PHONY: app
+app:
+	docker compose -f ./docker-compose.yml up -d --build app
 
-.PHONY: app-build
-app-build:
-	docker compose exec -w /source app dotnet build
-
-.PHONY: app-run
-app-run:
-	docker compose exec -w /source app dotnet run --no-build
+.PHONY: app-log
+app-log:
+	docker compose logs -f app
 
 .PHONY: web-sh
 web-sh:
 	docker compose exec app_web /bin/sh
+
+.PHONY: metric
+metric:
+	docker compose -f ./metric/docker-compose.yml up -d
