@@ -350,4 +350,10 @@ MigrationBackup/
 .ionide/
 .DS_Store
 dotnet-metric-test/.idea
-metric/.data
+metric/.data/clickhouse/data
+metric/.data/clickhouse/metadata
+metric/.data/clickhouse/preprocessed_configs
+metric/.data/clickhouse/store
+metric/.data/clickhouse/status
+metric/.data/clickhouse/uuid
+metric/.data/signoz/signoz.db
