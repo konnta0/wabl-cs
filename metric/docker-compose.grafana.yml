@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:8.3.0
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/data/lib:/var/lib/grafana
+      - ./grafana/data/log:/var/log/grafana
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+      - ./grafana/dashboard.yml:/etc/grafana/provisioning/dashboards/dashboard.yml
+      - ./grafana/dashboard.json:/var/lib/grafana/dashboards/dashboard.json
+
+  tempo:
+    container_name: tempo
+    image: grafana/tempo:main-1899be3-arm64
+    ports:
+      - "14268" # jaeger ingest
+      - "3200" # tempo
+      - "55680" # otlp grpc
+      - "55681" # otlp http
+      - "9411" # zipkin
+    volumes:
+      - ./grafana/tempo.yaml:/etc/tempo.yaml
+      - ./grafana/data/tempo:/tmp/tempo
+    command: [ "-config.file=/etc/tempo.yaml" ]
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.31.1
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus/prometheus.grafana.yml:/etc/prometheus/prometheus.yml
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
