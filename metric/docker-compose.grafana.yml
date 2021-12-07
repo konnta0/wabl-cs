@@ -24,9 +24,9 @@ services:
       - "55681" # otlp http
       - "9411" # zipkin
     volumes:
-      - ./grafana/tempo.yaml:/etc/tempo.yaml
+      - ./grafana/tempo.yml:/etc/tempo.yml
       - ./grafana/data/tempo:/tmp/tempo
-    command: [ "-config.file=/etc/tempo.yaml" ]
+    command: [ "-config.file=/etc/tempo.yml" ]
 
   prometheus:
     container_name: prometheus
