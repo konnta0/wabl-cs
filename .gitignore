@@ -357,3 +357,4 @@ metric/.data/clickhouse/store
 metric/.data/clickhouse/status
 metric/.data/clickhouse/uuid
 metric/.data/signoz/signoz.db
+metric/grafana/data/lib
