@@ -24,7 +24,8 @@ services:
       - shared-network
 
   app_db:
-    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
+    image: mysql:latest
+    #mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
 
   workspace:
     build:
