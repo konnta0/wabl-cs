@@ -25,6 +25,10 @@ services:
 
   app_db:
     image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=
+      - MYSQL_RANDOM_ROOT_PASSWORD=
     #mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
 
   workspace:
