@@ -14,6 +14,21 @@ services:
       - ./grafana/dashboard.yml:/etc/grafana/provisioning/dashboards/dashboard.yml
       - ./grafana/dashboard.json:/var/lib/grafana/dashboards/dashboard.json
 
+  agent:
+    image: grafana/agent:v0.18.2
+    command: [ "-config.file=/etc/agent.yml" ]
+    volumes:
+      - ./grafana/agent.yml:/etc/agent.yml
+
+  otel-collector:
+    image: otel/opentelemetry-collector:0.9.0
+    ports:
+      - "4317:4317" # OTLP gRPC receiver
+    volumes:
+      - ./grafana/otel-collector.yml:/etc/otel-collector/config.yml
+    command:
+      - --config=/etc/otel-collector/config.yml
+
   tempo:
     container_name: tempo
     image: grafana/tempo:main-1899be3-arm64
@@ -26,7 +41,19 @@ services:
     volumes:
       - ./grafana/tempo.yml:/etc/tempo.yml
       - ./grafana/data/tempo:/tmp/tempo
-    command: [ "-config.file=/etc/tempo.yml" ]
+    command:
+      - "-config.file=/etc/tempo.yml"
+
+  tempo-query:
+    image: grafana/tempo-query:latest
+    command:
+      - "--grpc-storage-plugin.configuration-file=/etc/tempo-query.yml"
+    volumes:
+      - ./grafana/tempo-query.yml:/etc/tempo-query.yml
+    ports:
+      - "16686:16686" # jaeger-ui
+    depends_on:
+      - tempo
 
   prometheus:
     container_name: prometheus
