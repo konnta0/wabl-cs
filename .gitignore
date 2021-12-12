@@ -358,3 +358,5 @@ metric/.data/clickhouse/status
 metric/.data/clickhouse/uuid
 metric/.data/signoz/signoz.db
 metric/grafana/data/lib
+metric/grafana/data/tempo/wal
+metric/grafana/data/tempo/blocks
