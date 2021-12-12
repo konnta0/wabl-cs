@@ -11,7 +11,9 @@ exporters:
   logging:
     loglevel: debug
   otlp:
-    endpoint: tempo:55680
+    endpoint: tempo:4317
+    tls:
+      insecure: true
 
 processors:
   batch:
