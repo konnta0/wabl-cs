@@ -35,7 +35,7 @@ services:
 
   tempo:
     container_name: tempo
-    image: grafana/tempo:main-1899be3-arm64
+    image: grafana/tempo:latest
     ports:
       - "14268" # jaeger ingest
       - "3200" # tempo
@@ -47,17 +47,6 @@ services:
       - ./grafana/data/tempo:/tmp/tempo
     command:
       - "-config.file=/etc/tempo.yml"
-
-  tempo-query:
-    image: grafana/tempo-query:latest
-    command:
-      - "--grpc-storage-plugin.configuration-file=/etc/tempo-query.yml"
-    volumes:
-      - ./grafana/tempo-query.yml:/etc/tempo-query.yml
-    ports:
-      - "16686:16686" # jaeger-ui
-    depends_on:
-      - tempo
 
   prometheus:
     container_name: prometheus
