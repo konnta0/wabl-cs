@@ -14,13 +14,8 @@ services:
       - ./grafana/dashboard.yml:/etc/grafana/provisioning/dashboards/dashboard.yml
       - ./grafana/dashboard.json:/var/lib/grafana/dashboards/dashboard.json
 
-  agent:
-    image: grafana/agent:v0.18.2
-    command: [ "-config.file=/etc/agent.yml" ]
-    volumes:
-      - ./grafana/agent.yml:/etc/agent.yml
-
   otel-collector:
+    container_name: otel-collector
     image: otel/opentelemetry-collector:0.41.0
     ports:
       - "4317:4317" # OTLP gRPC receiver
@@ -37,11 +32,9 @@ services:
     container_name: tempo
     image: grafana/tempo:latest
     ports:
-      - "14268" # jaeger ingest
       - "3200" # tempo
       - "55680" # otlp grpc
       - "55681" # otlp http
-      - "9411" # zipkin
     volumes:
       - ./grafana/tempo.yml:/etc/tempo.yml
       - ./grafana/data/tempo:/tmp/tempo
