@@ -7,8 +7,8 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./grafana/data/lib:/var/lib/grafana
-      - ./grafana/data/log:/var/log/grafana
+      #      - ./grafana/data/lib:/var/lib/grafana
+      #      - ./grafana/data/log:/var/log/grafana
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
       - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
       - ./grafana/dashboard.yml:/etc/grafana/provisioning/dashboards/dashboard.yml
@@ -40,6 +40,22 @@ services:
       - ./grafana/data/tempo:/tmp/tempo
     command:
       - "-config.file=/etc/tempo.yml"
+
+  loki:
+    container_name: loki
+    image: grafana/loki:2.3.0
+    command: [ "-config.file=/etc/loki/local-config.yaml" ]
+    ports:
+      - "3100:3100"
+    environment:
+      - JAEGER_AGENT_HOST=tempo
+      - JAEGER_ENDPOINT=http://tempo:14268/api/traces # send traces to Tempo
+      - JAEGER_SAMPLER_TYPE=const
+      - JAEGER_SAMPLER_PARAM=1
+    logging:
+      driver: loki
+      options:
+        loki-url: 'http://localhost:3100/loki/api/v1/push'
 
   prometheus:
     container_name: prometheus
