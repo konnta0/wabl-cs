@@ -13,7 +13,8 @@ public class MyCounter : IMyCounter
     }
 }
 
-public interface IMyCounter : ICounter<double> {
+public interface IMyCounter : ICounter<double> 
+{
 }
 
 public interface ICounter<T> where T : struct  
