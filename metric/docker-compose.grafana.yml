@@ -5,7 +5,7 @@ services:
     container_name: grafana
     image: grafana/grafana:8.3.0
     ports:
-      - 3000:3000
+      - "3000:3000"
     volumes:
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
       - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
@@ -59,7 +59,7 @@ services:
     container_name: prometheus
     image: prom/prometheus:v2.31.1
     ports:
-      - 9090:9090
+      - "9090:9090"
     volumes:
       - ./prometheus/prometheus.grafana.yml:/etc/prometheus/prometheus.yml
     command:
