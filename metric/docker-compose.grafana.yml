@@ -7,8 +7,6 @@ services:
     ports:
       - 3000:3000
     volumes:
-      #      - ./grafana/data/lib:/var/lib/grafana
-      #      - ./grafana/data/log:/var/log/grafana
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
       - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
       - ./grafana/dashboard.yml:/etc/grafana/provisioning/dashboards/dashboard.yml
