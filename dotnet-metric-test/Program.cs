@@ -82,6 +82,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseOpenTelemetryPrometheusScrapingEndpoint();
 
 app.UseRouting();
 
