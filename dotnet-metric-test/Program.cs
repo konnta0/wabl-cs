@@ -44,16 +44,18 @@ builder.Services.AddOpenTelemetryMetrics(providerBuilder =>
     providerBuilder.AddMeter(MyMeter.Name);
     providerBuilder.AddAspNetCoreInstrumentation();
     providerBuilder.AddHttpClientInstrumentation();
-    
-    providerBuilder.AddOtlpExporter(options =>
-    {
-        options.Endpoint = new Uri(builder.Configuration.GetValue<string>("Otlp:Endpoint"));
-    });
+
+    // I want to do Otlp, but Grafana Tempo doesn't support it.
+    // https://grafana.com/blog/2020/11/17/tracing-with-the-grafana-cloud-agent-and-grafana-tempo/
+    // providerBuilder.AddOtlpExporter(options =>
+    // {
+    //     options.Endpoint = new Uri(builder.Configuration.GetValue<string>("Otlp:Endpoint"));
+    // });
 
     providerBuilder.AddPrometheusExporter(options =>
     {
         options.StartHttpListener = true;
-        options.HttpListenerPrefixes = new string[] { $"http://*:8888/" };
+        options.HttpListenerPrefixes = builder.Configuration.GetSection("Prometheus:Endpoints").Get<string[]>();
         options.ScrapeEndpointPath = "/metrics";
         options.ScrapeResponseCacheDurationMilliseconds = 0;
     });

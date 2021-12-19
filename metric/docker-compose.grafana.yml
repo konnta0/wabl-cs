@@ -64,6 +64,9 @@ services:
       - ./prometheus/prometheus.grafana.yml:/etc/prometheus/prometheus.yml
     command:
       - --config.file=/etc/prometheus/prometheus.yml
+    networks:
+      - default
+      - shared-network
 
 networks:
   shared-network:
