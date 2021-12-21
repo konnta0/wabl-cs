@@ -55,6 +55,12 @@ services:
       options:
         loki-url: 'http://localhost:3100/loki/api/v1/push'
 
+  promtail:
+    image: grafana/promtail:2.0.0
+    volumes:
+      - ./grafana/promtail-local-config.yml:/etc/promtail/promtail-local-config.yml
+    command: -config.file=/etc/promtail/promtail-local-config.yml
+
   prometheus:
     container_name: prometheus
     image: prom/prometheus:v2.31.1
