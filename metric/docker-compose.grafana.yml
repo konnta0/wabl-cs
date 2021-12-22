@@ -57,9 +57,13 @@ services:
 
   promtail:
     image: grafana/promtail:2.0.0
+    container_name: promtail
     volumes:
       - ./grafana/promtail-local-config.yml:/etc/promtail/promtail-local-config.yml
     command: -config.file=/etc/promtail/promtail-local-config.yml
+    networks:
+      - default
+      - shared-network
 
   prometheus:
     container_name: prometheus
@@ -76,4 +80,8 @@ services:
 
 networks:
   shared-network:
+    external: true
+
+volumes:
+  app-log:
     external: true
