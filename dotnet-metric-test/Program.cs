@@ -1,10 +1,13 @@
 using dotnet_metric_test.APM.Metrics.Counter;
 using dotnet_metric_test.APM.Metrics.Meter;
 using Microsoft.AspNetCore.HttpOverrides;
-using OpenTelemetry.Exporter;
+using Microsoft.Extensions.Logging.Configuration;
+using OpenTelemetry;
+using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using ZLogger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,20 @@ builder.Services.AddControllersWithViews();
 // See: https://docs.microsoft.com/aspnet/core/grpc/troubleshoot#call-insecure-grpc-services-with-net-core-client
 AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
 
+builder.Services.AddLogging(loggingBuilder =>
+{
+    loggingBuilder.ClearProviders();
+    loggingBuilder.SetMinimumLevel(LogLevel.Debug);
+    // loggingBuilder.AddZLoggerRollingFile((dt, x) => $"/var/log/app/{dt.ToLocalTime():yyyy-MM-dd}_{x:000}.log", x => x.ToLocalTime().Date, 1024);
+    // loggingBuilder.AddZLoggerConsole();
+    loggingBuilder.AddOpenTelemetry(options =>
+    {
+        options.IncludeScopes = true;
+        options.ParseStateValues = true;
+        options.IncludeFormattedMessage = true;
+        options.AddConsoleExporter();
+    });
+});
 
 builder.Services.AddOpenTelemetryTracing(provider =>
 {
@@ -33,7 +50,8 @@ builder.Services.AddOpenTelemetryTracing(provider =>
     {
         options.Endpoint = new Uri(builder.Configuration.GetValue<string>("Otlp:Endpoint"));
     });
-    provider.AddConsoleExporter();
+    // for Debug
+    // provider.AddConsoleExporter();
 });
 
 builder.Services.AddOpenTelemetryMetrics(providerBuilder =>
