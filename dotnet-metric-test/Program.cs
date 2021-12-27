@@ -1,5 +1,5 @@
-using dotnet_metric_test.APM.Metrics.Counter;
-using dotnet_metric_test.APM.Metrics.Meter;
+using dotnet_metric_test.Monitoring.Metrics.Counter;
+using dotnet_metric_test.Monitoring.Metrics.Meter;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Logging.Configuration;
 using OpenTelemetry;
@@ -23,8 +23,6 @@ builder.Services.AddLogging(loggingBuilder =>
 {
     loggingBuilder.ClearProviders();
     loggingBuilder.SetMinimumLevel(LogLevel.Debug);
-    // loggingBuilder.AddZLoggerRollingFile((dt, x) => $"/var/log/app/{dt.ToLocalTime():yyyy-MM-dd}_{x:000}.log", x => x.ToLocalTime().Date, 1024);
-    // loggingBuilder.AddZLoggerConsole();
     loggingBuilder.AddOpenTelemetry(options =>
     {
         options.IncludeScopes = true;
@@ -51,7 +49,7 @@ builder.Services.AddOpenTelemetryTracing(provider =>
         options.Endpoint = new Uri(builder.Configuration.GetValue<string>("Otlp:Endpoint"));
     });
     // for Debug
-    // provider.AddConsoleExporter();
+    provider.AddConsoleExporter();
 });
 
 builder.Services.AddOpenTelemetryMetrics(providerBuilder =>

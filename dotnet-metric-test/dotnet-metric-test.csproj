@@ -19,9 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="APM\Events" />
-    <Folder Include="APM\Logging" />
-    <Folder Include="APM\Tracing" />
+    <Folder Include="Monitoring\Tracing" />
   </ItemGroup>
 
 </Project>

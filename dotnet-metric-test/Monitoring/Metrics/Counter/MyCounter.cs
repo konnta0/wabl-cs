@@ -1,7 +1,7 @@
 using System.Diagnostics.Metrics;
-using dotnet_metric_test.APM.Metrics.Meter;
+using dotnet_metric_test.Monitoring.Metrics.Meter;
 
-namespace dotnet_metric_test.APM.Metrics.Counter;
+namespace dotnet_metric_test.Monitoring.Metrics.Counter;
 
 public class MyCounter : IMyCounter
 {

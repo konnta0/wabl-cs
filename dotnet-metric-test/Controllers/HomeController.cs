@@ -1,8 +1,7 @@
 ﻿using System.Diagnostics;
-using dotnet_metric_test.APM.Metrics.Counter;
-using dotnet_metric_test.APM.Metrics.Meter;
 using Microsoft.AspNetCore.Mvc;
 using dotnet_metric_test.Models;
+using dotnet_metric_test.Monitoring.Metrics.Counter;
 
 namespace dotnet_metric_test.Controllers;
 

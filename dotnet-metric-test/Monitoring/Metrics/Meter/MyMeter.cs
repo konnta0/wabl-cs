@@ -1,4 +1,4 @@
-namespace dotnet_metric_test.APM.Metrics.Meter;
+namespace dotnet_metric_test.Monitoring.Metrics.Meter;
 
 public class MyMeter : IMyMeter
 {
