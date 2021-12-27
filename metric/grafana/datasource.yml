@@ -20,6 +20,8 @@ datasources:
   version: 1
   editable: false
   apiVersion: 1
+  # UID should match the datasourceUid in dervidedFields.
+  uid: tempo
 
 - name: Loki
   type: loki
