@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     build:
-      context: ./dotnet-metric-test
+      context: .
       target: runtime
     container_name: app
     environment:
@@ -20,7 +20,7 @@ services:
     container_name: web
     image: nginx:1.21.4-alpine
     volumes:
-      - ./webserver/app.conf:/etc/nginx/conf.d/default.conf
+      - ./webserver/nginx/app.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8080:80"
     depends_on:
@@ -41,7 +41,7 @@ services:
   workspace:
     container_name: workspace
     build:
-      context: ./dotnet-metric-test
+      context: .
       target: workspace
     tty: true
     networks:
