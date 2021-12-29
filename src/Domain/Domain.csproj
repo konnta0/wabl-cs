@@ -6,4 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ZLogger" Version="1.6.1" />
+  </ItemGroup>
 </Project>

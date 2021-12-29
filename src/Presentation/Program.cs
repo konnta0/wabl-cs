@@ -1,7 +1,13 @@
+using Infrastructure.Extension;
+using Microsoft.AspNetCore.HttpOverrides;
+using UseCase.Extension;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddUseCase(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
@@ -13,8 +19,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseInfrastructure();
 
 app.UseRouting();
 
