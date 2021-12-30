@@ -31,22 +31,13 @@ services:
 
   app_db:
     container_name: db
-    image: mysql:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.MySQL
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_ALLOW_EMPTY_PASSWORD=
       - MYSQL_RANDOM_ROOT_PASSWORD=
-    volumes:
-      - ./sample/test_db/employees.sql:/docker-entrypoint-initdb.d/employees.sql
-      - ./sample/test_db/load_departments.dump:/load_departments.dump
-      - ./sample/test_db/load_employees.dump:/load_employees.dump
-      - ./sample/test_db/load_dept_emp.dump:/load_dept_emp.dump
-      - ./sample/test_db/load_dept_manager.dump:/load_dept_manager.dump
-      - ./sample/test_db/load_titles.dump:/load_titles.dump
-      - ./sample/test_db/load_salaries1.dump:/load_salaries1.dump
-      - ./sample/test_db/load_salaries2.dump:/load_salaries2.dump
-      - ./sample/test_db/load_salaries3.dump:/load_salaries3.dump
-      - ./sample/test_db/show_elapsed.sql:/show_elapsed.sql
     #mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
 
   workspace:
