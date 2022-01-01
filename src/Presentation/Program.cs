@@ -1,5 +1,7 @@
+using Infrastructure.Context;
 using Infrastructure.Extension;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 using UseCase.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddUseCase(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddDbContext<EmployeesContext>(optionsBuilder =>
+{
+    optionsBuilder.UseMySQL(EmployeesContext.GetConnectionString());
+});
 
 var app = builder.Build();
 

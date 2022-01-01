@@ -18,4 +18,13 @@ public class EmployeesContext : DbContext
     }
     
     public DbSet<DepartmentsModel> DepartmentsModels { get; set; }
+
+    public static string GetConnectionString()
+    {
+        var server = Environment.GetEnvironmentVariable("MYSQL_SERVER_HOST");
+        var port = Environment.GetEnvironmentVariable("MYSQL_SERVER_PORT");
+        var user = Environment.GetEnvironmentVariable("MYSQL_USER");
+        var password = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
+        return $"server={server};port={port};user={user};password={password};Database=employees";
+    }
 }
