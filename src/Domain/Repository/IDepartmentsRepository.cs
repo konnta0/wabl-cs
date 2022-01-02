@@ -4,5 +4,5 @@ namespace Domain.Repository;
 
 public interface IDepartmentsRepository
 {
-    IEnumerable<DepartmentsModel> FindManyByDeptName(string deptName);
+    ValueTask<DepartmentsModel?> FindManyByDeptName(string deptName);
 }
