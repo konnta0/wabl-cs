@@ -10,9 +10,9 @@ public class DepartmentsModel
     [Key]
     [Column("dept_no", TypeName = "char(4)")]
     [Required]
-    public string DepotNo { get; set; }
-    
+    public string DepotNo { get; set; } = "";
+
     [Column("dept_name", TypeName = "varchar(40)")]
     [Required]
-    public string DeptName { get; set; }
+    public string DeptName { get; set; } = "";
 }

@@ -17,7 +17,7 @@ public class EmployeesContext : DbContext
         });
     }
     
-    public DbSet<DepartmentsModel?> DepartmentsModels { get; set; }
+    public DbSet<DepartmentsModel> DepartmentsModels { get; set; }
 
     public static string GetConnectionString()
     {

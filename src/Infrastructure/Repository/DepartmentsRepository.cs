@@ -17,8 +17,13 @@ public class DepartmentsRepository : IDepartmentsRepository
         _employeesContext = employeesContext;
     }
 
+    public async ValueTask<IEnumerable<DepartmentsModel>> FindAll()
+    {
+        return await _employeesContext.DepartmentsModels.Select(x => x).ToListAsync();
+    }
+
     public async ValueTask<DepartmentsModel?> FindManyByDeptName(string deptName)
     {
-        return await _employeesContext.DepartmentsModels.FirstOrDefaultAsync(model => model != null && model.DeptName == deptName);
+        return await _employeesContext.DepartmentsModels.FirstOrDefaultAsync(model => model.DeptName == deptName);
     }
 }
