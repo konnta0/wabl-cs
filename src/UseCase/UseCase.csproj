@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MessagePipe" Version="1.6.1" />
+  </ItemGroup>
+
 </Project>
