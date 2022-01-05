@@ -6,6 +6,10 @@ namespace Infrastructure.Context;
 
 public class EmployeesContext : DbContext
 {
+    public EmployeesContext(DbContextOptions<EmployeesContext> dbContextOptions) : base(dbContextOptions)
+    {
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<DepartmentsModel>(entity =>
