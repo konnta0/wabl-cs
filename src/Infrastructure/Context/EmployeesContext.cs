@@ -20,7 +20,7 @@ public class EmployeesContext : DbContext
             entity.Property(p => p.DeptName).ForMySQLHasCollation("utf8mb4_bin");
         });
     }
-    
+
     public DbSet<DepartmentsModel> DepartmentsModels { get; set; }
 
     public static string GetConnectionString()
