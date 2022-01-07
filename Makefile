@@ -8,23 +8,31 @@ build:
 all:
 	@if [ -z "`docker network ls | grep $(NETWORK_NAME)`" ]; then docker network create $(NETWORK_NAME); fi
 	docker compose -f ./docker-compose.yml up -d
-	docker compose -f ./metric/docker-compose.yml up -d
+	docker compose -f ./observability/docker-compose.grafana.yml up -d
 
 .PHONY: ps
 ps:
 	docker compose -f ./docker-compose.yml ps -a
-	docker compose -f ./metric/docker-compose.yml ps -a
+	docker compose -f ./observability/docker-compose.grafana.yml ps -a
 
 .PHONY: down
 down:
 	docker compose -f ./docker-compose.yml down
-	docker compose -f ./metric/docker-compose.yml down
+	docker compose -f ./observability/docker-compose.grafana.yml down
 	@if [ -n "`docker network inspect $(NETWORK_NAME) | grep \"\\"Containers\\": {}\"`" ]; then docker network rm $(NETWORK_NAME); fi
 
 
 .PHONY: app
 app:
 	docker compose -f ./docker-compose.yml up -d --build app
+
+.PHONY: app-build
+app-build:
+	docker-compose build app --no-cache
+
+.PHONY: app-restart
+app-restart:
+	docker-compose kill app && docker-compose create app && docker-compose start app
 
 .PHONY: app-log
 app-log:
@@ -36,4 +44,9 @@ web-sh:
 
 .PHONY: metric
 metric:
-	docker compose -f ./metric/docker-compose.yml up -d
+	docker compose -f ./observability/docker-compose.grafana.yml up -d
+
+
+.PHONY: clean-image
+clean-image:
+	docker image prune -f
