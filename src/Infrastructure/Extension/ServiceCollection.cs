@@ -5,6 +5,7 @@ using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using ZLogger;
 
 namespace Infrastructure.Extension;
 
@@ -16,7 +17,7 @@ public static class ServiceCollection
             AddLogging().
             AddOpenTelemetryTracing(configuration).
             AddOpenTelemetryMetrics(configuration).
-            AddContainer();;
+            AddContainer();
     }
 
     private static IServiceCollection AddLogging(this IServiceCollection serviceCollection)
@@ -25,14 +26,18 @@ public static class ServiceCollection
         {
             builder.ClearProviders();
             builder.SetMinimumLevel(LogLevel.Debug);
+            builder.AddZLoggerConsole(options =>
+            {
+                options.EnableStructuredLogging = true;
+            });
             builder.AddOpenTelemetry(options =>
             {
                 options.IncludeScopes = true;
                 options.ParseStateValues = true;
                 options.IncludeFormattedMessage = true;
-                options.AddConsoleExporter();                
+                //options.AddConsoleExporter();                
             });
-        });;
+        });
     }
 
     private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, IConfiguration configuration)
@@ -48,7 +53,7 @@ public static class ServiceCollection
                 options.Endpoint = new Uri(configuration.GetValue<string>("Otlp:Endpoint"));
             });
             // for Debug
-            builder.AddConsoleExporter();
+            // builder.AddConsoleExporter();
         });
     }
 
