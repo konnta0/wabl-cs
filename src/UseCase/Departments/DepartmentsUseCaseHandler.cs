@@ -5,10 +5,8 @@ using ZLogger;
 
 namespace UseCase.Departments;
 
-[RequestHandlerFilter(typeof(FindDepartmentsHandler))]
-[RequestHandlerFilter(typeof(FindManyDepartmentsHandler))]
 // ReSharper disable once UnusedType.Global
-public class DepartmentsUseCaseHandler : IRequestHandler<IDepartmentsInputData, IDepartmentsOutputData?>
+public partial class DepartmentsUseCaseHandler : IRequestHandler<IDepartmentsInputData, IDepartmentsOutputData?>
 {
     private readonly ILogger<DepartmentsUseCaseHandler> _logger;
 
