@@ -16,7 +16,12 @@ builder.Services.AddControllersWithViews(options =>
     options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
 });
 
-builder.Services.AddMessagePipe();
+builder.Services.AddMessagePipe(options =>
+{
+#if DEBUG
+    options.EnableCaptureStackTrace = true;
+#endif
+});
 
 builder.Services.AddUseCase(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
