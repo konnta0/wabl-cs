@@ -1,3 +1,5 @@
+using Domain.Repository;
+using Infrastructure.Repository;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -88,6 +90,7 @@ public static class ServiceCollection
 
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
     {
+        serviceCollection.AddSingleton<IDepartmentsRepository, DepartmentsRepository>();
         // TODO : later
         // serviceCollection.AddSingleton<IMyMeter, MyMeter>();
         // serviceCollection.AddSingleton<IMyCounter, MyCounter>();

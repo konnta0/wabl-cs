@@ -17,12 +17,12 @@ public class DepartmentsRepository : IDepartmentsRepository
         _employeesContext = employeesContext;
     }
 
-    public async ValueTask<IEnumerable<DepartmentsModel>> FindAll()
+    public async ValueTask<IEnumerable<DepartmentsModel>> FindAllAsync()
     {
         return await _employeesContext.DepartmentsModels.Select(x => x).ToListAsync();
     }
 
-    public async ValueTask<DepartmentsModel?> FindManyByDeptName(string deptName)
+    public async ValueTask<DepartmentsModel?> FindManyByDeptNameAsync(string deptName)
     {
         return await _employeesContext.DepartmentsModels.FirstOrDefaultAsync(model => model.DeptName == deptName);
     }

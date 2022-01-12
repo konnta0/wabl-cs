@@ -4,7 +4,7 @@ namespace Domain.Repository;
 
 public interface IDepartmentsRepository
 {
-    ValueTask<IEnumerable<DepartmentsModel>> FindAll();
+    ValueTask<IEnumerable<DepartmentsModel>> FindAllAsync();
 
-    ValueTask<DepartmentsModel?> FindManyByDeptName(string deptName);
+    ValueTask<DepartmentsModel?> FindManyByDeptNameAsync(string deptName);
 }
