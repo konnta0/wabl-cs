@@ -38,6 +38,10 @@ app-restart:
 app-log:
 	docker compose logs -f app
 
+.PHONY: app-db
+app-db:
+	docker exec -it db mysql -u root -p
+
 .PHONY: web-sh
 web-sh:
 	docker compose exec app_web /bin/sh
