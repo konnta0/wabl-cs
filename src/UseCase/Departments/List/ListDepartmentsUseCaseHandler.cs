@@ -1,21 +1,34 @@
+using Domain.Repository;
 using UseCase.Core;
+using UseCase.Departments.Common;
 
 namespace UseCase.Departments.List;
 
-internal partial class ListDepartmentsUseCaseHandler : InternalUseCaseHandler<IDepartmentsInputData, IDepartmentsOutputData>, IInternalUseCaseHandler<ListDepartmentsInputData, ListDepartmentsOutputData>
+internal partial class ListDepartmentsUseCaseHandler : AsyncInternalUseCaseHandler<IDepartmentsInputData, IDepartmentsOutputData>, IAsyncInternalUseCaseHandler<ListDepartmentsInputData, ListDepartmentsOutputData>
 {
-    public override IDepartmentsOutputData Invoke(IDepartmentsInputData request, Func<IDepartmentsInputData, IDepartmentsOutputData> next)
+    private readonly IDepartmentsRepository _departmentsRepository;
+
+    public ListDepartmentsUseCaseHandler(IDepartmentsRepository departmentsRepository)
+    {
+        _departmentsRepository = departmentsRepository;
+    }
+    
+    public override async ValueTask<IDepartmentsOutputData> InvokeAsync(IDepartmentsInputData request, CancellationToken cancellationToken, Func<IDepartmentsInputData, CancellationToken, ValueTask<IDepartmentsOutputData>> next)
     {
         if (request is not ListDepartmentsInputData data)
         {
-            return next(request);
+            return await next(request, cancellationToken);
         }
 
-        return Handle(data);
+        return await HandleAsync(data);
     }
 
-    public ListDepartmentsOutputData Handle(ListDepartmentsInputData inputData)
+    public async ValueTask<ListDepartmentsOutputData> HandleAsync(ListDepartmentsInputData inputData)
     {
-        return new ListDepartmentsOutputData();
+        var outputData = new ListDepartmentsOutputData();
+        var departmentsModels = await _departmentsRepository.FindAllAsync();
+        outputData.Departments = departmentsModels.SelectMany(x => new[]
+            { new Department { DepotNo = x.DepotNo, DeptName = x.DeptName } });
+        return outputData;
     }
 }

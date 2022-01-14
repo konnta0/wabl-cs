@@ -1,5 +1,5 @@
 namespace UseCase.Departments.List;
 
-public struct ListDepartmentsInputData : IDepartmentsInputData
+public class ListDepartmentsInputData : IDepartmentsInputData
 {
 }

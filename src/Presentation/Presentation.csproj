@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MessagePack" Version="2.3.85" />
+    <PackageReference Include="MessagePack.AspNetCoreMvcFormatter" Version="2.3.85" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 

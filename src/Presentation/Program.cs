@@ -1,5 +1,7 @@
 using Infrastructure.Context;
 using Infrastructure.Extension;
+using MessagePack.AspNetCoreMvcFormatter;
+using MessagePack.Resolvers;
 using MessagePipe;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
@@ -14,7 +16,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews(options =>
 {
     options.Conventions.Add(new RouteTokenTransformerConvention(new SlugifyParameterTransformer()));
+
+    options.OutputFormatters.Add(new MessagePackOutputFormatter(ContractlessStandardResolver.Options));
+    options.InputFormatters.Add(new MessagePackInputFormatter(ContractlessStandardResolver.Options));
 });
+
 
 builder.Services.AddMessagePipe(options =>
 {
@@ -38,7 +44,11 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddDbContext<EmployeesContext>(optionsBuilder =>
 {
-    optionsBuilder.UseMySQL(EmployeesContext.GetConnectionString());
+    var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
+    optionsBuilder.UseMySql(EmployeesContext.GetConnectionString(), serverVersion)
+        .LogTo(Console.WriteLine, LogLevel.Information)
+        .EnableSensitiveDataLogging()
+        .EnableDetailedErrors();
 });
 
 var app = builder.Build();

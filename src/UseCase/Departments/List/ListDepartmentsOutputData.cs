@@ -1,5 +1,8 @@
+using UseCase.Departments.Common;
+
 namespace UseCase.Departments.List;
 
-public struct ListDepartmentsOutputData : IDepartmentsOutputData
+public class ListDepartmentsOutputData : IDepartmentsOutputData
 {
+    public IEnumerable<Department> Departments { get; set; }
 }

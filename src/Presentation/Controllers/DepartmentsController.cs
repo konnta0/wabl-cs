@@ -1,9 +1,7 @@
-using System.Text.Json;
 using MessagePipe;
 using Microsoft.AspNetCore.Mvc;
 using UseCase.Departments;
-using UseCase.Departments.Find;
-using ZLogger;
+using UseCase.Departments.List;
 
 namespace Presentation.Controllers;
 
@@ -12,26 +10,20 @@ namespace Presentation.Controllers;
 public class DepartmentsController : ControllerBase
 {
     private readonly ILogger<DepartmentsController> _logger;
-    private readonly IRequestHandler<IDepartmentsInputData, IDepartmentsOutputData> _departmentsUseCaseHandler;
+    private readonly IAsyncRequestHandler<IDepartmentsInputData, IDepartmentsOutputData> _departmentsUseCaseHandler;
     
-    public DepartmentsController(ILogger<DepartmentsController> logger, IRequestHandler<IDepartmentsInputData, IDepartmentsOutputData> departmentsUseCaseHandler)
+    public DepartmentsController(ILogger<DepartmentsController> logger, IAsyncRequestHandler<IDepartmentsInputData, IDepartmentsOutputData> departmentsUseCaseHandler)
     {
         _logger = logger;
         _departmentsUseCaseHandler = departmentsUseCaseHandler;
     }
 
     [HttpGet]
-    public IActionResult List()
+    public async ValueTask<IActionResult> List()
     {
-        var findDepartmentsInputData = new FindDepartmentsInputData();
-        var departmentsOutputData = _departmentsUseCaseHandler.Invoke(findDepartmentsInputData);
+        var listDepartmentsInputData = new ListDepartmentsInputData();
+        var listDepartmentsOutputData = await _departmentsUseCaseHandler.InvokeAsync(listDepartmentsInputData);
 
-        _logger.ZLogInformation("[FindDepartments] serialized string is: " + JsonSerializer.Serialize((FindDepartmentsOutputData)departmentsOutputData));
-
-        var findManyDepartmentsInputData = new FindManyDepartmentsInputData();
-        var findManyDepartmentsOutputData = _departmentsUseCaseHandler.Invoke(findManyDepartmentsInputData);
-        _logger.ZLogInformation("[FindManyDepartments]  serialized string is : " + JsonSerializer.Serialize((FindManyDepartmentsOutputData)findManyDepartmentsOutputData));
-
-        return new JsonResult(departmentsOutputData) { StatusCode = StatusCodes.Status200OK };
+        return new JsonResult(listDepartmentsOutputData) { StatusCode = StatusCodes.Status200OK };
     }
 }

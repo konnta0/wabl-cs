@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Domain.Model;
 
+[Table("departments")]
 [Index(nameof(DeptName), IsUnique = true, Name = "dept_name")]
 public class DepartmentsModel
 {
