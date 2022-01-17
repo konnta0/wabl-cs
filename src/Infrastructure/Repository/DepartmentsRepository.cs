@@ -19,7 +19,7 @@ public class DepartmentsRepository : IDepartmentsRepository
 
     public async ValueTask<IEnumerable<DepartmentsModel>> FindAllAsync()
     {
-        return await _employeesContext.DepartmentsModels.Select(x => x).ToListAsync();
+        return await _employeesContext.DepartmentsModels.AsQueryable().Select(x => x).ToListAsync();
     }
 
     public async ValueTask<DepartmentsModel?> FindManyByDeptNameAsync(string deptName)

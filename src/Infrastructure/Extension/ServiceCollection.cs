@@ -1,5 +1,7 @@
 using Domain.Repository;
+using Infrastructure.Context;
 using Infrastructure.Repository;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -15,11 +17,12 @@ public static class ServiceCollection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
-        return serviceCollection.
-            AddLogging().
-            AddOpenTelemetryTracing(configuration).
-            AddOpenTelemetryMetrics(configuration).
-            AddContainer();
+        return serviceCollection
+            .AddLogging()
+            .AddDbContext()
+            .AddOpenTelemetryTracing(configuration)
+            .AddOpenTelemetryMetrics(configuration)
+            .AddContainer();
     }
 
     private static IServiceCollection AddLogging(this IServiceCollection serviceCollection)
@@ -90,10 +93,23 @@ public static class ServiceCollection
 
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddSingleton<IDepartmentsRepository, DepartmentsRepository>();
+        serviceCollection.AddTransient<IDepartmentsRepository, DepartmentsRepository>();
         // TODO : later
         // serviceCollection.AddSingleton<IMyMeter, MyMeter>();
         // serviceCollection.AddSingleton<IMyCounter, MyCounter>();
+        return serviceCollection;
+    }
+
+    private static IServiceCollection AddDbContext(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
+        {
+            var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
+            optionsBuilder.UseMySql(EmployeesContext.GetConnectionString(), serverVersion)
+                .LogTo(Console.WriteLine, LogLevel.Information)
+                .EnableSensitiveDataLogging()
+                .EnableDetailedErrors();
+        }, ServiceLifetime.Transient);
         return serviceCollection;
     }
 }

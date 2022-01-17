@@ -27,6 +27,7 @@ builder.Services.AddMessagePipe(options =>
 #if DEBUG
     options.EnableCaptureStackTrace = true;
 #endif
+    options.InstanceLifetime = InstanceLifetime.Scoped;
 });
 
 builder.Services.AddUseCase(builder.Configuration);
@@ -42,14 +43,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddDbContext<EmployeesContext>(optionsBuilder =>
-{
-    var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
-    optionsBuilder.UseMySql(EmployeesContext.GetConnectionString(), serverVersion)
-        .LogTo(Console.WriteLine, LogLevel.Information)
-        .EnableSensitiveDataLogging()
-        .EnableDetailedErrors();
-});
 
 var app = builder.Build();
 
