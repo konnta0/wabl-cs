@@ -50,7 +50,7 @@ public static class ServiceCollection
         return serviceCollection.AddOpenTelemetryTracing(builder =>
         {
             builder.SetResourceBuilder(ResourceBuilder.CreateDefault()
-                .AddService(configuration.GetValue<string>("Otlp:ServiceName")));
+                .AddService(Environment.GetEnvironmentVariable("OTLP_SERVER_NAME")));
             builder.AddAspNetCoreInstrumentation(options => { options.RecordException = true; });
             builder.AddHttpClientInstrumentation(options => { options.RecordException = true; });
             builder.AddOtlpExporter(options =>
@@ -68,7 +68,7 @@ public static class ServiceCollection
         return serviceCollection.AddOpenTelemetryMetrics(builder =>
         {
             builder.SetResourceBuilder(ResourceBuilder.CreateDefault()
-                .AddService(configuration.GetValue<string>("Otlp:ServiceName")));
+                .AddService(Environment.GetEnvironmentVariable("OTLP_SERVER_NAME")));
             // TODO :: later
             // builder.AddMeter(MyMeter.Name);
             builder.AddAspNetCoreInstrumentation();
