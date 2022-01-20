@@ -1,15 +1,19 @@
+using Cysharp.Text;
 using Domain.Repository;
 using Infrastructure.Context;
 using Infrastructure.Repository;
+using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Configuration;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using ZLogger;
+using ZLogger.Providers;
 
 namespace Infrastructure.Extension;
 
@@ -30,17 +34,26 @@ public static class ServiceCollection
         return serviceCollection.AddLogging(builder =>
         {
             builder.ClearProviders();
-            builder.SetMinimumLevel(LogLevel.Debug);
+            builder.SetMinimumLevel(LogLevel.Information);
             builder.AddZLoggerConsole(options =>
             {
-                options.EnableStructuredLogging = true;
+                //options.EnableStructuredLogging = true;
+                var prefixFormat = ZString.PrepareUtf8<LogLevel, DateTime>("[{0}][{1}] ");
+                options.PrefixFormatter = (writer, info) => prefixFormat.FormatTo(ref writer, info.LogLevel, info.Timestamp.DateTime.ToLocalTime());
             });
+            builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft", LogLevel.Information);
+            builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft.AspNetCore", LogLevel.Information);
+            builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware", LogLevel.Information);
             builder.AddOpenTelemetry(options =>
             {
                 options.IncludeScopes = true;
                 options.ParseStateValues = true;
                 options.IncludeFormattedMessage = true;
-                //options.AddConsoleExporter();                
+                //options.AddConsoleExporter();
+            });
+            builder.Services.AddHttpLogging(options =>
+            {
+                options.LoggingFields = HttpLoggingFields.All;
             });
         });
     }
@@ -103,7 +116,7 @@ public static class ServiceCollection
     private static IServiceCollection AddDbContext(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
-        {
+        { 
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
             optionsBuilder.UseMySql(EmployeesContext.GetConnectionString(), serverVersion)
                 .LogTo(Console.WriteLine, LogLevel.Information)

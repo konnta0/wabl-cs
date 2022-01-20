@@ -1,16 +1,16 @@
-using Infrastructure.Context;
 using Infrastructure.Extension;
 using MessagePack.AspNetCoreMvcFormatter;
 using MessagePack.Resolvers;
 using MessagePipe;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Presentation.Extension;
 using UseCase.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddUseCase(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews(options =>
@@ -30,8 +30,6 @@ builder.Services.AddMessagePipe(options =>
     options.InstanceLifetime = InstanceLifetime.Scoped;
 });
 
-builder.Services.AddUseCase(builder.Configuration);
-builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -62,6 +60,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 
 app.UseHttpsRedirection();
+app.UseHttpLogging();
 app.UseStaticFiles();
 app.UseInfrastructure();
 
