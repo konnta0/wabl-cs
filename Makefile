@@ -22,13 +22,18 @@ down:
 	@if [ -n "`docker network inspect $(NETWORK_NAME) | grep \"\\"Containers\\": {}\"`" ]; then docker network rm $(NETWORK_NAME); fi
 
 
+.PHONY: up
+up:
+	@if [ -z "`docker network ls | grep $(NETWORK_NAME)`" ]; then docker network create $(NETWORK_NAME); fi
+	docker compose -f ./docker-compose.yml up -d
+
 .PHONY: app
 app:
-	docker compose -f ./docker-compose.yml up -d --build app
+	docker compose -f ./docker-compose.yml up -d
 
 .PHONY: app-build
 app-build:
-	docker-compose build app --no-cache
+	docker compose build app --no-cache
 
 .PHONY: app-restart
 app-restart:
