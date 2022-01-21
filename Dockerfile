@@ -9,6 +9,7 @@ RUN dotnet restore
 RUN dotnet publish -c Release -o out --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+RUN ln -sf /usr/share/zoneinfo/posix/Japan /etc/localtime
 WORKDIR /app
 COPY --from=builder /build/out .
 ENTRYPOINT [ "dotnet", "DotnetMetricTestApp.dll"]
