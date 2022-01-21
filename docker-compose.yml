@@ -22,6 +22,11 @@ services:
       driver: loki
       options:
         loki-url: 'http://host.docker.internal:3100/loki/api/v1/push'
+        # Shortening the time because of the waiting time when loki is not running.
+        # Configure options see below 
+        # https://grafana.com/docs/loki/latest/clients/docker-driver/configuration/#supported-log-opt-options
+        loki-timeout: 1s
+        loki-retries: 1
 
   app_web:
     container_name: web
