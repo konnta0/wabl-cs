@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Configuration;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
@@ -37,19 +36,17 @@ public static class ServiceCollection
             builder.SetMinimumLevel(LogLevel.Information);
             builder.AddZLoggerConsole(options =>
             {
-                //options.EnableStructuredLogging = true;
+                options.EnableStructuredLogging = true;
                 var prefixFormat = ZString.PrepareUtf8<LogLevel, DateTime>("[{0}][{1}] ");
                 options.PrefixFormatter = (writer, info) => prefixFormat.FormatTo(ref writer, info.LogLevel, info.Timestamp.DateTime.ToLocalTime());
             });
             builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft", LogLevel.Information);
-            builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft.AspNetCore", LogLevel.Information);
-            builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft.AspNetCore.HttpLogging.HttpLoggingMiddleware", LogLevel.Information);
             builder.AddOpenTelemetry(options =>
             {
                 options.IncludeScopes = true;
                 options.ParseStateValues = true;
                 options.IncludeFormattedMessage = true;
-                //options.AddConsoleExporter();
+                options.AddConsoleExporter();
             });
             builder.Services.AddHttpLogging(options =>
             {
@@ -68,10 +65,13 @@ public static class ServiceCollection
             builder.AddHttpClientInstrumentation(options => { options.RecordException = true; });
             builder.AddOtlpExporter(options =>
             {
-                options.Endpoint = new Uri(configuration.GetValue<string>("Otlp:Endpoint"));
+                options.Endpoint = new Uri(Environment.GetEnvironmentVariable("OTLP_ENDPOINT") ?? string.Empty);
             });
-            // for Debug
-            // builder.AddConsoleExporter();
+            builder.AddConsoleExporter();
+            builder.AddEntityFrameworkCoreInstrumentation(options =>
+            {
+                options.SetDbStatementForText = true;
+            });
         });
     }
 
