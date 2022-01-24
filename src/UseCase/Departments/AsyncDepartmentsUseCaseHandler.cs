@@ -7,9 +7,9 @@ namespace UseCase.Departments;
 // ReSharper disable once UnusedType.Global
 public partial class AsyncDepartmentsUseCaseHandler : IAsyncRequestHandler<IDepartmentsInputData, IDepartmentsOutputData?>
 {
-    private readonly ILogger<DepartmentsUseCaseHandler> _logger;
+    private readonly ILogger<AsyncDepartmentsUseCaseHandler> _logger;
 
-    public AsyncDepartmentsUseCaseHandler(ILogger<DepartmentsUseCaseHandler> logger)
+    public AsyncDepartmentsUseCaseHandler(ILogger<AsyncDepartmentsUseCaseHandler> logger)
     {
         _logger = logger;
     }

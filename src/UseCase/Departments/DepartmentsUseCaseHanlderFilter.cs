@@ -1,12 +1,11 @@
 using MessagePipe;
+using UseCase.Core;
 using UseCase.Departments.List;
 
 namespace UseCase.Departments;
 
-[RequestHandlerFilter(typeof(FindDepartmentsHandler))]
-[RequestHandlerFilter(typeof(FindManyDepartmentsHandler))]
-[RequestHandlerFilter(typeof(ListDepartmentsUseCaseHandler))]
 // ReSharper disable once UnusedType.Global
+[RequestHandlerFilter(typeof(UseCaseInstrumentationHandler))]
 public partial class DepartmentsUseCaseHandler
 {
 }
