@@ -1,6 +1,7 @@
 using Cysharp.Text;
 using Domain.Repository;
 using Infrastructure.Context;
+using Infrastructure.Extension.Instrumentation;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
@@ -72,6 +73,7 @@ public static class ServiceCollection
             {
                 options.SetDbStatementForText = true;
             });
+            builder.AddUseCaseInstrumentation();
         });
     }
 
