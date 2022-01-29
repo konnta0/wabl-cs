@@ -1,3 +1,4 @@
+using Infrastructure.Core.Instrumentation;
 using OpenTelemetry.Trace;
 
 namespace Infrastructure.Extension.Instrumentation;
