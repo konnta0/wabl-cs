@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Infrastructure.Extension.Instrumentation;
+namespace Infrastructure.Core.Instrumentation;
 
 public static class UseCaseInstrumentationHelper
 { 

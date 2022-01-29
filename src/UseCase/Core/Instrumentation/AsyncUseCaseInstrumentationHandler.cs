@@ -1,10 +1,10 @@
 using System.Diagnostics;
-using System.Text.Json;
+using Infrastructure.Core.Instrumentation;
 using Infrastructure.Extension.Instrumentation;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace UseCase.Core;
+namespace UseCase.Core.Instrumentation;
 
 internal class AsyncUseCaseInstrumentationHandler<TInputData, TOutputData> : AsyncInternalUseCaseHandler<TInputData, TOutputData> where TInputData : IInputData where TOutputData : IOutputData
 {

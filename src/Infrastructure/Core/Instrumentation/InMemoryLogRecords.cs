@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using OpenTelemetry.Logs;
 using ZLogger;
 
-namespace Infrastructure.Extension.Instrumentation;
+namespace Infrastructure.Core.Instrumentation;
 
 internal sealed class InMemoryLogRecords : Collection<LogRecord>
 {
@@ -12,12 +12,10 @@ internal sealed class InMemoryLogRecords : Collection<LogRecord>
     {
         var loggerFactory = LoggerFactory.Create(builder =>
         {
-            builder.ClearProviders();
-            builder.SetMinimumLevel(LogLevel.Information);
             builder.AddZLoggerConsole(options =>
             {
                 options.EnableStructuredLogging = true;
-                var traceIdName = JsonEncodedText.Encode("TraceId");
+                var traceIdName = JsonEncodedText.Encode("TraceID");
                 var traceIdValue = item.TraceId.ToHexString();
 
                 options.StructuredLoggingFormatter = (writer, info) =>
@@ -28,6 +26,7 @@ internal sealed class InMemoryLogRecords : Collection<LogRecord>
             });
         });
         var logger = loggerFactory.CreateLogger<InMemoryLogRecords>();
-        logger.ZLog(item.LogLevel, item.Exception, item.FormattedMessage);
+        logger.ZLog(item.LogLevel, item.Exception, "Traced:" + item.TraceId);
+        loggerFactory.Dispose();
     }
 }
