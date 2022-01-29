@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Infrastructure.Extension.Instrumentation;
 
-namespace Infrastructure.Core.Instrumentation;
+namespace Infrastructure.Core.Instrumentation.UseCase;
 
 public class UseCaseInstrumentation : DefaultTraceListener
 { 

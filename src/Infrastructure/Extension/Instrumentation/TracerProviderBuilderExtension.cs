@@ -1,4 +1,5 @@
-using Infrastructure.Core.Instrumentation;
+using Infrastructure.Core.Instrumentation.Repository;
+using Infrastructure.Core.Instrumentation.UseCase;
 using OpenTelemetry.Trace;
 
 namespace Infrastructure.Extension.Instrumentation;
@@ -34,13 +35,4 @@ internal static class TracerProviderBuilderExtension
         builder.AddSource(UseCaseInstrumentationHelper.ActivitySourceName);
         return builder;
     }
-}
-
-public class RepositoryInstrumentationOptions
-{
-}
-
-
-public class UseCaseInstrumentationOptions
-{
 }

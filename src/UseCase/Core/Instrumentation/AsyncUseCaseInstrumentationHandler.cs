@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Infrastructure.Core.Instrumentation;
+using Infrastructure.Core.Instrumentation.UseCase;
 using Infrastructure.Extension.Instrumentation;
 using Microsoft.Extensions.Logging;
 using ZLogger;

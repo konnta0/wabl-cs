@@ -1,9 +1,9 @@
 using System.Diagnostics;
 
-namespace Infrastructure.Core.Instrumentation;
+namespace Infrastructure.Core.Instrumentation.UseCase;
 
 public static class UseCaseInstrumentationHelper
-{ 
+{
     public static string ActivitySourceName => "UseCase";
     public static string ActivityName => ActivitySourceName + ".Execute";
     private static readonly Version? Version = typeof(UseCaseInstrumentationHelper).Assembly.GetName().Version;
