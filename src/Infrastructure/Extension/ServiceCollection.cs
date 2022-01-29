@@ -1,6 +1,7 @@
 using Cysharp.Text;
 using Domain.Repository;
 using Infrastructure.Context;
+using Infrastructure.Core.Instrumentation;
 using Infrastructure.Extension.Instrumentation;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.HttpLogging;
@@ -31,29 +32,26 @@ public static class ServiceCollection
 
     private static IServiceCollection AddLogging(this IServiceCollection serviceCollection)
     {
-        return serviceCollection.AddLogging(builder =>
-        {
-            builder.ClearProviders();
-            builder.SetMinimumLevel(LogLevel.Information);
-            builder.AddZLoggerConsole(options =>
+        return serviceCollection.AddHttpLogging(options => { options.LoggingFields = HttpLoggingFields.All; })
+            .AddLogging(builder =>
             {
-                options.EnableStructuredLogging = true;
-                var prefixFormat = ZString.PrepareUtf8<LogLevel, DateTime>("[{0}][{1}] ");
-                options.PrefixFormatter = (writer, info) => prefixFormat.FormatTo(ref writer, info.LogLevel, info.Timestamp.DateTime.ToLocalTime());
+                builder.ClearProviders();
+                builder.SetMinimumLevel(LogLevel.Information);
+                builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft", LogLevel.Information);
+                builder.AddZLoggerConsole(options =>
+                {
+                    options.EnableStructuredLogging = true;
+                    var prefixFormat = ZString.PrepareUtf8<LogLevel, DateTime>("[{0}][{1}] ");
+                    options.PrefixFormatter = (writer, info) => prefixFormat.FormatTo(ref writer, info.LogLevel, info.Timestamp.DateTime.ToLocalTime());
+                });
+                builder.AddOpenTelemetry(options =>
+                {
+                    options.IncludeScopes = true;
+                    options.ParseStateValues = true;
+                    options.IncludeFormattedMessage = true;
+                    options.AddInMemoryExporter(new InMemoryLogRecords());
+                });
             });
-            builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft", LogLevel.Information);
-            builder.AddOpenTelemetry(options =>
-            {
-                options.IncludeScopes = true;
-                options.ParseStateValues = true;
-                options.IncludeFormattedMessage = true;
-                options.AddConsoleExporter();
-            });
-            builder.Services.AddHttpLogging(options =>
-            {
-                options.LoggingFields = HttpLoggingFields.All;
-            });
-        });
     }
 
     private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, IConfiguration configuration)
@@ -62,13 +60,15 @@ public static class ServiceCollection
         {
             builder.SetResourceBuilder(ResourceBuilder.CreateDefault()
                 .AddService(Environment.GetEnvironmentVariable("OTLP_SERVER_NAME")));
-            builder.AddAspNetCoreInstrumentation(options => { options.RecordException = true; });
+            builder.AddAspNetCoreInstrumentation(options =>
+            {
+                options.RecordException = true;
+            });
             builder.AddHttpClientInstrumentation(options => { options.RecordException = true; });
             builder.AddOtlpExporter(options =>
             {
                 options.Endpoint = new Uri(Environment.GetEnvironmentVariable("OTLP_ENDPOINT") ?? string.Empty);
             });
-            builder.AddConsoleExporter();
             builder.AddEntityFrameworkCoreInstrumentation(options =>
             {
                 options.SetDbStatementForText = true;
@@ -121,7 +121,6 @@ public static class ServiceCollection
         { 
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
             optionsBuilder.UseMySql(EmployeesContext.GetConnectionString(), serverVersion)
-                .LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
         }, ServiceLifetime.Transient);
