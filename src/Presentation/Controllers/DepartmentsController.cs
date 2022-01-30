@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using MessagePipe;
 using Microsoft.AspNetCore.Mvc;
 using UseCase.Departments;
@@ -7,6 +8,8 @@ namespace Presentation.Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]
+[Consumes(MediaTypeNames.Application.Json)]
+[Produces(MediaTypeNames.Application.Json)]
 public class DepartmentsController : ControllerBase
 {
     private readonly ILogger<DepartmentsController> _logger;
