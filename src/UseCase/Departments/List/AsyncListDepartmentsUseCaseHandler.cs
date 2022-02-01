@@ -1,5 +1,5 @@
 using Domain.Repository;
-using UseCase.Core;
+using UseCase.Core.RequestHandler;
 using UseCase.Departments.Common;
 
 namespace UseCase.Departments.List;

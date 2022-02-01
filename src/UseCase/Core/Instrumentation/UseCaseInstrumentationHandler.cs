@@ -1,4 +1,4 @@
-namespace UseCase.Core;
+namespace UseCase.Core.Instrumentation;
 
 public class UseCaseInstrumentationHandler
 {
