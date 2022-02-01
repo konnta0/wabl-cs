@@ -1,22 +1,10 @@
 using MessagePipe;
-using Microsoft.Extensions.Logging;
-using ZLogger;
+using UseCase.Core.Instrumentation;
 
 namespace UseCase.Departments;
 
 // ReSharper disable once UnusedType.Global
-public partial class DepartmentsUseCaseHandler : IRequestHandler<IDepartmentsInputData, IDepartmentsOutputData?>
+[RequestHandlerFilter(typeof(UseCaseInstrumentationHandler), Order = -1)]
+public partial class DepartmentsUseCaseHandler
 {
-    private readonly ILogger<DepartmentsUseCaseHandler> _logger;
-
-    public DepartmentsUseCaseHandler(ILogger<DepartmentsUseCaseHandler> logger)
-    {
-        _logger = logger;
-    }
-
-    public IDepartmentsOutputData? Invoke(IDepartmentsInputData request)
-    {
-        _logger.ZLogInformation("[UseCaseHandler]");
-        return null;
-    }
 }

@@ -6,12 +6,12 @@ using ZLogger;
 
 namespace UseCase.Core.Instrumentation;
 
-internal class AsyncUseCaseInstrumentationHandler<TInputData, TOutputData> : AsyncInternalUseCaseHandler<TInputData, TOutputData> where TInputData : IInputData where TOutputData : IOutputData
+internal class AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData> : AsyncInternalUseCaseHandlerFilter<TInputData, TOutputData> where TInputData : IInputData where TOutputData : IOutputData
 {
-    private readonly ILogger<AsyncUseCaseInstrumentationHandler<TInputData, TOutputData>> _logger;
+    private readonly ILogger<AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData>> _logger;
 
-    public AsyncUseCaseInstrumentationHandler(
-        ILogger<AsyncUseCaseInstrumentationHandler<TInputData, TOutputData>> logger)
+    public AsyncUseCaseInstrumentationHandlerFilter(
+        ILogger<AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData>> logger)
     {
         _logger = logger;
     }

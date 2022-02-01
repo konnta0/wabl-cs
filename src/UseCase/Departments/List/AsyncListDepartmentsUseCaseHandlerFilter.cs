@@ -4,11 +4,11 @@ using UseCase.Departments.Common;
 
 namespace UseCase.Departments.List;
 
-internal partial class AsyncListDepartmentsUseCaseHandler : AsyncInternalUseCaseHandler<IDepartmentsInputData, IDepartmentsOutputData>, IAsyncInternalUseCaseHandler<ListDepartmentsInputData, ListDepartmentsOutputData>
+internal partial class AsyncListDepartmentsUseCaseHandlerFilter : AsyncInternalUseCaseHandlerFilter<IDepartmentsInputData, IDepartmentsOutputData>, IAsyncInternalUseCaseHandler<ListDepartmentsInputData, ListDepartmentsOutputData>
 {
     private readonly IDepartmentsRepository _departmentsRepository;
 
-    public AsyncListDepartmentsUseCaseHandler(IDepartmentsRepository departmentsRepository)
+    public AsyncListDepartmentsUseCaseHandlerFilter(IDepartmentsRepository departmentsRepository)
     {
         _departmentsRepository = departmentsRepository;
     }

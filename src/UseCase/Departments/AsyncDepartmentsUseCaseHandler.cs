@@ -1,22 +1,12 @@
 using MessagePipe;
-using Microsoft.Extensions.Logging;
-using ZLogger;
+using UseCase.Core.Instrumentation;
+using UseCase.Departments.List;
 
 namespace UseCase.Departments;
 
+[AsyncRequestHandlerFilter(typeof(AsyncListDepartmentsUseCaseHandlerFilter))]
+[AsyncRequestHandlerFilter(typeof(AsyncUseCaseInstrumentationHandlerFilter<IDepartmentsInputData, IDepartmentsOutputData>), Order = -1)]
 // ReSharper disable once UnusedType.Global
-public partial class AsyncDepartmentsUseCaseHandler : IAsyncRequestHandler<IDepartmentsInputData, IDepartmentsOutputData?>
+public partial class AsyncDepartmentsUseCaseHandler
 {
-    private readonly ILogger<AsyncDepartmentsUseCaseHandler> _logger;
-
-    public AsyncDepartmentsUseCaseHandler(ILogger<AsyncDepartmentsUseCaseHandler> logger)
-    {
-        _logger = logger;
-    }
-
-    public ValueTask<IDepartmentsOutputData?> InvokeAsync(IDepartmentsInputData request, CancellationToken cancellationToken = new CancellationToken())
-    {
-        _logger.ZLogError("NotImplements Filters: {0}, {1}", GetType().ToString(), request);
-        return new ValueTask<IDepartmentsOutputData?>();
-    }
 }
