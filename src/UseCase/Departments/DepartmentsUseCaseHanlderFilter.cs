@@ -1,7 +1,5 @@
 using MessagePipe;
-using UseCase.Core;
 using UseCase.Core.Instrumentation;
-using UseCase.Departments.List;
 
 namespace UseCase.Departments;
 
