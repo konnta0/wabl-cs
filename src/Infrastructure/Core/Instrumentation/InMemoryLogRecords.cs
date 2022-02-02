@@ -18,15 +18,21 @@ internal sealed class InMemoryLogRecords : Collection<LogRecord>
                 var traceIdName = JsonEncodedText.Encode("TraceID");
                 var traceIdValue = item.TraceId.ToHexString();
 
-                options.StructuredLoggingFormatter = (writer, info) =>
+                var spanIdName = JsonEncodedText.Encode("SpanID");
+                var spanIdValue = item.SpanId.ToHexString();
+                
+                options.StructuredLoggingFormatter = (writer, _) =>
                 {
+                    var copiedLogInfo = new LogInfo(item.CategoryName, item.Timestamp, item.LogLevel, item.EventId,
+                        item.Exception);
                     writer.WriteString(traceIdName, traceIdValue);
-                    info.WriteToJsonWriter(writer);
+                    writer.WriteString(spanIdName, spanIdValue);
+                    copiedLogInfo.WriteToJsonWriter(writer);
                 };
             });
         });
         var logger = loggerFactory.CreateLogger<InMemoryLogRecords>();
-        logger.ZLog(item.LogLevel, item.Exception, "Traced:" + item.TraceId);
+        logger.ZLog(item.LogLevel, item.Exception, item.FormattedMessage);
         loggerFactory.Dispose();
     }
 }
