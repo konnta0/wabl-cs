@@ -4,7 +4,7 @@ using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace Infrastructure.Repository;
+namespace Infrastructure.Repository.Departments;
 
 public class DepartmentsRepository : IDepartmentsRepository
 {
