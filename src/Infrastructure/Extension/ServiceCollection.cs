@@ -4,6 +4,7 @@ using Infrastructure.Context;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Extension.Instrumentation;
 using Infrastructure.Repository;
+using Infrastructure.Repository.Departments;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -37,7 +38,7 @@ public static class ServiceCollection
             {
                 builder.ClearProviders();
                 builder.SetMinimumLevel(LogLevel.Information);
-                builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft", LogLevel.Information);
+                builder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft", LogLevel.None);
                 builder.AddZLoggerConsole(options =>
                 {
                     options.EnableStructuredLogging = true;
