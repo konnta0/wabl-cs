@@ -1,10 +1,11 @@
 using Domain.Repository;
+using MessagePipe;
 using UseCase.Core.RequestHandler;
 using UseCase.Departments.Common;
 
 namespace UseCase.Departments.List;
 
-internal partial class AsyncListDepartmentsUseCaseHandlerFilter : AsyncInternalUseCaseHandlerFilter<IDepartmentsInputData, IDepartmentsOutputData>, IAsyncInternalUseCaseHandler<ListDepartmentsInputData, ListDepartmentsOutputData>
+internal partial class AsyncListDepartmentsUseCaseHandlerFilter : AsyncRequestHandlerFilter<IDepartmentsInputData, IDepartmentsOutputData>, IAsyncUseCaseHandlerFilter<ListDepartmentsInputData, ListDepartmentsOutputData>
 {
     public override async ValueTask<IDepartmentsOutputData> InvokeAsync(IDepartmentsInputData request, CancellationToken cancellationToken, Func<IDepartmentsInputData, CancellationToken, ValueTask<IDepartmentsOutputData>> next)
     {

@@ -1,12 +1,12 @@
 using System.Diagnostics;
 using Infrastructure.Core.Instrumentation.UseCase;
+using MessagePipe;
 using Microsoft.Extensions.Logging;
-using UseCase.Core.RequestHandler;
 using ZLogger;
 
 namespace UseCase.Core.Instrumentation;
 
-internal class AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData> : AsyncInternalUseCaseHandlerFilter<TInputData, TOutputData> where TInputData : IInputData where TOutputData : IOutputData
+internal class AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData> : AsyncRequestHandlerFilter<TInputData, TOutputData>
 {
     private readonly ILogger<AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData>> _logger;
 

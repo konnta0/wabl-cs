@@ -1,11 +1,12 @@
 using MessagePipe;
 using Microsoft.Extensions.Logging;
+using UseCase.Core.RequestHandler;
 using ZLogger;
 
 namespace UseCase.Departments;
 
 // ReSharper disable once UnusedType.Global
-public partial class AsyncDepartmentsUseCaseHandler : IAsyncRequestHandler<IDepartmentsInputData, IDepartmentsOutputData?>
+public partial class AsyncDepartmentsUseCaseHandler : IAsyncUseCaseHandler<IDepartmentsInputData, IDepartmentsOutputData?>
 {
     private readonly ILogger<AsyncDepartmentsUseCaseHandler> _logger;
 
