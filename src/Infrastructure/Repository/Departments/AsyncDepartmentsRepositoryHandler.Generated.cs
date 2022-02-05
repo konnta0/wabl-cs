@@ -5,7 +5,7 @@ using ZLogger;
 
 namespace Infrastructure.Repository.Departments;
 
-public partial class AsyncDepartmentsRepositoryHandler : IAsyncRepositoryHandler<IDepartmentsInputData, IDepartmentsOutputData?>
+public partial class AsyncDepartmentsRepositoryHandler : IAsyncRequestHandler<IDepartmentsInputData, IDepartmentsOutputData?>
 { 
     private readonly ILogger<AsyncDepartmentsRepositoryHandler> _logger;
 
