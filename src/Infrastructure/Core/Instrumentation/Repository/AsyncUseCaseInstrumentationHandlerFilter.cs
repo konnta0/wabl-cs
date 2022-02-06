@@ -23,6 +23,7 @@ internal class AsyncRepositoryInstrumentationHandlerFilter<TInputData, TOutputDa
             Activity.Current?.Context ?? default(ActivityContext)
         );
 
+        activity?.SetTag("code.function", nameof(InvokeAsync));
         activity?.SetTag("InputData", request);
 
         TOutputData response;
@@ -36,6 +37,7 @@ internal class AsyncRepositoryInstrumentationHandlerFilter<TInputData, TOutputDa
             if (e.StackTrace != null) _logger.ZLogError(e.StackTrace);
             throw;
         }
+
         activity?.SetTag("OutputData", response);
         return response;
     }
