@@ -1,4 +1,3 @@
-using Domain.Repository;
 using MessagePipe;
 using UseCase.Core.RequestHandler;
 using UseCase.Departments.Common;

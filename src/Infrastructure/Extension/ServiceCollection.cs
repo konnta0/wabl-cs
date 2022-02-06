@@ -1,9 +1,8 @@
 using Cysharp.Text;
-using Domain.Repository;
 using Infrastructure.Context;
 using Infrastructure.Core.Instrumentation;
+using Infrastructure.Core.RequestHandler;
 using Infrastructure.Extension.Instrumentation;
-using Infrastructure.Repository;
 using Infrastructure.Repository.Departments;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
@@ -74,6 +73,7 @@ public static class ServiceCollection
             {
                 options.SetDbStatementForText = true;
             });
+            builder.AddRepositoryInstrumentation();
             builder.AddUseCaseInstrumentation();
         });
     }
@@ -109,7 +109,7 @@ public static class ServiceCollection
 
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient<IDepartmentsRepository, DepartmentsRepository>();
+        serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentsInputData, IDepartmentsOutputData?>, AsyncDepartmentsRepositoryHandler>();
         // TODO : later
         // serviceCollection.AddSingleton<IMyMeter, MyMeter>();
         // serviceCollection.AddSingleton<IMyCounter, MyCounter>();

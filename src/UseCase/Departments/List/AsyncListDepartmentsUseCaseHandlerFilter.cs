@@ -1,22 +1,28 @@
-using Domain.Repository;
+using Infrastructure.Core.RequestHandler;
+using Infrastructure.Repository.Departments.FindAll;
+using MessagePipe;
 using UseCase.Departments.Common;
 
 namespace UseCase.Departments.List;
 
 internal partial class AsyncListDepartmentsUseCaseHandlerFilter
 {
-    private readonly IDepartmentsRepository _departmentsRepository;
-
-    public AsyncListDepartmentsUseCaseHandlerFilter(IDepartmentsRepository departmentsRepository)
+    private readonly IAsyncRequestHandler<Infrastructure.Repository.Departments.IDepartmentsInputData, Infrastructure.Repository.Departments.IDepartmentsOutputData> _departmentsRepositoryHandler;
+    
+    public AsyncListDepartmentsUseCaseHandlerFilter(
+        IAsyncRequestHandler<Infrastructure.Repository.Departments.IDepartmentsInputData,
+            Infrastructure.Repository.Departments.IDepartmentsOutputData> departmentsRepositoryHandler)
     {
-        _departmentsRepository = departmentsRepository;
+        _departmentsRepositoryHandler = departmentsRepositoryHandler;
     }
 
     public async ValueTask<ListDepartmentsOutputData> HandleAsync(ListDepartmentsInputData inputData)
     {
         var outputData = new ListDepartmentsOutputData();
-        var departmentsModels = await _departmentsRepository.FindAllAsync();
-        outputData.Departments = departmentsModels.SelectMany(x => new[]
+        
+        var repositoryOutputData = (FindAllDepartmentsOutputData) await _departmentsRepositoryHandler.InvokeAsync(new FindAllDepartmentsInputData());
+        
+        outputData.Departments = repositoryOutputData.DepartmentsModels.SelectMany(x => new[]
             { new Department { DepotNo = x.DepotNo, DeptName = x.DeptName } });
         return outputData;
     }

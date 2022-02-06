@@ -7,10 +7,10 @@ namespace Infrastructure.Repository.Departments.FindAll;
 
 internal partial class AsyncFindAllDepartmentsHandlerFilter
 {
-    private readonly ILogger<DepartmentsRepository> _logger;
+    private readonly ILogger<AsyncFindAllDepartmentsHandlerFilter> _logger;
     private readonly EmployeesContext _employeesContext;
 
-    public AsyncFindAllDepartmentsHandlerFilter(ILogger<DepartmentsRepository> logger, EmployeesContext employeesContext)
+    public AsyncFindAllDepartmentsHandlerFilter(ILogger<AsyncFindAllDepartmentsHandlerFilter> logger, EmployeesContext employeesContext)
     {
         _logger = logger;
         _employeesContext = employeesContext;
@@ -18,7 +18,6 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter
 
     public async ValueTask<FindAllDepartmentsOutputData> HandleAsync(FindAllDepartmentsInputData inputData)
     {
-        _logger.ZLogDebug("FindAllDepartmentsOutputData");
         return new FindAllDepartmentsOutputData
         {
             DepartmentsModels = await _employeesContext.DepartmentsModels.AsQueryable().Select(x => x).ToListAsync()
