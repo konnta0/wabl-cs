@@ -52,6 +52,12 @@ services:
       - MYSQL_RANDOM_ROOT_PASSWORD=
     #mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
 
+  app_cache:
+    container_name: cache
+    image: redis:6.2.6
+    ports:
+      - "6379:6379"
+
   workspace:
     container_name: workspace
     build:
