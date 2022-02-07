@@ -47,6 +47,10 @@ app-log:
 app-db:
 	docker exec -it db mysql -u root -p
 
+.PHONY: app-cache
+app-cache:
+	docker exec -it cache redis-cli
+
 .PHONY: web-sh
 web-sh:
 	docker compose exec app_web /bin/sh
