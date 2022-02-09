@@ -1,7 +1,7 @@
 using Domain.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Context;
+namespace Infrastructure.Database.Context;
 
 public class EmployeesContext : DbContext
 {
