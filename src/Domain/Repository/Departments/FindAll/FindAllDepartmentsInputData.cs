@@ -1,4 +1,4 @@
-namespace Infrastructure.Repository.Departments.FindAll;
+namespace Domain.Repository.Departments.FindAll;
 
 public class FindAllDepartmentsRepositoryInputData : IDepartmentsRepositoryInputData
 {

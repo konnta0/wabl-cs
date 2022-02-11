@@ -1,3 +1,4 @@
+using Domain.Repository.Departments;
 using Infrastructure.Core.Instrumentation.Repository;
 using Infrastructure.Repository.Departments.FindAll;
 using MessagePipe;

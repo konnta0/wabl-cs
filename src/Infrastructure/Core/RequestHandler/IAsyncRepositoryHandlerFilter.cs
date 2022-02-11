@@ -1,3 +1,5 @@
+using Domain.Repository;
+
 namespace Infrastructure.Core.RequestHandler;
 
 internal interface IAsyncRepositoryHandlerFilter<in TInputData, TOutputData>

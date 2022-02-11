@@ -1,3 +1,5 @@
+using Domain.Repository.Departments;
+using Domain.Repository.Departments.FindAll;
 using Infrastructure.Repository.Departments.FindAll;
 using MessagePipe;
 using UseCase.Departments.Common;
@@ -6,11 +8,11 @@ namespace UseCase.Departments.List;
 
 internal partial class AsyncListDepartmentsUseCaseHandlerFilter
 {
-    private readonly IAsyncRequestHandler<Infrastructure.Repository.Departments.IDepartmentsRepositoryInputData, Infrastructure.Repository.Departments.IDepartmentsRepositoryOutputData> _departmentsRepositoryHandler;
+    private readonly IAsyncRequestHandler<IDepartmentsRepositoryInputData, IDepartmentsRepositoryOutputData> _departmentsRepositoryHandler;
     
     public AsyncListDepartmentsUseCaseHandlerFilter(
-        IAsyncRequestHandler<Infrastructure.Repository.Departments.IDepartmentsRepositoryInputData,
-            Infrastructure.Repository.Departments.IDepartmentsRepositoryOutputData> departmentsRepositoryHandler)
+        IAsyncRequestHandler<IDepartmentsRepositoryInputData,
+            IDepartmentsRepositoryOutputData> departmentsRepositoryHandler)
     {
         _departmentsRepositoryHandler = departmentsRepositoryHandler;
     }

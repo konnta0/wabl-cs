@@ -1,3 +1,4 @@
+using Domain.Repository.Departments;
 using Infrastructure.Core.RequestHandler;
 using MessagePipe;
 using Microsoft.Extensions.Logging;

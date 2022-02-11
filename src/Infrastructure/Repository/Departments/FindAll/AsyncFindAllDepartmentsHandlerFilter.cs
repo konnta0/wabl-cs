@@ -1,10 +1,11 @@
+using Domain.Repository.Departments.FindAll;
 using Infrastructure.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Repository.Departments.FindAll;
 
-internal partial class AsyncFindAllDepartmentsHandlerFilter
+internal partial class AsyncFindAllDepartmentsHandlerFilter : IAsyncFindAllDepartmentsHandlerFilter
 {
     private readonly ILogger<AsyncFindAllDepartmentsHandlerFilter> _logger;
     private readonly EmployeesContext _employeesContext;

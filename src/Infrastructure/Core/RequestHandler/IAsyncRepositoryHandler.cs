@@ -1,3 +1,4 @@
+using Domain.Repository;
 using MessagePipe;
 
 namespace Infrastructure.Core.RequestHandler;
