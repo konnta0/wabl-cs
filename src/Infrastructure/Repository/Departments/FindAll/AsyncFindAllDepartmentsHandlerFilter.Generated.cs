@@ -3,11 +3,11 @@ using MessagePipe;
 
 namespace Infrastructure.Repository.Departments.FindAll;
 
-internal partial class AsyncFindAllDepartmentsHandlerFilter : AsyncRequestHandlerFilter<IDepartmentsInputData, IDepartmentsOutputData>, IAsyncRepositoryHandlerFilter<FindAllDepartmentsInputData, FindAllDepartmentsOutputData>
+internal partial class AsyncFindAllDepartmentsHandlerFilter : AsyncRequestHandlerFilter<IDepartmentsRepositoryInputData, IDepartmentsRepositoryOutputData>, IAsyncRepositoryHandlerFilter<FindAllDepartmentsRepositoryInputData, FindAllDepartmentsRepositoryOutputData>
 {
-    public override async ValueTask<IDepartmentsOutputData> InvokeAsync(IDepartmentsInputData request, CancellationToken cancellationToken, Func<IDepartmentsInputData, CancellationToken, ValueTask<IDepartmentsOutputData>> next)
+    public override async ValueTask<IDepartmentsRepositoryOutputData> InvokeAsync(IDepartmentsRepositoryInputData request, CancellationToken cancellationToken, Func<IDepartmentsRepositoryInputData, CancellationToken, ValueTask<IDepartmentsRepositoryOutputData>> next)
     {
-        if (request is not FindAllDepartmentsInputData data)
+        if (request is not FindAllDepartmentsRepositoryInputData data)
         {
             return await next(request, cancellationToken);
         }

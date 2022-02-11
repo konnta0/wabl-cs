@@ -1,7 +1,6 @@
 using Infrastructure.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using ZLogger;
 
 namespace Infrastructure.Repository.Departments.FindAll;
 
@@ -16,9 +15,9 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter
         _employeesContext = employeesContext;
     }
 
-    public async ValueTask<FindAllDepartmentsOutputData> HandleAsync(FindAllDepartmentsInputData inputData)
+    public async ValueTask<FindAllDepartmentsRepositoryOutputData> HandleAsync(FindAllDepartmentsRepositoryInputData repositoryInputData)
     {
-        return new FindAllDepartmentsOutputData
+        return new FindAllDepartmentsRepositoryOutputData
         {
             DepartmentsModels = await _employeesContext.DepartmentsModels.AsQueryable().Select(x => x).ToListAsync()
         };

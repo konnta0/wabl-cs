@@ -1,7 +1,8 @@
 using Cysharp.Text;
-using Infrastructure.Context;
+using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.RequestHandler;
+using Infrastructure.Database.Context;
 using Infrastructure.Extension.Instrumentation;
 using Infrastructure.Repository.Departments;
 using Microsoft.AspNetCore.HttpLogging;
@@ -56,6 +57,7 @@ public static class ServiceCollection
 
     private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
+
         return serviceCollection.AddOpenTelemetryTracing(builder =>
         {
             builder.SetResourceBuilder(ResourceBuilder.CreateDefault()
@@ -109,7 +111,7 @@ public static class ServiceCollection
 
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentsInputData, IDepartmentsOutputData?>, AsyncDepartmentsRepositoryHandler>();
+        serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentsRepositoryInputData, IDepartmentsRepositoryOutputData?>, AsyncDepartmentsRepositoryHandler>();
         serviceCollection.AddSingleton<ICacheClientFactory, CacheClientFactory>();
         // serviceCollection.AddSingleton<IMyCounter, MyCounter>();
         return serviceCollection;
