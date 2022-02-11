@@ -110,8 +110,7 @@ public static class ServiceCollection
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentsInputData, IDepartmentsOutputData?>, AsyncDepartmentsRepositoryHandler>();
-        // TODO : later
-        // serviceCollection.AddSingleton<IMyMeter, MyMeter>();
+        serviceCollection.AddSingleton<ICacheClientFactory, CacheClientFactory>();
         // serviceCollection.AddSingleton<IMyCounter, MyCounter>();
         return serviceCollection;
     }
