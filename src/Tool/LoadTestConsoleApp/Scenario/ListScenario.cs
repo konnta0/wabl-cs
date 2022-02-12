@@ -12,11 +12,11 @@ public partial class ScenarioRunner
     }
 
     private IStep ListScenarioStep001 =>
-        Step.Create("fetch_html_page",
+        Step.Create("001",
             _httpFactory,
             async context =>
             {
-                var response = await context.Client.GetAsync("https://nbomber.com", context.CancellationToken);
+                var response = await context.Client.GetAsync("http://localhost:8080/api/health-check/ping", context.CancellationToken);
 
                 return response.IsSuccessStatusCode
                     ? Response.Ok(statusCode: (int)response.StatusCode)

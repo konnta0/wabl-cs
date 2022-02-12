@@ -1,4 +1,5 @@
 using Cysharp.Text;
+using Domain.Repository.Departments;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.RequestHandler;
@@ -77,6 +78,15 @@ public static class ServiceCollection
             });
             builder.AddRepositoryInstrumentation();
             builder.AddUseCaseInstrumentation();
+
+            using var connection = new CacheClientFactory().Create();
+            builder.AddRedisInstrumentation(connection, options =>
+            {
+                options.FlushInterval = TimeSpan.FromSeconds(1);
+                options.SetVerboseDatabaseStatements = true;
+                
+
+            });
         });
     }
 

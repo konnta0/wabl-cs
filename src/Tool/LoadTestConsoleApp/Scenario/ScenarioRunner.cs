@@ -8,12 +8,15 @@ namespace LoadTestConsoleApp.Scenario;
 [Command("run")]
 public partial class ScenarioRunner : ConsoleAppBase, IDisposable
 {
-    private IClientFactory<HttpClient>? _httpFactory;
+    private readonly IClientFactory<HttpClient>? _httpFactory;
 
     public ScenarioRunner()
     {
-        _httpFactory = HttpClientFactory.Create();
+        var client = new HttpClient();
+        client.DefaultRequestHeaders.Add("Accept", "application/json");
+        client.Timeout = new TimeSpan(0, 0, 3);
 
+        _httpFactory = HttpClientFactory.Create("http_factory", client);
     }
     
     private void RunInternal(string scenarioName, params IStep[] steps)
@@ -21,14 +24,14 @@ public partial class ScenarioRunner : ConsoleAppBase, IDisposable
         var scenario = ScenarioBuilder
             .CreateScenario(scenarioName, steps)
             .WithWarmUpDuration(TimeSpan.FromSeconds(5))
-            .WithLoadSimulations(Simulation.InjectPerSec(rate: 100, during: TimeSpan.FromSeconds(30)));
+            .WithLoadSimulations(Simulation.InjectPerSec(rate: 1, during: TimeSpan.FromSeconds(30)));
 
-        var pingPluginConfig = PingPluginConfig.CreateDefault("nbomber.com");
-        var pingPlugin = new PingPlugin(pingPluginConfig);
+        // var pingPluginConfig = PingPluginConfig.CreateDefault("http://localhost:8080/api/health-check/ping");
+        // var pingPlugin = new PingPlugin(pingPluginConfig);
 
         NBomberRunner
             .RegisterScenarios(scenario)
-            .WithWorkerPlugins(pingPlugin)
+//            .WithWorkerPlugins(pingPlugin)
             .Run();
     }
 

@@ -1,16 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "src\Presentation\Presentation.csproj", "{51CEC4E8-CE28-4BC9-B05B-FBC14C220448}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "src\WebApplication\Presentation\Presentation.csproj", "{51CEC4E8-CE28-4BC9-B05B-FBC14C220448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{13EF989A-B8D6-40B4-984E-86F667F569FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\WebApplication\Infrastructure\Infrastructure.csproj", "{13EF989A-B8D6-40B4-984E-86F667F569FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\Domain\Domain.csproj", "{6145AC80-F9B9-4C79-B8B2-3D01BB6401C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\WebApplication\Domain\Domain.csproj", "{6145AC80-F9B9-4C79-B8B2-3D01BB6401C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCase", "src\UseCase\UseCase.csproj", "{CF1620E0-3E63-4489-B345-9F6AB72AAF2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCase", "src\WebApplication\UseCase\UseCase.csproj", "{CF1620E0-3E63-4489-B345-9F6AB72AAF2D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LoadTestClient", "LoadTestClient", "{EEE12019-D898-41FF-A6DB-7A474CADB04A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LoadTest", "LoadTest", "{EEE12019-D898-41FF-A6DB-7A474CADB04A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTestConsoleApp", "src\LoadTestConsoleApp\LoadTestConsoleApp.csproj", "{2D1D7A3C-FC88-45DD-A85D-16C27C0F3D01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoadTestConsoleApp", "src\Tool\LoadTestConsoleApp\LoadTestConsoleApp.csproj", "{2D1D7A3C-FC88-45DD-A85D-16C27C0F3D01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApplication", "WebApplication", "{BA3D143E-3E94-4636-BC4F-931D0DB568A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool", "Tool", "{6C81DDDB-2804-40F5-8826-B12EAD34FE8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +44,11 @@ Global
 		{2D1D7A3C-FC88-45DD-A85D-16C27C0F3D01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{6145AC80-F9B9-4C79-B8B2-3D01BB6401C1} = {BA3D143E-3E94-4636-BC4F-931D0DB568A9}
+		{13EF989A-B8D6-40B4-984E-86F667F569FA} = {BA3D143E-3E94-4636-BC4F-931D0DB568A9}
+		{51CEC4E8-CE28-4BC9-B05B-FBC14C220448} = {BA3D143E-3E94-4636-BC4F-931D0DB568A9}
+		{CF1620E0-3E63-4489-B345-9F6AB72AAF2D} = {BA3D143E-3E94-4636-BC4F-931D0DB568A9}
+		{EEE12019-D898-41FF-A6DB-7A474CADB04A} = {6C81DDDB-2804-40F5-8826-B12EAD34FE8E}
 		{2D1D7A3C-FC88-45DD-A85D-16C27C0F3D01} = {EEE12019-D898-41FF-A6DB-7A474CADB04A}
 	EndGlobalSection
 EndGlobal
