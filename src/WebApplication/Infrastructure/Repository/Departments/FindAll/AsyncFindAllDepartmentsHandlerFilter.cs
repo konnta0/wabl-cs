@@ -16,7 +16,7 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : IAsyncFindAllDepar
         _employeesContext = employeesContext;
     }
 
-    public async ValueTask<FindAllDepartmentsRepositoryOutputData> HandleAsync(FindAllDepartmentsRepositoryInputData repositoryInputData)
+    public async ValueTask<IFindAllDepartmentsRepositoryOutputData> HandleAsync(IFindAllDepartmentsRepositoryInputData repositoryInputData)
     {
         return new FindAllDepartmentsRepositoryOutputData
         {

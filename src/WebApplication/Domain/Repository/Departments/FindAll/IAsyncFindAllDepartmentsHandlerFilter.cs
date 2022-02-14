@@ -2,6 +2,6 @@ namespace Domain.Repository.Departments.FindAll;
 
 public interface IAsyncFindAllDepartmentsHandlerFilter
 {
-    ValueTask<FindAllDepartmentsRepositoryOutputData> HandleAsync(
-        FindAllDepartmentsRepositoryInputData repositoryInputData);
+    ValueTask<IFindAllDepartmentsRepositoryOutputData> HandleAsync(
+        IFindAllDepartmentsRepositoryInputData repositoryInputData);
 }
