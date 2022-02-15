@@ -97,8 +97,7 @@ public static class ServiceCollection
         {
             builder.SetResourceBuilder(ResourceBuilder.CreateDefault()
                 .AddService(Environment.GetEnvironmentVariable("OTLP_SERVER_NAME")));
-            // TODO :: later
-            // builder.AddMeter(MyMeter.Name);
+            builder.AddWebApplicationInstrumentation();
             builder.AddAspNetCoreInstrumentation();
             builder.AddHttpClientInstrumentation();
 
@@ -137,5 +136,12 @@ public static class ServiceCollection
                 .EnableDetailedErrors();
         }, ServiceLifetime.Transient);
         return serviceCollection;
+    }
+
+    private static MeterProviderBuilder AddWebApplicationInstrumentation(this MeterProviderBuilder meterProviderBuilder)
+    {
+        // TODO :: later
+        // builder.AddMeter(MyMeter.Name);
+        return meterProviderBuilder;
     }
 }
