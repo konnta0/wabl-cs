@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
+using ZLogger;
 
 namespace Infrastructure.Cache;
 
@@ -17,25 +18,30 @@ internal class CacheClient : ICacheClient
             var connectionMultiplexer = cacheClientFactory.Create();
             connectionMultiplexer.ErrorMessage += (sender, args) =>
             {
-                
+                _logger.ZLogError(args.Message);
             };
             connectionMultiplexer.InternalError += (sender, args) =>
             {
-                
+                _logger.ZLogError(args.Exception.Message);
             };
             connectionMultiplexer.ConnectionFailed += (sender, args) =>
             {
-                
+                _logger.ZLogError(args.Exception.Message);
             };
             connectionMultiplexer.ConnectionRestored += (sender, args) =>
             {
-                
+                _logger.ZLogInformation(args.Exception.Message);
             };
             return connectionMultiplexer;
         });
     }
 
-    public async Task<bool> KeyExists(string key)
+    public void Dispose()
+    {
+        _connectionMultiplexer.Value.Dispose();
+    }
+
+    public async Task<bool> KeyExistsAsync(string key)
     {
         return await _connectionMultiplexer.Value.GetDatabase().KeyExistsAsync(key);
     }
@@ -58,6 +64,15 @@ internal class CacheClient : ICacheClient
     public async Task<bool> HashSetAsync<T>(string key, T value)
     {
         return await _connectionMultiplexer.Value.GetDatabase().HashSetAsync(key, nameof(CacheClient), JsonSerializer.Serialize(value));
+    }
+
+    public async Task<T?> HashGetAsync<T>(string key)
+    {
+        var cacheValue = await _connectionMultiplexer.Value.GetDatabase().HashGetAsync(key, nameof(CacheClient));
+
+        if (!cacheValue.HasValue) return default;
+
+        return JsonSerializer.Deserialize<T>(cacheValue); 
     }
 
     public async Task<bool> KeyDeleteAsync<T>(string key)
