@@ -65,8 +65,8 @@ app.UseStaticFiles();
 app.UseInfrastructure();
 
 app.UseRouting();
-
 app.UseAuthorization();
+app.UseResponseCaching();
 
 app.MapControllerRoute(
     name: "default",
