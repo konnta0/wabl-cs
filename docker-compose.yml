@@ -35,8 +35,6 @@ services:
       - ./webserver/nginx/app.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8080:80"
-    depends_on:
-      - app
     networks:
       - default
       - shared-network
