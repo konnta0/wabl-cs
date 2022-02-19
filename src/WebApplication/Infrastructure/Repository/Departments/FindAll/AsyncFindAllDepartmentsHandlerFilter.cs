@@ -1,4 +1,5 @@
 using Domain.Repository.Departments.FindAll;
+using Infrastructure.Cache;
 using Infrastructure.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -9,10 +10,12 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : IAsyncFindAllDepar
 {
     private readonly ILogger<AsyncFindAllDepartmentsHandlerFilter> _logger;
     private readonly EmployeesContext _employeesContext;
+    public ICacheClient CacheClient { get; set; }
 
-    public AsyncFindAllDepartmentsHandlerFilter(ILogger<AsyncFindAllDepartmentsHandlerFilter> logger, EmployeesContext employeesContext)
+    public AsyncFindAllDepartmentsHandlerFilter(ILogger<AsyncFindAllDepartmentsHandlerFilter> logger, ICacheClient cacheClient, EmployeesContext employeesContext)
     {
         _logger = logger;
+        CacheClient = cacheClient;
         _employeesContext = employeesContext;
     }
 
@@ -22,5 +25,10 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : IAsyncFindAllDepar
         {
             DepartmentsModels = await _employeesContext.DepartmentsModels.AsQueryable().Select(x => x).ToListAsync()
         };
+    }
+
+    public void Dispose()
+    {
+        CacheClient.Dispose();
     }
 }
