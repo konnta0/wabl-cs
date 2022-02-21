@@ -13,7 +13,7 @@ internal class CacheClientFactory : ICacheClientFactory
             throw new ApplicationException();
         }
 
-        if (int.TryParse(Environment.GetEnvironmentVariable("REDIS_PORT"), out var port))
+        if (!int.TryParse(Environment.GetEnvironmentVariable("REDIS_PORT"), out var port))
         {
             throw new ApplicationException();
         }
