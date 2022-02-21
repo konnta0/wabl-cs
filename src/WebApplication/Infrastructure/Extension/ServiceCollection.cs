@@ -122,7 +122,7 @@ public static class ServiceCollection
     {
         serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentsRepositoryInputData, IDepartmentsRepositoryOutputData?>, AsyncDepartmentsRepositoryHandler>();
         serviceCollection.AddSingleton<ICacheClientFactory, CacheClientFactory>();
-        // serviceCollection.AddSingleton<IMyCounter, MyCounter>();
+        serviceCollection.AddTransient<ICacheClient, CacheClient>();
         return serviceCollection;
     }
 
