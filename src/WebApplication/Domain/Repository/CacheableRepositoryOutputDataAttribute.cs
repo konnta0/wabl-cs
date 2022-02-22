@@ -3,7 +3,7 @@ namespace Domain.Repository;
 [AttributeUsage(AttributeTargets.Interface)]
 public class CacheableRepositoryOutputDataAttribute : Attribute
 {
-    public string CacheKeyName;
+    public readonly string CacheKeyName;
     public TimeSpan Expiry;
     
     public CacheableRepositoryOutputDataAttribute(string cacheKeyName, long expiryTick)
