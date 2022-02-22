@@ -17,22 +17,33 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : AsyncRequestHandle
             return await next(request, cancellationToken);
         }
 
-        var isCacheableOutputData = typeof(IDepartmentsRepositoryOutputData) is ICacheableRepositoryOutputData;
+        var isCacheableOutputData = typeof(IDepartmentsRepositoryOutputData).GetInterfaces().Contains(typeof(ICacheableRepositoryOutputData));
         var cacheKey = string.Empty;
         var expiry = TimeSpan.Zero;
 
         if (isCacheableOutputData)
         {
-            var cacheableRepositoryOutputDataAttribute = (CacheableRepositoryOutputDataAttribute) Attribute.GetCustomAttribute(typeof(IDepartmentsRepositoryOutputData), typeof(CacheableRepositoryOutputDataAttribute));
-            return await CacheClient.HashGetAsync<IDepartmentsRepositoryOutputData>(cacheableRepositoryOutputDataAttribute.CacheKeyName);
+            var cacheableRepositoryOutputDataAttribute = (CacheableRepositoryOutputDataAttribute) Attribute.GetCustomAttribute(typeof(IFindAllDepartmentsRepositoryOutputData), typeof(CacheableRepositoryOutputDataAttribute));
+            cacheKey = cacheableRepositoryOutputDataAttribute.CacheKeyName;
+            expiry = cacheableRepositoryOutputDataAttribute.Expiry;
+            
+            var cacheResponse = await CacheClient.HashGetAsync<IFindAllDepartmentsRepositoryOutputData>(cacheableRepositoryOutputDataAttribute.CacheKeyName);
+
+            if (cacheResponse is not null)
+            {
+                return cacheResponse;
+            }
         }
 
         var handleResponse = await HandleAsync(data);
 
         if (isCacheableOutputData)
         {
-            var cacheableRepositoryOutputDataAttribute = (CacheableRepositoryOutputDataAttribute) Attribute.GetCustomAttribute(typeof(IDepartmentsRepositoryOutputData), typeof(CacheableRepositoryOutputDataAttribute));
-            await CacheClient.HashSetAsync(cacheableRepositoryOutputDataAttribute.CacheKeyName, handleResponse);
+            var cached = await CacheClient.HashSetAsync(cacheKey, handleResponse);
+            if (cached && expiry != TimeSpan.Zero)
+            {
+                await CacheClient.KeyExpireAsync(cacheKey, expiry);
+            }
         }
 
         return handleResponse;
