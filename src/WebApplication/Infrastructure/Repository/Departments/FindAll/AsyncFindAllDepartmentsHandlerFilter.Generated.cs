@@ -49,8 +49,3 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : AsyncRequestHandle
         return handleResponse;
     }
 }
-
-internal interface ICacheableRepositoryFilter : IDisposable
-{
-    ICacheClient CacheClient { get; set; }
-}
