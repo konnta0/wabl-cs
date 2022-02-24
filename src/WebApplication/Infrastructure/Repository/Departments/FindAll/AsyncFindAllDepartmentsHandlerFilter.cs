@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Domain.Repository.Departments.FindAll;
 using Infrastructure.Cache;
 using Infrastructure.Database.Context;
@@ -25,6 +26,16 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : IAsyncFindAllDepar
         {
             DepartmentsModels = await _employeesContext.DepartmentsModels.AsQueryable().Select(x => x).ToListAsync()
         };
+    }
+
+    public ValueTask<IFindAllDepartmentsRepositoryOutputData> HandleAsync(string cacheString)
+    {
+        var outputData = JsonSerializer.Deserialize<FindAllDepartmentsRepositoryOutputData>(cacheString);
+        if (outputData is null)
+        {
+            return new ValueTask<IFindAllDepartmentsRepositoryOutputData>(new FindAllDepartmentsRepositoryOutputData());
+        }
+        return ValueTask.FromResult<IFindAllDepartmentsRepositoryOutputData>(outputData);
     }
 
     public void Dispose()

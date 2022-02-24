@@ -9,5 +9,6 @@ public interface ICacheClient : IDisposable
     Task<bool> KeyPersistAsync(string key);
     Task<bool> HashSetAsync<T>(string key, T value);
     Task<T?> HashGetAsync<T>(string key);
+    Task<string?> HashGetAsync(string key);
     Task<bool> KeyDeleteAsync<T>(string key);
 }

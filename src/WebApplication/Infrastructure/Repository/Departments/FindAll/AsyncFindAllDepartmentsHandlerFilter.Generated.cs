@@ -8,7 +8,9 @@ using MessagePipe;
 
 namespace Infrastructure.Repository.Departments.FindAll;
 
-internal partial class AsyncFindAllDepartmentsHandlerFilter : AsyncRequestHandlerFilter<IDepartmentsRepositoryInputData, IDepartmentsRepositoryOutputData>, IAsyncRepositoryHandlerFilter<IFindAllDepartmentsRepositoryInputData, IFindAllDepartmentsRepositoryOutputData>, ICacheableRepositoryFilter
+internal partial class AsyncFindAllDepartmentsHandlerFilter : AsyncRequestHandlerFilter<IDepartmentsRepositoryInputData, IDepartmentsRepositoryOutputData>,
+    IAsyncRepositoryHandlerFilter<IFindAllDepartmentsRepositoryInputData, IFindAllDepartmentsRepositoryOutputData>,
+    ICacheableRepositoryFilter<IFindAllDepartmentsRepositoryOutputData>
 {
     public override async ValueTask<IDepartmentsRepositoryOutputData> InvokeAsync(IDepartmentsRepositoryInputData request, CancellationToken cancellationToken, Func<IDepartmentsRepositoryInputData, CancellationToken, ValueTask<IDepartmentsRepositoryOutputData>> next)
     {
@@ -27,11 +29,11 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : AsyncRequestHandle
             cacheKey = cacheableRepositoryOutputDataAttribute.CacheKeyName;
             expiry = cacheableRepositoryOutputDataAttribute.Expiry;
             
-            var cacheResponse = await CacheClient.HashGetAsync<IFindAllDepartmentsRepositoryOutputData>(cacheableRepositoryOutputDataAttribute.CacheKeyName);
+            var cacheString = await CacheClient.HashGetAsync(cacheableRepositoryOutputDataAttribute.CacheKeyName);
 
-            if (cacheResponse is not null)
+            if (cacheString is not null)
             {
-                return cacheResponse;
+                return await HandleAsync(cacheString);
             }
         }
 

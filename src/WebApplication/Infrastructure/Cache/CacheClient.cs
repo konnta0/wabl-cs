@@ -68,11 +68,16 @@ internal class CacheClient : ICacheClient
 
     public async Task<T?> HashGetAsync<T>(string key)
     {
+        var cacheString = await HashGetAsync(key);
+        if (cacheString is null) return default;
+        return JsonSerializer.Deserialize<T>(cacheString);
+    }
+
+    public async Task<string?> HashGetAsync(string key)
+    {
         var cacheValue = await _connectionMultiplexer.Value.GetDatabase().HashGetAsync(key, nameof(CacheClient));
-
-        if (!cacheValue.HasValue) return default;
-
-        return JsonSerializer.Deserialize<T>(cacheValue); 
+        if (!cacheValue.HasValue) return null;
+        return cacheValue;
     }
 
     public async Task<bool> KeyDeleteAsync<T>(string key)
