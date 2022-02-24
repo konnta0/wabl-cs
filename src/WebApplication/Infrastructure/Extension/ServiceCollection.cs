@@ -84,8 +84,6 @@ public static class ServiceCollection
             {
                 options.FlushInterval = TimeSpan.FromSeconds(1);
                 options.SetVerboseDatabaseStatements = true;
-                
-
             });
         });
     }

@@ -1,5 +1,4 @@
 using Domain.Repository.Departments;
-using Domain.Repository.Departments.FindAll;
 using Infrastructure.Repository.Departments.FindAll;
 using MessagePipe;
 using UseCase.Departments.Common;
