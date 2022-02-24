@@ -9,9 +9,4 @@ public static class ApplicationBuilder
         applicationBuilder.UseOpenTelemetryPrometheusScrapingEndpoint();
         return applicationBuilder;
     }
-
-    internal static IApplicationBuilder hoge(this IApplicationBuilder builder)
-    {
-        return builder;
-    }
 }
