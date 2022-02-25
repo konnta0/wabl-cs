@@ -12,7 +12,6 @@
         <option name="sourceFilePath" value="docker-compose.yml" />
         <option name="upAbortOnContainerExit" value="true" />
         <option name="upDetach" value="false" />
-        <option name="upForceRecreate" value="true" />
       </settings>
     </deployment>
     <method v="2" />
