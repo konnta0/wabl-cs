@@ -84,6 +84,13 @@ public static class ServiceCollection
             {
                 options.FlushInterval = TimeSpan.FromSeconds(1);
                 options.SetVerboseDatabaseStatements = true;
+                options.Enrich = (activity, command) =>
+                {
+                    if (command.ElapsedTime < TimeSpan.FromMilliseconds(100))
+                    {
+                        activity.SetTag("is_fast", true);
+                    }
+                };
             });
         });
     }
