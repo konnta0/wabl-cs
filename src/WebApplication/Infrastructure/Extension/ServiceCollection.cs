@@ -79,7 +79,19 @@ public static class ServiceCollection
             builder.AddRepositoryInstrumentation();
             builder.AddUseCaseInstrumentation();
 
-            using var connection = new CacheClientFactory().Create();
+            var connection = CacheClientFactory.CreateVolatileCacheConnectionMultiplexer();
+            var loggerFactory = LoggerFactory.Create(loggingBuilder =>
+            {
+                loggingBuilder.ClearProviders();
+                loggingBuilder.SetMinimumLevel(LogLevel.Debug);
+                loggingBuilder.AddZLoggerConsole();
+            });
+
+            serviceCollection.AddTransient<IVolatileCacheClient>(delegate
+            {
+                return new VolatileCacheClient(loggerFactory.CreateLogger<VolatileCacheClient>(), connection);
+            });
+            serviceCollection.AddSingleton(connection);
             builder.AddRedisInstrumentation(connection, options =>
             {
                 options.FlushInterval = TimeSpan.FromSeconds(1);
@@ -126,8 +138,6 @@ public static class ServiceCollection
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentsRepositoryInputData, IDepartmentsRepositoryOutputData?>, AsyncDepartmentsRepositoryHandler>();
-        serviceCollection.AddSingleton<ICacheClientFactory, CacheClientFactory>();
-        serviceCollection.AddTransient<ICacheClient, CacheClient>();
         return serviceCollection;
     }
 

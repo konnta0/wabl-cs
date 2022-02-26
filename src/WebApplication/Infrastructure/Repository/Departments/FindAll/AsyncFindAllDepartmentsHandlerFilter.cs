@@ -11,9 +11,9 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : IAsyncFindAllDepar
 {
     private readonly ILogger<AsyncFindAllDepartmentsHandlerFilter> _logger;
     private readonly EmployeesContext _employeesContext;
-    public ICacheClient CacheClient { get; set; }
+    public IVolatileCacheClient CacheClient { get; set; }
 
-    public AsyncFindAllDepartmentsHandlerFilter(ILogger<AsyncFindAllDepartmentsHandlerFilter> logger, ICacheClient cacheClient, EmployeesContext employeesContext)
+    public AsyncFindAllDepartmentsHandlerFilter(ILogger<AsyncFindAllDepartmentsHandlerFilter> logger, IVolatileCacheClient cacheClient, EmployeesContext employeesContext)
     {
         _logger = logger;
         CacheClient = cacheClient;

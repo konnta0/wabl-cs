@@ -2,18 +2,23 @@ using StackExchange.Redis;
 
 namespace Infrastructure.Cache;
 
-internal class CacheClientFactory : ICacheClientFactory
+internal static class CacheClientFactory
 {
-    public IConnectionMultiplexer Create()
+    public static IConnectionMultiplexer CreateVolatileCacheConnectionMultiplexer()
     {
-        var host = Environment.GetEnvironmentVariable("REDIS_HOST");
+        return Create("REDIS_HOST", "REDIS_PORT");
+    }
+
+    private static IConnectionMultiplexer Create(string hostEnvironmentName, string portEnvironmentName)
+    {
+        var host = Environment.GetEnvironmentVariable(hostEnvironmentName);
 
         if (host is null or "")
         {
             throw new ApplicationException();
         }
 
-        if (!int.TryParse(Environment.GetEnvironmentVariable("REDIS_PORT"), out var port))
+        if (!int.TryParse(Environment.GetEnvironmentVariable(portEnvironmentName), out var port))
         {
             throw new ApplicationException();
         }
@@ -23,8 +28,8 @@ internal class CacheClientFactory : ICacheClientFactory
             options.EndPoints.Add(host, port);
         });
     }
-
-    public IConnectionMultiplexer Create(Action<ConfigurationOptions> configurationOptions)
+    
+    private static IConnectionMultiplexer Create(Action<ConfigurationOptions> configurationOptions)
     {
         var options = new ConfigurationOptions();
 
