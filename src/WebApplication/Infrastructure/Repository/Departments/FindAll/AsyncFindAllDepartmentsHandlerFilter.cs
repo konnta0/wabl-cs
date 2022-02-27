@@ -37,9 +37,4 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : IAsyncFindAllDepar
         }
         return ValueTask.FromResult<IFindAllDepartmentsRepositoryOutputData>(outputData);
     }
-
-    public void Dispose()
-    {
-        CacheClient.Dispose();
-    }
 }
