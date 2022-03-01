@@ -1,3 +1,6 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using DFrame;
+using Microsoft.AspNetCore.Builder;
 
-Console.WriteLine("Hello, World!");
+var builder = WebApplication.CreateBuilder(args);
+
+await builder.RunDFrameControllerAsync();
