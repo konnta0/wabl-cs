@@ -8,17 +8,17 @@ build:
 all:
 	@if [ -z "`docker network ls | grep $(NETWORK_NAME)`" ]; then docker network create $(NETWORK_NAME); fi
 	docker compose -f ./docker-compose.yml up -d
-	docker compose -f ./observability/docker-compose.grafana.yml up -d
+	docker compose -f ./o11y/docker-compose.grafana.yml up -d
 
 .PHONY: ps
 ps:
 	docker compose -f ./docker-compose.yml ps -a
-	docker compose -f ./observability/docker-compose.grafana.yml ps -a
+	docker compose -f ./o11y/docker-compose.grafana.yml ps -a
 
 .PHONY: down
 down:
 	docker compose -f ./docker-compose.yml down
-	docker compose -f ./observability/docker-compose.grafana.yml down
+	docker compose -f ./o11y/docker-compose.grafana.yml down
 	@if [ -n "`docker network inspect $(NETWORK_NAME) | grep \"\\"Containers\\": {}\"`" ]; then docker network rm $(NETWORK_NAME); fi
 
 
@@ -57,7 +57,7 @@ web-sh:
 
 .PHONY: metric
 metric:
-	docker compose -f ./observability/docker-compose.grafana.yml up -d
+	docker compose -f ./o11y/docker-compose.grafana.yml up -d
 
 
 .PHONY: clean-image
