@@ -1,3 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using DFrame;
+using Microsoft.Extensions.Hosting;
 
-Console.WriteLine("Hello, World!");
+await Host.CreateDefaultBuilder(args)
+    .RunDFrameWorkerAsync("http://localhost:7313");
