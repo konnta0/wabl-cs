@@ -10,6 +10,7 @@
     <ItemGroup>
       <PackageReference Include="DFrame" Version="1.0.2" />
       <PackageReference Include="DFrame.Controller" Version="1.0.2" />
+      <PackageReference Include="DFrame.RestSdk" Version="1.0.5" />
     </ItemGroup>
 
     <ItemGroup>
