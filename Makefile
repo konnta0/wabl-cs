@@ -59,6 +59,21 @@ web-sh:
 metric:
 	docker compose -f ./o11y/docker-compose.grafana.yml up -d
 
+.PHONY: loadtest-build
+loadtest-build:
+	docker compose -f ./docker-compose.loadtest.yml build --no-cache
+
+.PHONY: loadtest-run
+loadtest-run:
+	docker compose -f ./docker-compose.loadtest.yml up -d
+
+.PHONY: loadtest-log
+loadtest-log:
+	docker compose -f ./docker-compose.loadtest.yml logs -f
+
+.PHONY: loadtest-stop
+loadtest-stop:
+	docker compose -f ./docker-compose.loadtest.yml down
 
 .PHONY: clean-image
 clean-image:
