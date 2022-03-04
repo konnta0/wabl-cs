@@ -1,35 +1,36 @@
 NETWORK_NAME?=shared-network
 
+WEB_APPLICATION_COMPOSE_YML=./docker-compose.yml
+LOADTEST_COMPOSE_YML=./docker-compose.loadtest.yml
+GRAFANA_COMPOSE_YML=./o11y/docker-compose.grafana.yml
+
 .PHONY: build
 build:
-	docker compose build --no-cache
-
-.PHONY: all
-all:
-	@if [ -z "`docker network ls | grep $(NETWORK_NAME)`" ]; then docker network create $(NETWORK_NAME); fi
-	docker compose -f ./docker-compose.yml up -d
-	docker compose -f ./o11y/docker-compose.grafana.yml up -d
-
-.PHONY: ps
-ps:
-	docker compose -f ./docker-compose.yml ps -a
-	docker compose -f ./o11y/docker-compose.grafana.yml ps -a
-
-.PHONY: down
-down:
-	docker compose -f ./docker-compose.yml down
-	docker compose -f ./o11y/docker-compose.grafana.yml down
-	@if [ -n "`docker network inspect $(NETWORK_NAME) | grep \"\\"Containers\\": {}\"`" ]; then docker network rm $(NETWORK_NAME); fi
-
+	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) build --no-cache
 
 .PHONY: up
 up:
 	@if [ -z "`docker network ls | grep $(NETWORK_NAME)`" ]; then docker network create $(NETWORK_NAME); fi
-	docker compose -f ./docker-compose.yml up -d
+	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) up -d
+	docker compose -f $(GRAFANA_COMPOSE_YML) up -d
+	docker compose -f $(LOADTEST_COMPOSE_YML) up -d
 
-.PHONY: app
-app:
-	docker compose -f ./docker-compose.yml up -d
+.PHONY: ps
+ps:
+	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) ps -a
+	docker compose -f $(GRAFANA_COMPOSE_YML) ps -a
+	docker compose -f $(LOADTEST_COMPOSE_YML) ps -a
+
+.PHONY: down
+down:
+	docker compose -f $(LOADTEST_COMPOSE_YML) down
+	docker compose -f $(GRAFANA_COMPOSE_YML) down
+	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) down
+	@if [ -n "`docker network inspect $(NETWORK_NAME) | grep \"\\"Containers\\": {}\"`" ]; then docker network rm $(NETWORK_NAME); fi
+
+.PHONY: app-run
+app-run:
+	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) up -d
 
 .PHONY: app-build
 app-build:
@@ -61,19 +62,19 @@ metric:
 
 .PHONY: loadtest-build
 loadtest-build:
-	docker compose -f ./docker-compose.loadtest.yml build --no-cache
+	docker compose -f $(LOADTEST_COMPOSE_YML) build --no-cache
 
 .PHONY: loadtest-run
 loadtest-run:
-	docker compose -f ./docker-compose.loadtest.yml up -d
+	docker compose -f $(LOADTEST_COMPOSE_YML) up -d
 
 .PHONY: loadtest-log
 loadtest-log:
-	docker compose -f ./docker-compose.loadtest.yml logs -f
+	docker compose -f $(LOADTEST_COMPOSE_YML) logs -f
 
 .PHONY: loadtest-stop
 loadtest-stop:
-	docker compose -f ./docker-compose.loadtest.yml down
+	docker compose -f $(LOADTEST_COMPOSE_YML) down
 
 .PHONY: clean-image
 clean-image:

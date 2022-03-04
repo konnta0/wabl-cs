@@ -7,10 +7,8 @@ services:
       target: runtime
     container_name: controller
     environment:
-      - ROOT_ADRESS="http://app/"
       - PORT_WEB=7312
       - PORT_WORKER=7313
-      - CONTROLLER_ADDRESS="http://controller:7313"
     networks:
       - default
       - shared-network
@@ -21,6 +19,7 @@ services:
       target: runtime
     container_name: worker
     environment:
+      - ROOT_ADRESS="http://app/"
       - CONTROLLER_ADDRESS="http://controller:7313"
     networks:
       - default
