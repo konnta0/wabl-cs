@@ -24,6 +24,17 @@ services:
     networks:
       - default
       - shared-network
+  rest-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.LoadTest.RestApi
+      target: runtime
+    container_name: rest-api
+    environment:
+      - CONTROLLER_ROOT_ADDRESS="http://controller:7312"
+    networks:
+      - default
+      - shared-network
 
 networks:
   shared-network:
