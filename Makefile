@@ -1,7 +1,7 @@
 NETWORK_NAME?=shared-network
 
 WEB_APPLICATION_COMPOSE_YML=./docker-compose.yml
-LOADTEST_COMPOSE_YML=./docker-compose.loadtest.yml
+LOADTEST_COMPOSE_YML=./src/Tool/LoadTest/docker-compose.yml
 GRAFANA_COMPOSE_YML=./o11y/docker-compose.grafana.yml
 
 .PHONY: build
@@ -64,17 +64,27 @@ metric:
 loadtest-build:
 	docker compose -f $(LOADTEST_COMPOSE_YML) build --no-cache
 
+.PHONY: loadtest-up
+loadtest-up:
+	docker compose -f $(LOADTEST_COMPOSE_YML) up controller -d
+	docker compose -f $(LOADTEST_COMPOSE_YML) up worker -d
+
+.PHONY: loadtest-down
+loadtest-down:
+	docker compose -f $(LOADTEST_COMPOSE_YML) down controller -d
+	docker compose -f $(LOADTEST_COMPOSE_YML) down worker -d
+
 .PHONY: loadtest-run
 loadtest-run:
-	docker compose -f $(LOADTEST_COMPOSE_YML) up -d
+	docker compose -f $(LOADTEST_COMPOSE_YML) up rest-api -d
+
+.PHONY: loadtest-stop
+loadtest-stop:
+	docker compose -f $(LOADTEST_COMPOSE_YML) down rest-api
 
 .PHONY: loadtest-log
 loadtest-log:
 	docker compose -f $(LOADTEST_COMPOSE_YML) logs -f
-
-.PHONY: loadtest-stop
-loadtest-stop:
-	docker compose -f $(LOADTEST_COMPOSE_YML) down
 
 .PHONY: clean-image
 clean-image:

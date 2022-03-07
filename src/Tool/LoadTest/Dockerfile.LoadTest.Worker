@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0.100-alpine3.14 AS workspace
 
 FROM workspace AS builder
 WORKDIR /build
-COPY ./src/Tool/LoadTest ./src/Tool/LoadTest
+COPY ./Worker ./src/Tool/LoadTest/Worker
 
 RUN echo 'Restore&Build Worker'
 RUN dotnet restore ./src/Tool/LoadTest/Worker/Worker.csproj  
