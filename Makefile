@@ -71,8 +71,8 @@ loadtest-up:
 
 .PHONY: loadtest-down
 loadtest-down:
-	docker compose -f $(LOADTEST_COMPOSE_YML) down controller -d
-	docker compose -f $(LOADTEST_COMPOSE_YML) down worker -d
+	docker compose -f $(LOADTEST_COMPOSE_YML) down controller
+	docker compose -f $(LOADTEST_COMPOSE_YML) down worker
 
 .PHONY: loadtest-run
 loadtest-run:
