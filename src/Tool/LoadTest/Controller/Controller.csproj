@@ -13,10 +13,4 @@
       <PackageReference Include="DFrame.RestSdk" Version="1.0.5" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Update="appsettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
 </Project>
