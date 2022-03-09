@@ -33,7 +33,7 @@ services:
       target: runtime
     container_name: rest-api
     environment:
-      - CONTROLLER_ROOT_ADDRESS="http://controller:7312"
+      - CONTROLLER_ROOT_ADDRESS=http://controller:7312
     networks:
       - default
       - shared-network
