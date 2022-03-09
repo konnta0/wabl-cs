@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Worker.Workload;
 
+[Workload(nameof(ListWorkload))]
 public class ListWorkload : DFrame.Workload
 {
     private readonly ILogger<ListWorkload> _logger;
