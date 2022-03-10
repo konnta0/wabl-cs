@@ -11,6 +11,7 @@ public class ListWorkload : DFrame.Workload
     private DateTime _beginTime;
     private DateTime _endTime;
     private int _executeCount;
+    private HttpClient _client;
 
     public ListWorkload(ILogger<ListWorkload> logger)
     {
@@ -19,20 +20,28 @@ public class ListWorkload : DFrame.Workload
 
     public override Task SetupAsync(WorkloadContext context)
     {
+        var controllerBaseAddress = Environment.GetEnvironmentVariable("APPLICATION_BASE_ADDRESS");
+        if (string.IsNullOrEmpty(controllerBaseAddress))
+        {
+            throw new ArgumentException("invalid environment APPLICATION_BASE_ADDRESS");
+        }
         _beginTime = DateTime.Now;
-        _logger.LogInformation("Called Setup");
+        _client = new HttpClient { BaseAddress = new Uri(controllerBaseAddress)};
+
         return Task.CompletedTask;
     }
 
     public override async Task ExecuteAsync(WorkloadContext context)
     {
         _endTime = DateTime.Now;
-        _logger.LogInformation("Execute:" + (++_executeCount));
-        await Task.Delay(TimeSpan.FromSeconds(1));
+        ++_executeCount;
+        await _client.GetAsync("/api/HealthCheck/Ping");
+        await _client.GetAsync("/api/departments/list");
     }
 
     public override Dictionary<string, string>? Complete(WorkloadContext context)
     {
+        _client.Dispose();
         return new()
         {
             { "begin", _beginTime.ToString(CultureInfo.InvariantCulture) },
