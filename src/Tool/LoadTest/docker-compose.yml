@@ -21,7 +21,7 @@ services:
       target: runtime
     container_name: worker
     environment:
-      - APPLICATION_BASE_ADDRESS=http://app
+      - APPLICATION_BASE_ADDRESS=http://app_web
       - CONTROLLER_ADDRESS=http://controller:7313
     networks:
       - default
