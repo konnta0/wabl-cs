@@ -62,7 +62,16 @@ web-sh:
 
 .PHONY: metric-up # Up Metrics
 metric-up:
-	docker compose -f ./o11y/docker-compose.grafana.yml up -d
+	docker compose -f $(GRAFANA_COMPOSE_YML) up -d
+
+.PHONY: metric-down # Down Metrics
+metric-down:
+	docker compose -f $(GRAFANA_COMPOSE_YML) down
+
+.PHONY: metric-down # Show process Metrics
+metric-down:
+	docker compose -f $(GRAFANA_COMPOSE_YML) ps -a
+
 
 .PHONY: loadtest-build # Build LoadTest Tool
 loadtest-build:
