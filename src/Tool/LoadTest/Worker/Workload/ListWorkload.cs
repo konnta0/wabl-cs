@@ -11,22 +11,22 @@ public class ListWorkload : DFrame.Workload
     private DateTime _beginTime;
     private DateTime _endTime;
     private int _executeCount;
-    private HttpClient _client;
+    private readonly HttpClient _client;
 
     public ListWorkload(ILogger<ListWorkload> logger)
     {
         _logger = logger;
-    }
-
-    public override Task SetupAsync(WorkloadContext context)
-    {
         var controllerBaseAddress = Environment.GetEnvironmentVariable("APPLICATION_BASE_ADDRESS");
         if (string.IsNullOrEmpty(controllerBaseAddress))
         {
             throw new ArgumentException("invalid environment APPLICATION_BASE_ADDRESS");
         }
-        _beginTime = DateTime.Now;
         _client = new HttpClient { BaseAddress = new Uri(controllerBaseAddress)};
+    }
+
+    public override Task SetupAsync(WorkloadContext context)
+    {
+        _beginTime = DateTime.Now;
 
         return Task.CompletedTask;
     }
@@ -35,7 +35,7 @@ public class ListWorkload : DFrame.Workload
     {
         _endTime = DateTime.Now;
         ++_executeCount;
-        await _client.GetAsync("/api/HealthCheck/Ping");
+        await _client.GetAsync("/api/health-check/ping");
         await _client.GetAsync("/api/departments/list");
     }
 
