@@ -87,9 +87,13 @@ loadtest-down:
 	docker compose -f $(LOADTEST_COMPOSE_YML) down controller
 	docker compose -f $(LOADTEST_COMPOSE_YML) down worker
 
+LOADTEST_WORKLOAD_NAME?=ListWorkload
+LOADTEST_CONCURRENCY?=2
+LOADTEST_TOTAL_REQUEST?=2
+
 .PHONY: loadtest-run # Up LoadTest Tool (RestApi component)
 loadtest-run:
-	docker compose -f $(LOADTEST_COMPOSE_YML) up rest-api -d
+	LOADTEST_WORKLOAD_NAME=$(LOADTEST_WORKLOAD_NAME) LOADTEST_CONCURRENCY=$(LOADTEST_CONCURRENCY) LOADTEST_TOTAL_REQUEST=$(LOADTEST_TOTAL_REQUEST) docker compose -f $(LOADTEST_COMPOSE_YML) up rest-api
 
 .PHONY: loadtest-stop # Down LoadTest Tool (RestApi component)
 loadtest-stop:

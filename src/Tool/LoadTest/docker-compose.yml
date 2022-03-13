@@ -34,6 +34,9 @@ services:
     container_name: rest-api
     environment:
       - CONTROLLER_ROOT_ADDRESS=http://controller:7312
+      - WORKLOAD_NAME=$LOADTEST_WORKLOAD_NAME
+      - CONCURRENCY=$LOADTEST_CONCURRENCY
+      - TOTAL_REQUEST=$LOADTEST_TOTAL_REQUEST
     networks:
       - default
       - shared-network
