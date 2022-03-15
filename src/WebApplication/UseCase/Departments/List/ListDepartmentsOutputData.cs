@@ -4,5 +4,5 @@ namespace UseCase.Departments.List;
 
 public class ListDepartmentsOutputData : IDepartmentsOutputData
 {
-    public IEnumerable<Department> Departments { get; set; }
+    public IEnumerable<Department>? Departments { get; set; }
 }
