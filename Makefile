@@ -68,8 +68,8 @@ metric-up:
 metric-down:
 	docker compose -f $(GRAFANA_COMPOSE_YML) down
 
-.PHONY: metric-down # Show process Metrics
-metric-down:
+.PHONY: metric-ps # Show process Metrics
+metric-ps:
 	docker compose -f $(GRAFANA_COMPOSE_YML) ps -a
 
 
