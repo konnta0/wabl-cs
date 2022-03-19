@@ -1,13 +1,18 @@
+using System.Collections.Generic;
 using System.Reflection;
 using NetArchTest.Rules;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace WebApplication.Architecture.Test;
 
 public class ArchitectureTest
 {
-    public ArchitectureTest()
+    private readonly ITestOutputHelper _testOutputHelper;
+
+    public ArchitectureTest(ITestOutputHelper testOutputHelper)
     {
+        _testOutputHelper = testOutputHelper;
         Assembly.LoadFrom("DotnetMetricTestApp.dll");
     }
     
@@ -19,8 +24,9 @@ public class ArchitectureTest
             .ResideInNamespace("Presentation.Controllers")
             .ShouldNot()
             .HaveDependencyOn("Infrastructure.Repository")
-            .GetResult()
-            .IsSuccessful;
-        Assert.True(result);
+            .GetResult();
+        _testOutputHelper.WriteLine("Failure type names is ... " + string.Join("\n", result.FailingTypeNames ?? new List<string?>{"Nothing!!"}));
+
+        Assert.True(result.IsSuccessful);
     }
 }
