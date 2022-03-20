@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Test", "test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Architecture.Test", "tests\WebApplication.Architecture.Test\WebApplication.Architecture.Test.csproj", "{6016CCC5-018D-406E-ACCA-024BD526F26D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.RestApi", "src\WebApplication\Domain.RestApi\Domain.RestApi.csproj", "{B5A66F89-4B23-4153-993B-283DCB4C6E5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{6016CCC5-018D-406E-ACCA-024BD526F26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6016CCC5-018D-406E-ACCA-024BD526F26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6016CCC5-018D-406E-ACCA-024BD526F26D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5A66F89-4B23-4153-993B-283DCB4C6E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5A66F89-4B23-4153-993B-283DCB4C6E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5A66F89-4B23-4153-993B-283DCB4C6E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5A66F89-4B23-4153-993B-283DCB4C6E5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6145AC80-F9B9-4C79-B8B2-3D01BB6401C1} = {BA3D143E-3E94-4636-BC4F-931D0DB568A9}
@@ -80,5 +86,6 @@ Global
 		{1D8F831F-3683-4645-A1D8-8146175B275A} = {EEE12019-D898-41FF-A6DB-7A474CADB04A}
 		{75E7993F-3311-40E1-BCB7-CD576E71ACD1} = {4A6A7A37-BD50-4A5A-A8D3-C09B3EA8F1A9}
 		{6016CCC5-018D-406E-ACCA-024BD526F26D} = {4A6A7A37-BD50-4A5A-A8D3-C09B3EA8F1A9}
+		{B5A66F89-4B23-4153-993B-283DCB4C6E5E} = {BA3D143E-3E94-4636-BC4F-931D0DB568A9}
 	EndGlobalSection
 EndGlobal
