@@ -22,10 +22,10 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : IAsyncFindAllDepar
 
     public async ValueTask<IFindAllDepartmentsRepositoryOutputData> HandleAsync(IFindAllDepartmentsRepositoryInputData repositoryInputData)
     {
-            return new FindAllDepartmentsRepositoryOutputData
-            {
-                DepartmentsModels = await _employeesContext.DepartmentsModels!.AsQueryable().Select(x => x).ToListAsync()
-            };
+        return new FindAllDepartmentsRepositoryOutputData
+        {
+            DepartmentsModels = await _employeesContext.DepartmentsModels!.AsQueryable().Select(x => x).ToListAsync()
+        };
     }
 
     public ValueTask<IFindAllDepartmentsRepositoryOutputData> HandleAsync(string cacheString)
