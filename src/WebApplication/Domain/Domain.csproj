@@ -18,4 +18,7 @@
   <ItemGroup>
     <AdditionalFiles Include="../BannedSymbols.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.RestApi\Domain.RestApi.csproj" />
+  </ItemGroup>
 </Project>
