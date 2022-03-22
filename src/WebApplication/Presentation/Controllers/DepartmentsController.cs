@@ -1,6 +1,7 @@
 using System.Net.Mime;
 using MessagePipe;
 using Microsoft.AspNetCore.Mvc;
+using Presentation.Extension.ResponseDataFactory.Departments;
 using UseCase.Departments;
 using UseCase.Departments.List;
 
@@ -8,8 +9,6 @@ namespace Presentation.Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]
-[Consumes(MediaTypeNames.Application.Json)]
-[Produces(MediaTypeNames.Application.Json)]
 public class DepartmentsController : ControllerBase
 {
     private readonly ILogger<DepartmentsController> _logger;
@@ -26,7 +25,7 @@ public class DepartmentsController : ControllerBase
     {
         var listDepartmentsInputData = new ListDepartmentsInputData();
         var listDepartmentsOutputData = await _departmentsUseCaseHandler.InvokeAsync(listDepartmentsInputData);
-
-        return new JsonResult(listDepartmentsOutputData) { StatusCode = StatusCodes.Status200OK };
+        var responseData = ListResponseDataFactory.Create((ListDepartmentsOutputData)listDepartmentsOutputData);
+        return Ok(responseData);
     }
 }
