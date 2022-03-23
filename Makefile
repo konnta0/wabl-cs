@@ -27,9 +27,9 @@ ps:
 
 .PHONY: down # Down all components
 down:
-	docker compose -f $(LOADTEST_COMPOSE_YML) down
-	docker compose -f $(GRAFANA_COMPOSE_YML) down
-	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) down
+	docker compose -f $(LOADTEST_COMPOSE_YML) down --remove-orphans 
+	docker compose -f $(GRAFANA_COMPOSE_YML) down --remove-orphans 
+	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) down --remove-orphans 
 	@if [ -n "`docker network inspect $(NETWORK_NAME) | grep \"\\"Containers\\": {}\"`" ]; then docker network rm $(NETWORK_NAME); fi
 
 .PHONY: app-run # Up Web Application
@@ -66,7 +66,7 @@ metric-up:
 
 .PHONY: metric-down # Down Metrics
 metric-down:
-	docker compose -f $(GRAFANA_COMPOSE_YML) down
+	docker compose -f $(GRAFANA_COMPOSE_YML) down --remove-orphans 
 
 .PHONY: metric-ps # Show process Metrics
 metric-ps:
@@ -84,8 +84,8 @@ loadtest-up:
 
 .PHONY: loadtest-down # Down LoadTest Tool
 loadtest-down:
-	docker compose -f $(LOADTEST_COMPOSE_YML) down controller
-	docker compose -f $(LOADTEST_COMPOSE_YML) down worker
+	docker compose -f $(LOADTEST_COMPOSE_YML) down controller --remove-orphans 
+	docker compose -f $(LOADTEST_COMPOSE_YML) down worker --remove-orphans 
 
 LOADTEST_WORKLOAD_NAME?=ListWorkload
 LOADTEST_CONCURRENCY?=2
@@ -97,7 +97,7 @@ loadtest-run:
 
 .PHONY: loadtest-stop # Down LoadTest Tool (RestApi component)
 loadtest-stop:
-	docker compose -f $(LOADTEST_COMPOSE_YML) down rest-api
+	docker compose -f $(LOADTEST_COMPOSE_YML) down rest-api --remove-orphans 
 
 .PHONY: loadtest-log # Show log LoadTest Tool
 loadtest-log:
