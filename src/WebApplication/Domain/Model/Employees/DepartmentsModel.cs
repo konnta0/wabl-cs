@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace Domain.Model;
+namespace Domain.Model.Employees;
 
 [Table("departments")]
 [Index(nameof(DeptName), IsUnique = true, Name = "dept_name")]

@@ -1,4 +1,5 @@
 using Domain.Model;
+using Domain.Model.Employees;
 using Domain.Repository.Departments.FindAll;
 
 namespace Infrastructure.Repository.Departments.FindAll;

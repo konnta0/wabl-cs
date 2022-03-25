@@ -1,4 +1,5 @@
 using Domain.Model;
+using Domain.Model.Employees;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Database.Context;
