@@ -12,9 +12,13 @@ public class EmployeesContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<SalariesModel>()
+            .HasKey(salariesModel => new { salariesModel.EmpNo, salariesModel.FromDate });
     }
 
     public DbSet<DepartmentsModel>? DepartmentsModels { get; set; }
+    public DbSet<SalariesModel> SalariesModels { get; set; }
+    public DbSet<EmployeesModel> EmployeesModels { get; set; }
 
     public static string GetConnectionString()
     {
