@@ -106,3 +106,9 @@ loadtest-log:
 .PHONY: clean-image # Clean Unused Images
 clean-image:
 	docker image prune -f
+
+ROOT_DIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+.PHONY: migration-add # Migration add
+migration-add:
+	docker build -t database_migration ./src/Tool/DatabaseMigration/  
+	docker run -it -v $(ROOT_DIR)/src/Tool/DatabseMigration:/src/Tool/DatabseMigration database_migration dotnet ef 
