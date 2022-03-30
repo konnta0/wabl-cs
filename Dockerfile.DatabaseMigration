@@ -12,6 +12,7 @@ ENV PATH="$PATH:/root/.dotnet/tools"
 RUN dotnet publish /src/Tool/DatabaseMigration/DatabaseMigration.csproj -c Release -o /app/publish
 
 FROM workspace as migration
+WORKDIR /src/Tool/DatabaseMigration
 ENV PATH="$PATH:/root/.dotnet/tools"
 RUN dotnet tool install --global dotnet-ef --version 6.0.0
 ENTRYPOINT ["dotnet", "ef", "migrations", "add" ]

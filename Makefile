@@ -107,8 +107,11 @@ loadtest-log:
 clean-image:
 	docker image prune -f
 
-ROOT_DIR = $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
-.PHONY: migration-add # Migration add
+ROOT_DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+MIGRATION_COMMAND?=help
+
+.PHONY: migration-add # Migration add. ex  make migration-add NAME=CreateTestTable
 migration-add:
-	docker build -t database_migration ./src/Tool/DatabaseMigration/  
-	docker run -it -v $(ROOT_DIR)/src/Tool/DatabseMigration:/src/Tool/DatabseMigration database_migration dotnet ef 
+	docker build -f Dockerfile.DatabaseMigration -t database_migration .
+	MIGRATION_COMMAND='migrations add'
+	docker run -it -v $(ROOT_DIR)src/Tool/DatabseMigration:/src/Tool/DatabseMigration database_migration dotnet ef migrations add $(NAME)
