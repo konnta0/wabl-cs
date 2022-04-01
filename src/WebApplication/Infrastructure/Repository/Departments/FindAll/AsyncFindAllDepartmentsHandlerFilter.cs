@@ -24,7 +24,7 @@ internal partial class AsyncFindAllDepartmentsHandlerFilter : IAsyncFindAllDepar
     {
         return new FindAllDepartmentsRepositoryOutputData
         {
-            DepartmentsModels = await _employeesContext.DepartmentsModels!.AsQueryable().Select(x => x).ToListAsync()
+            DepartmentsModels = await _employeesContext.DepartmentsModels.AsQueryable().Select(x => x).ToListAsync()
         };
     }
 

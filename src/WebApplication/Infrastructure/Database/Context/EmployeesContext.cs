@@ -16,9 +16,9 @@ public class EmployeesContext : DbContext
             .HasKey(salariesModel => new { salariesModel.EmpNo, salariesModel.FromDate });
     }
 
-    public DbSet<DepartmentsModel>? DepartmentsModels { get; set; }
-    public DbSet<SalariesModel> SalariesModels { get; set; }
-    public DbSet<EmployeesModel> EmployeesModels { get; set; }
+    public DbSet<DepartmentsModel> DepartmentsModels => Set<DepartmentsModel>();
+    public DbSet<SalariesModel> SalariesModels => Set<SalariesModel>();
+    public DbSet<EmployeesModel> EmployeesModels => Set<EmployeesModel>();
 
     public static string GetConnectionString()
     {
