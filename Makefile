@@ -114,4 +114,4 @@ MIGRATION_COMMAND?=help
 migration-add:
 	docker build -f Dockerfile.DatabaseMigration -t database_migration .
 	MIGRATION_COMMAND='migrations add'
-	docker run -it -v $(ROOT_DIR)src/Tool/DatabseMigration:/src/Tool/DatabseMigration --name=database_migration --rm database_migration dotnet ef migrations add $(NAME)
+	docker run -it -v $(ROOT_DIR)src/Tool/DatabseMigration:/src/Tool/DatabseMigration --env-file=.env --name=database_migration --rm database_migration dotnet ef migrations add $(NAME)
