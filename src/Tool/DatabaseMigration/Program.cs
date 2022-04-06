@@ -2,9 +2,10 @@ using Infrastructure.Extension;
 
 Console.WriteLine("Start Database migration");
 var builder = ConsoleApp.CreateBuilder(args);
-builder.ConfigureServices((context, collection) =>
+builder.ConfigureServices((_, collection) =>
 {
-    collection.AddInfrastructure(context.Configuration);
+    collection.AddDbContext();
 });
+
 var app = builder.Build();
 app.Run();
