@@ -1,17 +1,7 @@
 # https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:6.0.201-alpine3.14 AS workspace
-WORKDIR /src
-COPY ./src/Tool/DatabaseMigration /src/Tool/DatabaseMigration/
-COPY ./src/WebApplication /src/WebApplication/
+FROM mcr.microsoft.com/dotnet/sdk:6.0.201-alpine3.14 AS base
+FROM base AS workspace
 
-RUN dotnet restore /src/Tool/DatabaseMigration/DatabaseMigration.csproj
-RUN dotnet build /src/Tool/DatabaseMigration/DatabaseMigration.csproj -c Release -o /app/build
-
-FROM workspace AS publish
-ENV PATH="$PATH:/root/.dotnet/tools"
-RUN dotnet publish /src/Tool/DatabaseMigration/DatabaseMigration.csproj -c Release -o /app/publish
-
-FROM workspace as migration
-WORKDIR /src/Tool/DatabaseMigration
+RUN ln -sf /usr/share/zoneinfo/posix/Japan /etc/localtime
 ENV PATH="$PATH:/root/.dotnet/tools"
 RUN dotnet tool install --global dotnet-ef --version 6.0.3
