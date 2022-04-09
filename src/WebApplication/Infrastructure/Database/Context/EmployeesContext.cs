@@ -1,24 +1,26 @@
-using Domain.Model;
+using System.Collections;
 using Domain.Model.Employees;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Database.Context;
 
-public class EmployeesContext : DbContext
+public partial class EmployeesContext : DbContext
 {
-    public EmployeesContext(DbContextOptions<EmployeesContext> dbContextOptions) : base(dbContextOptions)
+    private readonly IEmployeesContextOnModelCreatingBus _onModelCreatingBus;
+
+    public EmployeesContext(DbContextOptions<EmployeesContext> dbContextOptions,
+        IEmployeesContextOnModelCreatingBus onModelCreatingBus) : base(dbContextOptions)
     {
+        _onModelCreatingBus = onModelCreatingBus;
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<SalariesModel>()
-            .HasKey(salariesModel => new { salariesModel.EmpNo, salariesModel.FromDate });
+        foreach (var employeesContextOnModelCreatingBus in _onModelCreatingBus)
+        {
+            employeesContextOnModelCreatingBus.Invoke(modelBuilder);
+        }
     }
-
-    public DbSet<DepartmentsModel> DepartmentsModels => Set<DepartmentsModel>();
-    public DbSet<SalariesModel> SalariesModels => Set<SalariesModel>();
-    public DbSet<EmployeesModel> EmployeesModels => Set<EmployeesModel>();
 
     public static string GetConnectionString()
     {
@@ -28,4 +30,30 @@ public class EmployeesContext : DbContext
         var password = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
         return $"server={server};port={port};user={user};password={password};Database=employees";
     }
+}
+
+public readonly struct EmployeesContextOnModelCreatingBus : IEmployeesContextOnModelCreatingBus
+{
+    public IEnumerator<Action<ModelBuilder>> GetEnumerator()
+    {
+        yield return builder => DepartmentsModel.OnModelCreating(builder.Entity<DepartmentsModel>());
+        yield return builder => DeptEmpModel.OnModelCreating(builder.Entity<DeptEmpModel>());
+        yield return builder => EmployeesModel.OnModelCreating(builder.Entity<EmployeesModel>());
+        yield return builder => SalariesModel.OnModelCreating(builder.Entity<SalariesModel>());
+    }
+
+    public int Count { get; }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+}
+
+public interface IEmployeesContextOnModelCreatingBus : IContextOnModelCreatingBus
+{
+}
+
+public interface IContextOnModelCreatingBus : IReadOnlyCollection<Action<ModelBuilder>>
+{
 }
