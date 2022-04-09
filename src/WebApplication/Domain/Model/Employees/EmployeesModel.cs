@@ -1,10 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Model.Employees;
 
 [Table("employees")]
-public class EmployeesModel
+public partial class EmployeesModel
 {
     public enum GenderType
     {
@@ -36,4 +38,8 @@ public class EmployeesModel
     [Column("hire_date", TypeName = "date")]
     [Required]
     public DateTime HireDate { get; set; }
+    
+    public static partial void OnModelCreating(EntityTypeBuilder<EmployeesModel> entityTypeBuilder)
+    {
+    }
 }
