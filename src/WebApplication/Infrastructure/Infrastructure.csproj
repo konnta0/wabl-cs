@@ -40,4 +40,15 @@
     <Folder Include="Database" />
     <Folder Include="Repository\Departments\FindManyByDeptName" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Database\Context\EmployeesContext.DepartmentModel.cs">
+      <DependentUpon>EmployeesContext.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Database\Context\EmployeesContext.EmployeesModel.cs">
+      <DependentUpon>EmployeesContext.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Database\Context\EmployeesContext.SalariesModel.cs">
+      <DependentUpon>EmployeesContext.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

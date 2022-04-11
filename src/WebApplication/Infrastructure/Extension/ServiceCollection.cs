@@ -1,4 +1,5 @@
 using Cysharp.Text;
+using Domain.Model.Employees;
 using Domain.Repository.Departments;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
@@ -150,6 +151,8 @@ public static class ServiceCollection
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
         }, ServiceLifetime.Transient);
+
+        serviceCollection.AddSingleton<IEmployeesContextOnModelCreatingBus>(_ => new EmployeesContextOnModelCreatingBus());
         return serviceCollection;
     }
 
