@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Model.Employees;
 
-[Table("salaries")]
-public partial class SalariesModel
+[Table("titles")]
+public partial class TitlesModel
 {
     [Key]
     [Column("emp_no", TypeName = "int")]
@@ -24,7 +24,7 @@ public partial class SalariesModel
     [Required]
     public DateTime ToDate { get; set; }
 
-    public static partial void OnModelCreating(EntityTypeBuilder<SalariesModel> entityTypeBuilder)
+    public static partial void OnModelCreating(EntityTypeBuilder<TitlesModel> entityTypeBuilder)
     {
         entityTypeBuilder.HasKey(salariesModel => new { salariesModel.EmpNo, salariesModel.FromDate });
         entityTypeBuilder.HasOne<EmployeesModel>();

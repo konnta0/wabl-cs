@@ -1,12 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Model.Employees;
 
 [Table("dept_emp")]
-[Index(nameof(DeptNo), IsUnique = false, Name = "dept_no")]
 public partial class DeptEmpModel
 {
     [Column("emp_no", TypeName = "int")]
@@ -15,7 +13,7 @@ public partial class DeptEmpModel
 
     [Column("dept_no", TypeName = "varchar(4)")]
     [Required]
-    public string DeptNo { get; set; } = "";
+    public string DeptNo { get; set; } = string.Empty;
     
     [Column("from_date", TypeName = "date")]
     [Required]
@@ -27,5 +25,9 @@ public partial class DeptEmpModel
     
     public static partial void OnModelCreating(EntityTypeBuilder<DeptEmpModel> entityTypeBuilder)
     {
+        entityTypeBuilder.HasKey(deptEmpModel  => new { deptEmpModel.EmpNo, deptEmpModel.DeptNo });
+        entityTypeBuilder.HasIndex(deptEmpModel => new { deptEmpModel.DeptNo}, nameof(DeptNo)).IsUnique(false);
+        entityTypeBuilder.HasOne<EmployeesModel>().WithOne();
+        entityTypeBuilder.HasOne<DepartmentsModel>().WithOne();
     }
 }

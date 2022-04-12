@@ -50,5 +50,8 @@
     <Compile Update="Database\Context\EmployeesContext.SalariesModel.cs">
       <DependentUpon>EmployeesContext.cs</DependentUpon>
     </Compile>
+    <Compile Update="Database\Context\EmployeesContext.DeptEmpModel.cs">
+      <DependentUpon>EmployeesContext.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

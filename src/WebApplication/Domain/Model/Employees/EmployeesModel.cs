@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Model.Employees;
@@ -25,11 +24,11 @@ public partial class EmployeesModel
 
     [Column("first_name", TypeName = "varchar(14)")]
     [Required]
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } = string.Empty;
 
     [Column("last_name", TypeName = "varchar(16)")]
     [Required]
-    public string LastName { get; set; }
+    public string LastName { get; set; } = string.Empty;
     
     [Column("gender", TypeName = "enum('M', 'F')")]
     [Required]
