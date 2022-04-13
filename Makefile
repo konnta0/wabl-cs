@@ -123,3 +123,25 @@ migration-add:
 	-w /src/Tool/DatabaseMigration \
 	database_migration \
 	dotnet ef migrations add $(NAME)
+
+
+IAC_IMAGE_NAME:=iac
+.PHONY: iac-build # Build Infrastrucure as Code (Pulumi)
+iac-build:
+	docker build -f Dockerfile.Pulumi -t $(IAC_IMAGE_NAME) .
+
+.PHONY: iac-sh # sh Infrastrucure as Code (Pulumi)
+iac-sh:
+	docker run -it --rm $(IAC_IMAGE_NAME)
+
+.PHONY: minikube-start # 
+minikube-start:
+	minikube start
+
+.PHONY: minikube-stop # 
+minikube-stop:
+	minikube stop
+
+.PHONY: minikube-dashboard # 
+minikube-dashboard:
+	minikube dashboard

@@ -1,0 +1,17 @@
+# https://hub.docker.com/_/microsoft-dotnet
+FROM mcr.microsoft.com/dotnet/sdk:6.0.100-alpine3.14 AS workspace
+
+FROM workspace AS builder
+WORKDIR /build
+COPY ./src/Tool/IaC ./src/Tool/IaC
+
+RUN echo 'Restore&Build IaC'
+RUN dotnet restore ./src/Tool/IaC/IaC.csproj
+RUN dotnet publish ./src/Tool/IaC/IaC.csproj -c Release -o out/IaC --no-restore
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+RUN ln -sf /usr/share/zoneinfo/posix/Japan /etc/localtime
+COPY --from=builder /build/out/IaC .
+RUN apt update && apt install -y curl
+RUN curl -fsSL https://get.pulumi.com | sh
+ENV PATH="$PATH:/root/.pulumi/bin"
