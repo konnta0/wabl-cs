@@ -19,4 +19,9 @@
       </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+        <Content Include="Seed\**\*.*">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 </Project>
