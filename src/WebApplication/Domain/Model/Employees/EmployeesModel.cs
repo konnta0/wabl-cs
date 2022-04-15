@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Model.Employees;
@@ -13,7 +14,6 @@ public partial class EmployeesModel
         F
     }
 
-    [Key]
     [Column("emp_no", TypeName = "int")]
     [Required]
     public int EmpNo { get; set; }
@@ -40,5 +40,6 @@ public partial class EmployeesModel
     
     public static partial void OnModelCreating(EntityTypeBuilder<EmployeesModel> entityTypeBuilder)
     {
+        entityTypeBuilder.HasKey(x => x.EmpNo);
     }
 }
