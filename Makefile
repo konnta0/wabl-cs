@@ -145,3 +145,23 @@ minikube-stop:
 .PHONY: minikube-dashboard # 
 minikube-dashboard:
 	minikube dashboard
+
+
+##### local setup command #####
+.PHONY: install-minikube # see -> https://minikube.sigs.k8s.io/docs/start/
+install-minikube:
+	@echo "start install minikube"
+	curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+	sudo install minikube-darwin-amd64 /usr/local/bin/minikube
+	minikube version
+	@echo "end install minikube"
+
+.PHONY: install-pulumi
+install-pulumi:
+	@echo "start install pulumi"
+	curl -fsSL https://get.pulumi.com | sh
+	@echo "end install pulumi"
+
+.PHONY: setup-local # 
+setup-local: install-minikube install-pulumi
+	@echo "start setup local"
