@@ -27,7 +27,7 @@ public partial class DeptEmpModel
     {
         entityTypeBuilder.HasKey(deptEmpModel => new { deptEmpModel.EmpNo, deptEmpModel.DeptNo });
         entityTypeBuilder.HasIndex(deptEmpModel => new { deptEmpModel.DeptNo }, nameof(DeptNo)).IsUnique(false);
-        entityTypeBuilder.HasOne<EmployeesModel>().WithOne();
+        entityTypeBuilder.HasMany<EmployeesModel>().WithOne();
         entityTypeBuilder.HasMany<DepartmentsModel>().WithOne();
     }
 }
