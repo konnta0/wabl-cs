@@ -1,4 +1,4 @@
-namespace Domain.Model;
+namespace Domain.Entity;
 
 public interface IModel
 {

@@ -1,5 +1,4 @@
 using Cysharp.Text;
-using Domain.Model.Employees;
 using Domain.Repository.Departments;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;

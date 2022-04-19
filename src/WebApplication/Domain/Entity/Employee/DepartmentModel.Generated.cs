@@ -1,8 +1,6 @@
-
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Domain.Model.Employees;
+namespace Domain.Entity.Employee;
 
 public partial class DepartmentModel : IModel
 {
