@@ -2,7 +2,7 @@ using Domain.Model;
 
 namespace DatabaseMigration;
 
-public interface ISeedImporter
+public interface ISeedImporter : IDisposable
 {
-    void Import<TModel>(string path) where TModel : IModel;
+    void Import(IModel model);
 }
