@@ -36,7 +36,7 @@ public readonly struct EmployeesContextOnModelCreatingBus : IEmployeesContextOnM
 {
     public IEnumerator<Action<ModelBuilder>> GetEnumerator()
     {
-        yield return builder => DepartmentsModel.OnModelCreating(builder.Entity<DepartmentsModel>());
+        yield return builder => DepartmentModel.OnModelCreating(builder.Entity<DepartmentModel>());
         yield return builder => DeptEmpModel.OnModelCreating(builder.Entity<DeptEmpModel>());
         yield return builder => EmployeesModel.OnModelCreating(builder.Entity<EmployeesModel>());
         yield return builder => SalariesModel.OnModelCreating(builder.Entity<SalariesModel>());
