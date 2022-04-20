@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Domain.Entity.Employee;
 
 [Table("dept_emp")]
-public partial class DeptEmpModel
+public partial class DeptEmpEntity
 {
     [Column("emp_no", TypeName = "int")]
     [Required]
@@ -23,11 +23,11 @@ public partial class DeptEmpModel
     [Required]
     public DateTime ToDate { get; set; }
     
-    public static partial void OnModelCreating(EntityTypeBuilder<DeptEmpModel> entityTypeBuilder)
+    public static partial void OnModelCreating(EntityTypeBuilder<DeptEmpEntity> entityTypeBuilder)
     {
-        entityTypeBuilder.HasKey(deptEmpModel => new { deptEmpModel.EmpNo, deptEmpModel.DeptNo });
-        entityTypeBuilder.HasIndex(deptEmpModel => new { deptEmpModel.DeptNo }, nameof(DeptNo)).IsUnique(false);
-        entityTypeBuilder.HasMany<EmployeesModel>().WithOne();
-        entityTypeBuilder.HasMany<DepartmentModel>().WithOne();
+        entityTypeBuilder.HasKey(deptEmpEntity => new { deptEmpEntity.EmpNo, deptEmpEntity.DeptNo });
+        entityTypeBuilder.HasIndex(deptEmpEntity => new { deptEmpEntity.DeptNo }, nameof(DeptNo)).IsUnique(false);
+        entityTypeBuilder.HasMany<EmployeesEntity>().WithOne();
+        entityTypeBuilder.HasMany<DepartmentEntity>().WithOne();
     }
 }

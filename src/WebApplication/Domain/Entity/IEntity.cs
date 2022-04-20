@@ -1,6 +1,6 @@
 namespace Domain.Entity;
 
-public interface IModel
+public interface IEntity
 {
     
 }

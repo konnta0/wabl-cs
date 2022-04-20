@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Domain.Entity.Employee;
 
 [Table("departments")]
-public partial class DepartmentModel
+public partial class DepartmentEntity
 {
     [Key]
     [Column("dept_no", TypeName = "char(4)")]
@@ -16,8 +16,8 @@ public partial class DepartmentModel
     [Required]
     public string DeptName { get; set; } = string.Empty;
 
-    public static partial void OnModelCreating(EntityTypeBuilder<DepartmentModel> entityTypeBuilder)
+    public static partial void OnModelCreating(EntityTypeBuilder<DepartmentEntity> entityTypeBuilder)
     {
-        entityTypeBuilder.HasIndex(departmentsModel => new { departmentsModel.DeptName }, nameof(DeptName)).IsUnique();
+        entityTypeBuilder.HasIndex(departmentEntity => new { departmentEntity.DeptName }, nameof(DeptName)).IsUnique();
     }
 }

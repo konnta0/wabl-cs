@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Domain.Entity.Employee;
 
 [Table("employees")]
-public partial class EmployeesModel
+public partial class EmployeesEntity
 {
     public enum GenderType
     {
@@ -37,8 +37,8 @@ public partial class EmployeesModel
     [Required]
     public DateTime HireDate { get; set; }
     
-    public static partial void OnModelCreating(EntityTypeBuilder<EmployeesModel> entityTypeBuilder)
+    public static partial void OnModelCreating(EntityTypeBuilder<EmployeesEntity> entityTypeBuilder)
     {
-        entityTypeBuilder.HasKey(x => x.EmpNo);
+        entityTypeBuilder.HasKey(employeesEntity => employeesEntity.EmpNo);
     }
 }
