@@ -1,8 +1,8 @@
-using Domain.Model;
+using Domain.Entity;
 
 namespace DatabaseMigration;
 
 public interface ISeedTruncate
 {
-    Task Truncate(IModel model);
+    Task Truncate(IEntity entity);
 }

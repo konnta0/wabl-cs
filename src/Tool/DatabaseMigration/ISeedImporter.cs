@@ -4,5 +4,5 @@ namespace DatabaseMigration;
 
 public interface ISeedImporter : IDisposable
 {
-    void Import(IModel model);
+    void Import(IEntity entity);
 }
