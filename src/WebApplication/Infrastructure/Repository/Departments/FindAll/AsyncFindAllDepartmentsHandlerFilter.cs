@@ -2,6 +2,7 @@ using System.Text.Json;
 using Domain.Repository.Departments.FindAll;
 using Infrastructure.Cache;
 using Infrastructure.Database.Context;
+using Infrastructure.Database.Context.Employee;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 

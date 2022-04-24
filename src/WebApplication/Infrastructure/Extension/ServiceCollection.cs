@@ -4,6 +4,7 @@ using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.RequestHandler;
 using Infrastructure.Database.Context;
+using Infrastructure.Database.Context.Employee;
 using Infrastructure.Extension.Instrumentation;
 using Infrastructure.Repository.Departments;
 using Microsoft.AspNetCore.HttpLogging;
@@ -150,8 +151,6 @@ public static class ServiceCollection
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
         }, ServiceLifetime.Transient);
-
-        serviceCollection.AddSingleton<IEmployeesContextOnModelCreatingBus>(_ => new EmployeesContextOnModelCreatingBus());
         return serviceCollection;
     }
 
