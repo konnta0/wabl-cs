@@ -1,3 +1,4 @@
+using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Apps.V1;
@@ -10,7 +11,7 @@ class MyStack : Stack
     public MyStack()
     {
         var config = new Pulumi.Config();
-        var isMinikube = config.GetBoolean("isMinikube") ?? false;
+        var isMinikube = config.IsMinikube();
 
         var appName = "nginx";
 
