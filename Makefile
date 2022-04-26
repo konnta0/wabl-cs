@@ -140,7 +140,11 @@ mk-dashboard:
 INFRASTRUCTURE_DIR=./src/Tool/Infrastructure
 .PHONY: p-up # pulumi up
 p-up:
-	pulumi up --cwd $(INFRASTRUCTURE_DIR)
+	pulumi up --cwd $(INFRASTRUCTURE_DIR) -v=3
+
+.PHONY: p-destroy # pulumi destroy
+p-destroy:
+	pulumi destroy --cwd $(INFRASTRUCTURE_DIR)
 
 
 ##### local setup command #####
