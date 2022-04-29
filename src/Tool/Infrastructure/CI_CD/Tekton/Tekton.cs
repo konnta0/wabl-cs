@@ -19,19 +19,19 @@ namespace Infrastructure.CI_CD.Tekton
         {
             var configFile = new ConfigFile("tekton-controller-release", new ConfigFileArgs
             {
-                File = "https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml"
+                File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.35.0/release.yaml"
             });
             configFile.Ready();
 
             var dashboardConfigFile = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
             {
-                File = "https://github.com/tektoncd/dashboard/releases/latest/download/tekton-dashboard-release.yaml"
+                File = "https://github.com/tektoncd/dashboard/releases/download/v0.25.0/tekton-dashboard-release.yaml"
             });
             dashboardConfigFile.Ready();
             
             var triggersConfigFile = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
             {
-                File = "https://storage.googleapis.com/tekton-releases/triggers/latest/release.yaml"
+                File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.19.1/release.yaml"
             });
             triggersConfigFile.Ready();
         }
