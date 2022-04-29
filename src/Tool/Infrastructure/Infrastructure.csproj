@@ -12,8 +12,4 @@
     <PackageReference Include="Pulumi.Kubernetes" Version="3.*" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ContainerResitory" />
-  </ItemGroup>
-
 </Project>
