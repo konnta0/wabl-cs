@@ -6,7 +6,7 @@ using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
-namespace Infrastructure.ContainerRegistry.Harbor
+namespace Infrastructure.ContainerRegistry.Component
 {
     public class Harbor
     {

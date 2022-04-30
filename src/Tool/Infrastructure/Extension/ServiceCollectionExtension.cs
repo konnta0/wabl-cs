@@ -1,6 +1,6 @@
 using Infrastructure.CI_CD;
-using Infrastructure.CI_CD.Tekton;
-using Infrastructure.ContainerRegistry.Harbor;
+using Infrastructure.CI_CD.Component;
+using Infrastructure.ContainerRegistry.Component;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Extension

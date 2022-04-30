@@ -1,6 +1,5 @@
 using Infrastructure.CI_CD;
-using Infrastructure.CI_CD.Tekton;
-using Infrastructure.ContainerRegistry.Harbor;
+using Infrastructure.ContainerRegistry.Component;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;

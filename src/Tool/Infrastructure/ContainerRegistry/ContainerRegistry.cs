@@ -1,4 +1,4 @@
-using Infrastructure.CI_CD.Tekton;
+using Infrastructure.ContainerRegistry.Component;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 
@@ -8,9 +8,9 @@ namespace Infrastructure.ContainerRegistry
     {
         private readonly ILogger<ContainerRegistry> _logger;
         private Config _config;
-        private readonly Harbor.Harbor _harbor;
+        private readonly Harbor _harbor;
 
-        public ContainerRegistry(ILogger<ContainerRegistry> logger, Config config, Harbor.Harbor harbor)
+        public ContainerRegistry(ILogger<ContainerRegistry> logger, Config config, Harbor harbor)
         {
             _logger = logger;
             _config = config;

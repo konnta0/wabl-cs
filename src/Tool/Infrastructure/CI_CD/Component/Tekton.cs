@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.CI_CD.Tekton
+namespace Infrastructure.CI_CD.Component
 {
     public class Tekton
     {
