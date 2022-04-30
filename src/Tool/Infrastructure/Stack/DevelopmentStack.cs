@@ -1,3 +1,4 @@
+using Infrastructure.CI_CD;
 using Infrastructure.CI_CD.Tekton;
 using Infrastructure.ContainerRegistry.Harbor;
 using Infrastructure.Extension;
@@ -11,13 +12,13 @@ namespace Infrastructure.Stack
     {
         private readonly ILogger<DevelopmentStack> _logger;
 
-        public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, Tekton tekton, Harbor harbor)
+        public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, CICD cicd, Harbor harbor)
         {
             _logger = logger;
             _logger.LogInformation("start development stack");
             var isMinikube = config.IsMinikube();
             
-            tekton.Apply();
+            cicd.Apply();
             harbor.Apply();
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Infrastructure.CI_CD.Tekton;
-using Infrastructure.ContainerRegistry.Harbor;
+using Infrastructure.Extension;
 using Infrastructure.Stack;
 using Microsoft.Extensions.DependencyInjection;
 using Pulumi;
@@ -18,8 +17,8 @@ class Program
     {
         serviceCollection.AddLogging();
         serviceCollection.AddSingleton<Config>();
-        serviceCollection.AddScoped<Tekton>();
-        serviceCollection.AddScoped<Harbor>();
+        serviceCollection.AddCICD();
+        serviceCollection.AddContainerRegistry();
         serviceCollection.AddScoped<DevelopmentStack>();
     }
 }
