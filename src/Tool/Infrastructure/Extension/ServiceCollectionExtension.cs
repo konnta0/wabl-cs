@@ -17,6 +17,8 @@ namespace Infrastructure.Extension
         internal static IServiceCollection AddContainerRegistry(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<Harbor>();
+            serviceCollection.AddScoped<MinIO>();
+            serviceCollection.AddScoped<ContainerRegistry.ContainerRegistry>();
             return serviceCollection;
         }
     }
