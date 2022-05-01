@@ -10,7 +10,7 @@ namespace Infrastructure.Extension
         internal static IServiceCollection AddCICD(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<Tekton>();
-            serviceCollection.AddScoped<CICD>();
+            serviceCollection.AddScoped<CICDComponent>();
             return serviceCollection;
         }
 
