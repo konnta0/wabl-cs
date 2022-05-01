@@ -1,5 +1,6 @@
 using Infrastructure.CI_CD;
 using Infrastructure.CI_CD.Component;
+using Infrastructure.ContainerRegistry;
 using Infrastructure.ContainerRegistry.Component;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,7 +19,7 @@ namespace Infrastructure.Extension
         {
             serviceCollection.AddScoped<Harbor>();
             serviceCollection.AddScoped<MinIO>();
-            serviceCollection.AddScoped<ContainerRegistry.ContainerRegistryComponent>();
+            serviceCollection.AddScoped<ContainerRegistryComponent>();
             return serviceCollection;
         }
     }
