@@ -4,14 +4,14 @@ using Pulumi;
 
 namespace Infrastructure.ContainerRegistry
 {
-    public class ContainerRegistry
+    public class ContainerRegistryComponent
     {
-        private readonly ILogger<ContainerRegistry> _logger;
+        private readonly ILogger<ContainerRegistryComponent> _logger;
         private Config _config;
         private readonly Harbor _harbor;
         private readonly MinIO _minIo;
 
-        public ContainerRegistry(ILogger<ContainerRegistry> logger, Config config, Harbor harbor, MinIO minIo)
+        public ContainerRegistryComponent(ILogger<ContainerRegistryComponent> logger, Config config, Harbor harbor, MinIO minIo)
         {
             _logger = logger;
             _config = config;

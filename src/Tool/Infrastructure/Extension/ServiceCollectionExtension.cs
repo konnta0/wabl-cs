@@ -18,7 +18,7 @@ namespace Infrastructure.Extension
         {
             serviceCollection.AddScoped<Harbor>();
             serviceCollection.AddScoped<MinIO>();
-            serviceCollection.AddScoped<ContainerRegistry.ContainerRegistry>();
+            serviceCollection.AddScoped<ContainerRegistry.ContainerRegistryComponent>();
             return serviceCollection;
         }
     }

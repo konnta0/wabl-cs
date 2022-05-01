@@ -10,14 +10,14 @@ namespace Infrastructure.Stack
     {
         private readonly ILogger<DevelopmentStack> _logger;
 
-        public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, CICDComponent cicdComponent, ContainerRegistry.ContainerRegistry containerRegistry)
+        public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, CICDComponent cicdComponent, ContainerRegistry.ContainerRegistryComponent containerRegistryComponent)
         {
             _logger = logger;
             _logger.LogInformation("start development stack");
             var isMinikube = config.IsMinikube();
             
             cicdComponent.Apply();
-            containerRegistry.Apply();
+            containerRegistryComponent.Apply();
         }
     }
 }
