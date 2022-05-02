@@ -146,6 +146,10 @@ p-up:
 p-destroy:
 	pulumi destroy --cwd $(INFRASTRUCTURE_DIR)
 
+.PHONY: p-urns # pulumi urns
+p-urns:
+	pulumi stack --show-urns --cwd $(INFRASTRUCTURE_DIR)
+
 
 .PHONY: foward-tekton-dashboard
 foward-tekton-dashboard:
