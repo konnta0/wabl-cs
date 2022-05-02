@@ -1,6 +1,9 @@
 using Infrastructure.ContainerRegistry.Component;
 using Microsoft.Extensions.Logging;
 using Pulumi;
+using Pulumi.Kubernetes.Core.V1;
+using Pulumi.Kubernetes.Types.Inputs.Core.V1;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.ContainerRegistry
 {
@@ -21,6 +24,13 @@ namespace Infrastructure.ContainerRegistry
 
         public void Apply()
         {
+            _ = new Namespace(Define.Namespace, new NamespaceArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = Define.Namespace
+                }
+            });
             _minIo.Apply();
             _harbor.Apply();
         }

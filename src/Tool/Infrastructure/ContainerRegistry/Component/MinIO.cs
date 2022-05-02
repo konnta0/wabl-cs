@@ -1,7 +1,10 @@
 using Microsoft.Extensions.Logging;
 using Pulumi;
+using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm;
 using Pulumi.Kubernetes.Helm.V2;
+using Pulumi.Kubernetes.Types.Inputs.Core.V1;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.ContainerRegistry.Component
 {
@@ -29,7 +32,8 @@ namespace Infrastructure.ContainerRegistry.Component
                 FetchOptions = new ChartFetchArgs
                 {
                     Repo = "https://charts.min.io"
-                }
+                },
+                Namespace = Define.Namespace
             });
             minIOChart.Ready();
         }

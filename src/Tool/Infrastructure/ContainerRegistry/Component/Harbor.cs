@@ -21,14 +21,6 @@ namespace Infrastructure.ContainerRegistry.Component
 
         public void Apply()
         {
-            var harborNamespace = new Namespace("harbor", new NamespaceArgs
-            {
-                Metadata = new ObjectMetaArgs
-                {
-                    Name = "harbor"
-                }
-            });
-            
             var harborChart = new Chart("harbor", new ChartArgs
             {
                 Chart = "harbor",
@@ -38,7 +30,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     Repo = "https://helm.goharbor.io"
                 },
-                Namespace = "harbor"
+                Namespace = Define.Namespace
             });
             harborChart.Ready();
         }
