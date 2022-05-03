@@ -1,5 +1,5 @@
 using Cysharp.Text;
-using Domain.Repository.Departments;
+using Domain.Repository.Department;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.RequestHandler;
@@ -138,7 +138,7 @@ public static class ServiceCollection
 
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentsRepositoryInputData, IDepartmentsRepositoryOutputData?>, AsyncDepartmentsRepositoryHandler>();
+        serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentRepositoryInputData, IDepartmentRepositoryOutputData?>, AsyncDepartmentRepositoryHandler>();
         return serviceCollection;
     }
 

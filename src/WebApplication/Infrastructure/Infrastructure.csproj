@@ -38,6 +38,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database" />
-    <Folder Include="Repository\Departments\FindManyByDeptName" />
+    <Folder Include="Repository\Department\FindManyByDeptName" />
   </ItemGroup>
 </Project>
