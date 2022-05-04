@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
@@ -21,6 +23,17 @@ namespace Infrastructure.ContainerRegistry.Component
 
         public void Apply()
         {
+            var values = new Dictionary<string, object>
+            {
+                ["ingress"] = new Dictionary<string, object>
+                {
+                    ["hosts"] = new Dictionary<string, object>
+                    {
+                        ["core"] = "core.harbor.domain"
+                    }
+                }
+            };
+
             var harborChart = new Chart("harbor", new ChartArgs
             {
                 Chart = "harbor",
@@ -30,7 +43,8 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     Repo = "https://helm.goharbor.io"
                 },
-                Namespace = Define.Namespace
+                Namespace = Define.Namespace,
+                Values = values
             });
             harborChart.Ready();
         }
