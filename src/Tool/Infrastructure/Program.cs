@@ -19,6 +19,7 @@ class Program
         serviceCollection.AddSingleton<Config>();
         serviceCollection.AddCICD();
         serviceCollection.AddContainerRegistry();
+        serviceCollection.AddResource();
         serviceCollection.AddScoped<DevelopmentStack>();
     }
 }

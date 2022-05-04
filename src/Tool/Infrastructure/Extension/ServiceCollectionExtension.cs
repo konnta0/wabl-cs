@@ -2,6 +2,7 @@ using Infrastructure.CI_CD;
 using Infrastructure.CI_CD.Component;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.ContainerRegistry.Component;
+using Infrastructure.Resource.Ingress;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Extension
@@ -20,6 +21,12 @@ namespace Infrastructure.Extension
             serviceCollection.AddScoped<Harbor>();
             serviceCollection.AddScoped<MinIO>();
             serviceCollection.AddScoped<ContainerRegistryComponent>();
+            return serviceCollection;
+        }
+
+        internal static IServiceCollection AddResource(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddScoped<IngressResource>();
             return serviceCollection;
         }
     }
