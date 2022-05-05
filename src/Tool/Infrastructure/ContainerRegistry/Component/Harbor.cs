@@ -1,12 +1,8 @@
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
 using Pulumi;
-using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm;
 using Pulumi.Kubernetes.Helm.V3;
-using Pulumi.Kubernetes.Types.Inputs.Core.V1;
-using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.ContainerRegistry.Component
 {
