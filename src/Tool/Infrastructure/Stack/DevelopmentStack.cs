@@ -1,6 +1,7 @@
 using Infrastructure.CI_CD;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.Extension;
+using Infrastructure.Observability;
 using Infrastructure.Resource.Ingress;
 using Microsoft.Extensions.Logging;
 using Pulumi;
@@ -15,15 +16,17 @@ namespace Infrastructure.Stack
         public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, 
             CICDComponent cicdComponent, 
             ContainerRegistryComponent containerRegistryComponent,
-            IngressResource ingressResource)
+            IngressResource ingressResource,
+            ObservabilityComponent observabilityComponent)
         {
             _logger = logger;
             _logger.LogInformation("start development stack");
             var isMinikube = config.IsMinikube();
             
-            ingressResource.Apply();
+            //ingressResource.Apply();
             cicdComponent.Apply();
             containerRegistryComponent.Apply();
+            observabilityComponent.Apply();
         }
     }
 }
