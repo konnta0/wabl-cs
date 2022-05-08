@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm;
 using Pulumi.Kubernetes.Helm.V3;
+using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
 namespace Infrastructure.ContainerRegistry.Component
 {
@@ -30,19 +31,18 @@ namespace Infrastructure.ContainerRegistry.Component
                 }
             };
 
-            var harborChart = new Chart("harbor", new ChartArgs
+            var harbor = new Release("harbor", new ReleaseArgs
             {
                 Chart = "harbor",
                 // https://github.com/goharbor/harbor-helm/releases/tag/v1.9.0
                 Version = "v1.9.0",
-                FetchOptions = new ChartFetchArgs
+                RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://helm.goharbor.io"
                 },
                 Namespace = Define.Namespace,
                 Values = values
             });
-            harborChart.Ready();
         }
     }
 }

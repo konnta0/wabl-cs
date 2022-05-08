@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Pulumi.Kubernetes.Helm;
-using Pulumi.Kubernetes.Helm.V2;
+using Pulumi.Kubernetes.Helm.V3;
+using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
 namespace Infrastructure.Observability.Component
 {
@@ -15,7 +16,7 @@ namespace Infrastructure.Observability.Component
 
         public void Apply()
         {
-            var chart = new Chart("grafana", new ChartArgs
+            var grafana = new Release("grafana", new ReleaseArgs
             {
                  Chart = "grafana",
                 //  helm search repo grafana/grafana --versions | head -n 10                                                                                                                                           1:11:45
@@ -30,13 +31,12 @@ namespace Infrastructure.Observability.Component
                 // grafana/grafana                 6.26.3          8.4.6           The leading tool for querying and visualizing t...
                 // grafana/grafana                 6.26.2          8.4.6           The leading tool for querying and visualizing t...
                 Version = "6.28.0",
-                FetchOptions = new ChartFetchArgs
+                RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://grafana.github.io/helm-charts"
                 },
                 Namespace = Define.Namespace
-            });
-            chart.Ready();
+            }); 
         }
     }
 }
