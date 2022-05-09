@@ -26,7 +26,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     ["hosts"] = new Dictionary<string, object>
                     {
-                        ["core"] = "core.harbor.domain"
+                        ["core"] = "core.harbor.domain.minikube.local"
                     }
                 }
             };
