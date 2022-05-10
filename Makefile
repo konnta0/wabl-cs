@@ -127,7 +127,7 @@ migration-add:
 
 .PHONY: mk-start # 
 mk-start:
-	minikube start
+	minikube start --memory='6g' --cpus=4
 
 .PHONY: mk-stop # 
 mk-stop:
