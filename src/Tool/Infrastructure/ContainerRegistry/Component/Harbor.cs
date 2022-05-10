@@ -43,8 +43,10 @@ namespace Infrastructure.ContainerRegistry.Component
                 CreateNamespace = true,
                 Atomic = true,
                 Namespace = Define.Namespace,
-                Values = values
+                Values = values,
+                Timeout = 60 * 10
             });
         }
     }
+    
 }
