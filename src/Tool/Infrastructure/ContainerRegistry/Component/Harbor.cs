@@ -22,16 +22,20 @@ namespace Infrastructure.ContainerRegistry.Component
         {
             var values = new Dictionary<string, object>
             {
-                ["ingress"] = new Dictionary<string, object>
+                ["expose"] = new Dictionary<string, object>
                 {
-                    ["hosts"] = new Dictionary<string, object>
+                    ["ingress"] = new Dictionary<string, object>
                     {
-                        ["core"] = "core.harbor.domain.minikube.local"
+                        ["hosts"] = new Dictionary<string, object>
+                        {
+                            ["core"] = "core.harbor.domain.test",
+                            ["notary"] = "notary.harbor.domain.test"
+                        }
                     }
-                }
+                },
             };
 
-            var harbor = new Release("harbor", new ReleaseArgs
+            _ = new Release("harbor", new ReleaseArgs
             {
                 Chart = "harbor",
                 // https://github.com/goharbor/harbor-helm/releases/tag/v1.9.0
