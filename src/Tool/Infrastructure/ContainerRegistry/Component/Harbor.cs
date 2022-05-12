@@ -37,6 +37,7 @@ namespace Infrastructure.ContainerRegistry.Component
                         }
                     }
                 },
+                ["externalURL"] = "http://core.harbor.domain.test"
             };
 
             _ = new Release("harbor", new ReleaseArgs
