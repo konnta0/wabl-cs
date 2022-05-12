@@ -24,6 +24,10 @@ namespace Infrastructure.ContainerRegistry.Component
             {
                 ["expose"] = new Dictionary<string, object>
                 {
+                    ["tls"] = new Dictionary<string, object>
+                    {
+                        ["enabled"] = false
+                    },
                     ["ingress"] = new Dictionary<string, object>
                     {
                         ["hosts"] = new Dictionary<string, object>
