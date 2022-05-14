@@ -1,4 +1,6 @@
+using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
+using Pulumi;
 using Pulumi.Kubernetes.Helm;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
@@ -36,7 +38,10 @@ namespace Infrastructure.Observability.Component
                     Repo = "https://grafana.github.io/helm-charts"
                 },
                 Namespace = Define.Namespace
-            }); 
+            });
+            Manifest = grafana.Manifest;
         }
+
+        [Output] public Output<ImmutableDictionary<string,object>> Manifest { get; set; }
     }
 }
