@@ -4,7 +4,6 @@ using Infrastructure.ContainerRegistry;
 using Infrastructure.ContainerRegistry.Component;
 using Infrastructure.Observability;
 using Infrastructure.Observability.Component;
-using Infrastructure.Observability.Resource;
 using Infrastructure.Resource.Ingress;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -35,7 +34,6 @@ namespace Infrastructure.Extension
         
         internal static IServiceCollection AddObservability(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<Ingress>();
             serviceCollection.AddScoped<Grafana>();
             serviceCollection.AddScoped<ObservabilityComponent>();
             return serviceCollection;
