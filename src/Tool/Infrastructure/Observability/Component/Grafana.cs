@@ -83,7 +83,7 @@ namespace Infrastructure.Observability.Component
             });
         }
 
-        [Output] public Output<string> Namespace { get; set; }
-        [Output] public Output<ImmutableDictionary<string, ImmutableArray<string>>> ResourceNames { get; set; }
+        [Output] public Output<string> Namespace { get; private set; }
+        [Output] public Output<ImmutableDictionary<string, ImmutableArray<string>>> ResourceNames { get; private set; }
     }
 }
