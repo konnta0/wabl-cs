@@ -1,9 +1,12 @@
+using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 using Microsoft.Extensions.Logging;
 using Pulumi;
-using Pulumi.Kubernetes.Helm;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
+using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
 namespace Infrastructure.Observability.Component
 {
@@ -39,9 +42,48 @@ namespace Infrastructure.Observability.Component
                 },
                 Namespace = Define.Namespace
             });
-            Manifest = grafana.Manifest;
+            Namespace = grafana.Namespace;
+            ResourceNames = grafana.ResourceNames;
+            
+            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("grafana-ingress", new IngressArgs
+            {
+                ApiVersion = "networking.k8s.io/v1",
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "grafana-ingress",
+                    Namespace = Define.Namespace
+                },
+                Spec = new IngressSpecArgs
+                {
+                    IngressClassName = "nginx",
+                    Rules = new List<IngressRuleArgs>
+                    {
+                        new IngressRuleArgs
+                        {
+                            Host = "o11y.grafana.test",
+                            Http = new HTTPIngressRuleValueArgs
+                            {
+                                Paths = new HTTPIngressPathArgs
+                                {
+                                    Path = "/",
+                                    PathType = "Prefix",
+                                    Backend = new IngressBackendArgs
+                                    {
+                                        Service = new IngressServiceBackendArgs
+                                        {
+                                            Name = ResourceNames.Apply(x=> x["Service/v1"].First().Replace(Define.Namespace+"/", "")),
+                                            Port = new ServiceBackendPortArgs { Number = 3000 }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
 
-        [Output] public Output<ImmutableDictionary<string,object>> Manifest { get; set; }
+        [Output] public Output<string> Namespace { get; set; }
+        [Output] public Output<ImmutableDictionary<string, ImmutableArray<string>>> ResourceNames { get; set; }
     }
 }

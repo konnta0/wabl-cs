@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using Infrastructure.CI_CD;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.Extension;
@@ -27,6 +28,11 @@ namespace Infrastructure.Stack
             cicdComponent.Apply();
             containerRegistryComponent.Apply();
             observabilityComponent.Apply();
+            GrafanaNamespace = observabilityComponent.GrafanaNamespace;
+            GrafanaResourceNames = observabilityComponent.ResourceNames;
         }
+
+        [Output] public Output<string> GrafanaNamespace { get; set; }
+        [Output] public Output<ImmutableDictionary<string, ImmutableArray<string>>> GrafanaResourceNames { get; set; }
     }
 }
