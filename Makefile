@@ -126,8 +126,8 @@ migration-add:
 
 
 .PHONY: mk-start # 
-mk-start:
-	minikube start --memory='6g' --cpus=4
+mk-start: 
+	minikube start --memory='6g' --cpus=4 --driver=hyperkit
 
 .PHONY: mk-stop # 
 mk-stop:
