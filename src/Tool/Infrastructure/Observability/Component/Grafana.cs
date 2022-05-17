@@ -40,6 +40,7 @@ namespace Infrastructure.Observability.Component
                 {
                     Repo = "https://grafana.github.io/helm-charts"
                 },
+                CreateNamespace = true,
                 Namespace = Define.Namespace
             });
             Namespace = grafana.Namespace;
