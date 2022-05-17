@@ -150,6 +150,13 @@ p-destroy:
 p-urns:
 	pulumi stack --show-urns --cwd $(INFRASTRUCTURE_DIR)
 
+.PHONY: p-delete # pulumi delete
+p-delete:
+	pulumi state delete $(URN) --cwd $(INFRASTRUCTURE_DIR)
+
+.PHONY: p-output # pulumi stack output
+p-output:
+	pulumi stack output --cwd $(INFRASTRUCTURE_DIR)  
 
 .PHONY: foward-tekton-dashboard
 foward-tekton-dashboard:
