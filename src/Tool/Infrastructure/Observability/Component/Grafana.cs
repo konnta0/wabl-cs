@@ -44,7 +44,6 @@ namespace Infrastructure.Observability.Component
                 Namespace = Define.Namespace
             });
             Namespace = grafana.Namespace;
-            ResourceNames = grafana.ResourceNames;
             
             var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("grafana-ingress", new IngressArgs
             {
@@ -72,7 +71,7 @@ namespace Infrastructure.Observability.Component
                                     {
                                         Service = new IngressServiceBackendArgs
                                         {
-                                            Name = ResourceNames.Apply(x=> x["Service/v1"].First().Replace(Define.Namespace+"/", "")),
+                                            Name = grafana.ResourceNames.Apply(x=> x["Service/v1"].First().Replace(Define.Namespace+"/", "")),
                                             Port = new ServiceBackendPortArgs { Number = 3000 }
                                         }
                                     }
@@ -85,6 +84,5 @@ namespace Infrastructure.Observability.Component
         }
 
         [Output] public Output<string> Namespace { get; private set; }
-        [Output] public Output<ImmutableDictionary<string, ImmutableArray<string>>> ResourceNames { get; private set; }
     }
 }

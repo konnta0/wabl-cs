@@ -27,10 +27,8 @@ namespace Infrastructure.Stack
             containerRegistryComponent.Apply();
             observabilityComponent.Apply();
             GrafanaNamespace = observabilityComponent.GrafanaNamespace;
-            GrafanaResourceNames = observabilityComponent.ResourceNames;
         }
 
         [Output] public Output<string> GrafanaNamespace { get; set; }
-        [Output] public Output<ImmutableDictionary<string, ImmutableArray<string>>> GrafanaResourceNames { get; set; }
     }
 }
