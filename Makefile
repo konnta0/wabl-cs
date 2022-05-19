@@ -138,9 +138,10 @@ mk-dashboard:
 	minikube dashboard
 
 INFRASTRUCTURE_DIR=./src/Tool/Infrastructure
+STACK?=develop
 .PHONY: p-up # pulumi up
 p-up:
-	pulumi up --cwd $(INFRASTRUCTURE_DIR) -v=6
+	pulumi up --cwd $(INFRASTRUCTURE_DIR) -v=6 --stack $(STACK)
 
 .PHONY: p-destroy # pulumi destroy
 p-destroy:
