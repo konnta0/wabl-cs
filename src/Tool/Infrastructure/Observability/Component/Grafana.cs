@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using Pulumi;
@@ -60,7 +59,7 @@ namespace Infrastructure.Observability.Component
                     {
                         new IngressRuleArgs
                         {
-                            Host = "o11y.grafana.test",
+                            Host = "grafana.o11y.test",
                             Http = new HTTPIngressRuleValueArgs
                             {
                                 Paths = new HTTPIngressPathArgs
