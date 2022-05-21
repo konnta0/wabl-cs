@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
@@ -19,21 +20,38 @@ namespace Infrastructure.CI_CD.Component
         {
             var configFile = new ConfigFile("tekton-controller-release", new ConfigFileArgs
             {
-                File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.35.0/release.yaml"
+                File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.35.0/release.yaml",
+                // Transformations =
+                // {
+                //     TransformNamespace
+                // }
             });
-            configFile.Ready();
 
             var dashboardConfigFile = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
             {
-                File = "https://github.com/tektoncd/dashboard/releases/download/v0.25.0/tekton-dashboard-release.yaml"
+                File = "https://github.com/tektoncd/dashboard/releases/download/v0.25.0/tekton-dashboard-release.yaml",
+                // Transformations =
+                // {
+                //     TransformNamespace
+                // }                
             });
-            dashboardConfigFile.Ready();
-            
+
             var triggersConfigFile = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
             {
-                File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.19.1/release.yaml"
+                File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.19.1/release.yaml",
+                // Transformations =
+                // {
+                //     TransformNamespace
+                // }                
             });
-            triggersConfigFile.Ready();
+
+        }
+
+        private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
+        {
+            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
+            if (!metadata.ContainsKey("namespace")) return obj;
+            return obj.SetItem("metadata", metadata.SetItem("namespace", Define.Namespace));
         }
     }
 }
