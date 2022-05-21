@@ -1,7 +1,11 @@
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Extensions.Logging;
 using Pulumi;
-using Pulumi.Kubernetes.Helm;
 using Pulumi.Kubernetes.Helm.V3;
+using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
+using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
 namespace Infrastructure.ContainerRegistry.Component
 {
@@ -18,7 +22,29 @@ namespace Infrastructure.ContainerRegistry.Component
 
         public void Apply()
         {
-            var minIOChart = new Chart("minio", new ChartArgs
+            var values = new Dictionary<string, object>
+            {
+                ["replicas"] = 4,
+                ["persistence"] = new Dictionary<string, object>
+                {
+                    ["size"] = "10Gi"
+                },
+                ["ingress"] = new Dictionary<string, object>
+                {
+                    ["enabled"] = false,
+                },
+                ["resources"] = new Dictionary<string, object>
+                {
+                    ["requests"] = new Dictionary<string, object>
+                    {
+                        ["memory"] = "1Gi" 
+                    }
+                },
+                ["rootUser"] = "minioadmin",
+                ["rootPassword"] = "minioadmin",
+            };
+
+            var minio = new Release("minio", new ReleaseArgs
             {
                 Chart = "minio",
                 // helm search repo minio/minio --versions
@@ -26,13 +52,53 @@ namespace Infrastructure.ContainerRegistry.Component
                 // minio/minio     4.0.0           RELEASE.2022-04-26T01-20-24Z    Multi-Cloud Object Storage
                 // minio/minio     3.6.6           RELEASE.2022-04-16T04-26-02Z    Multi-Cloud Object Storage
                 Version = "3.6.6",
-                FetchOptions = new ChartFetchArgs
+                RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://charts.min.io"
                 },
-                Namespace = Define.Namespace
+                CreateNamespace = true,
+                Atomic = true,
+                Namespace = Define.Namespace,
+                Timeout = 60 * 10,
+                Values = values
             });
-            minIOChart.Ready();
+            
+            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("minio-container-registry-ingress", new IngressArgs
+            {
+                ApiVersion = "networking.k8s.io/v1",
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "minio-ingress",
+                    Namespace = minio.Namespace
+                },
+                Spec = new IngressSpecArgs
+                {
+                    IngressClassName = "nginx",
+                    Rules = new List<IngressRuleArgs>
+                    {
+                        new IngressRuleArgs
+                        {
+                            Host = "minio.cr.test",
+                            Http = new HTTPIngressRuleValueArgs
+                            {
+                                Paths = new HTTPIngressPathArgs
+                                {
+                                    Path = "/",
+                                    PathType = "Prefix",
+                                    Backend = new IngressBackendArgs
+                                    {
+                                        Service = new IngressServiceBackendArgs
+                                        {
+                                            Name = minio.ResourceNames.Apply(x => x["Service/v1"].First(y => y.Contains("console")).Replace(Define.Namespace+"/", "")),
+                                            Port = new ServiceBackendPortArgs { Number = 9001 }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
     }
 }

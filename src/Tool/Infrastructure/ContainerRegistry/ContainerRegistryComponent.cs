@@ -31,7 +31,7 @@ namespace Infrastructure.ContainerRegistry
                     Name = Define.Namespace
                 }
             });
-            //_minIo.Apply();
+            _minIo.Apply();
             _harbor.Apply();
         }
     }
