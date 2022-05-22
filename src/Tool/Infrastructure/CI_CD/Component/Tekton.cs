@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
 using Pulumi;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
+using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.CI_CD.Component
@@ -44,7 +47,42 @@ namespace Infrastructure.CI_CD.Component
                 //     TransformNamespace
                 // }                
             });
-
+            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("tekton-pipeline-ingress", new IngressArgs
+            {
+                ApiVersion = "networking.k8s.io/v1",
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "tekton-dashboard-ingress",
+                    Namespace = "tekton-pipelines"
+                },
+                Spec = new IngressSpecArgs
+                {
+                    IngressClassName = "nginx",
+                    Rules = new List<IngressRuleArgs>
+                    {
+                        new IngressRuleArgs
+                        {
+                            Host = "tekton.dashboard.cicd.test",
+                            Http = new HTTPIngressRuleValueArgs
+                            {
+                                Paths = new HTTPIngressPathArgs
+                                {
+                                    Path = "/",
+                                    PathType = "Prefix",
+                                    Backend = new IngressBackendArgs
+                                    {
+                                        Service = new IngressServiceBackendArgs
+                                        {
+                                            Name = "tekton-dashboard",
+                                            Port = new ServiceBackendPortArgs { Number = 9097 }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
 
         private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
