@@ -31,7 +31,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 },
                 ["ingress"] = new Dictionary<string, object>
                 {
-                    ["enabled"] = false,
+                    ["enabled"] = false
                 },
                 ["resources"] = new Dictionary<string, object>
                 {
@@ -42,6 +42,15 @@ namespace Infrastructure.ContainerRegistry.Component
                 },
                 ["rootUser"] = "minioadmin",
                 ["rootPassword"] = "minioadmin",
+                ["users"] = new List<object>
+                {
+                    new Dictionary<string, object>
+                    {
+                        ["accessKey"] = "harbor",
+                        ["secretKey"] = "harbor1234",
+                        ["policy"] = "readwrite"
+                    }
+                }
             };
 
             var minio = new Release("minio", new ReleaseArgs
