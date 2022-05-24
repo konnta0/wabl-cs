@@ -24,10 +24,11 @@ namespace Infrastructure.CI_CD.Component
             var configFile = new ConfigFile("tekton-controller-release", new ConfigFileArgs
             {
                 File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.35.0/release.yaml",
-                // Transformations =
-                // {
-                //     TransformNamespace
-                // }
+                Transformations =
+                {
+                    HpaV2beta1ToV1,
+                    //TransformNamespace
+                }
             });
 
             var dashboardConfigFile = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
@@ -90,6 +91,19 @@ namespace Infrastructure.CI_CD.Component
             var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
             if (!metadata.ContainsKey("namespace")) return obj;
             return obj.SetItem("metadata", metadata.SetItem("namespace", Define.Namespace));
+        }
+
+        private ImmutableDictionary<string, object> HpaV2beta1ToV1(ImmutableDictionary<string, object> obj,
+            CustomResourceOptions options)
+        {
+            // measures for below warning
+            // Diagnostics:
+            // kubernetes:autoscaling/v2beta1:HorizontalPodAutoscaler (tekton-pipelines/tekton-pipelines-webhook):
+            // warning: autoscaling/v2beta1/HorizontalPodAutoscaler is deprecated by autoscaling/v1/HorizontalPodAutoscaler.
+
+            if (!obj.TryGetValue("apiVersion", out var apiVersion)) return obj;
+            if ((string)apiVersion != "autoscaling/v2beta1") return obj;
+            return obj.SetItem("apiVersion", "autoscaling/v1");
         }
     }
 }
