@@ -26,9 +26,9 @@ namespace Infrastructure.Stack
             cicdComponent.Apply();
             containerRegistryComponent.Apply();
             observabilityComponent.Apply();
-            GrafanaNamespace = observabilityComponent.GrafanaNamespace;
+            GrafanaHost = observabilityComponent.GrafanaHost;
         }
 
-        [Output] public Output<string> GrafanaNamespace { get; set; }
+        [Output] public Output<string> GrafanaHost { get; set; }
     }
 }

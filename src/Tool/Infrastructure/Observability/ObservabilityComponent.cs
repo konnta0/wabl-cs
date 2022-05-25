@@ -18,9 +18,9 @@ namespace Infrastructure.Observability
         public void Apply()
         {
             _grafana.Apply();
-            GrafanaNamespace = _grafana.Namespace;
+            GrafanaHost = _grafana.IngressHost;
         }
 
-        [Output] public Output<string> GrafanaNamespace { get; set; }
+        [Output] public Output<string> GrafanaHost { get; set; }
     }
 }

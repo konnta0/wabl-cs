@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
@@ -42,7 +43,6 @@ namespace Infrastructure.Observability.Component
                 CreateNamespace = true,
                 Namespace = Define.Namespace
             });
-            Namespace = grafana.Namespace;
             
             var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("grafana-ingress", new IngressArgs
             {
@@ -80,8 +80,9 @@ namespace Infrastructure.Observability.Component
                     }
                 }
             });
+            IngressHost = ingress.Spec.Apply(x => x.Rules.First().Host);
         }
 
-        [Output] public Output<string> Namespace { get; private set; }
+        [Output] public Output<string> IngressHost { get; private set; }
     }
 }
