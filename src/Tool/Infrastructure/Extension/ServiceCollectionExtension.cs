@@ -27,6 +27,7 @@ namespace Infrastructure.Extension
 
         internal static IServiceCollection AddObservability(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddScoped<Loki>();
             serviceCollection.AddScoped<Grafana>();
             serviceCollection.AddScoped<ObservabilityComponent>();
             return serviceCollection;
