@@ -30,10 +30,17 @@ namespace Infrastructure.ContainerRegistry.Component
                     },
                     ["ingress"] = new Dictionary<string, object>
                     {
+                        // ["annotations"] = new Dictionary<string, object>
+                        // {
+                        //     ["ingress.kubernetes.io/ssl-redirect"] = "false",
+                        //     ["ingress.kubernetes.io/proxy-body-size"] = "0",
+                        //     ["nginx.ingress.kubernetes.io/ssl-redirect"] = "false",
+                        //     ["nginx.ingress.kubernetes.io/proxy-body-size"] = "0"
+                        // },
                         ["hosts"] = new Dictionary<string, object>
                         {
-                            ["core"] = "core.harbor.domain.test",
-                            ["notary"] = "notary.harbor.domain.test"
+                            ["core"] = "core.harbor.cr.test",
+                            ["notary"] = "notary.harbor.cr.test"
                         }
                     }
                 },
