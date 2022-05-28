@@ -26,8 +26,11 @@ namespace Infrastructure.Stack
             cicdComponent.Apply();
             containerRegistryComponent.Apply();
             observabilityComponent.Apply();
+            HarborExternalUrl = containerRegistryComponent.HarborExternalUrl;
             GrafanaHost = observabilityComponent.GrafanaHost;
         }
+
+        [Output] public Output<string> HarborExternalUrl { get; set; }
 
         [Output] public Output<string> GrafanaHost { get; set; }
     }

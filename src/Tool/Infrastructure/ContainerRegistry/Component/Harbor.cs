@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Pulumi;
-using Pulumi.Kubernetes.Helm;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
@@ -46,8 +45,8 @@ namespace Infrastructure.ContainerRegistry.Component
                 },
                 ["externalURL"] = "http://core.harbor.domain.test"
             };
-
-            _ = new Release("harbor", new ReleaseArgs
+            
+            var harbor = new Release("harbor", new ReleaseArgs
             {
                 Chart = "harbor",
                 // https://github.com/goharbor/harbor-helm/releases/tag/v1.9.0
@@ -62,7 +61,8 @@ namespace Infrastructure.ContainerRegistry.Component
                 Values = values,
                 Timeout = 60 * 10
             });
+            HarborExternalUrl = harbor.Values.Apply(x => (string)x["externalURL"]);
         }
+        [Output] public Output<string> HarborExternalUrl { get; private set; }
     }
-    
 }

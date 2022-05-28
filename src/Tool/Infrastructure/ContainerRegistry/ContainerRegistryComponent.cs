@@ -33,6 +33,9 @@ namespace Infrastructure.ContainerRegistry
             });
             _minIo.Apply();
             _harbor.Apply();
+            HarborExternalUrl = _harbor.HarborExternalUrl;
         }
+
+        [Output] public Output<string> HarborExternalUrl { get; set; }
     }
 }
