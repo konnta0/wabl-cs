@@ -1,3 +1,4 @@
+using Infrastructure.Certificate;
 using Infrastructure.CI_CD;
 using Infrastructure.CI_CD.Component;
 using Infrastructure.ContainerRegistry;
@@ -30,6 +31,13 @@ namespace Infrastructure.Extension
             serviceCollection.AddScoped<Loki>();
             serviceCollection.AddScoped<Grafana>();
             serviceCollection.AddScoped<ObservabilityComponent>();
+            return serviceCollection;
+        }
+
+        internal static IServiceCollection AddCertificate(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddScoped<CertManager>();
+            serviceCollection.AddScoped<CertificateComponent>();
             return serviceCollection;
         }
     }

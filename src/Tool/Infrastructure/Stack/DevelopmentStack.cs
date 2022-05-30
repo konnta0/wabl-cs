@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using Infrastructure.Certificate;
 using Infrastructure.CI_CD;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.Extension;
@@ -16,7 +17,8 @@ namespace Infrastructure.Stack
         public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, 
             CICDComponent cicdComponent, 
             ContainerRegistryComponent containerRegistryComponent,
-            ObservabilityComponent observabilityComponent)
+            ObservabilityComponent observabilityComponent,
+            CertificateComponent certificateComponent)
         {
             _logger = logger;
             _logger.LogInformation("start development stack");
@@ -28,6 +30,7 @@ namespace Infrastructure.Stack
             observabilityComponent.Apply();
             HarborExternalUrl = containerRegistryComponent.HarborExternalUrl;
             GrafanaHost = observabilityComponent.GrafanaHost;
+            certificateComponent.Apply();
         }
 
         [Output] public Output<string> HarborExternalUrl { get; set; }
