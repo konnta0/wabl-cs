@@ -43,7 +43,24 @@ namespace Infrastructure.ContainerRegistry.Component
                         }
                     }
                 },
-                ["externalURL"] = "http://core.harbor.domain.test"
+                ["externalURL"] = "http://core.harbor.cr.test",
+                ["harborAdminPassword"] = "Harbor1234",
+                ["persistence"] = new Dictionary<string, object>
+                {
+                    ["imageChartStorage"] = new Dictionary<string, object>
+                    {
+                        ["type"] = "s3"
+                    },
+                    ["s3"] = new Dictionary<string, object>
+                    {
+                        ["accesskey"] = "harbor",
+                        ["secretkey"] = "harbor1234",
+                        ["regionendpoint"] = "http://minio-0b9c79dd.container-registry.svc.cluster.local",
+                        ["bucket"] = "harbor",
+                        ["secure"] = false,
+                        ["v4auth"] = true
+                    }
+                }
             };
             
             var harbor = new Release("harbor", new ReleaseArgs
