@@ -9,12 +9,14 @@ namespace Infrastructure.Observability
         private readonly ILogger<ObservabilityComponent> _logger;
         private readonly Grafana _grafana;
         private readonly Loki _loki;
+        private readonly Tempo _tempo;
 
-        public ObservabilityComponent(ILogger<ObservabilityComponent> logger, Grafana grafana, Loki loki)
+        public ObservabilityComponent(ILogger<ObservabilityComponent> logger, Grafana grafana, Loki loki, Tempo tempo)
         {
             _logger = logger;
             _grafana = grafana;
             _loki = loki;
+            _tempo = tempo;
         }
 
         public void Apply()
