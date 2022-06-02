@@ -20,6 +20,7 @@ class Program
         serviceCollection.AddCICD();
         serviceCollection.AddContainerRegistry();
         serviceCollection.AddObservability();
+        serviceCollection.AddCertificate();
         serviceCollection.AddScoped<DevelopmentStack>();
     }
 }
