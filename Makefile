@@ -173,6 +173,16 @@ install-minikube:
 	rm -f minikube-darwin-amd64
 	@echo "end install minikube"
 
+# vi ~/.docker/daemon.json  
+# "insecure-registries": ["core.harbor.cr.test"],
+
+MINIKUBE_IP=$(shell minikube ip)
+TEMPLATE_RESOLVER_MINIKUBE=makefile-resource/minikube-test
+.PHONY: install-resolver-minikube
+install-resolver-minikube:
+	sudo mkdir -p /etc/resolver
+	sed -e 's/MINIKUBE_IP/$(MINIKUBE_IP)/' $(TEMPLATE_RESOLVER_MINIKUBE) | sudo tee /etc/resolver/minikube-test
+
 .PHONY: install-pulumi
 install-pulumi:
 	@echo "start install pulumi"
