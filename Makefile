@@ -189,6 +189,33 @@ install-pulumi:
 	curl -fsSL https://get.pulumi.com | sh
 	@echo "end install pulumi"
 
+TEMPLATE_V3_FILE=makefile-resource/v3.ext
+HABOR_CERT_DIR=harbor-cert
+DOMAIN=cr.test
+SUBJ=/C=JP/ST=Kanagawa/L=Yokohama/O=konnta0/OU=konnta0/CN=$(DOMAIN)
+.PHONY: install-cert
+install-cert:
+	@echo see https://goharbor.io/docs/2.1.0/install-config/configure-https/
+	mkdir -p $(HABOR_CERT_DIR)
+	openssl genrsa -out $(HABOR_CERT_DIR)/ca.key 4096
+	openssl req -x509 -new -nodes -sha512 -days 3650 \
+ -subj "$(SUBJ)" \
+ -key $(HABOR_CERT_DIR)/ca.key -out $(HABOR_CERT_DIR)/ca.crt
+	openssl genrsa -out $(HABOR_CERT_DIR)/$(DOMAIN).key 4096
+	openssl req -sha512 -new \
+	-subj "$(SUBJ)" \
+    -key $(HABOR_CERT_DIR)/$(DOMAIN).key -out $(HABOR_CERT_DIR)/$(DOMAIN).csr
+	sed -e 's/YOURDOMAIN1/$(DOMAIN)/' -e 's/YOURDOMAIN2/$(DOMAIN)/' $(TEMPLATE_V3_FILE) > $(HABOR_CERT_DIR)/v3.ext
+	openssl x509 -req -sha512 -days 3650 -extfile $(HABOR_CERT_DIR)/v3.ext \
+    -CA $(HABOR_CERT_DIR)/ca.crt -CAkey $(HABOR_CERT_DIR)/ca.key -CAcreateserial \
+    -in $(HABOR_CERT_DIR)/$(DOMAIN).csr -out $(HABOR_CERT_DIR)/$(DOMAIN).crt
+	@echo TODO: cp yourdomain.com.crt /data/cert/
+	@echo TODO: cp yourdomain.com.key /data/cert/
+	openssl x509 -inform PEM -in $(HABOR_CERT_DIR)/$(DOMAIN).crt -out $(HABOR_CERT_DIR)/$(DOMAIN).cert
+
+
+
+
 .PHONY: setup-local # 
 setup-local: install-minikube install-pulumi
 	@echo "start setup local"
