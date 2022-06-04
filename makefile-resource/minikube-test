@@ -1,0 +1,4 @@
+domain test
+nameserver MINIKUBE_IP
+search_order 1
+timeout 5
