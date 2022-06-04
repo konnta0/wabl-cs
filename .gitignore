@@ -361,3 +361,4 @@ o11y/grafana/data/lib
 o11y/grafana/data/tempo/wal
 o11y/grafana/data/tempo/blocks
 .idea
+harbor-cert
