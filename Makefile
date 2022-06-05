@@ -213,8 +213,14 @@ install-cert:
 	@echo TODO: cp yourdomain.com.key /data/cert/
 	openssl x509 -inform PEM -in $(HABOR_CERT_DIR)/$(DOMAIN).crt -out $(HABOR_CERT_DIR)/$(DOMAIN).cert
 
-
-
+.PHONY: install-cert-docker
+install-cert-docker: 
+	@echo see https://matsuand.github.io/docs.docker.jp.onthefly/desktop/mac/#directory-structures-for-certificates
+	sudo mkdir -p /etc/docker/certs.d/$(DOMAIN)/
+	sudo cp $(HABOR_CERT_DIR)/$(DOMAIN).cert /etc/docker/certs.d/$(DOMAIN)/
+	sudo cp $(HABOR_CERT_DIR)/$(DOMAIN).key /etc/docker/certs.d/$(DOMAIN)/
+	sudo cp $(HABOR_CERT_DIR)/ca.crt /etc/docker/certs.d/$(DOMAIN)/
+	@echo please docker restart!!!!
 
 .PHONY: setup-local # 
 setup-local: install-minikube install-pulumi
