@@ -24,6 +24,7 @@ namespace Infrastructure.Observability
             _grafana.Apply();
             GrafanaHost = _grafana.IngressHost;
             _loki.Apply();
+            //_tempo.Apply();
         }
 
         [Output] public Output<string> GrafanaHost { get; set; }
