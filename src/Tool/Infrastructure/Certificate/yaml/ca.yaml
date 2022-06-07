@@ -10,7 +10,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: selfsigned-ca
-  namespace: certificate
+  namespace: cert-manager
 spec:
   isCA: true
   commonName: selfsigned-ca
@@ -28,7 +28,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: ca-issuer
-  namespace: certificate
+  namespace: cert-manager
 spec:
   ca:
     secretName: selfsigned-ca
