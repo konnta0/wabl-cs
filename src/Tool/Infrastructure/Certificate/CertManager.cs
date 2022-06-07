@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
+using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.Certificate
 {
@@ -32,6 +33,11 @@ namespace Infrastructure.Certificate
                 Namespace = "certificate",
                 Timeout = 60 * 10,
                 Atomic = true
+            });
+            
+            var ca = new ConfigFile("ca", new ConfigFileArgs
+            {
+                File = "./Certificate/yaml/ca.yaml"
             });
             Namespace = certManager.Namespace;
         }
