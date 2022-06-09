@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
@@ -53,11 +54,23 @@ namespace Infrastructure.Certificate
             
             var ca = new ConfigFile("ca", new ConfigFileArgs
             {
-                File = "./Certificate/yaml/ca.yaml"
+                File = "./Certificate/yaml/ca.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
             });
             Namespace = ns.Metadata.Apply(x => x.Name);
         }
 
         [Output] public Output<string> Namespace { get; private set; }
+        
+        private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
+        {
+            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
+            if (!metadata.ContainsKey("namespace")) return obj;
+            return obj.SetItem("metadata", metadata.SetItem("namespace", "cert-manager"));
+        }
+        
     }
 }
