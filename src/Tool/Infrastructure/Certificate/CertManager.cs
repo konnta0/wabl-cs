@@ -60,6 +60,15 @@ namespace Infrastructure.Certificate
                     TransformNamespace
                 }
             });
+
+            new ConfigFile("certificate-harbor", new ConfigFileArgs
+            {
+                File = "./Certificate/yaml/harbor.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });
             Namespace = ns.Metadata.Apply(x => x.Name);
         }
 
