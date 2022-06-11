@@ -12,4 +12,17 @@
     <PackageReference Include="Pulumi.Kubernetes" Version="3.*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="WebApplication" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Certificate\yaml\ca.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Certificate\yaml\harbor.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
