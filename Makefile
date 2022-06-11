@@ -151,7 +151,7 @@ p-destroy:
 p-urns:
 	pulumi stack --show-urns --cwd $(INFRASTRUCTURE_DIR)
 
-.PHONY: p-delete # pulumi delete
+.PHONY: p-delete # pulumi delete. (e.g.) URN=urn:pulumi:develop::Infrastructure::kubernetes:helm.sh/v3:Release::cert-manager make p-delete
 p-delete:
 	pulumi state delete $(URN) --cwd $(INFRASTRUCTURE_DIR)
 
