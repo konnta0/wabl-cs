@@ -51,16 +51,34 @@ namespace Infrastructure.Certificate
                 Timeout = 60 * 10,
                 Atomic = true
             });
-            
-            var ca = new ConfigFile("ca", new ConfigFileArgs
+
+            new ConfigFile("certificate", new ConfigFileArgs
             {
-                File = "./Certificate/yaml/ca.yaml",
+                File = "./Certificate/yaml/ca/Certificate.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });
+            
+            new ConfigFile("cluster-issuer", new ConfigFileArgs
+            {
+                File = "./Certificate/yaml/ca/ClusterIssuer.yaml",
                 Transformations =
                 {
                     TransformNamespace
                 }
             });
 
+            new ConfigFile("issuer", new ConfigFileArgs
+            {
+                File = "./Certificate/yaml/ca/Issuer.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });
+            
             new ConfigFile("certificate-harbor", new ConfigFileArgs
             {
                 File = "./Certificate/yaml/harbor.yaml",
