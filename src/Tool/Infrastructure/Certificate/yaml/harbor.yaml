@@ -19,7 +19,7 @@ spec:
   commonName: harbor-cn
   duration: 8760h
   dnsNames:
-  - harbor.cr.test
+  - '*.harbor.cr.test'
   secretName: harbor-certificate
   issuerRef:
     name: ca-issuer
