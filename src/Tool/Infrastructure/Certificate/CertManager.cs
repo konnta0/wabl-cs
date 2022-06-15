@@ -70,23 +70,23 @@ namespace Infrastructure.Certificate
                 }
             });
 
-            new ConfigFile("issuer", new ConfigFileArgs
-            {
-                File = "./Certificate/yaml/ca/Issuer.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            });
-            
-            new ConfigFile("certificate-harbor", new ConfigFileArgs
-            {
-                File = "./Certificate/yaml/harbor.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            });
+            // new ConfigFile("issuer", new ConfigFileArgs
+            // {
+            //     File = "./Certificate/yaml/ca/Issuer.yaml",
+            //     Transformations =
+            //     {
+            //         TransformNamespace
+            //     }
+            // });
+            //
+            // new ConfigFile("certificate-harbor", new ConfigFileArgs
+            // {
+            //     File = "./Certificate/yaml/harbor.yaml",
+            //     Transformations =
+            //     {
+            //         TransformNamespace
+            //     }
+            // });
             Namespace = ns.Metadata.Apply(x => x.Name);
         }
 
