@@ -17,10 +17,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Certificate\yaml\ca.yaml">
+    <None Update="Certificate\yaml\harbor.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Certificate\yaml\harbor.yaml">
+    <None Update="Certificate\yaml\ca\Certificate.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Certificate\yaml\ca\ClusterIssuer.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Certificate\yaml\ca\Issuer.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
