@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
+using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.ContainerRegistry.Component
 {
@@ -19,23 +21,40 @@ namespace Infrastructure.ContainerRegistry.Component
 
         public void Apply()
         {
+            new ConfigFile("container-registry-certificate", new ConfigFileArgs
+            {
+                File = "./Certificate/yaml/ca/Certificate.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });
+            
+            new ConfigFile("certificate-harbor", new ConfigFileArgs
+            {
+                File = "./Certificate/yaml/harbor.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });
+            
             var values = new Dictionary<string, object>
             {
                 ["expose"] = new Dictionary<string, object>
                 {
                     ["tls"] = new Dictionary<string, object>
                     {
-                        ["enabled"] = false
+                        ["enabled"] = true,
+                        ["certSource"] = "secret",
+                        ["secret"] = new Dictionary<string, object>
+                        {
+                            ["secretName"] = "harbor-certificate",
+                            ["notarySecretName"] = "harbor-certificate"
+                        }
                     },
                     ["ingress"] = new Dictionary<string, object>
                     {
-                        ["annotations"] = new Dictionary<string, object>
-                        {
-                            ["ingress.kubernetes.io/ssl-redirect"] = "false",
-                            ["ingress.kubernetes.io/proxy-body-size"] = "0",
-                            ["nginx.ingress.kubernetes.io/ssl-redirect"] = "false",
-                            ["nginx.ingress.kubernetes.io/proxy-body-size"] = "0"
-                        },
                         ["hosts"] = new Dictionary<string, object>
                         {
                             ["core"] = "core.harbor.cr.test",
@@ -43,7 +62,7 @@ namespace Infrastructure.ContainerRegistry.Component
                         }
                     }
                 },
-                ["externalURL"] = "http://core.harbor.cr.test",
+                ["externalURL"] = "https://core.harbor.cr.test",
                 ["harborAdminPassword"] = "Harbor1234",
                 ["persistence"] = new Dictionary<string, object>
                 {
@@ -80,6 +99,14 @@ namespace Infrastructure.ContainerRegistry.Component
             });
             HarborExternalUrl = harbor.Values.Apply(x => (string)x["externalURL"]);
         }
+        
+        private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
+        {
+            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
+            if (!metadata.ContainsKey("namespace")) return obj;
+            return obj.SetItem("metadata", metadata.SetItem("namespace", Define.Namespace));
+        }
+
         [Output] public Output<string> HarborExternalUrl { get; private set; }
     }
 }
