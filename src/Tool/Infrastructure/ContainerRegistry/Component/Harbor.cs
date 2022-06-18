@@ -29,6 +29,15 @@ namespace Infrastructure.ContainerRegistry.Component
                     TransformNamespace
                 }
             });
+
+            new ConfigFile("container-registry-issuer", new ConfigFileArgs
+            {
+                File = "./Certificate/yaml/ca/Issuer.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });
             
             new ConfigFile("certificate-harbor", new ConfigFileArgs
             {

@@ -22,8 +22,8 @@ spec:
     - '*.harbor.cr.test'
   secretName: harbor-certificate
   issuerRef:
-    name: selfsigned-issuer
-    kind: ClusterIssuer
+    name: ca-issuer
+    kind: Issuer
     group: cert-manager.io
   privateKey:
     algorithm: RSA
