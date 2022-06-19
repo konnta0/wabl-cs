@@ -124,7 +124,6 @@ migration-add:
 	database_migration \
 	dotnet ef migrations add $(NAME)
 
-
 .PHONY: mk-start # 
 mk-start: 
 	minikube start --memory='6g' --cpus=4 --driver=hyperkit --addons ingress ingress-dns metrics-server --nodes 2
@@ -173,13 +172,10 @@ install-minikube:
 	rm -f minikube-darwin-amd64
 	@echo "end install minikube"
 
-# vi ~/.docker/daemon.json  
-# "insecure-registries": ["core.harbor.cr.test"],
-
 MINIKUBE_IP=$(shell minikube ip)
 TEMPLATE_RESOLVER_MINIKUBE=makefile-resource/minikube-test
 .PHONY: install-resolver-minikube
-install-resolver-minikube:
+install-resolver-minikube: #
 	sudo mkdir -p /etc/resolver
 	sed -e 's/MINIKUBE_IP/$(MINIKUBE_IP)/' $(TEMPLATE_RESOLVER_MINIKUBE) | sudo tee /etc/resolver/minikube-test
 
@@ -189,38 +185,22 @@ install-pulumi:
 	curl -fsSL https://get.pulumi.com | sh
 	@echo "end install pulumi"
 
-TEMPLATE_V3_FILE=makefile-resource/v3.ext
-HABOR_CERT_DIR=harbor-cert
 DOMAIN=cr.test
-SUBJ=/C=JP/ST=Kanagawa/L=Yokohama/O=konnta0/OU=konnta0/CN=$(DOMAIN)
-.PHONY: install-cert
-install-cert:
-	@echo see https://goharbor.io/docs/2.1.0/install-config/configure-https/
-	mkdir -p $(HABOR_CERT_DIR)
-	openssl genrsa -out $(HABOR_CERT_DIR)/ca.key 4096
-	openssl req -x509 -new -nodes -sha512 -days 3650 \
- -subj "$(SUBJ)" \
- -key $(HABOR_CERT_DIR)/ca.key -out $(HABOR_CERT_DIR)/ca.crt
-	openssl genrsa -out $(HABOR_CERT_DIR)/$(DOMAIN).key 4096
-	openssl req -sha512 -new \
-	-subj "$(SUBJ)" \
-    -key $(HABOR_CERT_DIR)/$(DOMAIN).key -out $(HABOR_CERT_DIR)/$(DOMAIN).csr
-	sed -e 's/YOURDOMAIN1/$(DOMAIN)/' -e 's/YOURDOMAIN2/$(DOMAIN)/' $(TEMPLATE_V3_FILE) > $(HABOR_CERT_DIR)/v3.ext
-	openssl x509 -req -sha512 -days 3650 -extfile $(HABOR_CERT_DIR)/v3.ext \
-    -CA $(HABOR_CERT_DIR)/ca.crt -CAkey $(HABOR_CERT_DIR)/ca.key -CAcreateserial \
-    -in $(HABOR_CERT_DIR)/$(DOMAIN).csr -out $(HABOR_CERT_DIR)/$(DOMAIN).crt
-	@echo TODO: cp yourdomain.com.crt /data/cert/
-	@echo TODO: cp yourdomain.com.key /data/cert/
-	openssl x509 -inform PEM -in $(HABOR_CERT_DIR)/$(DOMAIN).crt -out $(HABOR_CERT_DIR)/$(DOMAIN).cert
-
-.PHONY: install-cert-docker
-install-cert-docker: 
+CERTIFICATE_PATH=ca.crt
+.PHONY: add-cert-into-docker
+add-cert-into-docker: #
 	@echo see https://matsuand.github.io/docs.docker.jp.onthefly/desktop/mac/#directory-structures-for-certificates
 	sudo mkdir -p /etc/docker/certs.d/$(DOMAIN)/
-	sudo cp $(HABOR_CERT_DIR)/$(DOMAIN).cert /etc/docker/certs.d/$(DOMAIN)/
-	sudo cp $(HABOR_CERT_DIR)/$(DOMAIN).key /etc/docker/certs.d/$(DOMAIN)/
-	sudo cp $(HABOR_CERT_DIR)/ca.crt /etc/docker/certs.d/$(DOMAIN)/
+	sudo cp $(CERTIFICATE_PATH) /etc/docker/certs.d/$(DOMAIN)/
 	@echo please docker restart!!!!
+
+SECRET_NAMESPACE=container-registry
+SECRET_NAME=harbor-certificate
+CERTIFICATE_NAME=ca.crt
+
+.PHONY: get-cert # must set SECRET_NAMESPACE, SECRET_NAME, CERTIFICATE_NAME
+get-cert:
+	kubectl get secrets $(SECRET_NAME) -n $(SECRET_NAMESPACE) -o jsonpath='{.data.tls\.crt}' | base64 -D > $(CERTIFICATE_NAME)
 
 .PHONY: setup-local # 
 setup-local: install-minikube install-pulumi
