@@ -48,6 +48,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 }
             });
             
+            // ref: https://github.com/goharbor/harbor-helm/blob/master/values.yaml
             var values = new Dictionary<string, object>
             {
                 ["expose"] = new Dictionary<string, object>

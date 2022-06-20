@@ -22,6 +22,7 @@ namespace Infrastructure.ContainerRegistry.Component
 
         public void Apply()
         {
+            // ref: https://github.com/minio/minio/blob/master/helm/minio/values.yaml
             var values = new Dictionary<string, object>
             {
                 ["replicas"] = 4,
