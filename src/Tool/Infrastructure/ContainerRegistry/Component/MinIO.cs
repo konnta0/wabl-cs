@@ -51,6 +51,16 @@ namespace Infrastructure.ContainerRegistry.Component
                         ["secretKey"] = "harbor1234",
                         ["policy"] = "readwrite"
                     }
+                },
+                ["buckets"] = new List<object>
+                {
+                    new Dictionary<string, object>
+                    {
+                        ["name"] = "container-registry",
+                        ["policy"] = "public",
+                        ["purge"] = false,
+                        ["versioning"] = false
+                    }
                 }
             };
 
