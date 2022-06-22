@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
-using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
-using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
 namespace Infrastructure.ContainerRegistry.Component
 {
@@ -32,7 +29,19 @@ namespace Infrastructure.ContainerRegistry.Component
                 },
                 ["ingress"] = new Dictionary<string, object>
                 {
-                    ["enabled"] = false
+                    ["enabled"] = true,
+                    ["hosts"] = new List<object>
+                    {
+                        "api.minio.cr.test"
+                    }
+                },
+                ["consoleIngress"] = new Dictionary<string, object>
+                {
+                    ["enabled"] = true,
+                    ["hosts"] = new List<object>
+                    {
+                        "console.minio.cr.test"
+                    }
                 },
                 ["resources"] = new Dictionary<string, object>
                 {
@@ -64,7 +73,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 }
             };
 
-            var minio = new Release("minio", new ReleaseArgs
+            new Release("minio", new ReleaseArgs
             {
                 Chart = "minio",
                 // helm search repo minio/minio --versions
@@ -81,43 +90,6 @@ namespace Infrastructure.ContainerRegistry.Component
                 Namespace = Define.Namespace,
                 Timeout = 60 * 10,
                 Values = values
-            });
-            
-            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("minio-container-registry-ingress", new IngressArgs
-            {
-                ApiVersion = "networking.k8s.io/v1",
-                Metadata = new ObjectMetaArgs
-                {
-                    Name = "minio-ingress",
-                    Namespace = minio.Namespace
-                },
-                Spec = new IngressSpecArgs
-                {
-                    IngressClassName = "nginx",
-                    Rules = new List<IngressRuleArgs>
-                    {
-                        new IngressRuleArgs
-                        {
-                            Host = "minio.cr.test",
-                            Http = new HTTPIngressRuleValueArgs
-                            {
-                                Paths = new HTTPIngressPathArgs
-                                {
-                                    Path = "/",
-                                    PathType = "Prefix",
-                                    Backend = new IngressBackendArgs
-                                    {
-                                        Service = new IngressServiceBackendArgs
-                                        {
-                                            Name = minio.ResourceNames.Apply(x => x["Service/v1"].First(y => y.Contains("console")).Replace(Define.Namespace+"/", "")),
-                                            Port = new ServiceBackendPortArgs { Number = 9001 }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             });
         }
     }
