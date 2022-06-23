@@ -78,18 +78,27 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     ["imageChartStorage"] = new Dictionary<string, object>
                     {
-                        ["type"] = "s3"
-                    },
-                    ["s3"] = new Dictionary<string, object>
-                    {
-                        ["accesskey"] = "harbor",
-                        ["secretkey"] = "harbor1234",
-                        ["regionendpoint"] = "http://minio-0b9c79dd.container-registry.svc.cluster.local",
-                        ["bucket"] = "harbor",
-                        ["secure"] = false,
-                        ["v4auth"] = true
+                        ["disableredirect"] = false,
+                        ["type"] = "s3",
+                        ["s3"] = new Dictionary<string, object>
+                        {
+                            ["region"] = "us-west-1",
+                            ["accesskey"] = "harbor",
+                            ["secretkey"] = "harbor1234",
+                            ["regionendpoint"] = "http://api.minio.cr.test",
+                            ["bucket"] = "container-registry",
+                            ["secure"] = false,
+                            // ["v4auth"] = true,
+                            ["encrypt"] = false,
+                            ["chunksize"] = 5242880,
+                            ["rootdirectory"] = "/"
+                        }
                     }
-                }
+                 },
+                // ["notary"] = new Dictionary<string, object>
+                // {
+                //     ["secretName"] = "harbor-certificate"
+                // }
             };
             
             var harbor = new Release("harbor", new ReleaseArgs
@@ -105,7 +114,6 @@ namespace Infrastructure.ContainerRegistry.Component
                 Atomic = true,
                 Namespace = Define.Namespace,
                 Values = values,
-                Timeout = 60 * 10
             });
             HarborExternalUrl = harbor.Values.Apply(x => (string)x["externalURL"]);
         }
