@@ -90,7 +90,7 @@ namespace Infrastructure.ContainerRegistry.Component
                             ["secure"] = false,
                             // ["v4auth"] = true,
                             ["encrypt"] = false,
-                            ["chunksize"] = 5242880,
+                            ["chunksize"] = "5242880",
                             ["rootdirectory"] = "/"
                         }
                     }
