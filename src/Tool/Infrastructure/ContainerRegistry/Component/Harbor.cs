@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
@@ -60,7 +61,6 @@ namespace Infrastructure.ContainerRegistry.Component
                         ["secret"] = new Dictionary<string, object>
                         {
                             ["secretName"] = "harbor-certificate",
-                            ["notarySecretName"] = "harbor-certificate"
                         }
                     },
                     ["ingress"] = new Dictionary<string, object>
@@ -74,33 +74,31 @@ namespace Infrastructure.ContainerRegistry.Component
                 },
                 ["externalURL"] = "https://core.harbor.cr.test",
                 ["harborAdminPassword"] = "Harbor1234",
-                ["persistence"] = new Dictionary<string, object>
-                {
-                    ["imageChartStorage"] = new Dictionary<string, object>
-                    {
-                        ["disableredirect"] = false,
-                        ["type"] = "s3",
-                        ["s3"] = new Dictionary<string, object>
-                        {
-                            ["region"] = "us-west-1",
-                            ["accesskey"] = "harbor",
-                            ["secretkey"] = "harbor1234",
-                            ["regionendpoint"] = "http://api.minio.cr.test",
-                            ["bucket"] = "container-registry",
-                            ["secure"] = false,
-                            // ["v4auth"] = true,
-                            ["encrypt"] = false,
-                            ["chunksize"] = "5242880",
-                            ["rootdirectory"] = "/"
-                        }
-                    }
-                 },
-                // ["notary"] = new Dictionary<string, object>
+                // https://github.com/goharbor/harbor-helm/issues/1217
+                // ["persistence"] = new Dictionary<string, object>
                 // {
-                //     ["secretName"] = "harbor-certificate"
-                // }
+                //     ["imageChartStorage"] = new Dictionary<string, object>
+                //     {
+                //         ["disableredirect"] = false,
+                //         ["type"] = "s3",
+                //         ["s3"] = new Dictionary<string, object>
+                //         {
+                //             ["region"] = "us-east-1",
+                //             ["accesskey"] = "harbor",
+                //             ["secretkey"] = "harbor1234",
+                //             ["regionendpoint"] = "http://api.minio.cr.test",
+                //             ["bucket"] = "container-registry",
+                //             ["secure"] = false,
+                //             ["v4auth"] = true,
+                //             ["encrypt"] = false,
+                //             ["chunksize"] = "5242880",
+                //             ["rootdirectory"] = "/"
+                //         }
+                //     }
+                //  }
             };
             
+            HarborExternalUrl = Output<string>.Create(Task.FromResult<string>("dummy"));
             var harbor = new Release("harbor", new ReleaseArgs
             {
                 Chart = "harbor",
@@ -113,7 +111,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 CreateNamespace = true,
                 Atomic = true,
                 Namespace = Define.Namespace,
-                Values = values,
+                Values = values
             });
             HarborExternalUrl = harbor.Values.Apply(x => (string)x["externalURL"]);
         }
