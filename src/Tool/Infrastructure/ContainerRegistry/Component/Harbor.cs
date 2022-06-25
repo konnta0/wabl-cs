@@ -102,8 +102,8 @@ namespace Infrastructure.ContainerRegistry.Component
             var harbor = new Release("harbor", new ReleaseArgs
             {
                 Chart = "harbor",
-                // https://github.com/goharbor/harbor-helm/releases/tag/v1.9.0
-                Version = "v1.9.0",
+                // https://github.com/goharbor/harbor-helm/releases/tag/v1.9.1
+                Version = "v1.9.1",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://helm.goharbor.io"
