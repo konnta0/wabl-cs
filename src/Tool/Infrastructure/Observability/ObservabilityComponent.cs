@@ -1,4 +1,4 @@
-using Infrastructure.Observability.Component;
+using Infrastructure.Observability.Resource;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 

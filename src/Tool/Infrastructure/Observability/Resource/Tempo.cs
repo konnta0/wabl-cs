@@ -2,7 +2,7 @@ using Microsoft.Extensions.Logging;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
-namespace Infrastructure.Observability.Component
+namespace Infrastructure.Observability.Resource
 {
     public class Tempo
     {

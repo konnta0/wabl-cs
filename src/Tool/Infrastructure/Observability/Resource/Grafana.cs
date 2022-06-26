@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
@@ -8,7 +7,7 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
-namespace Infrastructure.Observability.Component
+namespace Infrastructure.Observability.Resource
 {
     public class Grafana
     {
@@ -21,6 +20,38 @@ namespace Infrastructure.Observability.Component
 
         public void Apply()
         {
+            // ref: https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+            var values = new Dictionary<string, object>
+            {
+                ["rbac"] = new Dictionary<string, object>
+                {
+                    ["dashboardProviders"] = new Dictionary<string, object>
+                    {
+                        ["dashboardproviders.yaml"] = new Dictionary<string, object>
+                        {
+                            ["apiVersion"] = 1,
+                            ["providers"] = new List<object>
+                            {
+                                new Dictionary<string, object>
+                                {
+                                    ["name"] = "test",
+                                    ["orgId"] = 1,
+                                    ["folder"] = "",
+                                    ["disableDeletion"] = false,
+                                    ["updateIntervalSeconds"] = false,
+                                    ["allowUiUpdates"] = false,
+                                    ["options"] = new Dictionary<string, object>
+                                    {
+                                        ["path"] = "/var/lib/grafana/dashboard/test",
+                                        ["foldersFromFilesStructure"] = true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+        
             var grafana = new Release("grafana", new ReleaseArgs
             {
                  Chart = "grafana",
@@ -41,6 +72,8 @@ namespace Infrastructure.Observability.Component
                     Repo = "https://grafana.github.io/helm-charts"
                 },
                 CreateNamespace = true,
+                Atomic = true,
+                //Values = values,
                 Namespace = Define.Namespace
             });
             

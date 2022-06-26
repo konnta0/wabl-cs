@@ -4,7 +4,7 @@ using Infrastructure.CI_CD.Resource.Tekton;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.ContainerRegistry.Component;
 using Infrastructure.Observability;
-using Infrastructure.Observability.Component;
+using Infrastructure.Observability.Resource;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Extension
