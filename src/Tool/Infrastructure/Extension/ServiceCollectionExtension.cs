@@ -1,6 +1,6 @@
 using Infrastructure.Certificate;
 using Infrastructure.CI_CD;
-using Infrastructure.CI_CD.Component;
+using Infrastructure.CI_CD.Resource.Tekton;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.ContainerRegistry.Component;
 using Infrastructure.Observability;
@@ -13,7 +13,7 @@ namespace Infrastructure.Extension
     {
         internal static IServiceCollection AddCICD(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<Tekton>();
+            serviceCollection.AddScoped<TektonResource>();
             serviceCollection.AddScoped<CICDComponent>();
             return serviceCollection;
         }

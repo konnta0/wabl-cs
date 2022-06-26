@@ -6,17 +6,16 @@ using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.CI_CD.Component
+namespace Infrastructure.CI_CD.Resource.Tekton
 {
-    public class Tekton
+    public class TektonResource
     {
-        private readonly ILogger<Tekton> _logger;
-        private Config _config;
+        
+        private readonly ILogger<TektonResource> _logger;
 
-        public Tekton(ILogger<Tekton> logger, Config config)
+        public TektonResource(ILogger<TektonResource> logger, Config config)
         {
             _logger = logger;
-            _config = config;
         }
 
         public void Apply()

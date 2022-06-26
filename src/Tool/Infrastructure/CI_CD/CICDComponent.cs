@@ -1,4 +1,4 @@
-using Infrastructure.CI_CD.Component;
+using Infrastructure.CI_CD.Resource.Tekton;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 
@@ -8,9 +8,9 @@ namespace Infrastructure.CI_CD
     {
         private readonly ILogger<CICDComponent> _logger;
         private Config _config;
-        private readonly Tekton _tekton;
+        private readonly TektonResource _tekton;
 
-        public CICDComponent(ILogger<CICDComponent> logger, Config config, Tekton tekton)
+        public CICDComponent(ILogger<CICDComponent> logger, Config config, TektonResource tekton)
         {
             _logger = logger;
             _config = config;
