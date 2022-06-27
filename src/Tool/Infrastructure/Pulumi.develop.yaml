@@ -1,2 +1,4 @@
 config:
+  Infrastructure:Observability:
+    Namespace: observability
   Infrastructure:isMinikube: "true"
