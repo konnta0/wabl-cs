@@ -5,6 +5,9 @@ using Infrastructure.ContainerRegistry;
 using Infrastructure.ContainerRegistry.Component;
 using Infrastructure.Observability;
 using Infrastructure.Observability.Resource;
+using Infrastructure.Observability.Resource.Grafana;
+using Infrastructure.Observability.Resource.Loki;
+using Infrastructure.Observability.Resource.Tempo;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Extension
@@ -28,9 +31,9 @@ namespace Infrastructure.Extension
 
         internal static IServiceCollection AddObservability(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<Tempo>();
-            serviceCollection.AddScoped<Loki>();
-            serviceCollection.AddScoped<Grafana>();
+            serviceCollection.AddScoped<TempoResource>();
+            serviceCollection.AddScoped<LokiResource>();
+            serviceCollection.AddScoped<GrafanaResource>();
             serviceCollection.AddScoped<ObservabilityComponent>();
             return serviceCollection;
         }

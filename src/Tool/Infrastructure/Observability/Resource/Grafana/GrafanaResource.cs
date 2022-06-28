@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
@@ -7,15 +8,18 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
-namespace Infrastructure.Observability.Resource
+namespace Infrastructure.Observability.Resource.Grafana
 {
-    public class Grafana
+    public class GrafanaResource
     {
-        private readonly ILogger<Grafana> _logger;
 
-        public Grafana(ILogger<Grafana> logger)
+        private readonly ILogger<GrafanaResource> _logger;
+        private readonly Config _config;
+
+        public GrafanaResource(ILogger<GrafanaResource> logger, Config config)
         {
             _logger = logger;
+            _config = config;
         }
 
         public void Apply()
@@ -74,7 +78,7 @@ namespace Infrastructure.Observability.Resource
                 CreateNamespace = true,
                 Atomic = true,
                 //Values = values,
-                Namespace = Define.Namespace
+                Namespace = _config.GetObservabilityConfig().Namespace
             });
             
             var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("grafana-ingress", new IngressArgs
@@ -83,7 +87,7 @@ namespace Infrastructure.Observability.Resource
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "grafana-ingress",
-                    Namespace = Define.Namespace
+                    Namespace = _config.GetObservabilityConfig().Namespace
                 },
                 Spec = new IngressSpecArgs
                 {
@@ -103,7 +107,7 @@ namespace Infrastructure.Observability.Resource
                                     {
                                         Service = new IngressServiceBackendArgs
                                         {
-                                            Name = grafana.ResourceNames.Apply(x=> x["Service/v1"].First().Replace(Define.Namespace+"/", "")),
+                                            Name = grafana.ResourceNames.Apply(x=> x["Service/v1"].First().Replace(_config.GetObservabilityConfig().Namespace+"/", "")),
                                             Port = new ServiceBackendPortArgs { Number = 3000 }
                                         }
                                     }

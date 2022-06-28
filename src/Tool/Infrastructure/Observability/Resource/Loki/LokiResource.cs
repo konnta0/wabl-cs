@@ -1,16 +1,20 @@
+using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
+using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
-namespace Infrastructure.Observability.Resource
+namespace Infrastructure.Observability.Resource.Loki
 {
-    public class Loki
+    public class LokiResource
     {
-        private readonly ILogger<Loki> _logger;
+        private readonly ILogger<LokiResource> _logger;
+        private readonly Config _config;
 
-        public Loki(ILogger<Loki> logger)
+        public LokiResource(ILogger<LokiResource> logger, Config config)
         {
             _logger = logger;
+            _config = config;
         }
 
         public void Apply()
@@ -30,7 +34,7 @@ namespace Infrastructure.Observability.Resource
                     Repo = "https://grafana.github.io/helm-charts"
                 },
                 CreateNamespace = true,
-                Namespace = Define.Namespace
+                Namespace = _config.GetObservabilityConfig().Namespace
             });
         }
     }
