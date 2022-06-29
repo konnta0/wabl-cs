@@ -77,7 +77,7 @@ namespace Infrastructure.Observability.Resource.Grafana
                 },
                 CreateNamespace = true,
                 Atomic = true,
-                //Values = values,
+                Values = values,
                 Namespace = _config.GetObservabilityConfig().Namespace
             });
             
