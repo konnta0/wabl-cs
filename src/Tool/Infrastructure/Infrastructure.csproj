@@ -29,6 +29,9 @@
     <None Update="Certificate\yaml\ca\Issuer.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Observability\Resource\Grafana\Dashboard\dashboard.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
