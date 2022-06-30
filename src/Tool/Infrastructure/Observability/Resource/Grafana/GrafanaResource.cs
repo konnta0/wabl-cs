@@ -55,6 +55,24 @@ namespace Infrastructure.Observability.Resource.Grafana
                     }
                 }
             };
+
+            var dashboardConfigMap = new ConfigMap("dashboard-test", new ConfigMapArgs
+            {
+                ApiVersion = "v1",
+                Immutable = true,
+                Data =
+                {
+                    ["testdashbaord.json"] = testDashboardJsonString
+                },
+                Metadata = new ObjectMetaArgs
+                {
+                    Labels =
+                    {
+                        ["grafana_dashboard"] = "true",
+                    },
+                    Namespace = _config.GetObservabilityConfig().Namespace
+                }
+            });
         
             var grafana = new Release("grafana", new ReleaseArgs
             {
