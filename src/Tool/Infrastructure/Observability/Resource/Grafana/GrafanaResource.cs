@@ -24,6 +24,12 @@ namespace Infrastructure.Observability.Resource.Grafana
 
         public void Apply()
         {
+            string testDashboardJsonString;
+            using (var sr = new StreamReader("Observability/Resource/Grafana/Dashboard/dashboard.json"))
+            {
+                testDashboardJsonString = sr.ReadToEnd();
+            }
+            _logger.LogInformation(testDashboardJsonString);
             // ref: https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
             var values = new Dictionary<string, object>
             {
