@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
+using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
+using Pulumi.Kubernetes.Kustomize;
+using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
@@ -33,31 +37,14 @@ namespace Infrastructure.Observability.Resource.Grafana
             // ref: https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
             var values = new Dictionary<string, object>
             {
-                ["rbac"] = new Dictionary<string, object>
+                ["sidecar"] = new Dictionary<string, object>
                 {
-                    ["dashboardProviders"] = new Dictionary<string, object>
+                    ["dashboards"] = new Dictionary<string, object>
                     {
-                        ["dashboardproviders.yaml"] = new Dictionary<string, object>
-                        {
-                            ["apiVersion"] = 1,
-                            ["providers"] = new List<object>
-                            {
-                                new Dictionary<string, object>
-                                {
-                                    ["name"] = "test",
-                                    ["orgId"] = 1,
-                                    ["folder"] = "",
-                                    ["disableDeletion"] = false,
-                                    ["updateIntervalSeconds"] = false,
-                                    ["allowUiUpdates"] = false,
-                                    ["options"] = new Dictionary<string, object>
-                                    {
-                                        ["path"] = "/var/lib/grafana/dashboard/test",
-                                        ["foldersFromFilesStructure"] = true
-                                    }
-                                }
-                            }
-                        }
+                        ["enabled"] = true,
+                        ["label"] = "grafana_dashboard",
+                        ["labelValue"] = "true",
+                        ["searchNamespace"] = _config.GetObservabilityConfig().Namespace,
                     }
                 }
             };
@@ -74,7 +61,7 @@ namespace Infrastructure.Observability.Resource.Grafana
                 {
                     Labels =
                     {
-                        ["grafana_dashboard"] = "true",
+                        ["grafana_dashboard"] = "true"
                     },
                     Namespace = _config.GetObservabilityConfig().Namespace
                 }
