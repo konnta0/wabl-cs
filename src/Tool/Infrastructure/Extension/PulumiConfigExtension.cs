@@ -1,3 +1,4 @@
+using Infrastructure.CI_CD;
 using Infrastructure.Observability;
 using Pulumi;
 
@@ -14,5 +15,10 @@ namespace Infrastructure.Extension
         {
             return config.GetObject<ObservabilityConfig>("Observability");
         }
+
+        internal static CICDConfig GetCICDConfig(this Config config)
+        {
+            return config.GetObject<CICDConfig>("CICD");
+        }        
     }
 }

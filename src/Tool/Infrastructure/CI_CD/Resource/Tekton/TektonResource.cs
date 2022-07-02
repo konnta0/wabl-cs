@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
@@ -12,10 +13,14 @@ namespace Infrastructure.CI_CD.Resource.Tekton
     {
         
         private readonly ILogger<TektonResource> _logger;
+        private readonly Config _config;
+        private readonly PipelineResource _pipelineResource;
 
-        public TektonResource(ILogger<TektonResource> logger, Config config)
+        public TektonResource(ILogger<TektonResource> logger, Config config, PipelineResource pipelineResource)
         {
             _logger = logger;
+            _config = config;
+            _pipelineResource = pipelineResource;
         }
 
         public void Apply()
@@ -89,7 +94,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         {
             var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
             if (!metadata.ContainsKey("namespace")) return obj;
-            return obj.SetItem("metadata", metadata.SetItem("namespace", Define.Namespace));
+            return obj.SetItem("metadata", metadata.SetItem("namespace", _config.GetCICDConfig().Namespace));
         }
 
         private ImmutableDictionary<string, object> HpaV2beta1ToV1(ImmutableDictionary<string, object> obj,
