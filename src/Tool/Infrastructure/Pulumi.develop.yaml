@@ -1,4 +1,6 @@
 config:
   Infrastructure:Observability:
     Namespace: observability
+  Infrastructure:CICD:
+    Namespace: cicd
   Infrastructure:isMinikube: "true"
