@@ -88,6 +88,8 @@ namespace Infrastructure.CI_CD.Resource.Tekton
                     }
                 }
             });
+            
+            _pipelineResource.Apply();
         }
 
         private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
