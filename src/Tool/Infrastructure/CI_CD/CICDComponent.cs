@@ -1,6 +1,10 @@
 using Infrastructure.CI_CD.Resource.Tekton;
+using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
+using Pulumi.Kubernetes.Core.V1;
+using Pulumi.Kubernetes.Types.Inputs.Core.V1;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.CI_CD
 {
@@ -19,6 +23,13 @@ namespace Infrastructure.CI_CD
 
         public void Apply()
         {
+            _ = new Namespace("ci-cd-namespace", new NamespaceArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = _config.GetCICDConfig().Namespace
+                }
+            });
             _tekton.Apply();
         }
     }
