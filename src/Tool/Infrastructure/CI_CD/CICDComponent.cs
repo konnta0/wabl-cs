@@ -23,13 +23,6 @@ namespace Infrastructure.CI_CD
 
         public void Apply()
         {
-            _ = new Namespace("ci-cd-namespace", new NamespaceArgs
-            {
-                Metadata = new ObjectMetaArgs
-                {
-                    Name = _config.GetCICDConfig().Namespace
-                }
-            });
             _tekton.Apply();
         }
     }
