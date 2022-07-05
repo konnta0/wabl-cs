@@ -25,17 +25,18 @@ namespace Infrastructure.CI_CD.Resource.Tekton
 
         public void Apply()
         {
-            var configFile = new ConfigFile("tekton-controller-release", new ConfigFileArgs
+            _ = new ConfigFile("tekton-controller-release", new ConfigFileArgs
             {
                 File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.35.0/release.yaml",
                 Transformations =
                 {
+                    //TransformTektonNamespace,
                     HpaV2beta1ToV1,
                     //TransformNamespace
                 }
             });
 
-            var dashboardConfigFile = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
+            _ = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
             {
                 File = "https://github.com/tektoncd/dashboard/releases/download/v0.25.0/tekton-dashboard-release.yaml",
                 // Transformations =
@@ -44,7 +45,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
                 // }                
             });
 
-            var triggersConfigFile = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
+            _ = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
             {
                 File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.19.1/release.yaml",
                 // Transformations =
@@ -52,7 +53,8 @@ namespace Infrastructure.CI_CD.Resource.Tekton
                 //     TransformNamespace
                 // }                
             });
-            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("tekton-pipeline-ingress", new IngressArgs
+
+            _ = new Pulumi.Kubernetes.Networking.V1.Ingress("tekton-pipeline-ingress", new IngressArgs
             {
                 ApiVersion = "networking.k8s.io/v1",
                 Metadata = new ObjectMetaArgs
@@ -90,6 +92,18 @@ namespace Infrastructure.CI_CD.Resource.Tekton
             });
             
             _pipelineResource.Apply();
+        }
+
+        private ImmutableDictionary<string, object> TransformTektonNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
+        {
+            if (!obj.ContainsKey("kind")) return obj;
+            
+            if ((string)obj["kind"] != "Namespace") return obj;
+            
+            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
+            if (!metadata.ContainsKey("name")) return obj;
+
+            return obj.SetItem("metadata", metadata.SetItem("name", _config.GetCICDConfig().Namespace));
         }
 
         private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
