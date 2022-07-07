@@ -1,0 +1,10 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  namespace: cicd
+  name: container-registry
+spec:
+  type: image
+  params:
+    - name: url
+      value: core.harbor.cr.test/example/myrepo:v0.1
