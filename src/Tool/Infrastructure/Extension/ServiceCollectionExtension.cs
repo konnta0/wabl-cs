@@ -16,6 +16,8 @@ namespace Infrastructure.Extension
     {
         internal static IServiceCollection AddCICD(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddScoped<ClusterRoleBinding>();
+            serviceCollection.AddScoped<ServiceAccount>();
             serviceCollection.AddScoped<PipelineResource>();
             serviceCollection.AddScoped<TektonResource>();
             serviceCollection.AddScoped<CICDComponent>();
