@@ -4,7 +4,6 @@ using Infrastructure.CI_CD.Resource.Tekton;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.ContainerRegistry.Component;
 using Infrastructure.Observability;
-using Infrastructure.Observability.Resource;
 using Infrastructure.Observability.Resource.Grafana;
 using Infrastructure.Observability.Resource.Loki;
 using Infrastructure.Observability.Resource.Tempo;
@@ -21,6 +20,7 @@ namespace Infrastructure.Extension
             serviceCollection.AddScoped<PipelineResource>();
             serviceCollection.AddScoped<TektonResource>();
             serviceCollection.AddScoped<CICDComponent>();
+            serviceCollection.AddScoped<TektonTask>();
             return serviceCollection;
         }
 

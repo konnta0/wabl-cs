@@ -17,14 +17,21 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         private readonly PipelineResource _pipelineResource;
         private readonly ServiceAccount _serviceAccount;
         private readonly ClusterRoleBinding _clusterRoleBinding;
+        private readonly TektonTask _tektonTask;
 
-        public TektonResource(ILogger<TektonResource> logger, Config config, PipelineResource pipelineResource, ServiceAccount serviceAccount, ClusterRoleBinding clusterRoleBinding)
+        public TektonResource(ILogger<TektonResource> logger, 
+            Config config, 
+            PipelineResource pipelineResource, 
+            ServiceAccount serviceAccount, 
+            ClusterRoleBinding clusterRoleBinding,
+            TektonTask tektonTask)
         {
             _logger = logger;
             _config = config;
             _pipelineResource = pipelineResource;
             _serviceAccount = serviceAccount;
             _clusterRoleBinding = clusterRoleBinding;
+            _tektonTask = tektonTask;
         }
 
         public void Apply()
@@ -98,6 +105,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
             _pipelineResource.Apply();
             _serviceAccount.Apply();
             _clusterRoleBinding.Apply();
+            _tektonTask.Apply();
         }
 
         private ImmutableDictionary<string, object> TransformTektonNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
