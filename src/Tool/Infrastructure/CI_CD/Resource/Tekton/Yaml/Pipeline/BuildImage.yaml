@@ -1,0 +1,44 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: build-image-pipeline
+spec:
+  workspaces: 
+    - name: shared-workspace
+  params:
+    - name: git-url
+      type: string
+    - name: git-revision
+      type: string
+      default: "master"
+    - name: image
+      type: string
+  tasks:
+    - name: fetch-repository
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+      params:
+        - name: url
+          value: $(params.git-url)
+        - name: deleteExisting
+          value: "true"
+        - name: revision
+          value: $(params.git-revision)
+    - name: build-push-image
+      taskRef:
+        name: buildah
+      params:
+        - name: IMAGE
+          value: $(params.image)
+        - name: DOCKERFILE
+          value: "Dockerfile"
+        - name: CONTEXT
+          value: "$(workspaces.source.path)"
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+      runAfter:
+        - fetch-repository
