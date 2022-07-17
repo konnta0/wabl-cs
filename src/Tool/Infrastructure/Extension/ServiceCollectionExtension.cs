@@ -21,6 +21,7 @@ namespace Infrastructure.Extension
             serviceCollection.AddScoped<TektonResource>();
             serviceCollection.AddScoped<CICDComponent>();
             serviceCollection.AddScoped<TektonTask>();
+            serviceCollection.AddScoped<Pipeline>();
             return serviceCollection;
         }
 
