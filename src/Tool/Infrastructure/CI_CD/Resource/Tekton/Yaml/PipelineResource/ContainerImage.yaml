@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
-  namespace: cicd
+  namespace: tekton-pipelines
   name: container-registry
 spec:
   type: image
