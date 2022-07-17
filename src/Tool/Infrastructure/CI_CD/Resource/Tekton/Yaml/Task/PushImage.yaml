@@ -1,6 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
+  namespace: tekton-pipelines
   name: push-dokcer-image
 spec:
   inputs:
