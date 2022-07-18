@@ -4,28 +4,20 @@ using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.CI_CD.Resource.Tekton
 {
-    public class TektonTask
+    public class TektonTaskRun
     {
         private readonly Config _config;
 
-        public TektonTask(Config config)
+        public TektonTaskRun(Config config)
         {
             _config = config;
         }
 
         public void Apply()
         {
-            _ = new ConfigFile("tekton-pipeline-task-push-image-config", new ConfigFileArgs
+            _ = new ConfigFile("tekton-pipeline-task-run-hello-world", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/Task/PushImage.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            });
-            _ = new ConfigFile("tekton-pipeline-task-hello-world", new ConfigFileArgs
-            {
-                File = "./CI_CD/Resource/Tekton/Yaml/Task/HelloWorldTask.yaml",
+                File = "./CI_CD/Resource/Tekton/Yaml/TaskRun/HelloWorldTaskRun.yaml",
                 Transformations =
                 {
                     TransformNamespace
