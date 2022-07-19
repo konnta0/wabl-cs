@@ -1,6 +1,4 @@
 using Infrastructure.Certificate;
-using Infrastructure.CI_CD;
-using Infrastructure.CI_CD.Resource.Tekton;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.ContainerRegistry.Component;
 using Infrastructure.Observability;
@@ -13,20 +11,6 @@ namespace Infrastructure.Extension
 {
     internal static class ServiceCollectionExtension
     {
-        internal static IServiceCollection AddCICD(this IServiceCollection serviceCollection)
-        {
-            serviceCollection.AddScoped<ClusterRoleBinding>();
-            serviceCollection.AddScoped<ServiceAccount>();
-            serviceCollection.AddScoped<PipelineResource>();
-            serviceCollection.AddScoped<TektonResource>();
-            serviceCollection.AddScoped<CICDComponent>();
-            serviceCollection.AddScoped<TektonTask>();
-            serviceCollection.AddScoped<Pipeline>();
-            serviceCollection.AddScoped<PipelineRun>();
-            serviceCollection.AddScoped<TektonTaskRun>();
-            return serviceCollection;
-        }
-
         internal static IServiceCollection AddContainerRegistry(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<Harbor>();
