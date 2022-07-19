@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Infrastructure.CI_CD.Extension;
 using Infrastructure.Extension;
 using Infrastructure.Stack;
 using Microsoft.Extensions.DependencyInjection;
