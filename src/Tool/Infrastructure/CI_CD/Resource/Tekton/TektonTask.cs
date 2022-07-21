@@ -17,7 +17,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         {
             _ = new ConfigFile("tekton-pipeline-task-push-image-config", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/Task/PushImage.yaml",
+                File = "./CI_CD/Resource/Tekton/Yaml/Task/push-image.yaml",
                 Transformations =
                 {
                     TransformNamespace
@@ -25,7 +25,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
             });
             _ = new ConfigFile("tekton-pipeline-task-hello-world", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/Task/HelloWorldTask.yaml",
+                File = "./CI_CD/Resource/Tekton/Yaml/Task/hello-world-task.yaml",
                 Transformations =
                 {
                     TransformNamespace

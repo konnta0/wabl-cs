@@ -17,7 +17,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         {
             _ = new ConfigFile("tekton-pipeline-service-account", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/ServiceAccount.yaml",
+                File = "./CI_CD/Resource/Tekton/Yaml/service-account.yaml",
                 Transformations =
                 {
                     TransformNamespace

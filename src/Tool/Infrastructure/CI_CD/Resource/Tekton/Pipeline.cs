@@ -17,7 +17,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         {
             _ = new ConfigFile("tekton-pipeline-build-image", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/Pipeline/BuildImage.yaml",
+                File = "./CI_CD/Resource/Tekton/Yaml/Pipeline/build-image.yaml",
                 Transformations =
                 {
                     TransformNamespace

@@ -17,7 +17,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         {
             _ = new ConfigFile("tekton-pipeline-task-run-hello-world", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/TaskRun/HelloWorldTaskRun.yaml",
+                File = "./CI_CD/Resource/Tekton/Yaml/TaskRun/hello-world-task-run.yaml",
                 Transformations =
                 {
                     TransformNamespace

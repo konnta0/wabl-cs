@@ -17,7 +17,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         {
             _ = new ConfigFile("tekton-pipeline-cluster-role-binding", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/ClusterRoleBinding.yaml",
+                File = "./CI_CD/Resource/Tekton/Yaml/cluster-role-binding.yaml",
                 Transformations =
                 {
                     TransformNamespace
