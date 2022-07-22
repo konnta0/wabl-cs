@@ -16,6 +16,7 @@ namespace Infrastructure.CI_CD.Extension
             serviceCollection.AddScoped<Pipeline>();
             serviceCollection.AddScoped<PipelineRun>();
             serviceCollection.AddScoped<TektonTaskRun>();
+            serviceCollection.AddScoped<Secret>();
             return serviceCollection;
         }
     }
