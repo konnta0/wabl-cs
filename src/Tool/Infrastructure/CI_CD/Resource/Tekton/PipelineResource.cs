@@ -26,7 +26,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
             
             _ = new ConfigFile("tekton-pipeline-resource-source-code-github-config", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/PipelineResource/SourceCodeGithub.yaml",
+                File = "./CI_CD/Resource/Tekton/Yaml/PipelineResource/source-code-github.yaml",
                 Transformations =
                 {
                     TransformNamespace
