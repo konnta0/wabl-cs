@@ -39,6 +39,14 @@ namespace Infrastructure.CI_CD.Resource.Tekton
                     TransformNamespace
                 }
             });
+            _ = new ConfigFile("tekton-pipeline-task-buildah", new ConfigFileArgs
+            {
+                File = "./CI_CD/Resource/Tekton/Yaml/Task/buildah.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });            
         }
         
         private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
