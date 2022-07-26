@@ -38,6 +38,8 @@ spec:
           value: "Dockerfile"
         - name: CONTEXT
           value: "$(workspaces.source.path)"
+        - name: FORMAT
+          value: "docker"
       workspaces:
         - name: source
           workspace: shared-workspace
