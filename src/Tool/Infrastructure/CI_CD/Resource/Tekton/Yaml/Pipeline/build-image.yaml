@@ -11,7 +11,7 @@ spec:
       type: string
     - name: git-revision
       type: string
-      default: "master"
+      default: "main"
     - name: image
       type: string
   tasks:
