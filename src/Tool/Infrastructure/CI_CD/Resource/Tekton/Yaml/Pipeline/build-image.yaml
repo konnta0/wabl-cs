@@ -40,6 +40,9 @@ spec:
           value: "$(workspaces.source.path)"
         - name: FORMAT
           value: "docker"
+        # https://github.com/containers/buildah/discussions/3842#discussioncomment-2455276
+        - name: TLSVERIFY
+          value: "false"
       workspaces:
         - name: source
           workspace: shared-workspace
