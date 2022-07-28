@@ -10,7 +10,7 @@ spec:
     - name: git-url
       value: https://github.com/konnta0/dotnet-metric-test
     - name: image
-      value: konnta0/test:latest
+      value: core.harbor.cr.test/example/myrepo:v0.1
   serviceAccountName: tekton-dashboard-service-account
   workspaces: 
     - name: shared-workspace
