@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using Infrastructure.Extension;
+using Pulumi;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
@@ -6,9 +9,11 @@ namespace Infrastructure.CI_CD.Resource.Tekton
 {
     public class Secret
     {
-        public Secret()
+        private readonly Config _config;
+
+        public Secret(Config config)
         {
-            
+            _config = config;
         }
 
         public void Apply()
@@ -19,8 +24,8 @@ namespace Infrastructure.CI_CD.Resource.Tekton
                 Immutable = true,
                 StringData = new Dictionary<string, string>
                 {
-                    ["username"] = "admin",
-                    ["password"] = "Harbor12345"
+                    ["username"] = _config.GetCICDConfig().RegistryAccess.UserName,
+                    ["password"] = _config.GetCICDConfig().RegistryAccess.PassWord
                 },
                 Metadata = new ObjectMetaArgs
                 {

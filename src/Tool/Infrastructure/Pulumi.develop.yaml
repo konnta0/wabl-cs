@@ -3,4 +3,7 @@ config:
     Namespace: observability
   Infrastructure:CICD:
     Namespace: ci-cd
+    RegistryAccess:
+      UserName: "admin"
+      PassWord: "Harbor12345"
   Infrastructure:isMinikube: "true"
