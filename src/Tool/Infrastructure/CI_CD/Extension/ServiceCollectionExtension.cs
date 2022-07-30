@@ -9,7 +9,6 @@ namespace Infrastructure.CI_CD.Extension
         {
             serviceCollection.AddScoped<ClusterRoleBinding>();
             serviceCollection.AddScoped<ServiceAccount>();
-            serviceCollection.AddScoped<PipelineResource>();
             serviceCollection.AddScoped<TektonResource>();
             serviceCollection.AddScoped<CICDComponent>();
             serviceCollection.AddScoped<TektonTask>();

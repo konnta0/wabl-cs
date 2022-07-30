@@ -14,7 +14,6 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         
         private readonly ILogger<TektonResource> _logger;
         private readonly Config _config;
-        private readonly PipelineResource _pipelineResource;
         private readonly ServiceAccount _serviceAccount;
         private readonly ClusterRoleBinding _clusterRoleBinding;
         private readonly TektonTask _tektonTask;
@@ -25,7 +24,6 @@ namespace Infrastructure.CI_CD.Resource.Tekton
 
         public TektonResource(ILogger<TektonResource> logger, 
             Config config, 
-            PipelineResource pipelineResource, 
             ServiceAccount serviceAccount, 
             ClusterRoleBinding clusterRoleBinding,
             TektonTask tektonTask,
@@ -36,7 +34,6 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         {
             _logger = logger;
             _config = config;
-            _pipelineResource = pipelineResource;
             _serviceAccount = serviceAccount;
             _clusterRoleBinding = clusterRoleBinding;
             _tektonTask = tektonTask;
@@ -114,7 +111,6 @@ namespace Infrastructure.CI_CD.Resource.Tekton
                 }
             });
             
-            _pipelineResource.Apply();
             _secret.Apply();
             _serviceAccount.Apply();
             _clusterRoleBinding.Apply();
