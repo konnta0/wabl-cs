@@ -136,7 +136,7 @@ mk-stop:
 mk-dashboard:
 	minikube dashboard
 
-INFRASTRUCTURE_DIR=./src/Tool/Infrastructure
+INFRASTRUCTURE_DIR=./src/Infrastructure
 STACK?=develop
 .PHONY: p-up # pulumi up
 p-up:

@@ -32,7 +32,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseMigration", "src\To
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagementConsole", "src\Tool\ManagementConsole\ManagementConsole.csproj", "{208B15B8-841E-425D-AF37-6B1D69A538BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Tool\Infrastructure\Infrastructure.csproj", "{DF5EBBCD-1157-4196-85C0-A57D1F6283E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\Infrastructure\Infrastructure.csproj", "{DF5EBBCD-1157-4196-85C0-A57D1F6283E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +107,5 @@ Global
 		{B5A66F89-4B23-4153-993B-283DCB4C6E5E} = {BA3D143E-3E94-4636-BC4F-931D0DB568A9}
 		{9459D3FD-3ACF-4962-8AA4-8C259060B586} = {6C81DDDB-2804-40F5-8826-B12EAD34FE8E}
 		{208B15B8-841E-425D-AF37-6B1D69A538BE} = {6C81DDDB-2804-40F5-8826-B12EAD34FE8E}
-		{DF5EBBCD-1157-4196-85C0-A57D1F6283E4} = {6C81DDDB-2804-40F5-8826-B12EAD34FE8E}
 	EndGlobalSection
 EndGlobal
