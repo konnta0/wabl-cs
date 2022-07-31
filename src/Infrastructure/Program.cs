@@ -2,6 +2,7 @@
 using Infrastructure.CI_CD.Extension;
 using Infrastructure.Extension;
 using Infrastructure.Stack;
+using Infrastructure.VersionControlSystem.Extension;
 using Microsoft.Extensions.DependencyInjection;
 using Pulumi;
 
@@ -22,6 +23,7 @@ class Program
         serviceCollection.AddContainerRegistry();
         serviceCollection.AddObservability();
         serviceCollection.AddCertificate();
+        serviceCollection.AddVersionControlSystem();
         serviceCollection.AddScoped<DevelopmentStack>();
     }
 }
