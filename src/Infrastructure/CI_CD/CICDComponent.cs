@@ -1,10 +1,6 @@
 using Infrastructure.CI_CD.Resource.Tekton;
-using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
-using Pulumi.Kubernetes.Core.V1;
-using Pulumi.Kubernetes.Types.Inputs.Core.V1;
-using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.CI_CD
 {
