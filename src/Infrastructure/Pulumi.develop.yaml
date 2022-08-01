@@ -6,4 +6,6 @@ config:
     RegistryAccess:
       UserName: "admin"
       PassWord: "Harbor12345"
+  Infrastructure:VersionControlSystem:
+    Namespace: vcs
   Infrastructure:isMinikube: "true"

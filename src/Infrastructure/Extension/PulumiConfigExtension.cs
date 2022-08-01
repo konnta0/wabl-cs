@@ -1,5 +1,6 @@
 using Infrastructure.CI_CD;
 using Infrastructure.Observability;
+using Infrastructure.VersionControlSystem;
 using Pulumi;
 
 namespace Infrastructure.Extension
@@ -19,6 +20,11 @@ namespace Infrastructure.Extension
         internal static CICDConfig GetCICDConfig(this Config config)
         {
             return config.GetObject<CICDConfig>("CICD");
-        }        
+        }
+
+        internal static VersionControlSystemConfig GetVersionControlSystemConfig(this Config config)
+        {
+            return config.GetObject<VersionControlSystemConfig>("VersionControlSystem");
+        }
     }
 }
