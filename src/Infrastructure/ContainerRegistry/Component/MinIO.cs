@@ -25,7 +25,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 ["replicas"] = 4,
                 ["persistence"] = new Dictionary<string, object>
                 {
-                    ["size"] = "10Gi"
+                    ["size"] = "1Gi"
                 },
                 ["ingress"] = new Dictionary<string, object>
                 {
@@ -47,7 +47,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     ["requests"] = new Dictionary<string, object>
                     {
-                        ["memory"] = "1Gi" 
+                        ["memory"] = "200Mi" 
                     }
                 },
                 ["rootUser"] = "minioadmin",
