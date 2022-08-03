@@ -126,7 +126,7 @@ migration-add:
 
 .PHONY: mk-start # 
 mk-start: 
-	minikube start --memory='8g' --cpus=4 --driver=hyperkit --addons ingress ingress-dns metrics-server --nodes 2
+	minikube start --memory='8g' --cpus=4 --driver=hyperkit --disk-size=30000mb --addons ingress ingress-dns metrics-server --nodes 2
 
 .PHONY: mk-stop # 
 mk-stop:
