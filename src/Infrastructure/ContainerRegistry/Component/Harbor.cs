@@ -108,9 +108,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     Repo = "https://helm.goharbor.io"
                 },
-                CreateNamespace = true,
                 Atomic = true,
-                Namespace = Define.Namespace,
                 Values = values
             });
             HarborExternalUrl = harbor.Values.Apply(x => (string)x["externalURL"]);
