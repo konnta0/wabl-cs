@@ -73,14 +73,14 @@ namespace Infrastructure.ContainerRegistry.Component
                 }
             };
 
-            new Release("minio", new ReleaseArgs
+            _ = new Release("minio", new ReleaseArgs
             {
                 Chart = "minio",
                 // helm search repo minio/minio --versions
                 // NAME            CHART VERSION   APP VERSION                     DESCRIPTION
                 // minio/minio     4.0.0           RELEASE.2022-04-26T01-20-24Z    Multi-Cloud Object Storage
                 // minio/minio     3.6.6           RELEASE.2022-04-16T04-26-02Z    Multi-Cloud Object Storage
-                Version = "3.6.6",
+                Version = "4.0.2",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://charts.min.io"
