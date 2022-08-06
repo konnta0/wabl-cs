@@ -20,7 +20,7 @@ namespace Infrastructure.ContainerRegistry.Component
             _config = config;
         }
 
-        public void Apply()
+        public void Apply(Input<string> namespaceName)
         {
             new ConfigFile("container-registry-certificate", new ConfigFileArgs
             {
@@ -108,7 +108,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     Repo = "https://helm.goharbor.io"
                 },
-                Namespace = Define.Namespace,
+                Namespace = namespaceName,
                 Atomic = true,
                 Values = values
             });

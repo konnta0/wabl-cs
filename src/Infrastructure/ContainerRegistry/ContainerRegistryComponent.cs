@@ -24,15 +24,15 @@ namespace Infrastructure.ContainerRegistry
 
         public void Apply()
         {
-            _ = new Namespace(Define.Namespace, new NamespaceArgs
+            var @namespace = new Namespace("namespace-container-registry", new NamespaceArgs
             {
                 Metadata = new ObjectMetaArgs
                 {
                     Name = Define.Namespace
                 }
             });
-            _minIo.Apply();
-            _harbor.Apply();
+            _minIo.Apply(@namespace.Metadata.Apply(x => x.Name));
+            _harbor.Apply(@namespace.Metadata.Apply(x => x.Name));
             HarborExternalUrl = _harbor.HarborExternalUrl;
         }
 

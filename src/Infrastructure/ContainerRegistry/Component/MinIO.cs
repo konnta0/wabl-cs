@@ -17,7 +17,7 @@ namespace Infrastructure.ContainerRegistry.Component
             _config = config;
         }
 
-        public void Apply()
+        public void Apply(Input<string> namespaceName)
         {
             // ref: https://github.com/minio/minio/blob/master/helm/minio/values.yaml
             var values = new Dictionary<string, object>
@@ -85,7 +85,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     Repo = "https://charts.min.io"
                 },
-                Namespace = Define.Namespace,
+                Namespace = namespaceName,
                 Atomic = true,
                 Timeout = 60 * 10,
                 Values = values
