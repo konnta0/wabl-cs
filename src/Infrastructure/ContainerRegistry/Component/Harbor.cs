@@ -22,7 +22,7 @@ namespace Infrastructure.ContainerRegistry.Component
 
         public void Apply(Input<string> namespaceName)
         {
-            new ConfigFile("container-registry-certificate", new ConfigFileArgs
+            _ = new ConfigFile("container-registry-certificate", new ConfigFileArgs
             {
                 File = "./Certificate/yaml/ca/Certificate.yaml",
                 Transformations =
@@ -31,7 +31,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 }
             });
 
-            new ConfigFile("container-registry-issuer", new ConfigFileArgs
+            _ = new ConfigFile("container-registry-issuer", new ConfigFileArgs
             {
                 File = "./Certificate/yaml/ca/Issuer.yaml",
                 Transformations =
@@ -40,7 +40,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 }
             });
             
-            new ConfigFile("certificate-harbor", new ConfigFileArgs
+            _ = new ConfigFile("certificate-harbor", new ConfigFileArgs
             {
                 File = "./Certificate/yaml/harbor.yaml",
                 Transformations =
