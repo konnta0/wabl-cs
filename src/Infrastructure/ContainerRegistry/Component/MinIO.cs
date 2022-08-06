@@ -85,6 +85,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     Repo = "https://charts.min.io"
                 },
+                Namespace = Define.Namespace,
                 Atomic = true,
                 Timeout = 60 * 10,
                 Values = values

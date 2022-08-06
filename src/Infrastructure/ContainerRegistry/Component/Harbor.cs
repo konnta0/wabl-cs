@@ -108,6 +108,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     Repo = "https://helm.goharbor.io"
                 },
+                Namespace = Define.Namespace,
                 Atomic = true,
                 Values = values
             });
