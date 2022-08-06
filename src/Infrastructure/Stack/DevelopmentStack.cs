@@ -4,6 +4,7 @@ using Infrastructure.CI_CD;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.Extension;
 using Infrastructure.Observability;
+using Infrastructure.VersionControlSystem;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 
@@ -18,13 +19,14 @@ namespace Infrastructure.Stack
             CICDComponent cicdComponent, 
             ContainerRegistryComponent containerRegistryComponent,
             ObservabilityComponent observabilityComponent,
-            CertificateComponent certificateComponent)
+            CertificateComponent certificateComponent,
+            VersionControlSystemComponent versionControlSystemComponent)
         {
             _logger = logger;
             _logger.LogInformation("start development stack");
             var isMinikube = config.IsMinikube();
             
-            //ingressResource.Apply();
+            certificateComponent.Apply();
             cicdComponent.Apply();
             containerRegistryComponent.Apply();
             observabilityComponent.Apply();
