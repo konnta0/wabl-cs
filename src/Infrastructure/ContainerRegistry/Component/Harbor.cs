@@ -13,6 +13,7 @@ namespace Infrastructure.ContainerRegistry.Component
     {
         private readonly ILogger<Harbor> _logger;
         private Config _config;
+        private Input<string> _namespaceName;
 
         public Harbor(ILogger<Harbor> logger, Config config)
         {
@@ -22,24 +23,8 @@ namespace Infrastructure.ContainerRegistry.Component
 
         public void Apply(Input<string> namespaceName)
         {
-            _ = new ConfigFile("container-registry-certificate", new ConfigFileArgs
-            {
-                File = "./Certificate/yaml/ca/Certificate.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            });
+            _namespaceName = namespaceName;
 
-            _ = new ConfigFile("container-registry-issuer", new ConfigFileArgs
-            {
-                File = "./Certificate/yaml/ca/Issuer.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            });
-            
             _ = new ConfigFile("certificate-harbor", new ConfigFileArgs
             {
                 File = "./Certificate/yaml/harbor.yaml",
@@ -108,7 +93,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     Repo = "https://helm.goharbor.io"
                 },
-                Namespace = namespaceName,
+                Namespace = _namespaceName,
                 Atomic = true,
                 Values = values
             });
@@ -119,7 +104,7 @@ namespace Infrastructure.ContainerRegistry.Component
         {
             var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
             if (!metadata.ContainsKey("namespace")) return obj;
-            return obj.SetItem("metadata", metadata.SetItem("namespace", Define.Namespace));
+            return obj.SetItem("metadata", metadata.SetItem("namespace", _namespaceName));
         }
 
         [Output] public Output<string> HarborExternalUrl { get; private set; }

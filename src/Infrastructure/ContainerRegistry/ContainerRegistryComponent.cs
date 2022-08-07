@@ -1,9 +1,12 @@
+using System.Collections.Immutable;
 using Infrastructure.ContainerRegistry.Component;
+using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
+using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.ContainerRegistry
 {
@@ -13,6 +16,8 @@ namespace Infrastructure.ContainerRegistry
         private Config _config;
         private readonly Harbor _harbor;
         private readonly MinIO _minIo;
+        private Input<string> _namespaceName;
+
 
         public ContainerRegistryComponent(ILogger<ContainerRegistryComponent> logger, Config config, Harbor harbor, MinIO minIo)
         {
@@ -28,14 +33,41 @@ namespace Infrastructure.ContainerRegistry
             {
                 Metadata = new ObjectMetaArgs
                 {
-                    Name = Define.Namespace
+                    Name = _config.GetContainerRegistryConfig().Namespace
                 }
             });
-            _minIo.Apply(@namespace.Metadata.Apply(x => x.Name));
-            _harbor.Apply(@namespace.Metadata.Apply(x => x.Name));
+            _namespaceName = @namespace.Metadata.Apply(x => x.Name);
+
+            _ = new ConfigFile("container-registry-certificate", new ConfigFileArgs
+            {
+                File = "./Certificate/yaml/ca/Certificate.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });
+
+            _ = new ConfigFile("container-registry-issuer", new ConfigFileArgs
+            {
+                File = "./Certificate/yaml/ca/Issuer.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });
+
+            _minIo.Apply(_namespaceName);
+            _harbor.Apply(_namespaceName);
             HarborExternalUrl = _harbor.HarborExternalUrl;
         }
 
+        private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
+        {
+            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
+            if (!metadata.ContainsKey("namespace")) return obj;
+            return obj.SetItem("metadata", metadata.SetItem("namespace", _namespaceName));
+        }
+        
         [Output] public Output<string> HarborExternalUrl { get; set; }
     }
 }

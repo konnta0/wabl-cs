@@ -1,4 +1,5 @@
 using Infrastructure.CI_CD;
+using Infrastructure.ContainerRegistry;
 using Infrastructure.Observability;
 using Infrastructure.VersionControlSystem;
 using Pulumi;
@@ -25,6 +26,11 @@ namespace Infrastructure.Extension
         internal static VersionControlSystemConfig GetVersionControlSystemConfig(this Config config)
         {
             return config.GetObject<VersionControlSystemConfig>("VersionControlSystem");
+        }
+
+        internal static ContainerRegistryConfig GetContainerRegistryConfig(this Config config)
+        {
+            return config.GetObject<ContainerRegistryConfig>("ContainerRegistry");
         }
     }
 }
