@@ -191,7 +191,7 @@ CERTIFICATE_PATH=ca.crt
 add-cert-into-docker: #
 	@echo see https://matsuand.github.io/docs.docker.jp.onthefly/desktop/mac/#directory-structures-for-certificates
 	sudo mkdir -p /etc/docker/certs.d/$(DOMAIN)/
-	sudo cp $(CERTIFICATE_PATH) /etc/docker/certs.d/$(DOMAIN)/
+	sudo cp -f $(CERTIFICATE_PATH) /etc/docker/certs.d/$(DOMAIN)/
 	@echo please docker restart!!!!
 
 SECRET_NAMESPACE=container-registry
