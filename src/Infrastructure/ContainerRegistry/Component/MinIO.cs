@@ -87,7 +87,6 @@ namespace Infrastructure.ContainerRegistry.Component
                 },
                 Namespace = namespaceName,
                 Atomic = true,
-                Timeout = 60 * 10,
                 Values = values
             });
         }
