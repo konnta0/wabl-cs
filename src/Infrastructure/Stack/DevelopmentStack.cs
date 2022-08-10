@@ -24,17 +24,16 @@ namespace Infrastructure.Stack
         {
             _logger = logger;
             _logger.LogInformation("start development stack");
-            var isMinikube = config.IsMinikube();
             
             certificateComponent.Apply();
             cicdComponent.Apply();
-            containerRegistryComponent.Apply();
+            (MinioConsoleHost, HarborExternalUrl) = containerRegistryComponent.Apply();
             observabilityComponent.Apply();
-            HarborExternalUrl = containerRegistryComponent.HarborExternalUrl;
             GrafanaHost = observabilityComponent.GrafanaHost;
             certificateComponent.Apply();
         }
 
+        [Output] public Output<string> MinioConsoleHost { get; set; }
         [Output] public Output<string> HarborExternalUrl { get; set; }
 
         [Output] public Output<string> GrafanaHost { get; set; }

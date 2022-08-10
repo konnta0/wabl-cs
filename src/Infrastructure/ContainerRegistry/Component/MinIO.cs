@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
+using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
@@ -17,7 +20,7 @@ namespace Infrastructure.ContainerRegistry.Component
             _config = config;
         }
 
-        public void Apply(Input<string> namespaceName)
+        public Output<string> Apply(Input<string> namespaceName)
         {
             // ref: https://github.com/minio/minio/blob/master/helm/minio/values.yaml
             var values = new Dictionary<string, object>
@@ -38,7 +41,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 ["consoleIngress"] = new Dictionary<string, object>
                 {
                     ["enabled"] = true,
-                    ["hosts"] = new List<object>
+                    ["hosts"] = new List<string>
                     {
                         "console.minio.cr.test"
                     }
@@ -73,7 +76,18 @@ namespace Infrastructure.ContainerRegistry.Component
                 }
             };
 
-            _ = new Release("minio", new ReleaseArgs
+            if (_config.IsMinikube())
+            {
+                values.TryAdd("makeBucketJob", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+            }
+            
+            var release = new Release("minio", new ReleaseArgs
             {
                 Chart = "minio",
                 // helm search repo minio/minio --versions
@@ -89,6 +103,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 Atomic = true,
                 Values = values
             });
+            return release.Values.Apply(x => (string)((ImmutableArray<object>)((ImmutableDictionary<string, object>)x["consoleIngress"])["hosts"]).First());
         }
     }
 }

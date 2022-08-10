@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
+using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
@@ -21,7 +22,7 @@ namespace Infrastructure.ContainerRegistry.Component
             _config = config;
         }
 
-        public void Apply(Input<string> namespaceName)
+        public Output<string> Apply(Input<string> namespaceName)
         {
             _namespaceName = namespaceName;
 
@@ -82,8 +83,18 @@ namespace Infrastructure.ContainerRegistry.Component
                 //     }
                 //  }
             };
+
+            if (_config.IsMinikube())
+            {
+                values.TryAdd("trivy", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+            }
             
-            HarborExternalUrl = Output<string>.Create(Task.FromResult<string>("dummy"));
             var harbor = new Release("harbor", new ReleaseArgs
             {
                 Chart = "harbor",
@@ -97,7 +108,7 @@ namespace Infrastructure.ContainerRegistry.Component
                 Atomic = true,
                 Values = values
             });
-            HarborExternalUrl = harbor.Values.Apply(x => (string)x["externalURL"]);
+            return harbor.Values.Apply(x => (string)x["externalURL"]);
         }
         
         private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
@@ -106,7 +117,5 @@ namespace Infrastructure.ContainerRegistry.Component
             if (!metadata.ContainsKey("namespace")) return obj;
             return obj.SetItem("metadata", metadata.SetItem("namespace", _namespaceName));
         }
-
-        [Output] public Output<string> HarborExternalUrl { get; private set; }
     }
 }

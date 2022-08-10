@@ -17,8 +17,7 @@ namespace Infrastructure.ContainerRegistry
         private readonly Harbor _harbor;
         private readonly MinIO _minIo;
         private Input<string> _namespaceName;
-
-
+        
         public ContainerRegistryComponent(ILogger<ContainerRegistryComponent> logger, Config config, Harbor harbor, MinIO minIo)
         {
             _logger = logger;
@@ -27,7 +26,7 @@ namespace Infrastructure.ContainerRegistry
             _minIo = minIo;
         }
 
-        public void Apply()
+        public (Output<string> minioConsoleHost, Output<string> harborExternalUrl) Apply()
         {
             var @namespace = new Namespace("namespace-container-registry", new NamespaceArgs
             {
@@ -56,9 +55,10 @@ namespace Infrastructure.ContainerRegistry
                 }
             });
 
-            _minIo.Apply(_namespaceName);
-            _harbor.Apply(_namespaceName);
-            HarborExternalUrl = _harbor.HarborExternalUrl;
+            var minioConsoleHost = _minIo.Apply(_namespaceName);
+            var harborExternalUrl = _harbor.Apply(_namespaceName);
+
+            return (minioConsoleHost, harborExternalUrl);
         }
 
         private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
@@ -67,7 +67,5 @@ namespace Infrastructure.ContainerRegistry
             if (!metadata.ContainsKey("namespace")) return obj;
             return obj.SetItem("metadata", metadata.SetItem("namespace", _namespaceName));
         }
-        
-        [Output] public Output<string> HarborExternalUrl { get; set; }
     }
 }
