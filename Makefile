@@ -178,7 +178,7 @@ install-minikube:
 MINIKUBE_IP=$(shell minikube ip)
 TEMPLATE_RESOLVER_MINIKUBE=makefile-resource/minikube-test
 .PHONY: install-resolver-minikube
-install-resolver-minikube: #
+install-resolver-minikube: # https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/#mdns-reloading
 	sudo mkdir -p /etc/resolver
 	sed -e 's/MINIKUBE_IP/$(MINIKUBE_IP)/' $(TEMPLATE_RESOLVER_MINIKUBE) | sudo tee /etc/resolver/minikube-test
 
