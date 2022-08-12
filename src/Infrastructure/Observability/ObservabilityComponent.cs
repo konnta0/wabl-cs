@@ -22,14 +22,12 @@ namespace Infrastructure.Observability
             _tempoResource = tempoResource;
         }
 
-        public void Apply()
+        public Output<string> Apply()
         {
-            _grafana.Apply();
-            GrafanaHost = _grafana.IngressHost;
+            var grafanaHost = _grafana.Apply();
             _lokiResource.Apply();
             _tempoResource.Apply();
+            return grafanaHost;
         }
-
-        [Output] public Output<string> GrafanaHost { get; set; }
     }
 }

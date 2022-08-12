@@ -26,7 +26,7 @@ namespace Infrastructure.Observability.Resource.Grafana
             _config = config;
         }
 
-        public void Apply()
+        public Output<string> Apply()
         {
             string testDashboardJsonString;
             using (var sr = new StreamReader("Observability/Resource/Grafana/Dashboard/dashboard.json"))
@@ -49,7 +49,7 @@ namespace Infrastructure.Observability.Resource.Grafana
                 }
             };
 
-            var dashboardConfigMap = new ConfigMap("dashboard-test", new ConfigMapArgs
+            _ = new ConfigMap("dashboard-test", new ConfigMapArgs
             {
                 ApiVersion = "v1",
                 Immutable = true,
@@ -128,9 +128,7 @@ namespace Infrastructure.Observability.Resource.Grafana
                     }
                 }
             });
-            IngressHost = ingress.Spec.Apply(x => x.Rules.First().Host);
+            return ingress.Spec.Apply(x => x.Rules.First().Host);
         }
-
-        [Output] public Output<string> IngressHost { get; private set; }
     }
 }
