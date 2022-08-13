@@ -119,7 +119,8 @@ namespace Infrastructure.ContainerRegistry.Component
                 },
                 Namespace = _namespaceName,
                 Atomic = true,
-                Values = values
+                Values = values,
+                Timeout = 60 * 10
             });
             return harbor.Values.Apply(x => (string)x["externalURL"]);
         }
