@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Threading.Tasks;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
@@ -87,6 +86,20 @@ namespace Infrastructure.ContainerRegistry.Component
             if (_config.IsMinikube())
             {
                 values.TryAdd("trivy", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("core", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("redis", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
