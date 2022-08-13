@@ -10,4 +10,4 @@ config:
     Namespace: container-registry
   Infrastructure:VersionControlSystem:
     Namespace: vcs
-  Infrastructure:isMinikube: "true"
+  Infrastructure:isMinikube: true
