@@ -78,7 +78,32 @@ namespace Infrastructure.ContainerRegistry.Component
 
             if (_config.IsMinikube())
             {
+                values.TryAdd("nodeSelector", new Dictionary<string, object>
+                {
+                    ["kubernetes.io/hostname"] = "minikube"
+                });
                 values.TryAdd("makeBucketJob", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("makePolicyJob", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("makeUserJob", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("customCommandJob", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
