@@ -85,6 +85,23 @@ namespace Infrastructure.ContainerRegistry.Component
 
             if (_config.IsMinikube())
             {
+                values.TryAdd("notary", new Dictionary<string, object>
+                {
+                    ["server"] = new Dictionary<string, object>
+                    {
+                        ["nodeSelector"] = new Dictionary<string, object>
+                        {
+                            ["kubernetes.io/hostname"] = "minikube"
+                        }
+                    },
+                    ["signer"] = new Dictionary<string, object>
+                    {
+                        ["nodeSelector"] = new Dictionary<string, object>
+                        {
+                            ["kubernetes.io/hostname"] = "minikube"
+                        }
+                    }
+                });
                 values.TryAdd("trivy", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
@@ -99,11 +116,42 @@ namespace Infrastructure.ContainerRegistry.Component
                         ["kubernetes.io/hostname"] = "minikube"
                     }
                 });
-                values.TryAdd("redis", new Dictionary<string, object>
+                values.TryAdd("jobservice", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
                         ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("registry", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("chartmuseum", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("database", new Dictionary<string, object>
+                {
+                    ["nodeSelector"] = new Dictionary<string, object>
+                    {
+                        ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("redis", new Dictionary<string, object>
+                {
+                    ["internal"] = new Dictionary<string, object>
+                    {
+                        ["nodeSelector"] = new Dictionary<string, object>
+                        {
+                            ["kubernetes.io/hostname"] = "minikube"
+                        }
                     }
                 });
             }
