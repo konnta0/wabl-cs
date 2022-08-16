@@ -54,7 +54,7 @@ namespace Infrastructure.Certificate
 
             new ConfigFile("certificate", new ConfigFileArgs
             {
-                File = "./Certificate/yaml/ca/Certificate.yaml",
+                File = "./Certificate/yaml/ca/certificate.yaml",
                 Transformations =
                 {
                     TransformNamespace
@@ -63,7 +63,7 @@ namespace Infrastructure.Certificate
             
             new ConfigFile("cluster-issuer", new ConfigFileArgs
             {
-                File = "./Certificate/yaml/ca/ClusterIssuer.yaml",
+                File = "./Certificate/yaml/ca/cluster-issuer.yaml",
                 Transformations =
                 {
                     TransformNamespace

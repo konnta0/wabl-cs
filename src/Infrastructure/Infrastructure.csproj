@@ -20,13 +20,13 @@
     <None Update="Certificate\yaml\harbor.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Certificate\yaml\ca\Certificate.yaml">
+    <None Update="Certificate\yaml\ca\certificate.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Certificate\yaml\ca\ClusterIssuer.yaml">
+    <None Update="Certificate\yaml\ca\cluster-issuer.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Certificate\yaml\ca\Issuer.yaml">
+    <None Update="Certificate\yaml\ca\issuer.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Observability\Resource\Grafana\Dashboard\dashboard.json">
