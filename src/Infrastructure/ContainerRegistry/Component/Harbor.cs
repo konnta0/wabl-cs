@@ -137,11 +137,21 @@ namespace Infrastructure.ContainerRegistry.Component
                         ["kubernetes.io/hostname"] = "minikube"
                     }
                 });
-                values.TryAdd("database", new Dictionary<string, object>
+                values.TryAdd("portal", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
                         ["kubernetes.io/hostname"] = "minikube"
+                    }
+                });
+                values.TryAdd("database", new Dictionary<string, object>
+                {
+                    ["internal"] = new Dictionary<string, object>
+                    {
+                        ["nodeSelector"] = new Dictionary<string, object>
+                        {
+                            ["kubernetes.io/hostname"] = "minikube"
+                        }
                     }
                 });
                 values.TryAdd("redis", new Dictionary<string, object>
