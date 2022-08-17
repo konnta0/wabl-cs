@@ -29,9 +29,10 @@ namespace Infrastructure.Stack
             cicdComponent.Apply();
             (MinioConsoleHost, HarborExternalUrl) = containerRegistryComponent.Apply();
             GrafanaHost = observabilityComponent.Apply();
-            //versionControlSystemComponent.Apply();
+            //GitLabHost = versionControlSystemComponent.Apply();
         }
 
+        //[Output] public Output<string> GitLabHost { get; set; }
         [Output] public Output<string> MinioConsoleHost { get; set; }
         [Output] public Output<string> HarborExternalUrl { get; set; }
 
