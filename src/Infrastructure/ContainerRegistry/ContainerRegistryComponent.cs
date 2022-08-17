@@ -39,7 +39,7 @@ namespace Infrastructure.ContainerRegistry
 
             _ = new ConfigFile("container-registry-certificate", new ConfigFileArgs
             {
-                File = "./Certificate/Yaml/certificate.yaml",
+                File = "./Certificate/Resource/Yaml/certificate.yaml",
                 Transformations =
                 {
                     TransformNamespace
@@ -48,7 +48,7 @@ namespace Infrastructure.ContainerRegistry
 
             _ = new ConfigFile("container-registry-issuer", new ConfigFileArgs
             {
-                File = "./Certificate/Yaml/issuer.yaml",
+                File = "./Certificate/Resource/Yaml/issuer.yaml",
                 Transformations =
                 {
                     TransformNamespace

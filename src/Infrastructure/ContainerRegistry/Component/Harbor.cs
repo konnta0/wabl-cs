@@ -27,7 +27,7 @@ namespace Infrastructure.ContainerRegistry.Component
 
             _ = new ConfigFile("certificate-harbor", new ConfigFileArgs
             {
-                File = "./Certificate/yaml/harbor.yaml",
+                File = "./Certificate/Resource/Yaml/harbor.yaml",
                 Transformations =
                 {
                     TransformNamespace
