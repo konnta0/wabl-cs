@@ -8,6 +8,14 @@ config:
       PassWord: "Harbor12345"
   Infrastructure:ContainerRegistry:
     Namespace: container-registry
+    Harbor:
+      NodeSelector:
+        Label: "kubernetes.io/hostname"
+        Value: "minikube-m02"
+    MinIO:
+      NodeSelector:
+        Label: "kubernetes.io/hostname"
+        Value: "minikube-m02"      
   Infrastructure:VersionControlSystem:
     Namespace: vcs
   Infrastructure:isMinikube: true
