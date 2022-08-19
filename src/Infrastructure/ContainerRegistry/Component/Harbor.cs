@@ -85,20 +85,21 @@ namespace Infrastructure.ContainerRegistry.Component
 
             if (_config.IsMinikube())
             {
+                var containerRegistryConfig = _config.GetContainerRegistryConfig();
                 values.TryAdd("notary", new Dictionary<string, object>
                 {
                     ["server"] = new Dictionary<string, object>
                     {
                         ["nodeSelector"] = new Dictionary<string, object>
                         {
-                            ["kubernetes.io/hostname"] = "minikube"
+                            [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                         }
                     },
                     ["signer"] = new Dictionary<string, object>
                     {
                         ["nodeSelector"] = new Dictionary<string, object>
                         {
-                            ["kubernetes.io/hostname"] = "minikube"
+                            [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                         }
                     }
                 });
@@ -106,42 +107,42 @@ namespace Infrastructure.ContainerRegistry.Component
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
-                        ["kubernetes.io/hostname"] = "minikube"
+                        [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
                 values.TryAdd("core", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
-                        ["kubernetes.io/hostname"] = "minikube"
+                        [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
                 values.TryAdd("jobservice", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
-                        ["kubernetes.io/hostname"] = "minikube"
+                        [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
                 values.TryAdd("registry", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
-                        ["kubernetes.io/hostname"] = "minikube"
+                        [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
                 values.TryAdd("chartmuseum", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
-                        ["kubernetes.io/hostname"] = "minikube"
+                        [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
                 values.TryAdd("portal", new Dictionary<string, object>
                 {
                     ["nodeSelector"] = new Dictionary<string, object>
                     {
-                        ["kubernetes.io/hostname"] = "minikube"
+                        [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
                 values.TryAdd("database", new Dictionary<string, object>
@@ -150,7 +151,7 @@ namespace Infrastructure.ContainerRegistry.Component
                     {
                         ["nodeSelector"] = new Dictionary<string, object>
                         {
-                            ["kubernetes.io/hostname"] = "minikube"
+                            [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                         }
                     }
                 });
@@ -160,7 +161,7 @@ namespace Infrastructure.ContainerRegistry.Component
                     {
                         ["nodeSelector"] = new Dictionary<string, object>
                         {
-                            ["kubernetes.io/hostname"] = "minikube"
+                            [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                         }
                     }
                 });
