@@ -126,7 +126,7 @@ migration-add:
 
 .PHONY: mk-start # 
 mk-start: 
-	minikube start --memory='3g' --cpus=2 --driver=hyperkit --disk-size=30000mb --nodes=3
+	minikube start --memory='7g' --cpus=4 --driver=hyperkit --disk-size=40000mb --nodes=1
 	minikube addons enable ingress
 	minikube addons enable ingress-dns
 	minikube addons enable metrics-server
@@ -204,6 +204,11 @@ CERTIFICATE_NAME=ca.crt
 .PHONY: get-cert # must set SECRET_NAMESPACE, SECRET_NAME, CERTIFICATE_NAME
 get-cert:
 	kubectl get secrets $(SECRET_NAME) -n $(SECRET_NAMESPACE) -o jsonpath='{.data.tls\.crt}' | base64 -D > $(CERTIFICATE_NAME)
+
+.PHONY: add-cert # must set SECRET_NAMESPACE, SECRET_NAME, CERTIFICATE_NAME
+add-cert: get-cert
+	sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain $(CERTIFICATE_NAME)
+
 
 .PHONY: setup-local # 
 setup-local: install-minikube install-pulumi

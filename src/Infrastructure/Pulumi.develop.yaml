@@ -11,11 +11,11 @@ config:
     Harbor:
       NodeSelector:
         Label: "kubernetes.io/hostname"
-        Value: "minikube-m02"
+        Value: "minikube"
     MinIO:
       NodeSelector:
         Label: "kubernetes.io/hostname"
-        Value: "minikube-m02"      
+        Value: "minikube"      
   Infrastructure:VersionControlSystem:
     Namespace: vcs
   Infrastructure:isMinikube: true
