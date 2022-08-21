@@ -1,6 +1,6 @@
 using Infrastructure.Certificate;
 using Infrastructure.ContainerRegistry;
-using Infrastructure.ContainerRegistry.Component;
+using Infrastructure.ContainerRegistry.Resource;
 using Infrastructure.Observability;
 using Infrastructure.Observability.Resource.Grafana;
 using Infrastructure.Observability.Resource.Loki;

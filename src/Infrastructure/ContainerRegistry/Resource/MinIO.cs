@@ -7,7 +7,7 @@ using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
-namespace Infrastructure.ContainerRegistry.Component
+namespace Infrastructure.ContainerRegistry.Resource
 {
     public class MinIO
     {

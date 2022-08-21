@@ -1,5 +1,5 @@
 using System.Collections.Immutable;
-using Infrastructure.ContainerRegistry.Component;
+using Infrastructure.ContainerRegistry.Resource;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;

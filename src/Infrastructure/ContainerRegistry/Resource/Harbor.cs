@@ -7,7 +7,7 @@ using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.ContainerRegistry.Component
+namespace Infrastructure.ContainerRegistry.Resource
 {
     public class Harbor
     {
@@ -59,27 +59,34 @@ namespace Infrastructure.ContainerRegistry.Component
                 },
                 ["externalURL"] = "https://core.harbor.cr.test",
                 ["harborAdminPassword"] = "Harbor1234",
-                // https://github.com/goharbor/harbor-helm/issues/1217
                 // ["persistence"] = new Dictionary<string, object>
                 // {
-                //     ["imageChartStorage"] = new Dictionary<string, object>
+                //     ["persistentVolumeClaim"] = new Dictionary<string, object>
                 //     {
-                //         ["disableredirect"] = false,
-                //         ["type"] = "s3",
-                //         ["s3"] = new Dictionary<string, object>
+                //         ["database"] = new Dictionary<string, object>
                 //         {
-                //             ["region"] = "us-east-1",
-                //             ["accesskey"] = "harbor",
-                //             ["secretkey"] = "harbor1234",
-                //             ["regionendpoint"] = "http://api.minio.cr.test",
-                //             ["bucket"] = "container-registry",
-                //             ["secure"] = false,
-                //             ["v4auth"] = true,
-                //             ["encrypt"] = false,
-                //             ["chunksize"] = "5242880",
-                //             ["rootdirectory"] = "/"
+                //             ["accessMode"] = "ReadWriteMany"
                 //         }
                 //     }
+                //     // https://github.com/goharbor/harbor-helm/issues/1217
+                //     // ["imageChartStorage"] = new Dictionary<string, object>
+                //     // {
+                //     //     ["disableredirect"] = false,
+                //     //     ["type"] = "s3",
+                //     //     ["s3"] = new Dictionary<string, object>
+                //     //     {
+                //     //         ["region"] = "us-east-1",
+                //     //         ["accesskey"] = "harbor",
+                //     //         ["secretkey"] = "harbor1234",
+                //     //         ["regionendpoint"] = "http://api.minio.cr.test",
+                //     //         ["bucket"] = "container-registry",
+                //     //         ["secure"] = false,
+                //     //         ["v4auth"] = true,
+                //     //         ["encrypt"] = false,
+                //     //         ["chunksize"] = "5242880",
+                //     //         ["rootdirectory"] = "/"
+                //     //     }
+                //     // }
                 //  }
             };
 
