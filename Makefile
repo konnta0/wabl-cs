@@ -130,6 +130,8 @@ mk-start:
 	minikube addons enable ingress
 	minikube addons enable ingress-dns
 	minikube addons enable metrics-server
+	#minikube node add --worker=true
+	#minikube node add --worker=true
 
 .PHONY: mk-stop # 
 mk-stop:
