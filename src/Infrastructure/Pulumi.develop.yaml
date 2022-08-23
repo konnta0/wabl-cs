@@ -5,7 +5,7 @@ config:
     Namespace: ci-cd
     RegistryAccess:
       UserName: "admin"
-      PassWord: "Harbor12345"
+      PassWord: "Harbor1234"
   Infrastructure:ContainerRegistry:
     Namespace: container-registry
     Harbor:
