@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  namespace: tekton-pipelines
+  name: unit-test
+spec:
+  params:
+  - name: source-directory
+  steps:
+  - name: unit-test
+    image: mcr.microsoft.com/dotnet/sdk:6.0.100-alpine3.14
+    command:
+    - /bin/bash
+    args:
+    - -c
+    - "cd ${params.source-directory}; dotnet test"

@@ -1,0 +1,42 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  namespace: tekton-pipelines
+  name: unit-test-pipeline
+spec:
+  workspaces: 
+    - name: shared-workspace
+  params:
+    - name: git-url
+      type: string
+    - name: git-revision
+      type: string
+      default: "main"
+    - name: source-directory
+      type: string
+      default: "src"
+  tasks:
+    - name: fetch-repository
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+      params:
+        - name: url
+          value: $(params.git-url)
+        - name: deleteExisting
+          value: "true"
+        - name: revision
+          value: $(params.git-revision)
+    - name: run-unit-test
+      taskRef:
+        name: unit-test
+      params:
+        - name: source-directory
+          value: $(params.source-directory)
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+      runAfter:
+        - fetch-repository

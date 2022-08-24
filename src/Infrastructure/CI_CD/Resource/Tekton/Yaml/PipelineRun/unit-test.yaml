@@ -1,0 +1,25 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  namespace: tekton-pipelines
+  name: unit-test-run
+spec:
+  pipelineRef:
+    name: unit-test-pipeline
+  params: 
+    - name: git-url
+      value: https://github.com/konnta0/dotnet-metric-test
+    - name: git-revision
+      value: "main"
+    - name: source-directory
+      value: "src"
+  serviceAccountName: tekton-dashboard-service-account
+  workspaces: 
+    - name: shared-workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteMany
+          resources:
+            requests:
+              storage: 1Gi
