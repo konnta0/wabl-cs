@@ -34,7 +34,7 @@ spec:
         name: unit-test
       params:
         - name: source-directory
-          value: $(params.source-directory)
+          value: "$(workspaces.source.path)/$(params.source-directory)"
       workspaces:
         - name: source
           workspace: shared-workspace
