@@ -11,8 +11,8 @@ spec:
       value: https://github.com/konnta0/dotnet-metric-test
     - name: git-revision
       value: "main"
-    - name: source-directory
-      value: "src"
+    - name: project-directory
+      value: "tests/WebApplication.Test"
   serviceAccountName: tekton-dashboard-service-account
   workspaces: 
     - name: shared-workspace

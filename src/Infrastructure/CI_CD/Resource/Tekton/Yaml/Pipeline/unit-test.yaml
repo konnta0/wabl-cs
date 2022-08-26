@@ -12,9 +12,9 @@ spec:
     - name: git-revision
       type: string
       default: "main"
-    - name: source-directory
+    - name: project-directory
       type: string
-      default: "src"
+      default: "tests/WebApplication.Test"
   tasks:
     - name: fetch-repository
       taskRef:
@@ -32,11 +32,11 @@ spec:
     - name: run-unit-test
       taskRef:
         name: unit-test
-      params:
-        - name: source-directory
-          value: "$(workspaces.source.path)/$(params.source-directory)"
       workspaces:
         - name: source
           workspace: shared-workspace
+      params:
+        - name: project-directory
+          value: "$(workspaces.source.path)/$(params.project-directory)"
       runAfter:
         - fetch-repository
