@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="WebApplication" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Observability\Resource\Grafana\Dashboard\dashboard.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
