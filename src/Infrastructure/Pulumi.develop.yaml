@@ -18,4 +18,6 @@ config:
         Value: "minikube"      
   Infrastructure:VersionControlSystem:
     Namespace: vcs
+  Infrastructure:WebApplication:
+    Namespace: webapp
   Infrastructure:isMinikube: true

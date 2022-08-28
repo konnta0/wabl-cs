@@ -2,6 +2,7 @@ using Infrastructure.CI_CD;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.Observability;
 using Infrastructure.VersionControlSystem;
+using Infrastructure.WebApplication;
 using Pulumi;
 
 namespace Infrastructure.Extension
@@ -31,6 +32,11 @@ namespace Infrastructure.Extension
         internal static ContainerRegistryConfig GetContainerRegistryConfig(this Config config)
         {
             return config.GetObject<ContainerRegistryConfig>("ContainerRegistry");
+        }
+
+        internal static WebApplicationConfig GetWebApplicationConfig(this Config config)
+        {
+            return config.GetObject<WebApplicationConfig>("WebApplicationConfig");
         }
     }
 }
