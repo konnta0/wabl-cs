@@ -23,6 +23,15 @@ namespace Infrastructure.CI_CD.Resource.Tekton
                     TransformNamespace
                 }
             });
+            
+            _ = new ConfigFile("tekton-pipeline-run-unit-test", new ConfigFileArgs
+            {
+                File = "./CI_CD/Resource/Tekton/Yaml/PipelineRun/unit-test.yaml",
+                Transformations =
+                {
+                    TransformNamespace
+                }
+            });
         }
 
         private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
