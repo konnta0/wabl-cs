@@ -27,13 +27,13 @@ namespace Infrastructure.Stack
             
             certificateComponent.Apply();
             cicdComponent.Apply();
-            (MinioConsoleHost, HarborExternalUrl) = containerRegistryComponent.Apply();
+            (_, HarborExternalUrl) = containerRegistryComponent.Apply();
             GrafanaHost = observabilityComponent.Apply();
             //GitLabHost = versionControlSystemComponent.Apply();
         }
 
         //[Output] public Output<string> GitLabHost { get; set; }
-        [Output] public Output<string> MinioConsoleHost { get; set; }
+        // [Output] public Output<string> MinioConsoleHost { get; set; }
         [Output] public Output<string> HarborExternalUrl { get; set; }
 
         [Output] public Output<string> GrafanaHost { get; set; }

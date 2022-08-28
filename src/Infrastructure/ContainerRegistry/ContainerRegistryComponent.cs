@@ -26,7 +26,7 @@ namespace Infrastructure.ContainerRegistry
             _minIo = minIo;
         }
 
-        public (Output<string> minioConsoleHost, Output<string> harborExternalUrl) Apply()
+        public (string minioConsoleHost, Output<string> harborExternalUrl) Apply()
         {
             var @namespace = new Namespace("namespace-container-registry", new NamespaceArgs
             {
@@ -55,10 +55,10 @@ namespace Infrastructure.ContainerRegistry
                 }
             });
 
-            var minioConsoleHost = _minIo.Apply(_namespaceName);
+            //var minioConsoleHost = _minIo.Apply(_namespaceName);
             var harborExternalUrl = _harbor.Apply(_namespaceName);
 
-            return (minioConsoleHost, harborExternalUrl);
+            return (string.Empty, harborExternalUrl);
         }
 
         private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
