@@ -36,7 +36,7 @@ namespace Infrastructure.Extension
 
         internal static WebApplicationConfig GetWebApplicationConfig(this Config config)
         {
-            return config.GetObject<WebApplicationConfig>("WebApplicationConfig");
+            return config.GetObject<WebApplicationConfig>("WebApplication");
         }
     }
 }
