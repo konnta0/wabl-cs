@@ -1,6 +1,4 @@
 using Infrastructure.Certificate;
-using Infrastructure.ContainerRegistry;
-using Infrastructure.ContainerRegistry.Resource;
 using Infrastructure.Observability;
 using Infrastructure.Observability.Resource.Grafana;
 using Infrastructure.Observability.Resource.Loki;
@@ -11,14 +9,6 @@ namespace Infrastructure.Extension
 {
     internal static class ServiceCollectionExtension
     {
-        internal static IServiceCollection AddContainerRegistry(this IServiceCollection serviceCollection)
-        {
-            serviceCollection.AddScoped<Harbor>();
-            serviceCollection.AddScoped<MinIO>();
-            serviceCollection.AddScoped<ContainerRegistryComponent>();
-            return serviceCollection;
-        }
-
         internal static IServiceCollection AddObservability(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<TempoResource>();
