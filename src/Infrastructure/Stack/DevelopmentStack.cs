@@ -5,6 +5,7 @@ using Infrastructure.ContainerRegistry;
 using Infrastructure.Extension;
 using Infrastructure.Observability;
 using Infrastructure.VersionControlSystem;
+using Infrastructure.WebApplication;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 
@@ -20,7 +21,8 @@ namespace Infrastructure.Stack
             ContainerRegistryComponent containerRegistryComponent,
             ObservabilityComponent observabilityComponent,
             CertificateComponent certificateComponent,
-            VersionControlSystemComponent versionControlSystemComponent)
+            VersionControlSystemComponent versionControlSystemComponent,
+            WebApplicationComponent webApplicationComponent)
         {
             _logger = logger;
             _logger.LogInformation("start development stack");
@@ -30,6 +32,7 @@ namespace Infrastructure.Stack
             (_, HarborExternalUrl) = containerRegistryComponent.Apply();
             GrafanaHost = observabilityComponent.Apply();
             //GitLabHost = versionControlSystemComponent.Apply();
+            webApplicationComponent.Apply();
         }
 
         //[Output] public Output<string> GitLabHost { get; set; }
