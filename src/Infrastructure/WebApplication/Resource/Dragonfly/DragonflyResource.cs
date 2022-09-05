@@ -64,6 +64,43 @@ namespace Infrastructure.WebApplication.Resource.Dragonfly
                 Atomic = true,
                 Namespace = _config.GetWebApplicationConfig().Namespace
             });
+
+            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("dragonfly-manager-ingress", new IngressArgs
+            {
+                ApiVersion = "networking.k8s.io/v1",
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "dragonfly-manager-ingress",
+                    Namespace = _config.GetWebApplicationConfig().Namespace
+                },
+                Spec = new IngressSpecArgs
+                {
+                    IngressClassName = "nginx",
+                    Rules = new List<IngressRuleArgs>
+                    {
+                        new IngressRuleArgs
+                        {
+                            Host = "manager.dragonfly.webapp.test",
+                            Http = new HTTPIngressRuleValueArgs
+                            {
+                                Paths = new HTTPIngressPathArgs
+                                {
+                                    Path = "/",
+                                    PathType = "Prefix",
+                                    Backend = new IngressBackendArgs
+                                    {
+                                        Service = new IngressServiceBackendArgs
+                                        {
+                                            Name = dragonfly.ResourceNames.Apply(x=> x["Service/v1"].First(serviceName => serviceName.Contains("manager")).Replace(_config.GetWebApplicationConfig().Namespace+"/", "")),
+                                            Port = new ServiceBackendPortArgs { Number = 8080 }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
         }
     }
 }
