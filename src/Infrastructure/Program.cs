@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Infrastructure.Certificate.Extension;
 using Infrastructure.CI_CD.Extension;
 using Infrastructure.ContainerRegistry.Extension;
-using Infrastructure.Extension;
 using Infrastructure.Observability.Extension;
 using Infrastructure.Stack;
 using Infrastructure.VersionControlSystem.Extension;
