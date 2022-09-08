@@ -65,7 +65,7 @@ namespace Infrastructure.WebApplication.Resource.Dragonfly
                 Namespace = _config.GetWebApplicationConfig().Namespace
             });
 
-            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("dragonfly-manager-ingress", new IngressArgs
+            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("web-application-dragonfly-manager-ingress", new IngressArgs
             {
                 ApiVersion = "networking.k8s.io/v1",
                 Metadata = new ObjectMetaArgs
