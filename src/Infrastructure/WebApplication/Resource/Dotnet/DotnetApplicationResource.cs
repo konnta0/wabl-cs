@@ -17,7 +17,6 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
 
         public void Apply()
         {
-            // deployment
             var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-application-deployment",
                 new DeploymentArgs
                 {
@@ -62,8 +61,8 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                                                 ContainerPortValue = 80
                                             }
                                         }
-                                    },
-                                },
+                                    }
+                                }
                             }
                         }
                     }
