@@ -1,3 +1,4 @@
+using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
@@ -25,7 +26,8 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         Labels =
                         {
                             { "app", "web" }
-                        }
+                        },
+                        Namespace = _config.GetWebApplicationConfig().Namespace
                     },
                     Spec = new DeploymentSpecArgs
                     {
