@@ -3,7 +3,6 @@ using Pulumi;
 using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
-using Pulumi.Kubernetes.Types.Outputs.Core.V1;
 
 namespace Infrastructure.WebApplication.Resource.Dotnet
 {
@@ -54,7 +53,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                                 {
                                     new ContainerArgs
                                     {
-                                        Image = "core.harbor.cr.test/webapp/myrepo:v0.1",
+                                        Image = "core.harbor.cr.test/webapp/dotnetapp:latest",
                                         Name = "dotnetapp",
                                         Ports = 
                                         {
