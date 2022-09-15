@@ -37,7 +37,7 @@ namespace Infrastructure.WebApplication
                     Name = _config.GetWebApplicationConfig().Namespace
                 }
             });
-            _namespaceName = @namespace.Metadata.Apply(x => x.Name);
+            _ = @namespace.Metadata.Apply(x => x.Name);
 
             _tiDbResource.Apply();
             _dragonflyResource.Apply();
