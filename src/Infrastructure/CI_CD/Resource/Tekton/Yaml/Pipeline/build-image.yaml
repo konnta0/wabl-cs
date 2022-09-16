@@ -33,7 +33,7 @@ spec:
         name: buildah
       params:
         - name: IMAGE
-          value: $(params.image)
+          value: $(params.image):$(tasks.fetch-repository.results.commit)
         - name: DOCKERFILE
           value: "Dockerfile"
         - name: CONTEXT
