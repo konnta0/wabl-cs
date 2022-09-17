@@ -73,7 +73,14 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 ["tikv"] = new Dictionary<string, object>
                 {
                     ["storageClassName"] = "standard",
-                    ["replicas"] = 2
+                    ["replicas"] = 2,
+                    ["resources"] = new Dictionary<string, object>
+                    {
+                        ["limits"] = new Dictionary<string, object>
+                        {
+                            ["memory"] = "700Mi"
+                        }
+                    }
                 }
             };
             var tidbCluster = new Release("web-application-tidb-cluster", new ReleaseArgs
