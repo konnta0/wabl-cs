@@ -40,18 +40,10 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             var tidbOperator = new Release("web-application-tidb-operator", new ReleaseArgs
             {
                 Chart = "tidb-operator",
-                // helm search repo pingcap/tidb-operator --versions | head -n 10
+                // helm search repo pingcap/tidb-operator --versions
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
                 // pingcap/tidb-operator   v1.3.7          v1.3.7          tidb-operator Helm chart for Kubernetes
-                // pingcap/tidb-operator   v1.3.6          v1.3.6          tidb-operator Helm chart for Kubernetes
-                // pingcap/tidb-operator   v1.3.5          v1.3.5          tidb-operator Helm chart for Kubernetes
-                // pingcap/tidb-operator   v1.3.4          v1.3.4          tidb-operator Helm chart for Kubernetes
-                // pingcap/tidb-operator   v1.3.3          v1.3.3          tidb-operator Helm chart for Kubernetes
-                // pingcap/tidb-operator   v1.3.2          v1.3.2          tidb-operator Helm chart for Kubernetes
-                // pingcap/tidb-operator   v1.3.1          v1.3.1          tidb-operator Helm chart for Kubernetes
-                // pingcap/tidb-operator   v1.3.0          v1.3.0          tidb-operator Helm chart for Kubernetes
-                // pingcap/tidb-operator   v1.2.7          v1.2.7          tidb-operator Helm chart for Kubernetes
-                Version = "v1.3.7",
+                Version = "v1.3.8",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://charts.pingcap.org"
@@ -86,18 +78,10 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             var tidbCluster = new Release("web-application-tidb-cluster", new ReleaseArgs
             {
                 Chart = "tidb-cluster",
-                // helm search repo pingcap/tidb-cluster --versions | head -n 10
+                // helm search repo pingcap/tidb-cluster --versions
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
                 // pingcap/tidb-cluster    v1.3.7                          A Helm chart for TiDB Cluster
-                // pingcap/tidb-cluster    v1.3.6                          A Helm chart for TiDB Cluster
-                // pingcap/tidb-cluster    v1.3.5                          A Helm chart for TiDB Cluster
-                // pingcap/tidb-cluster    v1.3.4                          A Helm chart for TiDB Cluster
-                // pingcap/tidb-cluster    v1.3.3                          A Helm chart for TiDB Cluster
-                // pingcap/tidb-cluster    v1.3.2                          A Helm chart for TiDB Cluster
-                // pingcap/tidb-cluster    v1.3.1                          A Helm chart for TiDB Cluster
-                // pingcap/tidb-cluster    v1.3.0                          A Helm chart for TiDB Cluster
-                // pingcap/tidb-cluster    v1.2.7                          A Helm chart for TiDB Cluster
-                Version = "v1.3.7",
+                Version = "v1.3.8",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://charts.pingcap.org"
