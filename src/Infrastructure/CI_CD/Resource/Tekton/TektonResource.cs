@@ -47,7 +47,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         {
             _ = new ConfigFile("tekton-controller-release", new ConfigFileArgs
             {
-                File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.35.0/release.yaml",
+                File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.39.0/release.yaml",
                 Transformations =
                 {
                     //TransformTektonNamespace,
@@ -58,20 +58,12 @@ namespace Infrastructure.CI_CD.Resource.Tekton
 
             _ = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
             {
-                File = "https://github.com/tektoncd/dashboard/releases/download/v0.25.0/tekton-dashboard-release.yaml",
-                // Transformations =
-                // {
-                //     TransformNamespace
-                // }                
+                File = "https://github.com/tektoncd/dashboard/releases/download/v0.29.2/tekton-dashboard-release.yaml"
             });
 
             _ = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
             {
-                File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.19.1/release.yaml",
-                // Transformations =
-                // {
-                //     TransformNamespace
-                // }                
+                File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.21.0/release.yaml"
             });
 
             _ = new Pulumi.Kubernetes.Networking.V1.Ingress("tekton-pipeline-ingress", new IngressArgs
