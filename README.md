@@ -3,6 +3,10 @@
 # dotnet-metric-test
 This repository is used by study
 
+Build a WebAPI server using k8s. 
+Also, the core development language for tools and libraries is C#.
+
+
 ---
 😄  minikube v1.26.1 on Darwin 12.5
 
