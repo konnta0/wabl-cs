@@ -26,6 +26,5 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  </ItemGroup>
 
 </Project>
