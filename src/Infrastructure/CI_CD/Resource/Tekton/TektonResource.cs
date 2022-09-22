@@ -111,25 +111,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
             _tektonTaskRun.Apply();
             _pipelineRun.Apply();
         }
-
-        private ImmutableDictionary<string, object> TransformTektonNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
-        {
-            if (!obj.ContainsKey("kind")) return obj;
-            
-            if ((string)obj["kind"] != "Namespace") return obj;
-            
-            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-            if (!metadata.ContainsKey("name")) return obj;
-
-            return obj.SetItem("metadata", metadata.SetItem("name", _config.GetCICDConfig().Namespace));
-        }
-
-        private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
-        {
-            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-            if (!metadata.ContainsKey("namespace")) return obj;
-            return obj.SetItem("metadata", metadata.SetItem("namespace", _config.GetCICDConfig().Namespace));
-        }
+        
 
         private ImmutableDictionary<string, object> HpaV2beta1ToV1(ImmutableDictionary<string, object> obj,
             CustomResourceOptions options)
