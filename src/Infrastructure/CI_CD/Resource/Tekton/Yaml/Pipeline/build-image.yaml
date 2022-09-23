@@ -48,3 +48,23 @@ spec:
           workspace: shared-workspace
       runAfter:
         - fetch-repository
+    - name: build-push-image-latest
+      taskRef:
+        name: buildah
+      params:
+        - name: IMAGE
+          value: $(params.image):latest
+        - name: DOCKERFILE
+          value: "Dockerfile"
+        - name: CONTEXT
+          value: "$(workspaces.source.path)"
+        - name: FORMAT
+          value: "docker"
+        # https://github.com/containers/buildah/discussions/3842#discussioncomment-2455276
+        - name: TLSVERIFY
+          value: "false"
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+      runAfter:
+        - build-push-image
