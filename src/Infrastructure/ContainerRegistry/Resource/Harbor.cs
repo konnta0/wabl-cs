@@ -45,7 +45,7 @@ namespace Infrastructure.ContainerRegistry.Resource
                         ["certSource"] = "secret",
                         ["secret"] = new Dictionary<string, object>
                         {
-                            ["secretName"] = "harbor-certificate",
+                            ["secretName"] = "harbor-certificate"
                         }
                     },
                     ["ingress"] = new Dictionary<string, object>

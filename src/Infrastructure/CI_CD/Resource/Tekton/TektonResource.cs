@@ -61,6 +61,11 @@ namespace Infrastructure.CI_CD.Resource.Tekton
                 File = "https://github.com/tektoncd/dashboard/releases/download/v0.29.2/tekton-dashboard-release.yaml"
             });
 
+            _ = new ConfigFile("tekton-dashboard-extension-cronjob", new ConfigFileArgs
+            {
+                File = "./CI_CD/Resource/Tekton/Yaml/dashboard-extension-cronjob.yaml"
+            });
+            
             _ = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
             {
                 File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.21.0/release.yaml"
