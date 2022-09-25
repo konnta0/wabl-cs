@@ -34,7 +34,8 @@ namespace Infrastructure.Certificate
             {
                 File = "https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.crds.yaml"
             });
-            
+            crds.Ready();
+
             var certManager = new Release("cert-manager", new ReleaseArgs
             {
                 Chart = "cert-manager",
