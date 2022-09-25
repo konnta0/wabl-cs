@@ -205,8 +205,7 @@ get-cert:
 
 .PHONY: add-cert # must set SECRET_NAMESPACE, SECRET_NAME, CERTIFICATE_NAME
 add-cert: get-cert
-	sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain $(CERTIFICATE_NAME)
-
+	sudo security add-trusted-cert -d -r trustAsRoot -p ssl -k /Library/Keychains/System.keychain $(CERTIFICATE_NAME)
 
 .PHONY: setup-local # 
 setup-local: install-minikube install-pulumi
