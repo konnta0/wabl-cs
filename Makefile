@@ -163,10 +163,6 @@ p-delete:
 p-output:
 	pulumi stack output --cwd $(INFRASTRUCTURE_DIR)  
 
-.PHONY: foward-tekton-dashboard
-foward-tekton-dashboard:
-	kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097 &
-
 ##### local setup command #####
 .PHONY: install-minikube # see -> https://minikube.sigs.k8s.io/docs/start/
 install-minikube:
