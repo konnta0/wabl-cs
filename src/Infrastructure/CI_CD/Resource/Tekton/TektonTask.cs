@@ -15,46 +15,27 @@ namespace Infrastructure.CI_CD.Resource.Tekton
 
         public void Apply()
         {
-            _ = new ConfigFile("tekton-pipeline-task-push-image-config", new ConfigFileArgs
+            var tasks = new[]
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/Task/push-image.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            });
-            _ = new ConfigFile("tekton-pipeline-task-hello-world", new ConfigFileArgs
+                "push-image",
+                "hello-world-task",
+                "git-clone",
+                "buildah",
+                "unit-test",
+                "curl"
+            };
+            
+            foreach (var task in tasks)
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/Task/hello-world-task.yaml",
-                Transformations =
+                _ = new ConfigFile($"tekton-pipeline-task-{task}", new ConfigFileArgs
                 {
-                    TransformNamespace
-                }
-            });
-            _ = new ConfigFile("tekton-pipeline-task-git-clone", new ConfigFileArgs
-            {
-                File = "./CI_CD/Resource/Tekton/Yaml/Task/git-clone.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            });
-            _ = new ConfigFile("tekton-pipeline-task-buildah", new ConfigFileArgs
-            {
-                File = "./CI_CD/Resource/Tekton/Yaml/Task/buildah.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            });
-            _ = new ConfigFile("tekton-pipeline-task-unit-test", new ConfigFileArgs
-            {
-                File = "./CI_CD/Resource/Tekton/Yaml/Task/unit-test.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            });
+                    File = $"./CI_CD/Resource/Tekton/Yaml/Task/{task}.yaml",
+                    Transformations =
+                    {
+                        TransformNamespace
+                    }
+                });
+            }
         }
         
         private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
