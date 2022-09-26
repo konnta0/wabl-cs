@@ -126,7 +126,7 @@ migration-add:
 
 .PHONY: mk-start # 
 mk-start: 
-	minikube start --memory='12g' --cpus=4 --driver=hyperkit --disk-size=40000mb --nodes=1
+	minikube start --memory='12g' --cpus=4 --driver=hyperkit --disk-size=40000mb --nodes=1 --insecure-registry="core.harbor.cr.test"
 	minikube addons enable ingress
 	minikube addons enable ingress-dns
 	minikube addons enable metrics-server
