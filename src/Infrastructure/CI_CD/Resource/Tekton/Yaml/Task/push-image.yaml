@@ -1,22 +1,14 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
   namespace: tekton-pipelines
   name: push-dokcer-image
 spec:
-  inputs:
-    resources:
-      - name: app
-        type: git
-    params:
-      - name: dockerfile
-        default: /workspace/app/Dockerfile
-      - name: context
-        default: /workspace/app
-  outputs:
-    resources:
-      - name: builtImage
-        type: image
+  params:
+    - name: dockerfile
+      default: /workspace/app/Dockerfile
+    - name: context
+      default: /workspace/app
   steps:
     - name: build-and-push
       image: gcr.io/kaniko-project/executor
