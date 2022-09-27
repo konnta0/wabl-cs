@@ -45,7 +45,7 @@ namespace Infrastructure.WebApplication
 
             _tiDbResource.Apply();
             _dragonflyResource.Apply();
-            //_dotnetApplicationResource.Apply();
+            _dotnetApplicationResource.Apply();
 
             return string.Empty;
         }
