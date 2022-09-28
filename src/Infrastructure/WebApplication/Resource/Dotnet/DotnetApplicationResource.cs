@@ -1,8 +1,10 @@
 using Infrastructure.Extension;
 using Pulumi;
+using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
+using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.WebApplication.Resource.Dotnet
 {
@@ -17,7 +19,13 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
 
         public void Apply()
         {
-            var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-application-deployment",
+            var secret = new ConfigFile("web-application-dotnet-application-secret", new ConfigFileArgs
+            {
+                File = "./WebApplication/Resource/Dotnet/Yaml/dotnetapp-secret-local.yaml"
+            });
+            secret.Ready();
+
+            var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-application",
                 new DeploymentArgs
                 {
                     Metadata = new ObjectMetaArgs
@@ -26,7 +34,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         {
                             { "app", "web" }
                         },
-                        Namespace = _config.GetWebApplicationConfig().Namespace
+                        Namespace = _config.GetWebApplicationConfig().Namespace,
                     },
                     Spec = new DeploymentSpecArgs
                     {
@@ -61,6 +69,13 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                                             {
                                                 ContainerPortValue = 80
                                             }
+                                        },
+                                        EnvFrom = new EnvFromSourceArgs
+                                        {
+                                            SecretRef = new SecretEnvSourceArgs
+                                            {
+                                                Name = "dotnetapp-secret"
+                                            }
                                         }
                                     }
                                 }
@@ -68,6 +83,9 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         }
                     }
                 });
+            
+            // service
+            // ingress
         }
     }
 }
