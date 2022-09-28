@@ -6,10 +6,10 @@ internal static class CacheClientFactory
 {
     public static IConnectionMultiplexer CreateVolatileCacheConnectionMultiplexer()
     {
-        return Create("REDIS_HOST", "REDIS_PORT");
+        return Create("REDIS_HOST", "REDIS_PORT", "REDIS_USER", "REDIS_PASSWORD");
     }
 
-    private static IConnectionMultiplexer Create(string hostEnvironmentName, string portEnvironmentName)
+    private static IConnectionMultiplexer Create(string hostEnvironmentName, string portEnvironmentName, string userEnvironmentName, string passwordEnvironmentName)
     {
         var host = Environment.GetEnvironmentVariable(hostEnvironmentName);
 
@@ -23,8 +23,22 @@ internal static class CacheClientFactory
             throw new ApplicationException();
         }
 
+        var user = Environment.GetEnvironmentVariable(userEnvironmentName);
+        if (user is null or "")
+        {
+            throw new ApplicationException();
+        }
+
+        var password = Environment.GetEnvironmentVariable(passwordEnvironmentName);
+        if (user is null or "")
+        {
+            throw new ApplicationException();
+        }
+
         return Create(options =>
         {
+            options.User = user;
+            options.Password = password;
             options.EndPoints.Add(host, port);
         });
     }
