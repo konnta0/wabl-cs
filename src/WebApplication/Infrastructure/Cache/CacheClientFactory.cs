@@ -49,7 +49,7 @@ internal static class CacheClientFactory
     {
         var options = new ConfigurationOptions();
         configurationOptions(options);
-        GlobalLogManager.GetLogger(nameof(CacheClientFactory)).ZLogInformation("CacheClient options", options);
+        GlobalLogManager.GetLogger(nameof(CacheClientFactory)).ZLogInformationWithPayload(options, "CacheClient options");
         return ConnectionMultiplexer.Connect(options);
     }
 }
