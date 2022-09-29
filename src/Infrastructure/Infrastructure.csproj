@@ -25,6 +25,8 @@
     <None Update="WebApplication\Resource\TiDB\Yaml\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="WebApplication\Resource\Dotnet\Yaml\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-
 </Project>
