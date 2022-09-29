@@ -7,47 +7,47 @@ namespace Infrastructure.Cache;
 
 abstract class CacheClient : ICacheClient
 {
-    protected readonly ILogger _logger;
-    protected readonly IConnectionMultiplexer _connectionMultiplexer;
+    protected readonly ILogger Logger;
+    protected readonly IConnectionMultiplexer ConnectionMultiplexer;
 
     protected CacheClient(ILogger logger, IConnectionMultiplexer connectionMultiplexer)
     {
-        _logger = logger;
-        _connectionMultiplexer = connectionMultiplexer;
-        _connectionMultiplexer.ErrorMessage += (sender, args) => _logger.ZLogError(args.Message);
-        _connectionMultiplexer.InternalError += (sender, args) => _logger.ZLogError(args.Exception.Message);
-        _connectionMultiplexer.ConnectionFailed += (sender, args) => _logger.ZLogError(args.Exception.Message);
-        _connectionMultiplexer.ConnectionRestored += (sender, args) => _logger.ZLogInformation(args.Exception.Message);
+        Logger = logger;
+        ConnectionMultiplexer = connectionMultiplexer;
+        ConnectionMultiplexer.ErrorMessage += (sender, args) => Logger.ZLogError(args.Message);
+        ConnectionMultiplexer.InternalError += (sender, args) => Logger.ZLogError(args.Exception.Message);
+        ConnectionMultiplexer.ConnectionFailed += (sender, args) => Logger.ZLogError(args.Exception.Message);
+        ConnectionMultiplexer.ConnectionRestored += (sender, args) => Logger.ZLogInformation(args.Exception.Message);
     }
 
     public void Dispose()
     {
-        _connectionMultiplexer.Dispose();
+        ConnectionMultiplexer.Dispose();
     }
 
     public virtual async Task<bool> KeyExistsAsync(string key)
     {
-        return await _connectionMultiplexer.GetDatabase().KeyExistsAsync(key);
+        return await ConnectionMultiplexer.GetDatabase().KeyExistsAsync(key);
     }
 
     public virtual async Task<bool> KeyExpireAsync(string key, TimeSpan? expiry)
     {
-        return await _connectionMultiplexer.GetDatabase().KeyExpireAsync(key, expiry);
+        return await ConnectionMultiplexer.GetDatabase().KeyExpireAsync(key, expiry);
     }
 
     public virtual async Task<bool> KeyExpireAsync(string key, DateTime? expiry)
     {
-        return await _connectionMultiplexer.GetDatabase().KeyExpireAsync(key, expiry);
+        return await ConnectionMultiplexer.GetDatabase().KeyExpireAsync(key, expiry);
     }
 
     public virtual async Task<bool> KeyPersistAsync(string key)
     {
-        return await _connectionMultiplexer.GetDatabase().KeyPersistAsync(key);
+        return await ConnectionMultiplexer.GetDatabase().KeyPersistAsync(key);
     }
 
     public virtual async Task<bool> HashSetAsync<T>(string key, T value)
     {
-        return await _connectionMultiplexer.GetDatabase().HashSetAsync(key, nameof(CacheClient), JsonSerializer.Serialize(value));
+        return await ConnectionMultiplexer.GetDatabase().HashSetAsync(key, nameof(CacheClient), JsonSerializer.Serialize(value));
     }
 
     public virtual async Task<T?> HashGetAsync<T>(string key)
@@ -59,13 +59,13 @@ abstract class CacheClient : ICacheClient
 
     public virtual async Task<string?> HashGetAsync(string key)
     {
-        var cacheValue = await _connectionMultiplexer.GetDatabase().HashGetAsync(key, nameof(CacheClient));
+        var cacheValue = await ConnectionMultiplexer.GetDatabase().HashGetAsync(key, nameof(CacheClient));
         if (!cacheValue.HasValue) return null;
         return cacheValue;
     }
 
     public virtual async Task<bool> KeyDeleteAsync<T>(string key)
     {
-        return await _connectionMultiplexer.GetDatabase().KeyDeleteAsync(key);
+        return await ConnectionMultiplexer.GetDatabase().KeyDeleteAsync(key);
     }
 }
