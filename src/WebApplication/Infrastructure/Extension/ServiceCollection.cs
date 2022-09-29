@@ -1,6 +1,7 @@
 using Cysharp.Text;
 using Domain.Repository.Department;
 using Infrastructure.Cache;
+using Infrastructure.Core;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.RequestHandler;
 using Infrastructure.Database.Context;
@@ -79,18 +80,11 @@ public static class ServiceCollection
             });
             builder.AddRepositoryInstrumentation();
             builder.AddUseCaseInstrumentation();
-
+            
             var connection = CacheClientFactory.CreateVolatileCacheConnectionMultiplexer();
-            var loggerFactory = LoggerFactory.Create(loggingBuilder =>
-            {
-                loggingBuilder.ClearProviders();
-                loggingBuilder.SetMinimumLevel(LogLevel.Debug);
-                loggingBuilder.AddZLoggerConsole();
-            });
-
             serviceCollection.AddTransient<IVolatileCacheClient>(delegate
             {
-                return new VolatileCacheClient(loggerFactory.CreateLogger<VolatileCacheClient>(), connection);
+                return new VolatileCacheClient(GlobalLogManager.GetLogger<VolatileCacheClient>(), connection);
             });
             serviceCollection.AddSingleton(connection);
             builder.AddRedisInstrumentation(connection, options =>

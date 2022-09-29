@@ -1,3 +1,6 @@
+using Cysharp.Text;
+using Infrastructure.Core;
+using Infrastructure.Core.Instrumentation;
 using Infrastructure.Extension;
 using MessagePack.AspNetCoreMvcFormatter;
 using MessagePack.Resolvers;
@@ -5,10 +8,33 @@ using MessagePipe;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry.Logs;
 using Presentation.Extension;
 using UseCase.Extension;
+using ZLogger;
+using ZLogger.Providers;
 
 var builder = WebApplication.CreateBuilder(args);
+GlobalLogManager.SetLoggerFactory(LoggerFactory.Create(loggingBuilder =>
+{
+    loggingBuilder.ClearProviders();
+    loggingBuilder.SetMinimumLevel(LogLevel.Information);
+    loggingBuilder.AddFilter<ZLoggerConsoleLoggerProvider>("Microsoft", LogLevel.None);
+    loggingBuilder.AddZLoggerConsole(options =>
+    {
+        options.EnableStructuredLogging = true;
+        var prefixFormat = ZString.PrepareUtf8<LogLevel, DateTime>("[{0}][{1}] ");
+        options.PrefixFormatter = (writer, info) =>
+            prefixFormat.FormatTo(ref writer, info.LogLevel, info.Timestamp.DateTime.ToLocalTime());
+    });
+    loggingBuilder.AddOpenTelemetry(options =>
+    {
+        options.IncludeScopes = true;
+        options.ParseStateValues = true;
+        options.IncludeFormattedMessage = true;
+        options.AddInMemoryExporter(new InMemoryLogRecords());
+    });
+}), "Global");
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddUseCase(builder.Configuration);
 

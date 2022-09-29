@@ -1,4 +1,6 @@
+using Infrastructure.Core;
 using StackExchange.Redis;
+using ZLogger;
 
 namespace Infrastructure.Cache;
 
@@ -46,8 +48,8 @@ internal static class CacheClientFactory
     private static IConnectionMultiplexer Create(Action<ConfigurationOptions> configurationOptions)
     {
         var options = new ConfigurationOptions();
-
         configurationOptions(options);
+        GlobalLogManager.GetLogger(nameof(CacheClientFactory)).ZLogInformation("CacheClient options", options);
         return ConnectionMultiplexer.Connect(options);
     }
 }

@@ -6,7 +6,7 @@ using ZLogger;
 
 namespace Infrastructure.Core.Instrumentation;
 
-internal sealed class InMemoryLogRecords : Collection<LogRecord>
+public sealed class InMemoryLogRecords : Collection<LogRecord>
 {
     protected override void InsertItem(int index, LogRecord item)
     {
