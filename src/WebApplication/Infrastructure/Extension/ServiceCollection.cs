@@ -3,6 +3,7 @@ using Domain.Repository.Department;
 using Infrastructure.Cache;
 using Infrastructure.Core;
 using Infrastructure.Core.Instrumentation;
+using Infrastructure.Core.Logging;
 using Infrastructure.Core.RequestHandler;
 using Infrastructure.Database.Context;
 using Infrastructure.Database.Context.Employee;

@@ -1,6 +1,6 @@
 using Cysharp.Text;
-using Infrastructure.Core;
 using Infrastructure.Core.Instrumentation;
+using Infrastructure.Core.Logging;
 using Infrastructure.Extension;
 using MessagePack.AspNetCoreMvcFormatter;
 using MessagePack.Resolvers;
@@ -95,6 +95,7 @@ app.UseInfrastructure();
 app.UseRouting();
 app.UseAuthorization();
 app.UseResponseCaching();
+app.UseHealthChecks();
 
 app.MapControllerRoute(
     name: "default",

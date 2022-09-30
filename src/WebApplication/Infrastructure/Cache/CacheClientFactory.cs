@@ -1,4 +1,5 @@
 using Infrastructure.Core;
+using Infrastructure.Core.Logging;
 using StackExchange.Redis;
 using ZLogger;
 

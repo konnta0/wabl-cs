@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 
-namespace Infrastructure.Core;
+namespace Infrastructure.Core.Logging;
 
 public static class GlobalLogManager
 {
