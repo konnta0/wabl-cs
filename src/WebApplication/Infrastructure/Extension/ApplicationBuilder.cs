@@ -9,4 +9,7 @@ public static class ApplicationBuilder
         applicationBuilder.UseOpenTelemetryPrometheusScrapingEndpoint();
         return applicationBuilder;
     }
+
+    public static IApplicationBuilder UseHealthChecks(this IApplicationBuilder applicationBuilder) =>
+        applicationBuilder.UseHealthChecks("/healthz");
 }

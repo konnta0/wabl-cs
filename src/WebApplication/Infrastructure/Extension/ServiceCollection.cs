@@ -2,11 +2,13 @@ using Cysharp.Text;
 using Domain.Repository.Department;
 using Infrastructure.Cache;
 using Infrastructure.Core;
+using Infrastructure.Core.HealthCheck;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Logging;
 using Infrastructure.Core.RequestHandler;
 using Infrastructure.Database.Context;
 using Infrastructure.Database.Context.Employee;
+using Infrastructure.Extension.HealthCheck;
 using Infrastructure.Extension.Instrumentation;
 using Infrastructure.Repository.Departments;
 using Microsoft.AspNetCore.HttpLogging;
@@ -27,6 +29,8 @@ public static class ServiceCollection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
+        serviceCollection.AddHealthChecks().AddChecks();
+            
         return serviceCollection
             .AddLogging()
             .AddDbContext()
