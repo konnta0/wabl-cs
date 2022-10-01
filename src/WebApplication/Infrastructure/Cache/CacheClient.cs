@@ -14,10 +14,10 @@ abstract class CacheClient : ICacheClient
     {
         Logger = logger;
         ConnectionMultiplexer = connectionMultiplexer;
-        ConnectionMultiplexer.ErrorMessage += (sender, args) => Logger.ZLogError(args.Message);
-        ConnectionMultiplexer.InternalError += (sender, args) => Logger.ZLogError(args.Exception.Message);
-        ConnectionMultiplexer.ConnectionFailed += (sender, args) => Logger.ZLogError(args.Exception.Message);
-        ConnectionMultiplexer.ConnectionRestored += (sender, args) => Logger.ZLogInformation(args.Exception.Message);
+        ConnectionMultiplexer.ErrorMessage += (sender, args) => Logger.ZLogErrorWithPayload(args, "ConnectionMultiplexer ErrorMessage");
+        ConnectionMultiplexer.InternalError += (sender, args) => Logger.ZLogErrorWithPayload(args, "ConnectionMultiplexer InternalError");
+        ConnectionMultiplexer.ConnectionFailed += (sender, args) => Logger.ZLogErrorWithPayload(args, "ConnectionMultiplexer ConnectionFailed");
+        ConnectionMultiplexer.ConnectionRestored += (sender, args) => Logger.ZLogInformationWithPayload(args, "ConnectionMultiplexer ConnectionRestored");
     }
 
     public void Dispose()
