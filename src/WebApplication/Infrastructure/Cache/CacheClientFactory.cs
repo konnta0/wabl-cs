@@ -40,6 +40,8 @@ internal static class CacheClientFactory
 
         return Create(options =>
         {
+            options.AbortOnConnectFail = false;
+            options.Ssl = false;
             options.User = user;
             options.Password = password;
             options.EndPoints.Add(host, port);
