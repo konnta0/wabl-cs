@@ -1,3 +1,5 @@
+using System.IO;
+using System.Linq;
 using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
@@ -19,11 +21,25 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
 
         public void Apply()
         {
-            var secret = new ConfigFile("web-application-dotnet-application-secret", new ConfigFileArgs
+            var envInputMap = new InputMap<string>();
+            var env = File.ReadAllLines(".env");
+            foreach (var e in env)
             {
-                File = "./WebApplication/Resource/Dotnet/Yaml/dotnetapp-secret-local.yaml"
+                var splitEnv = e.Split("=");
+                envInputMap.Add(splitEnv.First(), splitEnv.Last());
+            }
+
+            var secret = new Secret("web-application-dotnet-application-secret", new SecretArgs
+            {
+                ApiVersion = "v1",
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "dotnetapp-secret",
+                    Namespace = _config.GetWebApplicationConfig().Namespace
+                },
+                Type = "Opaque",
+                StringData = envInputMap
             });
-            secret.Ready();
 
             var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-application",
                 new DeploymentArgs
@@ -74,7 +90,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                                         {
                                             SecretRef = new SecretEnvSourceArgs
                                             {
-                                                Name = "dotnetapp-secret"
+                                                Name = secret.Metadata.Apply(x => x.Name)
                                             }
                                         }
                                     }
@@ -83,7 +99,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         }
                     }
                 });
-            
+
             // service
             // ingress
         }
