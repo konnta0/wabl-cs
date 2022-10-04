@@ -210,3 +210,11 @@ add-cert: get-cert
 .PHONY: setup-local # 
 setup-local: install-minikube install-pulumi
 	@echo "start setup local"
+
+.PHONY: build-image # 
+build-image:
+	docker build -t core.harbor.cr.test/webapp/dotnetapp:latest .
+
+.PHONY: push-image # 
+push-image: build-image
+	docker image push core.harbor.cr.test/webapp/dotnetapp:latest
