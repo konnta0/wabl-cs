@@ -4,18 +4,19 @@ config:
   Infrastructure:CICD:
     Namespace: ci-cd
     RegistryAccess:
-      UserName: "admin"
-      PassWord: "Harbor1234"
+      UserName: admin
+      PassWord: Harbor1234
   Infrastructure:ContainerRegistry:
     Namespace: container-registry
     Harbor:
       NodeSelector:
-        Label: "kubernetes.io/hostname"
-        Value: "minikube"
+        Label: kubernetes.io/hostname
+        Value: minikube
     MinIO:
       NodeSelector:
-        Label: "kubernetes.io/hostname"
-        Value: "minikube"      
+        Label: kubernetes.io/hostname
+        Value: minikube
+    Host: core.harbor.cr.test
   Infrastructure:VersionControlSystem:
     Namespace: vcs
   Infrastructure:WebApplication:
