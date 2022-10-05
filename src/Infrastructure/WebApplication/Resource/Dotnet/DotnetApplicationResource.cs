@@ -1,12 +1,18 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Infrastructure.Extension;
 using Pulumi;
-using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
-using Pulumi.Kubernetes.Yaml;
+using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
+using Config = Pulumi.Config;
+using ContainerArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ContainerArgs;
+using Secret = Pulumi.Kubernetes.Core.V1.Secret;
+using SecretArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.SecretArgs;
+using Service = Pulumi.Kubernetes.Core.V1.Service;
+using ServiceArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ServiceArgs;
 
 namespace Infrastructure.WebApplication.Resource.Dotnet
 {
@@ -34,7 +40,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                 ApiVersion = "v1",
                 Metadata = new ObjectMetaArgs
                 {
-                    Name = "dotnetapp-secret",
+                    Name = "dotnetapp-env-secret",
                     Namespace = _config.GetWebApplicationConfig().Namespace
                 },
                 Type = "Opaque",
@@ -50,7 +56,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         {
                             { "app", "web" }
                         },
-                        Namespace = _config.GetWebApplicationConfig().Namespace,
+                        Namespace = _config.GetWebApplicationConfig().Namespace
                     },
                     Spec = new DeploymentSpecArgs
                     {
@@ -77,9 +83,9 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                                 {
                                     new ContainerArgs
                                     {
-                                        Image = "core.harbor.cr.test/webapp/dotnetapp:latest",
+                                        Image = $"{_config.GetContainerRegistryConfig().Host}/webapp/dotnetapp:latest",
                                         Name = "dotnetapp",
-                                        Ports = 
+                                        Ports =
                                         {
                                             new ContainerPortArgs
                                             {
@@ -99,6 +105,24 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         }
                     }
                 });
+            var service = new Service("web-application-dotnet-service", new ServiceArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "web-application-dotnet-service",
+                    Namespace = _config.GetWebApplicationConfig().Namespace
+                },
+                Spec = new ServiceSpecArgs
+                {
+                    Ports = new ServicePortArgs
+                    {
+                        Port = 8080,
+                        Protocol = "TCP",
+                        TargetPort = 80
+                    },
+                    Selector = deployment.Spec.Apply(x => x.Template.Metadata.Labels)
+                }
+            });
 
             // service
             // ingress
