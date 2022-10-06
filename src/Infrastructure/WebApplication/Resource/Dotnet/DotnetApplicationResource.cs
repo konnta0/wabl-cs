@@ -124,8 +124,44 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                 }
             });
 
-            // service
-            // ingress
+            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("web-application-dotnet-ingress",
+                new IngressArgs
+                {
+                    ApiVersion = "networking.k8s.io/v1",
+                    Metadata = new ObjectMetaArgs
+                    {
+                        Name = "dotnetapp-ingress",
+                        Namespace = _config.GetWebApplicationConfig().Namespace
+                    },
+                    Spec = new IngressSpecArgs
+                    {
+                        IngressClassName = "nginx",
+                        Rules = new List<IngressRuleArgs>
+                        {
+                            new IngressRuleArgs
+                            {
+                                Host = "dotnet.webapp.test",
+                                Http = new HTTPIngressRuleValueArgs
+                                {
+                                    Paths = new HTTPIngressPathArgs
+                                    {
+                                        Path = "/",
+                                        PathType = "Prefix",
+                                        Backend = new IngressBackendArgs
+                                        {
+                                            Service = new IngressServiceBackendArgs
+                                            {
+                                                Name = service.Metadata.Apply(x => x.Name),
+                                                Port = new ServiceBackendPortArgs
+                                                    { Number = service.Spec.Apply(x => x.Ports.First().Port) }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
         }
     }
 }
