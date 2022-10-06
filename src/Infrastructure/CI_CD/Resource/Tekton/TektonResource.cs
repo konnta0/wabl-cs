@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
@@ -15,6 +14,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         private readonly ILogger<TektonResource> _logger;
         private readonly Config _config;
         private readonly ServiceAccount _serviceAccount;
+        private readonly ClusterRole _clusterRole;
         private readonly ClusterRoleBinding _clusterRoleBinding;
         private readonly TektonTask _tektonTask;
         private readonly Pipeline _pipeline;
@@ -25,6 +25,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         public TektonResource(ILogger<TektonResource> logger, 
             Config config, 
             ServiceAccount serviceAccount, 
+            ClusterRole clusterRole,
             ClusterRoleBinding clusterRoleBinding,
             TektonTask tektonTask,
             Pipeline pipeline,
@@ -35,6 +36,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
             _logger = logger;
             _config = config;
             _serviceAccount = serviceAccount;
+            _clusterRole = clusterRole;
             _clusterRoleBinding = clusterRoleBinding;
             _tektonTask = tektonTask;
             _pipeline = pipeline;
@@ -110,6 +112,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
             
             _secret.Apply();
             _serviceAccount.Apply();
+            _clusterRole.Apply();
             _clusterRoleBinding.Apply();
             _tektonTask.Apply();
             _pipeline.Apply();
