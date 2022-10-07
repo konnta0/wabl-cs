@@ -20,23 +20,22 @@ namespace Infrastructure.WebApplication.Resource.TiDB
         public void Apply()
         {
             // https://docs.pingcap.com/tidb-in-kubernetes/v1.0/deploy-tidb-from-kubernetes-minikube#add-helm-repo
-
             var configFile = new ConfigFile("web-application-tidb-crd", new ConfigFileArgs
             {
-                File = "./WebApplication/Resource/TiDB/Yaml/crd.yaml",
+                File = "https://raw.githubusercontent.com/pingcap/tidb-operator/v1.3.8/manifests/crd.yaml",
                 Transformations =
                 {
                     (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
                     {
                         var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
                         if (!metadata.ContainsKey("namespace")) return obj;
-                        return obj.SetItem("metadata", metadata.SetItem("namespace", "tekton-pipelines"));
+                        return obj.SetItem("metadata", metadata.SetItem("namespace", _config.GetWebApplicationConfig().Namespace));
                     }
                 }
             });
-
+            
             configFile.Ready();
-
+            
             var tidbOperator = new Release("web-application-tidb-operator", new ReleaseArgs
             {
                 Chart = "tidb-operator",
@@ -52,8 +51,8 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 Atomic = true,
                 Namespace = _config.GetWebApplicationConfig().Namespace
             });
-
-            // https: //github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/values.yaml
+            
+            // https://github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/values.yaml
             var values = new Dictionary<string, object>
             {
                 ["pd"] = new Dictionary<string, object>
@@ -80,7 +79,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 Chart = "tidb-cluster",
                 // helm search repo pingcap/tidb-cluster --versions
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-                // pingcap/tidb-cluster    v1.3.7                          A Helm chart for TiDB Cluster
+                // pingcap/tidb-cluster    v1.3.8                          A Helm chart for TiDB Cluster
                 Version = "v1.3.8",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
