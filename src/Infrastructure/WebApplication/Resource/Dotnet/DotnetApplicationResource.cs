@@ -3,7 +3,9 @@ using System.IO;
 using System.Linq;
 using Infrastructure.Extension;
 using Pulumi;
+using Pulumi.Kubernetes.Autoscaling.V2Beta2;
 using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
+using Pulumi.Kubernetes.Types.Inputs.Autoscaling.V2Beta2;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
@@ -98,6 +100,13 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                                             {
                                                 Name = secret.Metadata.Apply(x => x.Name)
                                             }
+                                        },
+                                        Resources = new ResourceRequirementsArgs
+                                        {
+                                            Requests =
+                                            {
+                                                {"cpu", "200m"}
+                                            }
                                         }
                                     }
                                 }
@@ -162,6 +171,37 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         }
                     }
                 });
+            var hpa = new HorizontalPodAutoscaler("web-application-dotnet-hpa", new HorizontalPodAutoscalerArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = _config.GetWebApplicationConfig().Namespace
+                },
+                Spec = new HorizontalPodAutoscalerSpecArgs
+                {
+                    ScaleTargetRef = new CrossVersionObjectReferenceArgs
+                    {
+                        ApiVersion = "apps/v1",
+                        Kind = "Deployment",
+                        Name = deployment.Metadata.Apply(x => x.Name)
+                    },
+                    MinReplicas = 1,
+                    MaxReplicas = 10,
+                    Metrics = new MetricSpecArgs
+                    {
+                        Type = "Resource",
+                        Resource = new ResourceMetricSourceArgs
+                        {
+                            Name = "cpu",
+                            Target = new MetricTargetArgs
+                            {
+                                Type = "Utilization",
+                                AverageUtilization = 45
+                            }
+                        }
+                    }
+                }
+            });
         }
     }
 }
