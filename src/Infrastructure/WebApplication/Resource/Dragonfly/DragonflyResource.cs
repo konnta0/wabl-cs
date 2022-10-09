@@ -27,6 +27,18 @@ namespace Infrastructure.WebApplication.Resource.Dragonfly
                 ["manager"] = new Dictionary<string, object>
                 {
                     ["replicas"] = 1
+                },
+                ["seedPeer"] = new Dictionary<string, object>
+                {
+                    ["replicas"] = 2,
+                    ["persistence"] = new Dictionary<string, object>
+                    {
+                        ["size"] = "2Gi"
+                    }
+                },
+                ["scheduler"] = new Dictionary<string, object>
+                {
+                    ["replicas"] = 2
                 }
             };
             var dragonfly = new Release("web-application-dragonfly", new ReleaseArgs
