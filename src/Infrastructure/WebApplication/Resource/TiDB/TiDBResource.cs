@@ -45,7 +45,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 Chart = "tidb-operator",
                 // helm search repo pingcap/tidb-operator --versions
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-                // pingcap/tidb-operator   v1.3.7          v1.3.7          tidb-operator Helm chart for Kubernetes
+                // pingcap/tidb-operator   v1.3.8          v1.3.8          tidb-operator Helm chart for Kubernetes
                 Version = "v1.3.8",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
@@ -92,7 +92,8 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 CreateNamespace = false,
                 Atomic = true,
                 Values = values,
-                Namespace = tidbOperator.Namespace.Apply(x => x)
+                Namespace = tidbOperator.Namespace.Apply(x => x),
+                RecreatePods = true
             });
         }
     }
