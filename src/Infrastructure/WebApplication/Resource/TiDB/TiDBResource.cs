@@ -28,7 +28,11 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
                     {
                         var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-                        if (!metadata.ContainsKey("namespace")) return obj;
+                        if (!metadata.ContainsKey("namespace"))
+                        {
+                            return obj.SetItem("metadata", metadata.Add("namespace", _config.GetWebApplicationConfig().Namespace));
+                        }
+                        
                         return obj.SetItem("metadata", metadata.SetItem("namespace", _config.GetWebApplicationConfig().Namespace));
                     }
                 }
