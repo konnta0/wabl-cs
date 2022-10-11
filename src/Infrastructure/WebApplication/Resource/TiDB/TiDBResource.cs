@@ -37,9 +37,27 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     }
                 }
             });
-            
             configFile.Ready();
-            
+
+            var localVolumeProvisioner = new ConfigFile("web-application-tidb-local-volume-provisioner", new ConfigFileArgs
+            {
+                File = "./WebApplication/Resource/TiDB/Yaml/local-volume-provisioner.yaml",
+                // Transformations =
+                // {
+                //     (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
+                //     {
+                //         var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
+                //         if (!metadata.ContainsKey("namespace"))
+                //         {
+                //             return obj.SetItem("metadata", metadata.Add("namespace", _config.GetWebApplicationConfig().Namespace));
+                //         }
+                //         
+                //         return obj.SetItem("metadata", metadata.SetItem("namespace", _config.GetWebApplicationConfig().Namespace));
+                //     }
+                // }
+            });
+            localVolumeProvisioner.Ready();
+
             var tidbOperator = new Release("web-application-tidb-operator", new ReleaseArgs
             {
                 Chart = "tidb-operator",
@@ -55,29 +73,27 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 Atomic = true,
                 Namespace = _config.GetWebApplicationConfig().Namespace
             });
-            
+
             // https://github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/values.yaml
             var values = new Dictionary<string, object>
             {
                 ["pd"] = new Dictionary<string, object>
                 {
-                    ["storageClassName"] = "standard",
+                    ["storageClassName"] = "shared-storage",
                     ["replicas"] = 2
                     
                 },
                 ["tikv"] = new Dictionary<string, object>
                 {
-                    ["storageClassName"] = "standard",
-                    ["replicas"] = 2,
-                    ["resources"] = new Dictionary<string, object>
-                    {
-                        ["limits"] = new Dictionary<string, object>
-                        {
-                            ["memory"] = "700Mi"
-                        }
-                    }
+                    ["storageClassName"] = "ssd-storage",
+                    //["replicas"] = 1
+                },
+                ["tidb"] = new Dictionary<string, object>
+                {
+                   // ["replicas"] = 1
                 }
             };
+
             var tidbCluster = new Release("web-application-tidb-cluster", new ReleaseArgs
             {
                 Chart = "tidb-cluster",
