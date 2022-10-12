@@ -42,19 +42,6 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             var localVolumeProvisioner = new ConfigFile("web-application-tidb-local-volume-provisioner", new ConfigFileArgs
             {
                 File = "./WebApplication/Resource/TiDB/Yaml/local-volume-provisioner.yaml",
-                // Transformations =
-                // {
-                //     (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
-                //     {
-                //         var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-                //         if (!metadata.ContainsKey("namespace"))
-                //         {
-                //             return obj.SetItem("metadata", metadata.Add("namespace", _config.GetWebApplicationConfig().Namespace));
-                //         }
-                //         
-                //         return obj.SetItem("metadata", metadata.SetItem("namespace", _config.GetWebApplicationConfig().Namespace));
-                //     }
-                // }
             });
             localVolumeProvisioner.Ready();
 
