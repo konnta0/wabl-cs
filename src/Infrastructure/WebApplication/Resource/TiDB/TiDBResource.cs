@@ -66,9 +66,8 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             {
                 ["pd"] = new Dictionary<string, object>
                 {
-                    ["storageClassName"] = "shared-storage",
+                    ["storageClassName"] = "shared-ssd-storage",
                     ["replicas"] = 2
-                    
                 },
                 ["tikv"] = new Dictionary<string, object>
                 {
