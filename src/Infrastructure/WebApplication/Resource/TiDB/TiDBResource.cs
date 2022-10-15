@@ -22,28 +22,28 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             // https://docs.pingcap.com/tidb-in-kubernetes/v1.0/deploy-tidb-from-kubernetes-minikube#add-helm-repo
             var configFile = new ConfigFile("web-application-tidb-crd", new ConfigFileArgs
             {
-                File = "https://raw.githubusercontent.com/pingcap/tidb-operator/v1.3.8/manifests/crd.yaml",
+                File = "./WebApplication/Resource/TiDB/Yaml/crd.yaml",
                 Transformations =
                 {
-                    (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
-                    {
-                        var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-                        if (!metadata.ContainsKey("namespace"))
-                        {
-                            return obj.SetItem("metadata", metadata.Add("namespace", _config.GetWebApplicationConfig().Namespace));
-                        }
-                        
-                        return obj.SetItem("metadata", metadata.SetItem("namespace", _config.GetWebApplicationConfig().Namespace));
-                    }
+                    // (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
+                    // {
+                    //     var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
+                    //     if (!metadata.ContainsKey("namespace"))
+                    //     {
+                    //         return obj.SetItem("metadata", metadata.Add("namespace", _config.GetWebApplicationConfig().Namespace));
+                    //     }
+                    //     
+                    //     return obj.SetItem("metadata", metadata.SetItem("namespace", _config.GetWebApplicationConfig().Namespace));
+                    // }
                 }
             });
             configFile.Ready();
 
-            var localVolumeProvisioner = new ConfigFile("web-application-tidb-local-volume-provisioner", new ConfigFileArgs
-            {
-                File = "./WebApplication/Resource/TiDB/Yaml/local-volume-provisioner.yaml",
-            });
-            localVolumeProvisioner.Ready();
+            // var localVolumeProvisioner = new ConfigFile("web-application-tidb-local-volume-provisioner", new ConfigFileArgs
+            // {
+            //     File = "./WebApplication/Resource/TiDB/Yaml/local-volume-provisioner.yaml",
+            // });
+            // localVolumeProvisioner.Ready();
 
             var tidbOperator = new Release("web-application-tidb-operator", new ReleaseArgs
             {
@@ -51,7 +51,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 // helm search repo pingcap/tidb-operator --versions
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
                 // pingcap/tidb-operator   v1.3.8          v1.3.8          tidb-operator Helm chart for Kubernetes
-                Version = "v1.3.8",
+                Version = "v1.3.7",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://charts.pingcap.org"
@@ -66,17 +66,17 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             {
                 ["pd"] = new Dictionary<string, object>
                 {
-                    ["storageClassName"] = "shared-ssd-storage",
-                    ["replicas"] = 2
+                    ["storageClassName"] = "standard",
+                    ["replicas"] = 1
                 },
                 ["tikv"] = new Dictionary<string, object>
                 {
-                    ["storageClassName"] = "ssd-storage",
-                    //["replicas"] = 1
+                    ["storageClassName"] = "standard",
+                    ["replicas"] = 1
                 },
                 ["tidb"] = new Dictionary<string, object>
                 {
-                   // ["replicas"] = 1
+                    ["replicas"] = 1
                 }
             };
 
@@ -86,7 +86,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 // helm search repo pingcap/tidb-cluster --versions
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
                 // pingcap/tidb-cluster    v1.3.8                          A Helm chart for TiDB Cluster
-                Version = "v1.3.8",
+                Version = "v1.3.7",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://charts.pingcap.org"
