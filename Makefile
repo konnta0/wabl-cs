@@ -128,6 +128,8 @@ migration-add:
 mount-dir:
 	mkdir -p $(PWD)/.data/mnt
 	minikube mount $(PWD)/.data/mnt:/mnt
+	# minikube ssh "sudo mkdir /mnt/{ssd,sharedssd,monitoring,backup}"
+
 
 .PHONY: mk-start # 
 mk-start: 
