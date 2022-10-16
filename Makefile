@@ -124,6 +124,7 @@ migration-add:
 	database_migration \
 	dotnet ef migrations add $(NAME)
 
+## Minikube
 .PHONY: mount-dir #
 mount-dir:
 	mkdir -p $(PWD)/.data/mnt
@@ -149,6 +150,7 @@ mk-stop:
 mk-dashboard:
 	minikube dashboard
 
+## Pulumi
 INFRASTRUCTURE_DIR=./src/Infrastructure
 STACK?=develop
 .PHONY: p-up # pulumi up
@@ -219,6 +221,8 @@ add-cert: get-cert
 setup-local: install-minikube install-pulumi
 	@echo "start setup local"
 
+
+## Container image
 .PHONY: build-image # 
 build-image:
 	docker build -t core.harbor.cr.test/webapp/dotnetapp:latest .
