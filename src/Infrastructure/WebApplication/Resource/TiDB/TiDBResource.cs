@@ -22,20 +22,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             // https://docs.pingcap.com/tidb-in-kubernetes/v1.0/deploy-tidb-from-kubernetes-minikube#add-helm-repo
             var configFile = new ConfigFile("web-application-tidb-crd", new ConfigFileArgs
             {
-                File = "./WebApplication/Resource/TiDB/Yaml/crd.yaml",
-                Transformations =
-                {
-                    // (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
-                    // {
-                    //     var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-                    //     if (!metadata.ContainsKey("namespace"))
-                    //     {
-                    //         return obj.SetItem("metadata", metadata.Add("namespace", _config.GetWebApplicationConfig().Namespace));
-                    //     }
-                    //     
-                    //     return obj.SetItem("metadata", metadata.SetItem("namespace", _config.GetWebApplicationConfig().Namespace));
-                    // }
-                }
+                File = "./WebApplication/Resource/TiDB/Yaml/crd.yaml"
             });
             configFile.Ready();
 
@@ -72,7 +59,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 ["tikv"] = new Dictionary<string, object>
                 {
                     ["storageClassName"] = "standard",
-                    ["replicas"] = 1
+                    ["replicas"] = 1,
                 },
                 ["tidb"] = new Dictionary<string, object>
                 {
