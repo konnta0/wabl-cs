@@ -69,6 +69,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
 
             var tidbCluster = new Release("web-application-tidb-cluster", new ReleaseArgs
             {
+                Name = "tidb-cluster",
                 Chart = "tidb-cluster",
                 // helm search repo pingcap/tidb-cluster --versions
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
