@@ -3,7 +3,6 @@ using System.Linq;
 using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
-using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
@@ -43,6 +42,7 @@ namespace Infrastructure.WebApplication.Resource.Dragonfly
             };
             var dragonfly = new Release("web-application-dragonfly", new ReleaseArgs
             {
+                Name = "dragonfly",
                 Chart = "dragonfly",
                 // helm search repo dragonfly/dragonfly --versions | head -n 5
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
