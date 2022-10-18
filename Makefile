@@ -230,3 +230,12 @@ build-image:
 .PHONY: push-image # 
 push-image: build-image
 	docker image push core.harbor.cr.test/webapp/dotnetapp:latest
+
+## k8s tools
+.PHONY: redis-cli # 
+redis-cli: 
+	kubectl run -n webapp -it redis-cli --rm --image redis --restart=Never -- bash
+
+.PHONY: mysql # 
+mysql: 
+	kubectl run -n webapp -it mysql --rm --image mysql:8.0 --restart=Never -- bash
