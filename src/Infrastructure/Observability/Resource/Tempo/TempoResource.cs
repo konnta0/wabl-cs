@@ -21,6 +21,7 @@ namespace Infrastructure.Observability.Resource.Tempo
         {
             var tempo = new Release("tempo-distributed", new ReleaseArgs
             {
+                Name = "tempo-distributed",
                 Chart = "tempo-distributed",
                 // helm search repo grafana/tempo-distributed --versions | head -n 5
                 // NAME                            CHART VERSION   APP VERSION     DESCRIPTION
