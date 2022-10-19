@@ -191,10 +191,11 @@ install-resolver-minikube: # https://minikube.sigs.k8s.io/docs/handbook/addons/i
 	sed -e 's/MINIKUBE_IP/$(MINIKUBE_IP)/' $(TEMPLATE_RESOLVER_MINIKUBE) | sudo tee /etc/resolver/minikube-test
 
 .PHONY: install-pulumi
-install-pulumi:
+install-pulumi: # for mac
 	@echo "start install pulumi"
 	curl -fsSL https://get.pulumi.com | sh
 	@echo "end install pulumi"
+	brew install pulumi/tap/crd2pulumi
 
 DOMAIN=cr.test
 CERTIFICATE_PATH=ca.crt
