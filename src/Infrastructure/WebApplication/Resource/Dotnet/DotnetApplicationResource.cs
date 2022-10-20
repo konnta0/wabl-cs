@@ -74,6 +74,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         {
                             Metadata = new ObjectMetaArgs
                             {
+                        Name = "dotnetapp",
                                 Labels =
                                 {
                                     { "app", "web" }
