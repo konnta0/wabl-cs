@@ -9,6 +9,8 @@ using Pulumi.Kubernetes.Types.Inputs.Autoscaling.V2Beta2;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
+using Pulumi.Kubernetes.Types.Inputs.Opentelemetry.V1Alpha1;
+using Pulumi.Kubernetes.Yaml;
 using Config = Pulumi.Config;
 using ContainerArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ContainerArgs;
 using Secret = Pulumi.Kubernetes.Core.V1.Secret;
@@ -49,6 +51,26 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                 StringData = envInputMap
             });
 
+            string openTelemetryCollectorConfigYaml;
+            using (var sr = new StreamReader("WebApplication/Resource/Dotnet/Yaml/OpentelemetryCollector/config.yaml"))
+            {
+                openTelemetryCollectorConfigYaml = sr.ReadToEnd();
+            }
+            var sidecar = new Pulumi.Crds.Opentelemetry.V1Alpha1.OpenTelemetryCollector("open-telemetry-collector",
+                new OpenTelemetryCollectorArgs
+                {
+                    Metadata = new ObjectMetaArgs
+                    {
+                        Name = "open-telemetry-collector",
+                        Namespace = _config.GetWebApplicationConfig().Namespace
+                    },
+                    Spec = new OpenTelemetryCollectorSpecArgs
+                    {
+                        Mode = "sidecar",
+                        Config = openTelemetryCollectorConfigYaml
+                    }
+                });
+            
             var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-application",
                 new DeploymentArgs
                 {
@@ -78,6 +100,10 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                                 Labels =
                                 {
                                     { "app", "web" }
+                                },
+                                Annotations = 
+                                {
+                                    {"sidecar.opentelemetry.io/inject", bool.TrueString}
                                 }
                             },
                             Spec = new PodSpecArgs
