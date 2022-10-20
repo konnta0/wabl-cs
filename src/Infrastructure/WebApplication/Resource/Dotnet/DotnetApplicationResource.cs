@@ -54,6 +54,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                 {
                     Metadata = new ObjectMetaArgs
                     {
+                        Name = "dotnetapp",
                         Labels =
                         {
                             { "app", "web" }
@@ -74,7 +75,6 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         {
                             Metadata = new ObjectMetaArgs
                             {
-                        Name = "dotnetapp",
                                 Labels =
                                 {
                                     { "app", "web" }
@@ -108,6 +108,16 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                                             {
                                                 {"cpu", "200m"}
                                             }
+                                        },
+                                        LivenessProbe = new ProbeArgs
+                                        {
+                                            HttpGet = new HTTPGetActionArgs
+                                            {
+                                                Path = "healthz",
+                                                Port = 80
+                                            },
+                                            InitialDelaySeconds = 3,
+                                            PeriodSeconds = 10
                                         }
                                     }
                                 }
