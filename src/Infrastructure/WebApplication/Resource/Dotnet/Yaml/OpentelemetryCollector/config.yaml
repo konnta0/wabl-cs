@@ -1,0 +1,35 @@
+extensions:
+  zpages:
+    endpoint: 0.0.0.0:55679
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+exporters:
+  logging:
+    loglevel: debug
+  otlp/tempo-trace:
+    endpoint: tempo-distributed-distributor.observability.svc.cluster.local:4317
+    tls:
+      insecure: true
+
+processors:
+  batch:
+  memory_limiter:
+    # 75% of maximum memory up to 4G
+    limit_mib: 1536
+    # 25% of limit up to 2G
+    spike_limit_mib: 512
+    check_interval: 5s
+
+service:
+  extensions: [zpages]
+  telemetry:
+    logs:
+      level: "DEBUG"
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [otlp/tempo-trace]
