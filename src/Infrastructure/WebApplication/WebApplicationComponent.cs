@@ -45,10 +45,10 @@ namespace Infrastructure.WebApplication
             });
             _ = @namespace.Metadata.Apply(x => x.Name);
 
+            _openTelemetryOperatorResource.Apply();
             _tiDbResource.Apply();
             _dragonflyResource.Apply();
             _dotnetApplicationResource.Apply();
-            _openTelemetryOperatorResource.Apply();
 
             return string.Empty;
         }
