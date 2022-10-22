@@ -25,7 +25,7 @@ namespace Infrastructure.ContainerRegistry.Resource
             // ref: https://github.com/minio/minio/blob/master/helm/minio/values.yaml
             var values = new Dictionary<string, object>
             {
-                ["replicas"] = 4,
+                ["replicas"] = 1,
                 ["persistence"] = new Dictionary<string, object>
                 {
                     ["size"] = "1Gi"
@@ -112,14 +112,12 @@ namespace Infrastructure.ContainerRegistry.Resource
                 });
             }
             
-            var release = new Release("minio", new ReleaseArgs
+            var release = new Release("container-registry-minio", new ReleaseArgs
             {
+                Name = "minio",
                 Chart = "minio",
                 // helm search repo minio/minio --versions
-                // NAME            CHART VERSION   APP VERSION                     DESCRIPTION
-                // minio/minio     4.0.0           RELEASE.2022-04-26T01-20-24Z    Multi-Cloud Object Storage
-                // minio/minio     3.6.6           RELEASE.2022-04-16T04-26-02Z    Multi-Cloud Object Storage
-                Version = "4.0.2",
+                Version = "4.0.15",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://charts.min.io"
