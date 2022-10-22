@@ -1,5 +1,6 @@
 using Infrastructure.WebApplication.Resource.Dotnet;
 using Infrastructure.WebApplication.Resource.Dragonfly;
+using Infrastructure.WebApplication.Resource.OpenTelemetryOperator;
 using Infrastructure.WebApplication.Resource.TiDB;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +14,7 @@ namespace Infrastructure.WebApplication.Extension
             serviceCollection.AddScoped<DragonflyResource>();
             serviceCollection.AddScoped<TiDBResource>();
             serviceCollection.AddScoped<WebApplicationComponent>();
+            serviceCollection.AddScoped<OpenTelemetryOperatorResource>();
             return serviceCollection;
         }
     }
