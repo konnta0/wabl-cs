@@ -70,7 +70,34 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         Config = openTelemetryCollectorConfigYaml
                     }
                 });
-            
+
+            var instrumentation = new Pulumi.Crds.Opentelemetry.V1Alpha1.Instrumentation(
+                "open-telemetry-instrumentation", new InstrumentationArgs
+                {
+                    Metadata = new ObjectMetaArgs
+                    {
+                        Name = "open-telemetry-instrumentation",
+                        Namespace = _config.GetWebApplicationConfig().Namespace
+                    },
+                    Spec = new InstrumentationSpecArgs
+                    {
+                        Exporter = new InstrumentationSpecExporterArgs
+                        {
+                            Endpoint = "http://otel-collector:4317"
+                        },
+                        Propagators = new InputList<string>
+                        {
+                            "tracecontext",
+                            "baggage",
+                            "b3"
+                        },
+                        Sampler = new InstrumentationSpecSamplerArgs
+                        {
+                            Type = "parentbased_traceidratio",
+                            Argument = "0.25"
+                        }
+                    }
+                });
             var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-application",
                 new DeploymentArgs
                 {
@@ -103,7 +130,8 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                                 },
                                 Annotations = 
                                 {
-                                    {"sidecar.opentelemetry.io/inject", bool.TrueString}
+                                    {"sidecar.opentelemetry.io/inject", bool.TrueString},
+                                    {"instrumentation.opentelemetry.io/inject-dotnet", bool.FalseString}
                                 }
                             },
                             Spec = new PodSpecArgs
