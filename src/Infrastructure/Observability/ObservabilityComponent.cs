@@ -1,6 +1,7 @@
 using Infrastructure.Observability.Resource;
 using Infrastructure.Observability.Resource.Grafana;
 using Infrastructure.Observability.Resource.Loki;
+using Infrastructure.Observability.Resource.MinIO;
 using Infrastructure.Observability.Resource.Pyroscope;
 using Infrastructure.Observability.Resource.Tempo;
 using Microsoft.Extensions.Logging;
@@ -15,18 +16,22 @@ namespace Infrastructure.Observability
         private readonly LokiResource _lokiResource;
         private readonly TempoResource _tempoResource;
         private readonly PyroscopeResource _pyroscopeResource;
+        private readonly MinIOResource _minIoResource;
 
-        public ObservabilityComponent(ILogger<ObservabilityComponent> logger, GrafanaResource grafana, LokiResource lokiResource, TempoResource tempoResource, PyroscopeResource pyroscopeResource)
+        public ObservabilityComponent(ILogger<ObservabilityComponent> logger, GrafanaResource grafana, LokiResource lokiResource, TempoResource tempoResource, PyroscopeResource pyroscopeResource,
+            MinIOResource minIoResource)
         {
             _logger = logger;
             _grafana = grafana;
             _lokiResource = lokiResource;
             _tempoResource = tempoResource;
             _pyroscopeResource = pyroscopeResource;
+            _minIoResource = minIoResource;
         }
 
         public Output<string> Apply()
         {
+            _minIoResource.Apply();
             var grafanaHost = _grafana.Apply();
             _lokiResource.Apply();
             _tempoResource.Apply();
