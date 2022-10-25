@@ -21,7 +21,8 @@ namespace Infrastructure.Observability.Resource.Pyroscope
         {
             var pyroscope = new Release("observability-pyroscope", new ReleaseArgs
             {
-                 Chart = "pyroscope",
+                Name = "pyroscope",
+                Chart = "pyroscope",
                 // helm search repo pyroscope-io/pyroscope --versions | head -n 5
                 // NAME                            CHART VERSION   APP VERSION     DESCRIPTION
                 // pyroscope-io/pyroscope          0.2.66          0.29.0          A Helm chart for Pyroscope
