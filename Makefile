@@ -240,3 +240,4 @@ redis-cli:
 .PHONY: mysql # 
 mysql: 
 	kubectl run -n webapp -it mysql --rm --image mysql:8.0 --restart=Never -- bash
+	# mysql -u root -h  web-application-tidb-cluster-65dfc1bd-tidb -P 4000
