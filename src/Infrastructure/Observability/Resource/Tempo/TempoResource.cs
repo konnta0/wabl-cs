@@ -29,12 +29,14 @@ namespace Infrastructure.Observability.Resource.Tempo
                 // grafana/tempo-distributed       0.18.2          1.4.1           Grafana Tempo in MicroService mode
                 // grafana/tempo-distributed       0.18.1          1.4.1           Grafana Tempo in MicroService mode
                 // grafana/tempo-distributed       0.18.0          1.4.1           Grafana Tempo in MicroService mode
-                Version = "0.19.0",
+                Version = "0.26.5",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://grafana.github.io/helm-charts"
                 },
+                Values = values,
                 CreateNamespace = true,
+                RecreatePods = true,
                 Namespace = _config.GetObservabilityConfig().Namespace
             });
         }
