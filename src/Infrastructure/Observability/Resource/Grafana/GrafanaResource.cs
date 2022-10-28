@@ -45,6 +45,66 @@ namespace Infrastructure.Observability.Resource.Grafana
                         ["labelValue"] = "true",
                         ["searchNamespace"] = _config.GetObservabilityConfig().Namespace,
                     }
+                },
+                ["datasources"] = new Dictionary<string, object>
+                {
+                    ["datasource.yaml"] = new Dictionary<string, object>
+                    {
+                        ["apiVersion"] = 1,
+                        ["datasources"] = new List<object>
+                        {
+                            new Dictionary<string, object>
+                            {
+                                {"name", "Prometheus"},
+                                {"type", "prometheus"},
+                                {"orgId", 1},
+                                {"url", "http://prometheus:9090"},
+                                {"basicAuth", false},
+                                {"isDefault", true},
+                                {"version", 1},
+                                {"editable", false}
+                            },
+                            new Dictionary<string, object>
+                            {
+                                {"name", "Tempo"},
+                                {"type", "tempo"},
+//                                {"access", "proxy"},
+                                {"orgId", 1},
+                                {"url", "http://tempo-distributed-query-frontend:3100"},
+                                {"basicAuth", false},
+                                {"isDefault", false},
+                                {"version", 1},
+                                {"editable", false},
+                                {"apiVersion", 1},
+                                {"uid", "tempo"}
+                            },
+                            new Dictionary<string, object>
+                            {
+                                {"name", "Loki"},
+                                {"type", "loki"},
+//                                {"access", "proxy"},
+                                {"orgId", 1},
+                                {"url", "http://loki-distributed-query-frontend:3100"},
+                                {"basicAuth", false},
+                                {"isDefault", false},
+                                {"version", 1},
+                                {"editable", false},
+                                {"jsonData", new Dictionary<string, object>
+                                {
+                                    ["derivedFields"] = new List<object>
+                                    {
+                                        new Dictionary<string, object>
+                                        {
+                                            {"datasourceUid", "tempo"},
+                                            {"matcherRegex", "\"TraceID\":\"(\\w+)\""},
+                                            {"name", "TraceID"},
+                                            {"url", "$${__value.raw}"}
+                                        }
+                                    }
+                                }}
+                            }
+                        }
+                    }
                 }
             };
 
