@@ -68,19 +68,10 @@ namespace Infrastructure.Observability.Resource.Grafana
         
             var grafana = new Release("grafana", new ReleaseArgs
             {
-                 Chart = "grafana",
-                //  helm search repo grafana/grafana --versions | head -n 10                                                                                                                                           1:11:45
-                // NAME                            CHART VERSION   APP VERSION     DESCRIPTION
-                // grafana/grafana                 6.28.0          8.5.0           The leading tool for querying and visualizing t...
-                // grafana/grafana                 6.27.0          8.5.0           The leading tool for querying and visualizing t...
-                // grafana/grafana                 6.26.8          8.5.0           The leading tool for querying and visualizing t...
-                // grafana/grafana                 6.26.7          8.5.0           The leading tool for querying and visualizing t...
-                // grafana/grafana                 6.26.6          8.5.0           The leading tool for querying and visualizing t...
-                // grafana/grafana                 6.26.5          8.4.6           The leading tool for querying and visualizing t...
-                // grafana/grafana                 6.26.4          8.4.6           The leading tool for querying and visualizing t...
-                // grafana/grafana                 6.26.3          8.4.6           The leading tool for querying and visualizing t...
-                // grafana/grafana                 6.26.2          8.4.6           The leading tool for querying and visualizing t...
-                Version = "6.28.0",
+                Name = "grafana",
+                Chart = "grafana",
+                //  helm search repo grafana/grafana --versions | head -n 5
+                Version = "6.40.3",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://grafana.github.io/helm-charts"
@@ -88,6 +79,7 @@ namespace Infrastructure.Observability.Resource.Grafana
                 CreateNamespace = true,
                 Atomic = true,
                 Values = values,
+                RecreatePods = true,
                 Namespace = _config.GetObservabilityConfig().Namespace
             });
             
