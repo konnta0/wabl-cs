@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
@@ -19,20 +20,24 @@ namespace Infrastructure.Observability.Resource.Loki
 
         public void Apply()
         {
+            var values = new Dictionary<string, object>
+            {
+                
+            };
+            
             var loki = new Release("loki-distributed", new ReleaseArgs
             {
-                 Chart = "loki-distributed",
-                // helm search repo grafana/loki-distributed --versions | head -n 5                                                                                                                                   1:02:14
-                // NAME                            CHART VERSION   APP VERSION     DESCRIPTION
-                // grafana/loki-distributed        0.48.3          2.5.0           Helm chart for Grafana Loki in microservices mode
-                // grafana/loki-distributed        0.48.2          2.5.0           Helm chart for Grafana Loki in microservices mode
-                // grafana/loki-distributed        0.48.1          2.5.0           Helm chart for Grafana Loki in microservices mode
-                // grafana/loki-distributed        0.48.0          2.5.0           Helm chart for Grafana Loki in microservices mode
-                Version = "0.48.3",
+                Name = "loki-distributed",
+                Chart = "loki-distributed",
+                // helm search repo grafana/loki-distributed --versions | head -n 5
+                Version = "0.58.0",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://grafana.github.io/helm-charts"
                 },
+                
+                Values = values,
+                Atomic = true,
                 CreateNamespace = true,
                 Namespace = _config.GetObservabilityConfig().Namespace
             });
