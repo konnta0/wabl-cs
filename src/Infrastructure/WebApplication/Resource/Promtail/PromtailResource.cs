@@ -25,13 +25,20 @@ namespace Infrastructure.WebApplication.Resource.Promtail
                 },
                 ["deployment"] = new Dictionary<string, object>
                 {
+                    ["enabled"] = false
+                },
+                ["configmap"] = new Dictionary<string, object>
+                {
                     ["enabled"] = true
                 },
                 ["config"] = new Dictionary<string, object>
                 {
-                    ["clients"] = new Dictionary<string, object>
+                    ["clients"] = new InputList<InputMap<string>>
                     {
-                        ["url"] = "http://loki-distributed-distributor.observability.svc.cluster.local:3100/loki/api/v1/push"
+                        new InputMap<string>
+                        {
+                            {"url", "http://loki-distributed-distributor.observability.svc.cluster.local:3100/loki/api/v1/push"}
+                        }
                     }
                 }
             };
