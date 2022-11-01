@@ -2,6 +2,7 @@ using Infrastructure.Extension;
 using Infrastructure.WebApplication.Resource.Dotnet;
 using Infrastructure.WebApplication.Resource.Dragonfly;
 using Infrastructure.WebApplication.Resource.OpenTelemetryOperator;
+using Infrastructure.WebApplication.Resource.Promtail;
 using Infrastructure.WebApplication.Resource.TiDB;
 using Microsoft.Extensions.Logging;
 using Pulumi;
@@ -19,12 +20,14 @@ namespace Infrastructure.WebApplication
         private readonly DragonflyResource _dragonflyResource;
         private readonly DotnetApplicationResource _dotnetApplicationResource;
         private readonly OpenTelemetryOperatorResource _openTelemetryOperatorResource;
+        private readonly PromtailResource _promtailResource;
 
         public WebApplicationComponent(ILogger<WebApplicationComponent> logger, Config config, 
             TiDBResource tiDbResource, 
             DragonflyResource dragonflyResource, 
             DotnetApplicationResource dotnetApplicationResource,
-            OpenTelemetryOperatorResource openTelemetryOperatorResource)
+            OpenTelemetryOperatorResource openTelemetryOperatorResource,
+            PromtailResource promtailResource)
         {
             _logger = logger;
             _config = config;
@@ -32,6 +35,7 @@ namespace Infrastructure.WebApplication
             _dragonflyResource = dragonflyResource;
             _dotnetApplicationResource = dotnetApplicationResource;
             _openTelemetryOperatorResource = openTelemetryOperatorResource;
+            _promtailResource = promtailResource;
         }
 
         public string Apply()
@@ -48,6 +52,7 @@ namespace Infrastructure.WebApplication
             _openTelemetryOperatorResource.Apply();
             _tiDbResource.Apply();
             _dragonflyResource.Apply();
+            _promtailResource.Apply();
             _dotnetApplicationResource.Apply();
 
             return string.Empty;
