@@ -96,7 +96,7 @@ namespace Infrastructure.Observability.Resource.Grafana
                                         new Dictionary<string, object>
                                         {
                                             {"datasourceUid", "tempo"},
-                                            {"matcherRegex", "\"TraceID\":\"(\\w+)\""},
+                                            {"matcherRegex", "\"TraceID\\\\\":\\\\\"(\\w+)"},
                                             {"name", "TraceID"},
                                             {"url", "$${__value.raw}"}
                                         }

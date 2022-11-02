@@ -4,6 +4,7 @@ using System.Linq;
 using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Autoscaling.V2Beta2;
+using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Autoscaling.V2Beta2;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
@@ -98,6 +99,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         }
                     }
                 });
+
             var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-application",
                 new DeploymentArgs
                 {
@@ -117,7 +119,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                         {
                             MatchLabels =
                             {
-                                { "app", "web" }
+                                {"app", "web"}
                             }
                         },
                         Template = new PodTemplateSpecArgs
