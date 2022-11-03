@@ -1,8 +1,12 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
+using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.WebApplication.Resource.Promtail
 {
@@ -21,7 +25,7 @@ namespace Infrastructure.WebApplication.Resource.Promtail
             {
                 ["daemonset"] = new Dictionary<string, object>
                 {
-                    ["enabled"] = false
+                    ["enabled"] = true
                 },
                 ["deployment"] = new Dictionary<string, object>
                 {
@@ -29,7 +33,7 @@ namespace Infrastructure.WebApplication.Resource.Promtail
                 },
                 ["configmap"] = new Dictionary<string, object>
                 {
-                    ["enabled"] = true
+                    ["enabled"] = false
                 },
                 ["config"] = new Dictionary<string, object>
                 {
