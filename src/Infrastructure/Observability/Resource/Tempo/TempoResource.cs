@@ -27,6 +27,10 @@ namespace Infrastructure.Observability.Resource.Tempo
             // https://github.com/grafana/helm-charts/blob/main/charts/tempo-distributed/values.yaml
             var values = new Dictionary<string, object>
             {
+                ["enterprise"] = new InputMap<object>
+                {
+                    ["enabled"] = false
+                },
                 ["search"] = new Dictionary<string, object>
                 {
                     ["enabled"] = true
@@ -62,6 +66,10 @@ namespace Infrastructure.Observability.Resource.Tempo
                     {
                         ["replication_factor"] = 1
                     }
+                },
+                ["minio"] = new InputMap<object>
+                {
+                    ["enabled"] = false
                 }
             };
 
