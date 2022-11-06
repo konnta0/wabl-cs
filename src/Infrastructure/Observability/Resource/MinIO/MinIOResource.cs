@@ -60,13 +60,33 @@ namespace Infrastructure.Observability.Resource.MinIO
                         ["accessKey"] = "o11yuser",
                         ["secretKey"] = "o11ypassword",
                         ["policy"] = "readwrite"
+                    },
+                    new InputMap<object>
+                    {
+                        ["accessKey"] = "mimir",
+                        ["secretKey"] = "mimirsecret",
+                        ["policy"] = "readwrite"
                     }
                 },
                 ["buckets"] = new List<object>
                 {
-                    new Dictionary<string, object>
+                    new InputMap<object>
                     {
                         ["name"] = "tempo",
+                        ["policy"] = "public",
+                        ["purge"] = false,
+                        ["versioning"] = false
+                    },
+                    new InputMap<object>
+                    {
+                        ["name"] = "mimir-ruler",
+                        ["policy"] = "public",
+                        ["purge"] = false,
+                        ["versioning"] = false
+                    },
+                    new InputMap<object>
+                    {
+                        ["name"] = "mimir-tsdb",
                         ["policy"] = "public",
                         ["purge"] = false,
                         ["versioning"] = false
