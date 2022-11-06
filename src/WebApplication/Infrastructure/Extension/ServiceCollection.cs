@@ -128,7 +128,7 @@ public static class ServiceCollection
             builder.AddPrometheusExporter(options =>
             {
                 options.StartHttpListener = true;
-                options.HttpListenerPrefixes = configuration.GetSection("Prometheus:Endpoints").Get<string[]>();
+                options.HttpListenerPrefixes = Environment.GetEnvironmentVariable("PROMETHEUS_ENDPOINTS")!.Split(",");
                 options.ScrapeEndpointPath = "/metrics";
                 options.ScrapeResponseCacheDurationMilliseconds = 0;
             });
