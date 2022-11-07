@@ -31,10 +31,35 @@ namespace Infrastructure.Observability.Resource.Mimir
                 {
                     ["structuredConfig"] = new InputMap<object>
                     {
-                        
+                        ["alertmanager_storage"] = new InputMap<object>
+                        {
+                            ["backend"] = "s3",
+                            ["s3"] = new InputMap<object>
+                            {
+                                ["access_key_id"] = "mimir",
+                                ["bucket_name"] = "mimir-ruler", 
+                                ["endpoint"] = "minio:9000",
+                                ["insecure"] = true,
+                                ["secret_access_key"] = "mimirsecret" 
+                            }
+                        },
+                        ["blocks_storage"] = new InputMap<object>
+                        {
+                            ["s3"] = new InputMap<object>
+                            {
+                                ["access_key_id"] = "mimir",
+                                ["bucket_name"] = "mimir-tsdb",
+                                ["endpoint"] = "minio:9000",
+                                ["insecure"] = true,
+                                ["secret_access_key"] = "mimirsecret"
+                            }
+                        }
                     }
-                }
-                
+                },
+                ["ingester"] = new InputMap<object>
+                {
+                    ["replicas"] = 2
+                } 
             };
             
             var mimir = new Release("mimir-distributed", new ReleaseArgs
