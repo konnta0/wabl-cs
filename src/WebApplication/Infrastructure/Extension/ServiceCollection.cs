@@ -1,9 +1,11 @@
 using Cysharp.Text;
 using Domain.Repository.Department;
+using Grpc.Core;
 using Infrastructure.Cache;
 using Infrastructure.Core;
 using Infrastructure.Core.HealthCheck;
 using Infrastructure.Core.Instrumentation;
+using Infrastructure.Core.Instrumentation.UseCase.Meter;
 using Infrastructure.Core.Logging;
 using Infrastructure.Core.RequestHandler;
 using Infrastructure.Database.Context;
@@ -132,7 +134,7 @@ public static class ServiceCollection
                 options.ScrapeEndpointPath = "/metrics";
                 options.ScrapeResponseCacheDurationMilliseconds = 0;
             });
-        });
+        }).AddSingleton<IUseCaseInstrumentationMeter, UseCaseInstrumentationMeter>();
     }
 
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
@@ -155,8 +157,8 @@ public static class ServiceCollection
 
     private static MeterProviderBuilder AddWebApplicationInstrumentation(this MeterProviderBuilder meterProviderBuilder)
     {
-        // TODO :: later
         // builder.AddMeter(MyMeter.Name);
+        meterProviderBuilder.AddMeter(nameof(UseCaseInstrumentationMeter));
         return meterProviderBuilder;
     }
 }
