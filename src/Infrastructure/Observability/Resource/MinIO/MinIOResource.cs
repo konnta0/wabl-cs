@@ -140,6 +140,7 @@ namespace Infrastructure.Observability.Resource.MinIO
                 {
                     Repo = "https://charts.min.io"
                 },
+                CreateNamespace = true,
                 Namespace = _config.GetObservabilityConfig().Namespace,
                 Atomic = true,
                 Values = values
