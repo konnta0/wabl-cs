@@ -10,6 +10,10 @@ receivers:
 exporters:
   logging:
     loglevel: debug
+  otlphttp:
+    endpoint: http://mimir-distributed-distributor.observability.svc.cluster.local:8080/otlp
+  prometheusremotewrite:
+    endpoint: http://mimir-distributed-distributor.observability.svc.cluster.local:8080/api/v1/push
   otlp/tempo-trace:
     endpoint: tempo-distributed-distributor.observability.svc.cluster.local:4317
     tls:
@@ -33,3 +37,6 @@ service:
     traces:
       receivers: [otlp]
       exporters: [otlp/tempo-trace]
+    metrics:
+      receivers: [otlp]
+      exporters: [otlphttp]
