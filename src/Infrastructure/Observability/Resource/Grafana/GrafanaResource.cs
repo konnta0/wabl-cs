@@ -55,10 +55,10 @@ namespace Infrastructure.Observability.Resource.Grafana
                         {
                             new Dictionary<string, object>
                             {
-                                {"name", "Prometheus"},
+                                {"name", "Mimir"},
                                 {"type", "prometheus"},
                                 {"orgId", 1},
-                                {"url", "http://prometheus:9090"},
+                                {"url", "http://mimir-distributed-query-frontend:8080/prometheus"},
                                 {"basicAuth", false},
                                 {"isDefault", true},
                                 {"version", 1},
