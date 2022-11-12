@@ -120,20 +120,18 @@ public static class ServiceCollection
             builder.AddAspNetCoreInstrumentation();
             builder.AddHttpClientInstrumentation();
 
-            // I want to do Otlp, but Grafana Tempo doesn't support it.
-            // https://grafana.com/blog/2020/11/17/tracing-with-the-grafana-cloud-agent-and-grafana-tempo/
-            // builder.AddOtlpExporter(options =>
-            // {
-            //     options.Endpoint = new Uri(builder.Configuration.GetValue<string>("Otlp:Endpoint"));
-            // });
-
-            builder.AddPrometheusExporter(options =>
+            builder.AddOtlpExporter(options =>
             {
-                options.StartHttpListener = true;
-                options.HttpListenerPrefixes = Environment.GetEnvironmentVariable("PROMETHEUS_ENDPOINTS")!.Split(",");
-                options.ScrapeEndpointPath = "/metrics";
-                options.ScrapeResponseCacheDurationMilliseconds = 0;
+                options.Endpoint = new Uri(Environment.GetEnvironmentVariable("OTLP_ENDPOINT") ?? string.Empty);
             });
+
+            // builder.AddPrometheusExporter(options =>
+            // {
+            //     options.StartHttpListener = true;
+            //     options.HttpListenerPrefixes = Environment.GetEnvironmentVariable("PROMETHEUS_ENDPOINTS")!.Split(",");
+            //     options.ScrapeEndpointPath = "/metrics";
+            //     options.ScrapeResponseCacheDurationMilliseconds = 0;
+            // });
         }).AddSingleton<IUseCaseInstrumentationMeter, UseCaseInstrumentationMeter>();
     }
 
