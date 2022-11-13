@@ -11,7 +11,7 @@ exporters:
   logging:
     loglevel: debug
   otlphttp:
-    endpoint: http://mimir-distributed-distributor.observability.svc.cluster.local:8080/otlp
+    endpoint: http://mimir-distributed-distributor.observability.svc.cluster.local:8080/otlp/v1/metrics
   prometheusremotewrite:
     endpoint: http://mimir-distributed-distributor.observability.svc.cluster.local:8080/api/v1/push
   otlp/tempo-trace:
