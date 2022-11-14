@@ -9,7 +9,7 @@ public static class ApplicationBuilder
 {
     public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder applicationBuilder)
     {
-        applicationBuilder.UseOpenTelemetryPrometheusScrapingEndpoint();
+        //applicationBuilder.UseOpenTelemetryPrometheusScrapingEndpoint();
         return applicationBuilder;
     }
 
