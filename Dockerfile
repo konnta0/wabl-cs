@@ -5,7 +5,7 @@ WORKDIR /work
 FROM workspace AS builder
 WORKDIR /build
 COPY ./DotnetMetricTest.sln .
-COPY ./src ./src
+COPY ./src/WebApplication ./src/WebApplication
 
 RUN dotnet restore ./src/WebApplication/Presentation/Presentation.csproj
 RUN dotnet publish ./src/WebApplication/Presentation/Presentation.csproj -c Release -o out --no-restore
