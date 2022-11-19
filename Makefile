@@ -134,8 +134,7 @@ mount-dir:
 
 .PHONY: mk-start # 
 mk-start: 
-	mkdir -p $(PWD)/.data/mnt
-	minikube start --memory='12g' --cpus=4 --driver=hyperkit --disk-size=40000mb --nodes=1 --insecure-registry="core.harbor.cr.test" --kubernetes-version v1.24.6 --mount --mount-string="$(PWD)/.data/mnt:/mnt"
+	minikube start --memory='10g' --cpus=6 --driver=hyperkit --disk-size=40000mb --nodes=1 --insecure-registry="core.harbor.cr.test" --kubernetes-version v1.24.6
 	minikube addons enable ingress
 	minikube addons enable ingress-dns
 	minikube addons enable metrics-server
