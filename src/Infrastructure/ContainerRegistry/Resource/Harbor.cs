@@ -37,20 +37,20 @@ namespace Infrastructure.ContainerRegistry.Resource
             // ref: https://github.com/goharbor/harbor-helm/blob/master/values.yaml
             var values = new Dictionary<string, object>
             {
-                ["expose"] = new Dictionary<string, object>
+                ["expose"] = new InputMap<object>
                 {
-                    ["tls"] = new Dictionary<string, object>
+                    ["tls"] = new InputMap<object>
                     {
                         ["enabled"] = true,
                         ["certSource"] = "secret",
-                        ["secret"] = new Dictionary<string, object>
+                        ["secret"] = new InputMap<object>
                         {
                             ["secretName"] = "harbor-certificate"
                         }
                     },
-                    ["ingress"] = new Dictionary<string, object>
+                    ["ingress"] = new InputMap<object>
                     {
-                        ["hosts"] = new Dictionary<string, object>
+                        ["hosts"] = new InputMap<object>
                         {
                             ["core"] = "core.harbor.cr.test",
                             ["notary"] = "notary.harbor.cr.test"
@@ -59,21 +59,21 @@ namespace Infrastructure.ContainerRegistry.Resource
                 },
                 ["externalURL"] = "https://core.harbor.cr.test",
                 ["harborAdminPassword"] = "Harbor1234",
-                // ["persistence"] = new Dictionary<string, object>
+                // ["persistence"] = new InputMap<object>
                 // {
-                //     ["persistentVolumeClaim"] = new Dictionary<string, object>
+                //     ["persistentVolumeClaim"] = new InputMap<object>
                 //     {
-                //         ["database"] = new Dictionary<string, object>
+                //         ["database"] = new InputMap<object>
                 //         {
                 //             ["accessMode"] = "ReadWriteMany"
                 //         }
                 //     }
                 //     // https://github.com/goharbor/harbor-helm/issues/1217
-                //     // ["imageChartStorage"] = new Dictionary<string, object>
+                //     // ["imageChartStorage"] = new InputMap<object>
                 //     // {
                 //     //     ["disableredirect"] = false,
                 //     //     ["type"] = "s3",
-                //     //     ["s3"] = new Dictionary<string, object>
+                //     //     ["s3"] = new InputMap<object>
                 //     //     {
                 //     //         ["region"] = "us-east-1",
                 //     //         ["accesskey"] = "harbor",
@@ -93,80 +93,80 @@ namespace Infrastructure.ContainerRegistry.Resource
             if (_config.IsMinikube())
             {
                 var containerRegistryConfig = _config.GetContainerRegistryConfig();
-                values.TryAdd("notary", new Dictionary<string, object>
+                values.TryAdd("notary", new InputMap<object>
                 {
-                    ["server"] = new Dictionary<string, object>
+                    ["server"] = new InputMap<object>
                     {
-                        ["nodeSelector"] = new Dictionary<string, object>
+                        ["nodeSelector"] = new InputMap<object>
                         {
                             [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                         }
                     },
-                    ["signer"] = new Dictionary<string, object>
+                    ["signer"] = new InputMap<object>
                     {
-                        ["nodeSelector"] = new Dictionary<string, object>
+                        ["nodeSelector"] = new InputMap<object>
                         {
                             [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                         }
                     }
                 });
-                values.TryAdd("trivy", new Dictionary<string, object>
+                values.TryAdd("trivy", new InputMap<object>
                 {
-                    ["nodeSelector"] = new Dictionary<string, object>
+                    ["nodeSelector"] = new InputMap<object>
                     {
                         [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
-                values.TryAdd("core", new Dictionary<string, object>
+                values.TryAdd("core", new InputMap<object>
                 {
-                    ["nodeSelector"] = new Dictionary<string, object>
+                    ["nodeSelector"] = new InputMap<object>
                     {
                         [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
-                values.TryAdd("jobservice", new Dictionary<string, object>
+                values.TryAdd("jobservice", new InputMap<object>
                 {
-                    ["nodeSelector"] = new Dictionary<string, object>
+                    ["nodeSelector"] = new InputMap<object>
                     {
                         [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
-                values.TryAdd("registry", new Dictionary<string, object>
+                values.TryAdd("registry", new InputMap<object>
                 {
-                    ["nodeSelector"] = new Dictionary<string, object>
+                    ["nodeSelector"] = new InputMap<object>
                     {
                         [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
-                values.TryAdd("chartmuseum", new Dictionary<string, object>
+                values.TryAdd("chartmuseum", new InputMap<object>
                 {
-                    ["nodeSelector"] = new Dictionary<string, object>
+                    ["nodeSelector"] = new InputMap<object>
                     {
                         [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
-                values.TryAdd("portal", new Dictionary<string, object>
+                values.TryAdd("portal", new InputMap<object>
                 {
-                    ["nodeSelector"] = new Dictionary<string, object>
+                    ["nodeSelector"] = new InputMap<object>
                     {
                         [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                     }
                 });
-                values.TryAdd("database", new Dictionary<string, object>
+                values.TryAdd("database", new InputMap<object>
                 {
-                    ["internal"] = new Dictionary<string, object>
+                    ["internal"] = new InputMap<object>
                     {
-                        ["nodeSelector"] = new Dictionary<string, object>
+                        ["nodeSelector"] = new InputMap<object>
                         {
                             [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                         }
                     }
                 });
-                values.TryAdd("redis", new Dictionary<string, object>
+                values.TryAdd("redis", new InputMap<object>
                 {
-                    ["internal"] = new Dictionary<string, object>
+                    ["internal"] = new InputMap<object>
                     {
-                        ["nodeSelector"] = new Dictionary<string, object>
+                        ["nodeSelector"] = new InputMap<object>
                         {
                             [containerRegistryConfig.Harbor.NodeSelector.Label] = containerRegistryConfig.Harbor.NodeSelector.Value
                         }
