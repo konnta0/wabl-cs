@@ -9,9 +9,11 @@ receivers:
 
 exporters:
   logging:
-    loglevel: debug
+    loglevel: info
   otlphttp:
     endpoint: http://mimir-distributed-distributor.observability.svc.cluster.local:8080/otlp
+    headers:
+      X-Scope-OrgID: "1"
   prometheusremotewrite:
     endpoint: http://mimir-distributed-distributor.observability.svc.cluster.local:8080/api/v1/push
   otlp/tempo-trace:
