@@ -59,6 +59,14 @@ namespace Infrastructure.Observability.Resource.Grafana
                                 {"type", "prometheus"},
                                 {"orgId", 1},
                                 {"url", "http://mimir-distributed-query-frontend:8080/prometheus"},
+                                {"jsonData", new Dictionary<string, object>
+                                {
+                                    ["httpHeaderName1"] = "X-Scope-OrgID"
+                                }},
+                                {"secureJsonData", new Dictionary<string, object>
+                                {
+                                    ["httpHeaderValue1"] = "1"
+                                }},
                                 {"basicAuth", false},
                                 {"isDefault", true},
                                 {"version", 1},
