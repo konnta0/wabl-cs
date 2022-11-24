@@ -26,12 +26,6 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             });
             configFile.Ready();
 
-            // var localVolumeProvisioner = new ConfigFile("web-application-tidb-local-volume-provisioner", new ConfigFileArgs
-            // {
-            //     File = "./WebApplication/Resource/TiDB/Yaml/local-volume-provisioner.yaml",
-            // });
-            // localVolumeProvisioner.Ready();
-
             var tidbOperator = new Release("web-application-tidb-operator", new ReleaseArgs
             {
                 Chart = "tidb-operator",
