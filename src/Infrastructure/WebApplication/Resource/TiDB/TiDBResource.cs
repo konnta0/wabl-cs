@@ -31,7 +31,6 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 Chart = "tidb-operator",
                 // helm search repo pingcap/tidb-operator --versions
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-                // pingcap/tidb-operator   v1.3.8          v1.3.8          tidb-operator Helm chart for Kubernetes
                 Version = "v1.3.7",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
@@ -53,7 +52,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 ["tikv"] = new Dictionary<string, object>
                 {
                     ["storageClassName"] = "standard",
-                    ["replicas"] = 1,
+                    ["replicas"] = 1
                 },
                 ["tidb"] = new Dictionary<string, object>
                 {
