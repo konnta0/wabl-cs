@@ -1,14 +1,10 @@
 using Cysharp.Text;
 using Domain.Repository.Department;
-using Grpc.Core;
 using Infrastructure.Cache;
-using Infrastructure.Core;
-using Infrastructure.Core.HealthCheck;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Instrumentation.UseCase.Meter;
 using Infrastructure.Core.Logging;
 using Infrastructure.Core.RequestHandler;
-using Infrastructure.Database.Context;
 using Infrastructure.Database.Context.Employee;
 using Infrastructure.Extension.HealthCheck;
 using Infrastructure.Extension.Instrumentation;
@@ -124,14 +120,7 @@ public static class ServiceCollection
             {
                 options.Endpoint = new Uri(Environment.GetEnvironmentVariable("OTLP_ENDPOINT") ?? string.Empty);
             });
-
-            // builder.AddPrometheusExporter(options =>
-            // {
-            //     options.StartHttpListener = true;
-            //     options.HttpListenerPrefixes = Environment.GetEnvironmentVariable("PROMETHEUS_ENDPOINTS")!.Split(",");
-            //     options.ScrapeEndpointPath = "/metrics";
-            //     options.ScrapeResponseCacheDurationMilliseconds = 0;
-            // });
+            
         }).AddSingleton<IUseCaseInstrumentationMeter, UseCaseInstrumentationMeter>();
     }
 
