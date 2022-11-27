@@ -30,6 +30,7 @@ namespace Infrastructure.Observability.Resource.Grafana
             // ref: https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
             var values = new Dictionary<string, object>
             {
+                ["adminPassword"] = "grafana12345",
                 ["sidecar"] = new Dictionary<string, object>
                 {
                     ["dashboards"] = new Dictionary<string, object>
