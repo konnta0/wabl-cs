@@ -4,12 +4,15 @@ using System.Linq;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
+using Pulumi.Crds.Pingcap.V1Alpha1;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
+using Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1;
+using Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1;
 
 namespace Infrastructure.Observability.Resource.Grafana
 {
@@ -150,7 +153,63 @@ namespace Infrastructure.Observability.Resource.Grafana
                 RecreatePods = true,
                 Namespace = _config.GetObservabilityConfig().Namespace
             });
+
+            var tidbInitializer = new TidbMonitor("tidb-monitor", new TidbMonitorArgs
+            {
+                ApiVersion = "pingcap.com/v1alpha1",
+                Spec = new TidbMonitorSpecArgs
+                {
+                    Clusters = new TidbMonitorSpecClustersArgs
+                    {
+                        Name = "tidb-cluster",
+                        Namespace = _config.GetObservabilityConfig().Namespace
+                    },
+                    Persistent = true,
+                    StorageClassName = "tidb-monitor-storage-class",
+                    Storage = "5G",
+                    Initializer = new TidbMonitorSpecInitializerArgs
+                    {
+                        BaseImage = "pingcap/tidb-monitor-initializer",
+                        Version = "v6.1.0"
+                    },
+                    Reloader = new TidbMonitorSpecReloaderArgs
+                    {
+                        BaseImage = "pingcap/tidb-monitor-reloader",
+                        Version = "v1.0.1"
+                    },
+                    Prometheus = new TidbMonitorSpecPrometheusArgs
+                    {
+                        BaseImage = "prom/prometheus",
+                        Version = "v2.27.1",
+                        Service = new TidbMonitorSpecPrometheusServiceArgs
+                        {
+                            Type = "NodePort"
+                        }
+                    },
+                    PrometheusReloader = new TidbMonitorSpecPrometheusreloaderArgs
+                    {
+                        BaseImage = "quay.io/prometheus-operator/prometheus-config-reloader",
+                        Version = "v0.49.0"
+                    },
+                    Grafana = new TidbMonitorSpecGrafanaArgs
+                    {
+                        BaseImage = "grafana/grafana",
+                        Version = "7.5.11",
+                        Service = new TidbMonitorSpecGrafanaServiceArgs
+                        {
+                            Type = "NodePort"
+                        }
+                    },
+                    ImagePullPolicy = "IfNotPresent" 
+                },
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "tidb-monitor",
+                    Namespace = _config.GetObservabilityConfig().Namespace
+                }
+            });
             
+                
             var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("grafana-ingress", new IngressArgs
             {
                 ApiVersion = "networking.k8s.io/v1",
