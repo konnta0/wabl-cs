@@ -204,7 +204,7 @@ namespace Infrastructure.Observability.Resource.Grafana
                 },
                 Metadata = new ObjectMetaArgs
                 {
-                    Name = "tidb-monitor",
+                    Name = "tidb-monitor-initializer",
                     Namespace = _config.GetObservabilityConfig().Namespace
                 }
             });
