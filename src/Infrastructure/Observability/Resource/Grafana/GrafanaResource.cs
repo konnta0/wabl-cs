@@ -44,6 +44,10 @@ namespace Infrastructure.Observability.Resource.Grafana
                         ["searchNamespace"] = _config.GetObservabilityConfig().Namespace,
                     }
                 },
+                ["dashboardsConfigMaps"] = new InputMap<object>
+                {
+                    ["tidb"] = "tidb-monitor-monitor-grafana"
+                },
                 ["datasources"] = new Dictionary<string, object>
                 {
                     ["datasource.yaml"] = new Dictionary<string, object>
