@@ -44,10 +44,6 @@ namespace Infrastructure.Observability.Resource.Grafana
                         ["searchNamespace"] = _config.GetObservabilityConfig().Namespace,
                     }
                 },
-                ["dashboardsConfigMaps"] = new InputMap<object>
-                {
-                    ["tidb"] = "tidb-monitor-monitor-grafana"
-                },
                 ["datasources"] = new Dictionary<string, object>
                 {
                     ["datasource.yaml"] = new Dictionary<string, object>
@@ -140,7 +136,8 @@ namespace Infrastructure.Observability.Resource.Grafana
                     Namespace = _config.GetObservabilityConfig().Namespace
                 }
             });
-        
+            
+
             var grafana = new Release("grafana", new ReleaseArgs
             {
                 Name = "grafana",
