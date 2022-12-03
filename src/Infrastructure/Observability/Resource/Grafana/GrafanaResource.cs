@@ -4,15 +4,12 @@ using System.Linq;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
-using Pulumi.Crds.Pingcap.V1Alpha1;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
-using Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1;
-using Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1;
 
 namespace Infrastructure.Observability.Resource.Grafana
 {
@@ -40,8 +37,8 @@ namespace Infrastructure.Observability.Resource.Grafana
                     {
                         ["enabled"] = true,
                         ["label"] = "grafana_dashboard",
-                        ["labelValue"] = "true",
-                        ["searchNamespace"] = _config.GetObservabilityConfig().Namespace,
+                        ["labelValue"] = bool.TrueString.ToLower(),
+                        ["searchNamespace"] = string.Join(",", _config.GetObservabilityConfig().Namespace, _config.GetWebApplicationConfig().Namespace)
                     }
                 },
                 ["datasources"] = new Dictionary<string, object>
@@ -131,12 +128,11 @@ namespace Infrastructure.Observability.Resource.Grafana
                 {
                     Labels =
                     {
-                        ["grafana_dashboard"] = "true"
+                        ["grafana_dashboard"] = bool.TrueString.ToLower()
                     },
                     Namespace = _config.GetObservabilityConfig().Namespace
                 }
             });
-            
 
             var grafana = new Release("grafana", new ReleaseArgs
             {
