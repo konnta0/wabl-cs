@@ -57,6 +57,10 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 ["tidb"] = new Dictionary<string, object>
                 {
                     ["replicas"] = 1
+                },
+                ["monitor"] = new InputMap<object>
+                {
+                    ["create"] = false
                 }
             };
 
