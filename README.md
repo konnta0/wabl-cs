@@ -9,16 +9,18 @@ Also, the core development language for tools and libraries is C#.
 
 ---
 😄  minikube v1.26.1 on Darwin 12.5
-
-✨  Using the hyperkit driver based on user configuration
-
+❗  Specified Kubernetes version 1.24.6 is newer than the newest supported version: v1.24.3. Use `minikube config defaults kubernetes-version` for details.
+✨  Using the docker driver based on existing profile
 👍  Starting control plane node minikube in cluster minikube
-
-🔥  Creating hyperkit VM (CPUs=4, Memory=7168MB, Disk=40000MB) ...
-
-🐳  Preparing Kubernetes v1.24.3 on Docker 20.10.17 ...
-
+🚜  Pulling base image ...
+🔄  Restarting existing docker container for "minikube" ...
+🐳  Preparing Kubernetes v1.24.6 on Docker 20.10.17 ...
 ---
+
+### Memo
+If you use Docker for mac, you must also use the following
+https://github.com/chipmk/docker-mac-net-connect
+
 ### Note
 This repository used AGPLv3 license packages. (Grafana, MinIO etc)
 Intended for local use, but use with caution!
