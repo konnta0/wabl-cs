@@ -7,6 +7,7 @@ namespace Infrastructure.CI_CD.Extension
     {
         internal static IServiceCollection AddCICD(this IServiceCollection serviceCollection)
         {
+            serviceCollection.AddScoped<ClusterRole>();
             serviceCollection.AddScoped<ClusterRoleBinding>();
             serviceCollection.AddScoped<ServiceAccount>();
             serviceCollection.AddScoped<TektonResource>();
