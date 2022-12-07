@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Crds.Pingcap.V1Alpha1;
+using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
+using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1;
@@ -83,6 +85,28 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 Values = values,
                 Namespace = tidbOperator.Namespace.Apply(x => x),
                 RecreatePods = true
+            });
+            
+            var pv = new PersistentVolume("tidb-monitor-grafana-pv", new PersistentVolumeArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Labels =
+                    {
+                        ["type"] = "tidb-grafana-dashboard"
+                    }
+                },
+                Spec = new PersistentVolumeSpecArgs
+                {
+                    AccessModes = "ReadWriteMany",
+                    Capacity =
+                    {
+                        ["storage"] = "300Mi"
+                    },
+                    VolumeMode = "Filesystem",
+                    PersistentVolumeReclaimPolicy = "Retain",
+                    StorageClassName = "shared"
+                }
             });
 
             var tidbMonitor = new TidbMonitor("tidb-monitor", new TidbMonitorArgs
