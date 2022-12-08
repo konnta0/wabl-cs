@@ -129,9 +129,6 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                         Name = "tidb-cluster",
                         Namespace = _config.GetWebApplicationConfig().Namespace
                     },
-                    Persistent = true,
-                    StorageClassName = "tidb-monitor-storage-class",
-                    Storage = "5G",
                     Initializer = new TidbMonitorSpecInitializerArgs
                     {
                         BaseImage = "pingcap/tidb-monitor-initializer",
