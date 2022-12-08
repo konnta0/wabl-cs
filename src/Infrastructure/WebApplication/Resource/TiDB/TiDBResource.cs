@@ -4,10 +4,12 @@ using Pulumi;
 using Pulumi.Crds.Pingcap.V1Alpha1;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
+using Pulumi.Kubernetes.Storage.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1;
+using Pulumi.Kubernetes.Types.Inputs.Storage.V1;
 using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.WebApplication.Resource.TiDB
@@ -86,7 +88,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 Namespace = tidbOperator.Namespace.Apply(x => x),
                 RecreatePods = true
             });
-            
+
             var pv = new PersistentVolume("tidb-monitor-grafana-pv", new PersistentVolumeArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -105,7 +107,14 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     },
                     VolumeMode = "Filesystem",
                     PersistentVolumeReclaimPolicy = "Retain",
-                    StorageClassName = "shared"
+                    StorageClassName = "manual",
+                    HostPath = new HostPathVolumeSourceArgs
+                    {
+                        Path = "/tmp",
+                        Type = "Directory"
+                    }
+                }
+            });
                 }
             });
 
