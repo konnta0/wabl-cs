@@ -4,12 +4,10 @@ using Pulumi;
 using Pulumi.Crds.Pingcap.V1Alpha1;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
-using Pulumi.Kubernetes.Storage.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1;
-using Pulumi.Kubernetes.Types.Inputs.Storage.V1;
 using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.WebApplication.Resource.TiDB
@@ -115,6 +113,32 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     }
                 }
             });
+
+            var pvc = new PersistentVolumeClaim("tidb-monitor-grafana-pvc", new PersistentVolumeClaimArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = _config.GetWebApplicationConfig().Namespace
+                },
+                Spec = new PersistentVolumeClaimSpecArgs
+                {
+                    AccessModes = "ReadWriteMany",
+                    VolumeMode = pv.Spec.Apply(x => x.VolumeMode),
+                    Resources = new ResourceRequirementsArgs
+                    {
+                        Requests =
+                        {
+                            ["storage"] = "200Mi"
+                        }
+                    },
+                    Selector = new LabelSelectorArgs
+                    {
+                        MatchLabels =
+                        {
+                            ["type"] = pv.Metadata.Apply(x => x.Labels["type"])
+                        }
+                    },
+                    StorageClassName = pv.Spec.Apply(x => x.StorageClassName)
                 }
             });
 
