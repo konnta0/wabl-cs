@@ -105,7 +105,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     },
                     VolumeMode = "Filesystem",
                     PersistentVolumeReclaimPolicy = "Retain",
-                    StorageClassName = "manual",
+                    StorageClassName = "standard",
                     HostPath = new HostPathVolumeSourceArgs
                     {
                         Path = "/tmp",
