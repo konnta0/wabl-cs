@@ -157,7 +157,11 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     Initializer = new TidbMonitorSpecInitializerArgs
                     {
                         BaseImage = "pingcap/tidb-monitor-initializer",
-                        Version = "v6.1.0"
+                        Version = "v6.1.0",
+                        Envs =
+                        {
+                            ["GF_PROVISIONING_PATH"] = "/grafana-dashboard-definitions/tidb-custom"
+                        }
                     },
                     Reloader = new TidbMonitorSpecReloaderArgs
                     {
