@@ -91,7 +91,6 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             {
                 Metadata = new ObjectMetaArgs
                 {
-                    Namespace = _config.GetWebApplicationConfig().Namespace,
                     Labels =
                     {
                         ["type"] = "tidb-grafana-dashboard"
@@ -119,7 +118,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             {
                 Metadata = new ObjectMetaArgs
                 {
-                    Namespace = pv.Metadata.Apply(x => x.Namespace)
+                    Namespace = _config.GetWebApplicationConfig().Namespace
                 },
                 Spec = new PersistentVolumeClaimSpecArgs
                 {
