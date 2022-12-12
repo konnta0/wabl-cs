@@ -190,7 +190,18 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                             Type = "NodePort"
                         },
                     },
-                    ImagePullPolicy = "IfNotPresent" 
+                    ImagePullPolicy = "IfNotPresent",
+                    AdditionalVolumes = new InputList<TidbMonitorSpecAdditionalvolumesArgs>
+                    {
+                        new TidbMonitorSpecAdditionalvolumesArgs
+                        {
+                            Name = "grafana-dashboard-additional",
+                            PersistentVolumeClaim = new TidbMonitorSpecAdditionalvolumesPersistentvolumeclaimArgs
+                            {
+                                ClaimName = pvc.Metadata.Apply(x => x.Name)
+                            }
+                        }
+                    }
                 },
                 Metadata = new ObjectMetaArgs
                 {
