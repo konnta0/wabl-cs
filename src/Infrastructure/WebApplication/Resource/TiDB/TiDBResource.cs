@@ -467,7 +467,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                     Name = "prometheus-config",
                                     ConfigMap = new ConfigMapVolumeSourceArgs
                                     {
-                                        Name = "tidb-cluster-monitor",
+                                        Name = monitorConfigMap.Metadata.Apply(x => x.Name),
                                         Items = new InputList<KeyToPathArgs>
                                         {
                                             new KeyToPathArgs
@@ -488,7 +488,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                     Name = "dashboards-provisioning",
                                     ConfigMap = new ConfigMapVolumeSourceArgs
                                     {
-                                        Name = "tidb-cluster-monitor",
+                                        Name = monitorConfigMap.Metadata.Apply(x => x.Name),
                                         Items = new InputList<KeyToPathArgs>
                                         {
                                             new KeyToPathArgs
