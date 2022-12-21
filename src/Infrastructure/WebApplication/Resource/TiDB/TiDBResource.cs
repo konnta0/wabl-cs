@@ -1,14 +1,14 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 using Infrastructure.Extension;
 using Pulumi;
-using Pulumi.Crds.Pingcap.V1Alpha1;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
-using Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1;
 using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.WebApplication.Resource.TiDB
@@ -143,6 +143,24 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 }
             });
 
+            var dashboardConfig = new Dictionary<string, object>
+            {
+                ["apiVersion"] = 1,
+                ["providers"] = new List<object>
+                {
+                    new Dictionary<string, object>
+                    {
+                        ["folder"] = "",
+                        ["name"] = 0,
+                        ["options"] = new Dictionary<string, object>
+                        {
+                            ["path"] = "/grafana-dashboard-definitions/tidb"
+                        },
+                        ["orgId"] = 1,
+                        ["type"] = "file"
+                    }
+                }
+            };
             // https://github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/templates/monitor-deployment.yaml
             var monitorDeployment = new Pulumi.Kubernetes.Apps.V1.Deployment("tidb-monitor-deployment", new DeploymentArgs
             {
