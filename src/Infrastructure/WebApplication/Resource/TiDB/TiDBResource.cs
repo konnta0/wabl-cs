@@ -161,6 +161,30 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     }
                 }
             };
+            
+            string prometheusConfigYaml;
+            using (var sr = new StreamReader("./WebApplication/Resource/TiDB/Yaml/prometheus.yaml"))
+            {
+                prometheusConfigYaml = sr.ReadToEnd();
+            }
+            var monitorConfigMap = new ConfigMap("tidb-monitor-configmap", new ConfigMapArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "tidb-monitor-configmap",
+                    Namespace = _config.GetWebApplicationConfig().Namespace,
+                    Labels = new InputMap<string>
+                    {
+                        {"app.kubernetes.io/component", "monitor"}
+                    }
+                },
+                Data = new InputMap<string>
+                {
+                    {"prometheus-config", prometheusConfigYaml},
+                    {"dashboard-config", JsonSerializer.Serialize(dashboardConfig)}
+                }
+            });
+
             // https://github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/templates/monitor-deployment.yaml
             var monitorDeployment = new Pulumi.Kubernetes.Apps.V1.Deployment("tidb-monitor-deployment", new DeploymentArgs
             {
