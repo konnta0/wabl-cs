@@ -211,11 +211,21 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                         MatchLabels = new InputMap<string>
                         {
                             {"app.kubernetes.io/name", "tidb-operator"},
+                            {"app.kubernetes.io/instance", "tidb-operator"},
                             {"app.kubernetes.io/component", "monitor"}
                         }
                     },
                     Template = new PodTemplateSpecArgs
                     {
+                        Metadata = new ObjectMetaArgs
+                        {
+                            Labels = new InputMap<string>
+                            {
+                                {"app.kubernetes.io/name", "tidb-operator"},
+                                {"app.kubernetes.io/instance", "tidb-operator"},
+                                {"app.kubernetes.io/component", "monitor"}
+                            }
+                        },
                         Spec = new PodSpecArgs
                         {
                             InitContainers = new InputList<ContainerArgs>
@@ -317,7 +327,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                         new VolumeMountArgs
                                         {
                                             MountPath = "/data",
-                                            Name = "monitor-data",
+                                            Name = "monitor-data"
                                         },
                                         new VolumeMountArgs
                                         {
@@ -562,7 +572,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                 }
                             }
                         }
-                    } 
+                    }
                 }
             });
         }
