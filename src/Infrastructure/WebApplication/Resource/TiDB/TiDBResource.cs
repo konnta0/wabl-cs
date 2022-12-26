@@ -336,7 +336,10 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                             ReadOnly = false
                                         }
                                     }
-                                },
+                                }
+                            },
+                            Containers = new InputList<ContainerArgs>
+                            {
                                 new ContainerArgs
                                 {
                                     Name = "prometheus",
@@ -375,14 +378,20 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                         {
                                             Name = "prometheus-config",
                                             MountPath = "/etc/prometheus",
-                                            ReadOnly = false
+                                            ReadOnly = true
                                         },
                                         new VolumeMountArgs
                                         {
                                             Name = "monitor-data",
                                             MountPath = "/data",
                                             ReadOnly = false
-                                        }
+                                        },
+                                        new VolumeMountArgs
+                                        {
+                                            Name = "prometheus-rules",
+                                            MountPath = "/prometheus-rules",
+                                            ReadOnly = false
+                                        },
                                     }
                                 },
                                 new ContainerArgs
