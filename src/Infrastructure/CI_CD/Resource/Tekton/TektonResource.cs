@@ -56,22 +56,22 @@ namespace Infrastructure.CI_CD.Resource.Tekton
                     HpaV2beta1ToV1,
                     //TransformNamespace
                 }
-            });
+            }).Ready();
 
             _ = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
             {
                 File = "https://github.com/tektoncd/dashboard/releases/download/v0.29.2/tekton-dashboard-release.yaml"
-            });
+            }).Ready();
 
             _ = new ConfigFile("tekton-dashboard-extension-cronjob", new ConfigFileArgs
             {
                 File = "./CI_CD/Resource/Tekton/Yaml/dashboard-extension-cronjob.yaml"
-            });
+            }).Ready();
             
             _ = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
             {
                 File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.21.0/release.yaml"
-            });
+            }).Ready();
 
             _ = new Pulumi.Kubernetes.Networking.V1.Ingress("tekton-pipeline-ingress", new IngressArgs
             {
