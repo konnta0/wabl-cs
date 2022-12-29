@@ -134,7 +134,7 @@ mount-dir:
 
 .PHONY: mk-start # 
 mk-start: 
-	minikube start --memory='10g' --cpus=6 --driver=docker --disk-size=40000mb --nodes=1 --insecure-registry="core.harbor.cr.test" --kubernetes-version v1.24.6
+	minikube start --memory='10g' --cpus=5 --driver=docker --disk-size=10gb --nodes=1 --insecure-registry="core.harbor.cr.test" --kubernetes-version v1.24.6
 	minikube addons enable ingress
 	minikube addons enable ingress-dns
 	# For Docker for Mac, recommend using the following for ingress-dns
