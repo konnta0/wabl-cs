@@ -1,7 +1,6 @@
 {
   "components": [
     {
-      "type": "layout",
       "components": [
         {
           "components": [
@@ -12,8 +11,6 @@
                   "class": "col-6 d-flex align-items-center",
                   "components": [
                     {
-                      "name": "sidebar-toggle0",
-                      "type": "sidebar-toggle",
                       "events": {
                         "click": [
                           {
@@ -25,7 +22,9 @@
                             "type": "execute"
                           }
                         ]
-                      }
+                      },
+                      "name": "sidebar-toggle0",
+                      "type": "sidebar-toggle"
                     },
                     {
                       "name": "label0",
@@ -34,11 +33,6 @@
                     }
                   ],
                   "name": "leftCol",
-                  "type": "col"
-                },
-                {
-                  "class": "col-6 text-right",
-                  "name": "rightCol",
                   "type": "col"
                 }
               ],
@@ -62,6 +56,31 @@
         {
           "components": [
             {
+              "attributes": [],
+              "items": [
+                {
+                  "items": [],
+                  "path": "home",
+                  "text": "Home"
+                },
+                {
+                  "items": [
+                    {
+                      "text": "Summalize"
+                    }
+                  ],
+                  "text": "UserSearch"
+                },
+                {
+                  "items": [
+                    {
+                      "text": "Grafana"
+                    }
+                  ],
+                  "target": "_blank",
+                  "text": "Monitoring"
+                }
+              ],
               "name": "panelmenu0",
               "style": {
                 "height": "100%"
@@ -83,7 +102,8 @@
           "name": "footer0",
           "type": "footer"
         }
-      ]
+      ],
+      "type": "layout"
     }
   ],
   "name": "Main"
