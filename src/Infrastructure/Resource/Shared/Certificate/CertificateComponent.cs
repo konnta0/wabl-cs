@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Pulumi;
 
-namespace Infrastructure.Certificate
+namespace Infrastructure.Resource.Shared.Certificate
 {
     public class CertificateComponent
     {

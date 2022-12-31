@@ -1,9 +1,9 @@
 using System.Collections.Immutable;
-using Infrastructure.Certificate;
 using Infrastructure.CI_CD;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.Extension;
 using Infrastructure.Observability;
+using Infrastructure.Resource.Shared.Certificate;
 using Infrastructure.VersionControlSystem;
 using Infrastructure.WebApplication;
 using Microsoft.Extensions.Logging;

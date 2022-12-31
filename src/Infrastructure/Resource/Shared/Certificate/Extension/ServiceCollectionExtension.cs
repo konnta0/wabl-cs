@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.Certificate.Extension
+namespace Infrastructure.Resource.Shared.Certificate.Extension
 {
     internal static class ServiceCollectionExtension
     {

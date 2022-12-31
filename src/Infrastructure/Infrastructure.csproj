@@ -20,7 +20,7 @@
     <None Update="CI_CD\Resource\Tekton\Yaml\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Certificate\Resource\Yaml\**\*.*">
+    <None Update="Resource\Shared\Certificate\Yaml\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="WebApplication\Resource\TiDB\Yaml\**\*.*">

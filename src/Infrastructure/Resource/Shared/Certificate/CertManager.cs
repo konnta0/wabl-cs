@@ -8,7 +8,7 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.Certificate
+namespace Infrastructure.Resource.Shared.Certificate
 {
     public class CertManager
     {
@@ -55,7 +55,7 @@ namespace Infrastructure.Certificate
 
             new ConfigFile("certificate", new ConfigFileArgs
             {
-                File = "./Certificate/Resource/Yaml/certificate.yaml",
+                File = "Resource/Shared/Certificate/Yaml/certificate.yaml",
                 Transformations =
                 {
                     TransformNamespace
@@ -64,7 +64,7 @@ namespace Infrastructure.Certificate
             
             new ConfigFile("cluster-issuer", new ConfigFileArgs
             {
-                File = "./Certificate/Resource/Yaml/cluster-issuer.yaml",
+                File = "Resource/Shared/Certificate/Yaml/cluster-issuer.yaml",
                 Transformations =
                 {
                     TransformNamespace
