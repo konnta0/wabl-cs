@@ -263,11 +263,6 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                         },
                                         new EnvVarArgs
                                         {
-                                            Name = "GF_PROVISIONING_PATH",
-                                            Value = "/grafana-dashboard-definitions/tidb"
-                                        },
-                                        new EnvVarArgs
-                                        {
                                             Name = "PROM_CONFIG_PATH",
                                             Value = "/prometheus-rules"
                                         },
