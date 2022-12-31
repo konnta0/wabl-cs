@@ -49,6 +49,10 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             // https://github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/values.yaml
             var values = new Dictionary<string, object>
             {
+                ["rbac"] = new Dictionary<string, object>
+                {
+                    ["clusterName"] = "tidb-cluster"
+                },
                 ["pd"] = new Dictionary<string, object>
                 {
                     ["storageClassName"] = "standard",
