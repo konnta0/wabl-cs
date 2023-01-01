@@ -29,11 +29,11 @@ namespace Infrastructure.Stack
             _logger = logger;
             _config = config;
             _logger.LogInformation("start development stack");
-            var @namespace = new Namespace("namespace-web-application", new NamespaceArgs
+            var @namespace = new Namespace("namespace-shared-resource", new NamespaceArgs
             {
                 Metadata = new ObjectMetaArgs
                 {
-                    Name = "dev"
+                    Name = "shared"
                 }
             });
 
