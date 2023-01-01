@@ -1,13 +1,14 @@
-using System.Collections.Immutable;
 using Infrastructure.CI_CD;
 using Infrastructure.ContainerRegistry;
-using Infrastructure.Extension;
 using Infrastructure.Observability;
 using Infrastructure.Resource.Shared.Certificate;
 using Infrastructure.VersionControlSystem;
 using Infrastructure.WebApplication;
 using Microsoft.Extensions.Logging;
 using Pulumi;
+using Pulumi.Kubernetes.Core.V1;
+using Pulumi.Kubernetes.Types.Inputs.Core.V1;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 
 namespace Infrastructure.Stack
@@ -15,6 +16,7 @@ namespace Infrastructure.Stack
     public class DevelopmentStack : Pulumi.Stack
     {
         private readonly ILogger<DevelopmentStack> _logger;
+        private readonly Config _config;
 
         public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, 
             CICDComponent cicdComponent, 
@@ -25,9 +27,17 @@ namespace Infrastructure.Stack
             WebApplicationComponent webApplicationComponent)
         {
             _logger = logger;
+            _config = config;
             _logger.LogInformation("start development stack");
-            
-            certificateComponent.Apply();
+            var @namespace = new Namespace("namespace-web-application", new NamespaceArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "dev"
+                }
+            });
+
+            certificateComponent.Apply(@namespace.Metadata.Apply(x => x.Name));
             cicdComponent.Apply();
             (_, HarborExternalUrl) = containerRegistryComponent.Apply();
             GrafanaHost = observabilityComponent.Apply();
