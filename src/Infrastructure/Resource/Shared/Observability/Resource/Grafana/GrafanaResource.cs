@@ -41,6 +41,36 @@ namespace Infrastructure.Observability.Resource.Grafana
                         ["searchNamespace"] = string.Join(",", _config.GetObservabilityConfig().Namespace, _config.GetWebApplicationConfig().Namespace)
                     }
                 },
+                ["dashboardProviders"] = new Dictionary<string, object>
+                {
+                    ["tidb-dashboard.yaml"] = new Dictionary<string, object>
+                    {
+                        ["apiVersion"] = 1,
+                        ["providers"] = new List<object>
+                        {
+                            new Dictionary<string, object>
+                            {
+                                ["folder"] = "",
+                                ["name"] = "0",
+                                ["options"] = new Dictionary<string, object>
+                                {
+                                    ["path"] = "/grafana-dashboard-definitions/tidb"
+                                },
+                                ["allowUiUpdates"] = bool.TrueString.ToLower(),
+                                ["orgId"] = 1,
+                                ["type"] =  "file"
+                            }
+                        }
+                    }
+                },
+                ["extraVolumeMounts"] = new List<object>
+                {
+                    new Dictionary<string, object>
+                    {
+                        ["name"] = "tidb-grafana-dashboard",
+                        ["mountPath"] = "/grafana-dashboard-definitions/tidb"
+                    }
+                },
                 ["datasources"] = new Dictionary<string, object>
                 {
                     ["datasource.yaml"] = new Dictionary<string, object>
