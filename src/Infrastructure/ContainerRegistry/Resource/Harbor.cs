@@ -25,14 +25,14 @@ namespace Infrastructure.ContainerRegistry.Resource
         {
             _namespaceName = namespaceName;
 
-            _ = new ConfigFile("certificate-harbor", new ConfigFileArgs
+            new ConfigFile("certificate-harbor", new ConfigFileArgs
             {
                 File = "Resource/Shared/Certificate/Yaml/harbor.yaml",
                 Transformations =
                 {
                     TransformNamespace
                 }
-            });
+            }).Ready();
             
             // ref: https://github.com/goharbor/harbor-helm/blob/master/values.yaml
             var values = new Dictionary<string, object>
