@@ -1,15 +1,12 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
-using Pulumi.Kubernetes;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Config = Pulumi.Config;
 
-namespace Infrastructure.Observability.Resource.Tempo
+namespace Infrastructure.Resource.Shared.Observability.Tempo
 {
     public class TempoResource
     {

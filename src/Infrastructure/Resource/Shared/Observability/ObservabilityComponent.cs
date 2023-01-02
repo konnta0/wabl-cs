@@ -1,13 +1,13 @@
-using Infrastructure.Observability.Resource.Grafana;
-using Infrastructure.Observability.Resource.Loki;
-using Infrastructure.Observability.Resource.Mimir;
-using Infrastructure.Observability.Resource.MinIO;
-using Infrastructure.Observability.Resource.Pyroscope;
-using Infrastructure.Observability.Resource.Tempo;
+using Infrastructure.Resource.Shared.Observability.Grafana;
+using Infrastructure.Resource.Shared.Observability.Loki;
+using Infrastructure.Resource.Shared.Observability.Mimir;
+using Infrastructure.Resource.Shared.Observability.MinIO;
+using Infrastructure.Resource.Shared.Observability.Pyroscope;
+using Infrastructure.Resource.Shared.Observability.Tempo;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 
-namespace Infrastructure.Observability
+namespace Infrastructure.Resource.Shared.Observability
 {
     public class ObservabilityComponent
     {

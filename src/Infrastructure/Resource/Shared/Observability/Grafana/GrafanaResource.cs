@@ -11,7 +11,7 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
-namespace Infrastructure.Observability.Resource.Grafana
+namespace Infrastructure.Resource.Shared.Observability.Grafana
 {
     public class GrafanaResource
     {
@@ -142,7 +142,7 @@ namespace Infrastructure.Observability.Resource.Grafana
             };
 
             string testDashboardJsonString;
-            using (var sr = new StreamReader("Observability/Resource/Grafana/Dashboard/dashboard.json"))
+            using (var sr = new StreamReader("Resource/Shared/Observability/Grafana/Dashboard/dashboard.json"))
             {
                 testDashboardJsonString = sr.ReadToEnd();
             }

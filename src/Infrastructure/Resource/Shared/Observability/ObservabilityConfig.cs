@@ -1,4 +1,4 @@
-namespace Infrastructure.Observability
+namespace Infrastructure.Resource.Shared.Observability
 {
     public struct ObservabilityConfig
     {

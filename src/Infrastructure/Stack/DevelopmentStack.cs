@@ -1,7 +1,7 @@
 using Infrastructure.CI_CD;
 using Infrastructure.ContainerRegistry;
-using Infrastructure.Observability;
 using Infrastructure.Resource.Shared.Certificate;
+using Infrastructure.Resource.Shared.Observability;
 using Infrastructure.VersionControlSystem;
 using Infrastructure.WebApplication;
 using Microsoft.Extensions.Logging;

@@ -1,11 +1,11 @@
 using Infrastructure.Extension;
-using Infrastructure.Observability.Resource.Loki;
+using Infrastructure.Resource.Shared.Observability.Loki;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
-namespace Infrastructure.Observability.Resource.Mimir
+namespace Infrastructure.Resource.Shared.Observability.Mimir
 {
     public class MimirResource
     {

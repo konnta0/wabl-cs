@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Observability\Resource\Grafana\Dashboard\dashboard.json">
+    <None Update="Resource\Shared\Observability\Grafana\Dashboard\dashboard.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="CI_CD\Resource\Tekton\Yaml\**\*.*">
@@ -32,5 +32,9 @@
     <None Update=".env">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resource\Shared" />
   </ItemGroup>
 </Project>

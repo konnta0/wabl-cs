@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Infrastructure.CI_CD.Extension;
 using Infrastructure.ContainerRegistry.Extension;
-using Infrastructure.Observability.Extension;
 using Infrastructure.Resource.Shared.Certificate.Extension;
+using Infrastructure.Resource.Shared.Observability.Extension;
 using Infrastructure.Stack;
 using Infrastructure.VersionControlSystem.Extension;
 using Infrastructure.WebApplication.Extension;

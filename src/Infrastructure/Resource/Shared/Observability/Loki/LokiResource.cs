@@ -5,7 +5,7 @@ using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
-namespace Infrastructure.Observability.Resource.Loki
+namespace Infrastructure.Resource.Shared.Observability.Loki
 {
     public class LokiResource
     {
