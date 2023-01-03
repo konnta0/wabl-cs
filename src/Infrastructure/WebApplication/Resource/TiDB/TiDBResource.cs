@@ -197,8 +197,9 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     Name = "tidb-monitor",
                     Namespace = _config.GetWebApplicationConfig().Namespace,
                     Labels = new InputMap<string>
-                    {                            
-                        {"app.kubernetes.io/name", "tidb-operator"},
+                    {
+                        {"app.kubernetes.io/name", "tidb-cluster"},
+                        {"app.kubernetes.io/instance", "tidb-cluster"},
                         {"app.kubernetes.io/component", "monitor"}
                     }
                 },
@@ -214,8 +215,8 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     {
                         MatchLabels = new InputMap<string>
                         {
-                            {"app.kubernetes.io/name", "tidb-operator"},
-                            {"app.kubernetes.io/instance", "tidb-operator"},
+                            {"app.kubernetes.io/name", "tidb-cluster"},
+                            {"app.kubernetes.io/instance", "tidb-cluster"},
                             {"app.kubernetes.io/component", "monitor"}
                         }
                     },
@@ -225,8 +226,8 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                         {
                             Labels = new InputMap<string>
                             {
-                                {"app.kubernetes.io/name", "tidb-operator"},
-                                {"app.kubernetes.io/instance", "tidb-operator"},
+                            {"app.kubernetes.io/name", "tidb-cluster"},
+                            {"app.kubernetes.io/instance", "tidb-cluster"},
                                 {"app.kubernetes.io/component", "monitor"}
                             }
                         },
