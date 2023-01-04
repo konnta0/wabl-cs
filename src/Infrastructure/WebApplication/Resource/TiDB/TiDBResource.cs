@@ -5,10 +5,12 @@ using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
+using Pulumi.Kubernetes.Rbac.V1;
 using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
+using Pulumi.Kubernetes.Types.Inputs.Rbac.V1;
 using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.WebApplication.Resource.TiDB
@@ -119,6 +121,87 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 }
             });
 
+            
+            var serviceAccount = new ServiceAccount("tidb-monitor-service-account", new ServiceAccountArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = _config.GetWebApplicationConfig().Namespace,
+                    Name = "tidb-cluster-monitor",
+                    Labels = new InputMap<string>
+                    {
+                        { "app.kubernetes.io/name", "tidb-cluster" },
+                        { "app.kubernetes.io/instance", "tidb-cluster" },
+                        { "app.kubernetes.io/component", "monitor" }
+                    }
+                }
+            });
+
+            var role = new Role("tidb-monitor-role", new RoleArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = _config.GetWebApplicationConfig().Namespace,
+                    Name = "tidb-cluster-monitor",
+                    Labels = new InputMap<string>
+                    {
+                        { "app.kubernetes.io/name", "tidb-cluster" },
+                        { "app.kubernetes.io/instance", "tidb-cluster" },
+                        { "app.kubernetes.io/component", "monitor" }
+                    }
+                },
+                Rules = new InputList<PolicyRuleArgs>
+                {
+                    new PolicyRuleArgs
+                    {
+                        ApiGroups = new InputList<string>
+                        {
+                            string.Empty
+                        },
+                        Resources = new InputList<string>
+                        {
+                            "pods"
+                        },
+                        Verbs = new InputList<string>
+                        {
+                            "get",
+                            "list",
+                            "watch"
+                        }
+                    }
+                }
+            });
+
+            var roleBinding = new RoleBinding("tidb-monitor-role-binding", new RoleBindingArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = _config.GetWebApplicationConfig().Namespace,
+                    Name = "tidb-cluster-monitor",
+                    Labels = new InputMap<string>
+                    {
+                        { "app.kubernetes.io/name", "tidb-cluster" },
+                        { "app.kubernetes.io/instance", "tidb-cluster" },
+                        { "app.kubernetes.io/component", "monitor" }
+                    }
+                },
+                Subjects = new InputList<SubjectArgs>
+                {
+                    new SubjectArgs
+                    {
+                        Kind = nameof(ServiceAccount),
+                        Name = serviceAccount.Metadata.Apply(x => x.Name)
+                    }
+                },
+                RoleRef = new RoleRefArgs
+                {
+                    Kind = nameof(Role),
+                    Name = role.Metadata.Apply(x => x.Name),
+                    ApiGroup = "rbac.authorization.k8s.io"
+                }
+            });
+
+            
             var pvc = new PersistentVolumeClaim("tidb-monitor-grafana-pvc", new PersistentVolumeClaimArgs
             {
                 Metadata = new ObjectMetaArgs
