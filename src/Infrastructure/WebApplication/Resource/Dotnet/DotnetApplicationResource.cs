@@ -100,7 +100,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
                     }
                 });
 
-            var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-application",
+            var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-deployment",
                 new DeploymentArgs
                 {
                     Metadata = new ObjectMetaArgs
