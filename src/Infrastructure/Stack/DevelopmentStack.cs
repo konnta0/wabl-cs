@@ -37,7 +37,7 @@ namespace Infrastructure.Stack
                 }
             });
 
-            certificateComponent.Apply(@namespace.Metadata.Apply(x => x.Name));
+            certificateComponent.Apply(@namespace);
             cicdComponent.Apply();
             (_, HarborExternalUrl) = containerRegistryComponent.Apply();
             GrafanaHost = observabilityComponent.Apply();
