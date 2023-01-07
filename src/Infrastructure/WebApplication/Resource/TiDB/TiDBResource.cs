@@ -262,6 +262,8 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                     Namespace = _config.GetWebApplicationConfig().Namespace,
                     Labels = new InputMap<string>
                     {
+                        {"app.kubernetes.io/name", "tidb-cluster"},
+                        {"app.kubernetes.io/instance", "tidb-cluster"},
                         {"app.kubernetes.io/component", "monitor"}
                     }
                 },
@@ -309,13 +311,14 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                         {
                             Labels = new InputMap<string>
                             {
-                            {"app.kubernetes.io/name", "tidb-cluster"},
-                            {"app.kubernetes.io/instance", "tidb-cluster"},
+                                {"app.kubernetes.io/name", "tidb-cluster"},
+                                {"app.kubernetes.io/instance", "tidb-cluster"},
                                 {"app.kubernetes.io/component", "monitor"}
                             }
                         },
                         Spec = new PodSpecArgs
                         {
+                            ServiceAccount = serviceAccount.Metadata.Apply(x => x.Name),
                             InitContainers = new InputList<ContainerArgs>
                             {
                                 new ContainerArgs
@@ -363,7 +366,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                         new EnvVarArgs
                                         {
                                             Name = "GF_K8S_PROMETHEUS_URL",
-                                            Value = "http://prometheus-k8s.monitoring.svc:9090"
+                                            Value = "http://prometheus-k8s.webapp.svc:9090"
                                         },
                                         new EnvVarArgs
                                         {
@@ -426,7 +429,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                 new ContainerArgs
                                 {
                                     Name = "prometheus",
-                                    Image = "prom/prometheus:v2.27.1",
+                                    Image = "prom/prometheus:v2.18.1",
                                     ImagePullPolicy = "IfNotPresent",
                                     Command = new InputList<string>
                                     {
@@ -436,7 +439,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                         "--log.level=info",
                                         "--config.file=/etc/prometheus/prometheus.yml",
                                         "--storage.tsdb.path=/data/prometheus",
-                                        "--storage.tsdb.retention.time=1d"
+                                        "--storage.tsdb.retention.time=12d"
                                     },
                                     Ports = new InputList<ContainerPortArgs>
                                     {
@@ -474,7 +477,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                             Name = "prometheus-rules",
                                             MountPath = "/prometheus-rules",
                                             ReadOnly = false
-                                        },
+                                        }
                                     }
                                 },
                                 new ContainerArgs
@@ -576,7 +579,8 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                         new VolumeMountArgs
                                         {
                                             Name = "monitor-data",
-                                            MountPath = "/data"
+                                            MountPath = "/data",
+                                            ReadOnly = false
                                         },
                                         new VolumeMountArgs
                                         {
