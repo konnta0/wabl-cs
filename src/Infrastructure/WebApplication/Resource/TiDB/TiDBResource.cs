@@ -388,9 +388,9 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                                     {
                                         "/bin/sh",
                                         "-c",
-                                        "mkdir -p /data/prometheus /data/grafana",
-                                        "chmod 777 /data/prometheus /data/grafana",
-                                        "/usr/bin/init.sh"
+                                        "mkdir -p /data/prometheus /data/grafana\n" +
+                                        "chmod 777 /data/prometheus /data/grafana\n" +
+                                        "/usr/bin/init.sh\n"
                                     },
                                     SecurityContext = new SecurityContextArgs
                                     {
