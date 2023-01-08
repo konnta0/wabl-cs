@@ -1,3 +1,4 @@
+using Infrastructure.Resource.Shared.Certificate.CertManager;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Resource.Shared.Certificate.Extension
@@ -6,7 +7,7 @@ namespace Infrastructure.Resource.Shared.Certificate.Extension
     {
         internal static IServiceCollection AddCertificate(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<CertManager>();
+            serviceCollection.AddScoped<CertManagerResource>();
             serviceCollection.AddScoped<CertificateComponent>();
             return serviceCollection;
         }

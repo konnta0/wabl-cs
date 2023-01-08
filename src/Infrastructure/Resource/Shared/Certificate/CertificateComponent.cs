@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+using Infrastructure.Resource.Shared.Certificate.CertManager;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 
@@ -6,19 +8,17 @@ namespace Infrastructure.Resource.Shared.Certificate
     public class CertificateComponent
     {
         private readonly ILogger<CertificateComponent> _logger;
-        private readonly CertManager _certManager;
+        private readonly CertManagerResource _certManagerResource;
 
-        public CertificateComponent(ILogger<CertificateComponent> logger, CertManager certManager)
+        public CertificateComponent(ILogger<CertificateComponent> logger, CertManagerResource certManagerResource)
         {
             _logger = logger;
-            _certManager = certManager;
+            _certManagerResource = certManagerResource;
         }
 
-        public void Apply()
+        public void Apply(Pulumi.Kubernetes.Core.V1.Namespace @namespace)
         {
-            _certManager.Apply();
+            _certManagerResource.Apply(@namespace);
         }
-
-        [Output] private Output<string> Namespace => _certManager.Namespace;
     }
 }
