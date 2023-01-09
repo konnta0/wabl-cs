@@ -7,7 +7,7 @@ namespace Infrastructure.Resource.Shared.Certificate.Extension
     {
         internal static IServiceCollection AddCertificate(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<CertManagerResource>();
+            serviceCollection.AddScoped<CertManagerComponent>();
             serviceCollection.AddScoped<CertificateComponent>();
             return serviceCollection;
         }

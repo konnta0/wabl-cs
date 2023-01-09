@@ -9,11 +9,11 @@ using Pulumi.KubernetesCertManager.Inputs;
 
 namespace Infrastructure.Resource.Shared.Certificate.CertManager
 {
-    public class CertManagerResource
+    public class CertManagerComponent
     {
-        private readonly ILogger<CertManagerResource> _logger;
+        private readonly ILogger<CertManagerComponent> _logger;
 
-        public CertManagerResource(ILogger<CertManagerResource> logger)
+        public CertManagerComponent(ILogger<CertManagerComponent> logger)
         {
             _logger = logger;
         }

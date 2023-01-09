@@ -8,17 +8,17 @@ namespace Infrastructure.Resource.Shared.Certificate
     public class CertificateComponent
     {
         private readonly ILogger<CertificateComponent> _logger;
-        private readonly CertManagerResource _certManagerResource;
+        private readonly CertManagerComponent _certManagerComponent;
 
-        public CertificateComponent(ILogger<CertificateComponent> logger, CertManagerResource certManagerResource)
+        public CertificateComponent(ILogger<CertificateComponent> logger, CertManagerComponent certManagerComponent)
         {
             _logger = logger;
-            _certManagerResource = certManagerResource;
+            _certManagerComponent = certManagerComponent;
         }
 
         public void Apply(Pulumi.Kubernetes.Core.V1.Namespace @namespace)
         {
-            _certManagerResource.Apply(@namespace);
+            _certManagerComponent.Apply(@namespace);
         }
     }
 }
