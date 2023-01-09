@@ -1,5 +1,6 @@
 using Infrastructure.CI_CD;
 using Infrastructure.Component.Shared.Certificate;
+using Infrastructure.Component.Shared.ContainerRegistry;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.Resource.Shared.Certificate;
 using Infrastructure.Resource.Shared.Observability;

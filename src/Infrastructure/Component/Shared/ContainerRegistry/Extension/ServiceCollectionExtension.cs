@@ -1,7 +1,7 @@
-using Infrastructure.ContainerRegistry.Resource;
+using Infrastructure.Component.Shared.ContainerRegistry.Resource;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.ContainerRegistry.Extension
+namespace Infrastructure.Component.Shared.ContainerRegistry.Extension
 {
     internal static class ServiceCollectionExtension
     {

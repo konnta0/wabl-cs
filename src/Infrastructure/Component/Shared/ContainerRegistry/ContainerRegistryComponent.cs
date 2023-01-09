@@ -1,5 +1,5 @@
 using System.Collections.Immutable;
-using Infrastructure.ContainerRegistry.Resource;
+using Infrastructure.Component.Shared.ContainerRegistry.Resource;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
@@ -8,7 +8,7 @@ using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.ContainerRegistry
+namespace Infrastructure.Component.Shared.ContainerRegistry
 {
     public class ContainerRegistryComponent
     {

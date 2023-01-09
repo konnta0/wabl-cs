@@ -7,7 +7,7 @@ using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.ContainerRegistry.Resource
+namespace Infrastructure.Component.Shared.ContainerRegistry.Resource
 {
     public class Harbor
     {

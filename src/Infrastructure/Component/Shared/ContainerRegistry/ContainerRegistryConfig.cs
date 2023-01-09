@@ -1,4 +1,4 @@
-namespace Infrastructure.ContainerRegistry
+namespace Infrastructure.Component.Shared.ContainerRegistry
 {
     public struct ContainerRegistryConfig
     {
