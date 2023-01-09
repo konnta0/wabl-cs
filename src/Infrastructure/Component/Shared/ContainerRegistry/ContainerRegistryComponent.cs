@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using Infrastructure.Component.Shared.ContainerRegistry.Harbor;
 using Infrastructure.Component.Shared.ContainerRegistry.Resource;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
@@ -14,15 +15,15 @@ namespace Infrastructure.Component.Shared.ContainerRegistry
     {
         private readonly ILogger<ContainerRegistryComponent> _logger;
         private Config _config;
-        private readonly Harbor _harbor;
+        private readonly HarborComponent _harborComponent;
         private readonly MinIO _minIo;
         private Input<string> _namespaceName;
         
-        public ContainerRegistryComponent(ILogger<ContainerRegistryComponent> logger, Config config, Harbor harbor, MinIO minIo)
+        public ContainerRegistryComponent(ILogger<ContainerRegistryComponent> logger, Config config, HarborComponent harborComponent, MinIO minIo)
         {
             _logger = logger;
             _config = config;
-            _harbor = harbor;
+            _harborComponent = harborComponent;
             _minIo = minIo;
         }
 
@@ -56,7 +57,7 @@ namespace Infrastructure.Component.Shared.ContainerRegistry
             });
 
             //var minioConsoleHost = _minIo.Apply(_namespaceName);
-            var harborExternalUrl = _harbor.Apply(_namespaceName);
+            var harborExternalUrl = _harborComponent.Apply(_namespaceName);
 
             return (string.Empty, harborExternalUrl);
         }

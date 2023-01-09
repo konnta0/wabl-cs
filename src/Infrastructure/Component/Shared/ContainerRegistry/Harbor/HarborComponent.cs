@@ -7,15 +7,15 @@ using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.Component.Shared.ContainerRegistry.Resource
+namespace Infrastructure.Component.Shared.ContainerRegistry.Harbor
 {
-    public class Harbor
+    public class HarborComponent
     {
-        private readonly ILogger<Harbor> _logger;
+        private readonly ILogger<HarborComponent> _logger;
         private Config _config;
         private Input<string> _namespaceName;
 
-        public Harbor(ILogger<Harbor> logger, Config config)
+        public HarborComponent(ILogger<HarborComponent> logger, Config config)
         {
             _logger = logger;
             _config = config;
