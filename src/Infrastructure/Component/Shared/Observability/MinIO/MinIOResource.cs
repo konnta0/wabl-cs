@@ -6,7 +6,7 @@ using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
-namespace Infrastructure.Resource.Shared.Observability.MinIO
+namespace Infrastructure.Component.Shared.Observability.MinIO
 {
     public class MinIOResource
     {

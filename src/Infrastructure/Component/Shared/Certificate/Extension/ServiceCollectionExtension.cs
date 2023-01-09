@@ -1,4 +1,5 @@
-using Infrastructure.Resource.Shared.Certificate.CertManager;
+using Infrastructure.Component.Shared.Certificate;
+using Infrastructure.Component.Shared.Certificate.CertManager;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Resource.Shared.Certificate.Extension

@@ -7,7 +7,7 @@ using Pulumi.Kubernetes.Yaml;
 using Pulumi.KubernetesCertManager;
 using Pulumi.KubernetesCertManager.Inputs;
 
-namespace Infrastructure.Resource.Shared.Certificate.CertManager
+namespace Infrastructure.Component.Shared.Certificate.CertManager
 {
     public class CertManagerComponent
     {

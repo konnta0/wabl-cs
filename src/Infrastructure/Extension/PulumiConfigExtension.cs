@@ -1,4 +1,5 @@
 using Infrastructure.CI_CD;
+using Infrastructure.Component.Shared.Observability;
 using Infrastructure.ContainerRegistry;
 using Infrastructure.Resource.Shared.Observability;
 using Infrastructure.VersionControlSystem;

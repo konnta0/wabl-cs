@@ -1,9 +1,9 @@
-using Infrastructure.Resource.Shared.Observability.Grafana;
-using Infrastructure.Resource.Shared.Observability.Loki;
-using Infrastructure.Resource.Shared.Observability.Mimir;
-using Infrastructure.Resource.Shared.Observability.MinIO;
-using Infrastructure.Resource.Shared.Observability.Pyroscope;
-using Infrastructure.Resource.Shared.Observability.Tempo;
+using Infrastructure.Component.Shared.Observability.Grafana;
+using Infrastructure.Component.Shared.Observability.Loki;
+using Infrastructure.Component.Shared.Observability.Mimir;
+using Infrastructure.Component.Shared.Observability.MinIO;
+using Infrastructure.Component.Shared.Observability.Pyroscope;
+using Infrastructure.Component.Shared.Observability.Tempo;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Resource.Shared.Observability.Extension

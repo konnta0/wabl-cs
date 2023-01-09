@@ -1,9 +1,7 @@
-using System.Threading.Tasks;
-using Infrastructure.Resource.Shared.Certificate.CertManager;
+using Infrastructure.Component.Shared.Certificate.CertManager;
 using Microsoft.Extensions.Logging;
-using Pulumi;
 
-namespace Infrastructure.Resource.Shared.Certificate
+namespace Infrastructure.Component.Shared.Certificate
 {
     public class CertificateComponent
     {

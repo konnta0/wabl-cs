@@ -11,7 +11,7 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
-namespace Infrastructure.Resource.Shared.Observability.Grafana
+namespace Infrastructure.Component.Shared.Observability.Grafana
 {
     public class GrafanaResource
     {

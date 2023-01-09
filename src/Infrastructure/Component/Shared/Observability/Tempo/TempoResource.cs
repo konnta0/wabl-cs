@@ -6,7 +6,7 @@ using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Config = Pulumi.Config;
 
-namespace Infrastructure.Resource.Shared.Observability.Tempo
+namespace Infrastructure.Component.Shared.Observability.Tempo
 {
     public class TempoResource
     {
