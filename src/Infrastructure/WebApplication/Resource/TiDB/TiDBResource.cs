@@ -46,7 +46,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
                 CreateNamespace = false,
                 Atomic = true,
                 Namespace = _config.GetWebApplicationConfig().Namespace
-            });
+            }, new CustomResourceOptions { DependsOn = { configFile } });
 
             // https://github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/values.yaml
             var values = new Dictionary<string, object>
