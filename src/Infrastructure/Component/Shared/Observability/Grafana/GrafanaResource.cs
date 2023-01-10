@@ -142,7 +142,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
             };
 
             string testDashboardJsonString;
-            using (var sr = new StreamReader("Resource/Shared/Observability/Grafana/Dashboard/dashboard.json"))
+            using (var sr = new StreamReader("Component/Shared/Observability/Grafana/Dashboard/dashboard.json"))
             {
                 testDashboardJsonString = sr.ReadToEnd();
             }
