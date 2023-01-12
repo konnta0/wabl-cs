@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using Infrastructure.CI_CD.Resource.Tekton;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.CI_CD.Resource.Tekton
+namespace Infrastructure.Component.Shared.CiCd.Tekton
 {
     public class TektonResource
     {
@@ -47,16 +48,15 @@ namespace Infrastructure.CI_CD.Resource.Tekton
 
         public void Apply()
         {
-            _ = new ConfigFile("tekton-controller-release", new ConfigFileArgs
+            var release = new ConfigFile("tekton-controller-release", new ConfigFileArgs
             {
-                File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.39.0/release.yaml",
+                File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.43.1/release.yaml",
                 Transformations =
                 {
-                    //TransformTektonNamespace,
                     HpaV2beta1ToV1,
-                    //TransformNamespace
+                    TransformNamespace
                 }
-            }).Ready();
+            });
 
             _ = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
             {
@@ -132,6 +132,23 @@ namespace Infrastructure.CI_CD.Resource.Tekton
             if (!obj.TryGetValue("apiVersion", out var apiVersion)) return obj;
             if ((string)apiVersion != "autoscaling/v2beta1") return obj;
             return obj.SetItem("apiVersion", "autoscaling/v1");
+        }
+        
+        private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
+        {
+            var kind = (string)obj["kind"];
+            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
+            if (kind is "Namespace" && (string)metadata.GetValueOrDefault("name")! is "tekton-pipelines")
+            {
+                return obj.SetItem("metadata", metadata.SetItem("name", "shared"));
+            }
+
+            if (metadata.ContainsKey("namespace") && (string)metadata.GetValueOrDefault("name")! is "tekton-pipelines")
+            {
+                return obj.SetItem("metadata", metadata.SetItem("namespace", "tekton-pipelines"));
+            }
+
+            return obj; // nop
         }
     }
 }
