@@ -207,7 +207,7 @@ add-cert-into-docker: #
 	sudo cp -f $(CERTIFICATE_PATH) /etc/docker/certs.d/$(DOMAIN)/
 	@echo please docker restart!!!!
 
-SECRET_NAMESPACE=container-registry
+SECRET_NAMESPACE=shared
 SECRET_NAME=harbor-certificate
 CERTIFICATE_NAME=ca.crt
 
