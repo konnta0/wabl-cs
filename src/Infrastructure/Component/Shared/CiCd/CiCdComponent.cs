@@ -4,7 +4,7 @@ using Pulumi;
 
 namespace Infrastructure.Component.Shared.CiCd
 {
-    public class CiCdComponent
+    public class CiCdComponent : IComponent<CiCdComponentInput, CiCdComponentOutput>
     {
         private readonly ILogger<CiCdComponent> _logger;
         private Config _config;
@@ -19,7 +19,15 @@ namespace Infrastructure.Component.Shared.CiCd
 
         public void Apply()
         {
-            _tekton.Apply();
+        }
+
+        public CiCdComponentOutput Apply(CiCdComponentInput input)
+        {
+            _tekton.Apply(new TektonComponentInput
+            {
+                Namespace = input.Namespace
+            });
+            return new CiCdComponentOutput();
         }
     }
 }

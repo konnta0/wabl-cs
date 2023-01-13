@@ -19,97 +19,26 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
         
         private readonly ILogger<TektonComponent> _logger;
         private readonly Config _config;
-        private readonly TektonTask _tektonTask;
-        private readonly Pipeline _pipeline;
-        private readonly TektonTaskRun _tektonTaskRun;
-        private readonly PipelineRun _pipelineRun;
+        private readonly TektonTaskComponent _tektonTaskComponent;
+        private readonly PipelineComponent _pipelineComponent;
+        private readonly TektonTaskRunComponent _tektonTaskRunComponent;
+        private readonly PipelineRunComponent _pipelineRunComponent;
 
         public TektonComponent(ILogger<TektonComponent> logger, 
             Config config, 
-            TektonTask tektonTask,
-            Pipeline pipeline,
-            TektonTaskRun tektonTaskRun,
-            PipelineRun pipelineRun)
+            TektonTaskComponent tektonTaskComponent,
+            PipelineComponent pipelineComponent,
+            TektonTaskRunComponent tektonTaskRunComponent,
+            PipelineRunComponent pipelineRunComponent)
         {
             _logger = logger;
             _config = config;
-            _tektonTask = tektonTask;
-            _pipeline = pipeline;
-            _tektonTaskRun = tektonTaskRun;
-            _pipelineRun = pipelineRun;
+            _tektonTaskComponent = tektonTaskComponent;
+            _pipelineComponent = pipelineComponent;
+            _tektonTaskRunComponent = tektonTaskRunComponent;
+            _pipelineRunComponent = pipelineRunComponent;
         }
-
-        public void Apply()
-        {
-            _ = new ConfigFile("tekton-controller-release", new ConfigFileArgs
-            {
-                File = "https://storage.googleapis.com/tekton-releases/pipeline/previous/v0.39.0/release.yaml",
-                Transformations =
-                {
-                    //TransformTektonNamespace,
-                    HpaV2beta1ToV1,
-                    //TransformNamespace
-                }
-            }).Ready();
-
-            _ = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
-            {
-                File = "https://github.com/tektoncd/dashboard/releases/download/v0.29.2/tekton-dashboard-release.yaml"
-            }).Ready();
-
-            _ = new ConfigFile("tekton-dashboard-extension-cronjob", new ConfigFileArgs
-            {
-                File = "./CI_CD/Resource/Tekton/Yaml/dashboard-extension-cronjob.yaml"
-            }).Ready();
-            
-            _ = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
-            {
-                File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.21.0/release.yaml"
-            }).Ready();
-
-            _ = new Pulumi.Kubernetes.Networking.V1.Ingress("tekton-pipeline-ingress", new IngressArgs
-            {
-                ApiVersion = "networking.k8s.io/v1",
-                Metadata = new ObjectMetaArgs
-                {
-                    Name = "tekton-dashboard-ingress",
-                    Namespace = "tekton-pipelines"
-                },
-                Spec = new IngressSpecArgs
-                {
-                    IngressClassName = "nginx",
-                    Rules = new List<IngressRuleArgs>
-                    {
-                        new IngressRuleArgs
-                        {
-                            Host = "tekton.dashboard.cicd.test",
-                            Http = new HTTPIngressRuleValueArgs
-                            {
-                                Paths = new HTTPIngressPathArgs
-                                {
-                                    Path = "/",
-                                    PathType = "Prefix",
-                                    Backend = new IngressBackendArgs
-                                    {
-                                        Service = new IngressServiceBackendArgs
-                                        {
-                                            Name = "tekton-dashboard",
-                                            Port = new ServiceBackendPortArgs { Number = 9097 }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            
-            _tektonTask.Apply();
-            _pipeline.Apply();
-            _tektonTaskRun.Apply();
-            _pipelineRun.Apply();
-        }
-
+        
         public TektonComponentOutput Apply(TektonComponentInput input)
         {
             var tektonRelease = new ConfigFile("tekton-controller-release", new ConfigFileArgs
@@ -220,6 +149,23 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                         Namespace = serviceAccount.Metadata.Apply(x => x.Namespace)
                     }
                 }
+            });
+
+            _tektonTaskComponent.Apply(new TektonTaskComponentInput
+            {
+                Namespace = input.Namespace
+            });
+            _pipelineComponent.Apply(new PipelineComponentInput
+            {
+                Namespace = input.Namespace
+            });
+            _tektonTaskRunComponent.Apply(new TektonTaskRunComponentInput
+            {
+                Namespace = input.Namespace
+            });
+            _pipelineRunComponent.Apply(new PipelineRunComponentInput
+            {
+                Namespace = input.Namespace
             });
 
             return new TektonComponentOutput();

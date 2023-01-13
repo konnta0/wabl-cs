@@ -11,10 +11,10 @@ namespace Infrastructure.CI_CD.Extension
 
             serviceCollection.AddScoped<TektonComponent>();
             serviceCollection.AddScoped<CiCdComponent>();
-            serviceCollection.AddScoped<TektonTask>();
-            serviceCollection.AddScoped<Pipeline>();
-            serviceCollection.AddScoped<PipelineRun>();
-            serviceCollection.AddScoped<TektonTaskRun>();
+            serviceCollection.AddScoped<TektonTaskComponent>();
+            serviceCollection.AddScoped<PipelineComponent>();
+            serviceCollection.AddScoped<PipelineRunComponent>();
+            serviceCollection.AddScoped<TektonTaskRunComponent>();
             return serviceCollection;
         }
     }
