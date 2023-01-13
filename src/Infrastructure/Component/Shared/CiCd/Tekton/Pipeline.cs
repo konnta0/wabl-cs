@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.CI_CD.Resource.Tekton
+namespace Infrastructure.Component.Shared.CiCd.Tekton
 {
     public class Pipeline
     {
@@ -17,7 +17,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
         {
             _ = new ConfigFile("tekton-pipeline-build-image", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/Pipeline/build-image.yaml",
+                File = "./Component/Shared/Tekton/Yaml/Pipeline/build-image.yaml",
                 Transformations =
                 {
                     TransformNamespace
@@ -26,7 +26,7 @@ namespace Infrastructure.CI_CD.Resource.Tekton
             
             _ = new ConfigFile("tekton-pipeline-unit-test", new ConfigFileArgs
             {
-                File = "./CI_CD/Resource/Tekton/Yaml/Pipeline/unit-test.yaml",
+                File = "./Component/Shared/Tekton/Yaml/Pipeline/unit-test.yaml",
                 Transformations =
                 {
                     TransformNamespace

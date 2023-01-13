@@ -1,19 +1,19 @@
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
+using Pulumi.Crds.Certmanager.V1;
 using Pulumi.Kubernetes.Helm.V3;
+using Pulumi.Kubernetes.Types.Inputs.Certmanager.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
-using Pulumi.Kubernetes.Yaml;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.Component.Shared.ContainerRegistry.Harbor
 {
-    public class HarborComponent
+    public class HarborComponent : IComponent<HarborComponentInput, HarborComponentOutput>
     {
         private readonly ILogger<HarborComponent> _logger;
         private Config _config;
-        private Input<string> _namespaceName;
 
         public HarborComponent(ILogger<HarborComponent> logger, Config config)
         {
@@ -21,19 +21,43 @@ namespace Infrastructure.Component.Shared.ContainerRegistry.Harbor
             _config = config;
         }
 
-        public Output<string> Apply(Input<string> namespaceName)
+        public HarborComponentOutput Apply(HarborComponentInput input)
         {
-            _namespaceName = namespaceName;
-
-            new ConfigFile("certificate-harbor", new ConfigFileArgs
+            var certificate = new Pulumi.Crds.Certmanager.V1.Certificate("harbor-certificate", new CertificateArgs
             {
-                File = "Resource/Shared/Certificate/Yaml/harbor.yaml",
-                Transformations =
+                Metadata = new ObjectMetaArgs
                 {
-                    TransformNamespace
+                    Name = "harbor",
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                },
+                Spec = new CertificateSpecArgs
+                {
+                    Subject = new CertificateSpecSubjectArgs
+                    {
+                        Organizations = { "MyOrg" },
+                        Countries = { "Japan" },
+                        OrganizationalUnits = { "MyUnit" },
+                        Localities = "Kanagawa",
+                        Provinces = "Yokohama"
+                    },
+                    CommonName = "harbor-cn",
+                    Duration = "8760h",
+                    DnsNames = { "cr.test", "'*.harbor.cr.test'" },
+                    SecretName = "harbor-certificate",
+                    IssuerRef = new CertificateSpecIssuerrefArgs
+                    {
+                        Name = input.Issuer.Metadata.Apply(x => x.Name),
+                        Kind = nameof(Issuer),
+                        Group = "cert-manager.io"
+                    },
+                    PrivateKey = new CertificateSpecPrivatekeyArgs
+                    {
+                        Algorithm = "RSA",
+                        Size = 2048
+                    }
                 }
-            }).Ready();
-            
+            });
+
             // ref: https://github.com/goharbor/harbor-helm/blob/master/values.yaml
             var values = new Dictionary<string, object>
             {
@@ -45,7 +69,7 @@ namespace Infrastructure.Component.Shared.ContainerRegistry.Harbor
                         ["certSource"] = "secret",
                         ["secret"] = new InputMap<object>
                         {
-                            ["secretName"] = "harbor-certificate"
+                            ["secretName"] = certificate.Spec.Apply(x => x.SecretName)
                         }
                     },
                     ["ingress"] = new InputMap<object>
@@ -183,19 +207,12 @@ namespace Infrastructure.Component.Shared.ContainerRegistry.Harbor
                 {
                     Repo = "https://helm.goharbor.io"
                 },
-                Namespace = _namespaceName,
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name),
                 Atomic = true,
                 Values = values,
                 Timeout = 60 * 10
             });
-            return harbor.Values.Apply(x => (string)x["externalURL"]);
-        }
-        
-        private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
-        {
-            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-            if (!metadata.ContainsKey("namespace")) return obj;
-            return obj.SetItem("metadata", metadata.SetItem("namespace", _namespaceName));
+            return new HarborComponentOutput();
         }
     }
 }

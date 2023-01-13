@@ -1,8 +1,7 @@
-using Infrastructure.Component.Shared.Certificate;
 using Infrastructure.Component.Shared.Certificate.CertManager;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.Resource.Shared.Certificate.Extension
+namespace Infrastructure.Component.Shared.Certificate.Extension
 {
     internal static class ServiceCollectionExtension
     {

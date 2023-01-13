@@ -1,8 +1,7 @@
 using Infrastructure.CI_CD;
+using Infrastructure.Component.Shared.CiCd;
 using Infrastructure.Component.Shared.ContainerRegistry;
 using Infrastructure.Component.Shared.Observability;
-using Infrastructure.ContainerRegistry;
-using Infrastructure.Resource.Shared.Observability;
 using Infrastructure.VersionControlSystem;
 using Infrastructure.WebApplication;
 using Pulumi;
@@ -21,9 +20,9 @@ namespace Infrastructure.Extension
             return config.GetObject<ObservabilityConfig>("Observability");
         }
 
-        internal static CICDConfig GetCICDConfig(this Config config)
+        internal static CiCdConfig GetCICDConfig(this Config config)
         {
-            return config.GetObject<CICDConfig>("CICD");
+            return config.GetObject<CiCdConfig>("CICD");
         }
 
         internal static VersionControlSystemConfig GetVersionControlSystemConfig(this Config config)

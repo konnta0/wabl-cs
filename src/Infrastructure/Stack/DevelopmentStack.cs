@@ -1,8 +1,8 @@
 using Infrastructure.CI_CD;
 using Infrastructure.Component.Shared.Certificate;
+using Infrastructure.Component.Shared.CiCd;
 using Infrastructure.Component.Shared.ContainerRegistry;
-using Infrastructure.ContainerRegistry;
-using Infrastructure.Resource.Shared.Certificate;
+using Infrastructure.Component.Shared.Storage;
 using Infrastructure.Resource.Shared.Observability;
 using Infrastructure.VersionControlSystem;
 using Infrastructure.WebApplication;
@@ -21,12 +21,13 @@ namespace Infrastructure.Stack
         private readonly Config _config;
 
         public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, 
-            CICDComponent cicdComponent, 
+            CiCdComponent ciCdComponent, 
             ContainerRegistryComponent containerRegistryComponent,
             ObservabilityComponent observabilityComponent,
             CertificateComponent certificateComponent,
             VersionControlSystemComponent versionControlSystemComponent,
-            WebApplicationComponent webApplicationComponent)
+            WebApplicationComponent webApplicationComponent,
+            StorageComponent storageComponent)
         {
             _logger = logger;
             _config = config;
@@ -39,17 +40,18 @@ namespace Infrastructure.Stack
                 }
             });
 
-            certificateComponent.Apply(@namespace);
-            cicdComponent.Apply();
-            (_, HarborExternalUrl) = containerRegistryComponent.Apply();
+            var storageComponentOutput = storageComponent.Apply(new StorageComponentInput { Namespace = @namespace });
+            var certificateComponentOutput = certificateComponent.Apply(new CertificateComponentInput {Namespace = @namespace});
+            ciCdComponent.Apply();
+            var containerRegistryComponentOutput = containerRegistryComponent.Apply(new ContainerRegistryComponentInput
+            {
+                Namespace = @namespace,
+                ClusterIssuer = certificateComponentOutput.ClusterIssuer
+            });
             GrafanaHost = observabilityComponent.Apply();
             //GitLabHost = versionControlSystemComponent.Apply();
             webApplicationComponent.Apply();
         }
-
-        //[Output] public Output<string> GitLabHost { get; set; }
-        // [Output] public Output<string> MinioConsoleHost { get; set; }
-        [Output] public Output<string> HarborExternalUrl { get; set; }
 
         [Output] public Output<string> GrafanaHost { get; set; }
     }

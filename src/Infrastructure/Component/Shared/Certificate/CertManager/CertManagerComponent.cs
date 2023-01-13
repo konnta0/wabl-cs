@@ -9,7 +9,7 @@ using Pulumi.KubernetesCertManager.Inputs;
 
 namespace Infrastructure.Component.Shared.Certificate.CertManager
 {
-    public class CertManagerComponent
+    public class CertManagerComponent : IComponent<CertManagerComponentInput, CertManagerComponentOutput>
     {
         private readonly ILogger<CertManagerComponent> _logger;
 
@@ -17,8 +17,9 @@ namespace Infrastructure.Component.Shared.Certificate.CertManager
         {
             _logger = logger;
         }
+        
 
-        public void Apply(Pulumi.Kubernetes.Core.V1.Namespace @namespace)
+        public CertManagerComponentOutput Apply(CertManagerComponentInput input)
         {
             var crds = new ConfigFile("cert-manager-crds", new ConfigFileArgs
             {
@@ -27,7 +28,7 @@ namespace Infrastructure.Component.Shared.Certificate.CertManager
             crds.Ready();
 
             var ns = string.Empty;
-            @namespace.Metadata.Apply(x =>
+            input.Namespace.Metadata.Apply(x =>
             {
                 ns = x.Name;
                 return x.Name;
@@ -55,7 +56,7 @@ namespace Infrastructure.Component.Shared.Certificate.CertManager
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "selfsigned-issuer",
-                    Namespace = @namespace.Metadata.Apply(x => x.Name)
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new ClusterIssuerSpecArgs
                 {
@@ -68,7 +69,7 @@ namespace Infrastructure.Component.Shared.Certificate.CertManager
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "selfsigned-ca",
-                    Namespace = @namespace.Metadata.Apply(x => x.Name)
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new CertificateSpecArgs
                 {
@@ -89,6 +90,11 @@ namespace Infrastructure.Component.Shared.Certificate.CertManager
                     }
                 }
             }, new CustomResourceOptions {DependsOn = {crds, certManager}, DeletedWith = crds});
+
+            return new CertManagerComponentOutput
+            {
+                ClusterIssuer = clusterIssuer
+            };
         }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Infrastructure.CI_CD.Extension;
+using Infrastructure.Component.Shared.Certificate.Extension;
 using Infrastructure.Component.Shared.ContainerRegistry.Extension;
-using Infrastructure.Resource.Shared.Certificate.Extension;
+using Infrastructure.Component.Shared.Storage.Extension;
 using Infrastructure.Resource.Shared.Observability.Extension;
 using Infrastructure.Stack;
 using Infrastructure.VersionControlSystem.Extension;
@@ -28,6 +29,7 @@ class Program
         serviceCollection.AddCertificate();
         serviceCollection.AddVersionControlSystem();
         serviceCollection.AddWebApplication();
+        serviceCollection.AddStorageComponent();
         serviceCollection.AddScoped<DevelopmentStack>();
     }
 }

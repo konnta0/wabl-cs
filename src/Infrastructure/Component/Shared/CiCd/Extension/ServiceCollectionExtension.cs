@@ -1,4 +1,5 @@
-using Infrastructure.CI_CD.Resource.Tekton;
+using Infrastructure.Component.Shared.CiCd;
+using Infrastructure.Component.Shared.CiCd.Tekton;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.CI_CD.Extension
@@ -7,16 +8,13 @@ namespace Infrastructure.CI_CD.Extension
     {
         internal static IServiceCollection AddCICD(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<ClusterRole>();
-            serviceCollection.AddScoped<ClusterRoleBinding>();
-            serviceCollection.AddScoped<ServiceAccount>();
-            serviceCollection.AddScoped<TektonResource>();
-            serviceCollection.AddScoped<CICDComponent>();
+
+            serviceCollection.AddScoped<TektonComponent>();
+            serviceCollection.AddScoped<CiCdComponent>();
             serviceCollection.AddScoped<TektonTask>();
             serviceCollection.AddScoped<Pipeline>();
             serviceCollection.AddScoped<PipelineRun>();
             serviceCollection.AddScoped<TektonTaskRun>();
-            serviceCollection.AddScoped<Secret>();
             return serviceCollection;
         }
     }

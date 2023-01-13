@@ -1,6 +1,6 @@
-namespace Infrastructure.CI_CD
+namespace Infrastructure.Component.Shared.CiCd
 {
-    public struct CICDConfig
+    public struct CiCdConfig
     {
         public string Namespace { get; set; }
         public RegistryAccess RegistryAccess { get; set; }
