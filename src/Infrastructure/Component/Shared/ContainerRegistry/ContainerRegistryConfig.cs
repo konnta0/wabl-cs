@@ -2,7 +2,6 @@ namespace Infrastructure.Component.Shared.ContainerRegistry
 {
     public struct ContainerRegistryConfig
     {
-        public string Namespace { get; set; }
         public HarborConfig Harbor { get; set; }
         public MinIOConfig MinIO { get; set; }
 

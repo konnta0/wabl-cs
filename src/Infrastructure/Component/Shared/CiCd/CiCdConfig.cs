@@ -2,7 +2,6 @@ namespace Infrastructure.Component.Shared.CiCd
 {
     public struct CiCdConfig
     {
-        public string Namespace { get; set; }
         public RegistryAccess RegistryAccess { get; set; }
     }
 
