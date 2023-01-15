@@ -41,8 +41,12 @@ namespace Infrastructure.Stack
             });
 
             var storageComponentOutput = storageComponent.Apply(new StorageComponentInput { Namespace = @namespace });
-            var certificateComponentOutput = certificateComponent.Apply(new CertificateComponentInput {Namespace = @namespace});
-            ciCdComponent.Apply();
+            var certificateComponentOutput =
+                certificateComponent.Apply(new CertificateComponentInput { Namespace = @namespace });
+            ciCdComponent.Apply(new CiCdComponentInput
+            {
+                Namespace = @namespace
+            });
             var containerRegistryComponentOutput = containerRegistryComponent.Apply(new ContainerRegistryComponentInput
             {
                 Namespace = @namespace,
