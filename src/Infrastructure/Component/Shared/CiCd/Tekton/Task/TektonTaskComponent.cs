@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.Component.Shared.CiCd.Tekton
+namespace Infrastructure.Component.Shared.CiCd.Tekton.Task
 {
     public class TektonTaskComponent : IComponent<TektonTaskComponentInput, TektonComponentOutput>
     {
@@ -38,7 +38,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
             {
                 _ = new ConfigFile($"tekton-pipeline-task-{task}", new ConfigFileArgs
                 {
-                    File = $"./Component/Shared/Tekton/Yaml/Task/{task}.yaml",
+                    File = $"./Component/Shared/Tekton/Task/Yaml/{task}.yaml",
                     Transformations =
                     {
                         TransformNamespace

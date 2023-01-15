@@ -1,5 +1,9 @@
 using Infrastructure.Component.Shared.CiCd;
 using Infrastructure.Component.Shared.CiCd.Tekton;
+using Infrastructure.Component.Shared.CiCd.Tekton.Pipeline;
+using Infrastructure.Component.Shared.CiCd.Tekton.PipelineRun;
+using Infrastructure.Component.Shared.CiCd.Tekton.Task;
+using Infrastructure.Component.Shared.CiCd.Tekton.TaskRun;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.CI_CD.Extension

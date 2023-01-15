@@ -1,6 +1,6 @@
 using Pulumi.Kubernetes.Core.V1;
 
-namespace Infrastructure.Component.Shared.CiCd.Tekton
+namespace Infrastructure.Component.Shared.CiCd.Tekton.PipelineRun
 {
     public sealed class PipelineRunComponentInput : IComponentInput
     {

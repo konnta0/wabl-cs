@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.Component.Shared.CiCd.Tekton
+namespace Infrastructure.Component.Shared.CiCd.Tekton.TaskRun
 {
     public class TektonTaskRunComponent : IComponent<TektonTaskRunComponentInput, TektonTaskRunComponentOutput>
     {
@@ -26,7 +26,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
 
             _ = new ConfigFile("tekton-pipeline-task-run-hello-world", new ConfigFileArgs
             {
-                File = "./Component/Shared/Tekton/Yaml/TaskRun/hello-world-task-run.yaml",
+                File = "./Component/Shared/Tekton/TaskRun/Yaml/hello-world-task-run.yaml",
                 Transformations =
                 {
                     TransformNamespace

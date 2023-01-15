@@ -1,5 +1,9 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using Infrastructure.Component.Shared.CiCd.Tekton.Pipeline;
+using Infrastructure.Component.Shared.CiCd.Tekton.PipelineRun;
+using Infrastructure.Component.Shared.CiCd.Tekton.Task;
+using Infrastructure.Component.Shared.CiCd.Tekton.TaskRun;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;

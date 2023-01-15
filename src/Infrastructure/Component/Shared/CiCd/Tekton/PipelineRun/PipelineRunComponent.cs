@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.Component.Shared.CiCd.Tekton
+namespace Infrastructure.Component.Shared.CiCd.Tekton.PipelineRun
 {
     public class PipelineRunComponent : IComponent<PipelineRunComponentInput, PipelineRunComponentOutput>
     {
@@ -26,7 +26,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
 
             _ = new ConfigFile("tekton-pipeline-run-build-image", new ConfigFileArgs
             {
-                File = "./Component/Shared/Tekton/Yaml/PipelineRun/build-image.yaml",
+                File = "./Component/Shared/Tekton/PipelineRun/Yaml/build-image.yaml",
                 Transformations =
                 {
                     TransformNamespace
@@ -35,7 +35,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
 
             _ = new ConfigFile("tekton-pipeline-run-unit-test", new ConfigFileArgs
             {
-                File = "./Component/Shared/Tekton/Yaml/PipelineRun/unit-test.yaml",
+                File = "./Component/Shared/Tekton/Yaml/PipelineRun/Yaml/unit-test.yaml",
                 Transformations =
                 {
                     TransformNamespace
