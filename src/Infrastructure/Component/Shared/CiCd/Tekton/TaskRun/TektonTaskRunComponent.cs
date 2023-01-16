@@ -26,7 +26,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.TaskRun
 
             _ = new ConfigFile("tekton-pipeline-task-run-hello-world", new ConfigFileArgs
             {
-                File = "./Component/Shared/Tekton/TaskRun/Yaml/hello-world-task-run.yaml",
+                File = "./Component/Shared/CiCd/Tekton/TaskRun/Yaml/hello-world-task-run.yaml",
                 Transformations =
                 {
                     TransformNamespace

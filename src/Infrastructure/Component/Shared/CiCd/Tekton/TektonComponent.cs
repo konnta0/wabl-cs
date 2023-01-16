@@ -62,7 +62,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
 
             var cronjob = new ConfigFile("tekton-dashboard-extension-cronjob", new ConfigFileArgs
             {
-                File = "./Component/CiCd/Tekton/Yaml/dashboard-extension-cronjob.yaml"
+                File = "./Component/Shared/CiCd/Tekton/Yaml/dashboard-extension-cronjob.yaml"
             }, new ComponentResourceOptions {DependsOn = {tektonRelease, dashboard}});
 
             var triggers = new ConfigFile("tekton-triggers-release", new ConfigFileArgs

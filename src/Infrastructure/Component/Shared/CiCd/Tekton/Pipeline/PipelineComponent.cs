@@ -25,7 +25,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Pipeline
 
             _ = new ConfigFile("tekton-pipeline-build-image", new ConfigFileArgs
             {
-                File = "./Component/Shared/Tekton/Pipeline/Yaml/build-image.yaml",
+                File = "./Component/Shared/CiCd/Tekton/Pipeline/Yaml/build-image.yaml",
                 Transformations =
                 {
                     TransformNamespace
@@ -34,7 +34,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Pipeline
             
             _ = new ConfigFile("tekton-pipeline-unit-test", new ConfigFileArgs
             {
-                File = "./Component/Shared/Tekton/Pipeline/Yaml/unit-test.yaml",
+                File = "./Component/Shared/CiCd/Tekton/Pipeline/Yaml/unit-test.yaml",
                 Transformations =
                 {
                     TransformNamespace

@@ -38,7 +38,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Task
             {
                 _ = new ConfigFile($"tekton-pipeline-task-{task}", new ConfigFileArgs
                 {
-                    File = $"./Component/Shared/Tekton/Task/Yaml/{task}.yaml",
+                    File = $"./Component/Shared/CiCd/Tekton/Task/Yaml/{task}.yaml",
                     Transformations =
                     {
                         TransformNamespace
