@@ -24,26 +24,13 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Task
                 "unit-test",
                 "curl"
             };
-
-            var ns = input.Namespace.Metadata.Apply(x => x.Name);
-            ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj,
-                CustomResourceOptions opts)
-            {
-                var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-                if (!metadata.ContainsKey("namespace")) return obj;
-                return obj.SetItem("metadata", metadata.SetItem("namespace", ns));
-            }
-
+            
             foreach (var task in tasks)
             {
                 _ = new ConfigFile($"tekton-pipeline-task-{task}", new ConfigFileArgs
                 {
                     File = $"./Component/Shared/CiCd/Tekton/Task/Yaml/{task}.yaml",
-                    Transformations =
-                    {
-                        TransformNamespace
-                    }
-                }, new ComponentResourceOptions { DependsOn = { input.Namespace } });
+                }, new ComponentResourceOptions { DependsOn = { input.TektonRelease } });
             }
 
             return new TektonComponentOutput();
