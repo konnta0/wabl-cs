@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
 
@@ -15,31 +14,16 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Pipeline
         
         public PipelineComponentOutput Apply(PipelineComponentInput input)
         {
-            var ns = input.Namespace.Metadata.Apply(x => x.Name);
-            ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
-            {
-                var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-                if (!metadata.ContainsKey("namespace")) return obj;
-                return obj.SetItem("metadata", metadata.SetItem("namespace", ns));
-            }
-
             _ = new ConfigFile("tekton-pipeline-build-image", new ConfigFileArgs
             {
                 File = "./Component/Shared/CiCd/Tekton/Pipeline/Yaml/build-image.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            }, new ComponentResourceOptions {DependsOn = {input.Namespace}});
+
+            }, new ComponentResourceOptions {DependsOn = {input.TektonRelease}});
             
             _ = new ConfigFile("tekton-pipeline-unit-test", new ConfigFileArgs
             {
                 File = "./Component/Shared/CiCd/Tekton/Pipeline/Yaml/unit-test.yaml",
-                Transformations =
-                {
-                    TransformNamespace
-                }
-            }, new ComponentResourceOptions {DependsOn = {input.Namespace}});
+            }, new ComponentResourceOptions {DependsOn = {input.TektonRelease}});
 
             return new PipelineComponentOutput();
         }
