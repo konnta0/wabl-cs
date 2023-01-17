@@ -20,7 +20,6 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
 {
     public class TektonComponent : IComponent<TektonComponentInput, TektonComponentOutput>
     {
-        
         private readonly ILogger<TektonComponent> _logger;
         private readonly Config _config;
         private readonly TektonTaskComponent _tektonTaskComponent;
@@ -28,8 +27,8 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
         private readonly TektonTaskRunComponent _tektonTaskRunComponent;
         private readonly PipelineRunComponent _pipelineRunComponent;
 
-        public TektonComponent(ILogger<TektonComponent> logger, 
-            Config config, 
+        public TektonComponent(ILogger<TektonComponent> logger,
+            Config config,
             TektonTaskComponent tektonTaskComponent,
             PipelineComponent pipelineComponent,
             TektonTaskRunComponent tektonTaskRunComponent,
@@ -42,7 +41,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
             _tektonTaskRunComponent = tektonTaskRunComponent;
             _pipelineRunComponent = pipelineRunComponent;
         }
-        
+
         public TektonComponentOutput Apply(TektonComponentInput input)
         {
             var tektonRelease = new ConfigFile("tekton-controller-release", new ConfigFileArgs
@@ -51,30 +50,29 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                 Transformations =
                 {
                     HpaV2beta1ToV1,
-                    TransformNamespace
                 }
-            }, new ComponentResourceOptions {DependsOn = input.Namespace});
+            }, new ComponentResourceOptions { DependsOn = input.Namespace });
 
             var dashboard = new ConfigFile("tekton-dashboard-release", new ConfigFileArgs
             {
                 File = "https://github.com/tektoncd/dashboard/releases/download/v0.31.0/tekton-dashboard-release.yaml"
-            }, new ComponentResourceOptions {DependsOn = {tektonRelease}});
+            }, new ComponentResourceOptions { DependsOn = { tektonRelease } });
 
             var cronjob = new ConfigFile("tekton-dashboard-extension-cronjob", new ConfigFileArgs
             {
                 File = "./Component/Shared/CiCd/Tekton/Yaml/dashboard-extension-cronjob.yaml"
-            }, new ComponentResourceOptions {DependsOn = {tektonRelease, dashboard}});
+            }, new ComponentResourceOptions { DependsOn = { tektonRelease, dashboard } });
 
             var triggers = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
             {
                 File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.22.0/release.yaml"
-            }, new ComponentResourceOptions {DependsOn = {tektonRelease}});
+            }, new ComponentResourceOptions { DependsOn = { tektonRelease } });
 
             var interceptor = new ConfigFile("tekton-triggers-interceptor-release", new ConfigFileArgs
             {
                 File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.22.0/interceptors.yaml"
-            }, new ComponentResourceOptions {DependsOn = {tektonRelease, triggers}});
-            
+            }, new ComponentResourceOptions { DependsOn = { tektonRelease, triggers } });
+
             var secret = new Secret("tekton-pipeline-secret-container-registry", new SecretArgs
             {
                 Type = "kubernetes.io/basic-auth",
@@ -87,7 +85,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "tekton-pipeline-secret-for-container-registry",
-                    Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+                    Namespace = "tekton-pipelines",
                     Annotations = new Dictionary<string, string>
                     {
                         // https://tekton.dev/vault/pipelines-v0.16.3/auth/#configuring-basic-auth-authentication-for-docker
@@ -100,9 +98,9 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
             {
                 Metadata = new ObjectMetaArgs
                 {
-                    Labels = {{"app", "tekton-dashboard"}},
+                    Labels = { { "app", "tekton-dashboard" } },
                     Name = "tekton-dashboard-service-account",
-                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                    Namespace = "tekton-pipelines"
                 },
                 Secrets =
                 {
@@ -113,63 +111,102 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                 }
             });
 
-            var clusterRole = new Pulumi.Kubernetes.Rbac.V1.ClusterRole("tekton-pipeline-cluster-role", new ClusterRoleArgs
-            {
-                Metadata = new ObjectMetaArgs
+            var clusterRole = new Pulumi.Kubernetes.Rbac.V1.ClusterRole("tekton-pipeline-cluster-role",
+                new ClusterRoleArgs
                 {
-                    Name = "tekton-dashboard-cluster-admin",
-                    Labels = {{"rbac.dashboard.tekton.dev/aggregate-to-dashboard", bool.TrueString.ToLower()}},
-                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
-                },
-                Rules =
-                {
-                    new PolicyRuleArgs
+                    Metadata = new ObjectMetaArgs
                     {
-                        ApiGroups = {"batch"},
-                        Resources = {"cronjobs"},
-                        Verbs = {"get", "list"}
+                        Name = "tekton-dashboard-cluster-admin",
+                        Labels = { { "rbac.dashboard.tekton.dev/aggregate-to-dashboard", bool.TrueString.ToLower() } },
+                        Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                    },
+                    Rules =
+                    {
+                        new PolicyRuleArgs
+                        {
+                            ApiGroups = { "batch" },
+                            Resources = { "cronjobs" },
+                            Verbs = { "get", "list" }
+                        }
                     }
-                }
-            });
+                });
 
-            var clusterRoleBinding = new Pulumi.Kubernetes.Rbac.V1.ClusterRoleBinding("tekton-pipeline-cluster-role-binding", new ClusterRoleBindingArgs
+            var clusterRoleBinding = new Pulumi.Kubernetes.Rbac.V1.ClusterRoleBinding(
+                "tekton-pipeline-cluster-role-binding", new ClusterRoleBindingArgs
+                {
+                    Metadata = new ObjectMetaArgs
+                    {
+                        Name = "dashboard-cluster-admin"
+                    },
+                    RoleRef = new RoleRefArgs
+                    {
+                        ApiGroup = "rbac.authorization.k8s.io",
+                        Kind = nameof(Pulumi.Kubernetes.Rbac.V1.ClusterRole),
+                        Name = clusterRole.Metadata.Apply(x => x.Name)
+                    },
+                    Subjects =
+                    {
+                        new SubjectArgs
+                        {
+                            Kind = nameof(ServiceAccount),
+                            Name = serviceAccount.Metadata.Apply(x => x.Name),
+                            Namespace = serviceAccount.Metadata.Apply(x => x.Namespace)
+                        }
+                    }
+                });
+
+            _ = new Pulumi.Kubernetes.Networking.V1.Ingress("tekton-pipeline-ingress", new IngressArgs
             {
+                ApiVersion = "networking.k8s.io/v1",
                 Metadata = new ObjectMetaArgs
                 {
-                    Name = "dashboard-cluster-admin"
+                    Name = "tekton-dashboard-ingress",
+                    Namespace = "tekton-pipelines"
                 },
-                RoleRef = new RoleRefArgs
+                Spec = new IngressSpecArgs
                 {
-                    ApiGroup = "rbac.authorization.k8s.io",
-                    Kind = nameof(Pulumi.Kubernetes.Rbac.V1.ClusterRole),
-                    Name = clusterRole.Metadata.Apply(x => x.Name)
-                },
-                Subjects =
-                {
-                    new SubjectArgs
+                    IngressClassName = "nginx",
+                    Rules = new List<IngressRuleArgs>
                     {
-                        Kind = nameof(ServiceAccount),
-                        Name = serviceAccount.Metadata.Apply(x => x.Name),
-                        Namespace = serviceAccount.Metadata.Apply(x => x.Namespace)
+                        new IngressRuleArgs
+                        {
+                            Host = "tekton.dashboard.cicd.test",
+                            Http = new HTTPIngressRuleValueArgs
+                            {
+                                Paths = new HTTPIngressPathArgs
+                                {
+                                    Path = "/",
+                                    PathType = "Prefix",
+                                    Backend = new IngressBackendArgs
+                                    {
+                                        Service = new IngressServiceBackendArgs
+                                        {
+                                            Name = "tekton-dashboard",
+                                            Port = new ServiceBackendPortArgs { Number = 9097 }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-            });
+            }, new CustomResourceOptions { DependsOn = { dashboard } });
 
             _tektonTaskComponent.Apply(new TektonTaskComponentInput
             {
-                Namespace = input.Namespace
+                TektonRelease = tektonRelease
             });
             _pipelineComponent.Apply(new PipelineComponentInput
             {
-                Namespace = input.Namespace
+                TektonRelease = tektonRelease
             });
             _tektonTaskRunComponent.Apply(new TektonTaskRunComponentInput
             {
-                Namespace = input.Namespace
+                TektonRelease = tektonRelease
             });
             _pipelineRunComponent.Apply(new PipelineRunComponentInput
             {
-                Namespace = input.Namespace
+                TektonRelease = tektonRelease
             });
 
             return new TektonComponentOutput();
@@ -187,8 +224,9 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
             if ((string)apiVersion != "autoscaling/v2beta1") return obj;
             return obj.SetItem("apiVersion", "autoscaling/v1");
         }
-        
-        private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj, CustomResourceOptions opts)
+
+        private ImmutableDictionary<string, object> TransformNamespace(ImmutableDictionary<string, object> obj,
+            CustomResourceOptions opts)
         {
             var kind = (string)obj["kind"];
             var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
