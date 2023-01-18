@@ -17,10 +17,6 @@ namespace Infrastructure.Component.Shared.CiCd
             _tekton = tekton;
         }
 
-        public void Apply()
-        {
-        }
-
         public CiCdComponentOutput Apply(CiCdComponentInput input)
         {
             _tekton.Apply(new TektonComponentInput
