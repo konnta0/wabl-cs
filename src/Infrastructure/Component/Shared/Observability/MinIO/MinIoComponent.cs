@@ -8,11 +8,11 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
 namespace Infrastructure.Component.Shared.Observability.MinIO
 {
-    public class MinIOResource
+    public class MinIoComponent
     {
         private readonly Config _config;
 
-        public MinIOResource(Config config)
+        public MinIoComponent(Config config)
         {
             _config = config;
         }

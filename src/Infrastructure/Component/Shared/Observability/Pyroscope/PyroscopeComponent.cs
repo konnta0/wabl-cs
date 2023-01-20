@@ -6,12 +6,12 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
 namespace Infrastructure.Component.Shared.Observability.Pyroscope
 {
-    public class PyroscopeResource
+    public class PyroscopeComponent
     {
-        private readonly ILogger<PyroscopeResource> _logger;
+        private readonly ILogger<PyroscopeComponent> _logger;
         private readonly Config _config;
 
-        public PyroscopeResource(ILogger<PyroscopeResource> logger, Config config)
+        public PyroscopeComponent(ILogger<PyroscopeComponent> logger, Config config)
         {
             _logger = logger;
             _config = config;

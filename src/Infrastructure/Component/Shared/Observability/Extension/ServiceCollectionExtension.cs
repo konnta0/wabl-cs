@@ -1,3 +1,4 @@
+using Infrastructure.Component.Shared.Observability;
 using Infrastructure.Component.Shared.Observability.Grafana;
 using Infrastructure.Component.Shared.Observability.Loki;
 using Infrastructure.Component.Shared.Observability.Mimir;
@@ -12,12 +13,12 @@ namespace Infrastructure.Resource.Shared.Observability.Extension
     {
         internal static IServiceCollection AddObservability(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<GrafanaResource>();
-            serviceCollection.AddScoped<LokiResource>();
-            serviceCollection.AddScoped<TempoResource>();
-            serviceCollection.AddScoped<MimirResource>();
-            serviceCollection.AddScoped<MinIOResource>();
-            serviceCollection.AddScoped<PyroscopeResource>();
+            serviceCollection.AddScoped<GrafanaComponent>();
+            serviceCollection.AddScoped<LokiComponent>();
+            serviceCollection.AddScoped<TempoComponent>();
+            serviceCollection.AddScoped<MimirComponent>();
+            serviceCollection.AddScoped<MinIoComponent>();
+            serviceCollection.AddScoped<PyroscopeComponent>();
             serviceCollection.AddScoped<ObservabilityComponent>();
             return serviceCollection;
         }

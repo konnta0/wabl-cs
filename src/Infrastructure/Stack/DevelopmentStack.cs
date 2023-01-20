@@ -1,9 +1,8 @@
-using Infrastructure.CI_CD;
 using Infrastructure.Component.Shared.Certificate;
 using Infrastructure.Component.Shared.CiCd;
 using Infrastructure.Component.Shared.ContainerRegistry;
+using Infrastructure.Component.Shared.Observability;
 using Infrastructure.Component.Shared.Storage;
-using Infrastructure.Resource.Shared.Observability;
 using Infrastructure.VersionControlSystem;
 using Infrastructure.WebApplication;
 using Microsoft.Extensions.Logging;
@@ -52,11 +51,13 @@ namespace Infrastructure.Stack
                 Namespace = @namespace,
                 ClusterIssuer = certificateComponentOutput.ClusterIssuer
             });
-            GrafanaHost = observabilityComponent.Apply();
+            observabilityComponent.Apply(new ObservabilityComponentInput
+            {
+                Namespace = @namespace
+            });
             //GitLabHost = versionControlSystemComponent.Apply();
             webApplicationComponent.Apply();
         }
 
-        [Output] public Output<string> GrafanaHost { get; set; }
     }
 }

@@ -7,18 +7,18 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
 namespace Infrastructure.Component.Shared.Observability.Loki
 {
-    public class LokiResource
+    public class LokiComponent : IComponent<LokiComponentInput, LokiComponentOutput>
     {
-        private readonly ILogger<LokiResource> _logger;
+        private readonly ILogger<LokiComponent> _logger;
         private readonly Config _config;
 
-        public LokiResource(ILogger<LokiResource> logger, Config config)
+        public LokiComponent(ILogger<LokiComponent> logger, Config config)
         {
             _logger = logger;
             _config = config;
         }
-
-        public void Apply()
+        
+        public LokiComponentOutput Apply(LokiComponentInput input)
         {
             var values = new Dictionary<string, object>
             {
@@ -39,8 +39,10 @@ namespace Infrastructure.Component.Shared.Observability.Loki
                 Values = values,
                 Atomic = true,
                 CreateNamespace = true,
-                Namespace = _config.GetObservabilityConfig().Namespace
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             });
+
+            return new LokiComponentOutput();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Infrastructure.CI_CD.Extension;
 using Infrastructure.Component.Shared.Certificate.Extension;
+using Infrastructure.Component.Shared.CiCd.Extension;
 using Infrastructure.Component.Shared.ContainerRegistry.Extension;
 using Infrastructure.Component.Shared.Storage.Extension;
 using Infrastructure.Resource.Shared.Observability.Extension;

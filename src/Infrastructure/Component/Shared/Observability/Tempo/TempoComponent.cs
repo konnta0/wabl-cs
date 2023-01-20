@@ -8,12 +8,12 @@ using Config = Pulumi.Config;
 
 namespace Infrastructure.Component.Shared.Observability.Tempo
 {
-    public class TempoResource
+    public class TempoComponent
     {
-        private readonly ILogger<TempoResource> _logger;
+        private readonly ILogger<TempoComponent> _logger;
         private readonly Config _config;
 
-        public TempoResource(ILogger<TempoResource> logger, Config config)
+        public TempoComponent(ILogger<TempoComponent> logger, Config config)
         {
             _logger = logger;
             _config = config;

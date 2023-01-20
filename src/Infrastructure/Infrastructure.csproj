@@ -15,13 +15,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resource\Shared\Observability\Grafana\Dashboard\dashboard.json">
+    <None Update="Component\Shared\Observability\Grafana\Dashboard\dashboard.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="CI_CD\Resource\Tekton\Yaml\**\*.*">
+    <None Update="Component\Shared\CiCd\Tekton\**\Yaml\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Resource\Shared\Certificate\Yaml\**\*.*">
+    <None Update="Component\Shared\CiCd\Tekton\Yaml\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Component\Shared\Certificate\Yaml\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="WebApplication\Resource\TiDB\Yaml\**\*.*">

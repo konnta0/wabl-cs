@@ -7,12 +7,12 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
 namespace Infrastructure.Component.Shared.Observability.Mimir
 {
-    public class MimirResource
+    public class MimirComponent
     {
-        private readonly ILogger<LokiResource> _logger;
+        private readonly ILogger<LokiComponent> _logger;
         private readonly Config _config;
 
-        public MimirResource(ILogger<LokiResource> logger, Config config)
+        public MimirComponent(ILogger<LokiComponent> logger, Config config)
         {
             _logger = logger;
             _config = config;

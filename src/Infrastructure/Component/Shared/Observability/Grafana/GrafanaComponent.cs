@@ -13,21 +13,27 @@ using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
 namespace Infrastructure.Component.Shared.Observability.Grafana
 {
-    public class GrafanaResource
+    public class GrafanaComponent : IComponent<GrafanaComponentInput, GrafanaComponentOutput>
     {
 
-        private readonly ILogger<GrafanaResource> _logger;
+        private readonly ILogger<GrafanaComponent> _logger;
         private readonly Config _config;
 
-        public GrafanaResource(ILogger<GrafanaResource> logger, Config config)
+        public GrafanaComponent(ILogger<GrafanaComponent> logger, Config config)
         {
             _logger = logger;
             _config = config;
         }
 
-        public Output<string> Apply()
+        public GrafanaComponentOutput Apply(GrafanaComponentInput input)
         {
             // ref: https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
+            var namespaceName = string.Empty; 
+            input.Namespace.Metadata.Apply(x =>
+            {
+                namespaceName = x.Name;
+                return x;
+            });
             var values = new Dictionary<string, object>
             {
                 ["adminPassword"] = "grafana12345",
@@ -38,7 +44,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                         ["enabled"] = true,
                         ["label"] = "grafana_dashboard",
                         ["labelValue"] = bool.TrueString.ToLower(),
-                        ["searchNamespace"] = string.Join(",", _config.GetObservabilityConfig().Namespace, _config.GetWebApplicationConfig().Namespace)
+                        ["searchNamespace"] = string.Join(",", namespaceName, _config.GetWebApplicationConfig().Namespace)
                     }
                 },
                 ["dashboardProviders"] = new Dictionary<string, object>
@@ -160,7 +166,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                     {
                         ["grafana_dashboard"] = bool.TrueString.ToLower()
                     },
-                    Namespace = _config.GetObservabilityConfig().Namespace
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 }
             });
 
@@ -174,11 +180,10 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                 {
                     Repo = "https://grafana.github.io/helm-charts"
                 },
-                CreateNamespace = true,
                 Atomic = true,
                 Values = values,
                 RecreatePods = true,
-                Namespace = _config.GetObservabilityConfig().Namespace
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             });
 
             var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("grafana-ingress", new IngressArgs
@@ -187,7 +192,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "grafana-ingress",
-                    Namespace = _config.GetObservabilityConfig().Namespace
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new IngressSpecArgs
                 {
@@ -207,7 +212,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                                     {
                                         Service = new IngressServiceBackendArgs
                                         {
-                                            Name = grafana.ResourceNames.Apply(x=> x["Service/v1"].First().Replace(_config.GetObservabilityConfig().Namespace+"/", "")),
+                                            Name = "grafana",
                                             Port = new ServiceBackendPortArgs { Number = 3000 }
                                         }
                                     }
@@ -217,7 +222,8 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                     }
                 }
             });
-            return ingress.Spec.Apply(x => x.Rules.First().Host);
+            
+            return new GrafanaComponentOutput();
         }
     }
 }

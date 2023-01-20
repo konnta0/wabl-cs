@@ -7,45 +7,44 @@ using Infrastructure.Component.Shared.Observability.Tempo;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 
-namespace Infrastructure.Resource.Shared.Observability
+namespace Infrastructure.Component.Shared.Observability
 {
-    public class ObservabilityComponent
+    public class ObservabilityComponent : IComponent<ObservabilityComponentInput, ObservabilityComponentOutput>
     {
         private readonly ILogger<ObservabilityComponent> _logger;
-        private readonly GrafanaResource _grafana;
-        private readonly LokiResource _lokiResource;
-        private readonly TempoResource _tempoResource;
-        private readonly MimirResource _mimirResource;
-        private readonly PyroscopeResource _pyroscopeResource;
-        private readonly MinIOResource _minIoResource;
+        private readonly GrafanaComponent _grafana;
+        private readonly LokiComponent _lokiComponent;
+        private readonly TempoComponent _tempoComponent;
+        private readonly MimirComponent _mimirComponent;
+        private readonly PyroscopeComponent _pyroscopeComponent;
+        private readonly MinIoComponent _minIoComponent;
 
         public ObservabilityComponent(
             ILogger<ObservabilityComponent> logger,
-            GrafanaResource grafana,
-            LokiResource lokiResource,
-            TempoResource tempoResource,
-            MimirResource mimirResource,
-            PyroscopeResource pyroscopeResource,
-            MinIOResource minIoResource)
+            GrafanaComponent grafana,
+            LokiComponent lokiComponent,
+            TempoComponent tempoComponent,
+            MimirComponent mimirComponent,
+            PyroscopeComponent pyroscopeComponent,
+            MinIoComponent minIoComponent)
         {
             _logger = logger;
             _grafana = grafana;
-            _lokiResource = lokiResource;
-            _mimirResource = mimirResource;
-            _tempoResource = tempoResource;
-            _pyroscopeResource = pyroscopeResource;
-            _minIoResource = minIoResource;
+            _lokiComponent = lokiComponent;
+            _mimirComponent = mimirComponent;
+            _tempoComponent = tempoComponent;
+            _pyroscopeComponent = pyroscopeComponent;
+            _minIoComponent = minIoComponent;
         }
 
-        public Output<string> Apply()
+        public ObservabilityComponentOutput Apply(ObservabilityComponentInput input)
         {
-            _minIoResource.Apply();
-            var grafanaHost = _grafana.Apply();
-            _lokiResource.Apply();
-            _tempoResource.Apply();
-            _mimirResource.Apply();
-            _pyroscopeResource.Apply();
-            return grafanaHost;
+            _grafana.Apply(new GrafanaComponentInput { Namespace = input.Namespace });
+            _lokiComponent.Apply(new LokiComponentInput {Namespace = input.Namespace});
+            _tempoComponent.Apply();
+            _mimirComponent.Apply();
+            _pyroscopeComponent.Apply();
+            return new ObservabilityComponentOutput();
         }
     }
 }
