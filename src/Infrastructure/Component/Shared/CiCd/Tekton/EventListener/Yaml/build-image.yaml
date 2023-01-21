@@ -1,0 +1,13 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: build-image-listener
+  namespace: tekton-pipelines
+spec:
+  serviceAccountName: DYNAMIC_REPLACE_SERVICE_ACCOUNT_NAME
+  triggers:
+    - name: build-image-trigger
+      bindings:
+        - ref: build-image-pipeline-binding
+      template:
+        ref: build-image-pipeline-template
