@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
 
@@ -22,9 +21,10 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Task
                 "git-clone",
                 "buildah",
                 "unit-test",
-                "curl"
+                "curl",
+                "kaniko"
             };
-            
+
             foreach (var task in tasks)
             {
                 _ = new ConfigFile($"tekton-pipeline-task-{task}", new ConfigFileArgs
