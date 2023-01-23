@@ -1,7 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using Pulumi;
+using Pulumi.Kubernetes.Core.V1;
+using Pulumi.Kubernetes.Rbac.V1;
+using Pulumi.Kubernetes.Types.Inputs.Core.V1;
+using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
+using Pulumi.Kubernetes.Types.Inputs.Rbac.V1;
 
 namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
 {
@@ -9,8 +13,81 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
     {
         public EventListenerComponentOutput Apply(EventListenerComponentInput input)
         {
+            var serviceAccount = new ServiceAccount("trigger-service-account", new ServiceAccountArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "trigger-service-account",
+                    Namespace = "tekton-pipelines"
+                }
+            });
+            var role = new Role("trigger-role", new RoleArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "trigger-role",
+                    Namespace = "tekton-pipelines"
+                },
+                Rules = new InputList<PolicyRuleArgs>
+                {
+                    new PolicyRuleArgs
+                    {
+                        ApiGroups = {"triggers.tekton.dev"},
+                        Resources =
+                        {
+                            "eventlisteners",
+                            "triggers",
+                            "triggerbindings",
+                            "triggertemplates"
+                        },
+                        Verbs =
+                        {
+                            "get",
+                            "list",
+                            "watch"
+                        }
+                    },
+                    new PolicyRuleArgs
+                    {
+                        ApiGroups = {"tekton.dev"},
+                        Resources = {"pipelineruns", "pipelineresources"},
+                        Verbs = {"create"}
+                    },
+                    new PolicyRuleArgs
+                    {
+                        ApiGroups = {""},
+                        Resources = {"comfigmaps"},
+                        Verbs = {"get", "list", "watch"}
+                    }
+                }
+            });
+            var roleBinding = new RoleBinding("trigger-role-binding", new RoleBindingArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "trigger-role-binding",
+                    Namespace = "tekton-pipelines"
+                },
+                Subjects = new InputList<SubjectArgs>
+                {
+                    new SubjectArgs
+                    {
+                        Kind = nameof(ServiceAccount),
+                        Name = serviceAccount.Metadata.Apply(_ => _.Name),
+                        Namespace = "tekton-pipelines"
+                    }
+                },
+                RoleRef = new RoleRefArgs
+                {
+                    ApiGroup = "rbac.authorization.k8s.io",
+                    Kind = nameof(Role),
+                    Name = role.Metadata.Apply(_ => _.Name)
+                }
+            });
 
-            _ = new Pulumi.Crds.Triggers.V1Alpha1.EventListener("build-image-listener", new Dictionary<string, object>
+            // NOTE: Does not works.
+            // see https://github.com/tektoncd/triggers/issues/1490
+            _ = new Pulumi.Crds.Triggers.V1Alpha1.EventListener("build-image-event-listener", new Dictionary<string, object>
             {
                 ["apiVersion"] = "triggers.tekton.dev/v1alpha1",
                 ["kind"] = "EventListener",
@@ -21,7 +98,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                 }.ToImmutableDictionary(),
                 ["spec"] = new Dictionary<string, object>
                 {
-                    ["serviceAccountName"] = input.ServiceAccount.Metadata.Apply(x => x.Name),
+                    ["serviceAccountName"] = serviceAccount.Metadata.Apply(x => x.Name),
                     ["triggers"] = new List<ImmutableDictionary<string, object>>
                     {
                         new Dictionary<string, object>
@@ -41,7 +118,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                         }.ToImmutableDictionary()
                     }.ToImmutableArray()
                 }.ToImmutableDictionary()
-            }.ToImmutableDictionary()!, new CustomResourceOptions {DependsOn = {input.TektonRelease, input.TektonTrigger, input.ServiceAccount}});
+            }.ToImmutableDictionary()!, new CustomResourceOptions {DependsOn = {input.TektonRelease, input.TektonTrigger, serviceAccount}});
             
             return new EventListenerComponentOutput();
         }

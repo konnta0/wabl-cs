@@ -7,7 +7,6 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
     {
         public ConfigFile TektonRelease { get; set; }
         public ConfigFile TektonTrigger { get; set; }
-        public ServiceAccount ServiceAccount { get; set; }
     }
 
     public sealed class EventListenerComponentOutput : IComponentOutput
