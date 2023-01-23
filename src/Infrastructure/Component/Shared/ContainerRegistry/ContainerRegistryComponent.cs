@@ -1,5 +1,4 @@
 using Infrastructure.Component.Shared.ContainerRegistry.Harbor;
-using Infrastructure.Component.Shared.ContainerRegistry.Resource;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Crds.Certmanager.V1;
@@ -13,14 +12,12 @@ namespace Infrastructure.Component.Shared.ContainerRegistry
         private readonly ILogger<ContainerRegistryComponent> _logger;
         private Config _config;
         private readonly HarborComponent _harborComponent;
-        private readonly MinIO _minIo;
         
-        public ContainerRegistryComponent(ILogger<ContainerRegistryComponent> logger, Config config, HarborComponent harborComponent, MinIO minIo)
+        public ContainerRegistryComponent(ILogger<ContainerRegistryComponent> logger, Config config, HarborComponent harborComponent)
         {
             _logger = logger;
             _config = config;
             _harborComponent = harborComponent;
-            _minIo = minIo;
         }
 
         public ContainerRegistryComponentOutput Apply(ContainerRegistryComponentInput input)

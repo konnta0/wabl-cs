@@ -127,9 +127,9 @@ namespace Infrastructure.Component.Shared.Storage.MinIo
                 });
             }
             
-            var release = new Release("observability-minio", new ReleaseArgs
+            var release = new Release("shared-minio", new ReleaseArgs
             {
-                Name = "minio",
+                Name = "shared-minio",
                 Chart = "minio",
                 // helm search repo minio/minio --versions
                 Version = "4.0.15",
@@ -138,7 +138,7 @@ namespace Infrastructure.Component.Shared.Storage.MinIo
                     Repo = "https://charts.min.io"
                 },
                 CreateNamespace = true,
-                Namespace = _config.GetObservabilityConfig().Namespace,
+                Namespace = input.Namespace.Metadata.Apply(_ => _.Name),
                 Atomic = true,
                 Values = values
             });
