@@ -7,18 +7,18 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
-namespace Infrastructure.WebApplication.Resource.Dragonfly
+namespace Infrastructure.Component.Shared.Storage.Dragonfly
 {
-    public class DragonflyResource
+    public class DragonflyComponent : IComponent<DragonflyComponentInput, DragonflyComponentOutput>
     {
         private readonly Config _config;
 
-        public DragonflyResource(Config config)
+        public DragonflyComponent(Config config)
         {
             _config = config;
         }
 
-        public void Apply()
+        public DragonflyComponentOutput Apply(DragonflyComponentInput input)
         {
             // https://github.com/dragonflyoss/helm-charts/blob/main/charts/dragonfly/values.yaml
             var values = new Dictionary<string, object>
@@ -97,6 +97,7 @@ namespace Infrastructure.WebApplication.Resource.Dragonfly
                     }
                 }
             });
+            return new DragonflyComponentOutput();
         }
     }
 }

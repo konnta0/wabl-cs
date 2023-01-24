@@ -1,5 +1,4 @@
 using Infrastructure.WebApplication.Resource.Dotnet;
-using Infrastructure.WebApplication.Resource.Dragonfly;
 using Infrastructure.WebApplication.Resource.OpenTelemetryOperator;
 using Infrastructure.WebApplication.Resource.Promtail;
 using Infrastructure.WebApplication.Resource.TiDB;
@@ -12,7 +11,6 @@ namespace Infrastructure.WebApplication.Extension
         internal static IServiceCollection AddWebApplication(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddScoped<DotnetApplicationResource>();
-            serviceCollection.AddScoped<DragonflyResource>();
             serviceCollection.AddScoped<TiDBResource>();
             serviceCollection.AddScoped<WebApplicationComponent>();
             serviceCollection.AddScoped<OpenTelemetryOperatorResource>();
