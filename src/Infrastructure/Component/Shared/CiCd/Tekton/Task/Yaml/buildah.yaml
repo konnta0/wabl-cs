@@ -3,7 +3,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  namespace: tekton-pipelines
+  namespace: tekton-worker
   name: buildah
   labels:
     app.kubernetes.io/version: "0.4"

@@ -30,7 +30,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Task
                 _ = new ConfigFile($"tekton-pipeline-task-{task}", new ConfigFileArgs
                 {
                     File = $"./Component/Shared/CiCd/Tekton/Task/Yaml/{task}.yaml",
-                }, new ComponentResourceOptions { DependsOn = { input.TektonRelease } });
+                }, new ComponentResourceOptions { DependsOn = { input.TektonRelease, input.Namespace } });
             }
 
             return new TektonComponentOutput();

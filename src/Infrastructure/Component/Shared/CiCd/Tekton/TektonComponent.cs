@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using Infrastructure.Component.Shared.CiCd.Tekton.EventListener;
 using Infrastructure.Component.Shared.CiCd.Tekton.Pipeline;
 using Infrastructure.Component.Shared.CiCd.Tekton.PipelineRun;
 using Infrastructure.Component.Shared.CiCd.Tekton.Task;
 using Infrastructure.Component.Shared.CiCd.Tekton.TaskRun;
+using Infrastructure.Component.Shared.CiCd.Tekton.TriggerBinding;
+using Infrastructure.Component.Shared.CiCd.Tekton.TriggerTemplate;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
@@ -26,13 +29,19 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
         private readonly PipelineComponent _pipelineComponent;
         private readonly TektonTaskRunComponent _tektonTaskRunComponent;
         private readonly PipelineRunComponent _pipelineRunComponent;
+        private readonly TriggerTemplateComponent _triggerTemplateComponent;
+        private readonly EventListenerComponent _eventListenerComponent;
+        private readonly TriggerBindingComponent _triggerBindingComponent;
 
         public TektonComponent(ILogger<TektonComponent> logger,
             Config config,
             TektonTaskComponent tektonTaskComponent,
             PipelineComponent pipelineComponent,
             TektonTaskRunComponent tektonTaskRunComponent,
-            PipelineRunComponent pipelineRunComponent)
+            PipelineRunComponent pipelineRunComponent, 
+            TriggerTemplateComponent triggerTemplateComponent,
+            EventListenerComponent eventListenerComponent, 
+            TriggerBindingComponent triggerBindingComponent)
         {
             _logger = logger;
             _config = config;
@@ -40,6 +49,9 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
             _pipelineComponent = pipelineComponent;
             _tektonTaskRunComponent = tektonTaskRunComponent;
             _pipelineRunComponent = pipelineRunComponent;
+            _triggerTemplateComponent = triggerTemplateComponent;
+            _eventListenerComponent = eventListenerComponent;
+            _triggerBindingComponent = triggerBindingComponent;
         }
 
         public TektonComponentOutput Apply(TektonComponentInput input)
@@ -60,7 +72,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
 
             var cronjob = new ConfigFile("tekton-dashboard-extension-cronjob", new ConfigFileArgs
             {
-                File = "./Component/Shared/CiCd/Tekton/Yaml/dashboard-extension-cronjob.yaml"
+                File = "./Component/Shared/CiCd/Tekton/CronJob/Yaml/dashboard-extension-cronjob.yaml"
             }, new ComponentResourceOptions { DependsOn = { tektonRelease, dashboard } });
 
             var triggers = new ConfigFile("tekton-triggers-release", new ConfigFileArgs
@@ -192,21 +204,50 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                 }
             }, new CustomResourceOptions { DependsOn = { dashboard } });
 
+            var workerNamespace = new Namespace("tekton-worker-namespace", new NamespaceArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "tekton-worker"
+                }
+            });
             _tektonTaskComponent.Apply(new TektonTaskComponentInput
             {
+                Namespace = workerNamespace,
                 TektonRelease = tektonRelease
             });
             _pipelineComponent.Apply(new PipelineComponentInput
             {
+                Namespace = workerNamespace,
                 TektonRelease = tektonRelease
             });
             _tektonTaskRunComponent.Apply(new TektonTaskRunComponentInput
             {
+                Namespace = workerNamespace,
                 TektonRelease = tektonRelease
             });
             _pipelineRunComponent.Apply(new PipelineRunComponentInput
             {
+                Namespace = workerNamespace,
                 TektonRelease = tektonRelease
+            });
+            _triggerTemplateComponent.Apply(new TriggerTemplateComponentInput
+            {
+                Namespace = workerNamespace,
+                TektonRelease = tektonRelease,
+                TektonTrigger = triggers
+            });
+            _triggerBindingComponent.Apply(new TriggerBindingComponentInput
+            {
+                Namespace = workerNamespace,
+                TektonRelease = tektonRelease,
+                TektonTrigger = triggers
+            });
+            _eventListenerComponent.Apply(new EventListenerComponentInput
+            {
+                Namespace = workerNamespace,
+                TektonRelease = tektonRelease,
+                TektonTrigger = triggers
             });
 
             return new TektonComponentOutput();

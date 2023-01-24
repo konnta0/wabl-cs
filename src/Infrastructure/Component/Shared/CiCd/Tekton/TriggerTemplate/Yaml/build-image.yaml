@@ -1,0 +1,22 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: build-image-pipeline-template
+  namespace: tekton-worker
+spec:
+  params:
+    - name: git-url
+    - name: image
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: build-image-run-
+      spec:
+        params:
+          - name: git-url
+            value: $(tt.params.git-url)
+          - name: image
+            value: $(tt.params.image)
+        pipelineRef:
+          name: build-image

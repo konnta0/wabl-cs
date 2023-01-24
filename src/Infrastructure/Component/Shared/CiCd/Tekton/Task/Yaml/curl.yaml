@@ -2,6 +2,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
+  namespace: tekton-worker
   name: curl
   labels:
     app.kubernetes.io/version: "0.1"

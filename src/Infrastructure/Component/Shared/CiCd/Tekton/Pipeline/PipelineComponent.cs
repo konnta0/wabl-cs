@@ -11,19 +11,18 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Pipeline
         {
             _config = config;
         }
-        
+
         public PipelineComponentOutput Apply(PipelineComponentInput input)
         {
             _ = new ConfigFile("tekton-pipeline-build-image", new ConfigFileArgs
             {
                 File = "./Component/Shared/CiCd/Tekton/Pipeline/Yaml/build-image.yaml"
+            }, new ComponentResourceOptions { DependsOn = { input.TektonRelease, input.Namespace } });
 
-            }, new ComponentResourceOptions {DependsOn = {input.TektonRelease}});
-            
             _ = new ConfigFile("tekton-pipeline-unit-test", new ConfigFileArgs
             {
                 File = "./Component/Shared/CiCd/Tekton/Pipeline/Yaml/unit-test.yaml"
-            }, new ComponentResourceOptions {DependsOn = {input.TektonRelease}});
+            }, new ComponentResourceOptions { DependsOn = { input.TektonRelease, input.Namespace } });
 
             return new PipelineComponentOutput();
         }

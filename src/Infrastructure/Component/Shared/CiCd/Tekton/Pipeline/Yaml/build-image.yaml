@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  namespace: tekton-pipelines
+  namespace: tekton-worker
   name: build-image-pipeline
 spec:
   workspaces: 
@@ -30,21 +30,16 @@ spec:
           value: $(params.git-revision)
     - name: build-push-image
       taskRef:
-        name: buildah
+        name: kaniko
       params:
-        - name: BUILD_EXTRA_ARGS
-          value: -t $(params.image):$(tasks.fetch-repository.results.commit)
+        - name: EXTRA_ARGS
+          value: --destination $(params.image):$(tasks.fetch-repository.results.commit)
         - name: IMAGE
-          value: $(params.image)
+          value: $(params.image):latest
         - name: DOCKERFILE
           value: "Dockerfile"
         - name: CONTEXT
           value: "$(workspaces.source.path)"
-        - name: FORMAT
-          value: "docker"
-        # https://github.com/containers/buildah/discussions/3842#discussioncomment-2455276
-        - name: TLSVERIFY
-          value: "false"
       workspaces:
         - name: source
           workspace: shared-workspace

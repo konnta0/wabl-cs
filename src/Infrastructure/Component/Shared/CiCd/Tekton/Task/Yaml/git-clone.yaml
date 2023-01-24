@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  namespace: tekton-pipelines
+  namespace: tekton-worker
   name: git-clone
   labels:
     app.kubernetes.io/version: "0.7"

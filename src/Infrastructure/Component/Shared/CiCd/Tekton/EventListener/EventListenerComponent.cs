@@ -18,7 +18,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "trigger-service-account",
-                    Namespace = "tekton-pipelines"
+                    Namespace = input.Namespace.Metadata.Apply(_ => _.Name)
                 }
             });
             var role = new Role("trigger-role", new RoleArgs
@@ -26,13 +26,13 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "trigger-role",
-                    Namespace = "tekton-pipelines"
+                    Namespace = input.Namespace.Metadata.Apply(_ => _.Name)
                 },
                 Rules = new InputList<PolicyRuleArgs>
                 {
                     new PolicyRuleArgs
                     {
-                        ApiGroups = {"triggers.tekton.dev"},
+                        ApiGroups = { "triggers.tekton.dev" },
                         Resources =
                         {
                             "eventlisteners",
@@ -49,15 +49,15 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                     },
                     new PolicyRuleArgs
                     {
-                        ApiGroups = {"tekton.dev"},
-                        Resources = {"pipelineruns", "pipelineresources"},
-                        Verbs = {"create"}
+                        ApiGroups = { "tekton.dev" },
+                        Resources = { "pipelineruns", "pipelineresources" },
+                        Verbs = { "create" }
                     },
                     new PolicyRuleArgs
                     {
-                        ApiGroups = {""},
-                        Resources = {"comfigmaps"},
-                        Verbs = {"get", "list", "watch"}
+                        ApiGroups = { "" },
+                        Resources = { "comfigmaps" },
+                        Verbs = { "get", "list", "watch" }
                     }
                 }
             });
@@ -74,7 +74,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                     {
                         Kind = nameof(ServiceAccount),
                         Name = serviceAccount.Metadata.Apply(_ => _.Name),
-                        Namespace = "tekton-pipelines"
+                        Namespace = input.Namespace.Metadata.Apply(_ => _.Name)
                     }
                 },
                 RoleRef = new RoleRefArgs
@@ -87,39 +87,41 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
 
             // NOTE: Does not works.
             // see https://github.com/tektoncd/triggers/issues/1490
-            _ = new Pulumi.Crds.Triggers.V1Alpha1.EventListener("build-image-event-listener", new Dictionary<string, object>
-            {
-                ["apiVersion"] = "triggers.tekton.dev/v1alpha1",
-                ["kind"] = "EventListener",
-                ["metadata"] = new Dictionary<string, object>
+            _ = new Pulumi.Crds.Triggers.V1Alpha1.EventListener("build-image-event-listener",
+                new Dictionary<string, object>
                 {
-                    ["name"] = "build-image-listener",
-                    ["namespace"] = "tekton-pipelines"
-                }.ToImmutableDictionary(),
-                ["spec"] = new Dictionary<string, object>
-                {
-                    ["serviceAccountName"] = serviceAccount.Metadata.Apply(x => x.Name),
-                    ["triggers"] = new List<ImmutableDictionary<string, object>>
+                    ["apiVersion"] = "triggers.tekton.dev/v1alpha1",
+                    ["kind"] = "EventListener",
+                    ["metadata"] = new Dictionary<string, object>
                     {
-                        new Dictionary<string, object>
+                        ["name"] = "build-image-listener",
+                        ["namespace"] = input.Namespace.Metadata.Apply(x => x.Name)
+                    }.ToImmutableDictionary(),
+                    ["spec"] = new Dictionary<string, object>
+                    {
+                        ["serviceAccountName"] = serviceAccount.Metadata.Apply(x => x.Name),
+                        ["triggers"] = new List<ImmutableDictionary<string, object>>
                         {
-                            ["name"] = "build-image-trigger",
-                            ["bindings"] = new List<ImmutableDictionary<string, object>>
+                            new Dictionary<string, object>
                             {
-                                new Dictionary<string, object>
+                                ["name"] = "build-image-trigger",
+                                ["bindings"] = new List<ImmutableDictionary<string, object>>
                                 {
-                                    ["ref"] = "build-image-pipeline-binding"
+                                    new Dictionary<string, object>
+                                    {
+                                        ["ref"] = "build-image-pipeline-binding"
+                                    }.ToImmutableDictionary()
+                                }.ToImmutableArray(),
+                                ["template"] = new Dictionary<string, object>
+                                {
+                                    ["ref"] = "build-image-pipeline-template"
                                 }.ToImmutableDictionary()
-                            }.ToImmutableArray(),
-                            ["template"] = new Dictionary<string, object>
-                            {
-                                ["ref"] = "build-image-pipeline-template"
                             }.ToImmutableDictionary()
-                        }.ToImmutableDictionary()
-                    }.ToImmutableArray()
-                }.ToImmutableDictionary()
-            }.ToImmutableDictionary()!, new CustomResourceOptions {DependsOn = {input.TektonRelease, input.TektonTrigger, serviceAccount}});
-            
+                        }.ToImmutableArray()
+                    }.ToImmutableDictionary()
+                }.ToImmutableDictionary()!,
+                new CustomResourceOptions { DependsOn = { input.TektonRelease, input.TektonTrigger, serviceAccount } });
+
             return new EventListenerComponentOutput();
         }
     }

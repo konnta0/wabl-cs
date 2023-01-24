@@ -2,7 +2,7 @@ apiVersion: triggers.tekton.dev/v1alpha1
 kind: TriggerBinding
 metadata:
   name: build-image-pipeline-binding
-  namespace: tekton-pipelines
+  namespace: tekton-worker
 spec:
   params:
     - name: git-url
