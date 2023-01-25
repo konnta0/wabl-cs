@@ -30,7 +30,7 @@ namespace Infrastructure.Component.Shared.Storage.MinIo
                     ["enabled"] = true,
                     ["hosts"] = new List<object>
                     {
-                        "api.minio.o11y.test"
+                        "api.minio.storage.test"
                     }
                 },
                 ["consoleIngress"] = new Dictionary<string, object>
@@ -38,7 +38,7 @@ namespace Infrastructure.Component.Shared.Storage.MinIo
                     ["enabled"] = true,
                     ["hosts"] = new List<string>
                     {
-                        "console.minio.o11y.test"
+                        "console.minio.storage.test"
                     }
                 },
                 ["resources"] = new Dictionary<string, object>
