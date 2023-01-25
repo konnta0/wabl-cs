@@ -17,7 +17,6 @@ namespace Infrastructure.Resource.Shared.Observability.Extension
             serviceCollection.AddScoped<LokiComponent>();
             serviceCollection.AddScoped<TempoComponent>();
             serviceCollection.AddScoped<MimirComponent>();
-            serviceCollection.AddScoped<MinIoComponent>();
             serviceCollection.AddScoped<PyroscopeComponent>();
             serviceCollection.AddScoped<ObservabilityComponent>();
             return serviceCollection;
