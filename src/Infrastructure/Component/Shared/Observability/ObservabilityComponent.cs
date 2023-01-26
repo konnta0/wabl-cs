@@ -5,7 +5,6 @@ using Infrastructure.Component.Shared.Observability.MinIO;
 using Infrastructure.Component.Shared.Observability.Pyroscope;
 using Infrastructure.Component.Shared.Observability.Tempo;
 using Microsoft.Extensions.Logging;
-using Pulumi;
 
 namespace Infrastructure.Component.Shared.Observability
 {
@@ -17,7 +16,6 @@ namespace Infrastructure.Component.Shared.Observability
         private readonly TempoComponent _tempoComponent;
         private readonly MimirComponent _mimirComponent;
         private readonly PyroscopeComponent _pyroscopeComponent;
-        private readonly MinIoComponent _minIoComponent;
 
         public ObservabilityComponent(
             ILogger<ObservabilityComponent> logger,
@@ -25,8 +23,7 @@ namespace Infrastructure.Component.Shared.Observability
             LokiComponent lokiComponent,
             TempoComponent tempoComponent,
             MimirComponent mimirComponent,
-            PyroscopeComponent pyroscopeComponent,
-            MinIoComponent minIoComponent)
+            PyroscopeComponent pyroscopeComponent)
         {
             _logger = logger;
             _grafana = grafana;
@@ -34,16 +31,15 @@ namespace Infrastructure.Component.Shared.Observability
             _mimirComponent = mimirComponent;
             _tempoComponent = tempoComponent;
             _pyroscopeComponent = pyroscopeComponent;
-            _minIoComponent = minIoComponent;
         }
 
         public ObservabilityComponentOutput Apply(ObservabilityComponentInput input)
         {
             _grafana.Apply(new GrafanaComponentInput { Namespace = input.Namespace });
             _lokiComponent.Apply(new LokiComponentInput {Namespace = input.Namespace});
-            _tempoComponent.Apply();
-            _mimirComponent.Apply();
-            _pyroscopeComponent.Apply();
+            _tempoComponent.Apply(new TempoComponentInput {Namespace = input.Namespace});
+            _mimirComponent.Apply(new MimirComponentInput {Namespace = input.Namespace});
+            _pyroscopeComponent.Apply(new PyroscopeComponentInput {Namespace = input.Namespace});
             return new ObservabilityComponentOutput();
         }
     }
