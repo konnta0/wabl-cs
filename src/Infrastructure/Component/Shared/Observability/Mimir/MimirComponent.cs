@@ -7,7 +7,7 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
 namespace Infrastructure.Component.Shared.Observability.Mimir
 {
-    public class MimirComponent
+    public class MimirComponent : IComponent<MimirComponentInput, MimirComponentOutput>
     {
         private readonly ILogger<LokiComponent> _logger;
         private readonly Config _config;
@@ -17,8 +17,8 @@ namespace Infrastructure.Component.Shared.Observability.Mimir
             _logger = logger;
             _config = config;
         }
-
-        public void Apply()
+        
+        public MimirComponentOutput Apply(MimirComponentInput input)
         {
             // https://github.com/grafana/mimir/blob/mimir-distributed-3.1.0/operations/helm/charts/mimir-distributed/values.yaml
             var values = new InputMap<object>
@@ -38,7 +38,7 @@ namespace Infrastructure.Component.Shared.Observability.Mimir
                             {
                                 ["access_key_id"] = "mimir",
                                 ["bucket_name"] = "mimir-ruler", 
-                                ["endpoint"] = "minio:9000",
+                                ["endpoint"] = "shared-minio:9000",
                                 ["insecure"] = true,
                                 ["secret_access_key"] = "mimirsecret" 
                             }
@@ -49,7 +49,7 @@ namespace Infrastructure.Component.Shared.Observability.Mimir
                             {
                                 ["access_key_id"] = "mimir",
                                 ["bucket_name"] = "mimir-tsdb",
-                                ["endpoint"] = "minio:9000",
+                                ["endpoint"] = "shared-minio:9000",
                                 ["insecure"] = true,
                                 ["secret_access_key"] = "mimirsecret"
                             }
@@ -62,7 +62,7 @@ namespace Infrastructure.Component.Shared.Observability.Mimir
                 } 
             };
             
-            var mimir = new Release("mimir-distributed", new ReleaseArgs
+            var mimir = new Release("mimir", new ReleaseArgs
             {
                 Name = "mimir-distributed",
                 Chart = "mimir-distributed",
@@ -75,9 +75,9 @@ namespace Infrastructure.Component.Shared.Observability.Mimir
                 
                 Values = values,
                 Atomic = true,
-                CreateNamespace = true,
-                Namespace = _config.GetObservabilityConfig().Namespace
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             });
+            return new MimirComponentOutput();
         }
     }
 }
