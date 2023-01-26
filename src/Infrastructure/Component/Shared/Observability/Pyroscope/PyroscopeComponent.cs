@@ -6,7 +6,7 @@ using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
 namespace Infrastructure.Component.Shared.Observability.Pyroscope
 {
-    public class PyroscopeComponent
+    public class PyroscopeComponent : IComponent<PyroscopeComponentInput, PyroscopeComponentOutput>
     {
         private readonly ILogger<PyroscopeComponent> _logger;
         private readonly Config _config;
@@ -16,10 +16,10 @@ namespace Infrastructure.Component.Shared.Observability.Pyroscope
             _logger = logger;
             _config = config;
         }
-
-        public void Apply()
+        
+        public PyroscopeComponentOutput Apply(PyroscopeComponentInput input)
         {
-            var pyroscope = new Release("observability-pyroscope", new ReleaseArgs
+            var pyroscope = new Release("pyroscope", new ReleaseArgs
             {
                 Name = "pyroscope",
                 Chart = "pyroscope",
@@ -34,8 +34,9 @@ namespace Infrastructure.Component.Shared.Observability.Pyroscope
                 {
                     Repo = "https://pyroscope-io.github.io/helm-chart"
                 },
-                Namespace = _config.GetObservabilityConfig().Namespace
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             });
+            return new PyroscopeComponentOutput();
         }
     }
 }
