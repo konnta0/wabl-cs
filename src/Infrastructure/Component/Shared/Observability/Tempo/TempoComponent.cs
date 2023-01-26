@@ -1,14 +1,14 @@
 using System.Collections.Generic;
-using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
+using Pulumi.Kubernetes;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Config = Pulumi.Config;
 
 namespace Infrastructure.Component.Shared.Observability.Tempo
 {
-    public class TempoComponent
+    public class TempoComponent : IComponent<TempoComponentInput, TempoComponentOutput>
     {
         private readonly ILogger<TempoComponent> _logger;
         private readonly Config _config;
@@ -18,8 +18,8 @@ namespace Infrastructure.Component.Shared.Observability.Tempo
             _logger = logger;
             _config = config;
         }
-
-        public void Apply()
+        
+        public TempoComponentOutput Apply(TempoComponentInput input)
         {
             // https://github.com/grafana/helm-charts/blob/main/charts/tempo-distributed/values.yaml
             var values = new Dictionary<string, object>
@@ -50,7 +50,7 @@ namespace Infrastructure.Component.Shared.Observability.Tempo
                         ["s3"] = new Dictionary<string, object>
                         {
                             ["bucket"] = "tempo",
-                            ["endpoint"] = "minio:9000",
+                            ["endpoint"] = "shared-minio:9000",
                             ["access_key"] = "o11yuser",
                             ["secret_key"] = "o11ypassword",
                             ["insecure"] = true
@@ -69,8 +69,8 @@ namespace Infrastructure.Component.Shared.Observability.Tempo
                     ["enabled"] = false
                 }
             };
-
-            var tempo = new Release("tempo-distributed", new ReleaseArgs
+            
+            var tempo = new Release("tempo", new ReleaseArgs
             {
                 Name = "tempo-distributed",
                 Chart = "tempo-distributed",
@@ -86,10 +86,11 @@ namespace Infrastructure.Component.Shared.Observability.Tempo
                     Repo = "https://grafana.github.io/helm-charts"
                 },
                 Values = values,
-                CreateNamespace = true,
                 RecreatePods = true,
-                Namespace = _config.GetObservabilityConfig().Namespace
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             });
+            
+            return new TempoComponentOutput();
         }
     }
 }
