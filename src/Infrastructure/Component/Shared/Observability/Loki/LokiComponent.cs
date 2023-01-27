@@ -25,7 +25,7 @@ namespace Infrastructure.Component.Shared.Observability.Loki
                 
             };
             
-            var loki = new Release("loki-distributed", new ReleaseArgs
+            var loki = new Release("loki", new ReleaseArgs
             {
                 Name = "loki-distributed",
                 Chart = "loki-distributed",
