@@ -33,7 +33,8 @@ spec:
         name: kaniko
       params:
         - name: EXTRA_ARGS
-          value: --destination $(params.image):$(tasks.fetch-repository.results.commit)
+          value: 
+            - --destination=$(params.image):$(tasks.fetch-repository.results.commit)
         - name: IMAGE
           value: $(params.image):latest
         - name: DOCKERFILE
