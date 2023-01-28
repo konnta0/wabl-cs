@@ -97,7 +97,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "tekton-pipeline-secret-for-container-registry",
-                    Namespace = "tekton-pipelines",
+                    Namespace = "tekton-worker",
                     Annotations = new Dictionary<string, string>
                     {
                         // https://tekton.dev/vault/pipelines-v0.16.3/auth/#configuring-basic-auth-authentication-for-docker
@@ -112,7 +112,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                 {
                     Labels = { { "app", "tekton-dashboard" } },
                     Name = "tekton-dashboard-service-account",
-                    Namespace = "tekton-pipelines"
+                    Namespace = "tekton-worker"
                 },
                 Secrets =
                 {
@@ -229,7 +229,8 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
             _pipelineRunComponent.Apply(new PipelineRunComponentInput
             {
                 Namespace = workerNamespace,
-                TektonRelease = tektonRelease
+                TektonRelease = tektonRelease,
+                Deploy = false
             });
             _triggerTemplateComponent.Apply(new TriggerTemplateComponentInput
             {

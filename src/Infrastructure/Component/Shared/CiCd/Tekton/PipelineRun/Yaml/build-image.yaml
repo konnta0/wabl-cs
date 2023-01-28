@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  namespace: tekton-pipelines
+  namespace: tekton-worker
   name: build-image-pipeline-run
 spec:
   pipelineRef:
@@ -12,7 +12,7 @@ spec:
     - name: image
       value: core.harbor.cr.test/webapp/dotnetapp
   serviceAccountName: tekton-dashboard-service-account
-  workspaces: 
+  workspaces:
     - name: shared-workspace
       volumeClaimTemplate:
         spec:
