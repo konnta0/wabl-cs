@@ -7,6 +7,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.PipelineRun
     {
         public Namespace Namespace { get; set; }
         public ConfigFile TektonRelease { get; set; }
+        public bool Deploy { get; set; }
     }
 
     public sealed class PipelineRunComponentOutput : IComponentOutput

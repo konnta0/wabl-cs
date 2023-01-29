@@ -14,6 +14,8 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.PipelineRun
 
         public PipelineRunComponentOutput Apply(PipelineRunComponentInput input)
         {
+            if (!input.Deploy) return new PipelineRunComponentOutput();
+
             _ = new ConfigFile("tekton-pipeline-run-build-image", new ConfigFileArgs
             {
                 File = "./Component/Shared/CiCd/Tekton/PipelineRun/Yaml/build-image.yaml"
