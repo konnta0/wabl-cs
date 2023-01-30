@@ -21,7 +21,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                     Namespace = input.Namespace.Metadata.Apply(_ => _.Name)
                 }
             });
-            var role = new Role("trigger-role", new RoleArgs
+            var role = new ClusterRole("trigger-cluster-role", new ClusterRoleArgs
             {
                 Metadata = new ObjectMetaArgs
                 {
@@ -38,7 +38,10 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                             "eventlisteners",
                             "triggers",
                             "triggerbindings",
-                            "triggertemplates"
+                            "triggertemplates",
+                            "interceptors",
+                            "clusterinterceptors",
+                            "clustertriggerbindings"
                         },
                         Verbs =
                         {
@@ -61,7 +64,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                     }
                 }
             });
-            var roleBinding = new RoleBinding("trigger-role-binding", new RoleBindingArgs
+            var roleBinding = new ClusterRoleBinding("trigger-cluster-role-binding", new ClusterRoleBindingArgs
             {
                 Metadata = new ObjectMetaArgs
                 {
@@ -80,7 +83,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                 RoleRef = new RoleRefArgs
                 {
                     ApiGroup = "rbac.authorization.k8s.io",
-                    Kind = nameof(Role),
+                    Kind = nameof(ClusterRole),
                     Name = role.Metadata.Apply(_ => _.Name)
                 }
             });
@@ -117,10 +120,17 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                                     ["ref"] = "build-image-pipeline-template"
                                 }.ToImmutableDictionary()
                             }.ToImmutableDictionary()
-                        }.ToImmutableArray()
+                        }.ToImmutableArray(),
+                        ["resources"] = new InputMap<object>
+                        {
+                            ["kubernetesResource"] = new InputMap<string>
+                            {
+                                ["serviceType"] = "NodePort"
+                            }
+                        }
                     }.ToImmutableDictionary()
                 }.ToImmutableDictionary()!,
-                new CustomResourceOptions { DependsOn = { input.TektonRelease, input.TektonTrigger, serviceAccount } });
+                new CustomResourceOptions { DependsOn = { input.TektonRelease, input.TektonTrigger, roleBinding } });
 
             return new EventListenerComponentOutput();
         }
