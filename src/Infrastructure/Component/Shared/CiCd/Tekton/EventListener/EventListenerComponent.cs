@@ -1,5 +1,10 @@
+using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Text;
+using System.Text.Json;
+using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Rbac.V1;
@@ -11,6 +16,13 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
 {
     public class EventListenerComponent : IComponent<EventListenerComponentInput, EventListenerComponentOutput>
     {
+        private readonly Config _config;
+
+        public EventListenerComponent(Config config)
+        {
+            _config = config;
+        }
+
         public EventListenerComponentOutput Apply(EventListenerComponentInput input)
         {
             var serviceAccount = new ServiceAccount("trigger-service-account", new ServiceAccountArgs
@@ -88,8 +100,33 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                 }
             });
 
-            // NOTE: Does not works.
-            // see https://github.com/tektoncd/triggers/issues/1490
+            var dockerConfig = new Dictionary<string, object>
+            {
+                ["auths"] = new Dictionary<string, object>
+                {
+                    ["core.harbor.cr.test"] = new Dictionary<string, object>
+                    {
+                        ["auth"] = Convert.ToBase64String(
+                            Encoding.UTF8.GetBytes($"{_config.GetCICDConfig().RegistryAccess.UserName}:{_config.GetCICDConfig().RegistryAccess.PassWord}")),
+                        ["username"] = _config.GetCICDConfig().RegistryAccess.UserName,
+                        ["password"] = _config.GetCICDConfig().RegistryAccess.PassWord
+                    }
+                }
+            };
+
+            var dockerSecret = new Secret("docker-secret", new SecretArgs
+            {
+                Type = "kubernetes.io/dockerconfigjson",
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = "shared",
+                    Name = "docker-secret"
+                },
+                StringData = new InputMap<string>
+                {
+                    [".dockerconfigjson"] = JsonSerializer.Serialize(dockerConfig)
+                }
+            });
             _ = new Pulumi.Crds.Triggers.V1Alpha1.EventListener("build-image-event-listener",
                 new Dictionary<string, object>
                 {
