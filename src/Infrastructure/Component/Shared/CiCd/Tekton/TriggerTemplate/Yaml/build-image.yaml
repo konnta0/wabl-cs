@@ -18,5 +18,15 @@ spec:
             value: $(tt.params.git-url)
           - name: image
             value: $(tt.params.image)
+        serviceAccountName: tekton-dashboard-service-account
+        workspaces:
+          - name: shared-workspace
+            volumeClaimTemplate:
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 1Gi
         pipelineRef:
-          name: build-image
+          name: build-image-pipeline
