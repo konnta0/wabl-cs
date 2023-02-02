@@ -182,7 +182,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                     {
                         new IngressRuleArgs
                         {
-                            Host = "tekton.dashboard.cicd.test",
+                            Host = "dashboard.cicd.test",
                             Http = new HTTPIngressRuleValueArgs
                             {
                                 Paths = new HTTPIngressPathArgs
