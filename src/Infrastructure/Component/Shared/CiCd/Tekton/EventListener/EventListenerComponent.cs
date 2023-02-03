@@ -169,6 +169,44 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                 }.ToImmutableDictionary()!,
                 new CustomResourceOptions { DependsOn = { input.TektonRelease, input.TektonTrigger, roleBinding } });
 
+            var ingress = new Ingress("tekton-event-listener-ingress", new IngressArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "tekton-event-listener-ingress",
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                },
+                Spec = new IngressSpecArgs
+                {
+                    IngressClassName = "nginx",
+                    Rules =
+                    {
+                        new IngressRuleArgs
+                        {
+                            Host = "image.build.el.cicd.test",
+                            Http = new HTTPIngressRuleValueArgs
+                            {
+                                Paths = new HTTPIngressPathArgs
+                                {
+                                    Path = "/",
+                                    PathType = "Prefix",
+                                    Backend = new IngressBackendArgs
+                                    {
+                                        Service = new IngressServiceBackendArgs
+                                        {
+                                            Name = eventListener.Metadata.Apply(x => "el-" + x.Name),
+                                            Port = new ServiceBackendPortArgs
+                                            {
+                                                Number = 8080
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
             return new EventListenerComponentOutput();
         }
     }
