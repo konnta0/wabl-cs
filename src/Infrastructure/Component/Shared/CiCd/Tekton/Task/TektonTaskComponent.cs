@@ -22,7 +22,8 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Task
                 "buildah",
                 "unit-test",
                 "curl",
-                "kaniko"
+                "kaniko",
+                "create-ingress"
             };
 
             foreach (var task in tasks)
