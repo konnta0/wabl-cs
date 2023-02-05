@@ -21,24 +21,17 @@
     <None Update="Component\Shared\CiCd\Tekton\**\Yaml\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Component\Shared\CiCd\Tekton\Yaml\*.*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Component\Shared\Certificate\Yaml\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="WebApplication\Resource\TiDB\Yaml\**\*.*">
+    <None Update="Component\WebApplication\Resource\TiDB\Yaml\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="WebApplication\Resource\Dotnet\Yaml\**\*.*">
+    <None Update="Component\WebApplication\Resource\Dotnet\Yaml\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update=".env">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Component\Shared" />
   </ItemGroup>
 </Project>

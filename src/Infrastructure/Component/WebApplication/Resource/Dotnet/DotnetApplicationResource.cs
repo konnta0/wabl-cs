@@ -53,7 +53,7 @@ namespace Infrastructure.WebApplication.Resource.Dotnet
             });
 
             string openTelemetryCollectorConfigYaml;
-            using (var sr = new StreamReader("WebApplication/Resource/Dotnet/Yaml/OpentelemetryCollector/config.yaml"))
+            using (var sr = new StreamReader("Component/WebApplication/Resource/Dotnet/Yaml/OpentelemetryCollector/config.yaml"))
             {
                 openTelemetryCollectorConfigYaml = sr.ReadToEnd();
             }

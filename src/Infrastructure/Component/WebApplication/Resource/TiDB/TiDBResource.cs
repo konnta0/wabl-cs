@@ -29,7 +29,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             // https://docs.pingcap.com/tidb-in-kubernetes/v1.0/deploy-tidb-from-kubernetes-minikube#add-helm-repo
             var configFile = new ConfigFile("web-application-tidb-crd", new ConfigFileArgs
             {
-                File = "./WebApplication/Resource/TiDB/Yaml/crd.yaml"
+                File = "./Component/WebApplication/Resource/TiDB/Yaml/crd.yaml"
             });
             configFile.Ready();
 
@@ -250,7 +250,7 @@ namespace Infrastructure.WebApplication.Resource.TiDB
             };
             
             string prometheusConfigYaml;
-            using (var sr = new StreamReader("./WebApplication/Resource/TiDB/Yaml/prometheus.yaml"))
+            using (var sr = new StreamReader("./Component/WebApplication/Resource/TiDB/Yaml/prometheus.yaml"))
             {
                 prometheusConfigYaml = sr.ReadToEnd();
             }
