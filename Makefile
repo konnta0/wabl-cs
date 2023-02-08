@@ -242,3 +242,7 @@ redis-cli:
 mysql: 
 	kubectl run -n webapp -it mysql --rm --image mysql:8.0 --restart=Never -- bash
 	# mysql -u root -h  web-application-tidb-cluster-65dfc1bd-tidb -P 4000
+
+.PHONY: tkn-build-image #
+tkn-build-image:
+	curl -X POST -H 'Context-Type: application/json' http://image.build.el.cicd.test -d '{"git-url": "https://github.com/konnta0/dotnet-metric-test", "image":"core.harbor.cr.test/webapp/dotnetapp"}'
