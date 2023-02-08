@@ -33,5 +33,11 @@
     <None Update=".env">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Component\Shared\Storage\TiDB\Yaml\crd.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Component\Shared\Storage\TiDB\Yaml\prometheus.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
