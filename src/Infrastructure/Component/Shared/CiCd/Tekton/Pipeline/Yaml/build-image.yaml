@@ -41,7 +41,7 @@ spec:
         - name: DOCKERFILE
           value: "Dockerfile"
         - name: CONTEXT
-          value: "$(workspaces.source.path)"
+          value: ./
       workspaces:
         - name: source
           workspace: shared-workspace
