@@ -18,8 +18,10 @@ spec:
             value: $(tt.params.git-url)
           - name: image
             value: $(tt.params.image)
-        serviceAccountName: tekton-dashboard-service-account
         workspaces:
+          - name: docker-creds
+            secret:
+              secretName: docker-config
           - name: shared-workspace
             volumeClaimTemplate:
               spec:
