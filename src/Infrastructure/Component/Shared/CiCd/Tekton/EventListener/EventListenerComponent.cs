@@ -1,15 +1,15 @@
 using System;
-using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text;
 using System.Text.Json;
-using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
+using Pulumi.Kubernetes.Networking.V1;
 using Pulumi.Kubernetes.Rbac.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
+using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 using Pulumi.Kubernetes.Types.Inputs.Rbac.V1;
 
 namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
