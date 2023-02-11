@@ -40,7 +40,7 @@ namespace Infrastructure.Component.Shared.Storage.Dragonfly
                     ["replicas"] = 2
                 }
             };
-            var dragonfly = new Release("web-application-dragonfly", new ReleaseArgs
+            var dragonfly = new Release("dragonfly", new ReleaseArgs
             {
                 Name = "dragonfly",
                 Chart = "dragonfly",
@@ -56,18 +56,17 @@ namespace Infrastructure.Component.Shared.Storage.Dragonfly
                     Repo = "https://dragonflyoss.github.io/helm-charts"
                 },
                 Values = values,
-                CreateNamespace = false,
                 Atomic = true,
-                Namespace = _config.GetWebApplicationConfig().Namespace
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             });
 
-            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("web-application-dragonfly-manager-ingress", new IngressArgs
+            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("dragonfly-manager-ingress", new IngressArgs
             {
                 ApiVersion = "networking.k8s.io/v1",
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "dragonfly-manager-ingress",
-                    Namespace = _config.GetWebApplicationConfig().Namespace
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new IngressSpecArgs
                 {
