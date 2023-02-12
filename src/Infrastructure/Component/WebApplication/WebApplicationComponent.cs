@@ -16,7 +16,6 @@ namespace Infrastructure.WebApplication
     {
         private readonly ILogger<WebApplicationComponent> _logger;
         private Config _config;
-        private readonly TiDBComponent _tiDbComponent;
         private readonly DotnetApplicationResource _dotnetApplicationResource;
         private readonly OpenTelemetryOperatorResource _openTelemetryOperatorResource;
         private readonly PromtailResource _promtailResource;
@@ -29,7 +28,6 @@ namespace Infrastructure.WebApplication
         {
             _logger = logger;
             _config = config;
-            _tiDbComponent = tiDbComponent;
             _dotnetApplicationResource = dotnetApplicationResource;
             _openTelemetryOperatorResource = openTelemetryOperatorResource;
             _promtailResource = promtailResource;
@@ -47,7 +45,6 @@ namespace Infrastructure.WebApplication
             _ = @namespace.Metadata.Apply(x => x.Name);
 
             _openTelemetryOperatorResource.Apply();
-            _tiDbComponent.Apply();
             _promtailResource.Apply();
             _dotnetApplicationResource.Apply();
 
