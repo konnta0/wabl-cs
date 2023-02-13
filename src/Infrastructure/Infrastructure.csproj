@@ -24,10 +24,7 @@
     <None Update="Component\Shared\Certificate\Yaml\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Component\WebApplication\Resource\TiDB\Yaml\**\*.*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Component\WebApplication\Resource\Dotnet\Yaml\**\*.*">
+    <None Update="Component\WebApplication\Dotnet\Yaml\**\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update=".env">
