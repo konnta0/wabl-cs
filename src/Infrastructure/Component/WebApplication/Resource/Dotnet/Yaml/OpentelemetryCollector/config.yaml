@@ -34,7 +34,7 @@ service:
   extensions: [zpages]
   telemetry:
     logs:
-      level: "DEBUG"
+      level: "INFO"
   pipelines:
     traces:
       receivers: [otlp]
