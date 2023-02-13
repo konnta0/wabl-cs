@@ -9,7 +9,7 @@ namespace Infrastructure.WebApplication.Extension
     {
         internal static IServiceCollection AddWebApplication(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<DotnetApplicationResource>();
+            serviceCollection.AddScoped<DotnetApplicationComponent>();
             serviceCollection.AddScoped<WebApplicationComponent>();
             serviceCollection.AddScoped<OpenTelemetryOperatorComponent>();
             serviceCollection.AddScoped<PromtailComponent>();

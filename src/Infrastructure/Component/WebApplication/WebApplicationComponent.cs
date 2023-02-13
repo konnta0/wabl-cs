@@ -16,18 +16,18 @@ namespace Infrastructure.WebApplication
     {
         private readonly ILogger<WebApplicationComponent> _logger;
         private Config _config;
-        private readonly DotnetApplicationResource _dotnetApplicationResource;
+        private readonly DotnetApplicationComponent _dotnetApplicationComponent;
         private readonly OpenTelemetryOperatorComponent _openTelemetryOperatorComponent;
         private readonly PromtailComponent _promtailComponent;
 
         public WebApplicationComponent(ILogger<WebApplicationComponent> logger, Config config, 
-            DotnetApplicationResource dotnetApplicationResource,
+            DotnetApplicationComponent dotnetApplicationComponent,
             OpenTelemetryOperatorComponent openTelemetryOperatorComponent,
             PromtailComponent promtailComponent)
         {
             _logger = logger;
             _config = config;
-            _dotnetApplicationResource = dotnetApplicationResource;
+            _dotnetApplicationComponent = dotnetApplicationComponent;
             _openTelemetryOperatorComponent = openTelemetryOperatorComponent;
             _promtailComponent = promtailComponent;
         }
@@ -50,7 +50,7 @@ namespace Infrastructure.WebApplication
             {
                 Namespace = @namespace
             });
-            _dotnetApplicationResource.Apply();
+            _dotnetApplicationComponent.Apply();
 
             return string.Empty;
         }

@@ -19,11 +19,11 @@ using ServiceArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ServiceArgs;
 
 namespace Infrastructure.Component.WebApplication.Dotnet
 {
-    public class DotnetApplicationResource
+    public class DotnetApplicationComponent
     {
         private readonly Config _config;
 
-        public DotnetApplicationResource(Config config)
+        public DotnetApplicationComponent(Config config)
         {
             _config = config;
         }
