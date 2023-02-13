@@ -4,14 +4,12 @@ using System.Linq;
 using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Autoscaling.V2Beta2;
-using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Autoscaling.V2Beta2;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 using Pulumi.Kubernetes.Types.Inputs.Opentelemetry.V1Alpha1;
-using Pulumi.Kubernetes.Yaml;
 using Config = Pulumi.Config;
 using ContainerArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ContainerArgs;
 using Secret = Pulumi.Kubernetes.Core.V1.Secret;
@@ -19,7 +17,7 @@ using SecretArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.SecretArgs;
 using Service = Pulumi.Kubernetes.Core.V1.Service;
 using ServiceArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ServiceArgs;
 
-namespace Infrastructure.WebApplication.Resource.Dotnet
+namespace Infrastructure.Component.WebApplication.Dotnet
 {
     public class DotnetApplicationResource
     {

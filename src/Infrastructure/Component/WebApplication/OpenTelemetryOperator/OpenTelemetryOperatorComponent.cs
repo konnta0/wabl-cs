@@ -1,7 +1,7 @@
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
 
-namespace Infrastructure.Component.WebApplication.Resource.OpenTelemetryOperator
+namespace Infrastructure.Component.WebApplication.OpenTelemetryOperator
 {
     public class OpenTelemetryOperatorComponent : IComponent<OpenTelemetryOperatorComponentInput, OpenTelemetryOperatorComponentOutput>
     {

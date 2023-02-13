@@ -1,9 +1,9 @@
 using Infrastructure.Component.Shared.Storage.Dragonfly;
 using Infrastructure.Component.Shared.Storage.TiDB;
-using Infrastructure.Component.WebApplication.Resource.OpenTelemetryOperator;
-using Infrastructure.Component.WebApplication.Resource.Promtail;
+using Infrastructure.Component.WebApplication.Dotnet;
+using Infrastructure.Component.WebApplication.OpenTelemetryOperator;
+using Infrastructure.Component.WebApplication.Promtail;
 using Infrastructure.Extension;
-using Infrastructure.WebApplication.Resource.Dotnet;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;

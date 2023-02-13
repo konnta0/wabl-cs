@@ -1,6 +1,6 @@
-using Infrastructure.Component.WebApplication.Resource.OpenTelemetryOperator;
-using Infrastructure.Component.WebApplication.Resource.Promtail;
-using Infrastructure.WebApplication.Resource.Dotnet;
+using Infrastructure.Component.WebApplication.Dotnet;
+using Infrastructure.Component.WebApplication.OpenTelemetryOperator;
+using Infrastructure.Component.WebApplication.Promtail;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.WebApplication.Extension

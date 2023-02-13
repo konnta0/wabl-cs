@@ -1,6 +1,6 @@
 using Pulumi.Kubernetes.Core.V1;
 
-namespace Infrastructure.Component.WebApplication.Resource.OpenTelemetryOperator
+namespace Infrastructure.Component.WebApplication.OpenTelemetryOperator
 {
     public sealed class OpenTelemetryOperatorComponentInput : IComponentInput
     {
