@@ -1,5 +1,5 @@
+using Infrastructure.Component.WebApplication.Resource.OpenTelemetryOperator;
 using Infrastructure.WebApplication.Resource.Dotnet;
-using Infrastructure.WebApplication.Resource.OpenTelemetryOperator;
 using Infrastructure.WebApplication.Resource.Promtail;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,7 +11,7 @@ namespace Infrastructure.WebApplication.Extension
         {
             serviceCollection.AddScoped<DotnetApplicationResource>();
             serviceCollection.AddScoped<WebApplicationComponent>();
-            serviceCollection.AddScoped<OpenTelemetryOperatorResource>();
+            serviceCollection.AddScoped<OpenTelemetryOperatorComponent>();
             serviceCollection.AddScoped<PromtailResource>();
             return serviceCollection;
         }
