@@ -1,25 +1,20 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Infrastructure.Extension;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
-using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
-using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
-namespace Infrastructure.WebApplication.Resource.Promtail
+namespace Infrastructure.Component.WebApplication.Resource.Promtail
 {
-    public class PromtailResource
+    public class PromtailComponent : IComponent<PromtailComponentInput, PromtailComponentOutput>
     {
         private readonly Config _config;
 
-        public PromtailResource(Config config)
+        public PromtailComponent(Config config)
         {
             _config = config;
         }
-
-        public void Apply()
+        
+        public PromtailComponentOutput Apply(PromtailComponentInput input)
         {
             var values = new Dictionary<string, object>
             {
@@ -41,7 +36,7 @@ namespace Infrastructure.WebApplication.Resource.Promtail
                     {
                         new InputMap<string>
                         {
-                            {"url", "http://loki-distributed-distributor.observability.svc.cluster.local:3100/loki/api/v1/push"}
+                            {"url", "http://loki-distributed-distributor.shared.svc.cluster.local:3100/loki/api/v1/push"}
                         }
                     }
                 }
@@ -64,9 +59,11 @@ namespace Infrastructure.WebApplication.Resource.Promtail
                 CreateNamespace = false,
                 Atomic = true,
                 Values = values,
-                Namespace = _config.GetWebApplicationConfig().Namespace,
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name),
                 RecreatePods = true
             });
+            
+            return new PromtailComponentOutput();
         }
     }
 }

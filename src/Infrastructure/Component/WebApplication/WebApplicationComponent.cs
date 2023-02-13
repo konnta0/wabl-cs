@@ -1,9 +1,9 @@
 using Infrastructure.Component.Shared.Storage.Dragonfly;
 using Infrastructure.Component.Shared.Storage.TiDB;
+using Infrastructure.Component.WebApplication.Resource.OpenTelemetryOperator;
+using Infrastructure.Component.WebApplication.Resource.Promtail;
 using Infrastructure.Extension;
 using Infrastructure.WebApplication.Resource.Dotnet;
-using Infrastructure.WebApplication.Resource.OpenTelemetryOperator;
-using Infrastructure.WebApplication.Resource.Promtail;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
@@ -17,20 +17,19 @@ namespace Infrastructure.WebApplication
         private readonly ILogger<WebApplicationComponent> _logger;
         private Config _config;
         private readonly DotnetApplicationResource _dotnetApplicationResource;
-        private readonly OpenTelemetryOperatorResource _openTelemetryOperatorResource;
-        private readonly PromtailResource _promtailResource;
+        private readonly OpenTelemetryOperatorComponent _openTelemetryOperatorComponent;
+        private readonly PromtailComponent _promtailComponent;
 
         public WebApplicationComponent(ILogger<WebApplicationComponent> logger, Config config, 
-            TiDBComponent tiDbComponent, 
             DotnetApplicationResource dotnetApplicationResource,
-            OpenTelemetryOperatorResource openTelemetryOperatorResource,
-            PromtailResource promtailResource)
+            OpenTelemetryOperatorComponent openTelemetryOperatorComponent,
+            PromtailComponent promtailComponent)
         {
             _logger = logger;
             _config = config;
             _dotnetApplicationResource = dotnetApplicationResource;
-            _openTelemetryOperatorResource = openTelemetryOperatorResource;
-            _promtailResource = promtailResource;
+            _openTelemetryOperatorComponent = openTelemetryOperatorComponent;
+            _promtailComponent = promtailComponent;
         }
 
         public string Apply()
@@ -42,10 +41,15 @@ namespace Infrastructure.WebApplication
                     Name = _config.GetWebApplicationConfig().Namespace
                 }
             });
-            _ = @namespace.Metadata.Apply(x => x.Name);
 
-            _openTelemetryOperatorResource.Apply();
-            _promtailResource.Apply();
+            _openTelemetryOperatorComponent.Apply(new OpenTelemetryOperatorComponentInput
+            {
+                Namespace = @namespace
+            });
+            _promtailComponent.Apply(new PromtailComponentInput
+            {
+                Namespace = @namespace
+            });
             _dotnetApplicationResource.Apply();
 
             return string.Empty;
