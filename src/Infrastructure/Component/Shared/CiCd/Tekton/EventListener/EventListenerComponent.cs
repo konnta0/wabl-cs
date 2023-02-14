@@ -100,34 +100,58 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                 }
             });
 
+            var containerRegistryConfig = _config.RequireObject<JsonElement>("ContainerRegistry");
+            var userName = containerRegistryConfig.GetProperty("Access").GetProperty("CI").GetProperty("User")
+                .GetString();
+            var password = containerRegistryConfig.GetProperty("Access").GetProperty("CI").GetProperty("Password")
+                .GetString();
+            var email = containerRegistryConfig.GetProperty("Access").GetProperty("CI").GetProperty("Email")
+                .GetString();
             var dockerConfig = new Dictionary<string, object>
             {
                 ["auths"] = new Dictionary<string, object>
                 {
-                    ["core.harbor.cr.test"] = new Dictionary<string, object>
+                    ["https://core.harbor.cr.test/v2/"] = new Dictionary<string, object>
                     {
-                        ["auth"] = Convert.ToBase64String(
-                            Encoding.UTF8.GetBytes($"{_config.GetCICDConfig().RegistryAccess.UserName}:{_config.GetCICDConfig().RegistryAccess.PassWord}")),
-                        ["username"] = _config.GetCICDConfig().RegistryAccess.UserName,
-                        ["password"] = _config.GetCICDConfig().RegistryAccess.PassWord
+                        ["auth"] = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{userName}:{password}")),
+                        ["username"] = userName,
+                        ["password"] = password,
+                        ["email"] = email
                     }
                 }
             };
 
-            var dockerSecret = new Secret("docker-secret", new SecretArgs
+            var dockerSecret = new Secret("docker-config", new SecretArgs
             {
-                Type = "kubernetes.io/dockerconfigjson",
                 Metadata = new ObjectMetaArgs
                 {
-                    Namespace = "shared",
-                    Name = "docker-secret"
+                    Name = "docker-config",
+                    Namespace = "tekton-worker"
                 },
+                Immutable = true,
                 StringData = new InputMap<string>
                 {
-                    [".dockerconfigjson"] = JsonSerializer.Serialize(dockerConfig)
+                    ["config.json"] = JsonSerializer.Serialize(dockerConfig)
                 }
             });
-            _ = new Pulumi.Crds.Triggers.V1Alpha1.EventListener("build-image-event-listener",
+            
+            var buildBotServiceAccount = new ServiceAccount("build-bot-service-account", new ServiceAccountArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "build-bot-service-account",
+                    Namespace = input.Namespace.Metadata.Apply(_ => _.Name)
+                },
+                Secrets = new InputList<ObjectReferenceArgs>
+                {
+                    new ObjectReferenceArgs
+                    {
+                        Name = dockerSecret.Metadata.Apply(x => x.Name)
+                    }
+                }
+            });
+
+            var eventListener = new Pulumi.Crds.Triggers.V1Alpha1.EventListener("build-image-event-listener",
                 new Dictionary<string, object>
                 {
                     ["apiVersion"] = "triggers.tekton.dev/v1alpha1",
@@ -140,27 +164,27 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                     ["spec"] = new Dictionary<string, object>
                     {
                         ["serviceAccountName"] = serviceAccount.Metadata.Apply(x => x.Name),
-                        ["triggers"] = new List<ImmutableDictionary<string, object>>
+                        ["triggers"] = new InputList<ImmutableDictionary<string, object>>
                         {
                             new Dictionary<string, object>
                             {
                                 ["name"] = "build-image-trigger",
-                                ["bindings"] = new List<ImmutableDictionary<string, object>>
+                                ["bindings"] = new InputList<InputMap<object>>
                                 {
-                                    new Dictionary<string, object>
+                                    new InputMap<object>
                                     {
                                         ["ref"] = "build-image-pipeline-binding"
-                                    }.ToImmutableDictionary()
-                                }.ToImmutableArray(),
-                                ["template"] = new Dictionary<string, object>
+                                    }
+                                },
+                                ["template"] = new InputMap<object>
                                 {
                                     ["ref"] = "build-image-pipeline-template"
-                                }.ToImmutableDictionary()
+                                }
                             }.ToImmutableDictionary()
-                        }.ToImmutableArray(),
+                        },
                         ["resources"] = new InputMap<object>
                         {
-                            ["kubernetesResource"] = new InputMap<string>
+                            ["kubernetesResource"] = new InputMap<object>
                             {
                                 ["serviceType"] = "NodePort"
                             }
