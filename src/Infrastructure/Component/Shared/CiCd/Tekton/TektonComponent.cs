@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Text.Json;
 using Infrastructure.Component.Shared.CiCd.Tekton.EventListener;
 using Infrastructure.Component.Shared.CiCd.Tekton.Pipeline;
 using Infrastructure.Component.Shared.CiCd.Tekton.PipelineRun;
@@ -85,19 +86,20 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                 File = "https://storage.googleapis.com/tekton-releases/triggers/previous/v0.22.0/interceptors.yaml"
             }, new ComponentResourceOptions { DependsOn = { tektonRelease, triggers } });
 
+            var containerRegistryConfig = _config.RequireObject<JsonElement>("ContainerRegistry");
             var secret = new Secret("tekton-pipeline-secret-container-registry", new SecretArgs
             {
                 Type = "kubernetes.io/basic-auth",
                 Immutable = true,
-                StringData = new Dictionary<string, string>
+                StringData = new InputMap<string>
                 {
-                    ["username"] = _config.GetCICDConfig().RegistryAccess.UserName,
-                    ["password"] = _config.GetCICDConfig().RegistryAccess.PassWord
+                    ["username"] = containerRegistryConfig.GetProperty("Access").GetProperty("CI").GetProperty("User").GetString(),
+                    ["password"] = containerRegistryConfig.GetProperty("Access").GetProperty("CI").GetProperty("Password").GetString()
                 },
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "tekton-pipeline-secret-for-container-registry",
-                    Namespace = "tekton-worker",
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name),
                     Annotations = new Dictionary<string, string>
                     {
                         // https://tekton.dev/vault/pipelines-v0.16.3/auth/#configuring-basic-auth-authentication-for-docker
