@@ -19,7 +19,8 @@ using ServiceArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ServiceArgs;
 
 namespace Infrastructure.Component.WebApplication.Dotnet
 {
-    public class DotnetApplicationComponent
+    public class
+        DotnetApplicationComponent : IComponent<DotnetApplicationComponentInput, DotnetApplicationComponentOutput>
     {
         private readonly Config _config;
 
@@ -28,7 +29,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
             _config = config;
         }
 
-        public void Apply()
+        public DotnetApplicationComponentOutput Apply(DotnetApplicationComponentInput input)
         {
             var envInputMap = new InputMap<string>();
             var env = File.ReadAllLines(".env");
@@ -44,31 +45,32 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "dotnetapp-env-secret",
-                    Namespace = _config.GetWebApplicationConfig().Namespace
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Type = "Opaque",
                 StringData = envInputMap
             });
 
             string openTelemetryCollectorConfigYaml;
-            using (var sr = new StreamReader("Component/WebApplication/Resource/Dotnet/Yaml/OpentelemetryCollector/config.yaml"))
+            using (var sr = new StreamReader("Component/WebApplication/Dotnet/Yaml/OpentelemetryCollector/config.yaml"))
             {
                 openTelemetryCollectorConfigYaml = sr.ReadToEnd();
             }
+
             var sidecar = new Pulumi.Crds.Opentelemetry.V1Alpha1.OpenTelemetryCollector("open-telemetry-collector",
                 new OpenTelemetryCollectorArgs
                 {
                     Metadata = new ObjectMetaArgs
                     {
                         Name = "open-telemetry-collector",
-                        Namespace = _config.GetWebApplicationConfig().Namespace
+                        Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                     },
                     Spec = new OpenTelemetryCollectorSpecArgs
                     {
                         Mode = "sidecar",
                         Config = openTelemetryCollectorConfigYaml
                     }
-                });
+                }, new CustomResourceOptions { DependsOn = { input.OpenTelemetryCrd } });
 
             var instrumentation = new Pulumi.Crds.Opentelemetry.V1Alpha1.Instrumentation(
                 "open-telemetry-instrumentation", new InstrumentationArgs
@@ -76,7 +78,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                     Metadata = new ObjectMetaArgs
                     {
                         Name = "open-telemetry-instrumentation",
-                        Namespace = _config.GetWebApplicationConfig().Namespace
+                        Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                     },
                     Spec = new InstrumentationSpecArgs
                     {
@@ -96,8 +98,8 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                             Argument = "0.25"
                         }
                     }
-                });
-
+                }, new CustomResourceOptions { DependsOn = { input.OpenTelemetryCrd } });
+            return default;
             var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-deployment",
                 new DeploymentArgs
                 {
@@ -108,7 +110,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                         {
                             { "app", "web" }
                         },
-                        Namespace = _config.GetWebApplicationConfig().Namespace
+                        Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                     },
                     Spec = new DeploymentSpecArgs
                     {
@@ -117,7 +119,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                         {
                             MatchLabels =
                             {
-                                {"app", "web"}
+                                { "app", "web" }
                             }
                         },
                         Template = new PodTemplateSpecArgs
@@ -128,10 +130,10 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                                 {
                                     { "app", "web" }
                                 },
-                                Annotations = 
+                                Annotations =
                                 {
-                                    {"sidecar.opentelemetry.io/inject", bool.TrueString},
-                                    {"instrumentation.opentelemetry.io/inject-dotnet", bool.FalseString}
+                                    { "sidecar.opentelemetry.io/inject", bool.TrueString },
+                                    { "instrumentation.opentelemetry.io/inject-dotnet", bool.FalseString }
                                 }
                             },
                             Spec = new PodSpecArgs
@@ -160,7 +162,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                                         {
                                             Requests =
                                             {
-                                                {"cpu", "200m"}
+                                                { "cpu", "200m" }
                                             }
                                         },
                                         LivenessProbe = new ProbeArgs
@@ -184,7 +186,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "web-application-dotnet-service",
-                    Namespace = _config.GetWebApplicationConfig().Namespace
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new ServiceSpecArgs
                 {
@@ -205,7 +207,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                     Metadata = new ObjectMetaArgs
                     {
                         Name = "dotnetapp-ingress",
-                        Namespace = _config.GetWebApplicationConfig().Namespace
+                        Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                     },
                     Spec = new IngressSpecArgs
                     {
@@ -240,7 +242,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
             {
                 Metadata = new ObjectMetaArgs
                 {
-                    Namespace = _config.GetWebApplicationConfig().Namespace
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new HorizontalPodAutoscalerSpecArgs
                 {
@@ -267,6 +269,8 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                     }
                 }
             });
+
+            return new DotnetApplicationComponentOutput();
         }
     }
 }
