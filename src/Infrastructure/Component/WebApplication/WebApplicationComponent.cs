@@ -1,5 +1,7 @@
+using Infrastructure.Component;
 using Infrastructure.Component.Shared.Storage.Dragonfly;
 using Infrastructure.Component.Shared.Storage.TiDB;
+using Infrastructure.Component.WebApplication;
 using Infrastructure.Component.WebApplication.Dotnet;
 using Infrastructure.Component.WebApplication.OpenTelemetryOperator;
 using Infrastructure.Component.WebApplication.Promtail;
@@ -12,7 +14,7 @@ using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.WebApplication
 {
-    public class WebApplicationComponent
+    public class WebApplicationComponent : IComponent<WebApplicationComponentInput, WebApplicationComponentOutput>
     {
         private readonly ILogger<WebApplicationComponent> _logger;
         private Config _config;
@@ -32,7 +34,7 @@ namespace Infrastructure.WebApplication
             _promtailComponent = promtailComponent;
         }
 
-        public string Apply()
+        public WebApplicationComponentOutput Apply(WebApplicationComponentInput input)
         {
             var @namespace = new Namespace("namespace-web-application", new NamespaceArgs
             {
@@ -42,7 +44,7 @@ namespace Infrastructure.WebApplication
                 }
             });
 
-            _openTelemetryOperatorComponent.Apply(new OpenTelemetryOperatorComponentInput
+            var openTelemetryOperatorComponentOutput = _openTelemetryOperatorComponent.Apply(new OpenTelemetryOperatorComponentInput
             {
                 Namespace = @namespace
             });
@@ -50,9 +52,12 @@ namespace Infrastructure.WebApplication
             {
                 Namespace = @namespace
             });
-            _dotnetApplicationComponent.Apply();
-
-            return string.Empty;
+            _dotnetApplicationComponent.Apply(new DotnetApplicationComponentInput
+            {
+                Namespace = @namespace,
+                OpenTelemetryCrd = openTelemetryOperatorComponentOutput.OpenTelemetryCrd
+            });
+            return new WebApplicationComponentOutput();
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using Pulumi;
 using Pulumi.Kubernetes.Yaml;
 
@@ -12,13 +13,17 @@ namespace Infrastructure.Component.WebApplication.OpenTelemetryOperator
             _config = config;
         }
 
+        [Pure]
         public OpenTelemetryOperatorComponentOutput Apply(OpenTelemetryOperatorComponentInput input)
         {
-            _ = new ConfigFile("open-telemetry-operator", new ConfigFileArgs
+            var configFile = new ConfigFile("open-telemetry-operator", new ConfigFileArgs
             {
                 File = "https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.60.0/opentelemetry-operator.yaml",
             }, new ComponentResourceOptions { DependsOn = input.Namespace });
-            return new OpenTelemetryOperatorComponentOutput();
+            return new OpenTelemetryOperatorComponentOutput
+            {
+                OpenTelemetryCrd = configFile
+            };
         }
     }
 }

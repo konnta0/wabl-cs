@@ -1,8 +1,10 @@
+using System.Text.Json;
 using Infrastructure.Component.Shared.Certificate;
 using Infrastructure.Component.Shared.CiCd;
 using Infrastructure.Component.Shared.ContainerRegistry;
 using Infrastructure.Component.Shared.Observability;
 using Infrastructure.Component.Shared.Storage;
+using Infrastructure.Component.WebApplication;
 using Infrastructure.VersionControlSystem;
 using Infrastructure.WebApplication;
 using Microsoft.Extensions.Logging;
@@ -51,12 +53,19 @@ namespace Infrastructure.Stack
                 Namespace = @namespace,
                 ClusterIssuer = certificateComponentOutput.ClusterIssuer
             });
-            observabilityComponent.Apply(new ObservabilityComponentInput
+
+            if (_config.RequireObject<JsonElement>("Observability").GetProperty("Enable").GetBoolean())
             {
-                Namespace = @namespace
-            });
+                observabilityComponent.Apply(new ObservabilityComponentInput
+                {
+                    Namespace = @namespace
+                });
+            }
             //GitLabHost = versionControlSystemComponent.Apply();
-            webApplicationComponent.Apply();
+            webApplicationComponent.Apply(new WebApplicationComponentInput
+            {
+                
+            });
         }
 
     }
