@@ -1,24 +1,25 @@
 config:
-  Infrastructure:Observability:
-    Namespace: observability
-  Infrastructure:CICD:
-    Namespace: ci-cd
-    RegistryAccess:
-      UserName: admin
-      PassWord: Harbor1234
   Infrastructure:ContainerRegistry:
-    Namespace: container-registry
+    Access:
+      CI:
+        Email: tekton@cr.test.com
+        Password:
+          secure: AAABAGdjAwuFnk+WnSSZL3m+guVBSLBKPXLWuRcyv8XDwFaxh07Oe3hz
+        User: tekton
     Harbor:
       NodeSelector:
         Label: kubernetes.io/hostname
         Value: minikube
+    Host: core.harbor.cr.test
     MinIO:
       NodeSelector:
         Label: kubernetes.io/hostname
         Value: minikube
-    Host: core.harbor.cr.test
-  Infrastructure:VersionControlSystem:
-    Namespace: vcs
+    User: tekton
+  Infrastructure:Observability:
+    Enable: false
+  Infrastructure:Storage:
+    Cache: Redis
   Infrastructure:WebApplication:
     Namespace: webapp
-  Infrastructure:isMinikube: true
+  Infrastructure:isMinikube: "true"
