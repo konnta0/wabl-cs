@@ -42,7 +42,7 @@ namespace Infrastructure.Component.Shared.ContainerRegistry.Harbor
                     },
                     CommonName = "harbor-cn",
                     Duration = "8760h",
-                    DnsNames = { "cr.test", "'*.harbor.cr.test'" },
+                    DnsNames = { "cr.test", "core.harbor.cr.test" },
                     SecretName = "harbor-certificate",
                     IssuerRef = new CertificateSpecIssuerrefArgs
                     {
