@@ -23,7 +23,7 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
         {
             _config = config;
         }
-        
+
         public TiDBComponentOutput Apply(TiDBComponentInput input)
         {
             // https://docs.pingcap.com/tidb-in-kubernetes/v1.0/deploy-tidb-from-kubernetes-minikube#add-helm-repo
@@ -62,11 +62,25 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                 ["tikv"] = new Dictionary<string, object>
                 {
                     ["storageClassName"] = "standard",
-                    ["replicas"] = 1
+                    ["replicas"] = 1,
+                    ["resources"] = new InputMap<object>
+                    {
+                        ["requests"] = new InputMap<object>
+                        {
+                            ["storage"] = "3Gi"
+                        }
+                    }
                 },
                 ["tidb"] = new Dictionary<string, object>
                 {
-                    ["replicas"] = 1
+                    ["replicas"] = 1,
+                    ["resources"] = new InputMap<object>
+                    {
+                        ["requests"] = new InputMap<object>
+                        {
+                            ["storage"] = "3Gi"
+                        }
+                    }
                 },
                 ["monitor"] = new InputMap<object>
                 {
@@ -81,7 +95,7 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                 // helm search repo pingcap/tidb-cluster --versions
                 // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
                 // pingcap/tidb-cluster    v1.3.8                          A Helm chart for TiDB Cluster
-                Version = "v1.3.7",
+                Version = "v1.3.9",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://charts.pingcap.org"
@@ -118,9 +132,9 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                         Type = "Directory"
                     }
                 }
-            });
+            }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster } });
 
-            
+
             var serviceAccount = new ServiceAccount("tidb-monitor-service-account", new ServiceAccountArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -134,7 +148,7 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                         { "app.kubernetes.io/component", "monitor" }
                     }
                 }
-            });
+            }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster } });
 
             var role = new Role("tidb-monitor-role", new RoleArgs
             {
@@ -198,9 +212,9 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                     Name = role.Metadata.Apply(x => x.Name),
                     ApiGroup = "rbac.authorization.k8s.io"
                 }
-            });
+            }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster } });
 
-            
+
             var pvc = new PersistentVolumeClaim("tidb-monitor-grafana-pvc", new PersistentVolumeClaimArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -227,7 +241,7 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                     },
                     StorageClassName = pv.Spec.Apply(x => x.StorageClassName)
                 }
-            });
+            }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster } });
 
             var dashboardConfig = new Dictionary<string, object>
             {
@@ -247,12 +261,13 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                     }
                 }
             };
-            
+
             string prometheusConfigYaml;
             using (var sr = new StreamReader("./Component/Shared/Storage/TiDB/Yaml/prometheus.yaml"))
             {
                 prometheusConfigYaml = sr.ReadToEnd();
             }
+
             var monitorConfigMap = new ConfigMap("tidb-monitor-configmap", new ConfigMapArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -261,415 +276,416 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                     Namespace = input.Namespace.Metadata.Apply(x => x.Name),
                     Labels = new InputMap<string>
                     {
-                        {"app.kubernetes.io/name", "tidb-cluster"},
-                        {"app.kubernetes.io/instance", "tidb-cluster"},
-                        {"app.kubernetes.io/component", "monitor"}
+                        { "app.kubernetes.io/name", "tidb-cluster" },
+                        { "app.kubernetes.io/instance", "tidb-cluster" },
+                        { "app.kubernetes.io/component", "monitor" }
                     }
                 },
                 Data = new InputMap<string>
                 {
-                    {"prometheus-config", prometheusConfigYaml},
-                    {"dashboard-config", JsonSerializer.Serialize(dashboardConfig)}
+                    { "prometheus-config", prometheusConfigYaml },
+                    { "dashboard-config", JsonSerializer.Serialize(dashboardConfig) }
                 }
-            });
+            }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster }});
 
             // https://github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/templates/monitor-deployment.yaml
-            var monitorDeployment = new Pulumi.Kubernetes.Apps.V1.Deployment("tidb-monitor-deployment", new DeploymentArgs
-            {
-                Metadata = new ObjectMetaArgs
+            var monitorDeployment = new Pulumi.Kubernetes.Apps.V1.Deployment("tidb-monitor-deployment",
+                new DeploymentArgs
                 {
-                    Name = "tidb-monitor",
-                    Namespace = input.Namespace.Metadata.Apply(x => x.Name),
-                    Labels = new InputMap<string>
+                    Metadata = new ObjectMetaArgs
                     {
-                        {"app.kubernetes.io/name", "tidb-cluster"},
-                        {"app.kubernetes.io/instance", "tidb-cluster"},
-                        {"app.kubernetes.io/component", "monitor"}
-                    }
-                },
-                Spec = new DeploymentSpecArgs
-                {
-                    Replicas = 1,
-                    Strategy = new DeploymentStrategyArgs
-                    {
-                        Type = "Recreate",
-                        RollingUpdate = null
-                    },
-                    Selector = new LabelSelectorArgs
-                    {
-                        MatchLabels = new InputMap<string>
+                        Name = "tidb-monitor",
+                        Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+                        Labels = new InputMap<string>
                         {
-                            {"app.kubernetes.io/name", "tidb-cluster"},
-                            {"app.kubernetes.io/instance", "tidb-cluster"},
-                            {"app.kubernetes.io/component", "monitor"}
+                            { "app.kubernetes.io/name", "tidb-cluster" },
+                            { "app.kubernetes.io/instance", "tidb-cluster" },
+                            { "app.kubernetes.io/component", "monitor" }
                         }
                     },
-                    Template = new PodTemplateSpecArgs
+                    Spec = new DeploymentSpecArgs
                     {
-                        Metadata = new ObjectMetaArgs
+                        Replicas = 1,
+                        Strategy = new DeploymentStrategyArgs
                         {
-                            Labels = new InputMap<string>
+                            Type = "Recreate",
+                            RollingUpdate = null
+                        },
+                        Selector = new LabelSelectorArgs
+                        {
+                            MatchLabels = new InputMap<string>
                             {
-                                {"app.kubernetes.io/name", "tidb-cluster"},
-                                {"app.kubernetes.io/instance", "tidb-cluster"},
-                                {"app.kubernetes.io/component", "monitor"}
+                                { "app.kubernetes.io/name", "tidb-cluster" },
+                                { "app.kubernetes.io/instance", "tidb-cluster" },
+                                { "app.kubernetes.io/component", "monitor" }
                             }
                         },
-                        Spec = new PodSpecArgs
+                        Template = new PodTemplateSpecArgs
                         {
-                            ServiceAccount = serviceAccount.Metadata.Apply(x => x.Name),
-                            InitContainers = new InputList<ContainerArgs>
+                            Metadata = new ObjectMetaArgs
                             {
-                                new ContainerArgs
+                                Labels = new InputMap<string>
                                 {
-                                    Name = "monitor-initializer",
-                                    Image = "pingcap/tidb-monitor-initializer:v6.1.0",
-                                    ImagePullPolicy = "IfNotPresent",
-                                    Env = new InputList<EnvVarArgs>
-                                    {
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_PROVISIONING_PATH",
-                                            Value = "/grafana-dashboard-definitions/tidb" 
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_DATASOURCE_PATH",
-                                            Value = "/etc/grafana/provisioning/datasources"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "TIDB_CLUSTER_NAME",
-                                            Value = "tidb-cluster"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "TIDB_ENABLE_BINLOG",
-                                            Value = bool.FalseString.ToLower()
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "PROM_CONFIG_PATH",
-                                            Value = "/prometheus-rules"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "PROM_PERSISTENT_DIR",
-                                            Value = "/data"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "TIDB_VERSION",
-                                            Value = "pingcap/tidb:v6.1.0"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_K8S_PROMETHEUS_URL",
-                                            Value = "http://prometheus-k8s.webapp.svc:9090"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_TIDB_PROMETHEUS_URL",
-                                            Value = "http://127.0.0.1:9090"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "TIDB_CLUSTER_NAMESPACE",
-                                            Value = _config.GetWebApplicationConfig().Namespace
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "TZ",
-                                            Value = "UTC"
-                                        }
-                                    },
-                                    Command = new InputList<string>
-                                    {
-                                        "/bin/sh",
-                                        "-c",
-                                        "mkdir -p /data/prometheus /data/grafana\n" +
-                                        "chmod 777 /data/prometheus /data/grafana\n" +
-                                        "/usr/bin/init.sh\n"
-                                    },
-                                    SecurityContext = new SecurityContextArgs
-                                    {
-                                        RunAsUser = 0
-                                    },
-                                    VolumeMounts = new InputList<VolumeMountArgs>
-                                    {
-                                        new VolumeMountArgs
-                                        {
-                                            MountPath = "/grafana-dashboard-definitions/tidb",
-                                            Name = "grafana-dashboard",
-                                            ReadOnly = false
-                                        },
-                                        new VolumeMountArgs
-                                        {
-                                            MountPath = "/prometheus-rules",
-                                            Name = "prometheus-rules",
-                                            ReadOnly = false
-                                        },
-                                        new VolumeMountArgs
-                                        {
-                                            MountPath = "/data",
-                                            Name = "monitor-data"
-                                        },
-                                        new VolumeMountArgs
-                                        {
-                                            MountPath = "/etc/grafana/provisioning/datasources",
-                                            Name = "datasource",
-                                            ReadOnly = false
-                                        }
-                                    }
+                                    { "app.kubernetes.io/name", "tidb-cluster" },
+                                    { "app.kubernetes.io/instance", "tidb-cluster" },
+                                    { "app.kubernetes.io/component", "monitor" }
                                 }
                             },
-                            Containers = new InputList<ContainerArgs>
+                            Spec = new PodSpecArgs
                             {
-                                new ContainerArgs
+                                ServiceAccount = serviceAccount.Metadata.Apply(x => x.Name),
+                                InitContainers = new InputList<ContainerArgs>
                                 {
-                                    Name = "prometheus",
-                                    Image = "prom/prometheus:v2.18.1",
-                                    ImagePullPolicy = "IfNotPresent",
-                                    Command = new InputList<string>
+                                    new ContainerArgs
                                     {
-                                        "/bin/prometheus",
-                                        "--web.enable-admin-api",
-                                        "--web.enable-lifecycle",
-                                        "--log.level=info",
-                                        "--config.file=/etc/prometheus/prometheus.yml",
-                                        "--storage.tsdb.path=/data/prometheus",
-                                        "--storage.tsdb.retention.time=12d"
-                                    },
-                                    Ports = new InputList<ContainerPortArgs>
-                                    {
-                                        new ContainerPortArgs
+                                        Name = "monitor-initializer",
+                                        Image = "pingcap/tidb-monitor-initializer:v6.1.0",
+                                        ImagePullPolicy = "IfNotPresent",
+                                        Env = new InputList<EnvVarArgs>
                                         {
-                                            Name = "prometheus",
-                                            ContainerPortValue = 9090,
-                                            Protocol = "TCP"
-                                        }
-                                    },
-                                    Env = new InputList<EnvVarArgs>
-                                    {
-                                        new EnvVarArgs
-                                        {
-                                            Name = "TZ",
-                                            Value = "UTC"
-                                        }
-                                    },
-                                    VolumeMounts = new InputList<VolumeMountArgs>
-                                    {
-                                        new VolumeMountArgs
-                                        {
-                                            Name = "prometheus-config",
-                                            MountPath = "/etc/prometheus",
-                                            ReadOnly = true
-                                        },
-                                        new VolumeMountArgs
-                                        {
-                                            Name = "monitor-data",
-                                            MountPath = "/data",
-                                            ReadOnly = false
-                                        },
-                                        new VolumeMountArgs
-                                        {
-                                            Name = "prometheus-rules",
-                                            MountPath = "/prometheus-rules",
-                                            ReadOnly = false
-                                        }
-                                    }
-                                },
-                                new ContainerArgs
-                                {
-                                    Name = "reloader",
-                                    Image = "pingcap/tidb-monitor-reloader:v1.0.1",
-                                    ImagePullPolicy = "IfNotPresent",
-                                    Command = new InputList<string>
-                                    {
-                                        "/bin/reload",
-                                        "--root-store-path=/data",
-                                        "--sub-store-path=pingcap/tidb:v6.1.0",
-                                        "--watch-path=/prometheus-rules/rules",
-                                        "--prometheus-url=http://127.0.0.1:9090"
-                                    },
-                                    Ports = new InputList<ContainerPortArgs>
-                                    {
-                                        new ContainerPortArgs
-                                        {
-                                            Name = "reloader",
-                                            ContainerPortValue = 9090,
-                                            Protocol = "TCP"
-                                        }
-                                    },
-                                    VolumeMounts = new InputList<VolumeMountArgs>
-                                    {
-                                        new VolumeMountArgs
-                                        {
-                                            Name = "prometheus-rules",
-                                            MountPath = "/prometheus-rules",
-                                            ReadOnly = false
-                                        },
-                                        new VolumeMountArgs
-                                        {
-                                            Name = "monitor-data",
-                                            MountPath = "/data"
-                                        }
-                                    },
-                                    Env = new EnvVarArgs
-                                    {
-                                        Name = "TZ",
-                                        Value = "UTC"
-                                    }
-                                },
-                                new ContainerArgs
-                                {
-                                    Name = "grafana",
-                                    Image = "grafana/grafana:6.1.6",
-                                    ImagePullPolicy = "IfNotPresent",
-                                    Ports = new InputList<ContainerPortArgs>
-                                    {
-                                        new ContainerPortArgs
-                                        {
-                                            Name = "grafana",
-                                            ContainerPortValue = 3000,
-                                            Protocol = "TCP"
-                                        }
-                                    },
-                                    Env = new InputList<EnvVarArgs>
-                                    {
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_PATHS_DATA",
-                                            Value = "/data/grafana"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_SECURITY_ADMIN_USER",
-                                            Value = "admin"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_SECURITY_ADMIN_PASSWORD",
-                                            Value = "admin12345"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_AUTH_ANONYMOUS_ENABLED",
-                                            Value = bool.TrueString.ToLower()
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_AUTH_ANONYMOUS_ORG_NAME",
-                                            Value = "Main Org."
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "GF_AUTH_ANONYMOUS_ORG_ROLE",
-                                            Value = "Viewer"
-                                        },
-                                        new EnvVarArgs
-                                        {
-                                            Name = "TZ",
-                                            Value = "UTC"
-                                        }
-                                    },
-                                    VolumeMounts = new InputList<VolumeMountArgs>
-                                    {
-                                        new VolumeMountArgs
-                                        {
-                                            Name = "monitor-data",
-                                            MountPath = "/data",
-                                            ReadOnly = false
-                                        },
-                                        new VolumeMountArgs
-                                        {
-                                            Name = "datasource",
-                                            MountPath = "/etc/grafana/provisioning/datasources",
-                                            ReadOnly = false
-                                        },
-                                        new VolumeMountArgs
-                                        {
-                                            Name = "dashboards-provisioning",
-                                            MountPath = "/etc/grafana/provisioning/dashboards",
-                                            ReadOnly = false
-                                        },
-                                        new VolumeMountArgs
-                                        {
-                                            Name = "grafana-dashboard",
-                                            MountPath = "/grafana-dashboard-definitions/tidb",
-                                            ReadOnly = false
-                                        }
-                                    }
-                                }
-                            },
-                            Volumes = new InputList<VolumeArgs>
-                            {
-                                new VolumeArgs
-                                {
-                                    Name = "monitor-data",
-                                    EmptyDir = new EmptyDirVolumeSourceArgs()
-                                },
-                                new VolumeArgs
-                                {
-                                    Name = "prometheus-config",
-                                    ConfigMap = new ConfigMapVolumeSourceArgs
-                                    {
-                                        Name = monitorConfigMap.Metadata.Apply(x => x.Name),
-                                        Items = new InputList<KeyToPathArgs>
-                                        {
-                                            new KeyToPathArgs
+                                            new EnvVarArgs
                                             {
-                                                Key = "prometheus-config",
-                                                Path = "prometheus.yml"
+                                                Name = "GF_PROVISIONING_PATH",
+                                                Value = "/grafana-dashboard-definitions/tidb"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "GF_DATASOURCE_PATH",
+                                                Value = "/etc/grafana/provisioning/datasources"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "TIDB_CLUSTER_NAME",
+                                                Value = "tidb-cluster"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "TIDB_ENABLE_BINLOG",
+                                                Value = bool.FalseString.ToLower()
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "PROM_CONFIG_PATH",
+                                                Value = "/prometheus-rules"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "PROM_PERSISTENT_DIR",
+                                                Value = "/data"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "TIDB_VERSION",
+                                                Value = "pingcap/tidb:v6.1.0"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "GF_K8S_PROMETHEUS_URL",
+                                                Value = "http://prometheus-k8s.webapp.svc:9090"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "GF_TIDB_PROMETHEUS_URL",
+                                                Value = "http://127.0.0.1:9090"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "TIDB_CLUSTER_NAMESPACE",
+                                                Value = _config.GetWebApplicationConfig().Namespace
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "TZ",
+                                                Value = "UTC"
+                                            }
+                                        },
+                                        Command = new InputList<string>
+                                        {
+                                            "/bin/sh",
+                                            "-c",
+                                            "mkdir -p /data/prometheus /data/grafana\n" +
+                                            "chmod 777 /data/prometheus /data/grafana\n" +
+                                            "/usr/bin/init.sh\n"
+                                        },
+                                        SecurityContext = new SecurityContextArgs
+                                        {
+                                            RunAsUser = 0
+                                        },
+                                        VolumeMounts = new InputList<VolumeMountArgs>
+                                        {
+                                            new VolumeMountArgs
+                                            {
+                                                MountPath = "/grafana-dashboard-definitions/tidb",
+                                                Name = "grafana-dashboard",
+                                                ReadOnly = false
+                                            },
+                                            new VolumeMountArgs
+                                            {
+                                                MountPath = "/prometheus-rules",
+                                                Name = "prometheus-rules",
+                                                ReadOnly = false
+                                            },
+                                            new VolumeMountArgs
+                                            {
+                                                MountPath = "/data",
+                                                Name = "monitor-data"
+                                            },
+                                            new VolumeMountArgs
+                                            {
+                                                MountPath = "/etc/grafana/provisioning/datasources",
+                                                Name = "datasource",
+                                                ReadOnly = false
                                             }
                                         }
                                     }
                                 },
-                                new VolumeArgs
+                                Containers = new InputList<ContainerArgs>
                                 {
-                                    Name = "datasource",
-                                    EmptyDir = new EmptyDirVolumeSourceArgs()
-                                },
-                                new VolumeArgs
-                                {
-                                    Name = "dashboards-provisioning",
-                                    ConfigMap = new ConfigMapVolumeSourceArgs
+                                    new ContainerArgs
                                     {
-                                        Name = monitorConfigMap.Metadata.Apply(x => x.Name),
-                                        Items = new InputList<KeyToPathArgs>
+                                        Name = "prometheus",
+                                        Image = "prom/prometheus:v2.18.1",
+                                        ImagePullPolicy = "IfNotPresent",
+                                        Command = new InputList<string>
                                         {
-                                            new KeyToPathArgs
+                                            "/bin/prometheus",
+                                            "--web.enable-admin-api",
+                                            "--web.enable-lifecycle",
+                                            "--log.level=info",
+                                            "--config.file=/etc/prometheus/prometheus.yml",
+                                            "--storage.tsdb.path=/data/prometheus",
+                                            "--storage.tsdb.retention.time=12d"
+                                        },
+                                        Ports = new InputList<ContainerPortArgs>
+                                        {
+                                            new ContainerPortArgs
                                             {
-                                                Key = "dashboard-config",
-                                                Path = "dashboards.yaml"
+                                                Name = "prometheus",
+                                                ContainerPortValue = 9090,
+                                                Protocol = "TCP"
+                                            }
+                                        },
+                                        Env = new InputList<EnvVarArgs>
+                                        {
+                                            new EnvVarArgs
+                                            {
+                                                Name = "TZ",
+                                                Value = "UTC"
+                                            }
+                                        },
+                                        VolumeMounts = new InputList<VolumeMountArgs>
+                                        {
+                                            new VolumeMountArgs
+                                            {
+                                                Name = "prometheus-config",
+                                                MountPath = "/etc/prometheus",
+                                                ReadOnly = true
+                                            },
+                                            new VolumeMountArgs
+                                            {
+                                                Name = "monitor-data",
+                                                MountPath = "/data",
+                                                ReadOnly = false
+                                            },
+                                            new VolumeMountArgs
+                                            {
+                                                Name = "prometheus-rules",
+                                                MountPath = "/prometheus-rules",
+                                                ReadOnly = false
+                                            }
+                                        }
+                                    },
+                                    new ContainerArgs
+                                    {
+                                        Name = "reloader",
+                                        Image = "pingcap/tidb-monitor-reloader:v1.0.1",
+                                        ImagePullPolicy = "IfNotPresent",
+                                        Command = new InputList<string>
+                                        {
+                                            "/bin/reload",
+                                            "--root-store-path=/data",
+                                            "--sub-store-path=pingcap/tidb:v6.1.0",
+                                            "--watch-path=/prometheus-rules/rules",
+                                            "--prometheus-url=http://127.0.0.1:9090"
+                                        },
+                                        Ports = new InputList<ContainerPortArgs>
+                                        {
+                                            new ContainerPortArgs
+                                            {
+                                                Name = "reloader",
+                                                ContainerPortValue = 9090,
+                                                Protocol = "TCP"
+                                            }
+                                        },
+                                        VolumeMounts = new InputList<VolumeMountArgs>
+                                        {
+                                            new VolumeMountArgs
+                                            {
+                                                Name = "prometheus-rules",
+                                                MountPath = "/prometheus-rules",
+                                                ReadOnly = false
+                                            },
+                                            new VolumeMountArgs
+                                            {
+                                                Name = "monitor-data",
+                                                MountPath = "/data"
+                                            }
+                                        },
+                                        Env = new EnvVarArgs
+                                        {
+                                            Name = "TZ",
+                                            Value = "UTC"
+                                        }
+                                    },
+                                    new ContainerArgs
+                                    {
+                                        Name = "grafana",
+                                        Image = "grafana/grafana:6.1.6",
+                                        ImagePullPolicy = "IfNotPresent",
+                                        Ports = new InputList<ContainerPortArgs>
+                                        {
+                                            new ContainerPortArgs
+                                            {
+                                                Name = "grafana",
+                                                ContainerPortValue = 3000,
+                                                Protocol = "TCP"
+                                            }
+                                        },
+                                        Env = new InputList<EnvVarArgs>
+                                        {
+                                            new EnvVarArgs
+                                            {
+                                                Name = "GF_PATHS_DATA",
+                                                Value = "/data/grafana"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "GF_SECURITY_ADMIN_USER",
+                                                Value = "admin"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "GF_SECURITY_ADMIN_PASSWORD",
+                                                Value = "admin12345"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "GF_AUTH_ANONYMOUS_ENABLED",
+                                                Value = bool.TrueString.ToLower()
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "GF_AUTH_ANONYMOUS_ORG_NAME",
+                                                Value = "Main Org."
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "GF_AUTH_ANONYMOUS_ORG_ROLE",
+                                                Value = "Viewer"
+                                            },
+                                            new EnvVarArgs
+                                            {
+                                                Name = "TZ",
+                                                Value = "UTC"
+                                            }
+                                        },
+                                        VolumeMounts = new InputList<VolumeMountArgs>
+                                        {
+                                            new VolumeMountArgs
+                                            {
+                                                Name = "monitor-data",
+                                                MountPath = "/data",
+                                                ReadOnly = false
+                                            },
+                                            new VolumeMountArgs
+                                            {
+                                                Name = "datasource",
+                                                MountPath = "/etc/grafana/provisioning/datasources",
+                                                ReadOnly = false
+                                            },
+                                            new VolumeMountArgs
+                                            {
+                                                Name = "dashboards-provisioning",
+                                                MountPath = "/etc/grafana/provisioning/dashboards",
+                                                ReadOnly = false
+                                            },
+                                            new VolumeMountArgs
+                                            {
+                                                Name = "grafana-dashboard",
+                                                MountPath = "/grafana-dashboard-definitions/tidb",
+                                                ReadOnly = false
                                             }
                                         }
                                     }
                                 },
-                                new VolumeArgs
+                                Volumes = new InputList<VolumeArgs>
                                 {
-                                    Name = "prometheus-rules",
-                                    EmptyDir = new EmptyDirVolumeSourceArgs()
-                                },
-                                new VolumeArgs
-                                {
-                                    Name = "grafana-dashboard",
-                                    EmptyDir = new EmptyDirVolumeSourceArgs()
-                                },
-                                new VolumeArgs
-                                {
-                                    Name = "cluster-client-tls",
-                                    Secret = new SecretVolumeSourceArgs
+                                    new VolumeArgs
                                     {
-                                        DefaultMode = 420,
-                                        SecretName = "tidb-operator-cluster-client-secret"
+                                        Name = "monitor-data",
+                                        EmptyDir = new EmptyDirVolumeSourceArgs()
+                                    },
+                                    new VolumeArgs
+                                    {
+                                        Name = "prometheus-config",
+                                        ConfigMap = new ConfigMapVolumeSourceArgs
+                                        {
+                                            Name = monitorConfigMap.Metadata.Apply(x => x.Name),
+                                            Items = new InputList<KeyToPathArgs>
+                                            {
+                                                new KeyToPathArgs
+                                                {
+                                                    Key = "prometheus-config",
+                                                    Path = "prometheus.yml"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    new VolumeArgs
+                                    {
+                                        Name = "datasource",
+                                        EmptyDir = new EmptyDirVolumeSourceArgs()
+                                    },
+                                    new VolumeArgs
+                                    {
+                                        Name = "dashboards-provisioning",
+                                        ConfigMap = new ConfigMapVolumeSourceArgs
+                                        {
+                                            Name = monitorConfigMap.Metadata.Apply(x => x.Name),
+                                            Items = new InputList<KeyToPathArgs>
+                                            {
+                                                new KeyToPathArgs
+                                                {
+                                                    Key = "dashboard-config",
+                                                    Path = "dashboards.yaml"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    new VolumeArgs
+                                    {
+                                        Name = "prometheus-rules",
+                                        EmptyDir = new EmptyDirVolumeSourceArgs()
+                                    },
+                                    new VolumeArgs
+                                    {
+                                        Name = "grafana-dashboard",
+                                        EmptyDir = new EmptyDirVolumeSourceArgs()
+                                    },
+                                    new VolumeArgs
+                                    {
+                                        Name = "cluster-client-tls",
+                                        Secret = new SecretVolumeSourceArgs
+                                        {
+                                            DefaultMode = 420,
+                                            SecretName = "tidb-operator-cluster-client-secret"
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                }
-            });
+                }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster } });
 
             return new TiDBComponentOutput();
         }
