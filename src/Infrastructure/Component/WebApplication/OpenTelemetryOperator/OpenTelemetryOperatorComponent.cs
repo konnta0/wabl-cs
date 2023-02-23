@@ -16,9 +16,9 @@ namespace Infrastructure.Component.WebApplication.OpenTelemetryOperator
         [Pure]
         public OpenTelemetryOperatorComponentOutput Apply(OpenTelemetryOperatorComponentInput input)
         {
-            var configFile = new ConfigFile("open-telemetry-operator", new ConfigFileArgs
+            var configFile = new ConfigFile("opentelemetry-operator", new ConfigFileArgs
             {
-                File = "https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.60.0/opentelemetry-operator.yaml",
+                File = "https://github.com/open-telemetry/opentelemetry-operator/releases/download/v0.60.0/opentelemetry-operator.yaml"
             }, new ComponentResourceOptions { DependsOn = input.Namespace });
             return new OpenTelemetryOperatorComponentOutput
             {

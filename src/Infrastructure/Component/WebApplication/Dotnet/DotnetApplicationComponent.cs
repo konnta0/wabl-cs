@@ -57,12 +57,12 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                 openTelemetryCollectorConfigYaml = sr.ReadToEnd();
             }
 
-            var sidecar = new Pulumi.Crds.Opentelemetry.V1Alpha1.OpenTelemetryCollector("open-telemetry-collector",
+            var sidecar = new Pulumi.Crds.Opentelemetry.V1Alpha1.OpenTelemetryCollector("opentelemetry-collector",
                 new OpenTelemetryCollectorArgs
                 {
                     Metadata = new ObjectMetaArgs
                     {
-                        Name = "open-telemetry-collector",
+                        Name = "opentelemetry-collector",
                         Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                     },
                     Spec = new OpenTelemetryCollectorSpecArgs
@@ -73,11 +73,11 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                 }, new CustomResourceOptions { DependsOn = { input.OpenTelemetryCrd } });
 
             var instrumentation = new Pulumi.Crds.Opentelemetry.V1Alpha1.Instrumentation(
-                "open-telemetry-instrumentation", new InstrumentationArgs
+                "opentelemetry-instrumentation", new InstrumentationArgs
                 {
                     Metadata = new ObjectMetaArgs
                     {
-                        Name = "open-telemetry-instrumentation",
+                        Name = "opentelemetry-instrumentation",
                         Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                     },
                     Spec = new InstrumentationSpecArgs
