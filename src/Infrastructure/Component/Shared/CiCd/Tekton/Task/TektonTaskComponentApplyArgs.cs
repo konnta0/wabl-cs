@@ -5,8 +5,8 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.Task
 {
     public sealed class TektonTaskComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; }
-        public ConfigFile TektonRelease { get; set; }
+        public Namespace Namespace { get; set; } = null!;
+        public ConfigFile TektonRelease { get; set; } = null!;
     }
 
     public sealed class TektonTaskComponentOutput : IComponentOutput

@@ -4,7 +4,7 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
 {
     public sealed class TiDBComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; }
+        public Namespace Namespace { get; set; } = null!;
     }
 
     public sealed class TiDBComponentOutput : IComponentOutput

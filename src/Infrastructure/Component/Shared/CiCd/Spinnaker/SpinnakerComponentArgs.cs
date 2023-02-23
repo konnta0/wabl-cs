@@ -4,7 +4,7 @@ namespace Infrastructure.Component.Shared.CiCd.Spinnaker
 {
     public sealed class SpinnakerComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; }
+        public Namespace Namespace { get; set; } = null!;
     }
 
     public sealed class SpinnakerComponentOutput : IComponentOutput

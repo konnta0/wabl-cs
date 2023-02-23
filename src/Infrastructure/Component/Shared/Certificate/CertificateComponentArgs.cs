@@ -5,7 +5,7 @@ namespace Infrastructure.Component.Shared.Certificate
 {
     public sealed class CertificateComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; }
+        public Namespace Namespace { get; set; } = null!;
     }
 
     public sealed class CertificateComponentOutput : IComponentOutput

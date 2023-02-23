@@ -4,7 +4,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
 {
     public sealed class GrafanaComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; }
+        public Namespace Namespace { get; set; } = null!;
     }
 
     public sealed class GrafanaComponentOutput : IComponentOutput

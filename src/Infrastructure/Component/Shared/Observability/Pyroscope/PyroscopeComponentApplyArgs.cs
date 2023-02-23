@@ -4,7 +4,7 @@ namespace Infrastructure.Component.Shared.Observability.Pyroscope
 {
     public sealed class PyroscopeComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; }
+        public Namespace Namespace { get; set; } = null!;
     }
 
     public sealed class PyroscopeComponentOutput : IComponentOutput

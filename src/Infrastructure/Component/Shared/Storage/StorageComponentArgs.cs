@@ -4,7 +4,7 @@ namespace Infrastructure.Component.Shared.Storage
 {
     public sealed class StorageComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; }
+        public Namespace Namespace { get; set; } = null!;
     }
 
     public sealed class StorageComponentOutput : IComponentOutput

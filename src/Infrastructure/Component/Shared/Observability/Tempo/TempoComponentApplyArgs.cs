@@ -4,7 +4,7 @@ namespace Infrastructure.Component.Shared.Observability.Tempo
 {
     public sealed class TempoComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; }
+        public Namespace Namespace { get; set; } = null!;
     }
 
     public sealed class TempoComponentOutput : IComponentOutput
