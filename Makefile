@@ -238,10 +238,13 @@ push-image: build-image
 redis-cli: 
 	kubectl run -n webapp -it redis-cli --rm --image redis --restart=Never -- bash
 
-.PHONY: mysql # 
-mysql: 
-	kubectl run -n webapp -it mysql --rm --image mysql:8.0 --restart=Never -- bash
-	# mysql -u root -h  web-application-tidb-cluster-65dfc1bd-tidb -P 4000
+.PHONY: db # 
+db: 
+	kubectl run -n shared -it mysql --rm --image mysql:5.7 --restart=Never -- bash -c "mysql -u root -h  tidb-cluster-tidb-0 -P 4000"
+
+.PHONY: db-foward # see https://docs.pingcap.com/tidb-in-kubernetes/dev/get-started#forward-port-4000
+db-foward:
+	kubectl port-forward -n shared svc/tidb-cluster-tidb 14000:4000 > pf14000.out &
 
 .PHONY: tkn-build-image #
 tkn-build-image:
