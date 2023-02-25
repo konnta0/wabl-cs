@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 using System.Text.Json;
 using Infrastructure.Component.Shared.CiCd.Tekton.EventListener;
 using Infrastructure.Component.Shared.CiCd.Tekton.Pipeline;
@@ -169,6 +170,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                     }
                 });
 
+            dashboard.Ready();
             _ = new Pulumi.Kubernetes.Networking.V1.Ingress("tekton-pipeline-ingress", new IngressArgs
             {
                 ApiVersion = "networking.k8s.io/v1",
