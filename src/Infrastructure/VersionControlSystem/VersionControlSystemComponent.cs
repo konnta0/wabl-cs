@@ -13,7 +13,6 @@ namespace Infrastructure.VersionControlSystem
         private Config _config;
         private readonly GitLabResource _gitLabResource;
         private readonly ILogger<VersionControlSystemComponent> _logger;
-        private Input<string> _namespaceName;
 
         public VersionControlSystemComponent(ILogger<VersionControlSystemComponent> logger, Config config, GitLabResource gitLabResource)
         {
@@ -31,8 +30,7 @@ namespace Infrastructure.VersionControlSystem
                     Name = _config.GetVersionControlSystemConfig().Namespace
                 }
             });
-            _namespaceName = @namespace.Metadata.Apply(x => x.Name);
-            return _gitLabResource.Apply(_namespaceName);
+            return _gitLabResource.Apply(@namespace.Metadata.Apply(x => x.Name));
         }
     }
 }
