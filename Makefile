@@ -1,8 +1,8 @@
 NETWORK_NAME?=shared-network
 
-WEB_APPLICATION_COMPOSE_YML=./docker-compose.yml
-LOADTEST_COMPOSE_YML=./src/Tool/LoadTest/docker-compose.yml
-GRAFANA_COMPOSE_YML=./o11y/docker-compose.grafana.yml
+WEB_APPLICATION_COMPOSE_YML=./compose.yml
+LOADTEST_COMPOSE_YML=./src/Tool/LoadTest/compose.yml
+GRAFANA_COMPOSE_YML=./o11y/compose.grafana.yml
 
 .PHONY: help # Show help
 help:
