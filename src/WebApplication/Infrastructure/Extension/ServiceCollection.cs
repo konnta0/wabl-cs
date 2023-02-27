@@ -148,4 +148,15 @@ public static class ServiceCollection
         meterProviderBuilder.AddMeter(nameof(UseCaseInstrumentationMeter));
         return meterProviderBuilder;
     }
+
+    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection)
+    {
+        var connection = CacheClientFactory.CreateVolatileCacheConnectionMultiplexer();
+        serviceCollection.AddTransient<IVolatileCacheClient>(delegate
+        {
+            return new VolatileCacheClient(GlobalLogManager.GetLogger<VolatileCacheClient>(), connection);
+        });
+        serviceCollection.AddSingleton(connection);
+        return serviceCollection;
+    }
 }
