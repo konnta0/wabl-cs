@@ -9,7 +9,7 @@ internal static class CacheClientFactory
 {
     public static IConnectionMultiplexer CreateVolatileCacheConnectionMultiplexer()
     {
-        return Create("REDIS_HOST", "REDIS_PORT", "REDIS_USER", "REDIS_PASSWORD");
+        return Create("CACHE_SERVER_HOST", "CACHE_SERVER_PORT", "CACHE_SERVER_USER", "CACHE_SERVER_PASSWORD");
     }
 
     private static IConnectionMultiplexer Create(string hostEnvironmentName, string portEnvironmentName, string userEnvironmentName, string passwordEnvironmentName)
