@@ -9,14 +9,14 @@ services:
     environment:
       - ASPNETCORE_URLS=http://+:5000;
       - DOTNET_GENERATE_ASPNET_CERTIFICATE=false
-      - MYSQL_SERVER_HOST=${MYSQL_SERVER_HOST}
-      - MYSQL_SERVER_PORT=${MYSQL_SERVER_PORT}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - DB_SERVER_HOST=${DB_SERVER_HOST}
+      - DB_SERVER_PORT=${DB_SERVER_PORT}
+      - DB_SERVER_USER=${DB_SERVER_USER}
+      - DB_SERVER_PASSWORD=${DB_SERVER_PASSWORD}
       - OTLP_SERVER_NAME=${OTLP_SERVER_NAME}
       - OTLP_ENDPOINT=${OTLP_ENDPOINT}
-      - REDIS_HOST=${REDIS_HOST}
-      - REDIS_PORT=${REDIS_PORT}
+      - CACHE_SERVER_HOST=${CACHE_SERVER_HOST}
+      - CACHE_SERVER_PORT=${CACHE_SERVER_PORT}
     networks:
       - default
       - shared-network
@@ -52,7 +52,6 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_ALLOW_EMPTY_PASSWORD=
       - MYSQL_RANDOM_ROOT_PASSWORD=
-    #mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator
 
   app_cache:
     container_name: cache
@@ -73,14 +72,14 @@ services:
       - ./dotnet-metric-test:/source
     working_dir: /source
     environment:
-      - MYSQL_SERVER_HOST=${MYSQL_SERVER_HOST}
-      - MYSQL_SERVER_PORT=${MYSQL_SERVER_PORT}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - DB_SERVER_HOST=${DB_SERVER_HOST}
+      - DB_SERVER_PORT=${DB_SERVER_PORT}
+      - DB_SERVER_USER=${DB_SERVER_USER}
+      - DB_SERVER_PASSWORD=${DB_SERVER_PASSWORD}
       - OTLP_SERVER_NAME=${OTLP_SERVER_NAME}
       - OTLP_ENDPOINT=${OTLP_ENDPOINT}
-      - REDIS_HOST=${REDIS_HOST}
-      - REDIS_PORT=${REDIS_PORT}
+      - CACHE_SERVER_HOST=${CACHE_SERVER_HOST}
+      - CACHE_SERVER_PORT=${CACHE_SERVER_PORT}
 
 networks:
   shared-network:
