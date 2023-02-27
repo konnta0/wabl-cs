@@ -23,8 +23,8 @@ public partial class EmployeesContext : DbContext
     {
         var server = Environment.GetEnvironmentVariable("DB_SERVER_HOST");
         var port = Environment.GetEnvironmentVariable("DB_SERVER_PORT");
-        var user = Environment.GetEnvironmentVariable("DB_USER");
-        var password = Environment.GetEnvironmentVariable("DB_PASSWORD");
+        var user = Environment.GetEnvironmentVariable("DB_SERVER_USER");
+        var password = Environment.GetEnvironmentVariable("DB_SERVER_PASSWORD");
         return $"server={server};port={port};user={user};password={password};Database=employees";
     }
 }
