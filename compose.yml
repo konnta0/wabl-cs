@@ -58,6 +58,10 @@ services:
   app_cache:
     container_name: cache
     image: redis:6.2.6
+    command: [ "redis-server", "/etc/redis/redis.conf" ]
+    volumes:
+      - ./cache/redis/redis.conf:/etc/redis/redis.conf
+      - ./cache/redis/users.acl:/etc/redis/users.acl
     ports:
       - "6379:6379"
 
