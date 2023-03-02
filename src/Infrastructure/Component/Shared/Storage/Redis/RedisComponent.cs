@@ -10,7 +10,12 @@ namespace Infrastructure.Component.Shared.Storage.Redis
         {
             var values = new InputMap<object>
             {
-
+                ["replicas"] = 2,
+                ["hardAntiAffinity"] = false,
+                ["haproxy"] = new InputMap<object>
+                {
+                    ["hardAntiAffinity"] = false
+                }
             };
             _ = new Release("redis-ha", new ReleaseArgs
             {
@@ -24,6 +29,7 @@ namespace Infrastructure.Component.Shared.Storage.Redis
                 },
                 Atomic = true,
                 Values = values,
+                Timeout = 600,
                 Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             });
             return new RedisComponentOutput();
