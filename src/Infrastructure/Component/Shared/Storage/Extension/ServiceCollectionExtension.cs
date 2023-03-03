@@ -1,5 +1,6 @@
 using Infrastructure.Component.Shared.Storage.Dragonfly;
 using Infrastructure.Component.Shared.Storage.MinIo;
+using Infrastructure.Component.Shared.Storage.Redis;
 using Infrastructure.Component.Shared.Storage.TiDB;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,7 @@ namespace Infrastructure.Component.Shared.Storage.Extension
         {
             serviceCollection.AddScoped<TiDBComponent>();
             serviceCollection.AddScoped<DragonflyComponent>();
+            serviceCollection.AddScoped<RedisComponent>();
             serviceCollection.AddScoped<MinIoComponent>();
             serviceCollection.AddScoped<StorageComponent>();
             return serviceCollection;
