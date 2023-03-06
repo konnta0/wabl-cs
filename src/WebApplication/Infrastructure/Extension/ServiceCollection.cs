@@ -139,6 +139,8 @@ public static class ServiceCollection
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
         }, ServiceLifetime.Transient);
+        serviceCollection.AddSingleton<EmployeesContext.IEmployeesContextOnModelCreatingBus>(_ => new EmployeesContext.EmployeesContextOnModelCreatingBus());
+        serviceCollection.AddSingleton<EmployeesContextOnModelCreatingBus>();
         return serviceCollection;
     }
 
