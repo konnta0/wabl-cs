@@ -30,9 +30,11 @@ builder.ConfigureServices((_, collection) =>
     collection.AddDbContext();
     collection.AddCacheClient();
     collection.AddScoped<ISeedImporter, SeedImporter>();
+    collection.AddScoped<ISeedTruncate, SeedTruncate>();
     collection.AddScoped<ISeedReader, SeedReader>();
     collection.AddMessagePipe();
 });
 
 var app = builder.Build();
-ConsoleApp.Run<SeedImportCommand>(args);
+app.AddCommands<SeedImportCommand>();
+app.Run();
