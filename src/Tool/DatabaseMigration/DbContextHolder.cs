@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseMigration;
 
-public class DbContextHolder : IDbContextHolder
+public class DbContextHolder : IDbContextHolder, IDisposable
 {
     private readonly List<DbContext> _dbContexts = new();
 
@@ -19,6 +19,12 @@ public class DbContextHolder : IDbContextHolder
     }
 
     public IImmutableList<DbContext> GetAll() => _dbContexts.ToImmutableList();
+
+    public void Dispose()
+    {
+        _dbContexts.ForEach(x => x.Dispose());
+        _dbContexts.Clear();
+    }
 }
 
 public interface IDbContextHolder
