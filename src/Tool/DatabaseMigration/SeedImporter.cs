@@ -15,16 +15,11 @@ public class SeedImporter : ISeedImporter
         _seedReader = seedReader;
     }
 
-    public void Dispose()
-    {
-        _seedReader.Dispose();
-    }
-
-    public void Import(IEntity entity)
+    public async Task Import(IEntity entity)
     {
         _logger.ZLogInformation($"Import seed {nameof(entity)}");
         var path = nameof(entity);
-        var seedData = _seedReader.Read(path);
+        var seedData = await _seedReader.Read(path);
         
     }
 }

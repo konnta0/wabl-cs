@@ -2,7 +2,7 @@ using Domain.Entity;
 
 namespace DatabaseMigration;
 
-public interface ISeedImporter : IDisposable
+public interface ISeedImporter
 {
-    void Import(IEntity entity);
+    Task Import(IEntity entity);
 }

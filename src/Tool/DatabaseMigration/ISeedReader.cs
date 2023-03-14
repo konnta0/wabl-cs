@@ -1,6 +1,6 @@
 namespace DatabaseMigration;
 
-public interface ISeedReader : IDisposable
+public interface ISeedReader
 {
-    string Read(string path);
+    Task<string> Read(string path);
 }

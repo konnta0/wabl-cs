@@ -1,3 +1,4 @@
+using System.Text;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
@@ -16,10 +17,10 @@ public class SeedReader : ISeedReader
     {
     }
 
-    public string Read(string path)
+    public Task<string> Read(string path)
     {
         _logger.ZLogInformation($"read path : {path}");
-
-        return string.Empty;
+        using var streamReader = new StreamReader(path, Encoding.UTF8);
+        return streamReader.ReadToEndAsync();
     }
 }
