@@ -26,7 +26,6 @@ namespace Infrastructure.Stack
             ContainerRegistryComponent containerRegistryComponent,
             ObservabilityComponent observabilityComponent,
             CertificateComponent certificateComponent,
-            VersionControlSystemComponent versionControlSystemComponent,
             WebApplicationComponent webApplicationComponent,
             StorageComponent storageComponent)
         {
