@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Entity.Employee;
@@ -9,18 +10,22 @@ public partial class TitlesEntity
 {
     [Key]
     [Column("emp_no", TypeName = "int")]
+    [JsonPropertyName("emp_no")]
     [Required]
     public int EmpNo { get; set; } = 0;
 
     [Column("salary", TypeName = "int")]
+    [JsonPropertyName("salary")]
     [Required]
-    public int Salary { get; set; } =0;
+    public int Salary { get; set; } = 0;
     
     [Column("from_date", TypeName = "date")]
+    [JsonPropertyName("from_date")]
     [Required]
     public DateTime FromDate { get; set; }
     
     [Column("to_date", TypeName = "date")]
+    [JsonPropertyName("to_date")]
     [Required]
     public DateTime ToDate { get; set; }
 
