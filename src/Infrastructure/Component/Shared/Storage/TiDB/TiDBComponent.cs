@@ -80,6 +80,13 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                         {
                             ["storage"] = "3Gi"
                         }
+                    },
+                    ["service"] = new InputMap<object>
+                    {
+                        ["annotations"] = new InputMap<string>
+                        {
+                            
+                        }
                     }
                 },
                 ["monitor"] = new InputMap<object>
@@ -105,7 +112,7 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                 Values = values,
                 Namespace = tidbOperator.Namespace.Apply(x => x),
                 RecreatePods = true
-            });
+            }, new CustomResourceOptions { DependsOn = { configFile } });
 
             var pv = new PersistentVolume("tidb-monitor-grafana-pv", new PersistentVolumeArgs
             {
