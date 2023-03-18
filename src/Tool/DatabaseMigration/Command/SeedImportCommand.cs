@@ -1,4 +1,11 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
+using System.Text;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Linq;
 using Domain.Entity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
@@ -8,14 +15,14 @@ namespace DatabaseMigration.Command;
 public class SeedImportCommand : ConsoleAppBase
 {
     private readonly ILogger<SeedImportCommand> _logger;
+    private readonly IDbContextHolder _dbContextHolder;
     private readonly ISeedImporter _seedImporter;
-    private readonly ISeedTruncate _seedTruncate;
 
-    public SeedImportCommand(ILogger<SeedImportCommand> logger, ISeedImporter seedImporter, ISeedTruncate seedTruncate)
+    public SeedImportCommand(ILogger<SeedImportCommand> logger, ISeedImporter seedImporter, IDbContextHolder dbContextHolder)
     {
         _logger = logger;
         _seedImporter = seedImporter;
-        _seedTruncate = seedTruncate;
+        _dbContextHolder = dbContextHolder;
     }
 
     [RootCommand]
