@@ -19,7 +19,6 @@ public class SeedReader : ISeedReader
 
     public Task<string> Read(string path)
     {
-        _logger.ZLogInformation($"read path : {path}");
         using var streamReader = new StreamReader(path, Encoding.UTF8);
         return streamReader.ReadToEndAsync();
     }
