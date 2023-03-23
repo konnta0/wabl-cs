@@ -30,8 +30,6 @@ builder.ConfigureServices((_, collection) =>
     collection.AddDbContext();
     collection.AddCacheClient();
     collection.AddSingleton<IDbContextHolder, DbContextHolder>();
-    collection.AddScoped<ISeedImporter, SeedImporter>();
-    collection.AddScoped<ISeedReader, SeedReader>();
     collection.AddMessagePipe();
 });
 
