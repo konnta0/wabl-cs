@@ -14,10 +14,10 @@ public partial class TitlesEntity
     [Required]
     public int EmpNo { get; set; } = 0;
 
-    [Column("salary", TypeName = "int")]
-    [JsonPropertyName("salary")]
+    [Column("title", TypeName = "varchar(50)")]
+    [JsonPropertyName("title")]
     [Required]
-    public int Salary { get; set; } = 0;
+    public string Title { get; set; } = "";
     
     [Column("from_date", TypeName = "date")]
     [JsonPropertyName("from_date")]
