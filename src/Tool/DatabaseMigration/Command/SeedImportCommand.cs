@@ -1,9 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
-using System.Text;
-using System.Collections.Generic;
 using System.Text.Json;
-using System.Linq;
 using Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -12,60 +9,82 @@ using ZLogger;
 namespace DatabaseMigration.Command;
 
 [Command("seed-import")]
+// ReSharper disable once ClassNeverInstantiated.Global
 public class SeedImportCommand : ConsoleAppBase
 {
     private readonly ILogger<SeedImportCommand> _logger;
     private readonly IDbContextHolder _dbContextHolder;
-    private readonly ISeedImporter _seedImporter;
 
-    public SeedImportCommand(ILogger<SeedImportCommand> logger, ISeedImporter seedImporter, IDbContextHolder dbContextHolder)
+    public SeedImportCommand(ILogger<SeedImportCommand> logger, IDbContextHolder dbContextHolder)
     {
         _logger = logger;
-        _seedImporter = seedImporter;
         _dbContextHolder = dbContextHolder;
     }
 
     [RootCommand]
     public async Task Run([Option("t", "target table")] string tableName = "",
-        [Option("r", "reset table.")] bool resetTable = true)
+        [Option("r", "reset table.")] bool resetTable = true,
+        [Option("s", "seed directory path")] string seedPath = "/src/Seed")
     {
         Console.WriteLine(Context.Timestamp);
-        
-        // Get All Model from implement IEntity
-        var models = LoadModels();
-        try
+
+        foreach (var dbContext in _dbContextHolder.GetAll())
         {
-            // each
-            if (string.IsNullOrEmpty(tableName))
+            var entityTypes = dbContext.Model.GetEntityTypes()
+                .Select(t => t.ClrType)
+                .Where(x => x.GetInterface(nameof(IHasSeed)) is not null)
+                .Where(x => x.GetInterface(nameof(IEntity)) is not null)
+                .ToList();
+
+            foreach (var type in entityTypes)
             {
-                
-            }
-            else
-            {
-                models.AsParallel().WithDegreeOfParallelism(4).Select(async model =>
+                var entity = Activator.CreateInstance(type);
+                if (entity is null) continue;
+
+                if (!string.IsNullOrEmpty(tableName) && !type.Name.EndsWith(tableName)) continue;
+
+                var tableAttribute = type.GetCustomAttribute<TableAttribute>();
+                if (tableAttribute is null)
                 {
+                    _logger.ZLogCritical($"{type} is should be apply TableAttribute");
+                    continue;
+                }
+
+                try
+                {
+                    var schemaName = tableAttribute.Name;
                     if (resetTable)
                     {
-                        await _seedTruncate.Truncate(model);
+                        using var scope = _logger.BeginScope(schemaName);
+                        _logger.ZLogInformationWithPayload(schemaName, "Truncating...");
+                        await dbContext.Database.ExecuteSqlRawAsync($"TRUNCATE TABLE `{schemaName}`");
+                        _logger.ZLogInformationWithPayload(schemaName, "Truncated");
                     }
 
-                    _seedImporter.Import(model);
-                });
+                    var path = Path.Combine(seedPath, dbContext.GetType().Name.Replace("Context", string.Empty), $"{schemaName}.json");
+                    await using var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+
+                    var concreteListType = typeof(List<>).MakeGenericType(type);
+                    var deserializedObject = await JsonSerializer.DeserializeAsync(fileStream, concreteListType);
+                    if (deserializedObject is null)
+                    {
+                        _logger.ZLogInformationWithPayload(schemaName, "Failed to load seed file");
+                        continue;
+                    }
+
+                    var enumerable = (IEnumerable<object>)deserializedObject;
+                    foreach (var e in enumerable)
+                    {
+                        await dbContext.AddAsync(e);
+                    }
+                    await dbContext.SaveChangesAsync();
+                }
+                catch (Exception e)
+                {
+                    _logger.ZLogErrorWithPayload(e, "Seed import failed");
+                    throw;
+                }
             }
         }
-        catch (Exception e)
-        {
-            _logger.ZLogErrorWithPayload(e, "Seed import failed");
-        }
-        finally
-        {
-            _seedImporter.Dispose();
-        }
-    }
-
-    private IEnumerable<IEntity> LoadModels()
-    {
-
-        return Enumerable.Empty<IEntity>();
     }
 }
