@@ -120,6 +120,7 @@ migration-run:
 	docker run -it \
 	-v $(ROOT_DIR)src/Tool/DatabaseMigration:/src/Tool/DatabaseMigration \
 	-v $(ROOT_DIR)src/WebApplication:/src/WebApplication \
+	-v $(ROOT_DIR)src/Tool/DatabaseMigration/Seed:/src/Seed \
 	--env-file=.env \
 	--name=database_migration \
 	--rm \
