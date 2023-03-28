@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Infrastructure.Component;
 using Infrastructure.Component.Shared.Storage.Dragonfly;
 using Infrastructure.Component.Shared.Storage.TiDB;
@@ -48,10 +49,15 @@ namespace Infrastructure.WebApplication
             {
                 Namespace = @namespace
             });
-            _promtailComponent.Apply(new PromtailComponentInput
+
+            if (_config.RequireObject<JsonElement>("Observability").GetProperty("Enable").GetBoolean())
             {
-                Namespace = @namespace
-            });
+                _promtailComponent.Apply(new PromtailComponentInput
+                {
+                    Namespace = @namespace
+                });
+            }
+            
             _dotnetApplicationComponent.Apply(new DotnetApplicationComponentInput
             {
                 Namespace = @namespace,
