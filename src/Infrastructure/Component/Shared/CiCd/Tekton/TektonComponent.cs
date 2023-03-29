@@ -252,7 +252,8 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
             {
                 Namespace = workerNamespace,
                 TektonRelease = tektonRelease,
-                TektonTrigger = triggers
+                TektonTrigger = triggers,
+                TektonInterceptor = interceptor
             });
 
             return new TektonComponentOutput();

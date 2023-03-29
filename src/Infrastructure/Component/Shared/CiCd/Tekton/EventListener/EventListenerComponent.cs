@@ -114,9 +114,9 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                     ["https://core.harbor.cr.test/v2/"] = new Dictionary<string, object>
                     {
                         ["auth"] = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{userName}:{password}")),
-                        ["username"] = userName,
-                        ["password"] = password,
-                        ["email"] = email
+                        ["username"] = userName!,
+                        ["password"] = password!,
+                        ["email"] = email!
                     }
                 }
             };
@@ -191,7 +191,7 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton.EventListener
                         }
                     }.ToImmutableDictionary()
                 }.ToImmutableDictionary()!,
-                new CustomResourceOptions { DependsOn = { input.TektonRelease, input.TektonTrigger, roleBinding } });
+                new CustomResourceOptions { DependsOn = { input.TektonRelease, input.TektonTrigger, roleBinding, input.TektonInterceptor } });
 
             var ingress = new Ingress("tekton-event-listener-ingress", new IngressArgs
             {
