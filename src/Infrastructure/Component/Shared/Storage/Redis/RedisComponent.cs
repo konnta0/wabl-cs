@@ -10,7 +10,7 @@ namespace Infrastructure.Component.Shared.Storage.Redis
         {
             var values = new InputMap<object>
             {
-                ["replicas"] = 2,
+                ["replicas"] = 1,
                 ["hardAntiAffinity"] = false,
                 ["haproxy"] = new InputMap<object>
                 {
@@ -21,7 +21,6 @@ namespace Infrastructure.Component.Shared.Storage.Redis
             {
                 Name = "redis-ha",
                 Chart = "redis-ha",
-                //  helm search repo grafana/grafana --versions | head -n 5
                 Version = "4.22.4",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
@@ -29,7 +28,6 @@ namespace Infrastructure.Component.Shared.Storage.Redis
                 },
                 Atomic = true,
                 Values = values,
-                Timeout = 600,
                 Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             });
             return new RedisComponentOutput();
