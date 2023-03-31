@@ -1,11 +1,12 @@
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Crds.Certmanager.V1;
+using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Certmanager.V1;
+using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Yaml;
 using Pulumi.KubernetesCertManager;
-using Pulumi.KubernetesCertManager.Inputs;
 
 namespace Infrastructure.Component.Shared.Certificate.CertManager
 {
@@ -34,29 +35,27 @@ namespace Infrastructure.Component.Shared.Certificate.CertManager
                 return x.Name;
             });
 
-            var certManager = new Pulumi.KubernetesCertManager.CertManager("cert-manager", new CertManagerArgs
+            var certManager = new Release("cert-manager", new ReleaseArgs
             {
-                InstallCRDs = false,
-                ClusterResourceNamespace = ns,
-                Webhook = new CertManagerWebhookArgs
+                Chart = "cert-manager",
+                // helm search repo cert-manager
+                // NAME                                    CHART VERSION   APP VERSION     DESCRIPTION
+                // jetstack/cert-manager                   v1.8.0          v1.8.0          A Helm chart for cert-manager
+                Version = "v1.8.0",
+                RepositoryOpts = new RepositoryOptsArgs
                 {
-                    TimeoutSeconds = 30
+                    Repo = "https://charts.jetstack.io"
                 },
-                HelmOptions = new ReleaseArgs
-                {
-                    Namespace = ns,
-                    Timeout = 600,
-                    Atomic = true,
-                    Version = "v1.8.0"
-                }
-            }, new ComponentResourceOptions { DependsOn = { crds } });
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+                Atomic = true
+            });
 
             var clusterIssuer = new ClusterIssuer("cluster-issuer", new ClusterIssuerArgs
             {
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "selfsigned-issuer",
-                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                    Namespace = "shared"
                 },
                 Spec = new ClusterIssuerSpecArgs
                 {
