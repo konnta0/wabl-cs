@@ -5,11 +5,11 @@ namespace Infrastructure.Component.Shared.Certificate.CertManager
 {
     public sealed class CertManagerComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public Namespace Namespace { get; init; } = null!;
     }
 
     public sealed class CertManagerComponentOutput : IComponentOutput
     {
-        public ClusterIssuer ClusterIssuer { get; set; }
+        public ClusterIssuer ClusterIssuer { get; init; }
     }
 }
