@@ -62,7 +62,7 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                 ["tikv"] = new Dictionary<string, object>
                 {
                     ["storageClassName"] = "standard",
-                    ["replicas"] = 1,
+                    ["replicas"] = 2,
                     ["resources"] = new InputMap<object>
                     {
                         ["requests"] = new InputMap<object>
@@ -73,19 +73,12 @@ namespace Infrastructure.Component.Shared.Storage.TiDB
                 },
                 ["tidb"] = new Dictionary<string, object>
                 {
-                    ["replicas"] = 1,
+                    ["replicas"] = 2,
                     ["resources"] = new InputMap<object>
                     {
                         ["requests"] = new InputMap<object>
                         {
                             ["storage"] = "3Gi"
-                        }
-                    },
-                    ["service"] = new InputMap<object>
-                    {
-                        ["annotations"] = new InputMap<string>
-                        {
-                            
                         }
                     }
                 },
