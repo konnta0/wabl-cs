@@ -210,7 +210,6 @@ namespace Infrastructure.Component.Shared.ContainerRegistry.Harbor
                 Namespace = input.Namespace.Metadata.Apply(x => x.Name),
                 Atomic = true,
                 Values = values,
-                Timeout = 60 * 10
             });
             return new HarborComponentOutput();
         }
