@@ -44,8 +44,10 @@ namespace Infrastructure.Component.Shared.ContainerRegistry
                         IssuerRef = new CertificateSpecIssuerrefArgs
                         {
                             Name = input.ClusterIssuer.Metadata.Apply(x => x.Name),
+                            Kind = nameof(ClusterIssuer),
                             Group = "cert-manager.io"
-                        }
+                        },
+                        DnsNames = { "cr.test", "core.harbor.cr.test" }
                     }
                 });
             
