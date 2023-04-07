@@ -10,6 +10,6 @@ namespace Infrastructure.Component.Shared.ContainerRegistry.Extension
             serviceCollection.AddScoped<HarborComponent>();
             serviceCollection.AddScoped<ContainerRegistryComponent>();
             return serviceCollection;
-        }        
+        }
     }
 }
