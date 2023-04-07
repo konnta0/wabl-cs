@@ -156,7 +156,7 @@ mount-dir:
 
 .PHONY: mk-start #  must be install qemu
 mk-start: 
-	minikube start --memory='10g' --cpus=3 --driver=qemu --network=socket_vmnet --disk-size=50gb --nodes=1 --insecure-registry="core.harbor.cr.test" --kubernetes-version v1.24.6
+	minikube start --memory='12g' --cpus=6 --driver=docker --container-runtime=containerd --disk-size=200gb --nodes=1 --insecure-registry="core.harbor.cr.test" --kubernetes-version v1.24.6
 	minikube addons enable ingress
 	minikube addons enable ingress-dns
 	# For Docker for Mac, recommend using the following for ingress-dns
