@@ -202,7 +202,7 @@ namespace Infrastructure.Component.Shared.ContainerRegistry.Harbor
             {
                 Chart = "harbor",
                 // https://github.com/goharbor/harbor-helm/releases/tag/v1.9.1
-                Version = "v1.9.1",
+                Version = "v1.11.1",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://helm.goharbor.io"
