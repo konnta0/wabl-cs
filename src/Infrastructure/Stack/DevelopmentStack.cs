@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Infrastructure.Component.Shared;
 using Infrastructure.Component.Shared.Certificate;
 using Infrastructure.Component.Shared.CiCd;
 using Infrastructure.Component.Shared.ContainerRegistry;
@@ -27,11 +28,15 @@ namespace Infrastructure.Stack
             ObservabilityComponent observabilityComponent,
             CertificateComponent certificateComponent,
             WebApplicationComponent webApplicationComponent,
-            StorageComponent storageComponent)
+            StorageComponent storageComponent,
+            SharedComponent sharedComponent)
         {
             _logger = logger;
             _config = config;
             _logger.LogInformation("start development stack");
+            sharedComponent.Apply(new SharedComponentInput());
+            
+            
             var @namespace = new Namespace("namespace-shared-resource", new NamespaceArgs
             {
                 Metadata = new ObjectMetaArgs

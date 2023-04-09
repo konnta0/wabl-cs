@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Infrastructure.Component.Shared;
 using Infrastructure.Component.Shared.Certificate.Extension;
 using Infrastructure.Component.Shared.CiCd.Extension;
 using Infrastructure.Component.Shared.ContainerRegistry.Extension;
@@ -31,5 +32,6 @@ class Program
         serviceCollection.AddWebApplication();
         serviceCollection.AddStorageComponent();
         serviceCollection.AddScoped<DevelopmentStack>();
+        serviceCollection.AddScoped<SharedComponent>();
     }
 }
