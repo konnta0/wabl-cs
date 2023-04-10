@@ -165,6 +165,14 @@ mk-start:
 	#minikube node add --worker=true
 	#minikube node add --worker=true
 
+.PHONY: mk-pause # 
+mk-pause:
+	minikube pause
+
+.PHONY: mk-unpause # 
+mk-unpause:
+	minikube unpause
+
 .PHONY: mk-stop # 
 mk-stop:
 	minikube stop
