@@ -27,7 +27,7 @@ GlobalLogManager.SetLoggerFactory(LoggerFactory.Create(loggingBuilder =>
 
 builder.ConfigureServices((_, collection) =>
 {
-    collection.AddDbContext();
+    collection.AddDbContexts();
     collection.AddCacheClient();
     collection.AddSingleton<IDbContextHolder, DbContextHolder>();
     collection.AddMessagePipe();

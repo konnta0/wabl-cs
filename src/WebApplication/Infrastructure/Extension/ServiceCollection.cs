@@ -31,7 +31,7 @@ public static class ServiceCollection
             
         return serviceCollection
             .AddLogging()
-            .AddDbContext()
+            .AddDbContexts()
             .AddOpenTelemetryTracing(configuration)
             .AddOpenTelemetryMetrics(configuration)
             .AddContainer();
@@ -130,7 +130,7 @@ public static class ServiceCollection
         return serviceCollection;
     }
 
-    public static IServiceCollection AddDbContext(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddDbContexts(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
         { 
