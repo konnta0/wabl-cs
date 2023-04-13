@@ -1,0 +1,16 @@
+.data/*
+.git/*
+.github/*
+.idea/*
+.run/*
+cache/*
+dotnet-metric-test/*
+harbor-cert/*
+makefile-resource/*
+o11y/*
+werbserver/*
+.gitignore
+ca.crt
+*/bin/*
+*/obj/*
+*/.DS_Store
