@@ -1,4 +1,5 @@
 FROM mysql:latest
+HEALTHCHECK --interval=1s CMD test mysqladmin ping -h localhost -u root -proot
 
 COPY ./database/mysql/test_db-1.0.7.tar.gz /test_db.tar.gz
 RUN tar -xvzf /test_db.tar.gz
