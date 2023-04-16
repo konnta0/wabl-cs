@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using DotNet.Testcontainers.Builders;
 using Infrastructure.Database.Context.Employee;
@@ -89,9 +90,10 @@ public abstract class TestBase : IAsyncLifetime
             .WithWaitStrategy(Wait.ForUnixContainer().UntilContainerIsHealthy(30))
             .Build();
 
-        await network.CreateAsync();
-        await databaseImage.CreateAsync();
-        await databaseContainer.StartAsync();
+        using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(1)); 
+        await network.CreateAsync(cts.Token);
+        await databaseImage.CreateAsync(cts.Token);
+        await databaseContainer.StartAsync(cts.Token);
 
         Environment.SetEnvironmentVariable("DB_SERVER_HOST", databaseContainer.Hostname);
         Environment.SetEnvironmentVariable("DB_SERVER_PORT", databaseContainer.GetMappedPublicPort(3306).ToString());
