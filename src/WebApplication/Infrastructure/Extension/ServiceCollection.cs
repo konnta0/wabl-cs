@@ -61,7 +61,7 @@ public static class ServiceCollection
             });
     }
 
-    private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, IConfiguration configuration)
+    private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection? serviceCollection, IConfiguration configuration)
     {
 
         return serviceCollection.AddOpenTelemetryTracing(builder =>
@@ -130,7 +130,7 @@ public static class ServiceCollection
         return serviceCollection;
     }
 
-    public static IServiceCollection AddDbContexts(this IServiceCollection serviceCollection)
+    public static IServiceCollection? AddDbContexts(this IServiceCollection? serviceCollection)
     {
         serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
         { 
