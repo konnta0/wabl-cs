@@ -14,3 +14,4 @@ ca.crt
 */bin/*
 */obj/*
 */.DS_Store
+Makefile
