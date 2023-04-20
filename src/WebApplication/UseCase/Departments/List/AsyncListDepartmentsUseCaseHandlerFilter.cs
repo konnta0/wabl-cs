@@ -22,7 +22,7 @@ internal partial class AsyncListDepartmentsUseCaseHandlerFilter
         
         var repositoryOutputData = (FindAllDepartmentRepositoryOutputData) await _departmentsRepositoryHandler.InvokeAsync(new FindAllDepartmentRepositoryInputData());
         
-        outputData.Departments = repositoryOutputData.DepartmentsModels!.SelectMany(x => new[]
+        outputData.Departments = repositoryOutputData.DepartmentsEntities!.SelectMany(x => new[]
             { new Department { DepotNo = x.DepotNo, DeptName = x.DeptName } });
         return outputData;
     }

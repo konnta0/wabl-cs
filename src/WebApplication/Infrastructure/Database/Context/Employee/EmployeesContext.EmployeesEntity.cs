@@ -5,5 +5,5 @@ namespace Infrastructure.Database.Context.Employee;
 
 public partial class EmployeesContext
 {
-    public DbSet<DeptEmpEntity> DeptEmpModels => Set<DeptEmpEntity>();
+    public DbSet<EmployeesEntity> EmployeesEntities => Set<EmployeesEntity>();
 }

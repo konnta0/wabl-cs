@@ -5,5 +5,5 @@ namespace Domain.Repository.Department.FindAll;
 [CacheableRepositoryOutputData(nameof(IFindAllDepartmentRepositoryOutputData), TimeSpan.TicksPerMinute)]
 public interface IFindAllDepartmentRepositoryOutputData : IDepartmentRepositoryOutputData
 { 
-    IEnumerable<DepartmentEntity>? DepartmentsModels { get; init; }
+    IEnumerable<DepartmentEntity>? DepartmentsEntities { get; init; }
 }

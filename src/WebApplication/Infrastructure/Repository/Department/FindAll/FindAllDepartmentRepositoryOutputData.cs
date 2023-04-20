@@ -5,5 +5,5 @@ namespace Infrastructure.Repository.Department.FindAll;
 
 public class FindAllDepartmentRepositoryOutputData : IFindAllDepartmentRepositoryOutputData
 {
-    public IEnumerable<DepartmentEntity>? DepartmentsModels { get; init; }
+    public IEnumerable<DepartmentEntity>? DepartmentsEntities { get; init; }
 }
