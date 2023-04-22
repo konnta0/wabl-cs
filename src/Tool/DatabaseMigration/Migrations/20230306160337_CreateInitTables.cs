@@ -107,8 +107,8 @@ namespace DatabaseMigration.Migrations
                 columns: table => new
                 {
                     emp_no = table.Column<int>(type: "int", nullable: false),
+                    title = table.Column<string>(type: "varchar(50)", nullable: false),
                     from_date = table.Column<DateTime>(type: "date", nullable: false),
-                    salary = table.Column<int>(type: "int", nullable: false),
                     to_date = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>

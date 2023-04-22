@@ -143,13 +143,13 @@ namespace DatabaseMigration.Migrations
                         .HasColumnType("int")
                         .HasColumnName("emp_no");
 
+                    b.Property<string>("Title")
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("title");
+
                     b.Property<DateTime>("FromDate")
                         .HasColumnType("date")
                         .HasColumnName("from_date");
-
-                    b.Property<int>("Salary")
-                        .HasColumnType("int")
-                        .HasColumnName("salary");
 
                     b.Property<DateTime>("ToDate")
                         .HasColumnType("date")
