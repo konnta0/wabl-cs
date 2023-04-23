@@ -165,13 +165,14 @@ public abstract class TestBase : IAsyncLifetime
         const int mySqlPort = 3306;
         var solutionDirectory = CommonDirectoryPath.GetSolutionDirectory();
         var databaseImage = new ImageFromDockerfileBuilder()
-            .WithDockerfileDirectory(solutionDirectory, string.Empty)
+            .WithDockerfileDirectory(solutionDirectory, "tests")
             .WithDockerfile("Dockerfile.MySQL")
             .WithName("test-" + Guid.NewGuid().ToString("D"))
             .WithCleanUp(true)
             .Build();
 
         var databaseContainer = new ContainerBuilder()
+            .WithCleanUp(true)
             .WithName("db-" + Guid.NewGuid().ToString("D"))
             .WithImage(databaseImage)
             .WithNetwork(network)

@@ -1,0 +1,5 @@
+FROM mysql:latest
+
+COPY ./database/mysql/my.cnf /etc/mysql/conf.d/my.cnf
+
+HEALTHCHECK --interval=1s CMD mysqladmin ping -h localhost -u root -proot
