@@ -130,15 +130,22 @@ public static class ServiceCollection
         return serviceCollection;
     }
 
-    public static IServiceCollection? AddDbContexts(this IServiceCollection? serviceCollection)
+    public static IServiceCollection AddDbContexts(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
         { 
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
-            optionsBuilder.UseMySql(EmployeesContext.GetConnectionString(), serverVersion, builder => builder.MigrationsAssembly("DatabaseMigration"))
+            optionsBuilder.UseMySql(
+                    EmployeesContext.GetConnectionString(), 
+                    serverVersion,
+                    mySqlOptionsAction =>
+                    {
+                        mySqlOptionsAction.MigrationsAssembly("DatabaseMigration");
+                        mySqlOptionsAction.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), null);
+                    })
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
-        }, ServiceLifetime.Transient);
+        });
         return serviceCollection;
     }
 
