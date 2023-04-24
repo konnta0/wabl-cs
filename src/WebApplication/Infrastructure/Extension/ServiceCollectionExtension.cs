@@ -18,6 +18,7 @@ using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using StackExchange.Redis;
 using ZLogger;
 using ZLogger.Providers;
 
@@ -32,7 +33,8 @@ public static class ServiceCollection
         return serviceCollection
             .AddLogging()
             .AddDbContexts()
-            .AddOpenTelemetryTracing(configuration)
+            .AddCacheClient(out var connectionMultiplexer)
+            .AddOpenTelemetryTracing(connectionMultiplexer)
             .AddOpenTelemetryMetrics(configuration)
             .AddContainer();
     }
@@ -61,7 +63,7 @@ public static class ServiceCollection
             });
     }
 
-    private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection? serviceCollection, IConfiguration configuration)
+    private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, IConnectionMultiplexer connectionMultiplexer)
     {
 
         return serviceCollection.AddOpenTelemetryTracing(builder =>
@@ -84,13 +86,7 @@ public static class ServiceCollection
             builder.AddRepositoryInstrumentation();
             builder.AddUseCaseInstrumentation();
             
-            var connection = CacheClientFactory.CreateVolatileCacheConnectionMultiplexer();
-            serviceCollection.AddTransient<IVolatileCacheClient>(delegate
-            {
-                return new VolatileCacheClient(GlobalLogManager.GetLogger<VolatileCacheClient>(), connection);
-            });
-            serviceCollection.AddSingleton(connection);
-            builder.AddRedisInstrumentation(connection, options =>
+            builder.AddRedisInstrumentation(connectionMultiplexer, options =>
             {
                 options.FlushInterval = TimeSpan.FromSeconds(1);
                 options.SetVerboseDatabaseStatements = true;
@@ -156,12 +152,13 @@ public static class ServiceCollection
         return meterProviderBuilder;
     }
 
-    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection, out IConnectionMultiplexer connection)
     {
-        var connection = CacheClientFactory.CreateVolatileCacheConnectionMultiplexer();
+        connection = CacheClientFactory.CreateVolatileCacheConnectionMultiplexer();
+        var multiplexer = connection;
         serviceCollection.AddTransient<IVolatileCacheClient>(delegate
         {
-            return new VolatileCacheClient(GlobalLogManager.GetLogger<VolatileCacheClient>(), connection);
+            return new VolatileCacheClient(GlobalLogManager.GetLogger<VolatileCacheClient>(), multiplexer);
         });
         serviceCollection.AddSingleton(connection);
         return serviceCollection;
