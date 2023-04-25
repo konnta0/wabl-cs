@@ -45,6 +45,11 @@ abstract class CacheClient : ICacheClient
         return await ConnectionMultiplexer.GetDatabase().KeyPersistAsync(key);
     }
 
+    public virtual async Task<bool> SetAddAsync(string key, string value)
+    {
+        return await ConnectionMultiplexer.GetDatabase().SetAddAsync(key, value);
+    }
+
     public virtual async Task<bool> HashSetAsync<T>(string key, T value)
     {
         return await ConnectionMultiplexer.GetDatabase().HashSetAsync(key, nameof(CacheClient), JsonSerializer.Serialize(value));
