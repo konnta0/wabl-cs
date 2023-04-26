@@ -1,0 +1,6 @@
+FROM redis:latest
+
+COPY ./cache/redis/redis.conf /etc/redis/redis.conf
+COPY ./cache/redis/users.acl /etc/redis/users.acl
+
+HEALTHCHECK --interval=1s CMD redis-cli keys *
