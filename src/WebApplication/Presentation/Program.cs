@@ -1,6 +1,8 @@
 using Cysharp.Text;
+using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Logging;
+using Infrastructure.Database;
 using Infrastructure.Extension;
 using MessagePack.AspNetCoreMvcFormatter;
 using MessagePack.Resolvers;
@@ -35,6 +37,11 @@ GlobalLogManager.SetLoggerFactory(LoggerFactory.Create(loggingBuilder =>
         options.AddInMemoryExporter(new InMemoryLogRecords());
     });
 }), "Global");
+
+builder.Configuration.Bind(nameof(DatabaseConfig),new DatabaseConfig());
+builder.Configuration.Bind(nameof(InstrumentationConfig),new InstrumentationConfig());
+builder.Configuration.Bind(nameof(CacheConfig),new CacheConfig());
+
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddUseCase(builder.Configuration);
 
