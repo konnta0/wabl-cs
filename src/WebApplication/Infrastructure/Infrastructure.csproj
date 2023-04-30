@@ -37,7 +37,6 @@
     <AdditionalFiles Include="../BannedSymbols.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Database" />
     <Folder Include="Repository\Department\FindManyByDeptName" />
   </ItemGroup>
 </Project>
