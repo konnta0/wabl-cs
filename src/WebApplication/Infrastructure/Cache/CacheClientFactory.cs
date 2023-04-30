@@ -1,4 +1,3 @@
-using Infrastructure.Core;
 using Infrastructure.Core.Logging;
 using StackExchange.Redis;
 using ZLogger;
@@ -7,44 +6,15 @@ namespace Infrastructure.Cache;
 
 internal static class CacheClientFactory
 {
-    public static IConnectionMultiplexer CreateVolatileCacheConnectionMultiplexer()
+    public static IConnectionMultiplexer CreateVolatileCacheConnectionMultiplexer(CacheConfig cacheConfig)
     {
-        return Create("CACHE_SERVER_HOST", "CACHE_SERVER_PORT", "CACHE_SERVER_USER", "CACHE_SERVER_PASSWORD");
-    }
-
-    private static IConnectionMultiplexer Create(string hostEnvironmentName, string portEnvironmentName, string userEnvironmentName, string passwordEnvironmentName)
-    {
-        var host = Environment.GetEnvironmentVariable(hostEnvironmentName);
-
-        if (host is null or "")
-        {
-            throw new ApplicationException();
-        }
-
-        if (!int.TryParse(Environment.GetEnvironmentVariable(portEnvironmentName), out var port))
-        {
-            throw new ApplicationException();
-        }
-
-        var user = Environment.GetEnvironmentVariable(userEnvironmentName);
-        if (user is null or "")
-        {
-            throw new ApplicationException();
-        }
-
-        var password = Environment.GetEnvironmentVariable(passwordEnvironmentName);
-        if (user is null or "")
-        {
-            throw new ApplicationException();
-        }
-
         return Create(options =>
         {
             options.AbortOnConnectFail = false;
             options.Ssl = false;
-            options.User = user;
-            options.Password = password;
-            options.EndPoints.Add(host, port);
+            options.User = cacheConfig.User;
+            options.Password = cacheConfig.Password;
+            options.EndPoints.Add(cacheConfig.Host, int.Parse(cacheConfig.Port));
         });
     }
     
@@ -52,7 +22,7 @@ internal static class CacheClientFactory
     {
         var options = new ConfigurationOptions();
         configurationOptions(options);
-        GlobalLogManager.GetLogger(nameof(CacheClientFactory)).ZLogInformationWithPayload(options, "CacheClient options");
+        GlobalLogManager.GetLogger(nameof(CacheClientFactory))?.ZLogInformationWithPayload(options, "CacheClient options");
         return ConnectionMultiplexer.Connect(options);
     }
 }
