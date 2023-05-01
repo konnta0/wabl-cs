@@ -25,34 +25,34 @@ abstract class CacheClient : ICacheClient
         ConnectionMultiplexer.Dispose();
     }
 
-    public virtual async Task<bool> KeyExistsAsync(string key)
+    public virtual Task<bool> KeyExistsAsync(string key)
     {
-        return await ConnectionMultiplexer.GetDatabase().KeyExistsAsync(key);
+        return ConnectionMultiplexer.GetDatabase().KeyExistsAsync(key);
     }
 
-    public virtual async Task<bool> KeyExpireAsync(string key, TimeSpan? expiry)
+    public virtual Task<bool> KeyExpireAsync(string key, TimeSpan? expiry)
     {
-        return await ConnectionMultiplexer.GetDatabase().KeyExpireAsync(key, expiry);
+        return ConnectionMultiplexer.GetDatabase().KeyExpireAsync(key, expiry);
     }
 
-    public virtual async Task<bool> KeyExpireAsync(string key, DateTime? expiry)
+    public virtual Task<bool> KeyExpireAsync(string key, DateTime? expiry)
     {
-        return await ConnectionMultiplexer.GetDatabase().KeyExpireAsync(key, expiry);
+        return ConnectionMultiplexer.GetDatabase().KeyExpireAsync(key, expiry);
     }
 
-    public virtual async Task<bool> KeyPersistAsync(string key)
+    public virtual Task<bool> KeyPersistAsync(string key)
     {
-        return await ConnectionMultiplexer.GetDatabase().KeyPersistAsync(key);
+        return ConnectionMultiplexer.GetDatabase().KeyPersistAsync(key);
     }
 
-    public virtual async Task<bool> SetAddAsync(string key, string value)
+    public virtual Task<bool> SetAddAsync(string key, string value)
     {
-        return await ConnectionMultiplexer.GetDatabase().SetAddAsync(key, value);
+        return ConnectionMultiplexer.GetDatabase().SetAddAsync(key, value);
     }
 
-    public virtual async Task<bool> HashSetAsync<T>(string key, T value)
+    public virtual Task<bool> HashSetAsync<T>(string key, T value)
     {
-        return await ConnectionMultiplexer.GetDatabase().HashSetAsync(key, nameof(CacheClient), JsonSerializer.Serialize(value));
+        return ConnectionMultiplexer.GetDatabase().HashSetAsync(key, nameof(CacheClient), JsonSerializer.Serialize(value));
     }
 
     public virtual async Task<T?> HashGetAsync<T>(string key)
@@ -69,8 +69,8 @@ abstract class CacheClient : ICacheClient
         return cacheValue;
     }
 
-    public virtual async Task<bool> KeyDeleteAsync<T>(string key)
+    public virtual Task<bool> KeyDeleteAsync<T>(string key)
     {
-        return await ConnectionMultiplexer.GetDatabase().KeyDeleteAsync(key);
+        return ConnectionMultiplexer.GetDatabase().KeyDeleteAsync(key);
     }
 }
