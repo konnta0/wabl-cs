@@ -5,6 +5,7 @@ using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Instrumentation.UseCase.Meter;
 using Infrastructure.Core.Logging;
 using Infrastructure.Core.RequestHandler;
+using Infrastructure.Database;
 using Infrastructure.Database.Context.Employee;
 using Infrastructure.Extension.HealthCheck;
 using Infrastructure.Extension.Instrumentation;
@@ -24,18 +25,18 @@ using ZLogger.Providers;
 
 namespace Infrastructure.Extension;
 
-public static class ServiceCollection
+public static class ServiceCollectionExtension
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         serviceCollection.AddHealthChecks().AddChecks();
-            
+
         return serviceCollection
             .AddLogging()
-            .AddDbContexts()
-            .AddCacheClient(out var connectionMultiplexer)
+            .AddDbContexts(configuration.Get<DatabaseConfig>())
+            .AddCacheClient(configuration.Get<CacheConfig>(), out var connectionMultiplexer)
             .AddOpenTelemetryTracing(connectionMultiplexer)
-            .AddOpenTelemetryMetrics(configuration)
+            .AddOpenTelemetryMetrics(configuration.Get<InstrumentationConfig>())
             .AddContainer();
     }
 
@@ -101,20 +102,18 @@ public static class ServiceCollection
         });
     }
 
-    private static IServiceCollection AddOpenTelemetryMetrics(this IServiceCollection serviceCollection,
-        IConfiguration configuration)
+    private static IServiceCollection AddOpenTelemetryMetrics(this IServiceCollection serviceCollection, InstrumentationConfig instrumentationConfig)
     {
         return serviceCollection.AddOpenTelemetryMetrics(builder =>
         {
-            builder.SetResourceBuilder(ResourceBuilder.CreateDefault()
-                .AddService(Environment.GetEnvironmentVariable("OTLP_SERVER_NAME")));
+            builder.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(instrumentationConfig.ServiceName));
             builder.AddWebApplicationInstrumentation();
             builder.AddAspNetCoreInstrumentation();
             builder.AddHttpClientInstrumentation();
 
             builder.AddOtlpExporter(options =>
             {
-                options.Endpoint = new Uri(Environment.GetEnvironmentVariable("OTLP_ENDPOINT") ?? string.Empty);
+                options.Endpoint = new Uri(instrumentationConfig.Endpoint);
             });
             
         }).AddSingleton<IUseCaseInstrumentationMeter, UseCaseInstrumentationMeter>();
@@ -126,13 +125,13 @@ public static class ServiceCollection
         return serviceCollection;
     }
 
-    public static IServiceCollection AddDbContexts(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddDbContexts(this IServiceCollection serviceCollection, DatabaseConfig databaseConfig)
     {
         serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
         { 
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
             optionsBuilder.UseMySql(
-                    EmployeesContext.GetConnectionString(), 
+                    EmployeesContext.GetConnectionString(databaseConfig),
                     serverVersion,
                     mySqlOptionsAction =>
                     {
@@ -152,13 +151,13 @@ public static class ServiceCollection
         return meterProviderBuilder;
     }
 
-    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection, out IConnectionMultiplexer connection)
+    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection, CacheConfig cacheConfig, out IConnectionMultiplexer connection)
     {
-        connection = CacheClientFactory.CreateVolatileCacheConnectionMultiplexer();
+        connection = CacheClientFactory.CreateVolatileCacheConnectionMultiplexer(cacheConfig);
         var multiplexer = connection;
         serviceCollection.AddTransient<IVolatileCacheClient>(delegate
         {
-            return new VolatileCacheClient(GlobalLogManager.GetLogger<VolatileCacheClient>(), multiplexer);
+            return new VolatileCacheClient(GlobalLogManager.GetLogger<VolatileCacheClient>()!, multiplexer);
         });
         serviceCollection.AddSingleton(connection);
         return serviceCollection;
