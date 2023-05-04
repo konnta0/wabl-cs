@@ -13,12 +13,8 @@ public partial class EmployeesContext : DbContext
         new EmployeesContextOnModelCreatingDispatcher().Invoke(modelBuilder);
     }
 
-    public static string GetConnectionString()
+    public static string GetConnectionString(DatabaseConfig databaseConfig)
     {
-        var server = Environment.GetEnvironmentVariable("DB_SERVER_HOST");
-        var port = Environment.GetEnvironmentVariable("DB_SERVER_PORT");
-        var user = Environment.GetEnvironmentVariable("DB_SERVER_USER");
-        var password = Environment.GetEnvironmentVariable("DB_SERVER_PASSWORD");
-        return $"server={server};port={port};user={user};password={password};Database=employees";
+        return $"server={databaseConfig.ServerHost};port={databaseConfig.ServerPort};user={databaseConfig.ServerUser};password={databaseConfig.ServerPassword};Database=employees";
     }
 }
