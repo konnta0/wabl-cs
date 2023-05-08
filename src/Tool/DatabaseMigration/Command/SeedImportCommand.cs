@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
 using Domain.Entity;
@@ -26,7 +27,8 @@ public class SeedImportCommand : ConsoleAppBase
         [Option("r", "reset table.")] bool resetTable = true,
         [Option("s", "seed directory path")] string seedPath = "/src/Seed")
     {
-        Console.WriteLine(Context.Timestamp);
+        _logger.ZLogInformation(Context.Timestamp.ToString(CultureInfo.InvariantCulture));
+        _logger.ZLogInformationWithPayload(tableName, "Start seed import");
 
         foreach (var dbContext in _dbContextHolder.GetAll())
         {
