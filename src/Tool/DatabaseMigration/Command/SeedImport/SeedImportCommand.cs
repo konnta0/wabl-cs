@@ -22,7 +22,7 @@ public class SeedImportCommand : ConsoleAppBase
     }
 
     [Command("seed-import")]
-    public async ValueTask Run([Option("t", "target table")] string tableName = "",
+    public async ValueTask RunAsync([Option("t", "target table")] string tableName = "",
         [Option("r", "reset table.")] bool resetTable = true,
         [Option("s", "seed directory path")] string seedPath = "/src/Seed")
     {
