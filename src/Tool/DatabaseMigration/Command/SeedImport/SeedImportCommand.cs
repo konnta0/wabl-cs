@@ -7,9 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace DatabaseMigration.Command;
+namespace DatabaseMigration.Command.SeedImport;
 
-[Command("seed-import")]
 // ReSharper disable once ClassNeverInstantiated.Global
 public class SeedImportCommand : ConsoleAppBase
 {
@@ -22,8 +21,8 @@ public class SeedImportCommand : ConsoleAppBase
         _dbContextHolder = dbContextHolder;
     }
 
-    [RootCommand]
-    public async Task Run([Option("t", "target table")] string tableName = "",
+    [Command("seed-import")]
+    public async ValueTask Run([Option("t", "target table")] string tableName = "",
         [Option("r", "reset table.")] bool resetTable = true,
         [Option("s", "seed directory path")] string seedPath = "/src/Seed")
     {
