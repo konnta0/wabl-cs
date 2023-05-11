@@ -1,15 +1,20 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Networks;
+using Infrastructure.Cache;
+using Infrastructure.Database;
 using Xunit;
 
 namespace WebApplication.Test;
 
 public abstract class TestBase : IAsyncLifetime
 {
+    protected DatabaseConfig? DatabaseConfig = null;
+    protected CacheConfig? CacheConfig = null;
 
     private const string MagicNumberHost = "deep-thought";
     private readonly TestBaseOptions _options;
@@ -27,7 +32,7 @@ public abstract class TestBase : IAsyncLifetime
         _options = new TestBaseOptions();
         options?.Invoke(_options);
     }
-    
+
     public async Task InitializeAsync()
     { 
         await SetUpCoreAsync();
@@ -47,12 +52,12 @@ public abstract class TestBase : IAsyncLifetime
     {
         return Task.CompletedTask;
     }
-    
+
     private async Task SetUpCoreAsync()
     {
         await SetEnvironmentVariablesAsync();
 
-        using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(5)); 
+        using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(1)); 
         INetwork network = null!;
         if (_options.UseTestContainers)
         {
@@ -63,16 +68,18 @@ public abstract class TestBase : IAsyncLifetime
              await network.CreateAsync(cts.Token);
         }
 
+        var createDataStoresTasks = new List<Task>();
         if (_options.UseDatabase)
         {
-            await SetUpDatabaseContainerAsync(network, cts.Token);
+            createDataStoresTasks.Add(SetUpDatabaseContainerAsync(network, cts.Token));
         }
 
         if (_options.UseCache)
         {
-            await SetUpCacheContainerAsync(network, cts.Token);
+            createDataStoresTasks.Add(SetUpCacheContainerAsync(network, cts.Token));
         }
 
+        await Task.WhenAll(createDataStoresTasks);
         await SetUpAsync();
     }
     
@@ -96,7 +103,6 @@ public abstract class TestBase : IAsyncLifetime
 
             Environment.SetEnvironmentVariable(parts[0], parts[1]);
         }
-        
     }
     
     private async Task SetUpDatabaseContainerAsync(INetwork network, CancellationToken cancellationToken)
@@ -126,11 +132,14 @@ public abstract class TestBase : IAsyncLifetime
 
         await databaseImage.CreateAsync(cancellationToken);
         await databaseContainer.StartAsync(cancellationToken);
-        
-        Environment.SetEnvironmentVariable("DB_SERVER_HOST", databaseContainer.Hostname);
-        Environment.SetEnvironmentVariable("DB_SERVER_PORT", databaseContainer.GetMappedPublicPort(mySqlPort).ToString());
-        Environment.SetEnvironmentVariable("DB_SERVER_USER", "root");
-        Environment.SetEnvironmentVariable("DB_SERVER_PASSWORD", "root");
+
+        DatabaseConfig = new DatabaseConfig
+        {
+            ServerHost = databaseContainer.Hostname,
+            ServerPort = databaseContainer.GetMappedPublicPort(mySqlPort).ToString(),
+            ServerUser = "root",
+            ServerPassword = "root"
+        };
     }
 
     private async Task SetUpCacheContainerAsync(INetwork network, CancellationToken cancellationToken)
@@ -144,7 +153,7 @@ public abstract class TestBase : IAsyncLifetime
             .WithCleanUp(true)
             .Build();
 
-        var databaseContainer = new ContainerBuilder()
+        var cacheContainer = new ContainerBuilder()
             .WithCleanUp(true)
             .WithName("cache-" + Guid.NewGuid().ToString("D"))
             .WithImage(cacheImage)
@@ -152,13 +161,18 @@ public abstract class TestBase : IAsyncLifetime
             .WithNetworkAliases(MagicNumberHost)
             .WithExposedPort(redisPort)
             .WithPortBinding(redisPort, true)
-            .WithEnvironment("MYSQL_ROOT_PASSWORD", "root")
-            .WithEnvironment("MYSQL_ALLOW_EMPTY_PASSWORD", string.Empty)
-            .WithEnvironment("MYSQL_RANDOM_ROOT_PASSWORD", string.Empty)
             .WithWaitStrategy(Wait.ForUnixContainer().UntilContainerIsHealthy(30))
             .Build();
 
         await cacheImage.CreateAsync(cancellationToken);
-        await databaseContainer.StartAsync(cancellationToken);
+        await cacheContainer.StartAsync(cancellationToken);
+
+        CacheConfig = new CacheConfig
+        {
+            Host = cacheContainer.Hostname,
+            Port = cacheContainer.GetMappedPublicPort(redisPort).ToString(),
+            User = "redis",
+            Password = "redis"
+        };
     }
 }
