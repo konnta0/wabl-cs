@@ -14,7 +14,7 @@ public class GoogleApiHelper : IGoogleApiHelper
 
     public async ValueTask<GoogleCredential> GetGoogleCredentialAsync(string credentialPath, params string[] scopes)
     {
-        await using var stream = new FileStream(credentialPath, FileMode.Open, FileAccess.Read);
-        return GoogleCredential.FromStream(stream).CreateScoped(scopes);
+        var credential = await GoogleCredential.GetApplicationDefaultAsync();
+        return credential.CreateScoped(scopes);
     }
 }
