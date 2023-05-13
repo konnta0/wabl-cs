@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "SeedCreate": {
+      "commandName": "Project",
+      "commandLineArgs": "seed-create -g testgroup -t testtable -c /Users/ks/Downloads/sandbox-386115-5ad4bc920c96.json -o /path/to",
+      "environmentVariables": {
+        "DB_SERVER_HOST":"host.docker.internal",
+        "DB_SERVER_PORT":"3306",
+        "DB_SERVER_USER":"root",
+        "DB_SERVER_PASSWORD":"root",
+        "OTLP_SERVER_NAME":"dotnet-metric",
+        "OTLP_ENDPOINT":"http://otel-collector:4317",
+        "CACHE_SERVER_HOST":"app_cache",
+        "CACHE_SERVER_PORT":"6379",
+        "CACHE_SERVER_USER":"redis",
+        "CACHE_SERVER_PASSWORD":"redis",
+        "GOOGLE_APPLICATION_CREDENTIALS": ""
+      }
+    }
+  }
+}
