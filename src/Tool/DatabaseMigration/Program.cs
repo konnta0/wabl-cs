@@ -1,5 +1,5 @@
 using DatabaseMigration;
-using DatabaseMigration.Command;
+using DatabaseMigration.Command.SeedImport;
 using Infrastructure.Cache;
 using Infrastructure.Database;
 using Infrastructure.Extension;
