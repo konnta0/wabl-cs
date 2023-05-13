@@ -13,6 +13,8 @@
 
     <ItemGroup>
       <PackageReference Include="ConsoleAppFramework" Version="4.0.6" />
+      <PackageReference Include="Google.Apis.Drive.v3" Version="1.60.0.3034" />
+      <PackageReference Include="Google.Apis.Sheets.v4" Version="1.60.0.2979" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.3">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
