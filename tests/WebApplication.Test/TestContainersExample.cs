@@ -5,6 +5,7 @@ using Bogus;
 using Domain.Entity.Employee;
 using FluentAssertions;
 using Infrastructure.Database.Context.Employee;
+using Infrastructure.Extension;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
@@ -19,7 +20,7 @@ public class TestContainersExample : TestBase
     {
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddLogging();
-        Infrastructure.Extension.ServiceCollection.AddDbContexts(serviceCollection);
+        serviceCollection.AddDbContexts(DatabaseConfig!);
         
         _serviceProvider = serviceCollection.BuildServiceProvider();
         var employeesContext = _serviceProvider!.GetRequiredService<EmployeesContext>();
