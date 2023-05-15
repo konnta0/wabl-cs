@@ -3,7 +3,7 @@
   "profiles": {
     "SeedCreate": {
       "commandName": "Project",
-      "commandLineArgs": "seed-create -g testgroup -t testtable -c /Users/ks/Downloads/sandbox-386115-5ad4bc920c96.json -o /path/to",
+      "commandLineArgs": "seed-create -g testgroup -t testtable -o /path/to",
       "environmentVariables": {
         "DB_SERVER_HOST":"host.docker.internal",
         "DB_SERVER_PORT":"3306",
