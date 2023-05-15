@@ -12,7 +12,7 @@ public class GoogleApiHelper : IGoogleApiHelper
         _logger = logger;
     }
 
-    public async ValueTask<GoogleCredential> GetGoogleCredentialAsync(string credentialPath, params string[] scopes)
+    public async ValueTask<GoogleCredential> GetGoogleCredentialAsync(params string[] scopes)
     {
         var credential = await GoogleCredential.GetApplicationDefaultAsync();
         return credential.CreateScoped(scopes);

@@ -4,5 +4,5 @@ namespace DatabaseMigration.Command;
 
 public interface IGoogleApiHelper
 {
-    ValueTask<GoogleCredential> GetGoogleCredentialAsync(string credentialPath, params string[] scopes);
+    ValueTask<GoogleCredential> GetGoogleCredentialAsync(params string[] scopes);
 }
