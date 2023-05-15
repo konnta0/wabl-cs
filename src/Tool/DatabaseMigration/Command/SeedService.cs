@@ -30,19 +30,26 @@ public class SeedService : ISeedService
         
         (_sheetsService, _driveService) = InitializeGoogleApis(credential);
 
-        var listRequest = _driveService.Files.List();
-        listRequest.IncludeTeamDriveItems = true;
-        listRequest.SupportsTeamDrives = true;
-        listRequest.Q = $"'{_config.Value.SpreadsheetFolderId}' in parents and trashed = false";
-        var files = await listRequest.ExecuteAsync();
-        
-        var file = files.Files.FirstOrDefault(x => x.Name == tableGroupName);
+        var file = await FindFileAsync(_config.Value.SpreadsheetFolderId, tableGroupName);
         var alreadyCreatedSpreadSheet = file is not null;
 
-        if (!alreadyCreatedSpreadSheet)
+        if (alreadyCreatedSpreadSheet)
+        {
+            var sheet = await FindSheetAsync(file!.Id, tableName);
+            if (sheet is not null)
+            {
+                throw new ApplicationException($"Table {tableName} already exists in {tableGroupName}.");
+            }
+
+            var copiedSheet = await CopySheetFromTemplateAsync(file.Id);
+            if (copiedSheet is null)
+            {
+                throw new ApplicationException("");
+            }
+        }
+        else
         {
             var createdSpreadSheet = await CopySpreadsheetFromTemplateAsync(tableGroupName);
-            
         }
         
     }
@@ -63,6 +70,28 @@ public class SeedService : ISeedService
         return (sheetsService, driveService);
     }
 
+    private async Task<File?> FindFileAsync(string parentFolderId, string fileName)
+    {
+        if (_driveService is null)
+            throw new ApplicationException("DriveService is not initialized.");
+
+        var listRequest = _driveService.Files.List();
+        listRequest.IncludeTeamDriveItems = true;
+        listRequest.SupportsTeamDrives = true;
+        listRequest.Q = $"'{parentFolderId}' in parents and trashed = false";
+        var files = await listRequest.ExecuteAsync();
+
+        return files.Files.FirstOrDefault(x => x.Name == fileName);
+    }
+
+    private async Task<Sheet?> FindSheetAsync(string spreadSheetId, string sheetName)
+    {
+        if (_sheetsService is null)
+            throw new ApplicationException("SheetsService is not initialized.");
+        
+        var spreadSheet = await _sheetsService.Spreadsheets.Get(spreadSheetId).ExecuteAsync();
+        return spreadSheet?.Sheets.FirstOrDefault(x => x.Properties.Title == sheetName);
+    }
     
     private Task<File> CopySpreadsheetFromTemplateAsync(string title)
     {
@@ -83,5 +112,20 @@ public class SeedService : ISeedService
         var updateRequest = _driveService.Files.Update(copiedFile, fileId);
         return updateRequest.ExecuteAsync();
     }
-    
+
+    private async Task<int?> CopySheetFromTemplateAsync(string destinationSpreadsheetId)
+    {
+        if (_sheetsService is null)
+            throw new ApplicationException("SheetsService is not initialized.");
+
+        var copySheetToAnotherSpreadsheetRequest = new CopySheetToAnotherSpreadsheetRequest
+        {
+            DestinationSpreadsheetId = destinationSpreadsheetId
+        };
+        
+        var copyToRequest =_sheetsService.Spreadsheets.Sheets.CopyTo(copySheetToAnotherSpreadsheetRequest, _config.Value.TemplateSpreadsheetId, 0);
+        var response = await copyToRequest.ExecuteAsync();
+
+        return response?.SheetId;
+    }
 }
