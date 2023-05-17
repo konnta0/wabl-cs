@@ -1,4 +1,6 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using DatabaseMigration.Command.SeedCreate;
+using Domain.Entity;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
 using Google.Apis.Http;
@@ -27,12 +29,21 @@ public class SeedService : ISeedService
         {
             throw new ArgumentException("table group name and table name should not be empty.");
         }
-        
+
+        var entity = FindEntity(tableName);
+        if (entity is null)
+        {
+            throw new ArgumentException($"Table {tableName} is not found.");
+        }
+
         (_sheetsService, _driveService) = InitializeGoogleApis(credential);
 
         var file = await FindFileAsync(_config.Value.SpreadsheetFolderId, tableGroupName);
         var alreadyCreatedSpreadSheet = file is not null;
 
+        string sheetTitle;
+        string spreadsheetId;
+        int sheetId;
         if (alreadyCreatedSpreadSheet)
         {
             var sheet = await FindSheetAsync(file!.Id, tableName);
@@ -41,15 +52,39 @@ public class SeedService : ISeedService
                 throw new ApplicationException($"Table {tableName} already exists in {tableGroupName}.");
             }
 
-            var copiedSheet = await CopySheetFromTemplateAsync(file.Id);
-            if (copiedSheet is null)
+            var copiedSheetId = await CopySheetFromTemplateAsync(file.Id);
+            if (copiedSheetId is null)
             {
-                throw new ApplicationException("");
+                throw new ApplicationException($"Failed to copy sheet {tableName} from template.");
             }
+
+            sheet = await FindSheetAsync(file.Id, copiedSheetId.Value);
+            if (sheet is null)
+            {
+                throw new ApplicationException($"Failed to find sheet {tableName}.");
+            }
+
+            sheetTitle = sheet.Properties.Title;
+            sheetId = sheet.Properties.SheetId!.Value;
+            spreadsheetId = file.Id;
         }
         else
         {
-            var createdSpreadSheet = await CopySpreadsheetFromTemplateAsync(tableGroupName);
+            var createdSpreadsheet = await CopySpreadsheetFromTemplateAsync(tableGroupName);
+            if (createdSpreadsheet is null)
+            {
+                throw new ApplicationException($"Failed to create spreadsheet {tableGroupName}.");
+            }
+            
+            var sheet = await FindSheetAsync(createdSpreadsheet.Id, "Sheet");
+            if (createdSpreadsheet is null)
+            {
+                throw new ApplicationException("Failed to find sheet.");
+            }
+
+            sheetTitle = sheet.Properties.Title;
+            sheetId = sheet.Properties.SheetId!.Value;
+            spreadsheetId = createdSpreadsheet.Id;
         }
         
     }
@@ -92,6 +127,15 @@ public class SeedService : ISeedService
         var spreadSheet = await _sheetsService.Spreadsheets.Get(spreadSheetId).ExecuteAsync();
         return spreadSheet?.Sheets.FirstOrDefault(x => x.Properties.Title == sheetName);
     }
+
+    private async Task<Sheet?> FindSheetAsync(string spreadSheetId, int sheetId)
+    {
+        if (_sheetsService is null)
+            throw new ApplicationException("SheetsService is not initialized.");
+        
+        var spreadSheet = await _sheetsService.Spreadsheets.Get(spreadSheetId).ExecuteAsync();
+        return spreadSheet?.Sheets.FirstOrDefault(x => x.Properties.SheetId == sheetId);
+    }
     
     private Task<File> CopySpreadsheetFromTemplateAsync(string title)
     {
@@ -127,5 +171,21 @@ public class SeedService : ISeedService
         var response = await copyToRequest.ExecuteAsync();
 
         return response?.SheetId;
+    }
+    
+    private IEntity? FindEntity(string tableName)
+    {
+        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        var entityTypes = assemblies
+            .SelectMany(x => x.GetTypes())
+            .Where(x => x is { IsClass: true, IsAbstract: false, IsInterface: false } && typeof(IEntity).IsAssignableFrom(x))
+            .ToList();
+
+        var entityType = entityTypes.FirstOrDefault(x => x.GetCustomAttributes(false)
+            .Any(y => y.GetType() == typeof(TableAttribute) && ((TableAttribute)y).Name == tableName));
+
+        if (entityType is null) return null;
+
+        return (IEntity)Activator.CreateInstance(entityType)!;
     }
 }
