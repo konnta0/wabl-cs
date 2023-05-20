@@ -110,30 +110,48 @@ public class SeedService : ISeedService
         if (_driveService is null)
             throw new ApplicationException("DriveService is not initialized.");
 
+        var files = await FindFilesByFolderIdAsync(parentFolderId);
+
+        return files.FirstOrDefault(x => x.Name == fileName);
+    }
+
+    private async Task<IList<File>> FindFilesByFolderIdAsync(string parentFolderId)
+    {
+        if (_driveService is null)
+            throw new ApplicationException("DriveService is not initialized.");
+
         var listRequest = _driveService.Files.List();
         listRequest.IncludeTeamDriveItems = true;
         listRequest.SupportsTeamDrives = true;
         listRequest.Q = $"'{parentFolderId}' in parents and trashed = false";
         var files = await listRequest.ExecuteAsync();
-
-        return files.Files.FirstOrDefault(x => x.Name == fileName);
+        return files.Files;
     }
 
-    private async Task<Sheet?> FindSheetAsync(string spreadSheetId, string sheetName)
+    private async Task<Sheet?> FindSheetAsync(string spreadsheetId, string sheetName)
     {
         if (_sheetsService is null)
             throw new ApplicationException("SheetsService is not initialized.");
         
-        var spreadSheet = await _sheetsService.Spreadsheets.Get(spreadSheetId).ExecuteAsync();
+        var spreadSheet = await _sheetsService.Spreadsheets.Get(spreadsheetId).ExecuteAsync();
         return spreadSheet?.Sheets.FirstOrDefault(x => x.Properties.Title == sheetName);
     }
+    
+    private async Task<IList<Sheet>?> FindSheetBySpreadsheetIdAsync(string spreadsheetId) 
+    {
+        if (_sheetsService is null)
+            throw new ApplicationException("SheetsService is not initialized.");
 
-    private async Task<Sheet?> FindSheetAsync(string spreadSheetId, int sheetId)
+        var spreadSheet = await _sheetsService.Spreadsheets.Get(spreadsheetId).ExecuteAsync();
+        return spreadSheet?.Sheets;
+    }
+
+    private async Task<Sheet?> FindSheetAsync(string spreadsheetId, int sheetId)
     {
         if (_sheetsService is null)
             throw new ApplicationException("SheetsService is not initialized.");
         
-        var spreadSheet = await _sheetsService.Spreadsheets.Get(spreadSheetId).ExecuteAsync();
+        var spreadSheet = await _sheetsService.Spreadsheets.Get(spreadsheetId).ExecuteAsync();
         return spreadSheet?.Sheets.FirstOrDefault(x => x.Properties.SheetId == sheetId);
     }
     
