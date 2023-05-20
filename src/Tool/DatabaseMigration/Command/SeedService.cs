@@ -12,12 +12,13 @@ using File = Google.Apis.Drive.v3.Data.File;
 
 namespace DatabaseMigration.Command;
 
-public class SeedService : ISeedService
+public class SeedService : ISeedService, IDisposable
 {
     private readonly IOptions<SeedCreateConfig> _config;
     private SheetsService? _sheetsService;
     private DriveService? _driveService;
-
+    private bool _disposed;
+    
     public SeedService(IOptions<SeedCreateConfig> config)
     {
         _config = config;
@@ -205,5 +206,13 @@ public class SeedService : ISeedService
         if (entityType is null) return null;
 
         return (IEntity)Activator.CreateInstance(entityType)!;
+    }
+
+    public void Dispose()
+    {
+        if (_disposed) return;
+        _sheetsService?.Dispose();
+        _driveService?.Dispose();
+        _disposed = true;
     }
 }
