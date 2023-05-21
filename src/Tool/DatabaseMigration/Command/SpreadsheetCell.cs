@@ -28,5 +28,24 @@ public class SpreadsheetCell
         ColumnIndex = Column.Aggregate(0, (current, c) => current * 26 + c - 'A' + 1);        
     }
 
+    public SpreadsheetCell(int column, int row)
+    {
+        RowIndex = row;
+        ColumnIndex = column;
+        Row = row.ToString();
+        Column = string.Empty;
+        while (column > 0)
+        {
+            var remainder = column % 26;
+            if (remainder == 0)
+            {
+                remainder = 26;
+            }
+            Column = (char)('A' + remainder - 1) + Column;
+            column = (column - remainder) / 26;
+        }
+        Cell = Column + Row;
+    }
+    
     public override string ToString() => Cell;
 }
