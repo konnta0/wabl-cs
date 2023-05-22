@@ -121,7 +121,7 @@ public class SeedService : ISeedService, IDisposable
                 ranges.AddRange(new []
                 {
                     $"{sheet.Properties.Title}!{_config.Value.ColumnLabelStartCell}:{new SpreadsheetCell(sheet.Properties.GridProperties.ColumnCount!.Value, _config.Value.ColumnLabelStartCell.RowIndex)}",
-                    $"{sheet.Properties.Title}!{_config.Value.RowLabelStartCell}:{new SpreadsheetCell(_config.Value.ColumnLabelStartCell.ColumnIndex, sheet.Properties.GridProperties.RowCount!.Value)}",
+                    $"{sheet.Properties.Title}!{_config.Value.RowLabelStartCell}:{new SpreadsheetCell(_config.Value.RowLabelStartCell.ColumnIndex, sheet.Properties.GridProperties.RowCount!.Value)}",
                 });
             }
             
