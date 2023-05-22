@@ -89,6 +89,93 @@ public class SeedService : ISeedService, IDisposable
         
     }
 
+    public async ValueTask RenameLabelsAsync(GoogleCredential credential, string tableGroupName, string tableName, string[] labels,
+        string newLabel)
+    {
+        if (string.IsNullOrEmpty(tableGroupName) || string.IsNullOrEmpty(tableName))
+        {
+            throw new ArgumentException("table group name and table name should not be empty.");
+        }
+
+        if (labels.Length is 0 || string.IsNullOrEmpty(newLabel))
+        {
+            throw new ArgumentException("labels and new label should not be empty.");
+        }
+
+        (_sheetsService, _) = InitializeGoogleApis(credential);
+
+        var files = await FindFilesByFolderIdAsync(_config.Value.SpreadsheetFolderId);
+
+        for (var i = 0; i < files.Count; i++)
+        {
+            var spreadsheetId = files[i].Id;
+            var sheets = await FindSheetBySpreadsheetIdAsync(spreadsheetId);
+            if (sheets is null)
+            {
+                continue;
+            }
+
+            var ranges = new List<string>(sheets.Count * 2); // 2 = label column and row
+            foreach (var sheet in sheets)
+            {
+                ranges.AddRange(new []
+                {
+                    $"{sheet.Properties.Title}!{_config.Value.ColumnLabelStartCell}:{new SpreadsheetCell(sheet.Properties.GridProperties.ColumnCount!.Value, _config.Value.ColumnLabelStartCell.RowIndex)}",
+                    $"{sheet.Properties.Title}!{_config.Value.RowLabelStartCell}:{new SpreadsheetCell(_config.Value.ColumnLabelStartCell.ColumnIndex, sheet.Properties.GridProperties.RowCount!.Value)}",
+                });
+            }
+            
+            var updateValueRanges = new List<ValueRange>();
+            var valueRanges = await GetRangesAsync(spreadsheetId, ranges);
+
+            if (valueRanges is null)
+            {
+                continue;'
+            }
+            
+            foreach (var valueRange in valueRanges)
+            {
+                if (valueRange.Values is null) continue;
+                
+                var modified = false;
+                var values = new List<IList<object?>>(valueRange.Values);
+
+                for (var v = 0; v < valueRange.Values.Count; v++)
+                {
+                    var row = valueRange.Values[v];
+                    for (var j = 0; j < row.Count; j++)
+                    {
+                        var value = row[j];
+                        if (value is null) continue;
+
+                        if (!labels.Contains(value.ToString())) continue;
+
+                        values[v][j] = newLabel;
+                        modified = true;
+                    }
+                }
+
+                if (modified)
+                {
+                    updateValueRanges.Add(new ValueRange
+                    {
+                        Values = values,
+                        Range = valueRange.Range
+                    });
+                }
+            }
+
+            if (!updateValueRanges.Any()) continue;
+
+            var batchUpdateValuesRequest = new BatchUpdateValuesRequest
+            {
+                Data = updateValueRanges,
+                ValueInputOption = "USER_ENTERED"
+            };
+            await _sheetsService.Spreadsheets.Values.BatchUpdate(batchUpdateValuesRequest, spreadsheetId).ExecuteAsync();
+        }
+    }
+    
     private (SheetsService sheetsService, DriveService driveService) InitializeGoogleApis(IConfigurableHttpClientInitializer credential)
     {
         var sheetsService = new SheetsService(new BaseClientService.Initializer
@@ -153,6 +240,21 @@ public class SeedService : ISeedService, IDisposable
         
         var spreadSheet = await _sheetsService.Spreadsheets.Get(spreadsheetId).ExecuteAsync();
         return spreadSheet?.Sheets.FirstOrDefault(x => x.Properties.SheetId == sheetId);
+    }
+
+    private async Task<IList<ValueRange>?> GetRangesAsync(string spreadsheetId, IReadOnlyList<string> ranges,
+        SpreadsheetsResource.ValuesResource.BatchGetRequest.MajorDimensionEnum majorDimension = SpreadsheetsResource.ValuesResource.BatchGetRequest.MajorDimensionEnum.ROWS)
+    {
+        if (_sheetsService is null) 
+            throw new ApplicationException("SheetsService is not initialized.");
+        var request = new SpreadsheetsResource.ValuesResource.BatchGetRequest(_sheetsService, spreadsheetId)
+        {
+            Ranges = ranges.ToArray(),
+            MajorDimension = majorDimension
+        };
+
+        var response = await request.ExecuteAsync();
+        return response?.ValueRanges;
     }
     
     private Task<File> CopySpreadsheetFromTemplateAsync(string title)
