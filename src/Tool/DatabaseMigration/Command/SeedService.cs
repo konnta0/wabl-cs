@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using DatabaseMigration.Command.SeedCreate;
 using Domain.Entity;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
@@ -14,12 +13,12 @@ namespace DatabaseMigration.Command;
 
 public class SeedService : ISeedService, IDisposable
 {
-    private readonly IOptions<SeedCreateConfig> _config;
+    private readonly IOptions<SeedServiceConfig> _config;
     private SheetsService? _sheetsService;
     private DriveService? _driveService;
     private bool _disposed;
     
-    public SeedService(IOptions<SeedCreateConfig> config)
+    public SeedService(IOptions<SeedServiceConfig> config)
     {
         _config = config;
     }
