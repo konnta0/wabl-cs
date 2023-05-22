@@ -130,7 +130,7 @@ public class SeedService : ISeedService, IDisposable
 
             if (valueRanges is null)
             {
-                continue;'
+                continue;
             }
             
             foreach (var valueRange in valueRanges)
