@@ -89,20 +89,14 @@ public class SeedService : ISeedService, IDisposable
         
     }
 
-    public async ValueTask RenameLabelsAsync(GoogleCredential credential, string tableGroupName, string tableName, string[] labels,
-        string newLabel)
+    public async ValueTask RenameLabelsAsync(GoogleCredential credential, string[] labels, string newLabel)
     {
-        if (string.IsNullOrEmpty(tableGroupName) || string.IsNullOrEmpty(tableName))
-        {
-            throw new ArgumentException("table group name and table name should not be empty.");
-        }
-
         if (labels.Length is 0 || string.IsNullOrEmpty(newLabel))
         {
             throw new ArgumentException("labels and new label should not be empty.");
         }
 
-        (_sheetsService, _) = InitializeGoogleApis(credential);
+        (_sheetsService, _driveService) = InitializeGoogleApis(credential);
 
         var files = await FindFilesByFolderIdAsync(_config.Value.SpreadsheetFolderId);
 
