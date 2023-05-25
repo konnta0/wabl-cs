@@ -41,12 +41,11 @@ public class SeedService : ISeedService, IDisposable
         var file = await FindFileAsync(_config.Value.SpreadsheetFolderId, tableGroupName);
         var alreadyCreatedSpreadSheet = file is not null;
 
-        string sheetTitle;
+        Sheet? sheet;
         string spreadsheetId;
-        int sheetId;
         if (alreadyCreatedSpreadSheet)
         {
-            var sheet = await FindSheetAsync(file!.Id, tableName);
+            sheet = await FindSheetAsync(file!.Id, tableName);
             if (sheet is not null)
             {
                 throw new ApplicationException($"Table {tableName} already exists in {tableGroupName}.");
@@ -64,8 +63,6 @@ public class SeedService : ISeedService, IDisposable
                 throw new ApplicationException($"Failed to find sheet {tableName}.");
             }
 
-            sheetTitle = sheet.Properties.Title;
-            sheetId = sheet.Properties.SheetId!.Value;
             spreadsheetId = file.Id;
         }
         else
@@ -76,17 +73,80 @@ public class SeedService : ISeedService, IDisposable
                 throw new ApplicationException($"Failed to create spreadsheet {tableGroupName}.");
             }
             
-            var sheet = await FindSheetAsync(createdSpreadsheet.Id, "Sheet");
-            if (createdSpreadsheet is null)
+            sheet = await FindSheetAsync(createdSpreadsheet.Id, "Sheet");
+            if (sheet is null)
             {
                 throw new ApplicationException("Failed to find sheet.");
             }
 
-            sheetTitle = sheet.Properties.Title;
-            sheetId = sheet.Properties.SheetId!.Value;
             spreadsheetId = createdSpreadsheet.Id;
         }
+
+        var ranges = new[]
+        {
+            $"{sheet.Properties.Title}!{_config.Value.TitleCell}:{_config.Value.TitleCell}",
+            $"{sheet.Properties.Title}!{_config.Value.ColumnNameStartCell}:{new SpreadsheetCell(sheet.Properties.GridProperties.ColumnCount!.Value, _config.Value.ColumnNameStartCell.RowIndex)}",
+            $"{sheet.Properties.Title}!{_config.Value.ColumnTypeStartCell}:{new SpreadsheetCell(sheet.Properties.GridProperties.ColumnCount!.Value, _config.Value.ColumnTypeStartCell.RowIndex)}",
+        };
+        var valueRanges = await GetRangesAsync(spreadsheetId, ranges);
+
+        if (valueRanges is null)
+        {
+            throw new ApplicationException("Failed to get ranges.");
+        }
+
+        valueRanges[0].Values = new List<IList<object>>
+        {
+            new List<object> {tableName}
+        };
+
+        var entityForColumns = GetEntityForColumns(entity);
+        valueRanges[1].Values = new List<IList<object>>(1);
+        valueRanges[1].Values.Add(new List<object>(entityForColumns.Select(x => x.Name)));
+        valueRanges[2].Values = new List<IList<object>>(1);
+        valueRanges[2].Values.Add(new List<object>(entityForColumns.Select(x => x.Type)));   
+        var batchUpdateValuesRequest = new BatchUpdateValuesRequest
+        {
+            Data = valueRanges,
+            ValueInputOption = "USER_ENTERED"
+        };
+        await _sheetsService.Spreadsheets.Values.BatchUpdate(batchUpdateValuesRequest, spreadsheetId).ExecuteAsync();
         
+        var requests = new List<Request>
+        {
+            new()
+            {
+                DeleteDimension = new DeleteDimensionRequest()
+                {
+                    Range = new DimensionRange()
+                    {
+                        SheetId = sheet.Properties.SheetId,
+                        Dimension = "COLUMNS",
+                        StartIndex = entityForColumns.Length + 1,
+                        EndIndex = entityForColumns.Length + 1 + sheet.Properties.GridProperties.RowCount!.Value
+                    }
+                }
+            },
+            new ()
+            {
+                UpdateSheetProperties = new UpdateSheetPropertiesRequest
+                {
+                    Properties = new SheetProperties
+                    {
+                        SheetId = sheet.Properties.SheetId,
+                        Title = tableName
+                    },
+                    Fields = "title"
+                }
+            }
+        };
+
+        var requestBody = new BatchUpdateSpreadsheetRequest
+        {
+            Requests = requests
+        };
+
+         await _sheetsService.Spreadsheets.BatchUpdate(requestBody, spreadsheetId).ExecuteAsync();
     }
 
     public async ValueTask RenameLabelsAsync(GoogleCredential credential, string[] labels, string newLabel)
@@ -301,6 +361,21 @@ public class SeedService : ISeedService, IDisposable
         if (entityType is null) return null;
 
         return (IEntity)Activator.CreateInstance(entityType)!;
+    }
+
+    private record EntityForColumn(string Name, string Type);
+
+    private EntityForColumn[] GetEntityForColumns(IEntity entity)
+    {
+        var properties = entity.GetType().GetProperties();
+        var columns = properties
+            .Select(x => x.GetCustomAttributes(false))
+            .Where(x => x.Any(y => y.GetType() == typeof(ColumnAttribute)))
+            .Select(x => (ColumnAttribute)x.First(y => y.GetType() == typeof(ColumnAttribute)))
+            .Select(x => new EntityForColumn(x.Name!, x.TypeName!))
+            .ToArray();
+
+        return columns;
     }
 
     public void Dispose()
