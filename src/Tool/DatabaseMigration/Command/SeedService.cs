@@ -262,8 +262,7 @@ public class SeedService : ISeedService, IDisposable
             throw new ApplicationException("DriveService is not initialized.");
 
         var listRequest = _driveService.Files.List();
-        listRequest.IncludeTeamDriveItems = true;
-        listRequest.SupportsTeamDrives = true;
+        listRequest.SupportsAllDrives = true;
         listRequest.Q = $"'{parentFolderId}' in parents and trashed = false";
         var files = await listRequest.ExecuteAsync();
         return files.Files;
@@ -319,15 +318,19 @@ public class SeedService : ISeedService, IDisposable
         // copy the file
         var copyRequest = _driveService.Files.Copy(new File(), _config.Value.TemplateSpreadsheetId);
         copyRequest.Fields = "id";
+        copyRequest.SupportsAllDrives = true;
         var copiedFile = copyRequest.Execute();
 
         // rename the file
-        copiedFile = _driveService.Files.Get(copiedFile.Id).Execute();
+        var getRequest = _driveService.Files.Get(copiedFile.Id);
+        getRequest.SupportsAllDrives = true;
+        copiedFile = getRequest.Execute();
 
         var fileId = copiedFile.Id;
         copiedFile.Id = null;
         copiedFile.Name = title;
         var updateRequest = _driveService.Files.Update(copiedFile, fileId);
+        updateRequest.SupportsAllDrives = true;
         return updateRequest.ExecuteAsync();
     }
 
