@@ -23,7 +23,7 @@ public class SeedDownloadCommand : ConsoleAppBase
     
     [Command("seed-download")]
     public async ValueTask RunAsync(
-        [Option("o", "output seed directory path")] string seedPath = "/src/Seed",
+        [Option("o", "output seed directory path")] string outputSeedPath = "/src/Seed",
         [Option("t", "target table names")] string[]? tableNames = null)
     {
         _logger.ZLogInformation("Start seed download");
@@ -31,6 +31,6 @@ public class SeedDownloadCommand : ConsoleAppBase
             SheetsService.Scope.Drive);
 
         var tables = tableNames ?? Array.Empty<string>();
-        await _seedService.DownloadAsync(credential, tables);
+        await _seedService.DownloadAsync(credential, outputSeedPath, tables);
     }
 }
