@@ -5,5 +5,6 @@ namespace DatabaseMigration.Command;
 public interface ISeedService
 {
     ValueTask CreateAsync(ICredential credential, string tableGroupName, string tableName);
+    ValueTask DownloadAsync(ICredential credential, params string [] tableNames);
     ValueTask RenameLabelsAsync(GoogleCredential credential, string[] labels, string newLabel);
 }
