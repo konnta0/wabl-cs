@@ -3,7 +3,7 @@ using Google.Apis.Sheets.v4;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace DatabaseMigration.Command.RenameSeedLabel;
+namespace DatabaseMigration.Command.Seed;
 
 // ReSharper disable once UnusedType.Global
 public class SeedRenameLabelCommand : ConsoleAppBase

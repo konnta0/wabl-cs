@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace DatabaseMigration.Command.SeedImport;
+namespace DatabaseMigration.Command.Seed;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public class SeedImportCommand : ConsoleAppBase

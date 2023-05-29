@@ -2,7 +2,7 @@ using Google.Apis.Sheets.v4;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace DatabaseMigration.Command.SeedCreate;
+namespace DatabaseMigration.Command.Seed;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public class SeedCreateCommand : ConsoleAppBase
