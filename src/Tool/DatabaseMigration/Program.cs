@@ -1,8 +1,6 @@
 using DatabaseMigration;
 using DatabaseMigration.Command;
-using DatabaseMigration.Command.RenameSeedLabel;
-using DatabaseMigration.Command.SeedCreate;
-using DatabaseMigration.Command.SeedImport;
+using DatabaseMigration.Command.Seed;
 using Infrastructure.Cache;
 using Infrastructure.Database;
 using Infrastructure.Extension;
@@ -27,6 +25,7 @@ builder.ConfigureServices((context, collection) =>
 
 var app = builder.Build();
 app.AddCommands<SeedCreateCommand>();
+app.AddCommands<SeedDownloadCommand>();
 app.AddCommands<SeedImportCommand>();
 app.AddCommands<SeedRenameLabelCommand>();
 app.Run();
