@@ -8,7 +8,6 @@ using MessagePipe;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-Console.WriteLine("Start Database migration");
 var builder = ConsoleApp.CreateBuilder(args);
 
 builder.ConfigureServices((context, collection) =>
