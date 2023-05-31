@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json;
 using Domain.Entity;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
@@ -147,6 +148,86 @@ public class SeedService : ISeedService, IDisposable
         };
 
          await _sheetsService.Spreadsheets.BatchUpdate(requestBody, spreadsheetId).ExecuteAsync();
+    }
+
+    public async ValueTask DownloadAsync(ICredential credential, string outputSeedPath, params string[] tableNames)
+    {
+        if (!Directory.Exists(outputSeedPath))
+        {
+            Directory.CreateDirectory(outputSeedPath);
+        }
+        
+        (_sheetsService, _driveService) = InitializeGoogleApis(credential);
+        var files = await FindFilesByFolderIdAsync(_config.Value.SpreadsheetFolderId);
+
+        var entities = GetAllEntities();
+        for (var i = 0; i < files.Count; i++)
+        {
+            var spreadsheetId = files[i].Id;
+            var sheets = await FindSheetBySpreadsheetIdAsync(spreadsheetId);
+            if (sheets is null)
+            {
+                continue;
+            }
+
+            foreach (var sheet in sheets)
+            {
+                if (tableNames.Any() && !tableNames.Contains(sheet.Properties.Title))
+                {
+                    continue;
+                }
+
+                if (!entities.ContainsKey(sheet.Properties.Title))
+                {
+                    continue;
+                }
+
+                var ranges = new[]
+                {
+                    $"{sheet.Properties.Title}!{_config.Value.DataStartCell}:{new SpreadsheetCell(sheet.Properties.GridProperties.ColumnCount!.Value, sheet.Properties.GridProperties.RowCount!.Value)}",
+                };
+                var valueRanges = await GetRangesAsync(spreadsheetId, ranges);
+                var valueRange = valueRanges?.First();
+
+                if (valueRange?.Values is null)
+                {
+                    continue;
+                }
+                
+                var entity = entities[sheet.Properties.Title];
+                var valueEntities = new List<IEntity>(valueRange.Values?.Count ?? 0);
+                foreach (var values in valueRange.Values!)
+                {
+                    if (values is null)
+                    {
+                        continue;
+                    }
+
+                    var instance = (IEntity)Activator.CreateInstance(entity.GetType())!;
+                    var properties = instance.GetType().GetProperties();
+                    for (var v = 0; v < values.Count; v++)
+                    {
+                        var value = values[v];
+                        properties[v].SetValue(instance, Convert.ChangeType(value, properties[v].PropertyType));
+                    }
+                    
+                    valueEntities.Add(instance);
+                }
+
+                if (valueEntities.Count is 0)
+                {
+                    continue;
+                }
+
+                
+                var json = JsonSerializer.Serialize(valueEntities.Select(x => (object)x), new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+                var filePath = Path.Combine(outputSeedPath, $"{sheet.Properties.Title}.json");
+                await System.IO.File.WriteAllTextAsync(filePath, json);
+            }
+        }
     }
 
     public async ValueTask RenameLabelsAsync(GoogleCredential credential, string[] labels, string newLabel)
@@ -365,6 +446,20 @@ public class SeedService : ISeedService, IDisposable
 
         return (IEntity)Activator.CreateInstance(entityType)!;
     }
+
+    private IDictionary<string, IEntity> GetAllEntities()
+    {
+        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        var entityTypes = assemblies
+            .SelectMany(x => x.GetTypes())
+            .Where(x => x is { IsClass: true, IsAbstract: false, IsInterface: false } && typeof(IEntity).IsAssignableFrom(x))
+            .ToList();
+
+        return entityTypes.ToDictionary(
+            x => ((TableAttribute)x.GetCustomAttributes(false).First(y => y.GetType() == typeof(TableAttribute))).Name,
+            x => (IEntity)Activator.CreateInstance(x)!);
+    }
+    
 
     private record EntityForColumn(string Name, string Type);
 

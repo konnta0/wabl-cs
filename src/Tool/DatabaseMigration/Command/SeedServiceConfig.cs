@@ -10,4 +10,5 @@ public class SeedServiceConfig
     public SpreadsheetCell ColumnTypeStartCell => new("B5");
     public SpreadsheetCell RowLabelStartCell => new("A7");
     public SpreadsheetCell ColumnLabelStartCell => new("B6");
+    public SpreadsheetCell DataStartCell => new("B7");
 }
