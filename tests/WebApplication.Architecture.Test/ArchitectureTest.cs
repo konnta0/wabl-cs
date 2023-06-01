@@ -13,7 +13,7 @@ public class ArchitectureTest
     public ArchitectureTest(ITestOutputHelper testOutputHelper)
     {
         _testOutputHelper = testOutputHelper;
-        Assembly.LoadFrom("DotnetMetricTestApp.dll");
+        Assembly.LoadFrom("WebAppBlueprintCS.dll");
     }
     
     [Fact]

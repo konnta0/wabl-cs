@@ -4,7 +4,7 @@ WORKDIR /work
 
 FROM workspace AS builder
 WORKDIR /build
-COPY ./DotnetMetricTest.sln .
+COPY ./WebAppBlueprintCS.sln .
 COPY ./src/WebApplication ./src/WebApplication
 
 RUN dotnet restore ./src/WebApplication/Presentation/Presentation.csproj
@@ -14,4 +14,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
 RUN ln -sf /usr/share/zoneinfo/posix/Japan /etc/localtime
 WORKDIR /app
 COPY --from=builder /build/out .
-ENTRYPOINT [ "dotnet", "DotnetMetricTestApp.dll"]
+ENTRYPOINT [ "dotnet", "WebAppBlueprintCS.dll"]

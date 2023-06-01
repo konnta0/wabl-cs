@@ -6,9 +6,9 @@ metadata:
 spec:
   pipelineRef:
     name: build-image-pipeline
-  params: 
+  params:
     - name: git-url
-      value: https://github.com/konnta0/dotnet-metric-test
+      value: https://github.com/konnta0/wabl-cs
     - name: image
       value: core.harbor.cr.test/webapp/dotnetapp
   serviceAccountName: tekton-dashboard-service-account

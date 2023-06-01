@@ -278,4 +278,4 @@ db-foward:
 
 .PHONY: tkn-build-image #
 tkn-build-image:
-	curl -X POST -H 'Context-Type: application/json' http://image.build.el.cicd.test -d '{"git-url": "https://github.com/konnta0/dotnet-metric-test", "image":"core.harbor.cr.test/webapp/dotnetapp"}'
+	curl -X POST -H 'Context-Type: application/json' http://image.build.el.cicd.test -d '{"git-url": "https://github.com/konnta0/wabl-cs", "image":"core.harbor.cr.test/webapp/dotnetapp"}'

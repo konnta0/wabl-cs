@@ -349,7 +349,6 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 .DS_Store
-dotnet-metric-test/.idea
 o11y/.data/clickhouse/data
 o11y/.data/clickhouse/metadata
 o11y/.data/clickhouse/preprocessed_configs

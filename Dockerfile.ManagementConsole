@@ -4,7 +4,7 @@ WORKDIR /work
 
 FROM workspace AS builder
 WORKDIR /build
-COPY ./DotnetMetricTest.sln .
+COPY ./WebAppBlueprintCS.sln .
 COPY ./src/Tool/ManagementConsole ./src/Tool/ManagementConsole
 
 RUN dotnet restore ./src/Tool/ManagementConsole/ManagementConsole.csproj

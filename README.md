@@ -1,6 +1,6 @@
-![buildandtest](https://github.com/konnta0/dotnet-metric-test/actions/workflows/test.yml/badge.svg)
+![buildandtest](https://github.com/konnta0/wabl-cs/actions/workflows/test.yml/badge.svg)
 
-# dotnet-metric-test
+# Web Application Blueprints for C# (wabl-cs)
 This repository is used by study
 
 Build a WebAPI server using k8s. 

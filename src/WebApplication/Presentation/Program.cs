@@ -71,7 +71,7 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "DotnetMetricTest",
+        Title = "Web Application Blueprint for C#",
         Description = "This is metric test service."
     });
 });
