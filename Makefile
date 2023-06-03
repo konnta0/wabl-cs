@@ -1,8 +1,10 @@
 NETWORK_NAME?=shared-network
 
-WEB_APPLICATION_COMPOSE_YML=./compose.yml
+WEB_APPLICATION_COMPOSE_YML=./docker-compose/compose.yml
 LOADTEST_COMPOSE_YML=./src/Tool/LoadTest/compose.yml
-GRAFANA_COMPOSE_YML=./o11y/compose.grafana.yml
+# should be install loki plugin
+# https://grafana.com/docs/loki/latest/clients/docker-driver/#installing
+GRAFANA_COMPOSE_YML=./docker-compose/o11y/compose.grafana.yml
 
 .PHONY: help # Show help
 help:
@@ -15,21 +17,21 @@ build:
 .PHONY: up # Up all components
 up:
 	@if [ -z "`docker network ls | grep $(NETWORK_NAME)`" ]; then docker network create $(NETWORK_NAME); fi
-	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) up -d
 	docker compose -f $(GRAFANA_COMPOSE_YML) up -d
+	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) up -d
 	docker compose -f $(LOADTEST_COMPOSE_YML) up -d
 
 .PHONY: ps # Show process
 ps:
-	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) ps -a
 	docker compose -f $(GRAFANA_COMPOSE_YML) ps -a
+	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) ps -a
 	docker compose -f $(LOADTEST_COMPOSE_YML) ps -a
 
 .PHONY: down # Down all components
 down:
 	docker compose -f $(LOADTEST_COMPOSE_YML) down --remove-orphans 
-	docker compose -f $(GRAFANA_COMPOSE_YML) down --remove-orphans 
 	docker compose -f $(WEB_APPLICATION_COMPOSE_YML) down --remove-orphans 
+	docker compose -f $(GRAFANA_COMPOSE_YML) down --remove-orphans 
 	@if [ -n "`docker network inspect $(NETWORK_NAME) | grep \"\\"Containers\\": {}\"`" ]; then docker network rm $(NETWORK_NAME); fi
 
 .PHONY: app-run # Up Web Application

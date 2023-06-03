@@ -3,7 +3,7 @@ services:
   app:
     init: true
     build:
-      context: .
+      context: ../
       target: runtime
     container_name: app
     environment:
@@ -64,30 +64,6 @@ services:
       - ./cache/redis/users.acl:/etc/redis/users.acl
     ports:
       - "6379:6379"
-
-  workspace:
-    container_name: workspace
-    build:
-      context: .
-      target: workspace
-    tty: true
-    networks:
-      - default
-      - shared-network
-    volumes:
-      - ./dotnet-metric-test:/source
-    working_dir: /source
-    environment:
-      - DB_SERVER_HOST=${DB_SERVER_HOST}
-      - DB_SERVER_PORT=${DB_SERVER_PORT}
-      - DB_SERVER_USER=${DB_SERVER_USER}
-      - DB_SERVER_PASSWORD=${DB_SERVER_PASSWORD}
-      - OTLP_SERVER_NAME=${OTLP_SERVER_NAME}
-      - OTLP_ENDPOINT=${OTLP_ENDPOINT}
-      - CACHE_SERVER_HOST=${CACHE_SERVER_HOST}
-      - CACHE_SERVER_PORT=${CACHE_SERVER_PORT}
-      - CACHE_SERVER_USER=${CACHE_SERVER_USER}
-      - CACHE_SERVER_PASSWORD=${CACHE_SERVER_PASSWORD}
 
 networks:
   shared-network:

@@ -349,16 +349,16 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 .DS_Store
-o11y/.data/clickhouse/data
-o11y/.data/clickhouse/metadata
-o11y/.data/clickhouse/preprocessed_configs
-o11y/.data/clickhouse/store
-o11y/.data/clickhouse/status
-o11y/.data/clickhouse/uuid
-o11y/.data/signoz/signoz.db
-o11y/grafana/data/lib
-o11y/grafana/data/tempo/wal
-o11y/grafana/data/tempo/blocks
+docker-compose/o11y/.data/clickhouse/data
+docker-compose/o11y/.data/clickhouse/metadata
+docker-compose/o11y/.data/clickhouse/preprocessed_configs
+docker-compose/o11y/.data/clickhouse/store
+docker-compose/o11y/.data/clickhouse/status
+docker-compose/o11y/.data/clickhouse/uuid
+docker-compose/o11y/.data/signoz/signoz.db
+docker-compose/o11y/grafana/data/lib
+docker-compose/o11y/grafana/data/tempo/wal
+docker-compose/o11y/grafana/data/tempo/blocks
 .idea
 harbor-cert
 ca.crt
