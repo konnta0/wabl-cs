@@ -31,6 +31,15 @@ public class TestContainersExample : TestBase
     [Fact]
     public async Task UseDatabaseContainer()
     {
+        
+        if (!bool.TryParse(Environment.GetEnvironmentVariable("TEST_ENV"), out var testEnv))
+        {
+            throw new Exception("TEST_ENV is null");
+        }
+
+        testEnv.Should().BeTrue();
+        
+        
         var employeesContext = _serviceProvider!.GetRequiredService<EmployeesContext>();
         
         var testTitleEntities = new Faker<TitlesEntity>()
