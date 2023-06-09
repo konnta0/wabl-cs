@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNet.Testcontainers.Builders;
+using DotNet.Testcontainers.Containers;
 using DotNet.Testcontainers.Networks;
 using Infrastructure.Cache;
 using Infrastructure.Database;
@@ -18,6 +19,9 @@ public abstract class TestBase : IAsyncLifetime
 
     private const string MagicNumberHost = "deep-thought";
     private readonly TestBaseOptions _options;
+    private INetwork? _network;
+    private IContainer[] _containers;
+    private bool _disposed;
     
     protected class TestBaseOptions
     {
@@ -29,6 +33,7 @@ public abstract class TestBase : IAsyncLifetime
 
     protected TestBase(Action<TestBaseOptions>? options = null)
     {
+        _containers = Array.Empty<IContainer>();
         _options = new TestBaseOptions();
         options?.Invoke(_options);
     }
@@ -38,9 +43,21 @@ public abstract class TestBase : IAsyncLifetime
         await SetUpCoreAsync();
     }
 
-    public Task DisposeAsync()
+    public async Task DisposeAsync()
     {
-        return TearDownAsync();
+        if (_disposed) return;
+        await TearDownAsync();
+        foreach (var container in _containers)
+        {
+            await container.DisposeAsync();
+        }
+        _containers = Array.Empty<IContainer>();
+        
+        if (_network != null)
+        {
+            await _network.DeleteAsync();
+        }
+        _disposed = true;
     }
 
     protected virtual Task SetUpAsync()
@@ -58,28 +75,27 @@ public abstract class TestBase : IAsyncLifetime
         await SetEnvironmentVariablesAsync();
 
         using var cts = new CancellationTokenSource(TimeSpan.FromMinutes(1)); 
-        INetwork network = null!;
         if (_options.UseTestContainers)
         {
-             network = new NetworkBuilder()
+             _network = new NetworkBuilder()
                 .WithName("network-" + Guid.NewGuid().ToString("D"))
                 .WithCleanUp(true)
                 .Build();
-             await network.CreateAsync(cts.Token);
+             await _network.CreateAsync(cts.Token);
         }
 
-        var createDataStoresTasks = new List<Task>();
+        var createDataStoresTasks = new List<Task<IContainer>>();
         if (_options.UseDatabase)
         {
-            createDataStoresTasks.Add(SetUpDatabaseContainerAsync(network, cts.Token));
+            createDataStoresTasks.Add(SetUpDatabaseContainerAsync(_network, cts.Token));
         }
 
         if (_options.UseCache)
         {
-            createDataStoresTasks.Add(SetUpCacheContainerAsync(network, cts.Token));
+            createDataStoresTasks.Add(SetUpCacheContainerAsync(_network, cts.Token));
         }
 
-        await Task.WhenAll(createDataStoresTasks);
+        _containers = await Task.WhenAll(createDataStoresTasks);
         await SetUpAsync();
     }
     
@@ -105,7 +121,7 @@ public abstract class TestBase : IAsyncLifetime
         }
     }
     
-    private async Task SetUpDatabaseContainerAsync(INetwork network, CancellationToken cancellationToken)
+    private async Task<IContainer> SetUpDatabaseContainerAsync(INetwork? network, CancellationToken cancellationToken)
     {
         const int mySqlPort = 3306;
         var solutionDirectory = CommonDirectoryPath.GetSolutionDirectory();
@@ -140,9 +156,11 @@ public abstract class TestBase : IAsyncLifetime
             ServerUser = "root",
             ServerPassword = "root"
         };
+
+        return databaseContainer;
     }
 
-    private async Task SetUpCacheContainerAsync(INetwork network, CancellationToken cancellationToken)
+    private async Task<IContainer> SetUpCacheContainerAsync(INetwork? network, CancellationToken cancellationToken)
     {
         const int redisPort = 6379;
         var solutionDirectory = CommonDirectoryPath.GetSolutionDirectory();
@@ -174,5 +192,7 @@ public abstract class TestBase : IAsyncLifetime
             User = "redis",
             Password = "redis"
         };
+
+        return cacheContainer;
     }
 }
