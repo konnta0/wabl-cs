@@ -9,6 +9,7 @@
 
     <ItemGroup>
         <PackageReference Include="ConsoleAppFramework" Version="4.0.6" />
+        <PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
     </ItemGroup>
 
 </Project>
