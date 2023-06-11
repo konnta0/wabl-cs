@@ -1,3 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using CodeGeneration;
+using CodeGeneration.Command;
+using Microsoft.Extensions.Configuration;
 
-Console.WriteLine("Hello, World!");
+var builder = ConsoleApp.CreateBuilder(args);
+
+builder.ConfigureServices((context, collection) =>
+{
+    context.Configuration.Bind(new CodeGenerationConfig());
+    context.Configuration.Bind(new GenerationEntityConfig());
+});
+
+var app = builder.Build();
+app.AddCommands<GenerateCodeCommand>();
+app.Run();
