@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "GenerateEntity": {
+      "commandName": "Project",
+      "commandLineArgs": "generate-entity -e Test",
+      "environmentVariables": {
+      }
+    }
+  }
+}
