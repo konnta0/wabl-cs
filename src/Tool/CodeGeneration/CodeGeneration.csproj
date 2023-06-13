@@ -10,6 +10,8 @@
     <ItemGroup>
         <PackageReference Include="ConsoleAppFramework" Version="4.0.6" />
         <PackageReference Include="RazorEngine.NetCore" Version="3.1.0" />
+        <PackageReference Include="RazorEngineCore" Version="2022.8.1" />
+        <PackageReference Include="ZLogger" Version="1.7.0" />
     </ItemGroup>
 
 </Project>
