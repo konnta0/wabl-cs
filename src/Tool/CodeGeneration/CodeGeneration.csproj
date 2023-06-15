@@ -14,4 +14,10 @@
         <PackageReference Include="ZLogger" Version="1.7.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Template\*.cshtml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
