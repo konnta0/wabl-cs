@@ -4,5 +4,6 @@ public class EntityModel
 { 
     public string NamespaceName { get; init; } = "Domain.Entity";
     public string EntityName { get; init; }
-    public bool HasSeed { get; init; }
+    public List<string> Implements { get; init; } = new();
+    public string ImplementsNames => string.Join(", ", Implements);
 }
