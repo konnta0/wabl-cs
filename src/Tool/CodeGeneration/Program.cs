@@ -7,7 +7,7 @@ var builder = ConsoleApp.CreateBuilder(args);
 builder.ConfigureServices((context, collection) =>
 {
     context.Configuration.Bind(new CodeGenerationConfig());
-    context.Configuration.Bind(new GenerationEntityConfig());
+    context.Configuration.Bind(new EntityModel());
 });
 
 var app = builder.Build();
