@@ -1,7 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace SourceGenerator
+namespace Domain.SourceGenerator
 {
     [Generator(LanguageNames.CSharp)]
     public class EntityGenerator : IIncrementalGenerator
@@ -44,15 +43,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 {{ns}}
 
-partial class {{typeSymbol.Name}} : IEntity, IHasSeed
+partial class {{typeSymbol.Name}} : IEntity
 {
     public static partial void OnModelCreating(EntityTypeBuilder<{{typeSymbol.Name}}> entityTypeBuilder);
 }
 """;
 
-            // todo: analyze implementation of OnModelCreating
-
-            
             context.AddSource($"{fullType}.g.cs", code);
         }
     }
