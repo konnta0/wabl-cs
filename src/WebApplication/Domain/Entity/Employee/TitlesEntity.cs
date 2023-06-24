@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 namespace Domain.Entity.Employee;
 
 [Table("titles")]
-public partial class TitlesEntity
+public partial class TitlesEntity : IHasSeed
 {
     [Key]
     [Column("emp_no", TypeName = "int")]
