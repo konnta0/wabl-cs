@@ -30,3 +30,12 @@ public partial class HogeEntity
         entityTypeBuilder.HasOne<EmployeesEntity>();
     }
 }
+
+public class TestAttribute : Attribute 
+{
+    public TestAttribute(string name) {
+        Name = name;
+    }
+
+    public string Name { get; }
+}
