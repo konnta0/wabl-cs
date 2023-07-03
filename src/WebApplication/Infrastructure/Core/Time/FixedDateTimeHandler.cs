@@ -17,5 +17,17 @@ public class FixedDateTimeHandler : IDateTimeHandler
     
     public void SetTimeZone(TimeZoneInfo timeZoneInfo) => _timeZoneInfo = timeZoneInfo;
     
-    public DateTime Now() => TimeZoneInfo.ConvertTime(_dateTimeOffset.Add(_offset).DateTime, _timeZoneInfo);
+    public DateTime Now()
+    {
+        var truncatedDateTimeOffset = new DateTimeOffset(
+            _dateTimeOffset.Year,
+            _dateTimeOffset.Month,
+            _dateTimeOffset.Day,
+            _dateTimeOffset.Hour,
+            _dateTimeOffset.Minute,
+            _dateTimeOffset.Second,
+            0, 
+            _dateTimeOffset.Offset + _offset);
+        return TimeZoneInfo.ConvertTime(truncatedDateTimeOffset.DateTime, _timeZoneInfo);
+    }
 }

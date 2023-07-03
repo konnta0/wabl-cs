@@ -15,5 +15,18 @@ public class DateTimeHandler : IDateTimeHandler
     
     public void SetTimeZone(TimeZoneInfo timeZoneInfo) => _timeZoneInfo = timeZoneInfo;
     
-    public DateTime Now() => TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow.Add(_offset).DateTime, _timeZoneInfo);
+    public DateTime Now()
+    {
+        var now = DateTimeOffset.UtcNow;
+        var truncatedDateTimeOffset = new DateTimeOffset(
+            now.Year,
+            now.Month,
+            now.Day,
+            now.Hour,
+            now.Minute,
+            now.Second,
+            0, 
+            _offset);
+        return TimeZoneInfo.ConvertTime(truncatedDateTimeOffset.DateTime, _timeZoneInfo);
+    }
 }
