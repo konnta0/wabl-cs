@@ -5,11 +5,12 @@ using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Instrumentation.UseCase.Meter;
 using Infrastructure.Core.Logging;
 using Infrastructure.Core.RequestHandler;
+using Infrastructure.Core.Time;
 using Infrastructure.Database;
 using Infrastructure.Database.Context.Employee;
 using Infrastructure.Extension.HealthCheck;
 using Infrastructure.Extension.Instrumentation;
-using Infrastructure.Repository.Departments;
+using Infrastructure.Repository.Department;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +33,7 @@ public static class ServiceCollectionExtension
         serviceCollection.AddHealthChecks().AddChecks();
 
         return serviceCollection
+            .AddDateTimeHandler()
             .AddLogging()
             .AddDbContexts(configuration.Get<DatabaseConfig>())
             .AddCacheClient(configuration.Get<CacheConfig>(), out var connectionMultiplexer)
@@ -160,6 +162,12 @@ public static class ServiceCollectionExtension
             return new VolatileCacheClient(GlobalLogManager.GetLogger<VolatileCacheClient>()!, multiplexer);
         });
         serviceCollection.AddSingleton(connection);
+        return serviceCollection;
+    }
+    
+    public static IServiceCollection AddDateTimeHandler(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddScoped<IDateTimeHandler, FixedDateTimeHandler>();
         return serviceCollection;
     }
 }
