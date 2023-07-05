@@ -1,4 +1,3 @@
-using System.Net.Mime;
 using MessagePipe;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Extension.ResponseDataFactory.Departments;
