@@ -3,7 +3,7 @@ using Infrastructure.Core.Instrumentation.Repository;
 using Infrastructure.Repository.Department.FindAll;
 using MessagePipe;
 
-namespace Infrastructure.Repository.Departments;
+namespace Infrastructure.Repository.Department;
 
 [AsyncRequestHandlerFilter(typeof(AsyncFindAllDepartmentHandlerFilter))]
 [AsyncRequestHandlerFilter(typeof(AsyncRepositoryInstrumentationHandlerFilter<IDepartmentRepositoryInputData, IDepartmentRepositoryOutputData>), Order = -1)]

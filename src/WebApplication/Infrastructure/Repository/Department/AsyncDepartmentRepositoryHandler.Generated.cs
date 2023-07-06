@@ -1,10 +1,9 @@
 using Domain.Repository.Department;
 using Infrastructure.Core.RequestHandler;
-using MessagePipe;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace Infrastructure.Repository.Departments;
+namespace Infrastructure.Repository.Department;
 
 #nullable enable
 public partial class AsyncDepartmentRepositoryHandler : IAsyncRepositoryHandler<IDepartmentRepositoryInputData, IDepartmentRepositoryOutputData?>
