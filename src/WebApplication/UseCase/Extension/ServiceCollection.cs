@@ -1,7 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UseCase.Core.RequestHandler;
-using UseCase.Departments;
 
 namespace UseCase.Extension;
 
@@ -11,8 +10,7 @@ public static class ServiceCollection
         IConfiguration configuration)
     {
 
-        serviceCollection
-                    .AddScoped<IAsyncUseCaseHandler<IDepartmentsInputData, IDepartmentsOutputData>, AsyncDepartmentsUseCaseHandler>();
+        serviceCollection.AddScoped<IUseCaseHandler, UseCaseHandler>();
         return serviceCollection;
     }
 }
