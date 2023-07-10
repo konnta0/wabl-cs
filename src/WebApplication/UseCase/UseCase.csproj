@@ -21,13 +21,5 @@
   <ItemGroup>
     <AdditionalFiles Include="../BannedSymbols.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Departments\AsyncDepartmentsUseCaseHandler.Generated.cs">
-      <DependentUpon>AsyncDepartmentsUseCaseHandler.cs</DependentUpon>
-    </Compile>
-    <Compile Update="Departments\DepartmentsUseCaseHandler.Generated.cs">
-      <DependentUpon>DepartmentsUseCaseHandler.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
 
 </Project>

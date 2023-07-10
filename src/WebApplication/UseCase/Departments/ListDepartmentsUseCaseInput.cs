@@ -1,4 +1,4 @@
-namespace UseCase.Departments.List;
+namespace UseCase.Departments;
 
 public class ListDepartmentsInputData : IDepartmentsInputData
 {

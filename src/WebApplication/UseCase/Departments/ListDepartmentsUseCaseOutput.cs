@@ -1,6 +1,6 @@
 using UseCase.Departments.Common;
 
-namespace UseCase.Departments.List;
+namespace UseCase.Departments;
 
 public class ListDepartmentsOutputData : IDepartmentsOutputData
 {

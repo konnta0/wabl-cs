@@ -6,7 +6,7 @@ using MessagePipe;
 namespace Infrastructure.Repository.Department;
 
 [AsyncRequestHandlerFilter(typeof(AsyncFindAllDepartmentHandlerFilter))]
-[AsyncRequestHandlerFilter(typeof(AsyncRepositoryInstrumentationHandlerFilter<IDepartmentRepositoryInputData, IDepartmentRepositoryOutputData>), Order = -1)]
+[AsyncRequestHandlerFilter(typeof(AsyncRepositoryInstrumentationHandlerFilter<IDepartmentRepositoryInput, IDepartmentRepositoryOutput>), Order = -1)]
 // ReSharper disable once UnusedType.Global
 public partial class AsyncDepartmentRepositoryHandler
 {

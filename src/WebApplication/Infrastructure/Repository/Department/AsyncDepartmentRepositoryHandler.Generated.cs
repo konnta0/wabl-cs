@@ -6,7 +6,7 @@ using ZLogger;
 namespace Infrastructure.Repository.Department;
 
 #nullable enable
-public partial class AsyncDepartmentRepositoryHandler : IAsyncRepositoryHandler<IDepartmentRepositoryInputData, IDepartmentRepositoryOutputData?>
+public partial class AsyncDepartmentRepositoryHandler : IAsyncRepositoryHandler<IDepartmentRepositoryInput, IDepartmentRepositoryOutput?>
 { 
     private readonly ILogger<AsyncDepartmentRepositoryHandler> _logger;
 
@@ -15,13 +15,13 @@ public partial class AsyncDepartmentRepositoryHandler : IAsyncRepositoryHandler<
         _logger = logger;
     }
     
-    public ValueTask<IDepartmentRepositoryOutputData?> InvokeAsync(IDepartmentRepositoryInputData request, CancellationToken cancellationToken = new CancellationToken())
+    public ValueTask<IDepartmentRepositoryOutput?> InvokeAsync(IDepartmentRepositoryInput request, CancellationToken cancellationToken = new CancellationToken())
     {
         _logger.ZLogError("NotImplements Filters: {0}, {1}", GetType().ToString(), request);
-        return new ValueTask<IDepartmentRepositoryOutputData?>();
+        return new ValueTask<IDepartmentRepositoryOutput?>();
     }
 
-    public async ValueTask<TResponse?> InvokeAsync<TResponse>(IDepartmentRepositoryInputData request, CancellationToken cancellationToken = default)
+    public async ValueTask<TResponse?> InvokeAsync<TResponse>(IDepartmentRepositoryInput request, CancellationToken cancellationToken = default)
     {
         var response = await InvokeAsync(request, cancellationToken);
         if (response is null)
