@@ -68,8 +68,8 @@ public static class ServiceCollectionExtension
 
     private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, IConnectionMultiplexer connectionMultiplexer)
     {
-
-        return serviceCollection.AddOpenTelemetryTracing(builder =>
+        
+        return serviceCollection.AddOpenTelemetry().WithTracing(builder =>
         {
             builder.SetResourceBuilder(ResourceBuilder.CreateDefault()
                 .AddService(Environment.GetEnvironmentVariable("OTLP_SERVER_NAME")));
@@ -101,12 +101,12 @@ public static class ServiceCollectionExtension
                     }
                 };
             });
-        });
+        }).Services.AddScoped<IUseCaseActivityStarter, UseCaseActivityStarter>();
     }
 
     private static IServiceCollection AddOpenTelemetryMetrics(this IServiceCollection serviceCollection, InstrumentationConfig instrumentationConfig)
     {
-        return serviceCollection.AddOpenTelemetryMetrics(builder =>
+        return serviceCollection.AddOpenTelemetry().WithMetrics(builder => 
         {
             builder.SetResourceBuilder(ResourceBuilder.CreateDefault().AddService(instrumentationConfig.ServiceName));
             builder.AddWebApplicationInstrumentation();
@@ -118,7 +118,7 @@ public static class ServiceCollectionExtension
                 options.Endpoint = new Uri(instrumentationConfig.Endpoint);
             });
             
-        }).AddSingleton<IUseCaseInstrumentationMeter, UseCaseInstrumentationMeter>();
+        }).Services.AddSingleton<IUseCaseInstrumentationMeter, UseCaseInstrumentationMeter>();
     }
 
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
