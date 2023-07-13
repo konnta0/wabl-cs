@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using Infrastructure.Extension.Instrumentation;
 
 namespace Infrastructure.Core.Instrumentation.UseCase;
 

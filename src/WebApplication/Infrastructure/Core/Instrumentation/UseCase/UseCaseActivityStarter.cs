@@ -13,8 +13,3 @@ public sealed class UseCaseActivityStarter : IUseCaseActivityStarter
         );
     }
 }
-
-public interface IUseCaseActivityStarter
-{
-    Activity? Start();
-}

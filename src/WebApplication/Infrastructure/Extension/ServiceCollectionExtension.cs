@@ -2,6 +2,8 @@ using Cysharp.Text;
 using Domain.Repository.Department;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
+using Infrastructure.Core.Instrumentation.Repository;
+using Infrastructure.Core.Instrumentation.UseCase;
 using Infrastructure.Core.Instrumentation.UseCase.Meter;
 using Infrastructure.Core.Logging;
 using Infrastructure.Core.RequestHandler;
@@ -101,7 +103,8 @@ public static class ServiceCollectionExtension
                     }
                 };
             });
-        }).Services.AddScoped<IUseCaseActivityStarter, UseCaseActivityStarter>();
+        }).Services.AddScoped<IUseCaseActivityStarter, UseCaseActivityStarter>()
+            .AddScoped<IRepositoryActivityStarter, RepositoryActivityStarter>();
     }
 
     private static IServiceCollection AddOpenTelemetryMetrics(this IServiceCollection serviceCollection, InstrumentationConfig instrumentationConfig)
@@ -123,7 +126,7 @@ public static class ServiceCollectionExtension
 
     private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentRepositoryInputData, IDepartmentRepositoryOutputData?>, AsyncDepartmentRepositoryHandler>();
+        serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentRepositoryInput, IDepartmentRepositoryOutput?>, AsyncDepartmentRepositoryHandler>();
         return serviceCollection;
     }
 
