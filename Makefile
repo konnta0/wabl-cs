@@ -123,6 +123,8 @@ migration-run:
 	-v $(ROOT_DIR)src/Tool/DatabaseMigration:/src/Tool/DatabaseMigration \
 	-v $(ROOT_DIR)src/WebApplication:/src/WebApplication \
 	-v $(ROOT_DIR)src/Tool/DatabaseMigration/Seed:/src/Seed \
+	-v $(ROOT_DIR)src/Tool/Domain.SourceGenerator:/src/Tool/Domain.SourceGenerator \
+	-v $(ROOT_DIR)src/Tool/Infrastructure.SourceGenerator:/src/Tool/Infrastructure.SourceGenerator \
 	--env-file=.env \
 	--name=database_migration \
 	--rm \
