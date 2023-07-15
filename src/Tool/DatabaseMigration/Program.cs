@@ -16,7 +16,7 @@ builder.ConfigureServices((context, collection) =>
     
     collection.AddDbContexts(new DatabaseConfig());
     collection.AddCacheClient(new CacheConfig(), out var _);
-    collection.AddSingleton<IDbContextHolder, DbContextHolder>();
+    collection.AddScoped<IDbContextHolder, DbContextHolder>();
     collection.AddScoped<ISeedService, SeedService>();
     collection.AddScoped<IGoogleApiHelper, GoogleApiHelper>();
     collection.AddMessagePipe();
