@@ -2,6 +2,6 @@ using UseCase.Core.RequestHandler;
 
 namespace UseCase.Departments;
 
-public interface IDepartmentsOutputData : IOutputData
+public interface IDepartmentsUseCaseOutput : IUseCaseOutput
 {
 }

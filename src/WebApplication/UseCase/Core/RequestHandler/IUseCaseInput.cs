@@ -1,5 +1,5 @@
 namespace UseCase.Core.RequestHandler;
 
-public interface IInputData
+public interface IUseCaseInput
 {
 }

@@ -1,8 +1,8 @@
 using MessagePipe;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Extension.ResponseDataFactory.Departments;
+using UseCase.Core.RequestHandler;
 using UseCase.Departments;
-using UseCase.Departments.List;
 
 namespace Presentation.Controllers;
 
@@ -11,20 +11,20 @@ namespace Presentation.Controllers;
 public class DepartmentsController : ControllerBase
 {
     private readonly ILogger<DepartmentsController> _logger;
-    private readonly IAsyncRequestHandler<IDepartmentsInputData, IDepartmentsOutputData> _departmentsUseCaseHandler;
+    private readonly IUseCaseHandler _useCaseHandler;
     
-    public DepartmentsController(ILogger<DepartmentsController> logger, IAsyncRequestHandler<IDepartmentsInputData, IDepartmentsOutputData> departmentsUseCaseHandler)
+    public DepartmentsController(ILogger<DepartmentsController> logger, IUseCaseHandler useCaseHandler)
     {
         _logger = logger;
-        _departmentsUseCaseHandler = departmentsUseCaseHandler;
+        _useCaseHandler = useCaseHandler;
     }
 
     [HttpGet]
     public async ValueTask<IActionResult> List()
     {
-        var listDepartmentsInputData = new ListDepartmentsInputData();
-        var listDepartmentsOutputData = await _departmentsUseCaseHandler.InvokeAsync(listDepartmentsInputData);
-        var responseData = ListResponseDataFactory.Create((ListDepartmentsOutputData)listDepartmentsOutputData);
+        var listDepartmentsInputData = new ListDepartmentsUseCaseInput();
+        var listDepartmentsOutputData = await _useCaseHandler.InvokeAsync<ListDepartmentsUseCaseInput, ListDepartmentsUseCaseOutput>(listDepartmentsInputData);
+        var responseData = ListResponseDataFactory.Create(listDepartmentsOutputData);
         return Ok(responseData);
     }
 }

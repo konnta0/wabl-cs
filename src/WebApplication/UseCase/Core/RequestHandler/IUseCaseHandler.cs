@@ -2,5 +2,5 @@ namespace UseCase.Core.RequestHandler;
 
 public interface IUseCaseHandler
 {
-    ValueTask<TOutput> InvokeAsync<TInput, TOutput>(TInput input) where TOutput : IOutputData where TInput : IInputData;
+    ValueTask<TOutput> InvokeAsync<TInput, TOutput>(TInput input) where TOutput : IUseCaseOutput where TInput : IUseCaseInput;
 }
