@@ -22,7 +22,6 @@ abstract class CacheClient : ICacheClient
 
     public void Dispose()
     {
-        ConnectionMultiplexer.Dispose();
     }
 
     public virtual Task<bool> KeyExistsAsync(string key)
