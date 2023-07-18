@@ -11,5 +11,6 @@ public interface ICacheClient : IDisposable
     Task<bool> HashSetAsync<T>(string key, T value);
     Task<T?> HashGetAsync<T>(string key);
     Task<string?> HashGetAsync(string key);
+    Task<object?> HashGetAsync(string key, Type returnType);
     Task<bool> KeyDeleteAsync<T>(string key);
 }

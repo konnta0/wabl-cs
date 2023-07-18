@@ -58,7 +58,7 @@ abstract class CacheClient : ICacheClient
     {
         var cacheString = await HashGetAsync(key);
         if (cacheString is null) return default;
-        return JsonSerializer.Deserialize<T>(cacheString);
+        return JsonSerializer.Deserialize<T>(cacheString.AsSpan());
     }
 
     public virtual async Task<string?> HashGetAsync(string key)
@@ -66,6 +66,14 @@ abstract class CacheClient : ICacheClient
         var cacheValue = await ConnectionMultiplexer.GetDatabase().HashGetAsync(key, nameof(CacheClient));
         if (!cacheValue.HasValue) return null;
         return cacheValue;
+    }
+
+    public virtual async Task<object?> HashGetAsync(string key, Type returnType)
+    {
+        var cacheString = await HashGetAsync(key);
+        if (cacheString is null) return default;
+        
+        return JsonSerializer.Deserialize(cacheString.AsSpan(), returnType);
     }
 
     public virtual Task<bool> KeyDeleteAsync<T>(string key)
