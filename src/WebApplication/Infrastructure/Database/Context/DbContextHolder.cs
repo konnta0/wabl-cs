@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 using Infrastructure.Database.Context.Employee;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatabaseMigration;
+namespace Infrastructure.Database.Context;
 
 public class DbContextHolder : IDbContextHolder, IDisposable
 {

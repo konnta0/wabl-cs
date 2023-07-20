@@ -3,6 +3,7 @@ using DatabaseMigration.Command;
 using DatabaseMigration.Command.Seed;
 using Infrastructure.Cache;
 using Infrastructure.Database;
+using Infrastructure.Database.Context;
 using Infrastructure.Extension;
 using MessagePipe;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +17,6 @@ builder.ConfigureServices((context, collection) =>
     
     collection.AddDbContexts(new DatabaseConfig());
     collection.AddCacheClient(new CacheConfig(), out var _);
-    collection.AddScoped<IDbContextHolder, DbContextHolder>();
     collection.AddScoped<ISeedService, SeedService>();
     collection.AddScoped<IGoogleApiHelper, GoogleApiHelper>();
     collection.AddMessagePipe();
