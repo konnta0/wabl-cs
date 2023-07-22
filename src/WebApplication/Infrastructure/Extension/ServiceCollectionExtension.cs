@@ -1,5 +1,4 @@
 using Cysharp.Text;
-using Domain.Repository.Department;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Instrumentation.Repository;
@@ -9,10 +8,10 @@ using Infrastructure.Core.Logging;
 using Infrastructure.Core.RequestHandler;
 using Infrastructure.Core.Time;
 using Infrastructure.Database;
+using Infrastructure.Database.Context;
 using Infrastructure.Database.Context.Employee;
 using Infrastructure.Extension.HealthCheck;
 using Infrastructure.Extension.Instrumentation;
-using Infrastructure.Repository.Department;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,13 +34,13 @@ public static class ServiceCollectionExtension
         serviceCollection.AddHealthChecks().AddChecks();
 
         return serviceCollection
+            .AddRepository()
             .AddDateTimeHandler()
             .AddLogging()
-            .AddDbContexts(configuration.Get<DatabaseConfig>())
-            .AddCacheClient(configuration.Get<CacheConfig>(), out var connectionMultiplexer)
+            .AddDbContexts(configuration.Get<DatabaseConfig>()!)
+            .AddCacheClient(configuration.Get<CacheConfig>()!, out var connectionMultiplexer)
             .AddOpenTelemetryTracing(connectionMultiplexer)
-            .AddOpenTelemetryMetrics(configuration.Get<InstrumentationConfig>())
-            .AddContainer();
+            .AddOpenTelemetryMetrics(configuration.Get<InstrumentationConfig>()!);
     }
 
     private static IServiceCollection AddLogging(this IServiceCollection serviceCollection)
@@ -124,12 +123,6 @@ public static class ServiceCollectionExtension
         }).Services.AddSingleton<IUseCaseInstrumentationMeter, UseCaseInstrumentationMeter>();
     }
 
-    private static IServiceCollection AddContainer(this IServiceCollection serviceCollection)
-    {
-        serviceCollection.AddTransient<IAsyncRepositoryHandler<IDepartmentRepositoryInput, IDepartmentRepositoryOutput?>, AsyncDepartmentRepositoryHandler>();
-        return serviceCollection;
-    }
-
     public static IServiceCollection AddDbContexts(this IServiceCollection serviceCollection, DatabaseConfig databaseConfig)
     {
         serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
@@ -146,12 +139,13 @@ public static class ServiceCollectionExtension
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
         });
+        serviceCollection.AddScoped<IDbContextHolder, DbContextHolder>();
+
         return serviceCollection;
     }
 
     private static MeterProviderBuilder AddWebApplicationInstrumentation(this MeterProviderBuilder meterProviderBuilder)
     {
-        // builder.AddMeter(MyMeter.Name);
         meterProviderBuilder.AddMeter(nameof(UseCaseInstrumentationMeter));
         return meterProviderBuilder;
     }
@@ -171,6 +165,12 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddDateTimeHandler(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IDateTimeHandler, FixedDateTimeHandler>();
+        return serviceCollection;
+    }
+    
+    private static IServiceCollection AddRepository(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddScoped<IRepositoryHandler, RepositoryHandler>();
         return serviceCollection;
     }
 }
