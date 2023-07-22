@@ -1,11 +1,11 @@
-using Domain.Repository.Department;
 using Infrastructure.Core.Instrumentation.UseCase;
 using Infrastructure.Core.RequestHandler;
 using Infrastructure.Repository.Department;
 using UseCase.Core.RequestHandler;
 using UseCase.Departments.Common;
+using UseCase.Departments.Dto;
 
-namespace UseCase.Departments.List;
+namespace UseCase.Departments;
 
 internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepartmentsUseCaseInput>
 {
