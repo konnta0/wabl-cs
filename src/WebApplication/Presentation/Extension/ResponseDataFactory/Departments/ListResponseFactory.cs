@@ -1,10 +1,10 @@
 using Domain.RestApi.Departments;
 using Domain.RestApi.Departments.Object;
-using UseCase.Departments;
+using UseCase.Departments.Dto;
 
 namespace Presentation.Extension.ResponseDataFactory.Departments;
 
-internal static class ListResponseDataFactory
+internal static class ListResponseFactory
 {
     public static ListResponse Create(ListDepartmentsUseCaseOutput useCaseOutput)
     {
