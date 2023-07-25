@@ -31,7 +31,7 @@ internal class AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData>
         {
             response = await next(request, cancellationToken);
         }
-        catch (Exception e)
+        catch (System.Exception e)
         {
             _logger.ZLogError(e.Message);
             if (e.StackTrace != null) _logger.ZLogError(e.StackTrace);

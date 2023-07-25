@@ -3,7 +3,7 @@ using MessagePipe;
 
 namespace UseCase.Core.RequestHandler;
 
-internal abstract class AsyncUseCaseRequestHandlerBase<TInput> : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?> where TInput : IUseCaseInput
+public abstract class AsyncUseCaseRequestHandlerBase<TInput> : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?> where TInput : IUseCaseInput
 {
     protected AsyncUseCaseRequestHandlerBase(IUseCaseActivityStarter activityStarter)
     {
