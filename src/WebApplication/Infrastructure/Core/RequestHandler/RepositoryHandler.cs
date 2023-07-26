@@ -25,16 +25,6 @@ public class RepositoryHandler : IRepositoryHandler
         using var activity = _activityStarter.Start();
         activity?.SetTag("inputType", typeof(TInput).Name);
         
-        var needTransaction = input.GetType().GetInterfaces().Contains(typeof(ITransactionalInput));
-        activity?.SetTag("needTransaction", needTransaction.ToString());
-        if (needTransaction)
-        {
-            // TODO: transaction start
-            
-            // POSTだったら問答無用でトランザクションを貼ってしまう
-            // ここでトランザクションを開始しても複数のリポジトリを呼び出すときに、対応できない
-        }
-        
         var results = await _asyncRequestHandler.InvokeAllAsync(input, AsyncPublishStrategy.Parallel, cancellationToken);
         var result = results.Where(x => x is not null).OfType<TOutput>().FirstOrDefault();
         if (result is not null)
