@@ -2,21 +2,21 @@ using MessagePack;
 
 namespace Domain.RestApi.Departments;
 
-public class List : IApi<ListRequestData, ListResponseData>
+public class List : IApi<ListRequest, ListResponse>
 {
     public HttpMethod HttpMethod => HttpMethod.Get;
     public string Endpoint => "departments/list";
-    public ListRequestData? RequestData { get; init; }
-    public ListResponseData? ResponseData { get; init; }
+    public ListRequest? RequestData { get; init; }
+    public ListResponse? ResponseData { get; init; }
 }
 
 [MessagePackObject]
-public class ListRequestData : IRequestData
+public class ListRequest : IRequestData
 {
 }
 
 [MessagePackObject]
-public class ListResponseData : IResponseData
+public class ListResponse : IResponseData
 {
     [Key(0)]
     public IEnumerable<Object.Department>? Departments { get; set; }
