@@ -19,7 +19,7 @@
     <AdditionalFiles Include="../BannedSymbols.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Tool\Domain.SourceGenerator\Domain.SourceGenerator.csproj">
+    <ProjectReference Include="..\Domain.SourceGenerator\Domain.SourceGenerator.csproj">
       <OutputItemType>Analyzer</OutputItemType>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
