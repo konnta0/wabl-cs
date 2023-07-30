@@ -1,3 +1,4 @@
+using Domain.Entity.Employee;
 using Domain.Repository;
 using Domain.Repository.Department;
 using Infrastructure.Cache;
@@ -44,8 +45,13 @@ internal sealed class DepartmentRepositoryHandler : RepositoryHandlerBase<IDepar
         };
     }
 
-    public Task<IAddOutput> AddAsync(IAddInput input, CancellationToken cancellationToken = new ())
+    public async Task<IAddOutput> AddAsync(IAddInput input, CancellationToken cancellationToken = new ())
     {
-        throw new NotImplementedException();
+        await _employeesContext.DepartmentsEntities.AddAsync(new DepartmentEntity
+        {
+            DepotNo = input.DepotNo,
+            DeptName = input.DeptName
+        }, cancellationToken);
+        return new AddOutput();
     }
 }
