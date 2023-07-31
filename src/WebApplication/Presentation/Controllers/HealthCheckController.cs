@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using Presentation.Core;
 using ZLogger;
 
 namespace Presentation.Controllers;
 
 [Route("api/[controller]/[action]")]
 [ApiController]
-public class HealthCheckController : ControllerBase
+public class HealthCheckController : WebApiController
 {
     private readonly ILogger<HealthCheckController> _logger;
 
