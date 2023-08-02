@@ -125,6 +125,8 @@ public static class ServiceCollectionExtension
 
     public static IServiceCollection AddDbContexts(this IServiceCollection serviceCollection, DatabaseConfig databaseConfig)
     {
+        // TODO: https://learn.microsoft.com/ja-jp/ef/core/performance/advanced-performance-topics?tabs=with-di%2Cexpression-api-with-constant
+        // TODO: connection pool. create context factory.
         serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
         { 
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
@@ -134,11 +136,12 @@ public static class ServiceCollectionExtension
                     mySqlOptionsAction =>
                     {
                         mySqlOptionsAction.MigrationsAssembly("DatabaseMigration");
-                        mySqlOptionsAction.EnableRetryOnFailure(10, TimeSpan.FromSeconds(30), null);
+                        mySqlOptionsAction.EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null);
                     })
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
         });
+        
         serviceCollection.AddScoped<IDbContextHolder, DbContextHolder>();
 
         return serviceCollection;
