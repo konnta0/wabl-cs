@@ -44,6 +44,7 @@ builder.Configuration.Bind(nameof(CacheConfig),new CacheConfig());
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddUseCase(builder.Configuration);
+builder.Services.AddPresentation(builder.Configuration);
 
 builder.Services.AddMvc().AddMvcOptions(options =>
 {
