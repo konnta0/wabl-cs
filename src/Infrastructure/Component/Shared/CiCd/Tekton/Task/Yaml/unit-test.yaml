@@ -13,16 +13,16 @@ spec:
     - name: source
       description: The git repo will be cloned onto the volume backing this Workspace.
   steps:
-  - name: unit-test
-    image: mcr.microsoft.com/dotnet/sdk:6.0.100-alpine3.14
-    env:
-      - name: PROJECT_DIRECTORY
-        value: $(params.project-directory)
-      - name: BUILD_CONFIGRATION
-        value: $(params.build-configration)
-    script: |
-      #!/usr/bin/env sh
-      cd ${PROJECT_DIRECTORY}
-      dotnet restore
-      dotnet build --configuration ${BUILD_CONFIGRATION} --no-restore
-      dotnet test --no-restore "--logger:Console;verbosity=normal"
+    - name: unit-test
+      image: mcr.microsoft.com/dotnet/sdk:7.0.305-alpine3.18
+      env:
+        - name: PROJECT_DIRECTORY
+          value: $(params.project-directory)
+        - name: BUILD_CONFIGRATION
+          value: $(params.build-configration)
+      script: |
+        #!/usr/bin/env sh
+        cd ${PROJECT_DIRECTORY}
+        dotnet restore
+        dotnet build --configuration ${BUILD_CONFIGRATION} --no-restore
+        dotnet test --no-restore "--logger:Console;verbosity=normal"
