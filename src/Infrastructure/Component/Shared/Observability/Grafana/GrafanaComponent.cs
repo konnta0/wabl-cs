@@ -87,6 +87,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                             {
                                 {"name", "Mimir"},
                                 {"type", "prometheus"},
+                                {"uid", "mimir"},
                                 {"orgId", 1},
                                 {"url", "http://mimir-distributed-query-frontend:8080/prometheus"},
                                 {"jsonData", new Dictionary<string, object>
@@ -114,12 +115,29 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                                 {"version", 1},
                                 {"editable", false},
                                 {"apiVersion", 1},
-                                {"uid", "tempo"}
+                                {"uid", "tempo"},
+                                {"jsonData", new Dictionary<string, object>
+                                {
+                                    ["tracesToLogsV2"] = new InputMap<object>
+                                    {
+                                        ["datasourceUid"] = "loki",
+                                    },
+                                    ["tracesToMetrics"] = new InputMap<object> 
+                                    {
+                                        ["datasourceUid"] = "mimir"
+                                    },
+                                    ["lokiSearch"] = new InputMap<object>
+                                    {
+                                        ["datasourceUid"] = "loki"
+                                    }
+                                }
+                                }
                             },
                             new Dictionary<string, object>
                             {
                                 {"name", "Loki"},
                                 {"type", "loki"},
+                                {"uid", "loki"},
 //                                {"access", "proxy"},
                                 {"orgId", 1},
                                 {"url", "http://loki-distributed-query-frontend:3100"},
