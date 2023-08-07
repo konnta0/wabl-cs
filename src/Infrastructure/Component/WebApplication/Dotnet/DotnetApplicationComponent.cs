@@ -99,7 +99,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                         }
                     }
                 }, new CustomResourceOptions { DependsOn = { input.OpenTelemetryCrd } });
-            return default;
+
             var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-deployment",
                 new DeploymentArgs
                 {
