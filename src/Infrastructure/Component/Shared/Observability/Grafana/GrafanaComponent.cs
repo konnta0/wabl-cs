@@ -192,7 +192,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                 Name = "grafana",
                 Chart = "grafana",
                 //  helm search repo grafana/grafana --versions | head -n 5
-                Version = "6.40.3",
+                Version = "6.52.9",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://grafana.github.io/helm-charts"
