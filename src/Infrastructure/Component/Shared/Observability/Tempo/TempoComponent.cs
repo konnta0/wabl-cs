@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Pulumi;
-using Pulumi.Kubernetes;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Config = Pulumi.Config;
@@ -67,6 +66,23 @@ namespace Infrastructure.Component.Shared.Observability.Tempo
                 ["minio"] = new InputMap<object>
                 {
                     ["enabled"] = false
+                },
+                ["distributor"] = new InputMap<object>
+                {
+                    ["config"] = new InputMap<object>
+                    {
+                        ["log_received_traces"] = true,
+                        ["log_received_spans"] = new InputMap<object>
+                        {
+                            ["enabled"] = true,
+                            ["include_all_attributes"] = true,
+                            ["filter_by_status_error"] = true
+                        }
+                    }
+                },
+                ["memberlist"] = new InputMap<object>
+                {
+                    ["gossip_nodes"] = 1
                 }
             };
             
@@ -75,12 +91,7 @@ namespace Infrastructure.Component.Shared.Observability.Tempo
                 Name = "tempo-distributed",
                 Chart = "tempo-distributed",
                 // helm search repo grafana/tempo-distributed --versions | head -n 5
-                // NAME                            CHART VERSION   APP VERSION     DESCRIPTION
-                // grafana/tempo-distributed       0.19.0          1.4.1           Grafana Tempo in MicroService mode
-                // grafana/tempo-distributed       0.18.2          1.4.1           Grafana Tempo in MicroService mode
-                // grafana/tempo-distributed       0.18.1          1.4.1           Grafana Tempo in MicroService mode
-                // grafana/tempo-distributed       0.18.0          1.4.1           Grafana Tempo in MicroService mode
-                Version = "0.26.5",
+                Version = "1.2.10",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://grafana.github.io/helm-charts"
