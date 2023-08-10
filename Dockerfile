@@ -14,4 +14,11 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 RUN ln -sf /usr/share/zoneinfo/posix/Japan /etc/localtime
 WORKDIR /app
 COPY --from=builder /build/out .
-ENTRYPOINT [ "dotnet", "WebAppBlueprintCS.dll"]
+COPY ./entrypoint.sh /usr/local/bin/
+RUN apt-get update && apt-get install -y curl
+RUN \
+    curl -L "https://download.jetbrains.com/rider/ssh-remote-debugging/linux-x64/jetbrains_debugger_agent_20230319.24.0" \
+    -o /usr/local/bin/debugger && \
+    chmod +x /usr/local/bin/debugger
+EXPOSE 7777
+ENTRYPOINT [ "entrypoint.sh" ]

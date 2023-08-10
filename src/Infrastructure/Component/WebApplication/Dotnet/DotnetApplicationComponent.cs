@@ -190,11 +190,15 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                 },
                 Spec = new ServiceSpecArgs
                 {
-                    Ports = new ServicePortArgs
+                    Ports = new InputList<ServicePortArgs>
                     {
-                        Port = 8080,
-                        Protocol = "TCP",
-                        TargetPort = 80
+                        new ServicePortArgs
+                        {
+                            Name = "http",
+                            Port = 8080,
+                            Protocol = "TCP",
+                            TargetPort = 80
+                        }
                     },
                     Selector = deployment.Spec.Apply(x => x.Template.Metadata.Labels)
                 }
