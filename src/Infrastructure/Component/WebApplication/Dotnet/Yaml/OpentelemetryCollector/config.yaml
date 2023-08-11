@@ -11,13 +11,13 @@ exporters:
   logging:
     loglevel: info
   otlphttp:
-    endpoint: http://mimir-distributed-distributor.observability.svc.cluster.local:8080/otlp
+    endpoint: http://mimir-distributed-distributor.shared.svc.cluster.local:8080/otlp
     headers:
       X-Scope-OrgID: "1"
   prometheusremotewrite:
-    endpoint: http://mimir-distributed-distributor.observability.svc.cluster.local:8080/api/v1/push
+    endpoint: http://mimir-distributed-distributor.shared.svc.cluster.local:8080/api/v1/push
   otlp/tempo-trace:
-    endpoint: tempo-distributed-distributor.observability.svc.cluster.local:4317
+    endpoint: tempo-distributed-distributor.shared.svc.cluster.local:4317
     tls:
       insecure: true
 
