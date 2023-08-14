@@ -4,10 +4,12 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using DotNet.Testcontainers.Builders;
+using DotNet.Testcontainers.Configurations;
 using DotNet.Testcontainers.Containers;
 using DotNet.Testcontainers.Networks;
 using Infrastructure.Cache;
 using Infrastructure.Database;
+using Testcontainers.MySql;
 using Xunit;
 
 namespace WebApplication.Test;
@@ -129,11 +131,9 @@ public abstract class TestBase : IAsyncLifetime
             .WithDockerfileDirectory(solutionDirectory, "tests")
             .WithDockerfile("Dockerfile.MySQL")
             .WithName("db-" + Guid.NewGuid().ToString("D"))
-            .WithCleanUp(true)
             .Build();
 
         var databaseContainer = new ContainerBuilder()
-            .WithCleanUp(true)
             .WithName("db-" + Guid.NewGuid().ToString("D"))
             .WithImage(databaseImage)
             .WithNetwork(network)
@@ -143,8 +143,11 @@ public abstract class TestBase : IAsyncLifetime
             .WithEnvironment("MYSQL_ROOT_PASSWORD", "root")
             .WithEnvironment("MYSQL_ALLOW_EMPTY_PASSWORD", string.Empty)
             .WithEnvironment("MYSQL_RANDOM_ROOT_PASSWORD", string.Empty)
-            .WithWaitStrategy(Wait.ForUnixContainer().UntilContainerIsHealthy(30))
+            // .WithWaitStrategy(Wait.ForUnixContainer().UntilContainerIsHealthy(30))
+            .WithEnvironment("MYSQL_DATABASE", "test")
+            .WithWaitStrategy(Wait.ForUnixContainer().AddCustomWaitStrategy(new MysqlWaitUntil()))
             .Build();
+        
 
         await databaseImage.CreateAsync(cancellationToken);
         await databaseContainer.StartAsync(cancellationToken);
@@ -195,4 +198,28 @@ public abstract class TestBase : IAsyncLifetime
 
         return cacheContainer;
     }
+    
+    private sealed class MysqlWaitUntil : IWaitUntil
+    {
+        private readonly IList<string> _command;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WaitUntil" /> class.
+        /// </summary>
+        /// <param name="configuration">The container configuration.</param>
+        public MysqlWaitUntil()
+        {
+            _command = new List<string> { "mysql", "--protocol=TCP", $"--port={MySqlBuilder.MySqlPort}", $"--user=root", $"--password=root", "test", "--wait", "--silent", "--execute=SELECT 1;" };
+        }
+
+        /// <inheritdoc />
+        public async Task<bool> UntilAsync(IContainer container)
+        {
+            var execResult = await container.ExecAsync(_command)
+                .ConfigureAwait(false);
+
+            return 0L.Equals(execResult.ExitCode);
+        }
+    }
+
 }
