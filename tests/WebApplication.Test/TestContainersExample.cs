@@ -12,7 +12,7 @@ using Xunit;
 
 namespace WebApplication.Test;
 
-public class TestContainersExample : TestBase
+public sealed class TestContainersExample : TestBase
 {
     private IServiceProvider? _serviceProvider;
 

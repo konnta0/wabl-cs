@@ -14,8 +14,8 @@ namespace WebApplication.Test;
 
 public abstract class TestBase : IAsyncLifetime
 {
-    protected DatabaseConfig? DatabaseConfig = null;
-    protected CacheConfig? CacheConfig = null;
+    protected DatabaseConfig? DatabaseConfig;
+    protected CacheConfig? CacheConfig;
 
     private const string MagicNumberHost = "deep-thought";
     private readonly TestBaseOptions _options;
@@ -25,8 +25,8 @@ public abstract class TestBase : IAsyncLifetime
     
     protected class TestBaseOptions
     {
-        public bool UseDatabase { get; set; } = true;
-        public bool UseCache { get; set; } = true;
+        public bool UseDatabase { get; init; } = true;
+        public bool UseCache { get; init; } = true;
 
         public bool UseTestContainers => UseDatabase || UseCache;
     }
