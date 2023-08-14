@@ -102,7 +102,7 @@ public abstract class TestBase : IAsyncLifetime
     private async Task SetEnvironmentVariablesAsync()
     {
         var solutionDirectory = CommonDirectoryPath.GetSolutionDirectory();
-        var dotEnvFile = Path.Combine(solutionDirectory.DirectoryPath, ".env");
+        var dotEnvFile = Path.Combine(solutionDirectory.DirectoryPath, "./tests/WebApplication.Test/.env");
         if (!File.Exists(dotEnvFile))
         {
             return;
