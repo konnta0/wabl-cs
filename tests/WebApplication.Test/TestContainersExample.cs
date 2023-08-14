@@ -21,6 +21,10 @@ public sealed class TestContainersExample : TestBase
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddLogging();
         serviceCollection.AddDbContexts(DatabaseConfig!);
+        Console.WriteLine("|||||||||||||||||||||||||| debug" + DatabaseConfig.ServerHost);
+        Console.WriteLine("|||||||||||||||||||||||||| debug" + DatabaseConfig.ServerPort);
+        Console.WriteLine("|||||||||||||||||||||||||| debug" + DatabaseConfig.ServerUser);
+        Console.WriteLine("|||||||||||||||||||||||||| debug" + DatabaseConfig.ServerPassword);
         
         _serviceProvider = serviceCollection.BuildServiceProvider();
         var employeesContext = _serviceProvider!.GetRequiredService<EmployeesContext>();
@@ -31,6 +35,7 @@ public sealed class TestContainersExample : TestBase
     [Fact]
     public async Task UseDatabaseContainer()
     {
+        await Task.Delay(new Random().Next(1000, 5000));
         var employeesContext = _serviceProvider!.GetRequiredService<EmployeesContext>();
         
         var testTitleEntities = new Faker<TitlesEntity>()
