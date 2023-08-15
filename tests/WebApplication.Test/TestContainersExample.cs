@@ -21,10 +21,6 @@ public sealed class TestContainersExample : TestBase
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddLogging();
         serviceCollection.AddDbContexts(DatabaseConfig!);
-        Console.WriteLine("|||||||||||||||||||||||||| debug" + DatabaseConfig.ServerHost);
-        Console.WriteLine("|||||||||||||||||||||||||| debug" + DatabaseConfig.ServerPort);
-        Console.WriteLine("|||||||||||||||||||||||||| debug" + DatabaseConfig.ServerUser);
-        Console.WriteLine("|||||||||||||||||||||||||| debug" + DatabaseConfig.ServerPassword);
         
         _serviceProvider = serviceCollection.BuildServiceProvider();
         var employeesContext = _serviceProvider!.GetRequiredService<EmployeesContext>();

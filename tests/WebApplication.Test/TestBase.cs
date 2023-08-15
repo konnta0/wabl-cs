@@ -143,7 +143,6 @@ public abstract class TestBase : IAsyncLifetime
             .WithEnvironment("MYSQL_ROOT_PASSWORD", "root")
             .WithEnvironment("MYSQL_ALLOW_EMPTY_PASSWORD", string.Empty)
             .WithEnvironment("MYSQL_RANDOM_ROOT_PASSWORD", string.Empty)
-            // .WithWaitStrategy(Wait.ForUnixContainer().UntilContainerIsHealthy(30))
             .WithEnvironment("MYSQL_DATABASE", "test")
             .WithWaitStrategy(Wait.ForUnixContainer().AddCustomWaitStrategy(new MysqlWaitUntil()))
             .Build();
@@ -202,14 +201,10 @@ public abstract class TestBase : IAsyncLifetime
     private sealed class MysqlWaitUntil : IWaitUntil
     {
         private readonly IList<string> _command;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WaitUntil" /> class.
-        /// </summary>
-        /// <param name="configuration">The container configuration.</param>
-        public MysqlWaitUntil()
+        
+        public MysqlWaitUntil(string user = "root", string password = "root", string database = "test")
         {
-            _command = new List<string> { "mysql", "--protocol=TCP", $"--port={MySqlBuilder.MySqlPort}", $"--user=root", $"--password=root", "test", "--wait", "--silent", "--execute=SELECT 1;" };
+            _command = new List<string> { "mysql", "--protocol=TCP", $"--port={MySqlBuilder.MySqlPort}", $"--user={user}", $"--password={password}", database, "--wait", "--silent", "--execute=SELECT 1;" };
         }
 
         /// <inheritdoc />
