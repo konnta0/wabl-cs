@@ -112,11 +112,11 @@ clean-image:
 ROOT_DIR=$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
 MIGRATION_COMMAND?=help
 
-.PHONY: migration-prepare-add # 
+.PHONY: migration-prepare-add # migration prepare add. used in migration-add command
 migration-prepare-add:
 	$(eval MIGRATION_COMMAND := dotnet ef migrations add $(NAME))
 
-.PHONY: migration-run #
+.PHONY: migration-run # excute migration command
 migration-run:
 	docker build -f Dockerfile.DatabaseMigration -t database_migration .
 	docker run -it \
@@ -139,14 +139,14 @@ migration-add: migration-prepare-add migration-run
 migration-prepare-update:
 	$(eval MIGRATION_COMMAND := dotnet ef database update)
 
-.PHONY: migration-update
+.PHONY: migration-update # migration update
 migration-update: migration-prepare-update migration-run
 
 .PHONY: migration-prepare-seed-import # 
 migration-prepare-seed-import:
 	$(eval MIGRATION_COMMAND := dotnet run -- seed-import)
 
-.PHONY: migration-seed-import
+.PHONY: migration-seed-import # seed import
 migration-seed-import: migration-prepare-seed-import migration-run
 
 
@@ -235,7 +235,7 @@ install-pulumi: # for mac
 DOMAIN=cr.test
 CERTIFICATE_PATH=ca.crt
 .PHONY: add-cert-into-docker
-add-cert-into-docker: #
+add-cert-into-docker: # Install certificate into docker
 	@echo see https://matsuand.github.io/docs.docker.jp.onthefly/desktop/mac/#directory-structures-for-certificates
 	sudo mkdir -p /etc/docker/certs.d/$(DOMAIN)/
 	sudo cp -f $(CERTIFICATE_PATH) /etc/docker/certs.d/$(DOMAIN)/
@@ -258,21 +258,22 @@ setup-local: install-minikube install-pulumi
 	@echo "start setup local"
 
 
-## Container image
-.PHONY: build-image # 
+## Container image(app)
+.PHONY: build-image # build image
 build-image:
 	docker build -t core.harbor.cr.test/webapp/dotnetapp:latest .
 
-.PHONY: push-image # 
+.PHONY: push-image # build and push image
 push-image: build-image
 	docker image push core.harbor.cr.test/webapp/dotnetapp:latest
 
 ## k8s tools
 .PHONY: redis-cli # 
+.PHONY: redis-cli # exec redis-cli in k8s
 redis-cli: 
 	kubectl run -n webapp -it redis-cli --rm --image redis --restart=Never -- bash
 
-.PHONY: db # 
+.PHONY: db # exec mysql(tidb) in k8s
 db: 
 	kubectl run -n shared -it mysql --rm --image mysql:5.7 --restart=Never -- bash -c "mysql -u root -h  tidb-cluster-tidb-0 -P 4000"
 
