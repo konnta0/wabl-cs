@@ -1,18 +1,17 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="app" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+  <configuration default="false" name="app" type="docker-deploy" factoryName="docker-compose.yml" editBeforeRun="true" server-name="Docker">
     <deployment type="docker-compose.yml">
       <settings>
         <option name="envFilePath" value="" />
-        <option name="commandLineOptions" value="--build" />
         <option name="services">
           <list>
             <option value="app" />
           </list>
         </option>
-        <option name="sourceFilePath" value="docker-compose.yml" />
-        <option name="upDetach" value="false" />
+        <option name="sourceFilePath" value="docker-compose/compose.yml" />
       </settings>
     </deployment>
+    <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
     <method v="2" />
   </configuration>
 </component>
