@@ -267,8 +267,16 @@ build-image:
 push-image: build-image
 	docker image push core.harbor.cr.test/webapp/dotnetapp:latest
 
+## Container image(management console)
+.PHONY: build-image-management-console # build image
+build-image-management-console:
+	docker build -t core.harbor.cr.test/tool/management-console:latest -f ./Dockerfile.ManagementConsole .
+
+.PHONY: push-image-management-console # build and push image
+push-image-management-console: build-image-management-console
+	docker image push core.harbor.cr.test/tool/management-console:latest
+
 ## k8s tools
-.PHONY: redis-cli # 
 .PHONY: redis-cli # exec redis-cli in k8s
 redis-cli: 
 	kubectl run -n webapp -it redis-cli --rm --image redis --restart=Never -- bash
