@@ -1,18 +1,18 @@
+using Microsoft.Extensions.Options;
+
 namespace Infrastructure.Core.Time;
 
 public class FixedDateTimeHandler : IDateTimeHandler
 {
-    private TimeSpan _offset;
+    private TimeSpan _offset = TimeSpan.Zero;
     private TimeZoneInfo _timeZoneInfo;
-    private readonly DateTimeOffset _dateTimeOffset;
+    private readonly DateTimeOffset _dateTimeOffset = DateTimeOffset.UtcNow;
 
-    public FixedDateTimeHandler()
+    public FixedDateTimeHandler(IOptions<TimeConfig> config)
     {
-        _offset = TimeSpan.Zero;
-        _timeZoneInfo = TimeZoneInfo.Utc;
-        _dateTimeOffset = DateTimeOffset.UtcNow;
+        _timeZoneInfo = config.Value.TimeZoneInfo;
     }
-
+    
     public void SetOffset(TimeSpan offset) => _offset = offset;
     
     public void SetTimeZone(TimeZoneInfo timeZoneInfo) => _timeZoneInfo = timeZoneInfo;

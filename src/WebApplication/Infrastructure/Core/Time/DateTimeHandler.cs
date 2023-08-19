@@ -2,14 +2,8 @@ namespace Infrastructure.Core.Time;
 
 public class DateTimeHandler : IDateTimeHandler
 {
-    private TimeSpan _offset;
-    private TimeZoneInfo _timeZoneInfo;
-
-    public DateTimeHandler()
-    {
-        _offset = TimeSpan.Zero;
-        _timeZoneInfo = TimeZoneInfo.Utc;
-    }
+    private TimeSpan _offset = TimeSpan.Zero;
+    private TimeZoneInfo _timeZoneInfo = TimeZoneConverter.TZConvert.GetTimeZoneInfo("Asia/Tokyo");
 
     public void SetOffset(TimeSpan offset) => _offset = offset;
     
