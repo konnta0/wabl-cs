@@ -1,0 +1,20 @@
+# -*- mode: Python -*-
+
+# For more on Extensions, see: https://docs.tilt.dev/extensions.html
+load('ext://restart_process', 'docker_build_with_restart')
+
+docker_build_with_restart(
+    'core.harbor.cr.test/webapp/dotnetapp:latest',
+    '../../',
+    entrypoint='entrypoint.sh',
+    dockerfile='../../Dockerfile',
+    live_update=[
+        sync('out', '/app/out'),
+    ],
+)
+
+settings = read_json('tilt_option.json', default={})
+default_registry(settings.get('default_registry', 'core.harbor.cr.test/webapp'))
+
+k8s_yaml('deployment.local.yaml')
+k8s_resource('dotnetapp', port_forwards=['8080:80', '5022:5022'])
