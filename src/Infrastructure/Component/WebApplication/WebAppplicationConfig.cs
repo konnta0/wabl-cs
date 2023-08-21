@@ -1,4 +1,4 @@
-namespace Infrastructure.WebApplication
+namespace Infrastructure.Component.WebApplication
 {
     public struct WebApplicationConfig
     {

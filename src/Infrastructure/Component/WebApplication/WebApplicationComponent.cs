@@ -1,8 +1,4 @@
 using System.Text.Json;
-using Infrastructure.Component;
-using Infrastructure.Component.Shared.Storage.Dragonfly;
-using Infrastructure.Component.Shared.Storage.TiDB;
-using Infrastructure.Component.WebApplication;
 using Infrastructure.Component.WebApplication.Dotnet;
 using Infrastructure.Component.WebApplication.OpenTelemetryOperator;
 using Infrastructure.Component.WebApplication.Promtail;
@@ -13,7 +9,7 @@ using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
-namespace Infrastructure.WebApplication
+namespace Infrastructure.Component.WebApplication
 {
     public class WebApplicationComponent : IComponent<WebApplicationComponentInput, WebApplicationComponentOutput>
     {
@@ -23,7 +19,9 @@ namespace Infrastructure.WebApplication
         private readonly OpenTelemetryOperatorComponent _openTelemetryOperatorComponent;
         private readonly PromtailComponent _promtailComponent;
 
-        public WebApplicationComponent(ILogger<WebApplicationComponent> logger, Config config, 
+        public WebApplicationComponent(
+            ILogger<WebApplicationComponent> logger,
+            Config config, 
             DotnetApplicationComponent dotnetApplicationComponent,
             OpenTelemetryOperatorComponent openTelemetryOperatorComponent,
             PromtailComponent promtailComponent)

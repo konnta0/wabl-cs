@@ -3,7 +3,7 @@ using Infrastructure.Component.WebApplication.OpenTelemetryOperator;
 using Infrastructure.Component.WebApplication.Promtail;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Infrastructure.WebApplication.Extension
+namespace Infrastructure.Component.WebApplication.Extension
 {
     internal static class ServiceCollectionExtension
     {

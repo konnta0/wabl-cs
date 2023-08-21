@@ -2,8 +2,9 @@ using Infrastructure.CI_CD;
 using Infrastructure.Component.Shared.CiCd;
 using Infrastructure.Component.Shared.ContainerRegistry;
 using Infrastructure.Component.Shared.Observability;
+using Infrastructure.Component.Tool;
+using Infrastructure.Component.WebApplication;
 using Infrastructure.VersionControlSystem;
-using Infrastructure.WebApplication;
 using Pulumi;
 
 namespace Infrastructure.Extension
@@ -38,6 +39,11 @@ namespace Infrastructure.Extension
         internal static WebApplicationConfig GetWebApplicationConfig(this Config config)
         {
             return config.GetObject<WebApplicationConfig>("WebApplication");
+        }
+        
+        internal static ToolConfig GetToolConfig(this Config config)
+        {
+            return config.GetObject<ToolConfig>("Tool");
         }
     }
 }

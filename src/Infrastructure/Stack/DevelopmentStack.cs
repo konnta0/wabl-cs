@@ -5,9 +5,8 @@ using Infrastructure.Component.Shared.CiCd;
 using Infrastructure.Component.Shared.ContainerRegistry;
 using Infrastructure.Component.Shared.Observability;
 using Infrastructure.Component.Shared.Storage;
+using Infrastructure.Component.Tool;
 using Infrastructure.Component.WebApplication;
-using Infrastructure.VersionControlSystem;
-using Infrastructure.WebApplication;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
@@ -21,6 +20,7 @@ namespace Infrastructure.Stack
     {
         private readonly ILogger<DevelopmentStack> _logger;
         private readonly Config _config;
+        private readonly ToolComponent _toolComponent;
 
         public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, 
             CiCdComponent ciCdComponent, 
@@ -29,10 +29,12 @@ namespace Infrastructure.Stack
             CertificateComponent certificateComponent,
             WebApplicationComponent webApplicationComponent,
             StorageComponent storageComponent,
-            SharedComponent sharedComponent)
+            SharedComponent sharedComponent,
+            ToolComponent toolComponent)
         {
             _logger = logger;
             _config = config;
+            _toolComponent = toolComponent;
             _logger.LogInformation("start development stack");
             sharedComponent.Apply(new SharedComponentInput());
             
@@ -67,6 +69,11 @@ namespace Infrastructure.Stack
             }
             //GitLabHost = versionControlSystemComponent.Apply();
             webApplicationComponent.Apply(new WebApplicationComponentInput
+            {
+                
+            });
+
+            toolComponent.Apply(new ToolComponentInput
             {
                 
             });

@@ -4,10 +4,11 @@ using Infrastructure.Component.Shared.Certificate.Extension;
 using Infrastructure.Component.Shared.CiCd.Extension;
 using Infrastructure.Component.Shared.ContainerRegistry.Extension;
 using Infrastructure.Component.Shared.Storage.Extension;
+using Infrastructure.Component.Tool.Extension;
+using Infrastructure.Component.WebApplication.Extension;
 using Infrastructure.Resource.Shared.Observability.Extension;
 using Infrastructure.Stack;
 using Infrastructure.VersionControlSystem.Extension;
-using Infrastructure.WebApplication.Extension;
 using Microsoft.Extensions.DependencyInjection;
 using Pulumi;
 
@@ -30,6 +31,7 @@ class Program
         serviceCollection.AddCertificate();
         serviceCollection.AddVersionControlSystem();
         serviceCollection.AddWebApplication();
+        serviceCollection.AddTool();
         serviceCollection.AddStorageComponent();
         serviceCollection.AddScoped<DevelopmentStack>();
         serviceCollection.AddScoped<SharedComponent>();

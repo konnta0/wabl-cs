@@ -23,3 +23,5 @@ config:
   Infrastructure:WebApplication:
     Namespace: webapp
   Infrastructure:isMinikube: "true"
+  Infrastructure:Tool:
+    Namespace: tool
