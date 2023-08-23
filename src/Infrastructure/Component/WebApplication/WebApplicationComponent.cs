@@ -1,7 +1,7 @@
 using System.Text.Json;
-using Infrastructure.Component.WebApplication.Dotnet;
 using Infrastructure.Component.WebApplication.OpenTelemetryOperator;
 using Infrastructure.Component.WebApplication.Promtail;
+using Infrastructure.Component.WebApplication.WebApi;
 using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
@@ -15,20 +15,20 @@ namespace Infrastructure.Component.WebApplication
     {
         private readonly ILogger<WebApplicationComponent> _logger;
         private Config _config;
-        private readonly DotnetApplicationComponent _dotnetApplicationComponent;
+        private readonly WebApiComponent _webApiComponent;
         private readonly OpenTelemetryOperatorComponent _openTelemetryOperatorComponent;
         private readonly PromtailComponent _promtailComponent;
 
         public WebApplicationComponent(
             ILogger<WebApplicationComponent> logger,
             Config config, 
-            DotnetApplicationComponent dotnetApplicationComponent,
+            WebApiComponent webApiComponent,
             OpenTelemetryOperatorComponent openTelemetryOperatorComponent,
             PromtailComponent promtailComponent)
         {
             _logger = logger;
             _config = config;
-            _dotnetApplicationComponent = dotnetApplicationComponent;
+            _webApiComponent = webApiComponent;
             _openTelemetryOperatorComponent = openTelemetryOperatorComponent;
             _promtailComponent = promtailComponent;
         }
@@ -56,7 +56,7 @@ namespace Infrastructure.Component.WebApplication
                 });
             }
             
-            _dotnetApplicationComponent.Apply(new DotnetApplicationComponentInput
+            _webApiComponent.Apply(new WebApiComponentInput
             {
                 Namespace = @namespace,
                 OpenTelemetryCrd = openTelemetryOperatorComponentOutput.OpenTelemetryCrd

@@ -1,6 +1,6 @@
-using Infrastructure.Component.WebApplication.Dotnet;
 using Infrastructure.Component.WebApplication.OpenTelemetryOperator;
 using Infrastructure.Component.WebApplication.Promtail;
+using Infrastructure.Component.WebApplication.WebApi;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Component.WebApplication.Extension
@@ -9,7 +9,7 @@ namespace Infrastructure.Component.WebApplication.Extension
     {
         internal static IServiceCollection AddWebApplication(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddScoped<DotnetApplicationComponent>();
+            serviceCollection.AddScoped<WebApiComponent>();
             serviceCollection.AddScoped<WebApplicationComponent>();
             serviceCollection.AddScoped<OpenTelemetryOperatorComponent>();
             serviceCollection.AddScoped<PromtailComponent>();

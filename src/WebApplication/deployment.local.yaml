@@ -4,7 +4,7 @@ metadata:
   labels:
     app: web
     app.kubernetes.io/managed-by: pulumi
-  name: dotnetapp
+  name: web-api
   namespace: webapp
 spec:
   progressDeadlineSeconds: 600
@@ -29,8 +29,8 @@ spec:
       containers:
         - envFrom:
             - secretRef:
-                name: dotnetapp-env-secret
-          image: core.harbor.cr.test/webapp/dotnetapp:latest
+                name: web-api-env-secret
+          image: core.harbor.cr.test/webapp/web-api:latest
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
@@ -42,7 +42,7 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
-          name: dotnetapp
+          name: web-api
           ports:
             - containerPort: 80
               protocol: TCP

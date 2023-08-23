@@ -261,11 +261,11 @@ setup-local: install-minikube install-pulumi
 ## Container image(app)
 .PHONY: build-image # build image
 build-image:
-	docker build -t core.harbor.cr.test/webapp/dotnetapp:latest .
+	docker build -t core.harbor.cr.test/webapp/web-api:latest .
 
 .PHONY: push-image # build and push image
 push-image: build-image
-	docker image push core.harbor.cr.test/webapp/dotnetapp:latest
+	docker image push core.harbor.cr.test/webapp/web-api:latest
 
 ## Container image(management console)
 .PHONY: build-image-management-console # build image
@@ -291,4 +291,4 @@ db-foward:
 
 .PHONY: tkn-build-image #
 tkn-build-image:
-	curl -X POST -H 'Context-Type: application/json' http://image.build.el.cicd.test -d '{"git-url": "https://github.com/konnta0/wabl-cs", "image":"core.harbor.cr.test/webapp/dotnetapp"}'
+	curl -X POST -H 'Context-Type: application/json' http://image.build.el.cicd.test -d '{"git-url": "https://github.com/konnta0/wabl-cs", "image":"core.harbor.cr.test/webapp/web-api"}'

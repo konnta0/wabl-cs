@@ -10,7 +10,7 @@ spec:
     - name: git-url
       value: https://github.com/konnta0/wabl-cs
     - name: image
-      value: core.harbor.cr.test/webapp/dotnetapp
+      value: core.harbor.cr.test/webapp/web-api
   serviceAccountName: tekton-dashboard-service-account
   workspaces:
     - name: shared-workspace

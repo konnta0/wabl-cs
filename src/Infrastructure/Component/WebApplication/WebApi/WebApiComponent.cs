@@ -17,18 +17,18 @@ using SecretArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.SecretArgs;
 using Service = Pulumi.Kubernetes.Core.V1.Service;
 using ServiceArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ServiceArgs;
 
-namespace Infrastructure.Component.WebApplication.Dotnet
+namespace Infrastructure.Component.WebApplication.WebApi
 {
-    public class DotnetApplicationComponent : IComponent<DotnetApplicationComponentInput, DotnetApplicationComponentOutput>
+    public class WebApiComponent : IComponent<WebApiComponentInput, WebApiComponentOutput>
     {
         private readonly Config _config;
 
-        public DotnetApplicationComponent(Config config)
+        public WebApiComponent(Config config)
         {
             _config = config;
         }
 
-        public DotnetApplicationComponentOutput Apply(DotnetApplicationComponentInput input)
+        public WebApiComponentOutput Apply(WebApiComponentInput input)
         {
             var envInputMap = new InputMap<string>();
             var env = File.ReadAllLines(".env");
@@ -38,12 +38,12 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                 envInputMap.Add(splitEnv.First(), splitEnv.Last());
             }
 
-            var secret = new Secret("web-application-dotnet-application-secret", new SecretArgs
+            var secret = new Secret("web-application-web-api-secret", new SecretArgs
             {
                 ApiVersion = "v1",
                 Metadata = new ObjectMetaArgs
                 {
-                    Name = "dotnetapp-env-secret",
+                    Name = "web-api-env-secret",
                     Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Type = "Opaque",
@@ -99,12 +99,12 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                     }
                 }, new CustomResourceOptions { DependsOn = { input.OpenTelemetryCrd } });
 
-            var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-dotnet-deployment",
+            var deployment = new Pulumi.Kubernetes.Apps.V1.Deployment("web-application-web-api-deployment",
                 new DeploymentArgs
                 {
                     Metadata = new ObjectMetaArgs
                     {
-                        Name = "dotnetapp",
+                        Name = "web-api",
                         Labels =
                         {
                             { "app", "web" }
@@ -141,8 +141,8 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                                 {
                                     new ContainerArgs
                                     {
-                                        Image = $"{_config.GetContainerRegistryConfig().Host}/webapp/dotnetapp:latest",
-                                        Name = "dotnetapp",
+                                        Image = $"{_config.GetContainerRegistryConfig().Host}/webapp/web-api:latest",
+                                        Name = "web-api",
                                         Ports =
                                         {
                                             new ContainerPortArgs
@@ -180,11 +180,11 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                         }
                     }
                 });
-            var service = new Service("web-application-dotnet-service", new ServiceArgs
+            var service = new Service("web-application-web-api-service", new ServiceArgs
             {
                 Metadata = new ObjectMetaArgs
                 {
-                    Name = "web-application-dotnet-service",
+                    Name = "web-application-web-api-service",
                     Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new ServiceSpecArgs
@@ -203,13 +203,13 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                 }
             });
 
-            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("web-application-dotnet-ingress",
+            var ingress = new Pulumi.Kubernetes.Networking.V1.Ingress("web-application-wen-api-ingress",
                 new IngressArgs
                 {
                     ApiVersion = "networking.k8s.io/v1",
                     Metadata = new ObjectMetaArgs
                     {
-                        Name = "dotnetapp-ingress",
+                        Name = "web-api-ingress",
                         Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                     },
                     Spec = new IngressSpecArgs
@@ -219,7 +219,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                         {
                             new IngressRuleArgs
                             {
-                                Host = "dotnet.webapp.test",
+                                Host = "api.webapp.test",
                                 Http = new HTTPIngressRuleValueArgs
                                 {
                                     Paths = new HTTPIngressPathArgs
@@ -241,7 +241,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                         }
                     }
                 });
-            var hpa = new HorizontalPodAutoscaler("web-application-dotnet-hpa", new HorizontalPodAutoscalerArgs
+            var hpa = new HorizontalPodAutoscaler("web-application-web-api-hpa", new HorizontalPodAutoscalerArgs
             {
                 Metadata = new ObjectMetaArgs
                 {
@@ -273,7 +273,7 @@ namespace Infrastructure.Component.WebApplication.Dotnet
                 }
             });
 
-            return new DotnetApplicationComponentOutput();
+            return new WebApiComponentOutput();
         }
     }
 }
