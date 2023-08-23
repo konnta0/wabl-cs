@@ -51,7 +51,7 @@ namespace Infrastructure.Component.WebApplication.WebApi
             });
 
             string openTelemetryCollectorConfigYaml;
-            using (var sr = new StreamReader("Component/WebApplication/Dotnet/Yaml/OpentelemetryCollector/config.yaml"))
+            using (var sr = new StreamReader("Component/WebApplication/WebApi/Yaml/OpentelemetryCollector/config.yaml"))
             {
                 openTelemetryCollectorConfigYaml = sr.ReadToEnd();
             }
