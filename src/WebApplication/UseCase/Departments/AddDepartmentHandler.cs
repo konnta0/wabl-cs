@@ -4,10 +4,11 @@ using Infrastructure.Repository.Department;
 using UseCase.Core.Exception;
 using UseCase.Core.RequestHandler;
 using UseCase.Departments.Dto;
+using UseCase.Departments.ExecuteResult;
 
 namespace UseCase.Departments;
 
-public class AddDepartmentHandler : AsyncUseCaseRequestHandlerBase<AddDepartmentsUseCaseInput>
+public class AddDepartmentHandler : AsyncUseCaseRequestHandlerBase<AddDepartmentsUseCaseInput, AddDepartmentExecuteResult>
 {
     private readonly IRepositoryHandler _repositoryHandler;
     public AddDepartmentHandler(IUseCaseActivityStarter activityStarter, IRepositoryHandler repositoryHandler) : base(activityStarter)
@@ -26,16 +27,20 @@ public class AddDepartmentHandler : AsyncUseCaseRequestHandlerBase<AddDepartment
         return ValueTask.CompletedTask;
     }
 
-    protected override async ValueTask ExecuteAsync(AddDepartmentsUseCaseInput input, CancellationToken cancellationToken = new ())
+    protected override async ValueTask<AddDepartmentExecuteResult> ExecuteAsync(AddDepartmentsUseCaseInput input, CancellationToken cancellationToken = new ())
     {
         _ = await _repositoryHandler.InvokeAsync<AddInput, AddOutput>(new AddInput
         {
             DepotNo = input.DepotNo,
             DeptName = input.DeptName
         }, cancellationToken);
+        
+        return new AddDepartmentExecuteResult();
     }
 
-    protected override ValueTask<IUseCaseOutput> CollectResponseAsync(AddDepartmentsUseCaseInput input,
+    protected override ValueTask<IUseCaseOutput> CollectResponseAsync(
+        AddDepartmentsUseCaseInput input,
+        AddDepartmentExecuteResult executeResult,
         CancellationToken cancellationToken = new ())
     {
         var output = new AddDepartmentsUseCaseOutput();

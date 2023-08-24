@@ -4,10 +4,11 @@ using Infrastructure.Repository.Department;
 using UseCase.Core.RequestHandler;
 using UseCase.Departments.Common;
 using UseCase.Departments.Dto;
+using UseCase.Departments.ExecuteResult;
 
 namespace UseCase.Departments;
 
-internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepartmentsUseCaseInput>
+internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepartmentsUseCaseInput, ListDepartmentExecuteResult>
 {
     private readonly IRepositoryHandler _repositoryHandler;
     private ListDepartmentsUseCaseOutput _output = null!;
@@ -25,7 +26,7 @@ internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepar
         return ValueTask.CompletedTask;
     }
 
-    protected override async ValueTask ExecuteAsync(ListDepartmentsUseCaseInput useCaseInput, CancellationToken cancellationToken = new ())
+    protected override async ValueTask<ListDepartmentExecuteResult> ExecuteAsync(ListDepartmentsUseCaseInput useCaseInput, CancellationToken cancellationToken = new ())
     {
         _output = new ListDepartmentsUseCaseOutput();
         
@@ -33,9 +34,12 @@ internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepar
 
         _output.Departments = repositoryOutputData.DepartmentsEntities!.SelectMany(x => new[]
             { new Department { DepotNo = x.DepotNo, DeptName = x.DeptName } });
+        return new ListDepartmentExecuteResult();
     }
 
-    protected override ValueTask<IUseCaseOutput> CollectResponseAsync(ListDepartmentsUseCaseInput useCaseInput,
+    protected override ValueTask<IUseCaseOutput> CollectResponseAsync(
+        ListDepartmentsUseCaseInput useCaseInput,
+        ListDepartmentExecuteResult executeResult,
         CancellationToken cancellationToken = new ())
     {
         return _output is null ? throw new NullReferenceException() : new ValueTask<IUseCaseOutput>(_output);

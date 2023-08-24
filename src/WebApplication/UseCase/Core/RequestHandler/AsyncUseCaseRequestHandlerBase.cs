@@ -3,7 +3,7 @@ using MessagePipe;
 
 namespace UseCase.Core.RequestHandler;
 
-public abstract class AsyncUseCaseRequestHandlerBase<TInput> : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?> where TInput : IUseCaseInput
+public abstract class AsyncUseCaseRequestHandlerBase<TInput, TExecuteResult> : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?> where TInput : IUseCaseInput where TExecuteResult : IUseCaseExecuteResult
 {
     protected AsyncUseCaseRequestHandlerBase(IUseCaseActivityStarter activityStarter)
     {
@@ -23,9 +23,9 @@ public abstract class AsyncUseCaseRequestHandlerBase<TInput> : IAsyncRequestHand
 
         await ValidateAsync(input, cancellationToken);
 
-        await ExecuteAsync(input, cancellationToken);
+        var result = await ExecuteAsync(input, cancellationToken);
 
-        var output = await CollectResponseAsync(input, cancellationToken);
+        var output = await CollectResponseAsync(input, result, cancellationToken);
         activity?.SetTag("OutputData", output);
 
         return output;
@@ -33,7 +33,7 @@ public abstract class AsyncUseCaseRequestHandlerBase<TInput> : IAsyncRequestHand
 
     protected abstract ValueTask ValidateAsync(TInput input, CancellationToken cancellationToken = new());
     
-    protected abstract ValueTask ExecuteAsync(TInput input, CancellationToken cancellationToken = new());
+    protected abstract ValueTask<TExecuteResult> ExecuteAsync(TInput input, CancellationToken cancellationToken = new());
     
-    protected abstract ValueTask<IUseCaseOutput> CollectResponseAsync(TInput input, CancellationToken cancellationToken = new());
+    protected abstract ValueTask<IUseCaseOutput> CollectResponseAsync(TInput input, TExecuteResult executeResult, CancellationToken cancellationToken = new());
 }
