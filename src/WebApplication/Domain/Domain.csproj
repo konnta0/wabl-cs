@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MasterMemory" Version="2.4.4" />
+    <PackageReference Include="MasterMemory.MSBuild.Tasks" Version="2.4.4" />
     <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,4 +28,9 @@
 
     <ProjectReference Include="..\Domain.RestApi\Domain.RestApi.csproj" />
   </ItemGroup>
+  <!-- Call code generator before-build. -->
+  <Target Name="MasterMemoryGen" BeforeTargets="BeforeBuild">
+      <!-- Configuration of Code-Generator, `UsingNamespace`, `InputDirectory`, `OutputDirectory` and `AddImmutableConstructor`. -->
+      <MasterMemoryGenerator UsingNamespace="$(ProjectName)" InputDirectory="$(ProjectDir)" OutputDirectory="$(ProjectDir)MasterMemory" />
+  </Target>
 </Project>
