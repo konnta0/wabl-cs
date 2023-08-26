@@ -1,8 +1,8 @@
 using System.Text.RegularExpressions;
 
-namespace DatabaseMigration.Command;
+namespace DatabaseMigration.Domain.Internal.Spreadsheet;
 
-public class SpreadsheetCell
+internal class SpreadsheetCell
 {
     public string Row { get; init; }
     public int RowIndex { get; init; }

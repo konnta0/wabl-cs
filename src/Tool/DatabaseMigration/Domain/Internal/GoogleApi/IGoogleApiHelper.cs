@@ -1,8 +1,8 @@
 using Google.Apis.Auth.OAuth2;
 
-namespace DatabaseMigration.Command;
+namespace DatabaseMigration.Domain.Internal.GoogleApi;
 
-public interface IGoogleApiHelper
+internal interface IGoogleApiHelper
 {
     ValueTask<GoogleCredential> GetGoogleCredentialAsync(params string[] scopes);
 }

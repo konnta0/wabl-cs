@@ -11,7 +11,7 @@ using ZLogger;
 namespace DatabaseMigration.Command.Seed;
 
 // ReSharper disable once ClassNeverInstantiated.Global
-public class SeedImportCommand : ConsoleAppBase
+public sealed class SeedImportCommand : ConsoleAppBase
 {
     private readonly ILogger<SeedImportCommand> _logger;
     private readonly IDbContextHolder _dbContextHolder;

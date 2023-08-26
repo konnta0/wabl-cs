@@ -1,6 +1,10 @@
-namespace DatabaseMigration.Command;
+using DatabaseMigration.Command;
+using DatabaseMigration.Domain.Internal.Spreadsheet;
+using DatabaseMigration.Domain.Service.Seed;
 
-public class SeedServiceConfig
+namespace DatabaseMigration.Domain.Internal.Seed;
+
+internal sealed class SeedServiceConfig
 {
     public string ApplicationName => nameof(SeedService);
     public string SpreadsheetFolderId => Environment.GetEnvironmentVariable("SPREADSHEET_FOLDER_ID") ?? "A1";

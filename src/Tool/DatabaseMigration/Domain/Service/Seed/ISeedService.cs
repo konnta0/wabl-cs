@@ -1,8 +1,8 @@
 using Google.Apis.Auth.OAuth2;
 
-namespace DatabaseMigration.Command;
+namespace DatabaseMigration.Domain.Service.Seed;
 
-public interface ISeedService
+internal interface ISeedService
 {
     ValueTask CreateAsync(ICredential credential, string tableGroupName, string tableName);
     ValueTask DownloadAsync(ICredential credential, string outputPath, params string [] tableNames);

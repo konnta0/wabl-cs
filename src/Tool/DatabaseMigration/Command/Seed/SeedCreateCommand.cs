@@ -1,3 +1,5 @@
+using DatabaseMigration.Domain.Internal.GoogleApi;
+using DatabaseMigration.Domain.Service.Seed;
 using Google.Apis.Sheets.v4;
 using Microsoft.Extensions.Logging;
 using ZLogger;
@@ -5,7 +7,7 @@ using ZLogger;
 namespace DatabaseMigration.Command.Seed;
 
 // ReSharper disable once ClassNeverInstantiated.Global
-public class SeedCreateCommand : ConsoleAppBase
+internal sealed class SeedCreateCommand : ConsoleAppBase
 {
     private readonly ILogger<SeedCreateCommand> _logger;
     private readonly IGoogleApiHelper _googleApiHelper;
