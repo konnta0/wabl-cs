@@ -2,6 +2,7 @@ using Cysharp.Text;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Logging;
+using Infrastructure.Core.Time;
 using Infrastructure.Database;
 using Infrastructure.Extension;
 using MessagePack.AspNetCoreMvcFormatter;
@@ -41,6 +42,7 @@ GlobalLogManager.SetLoggerFactory(LoggerFactory.Create(loggingBuilder =>
 builder.Configuration.Bind(nameof(DatabaseConfig),new DatabaseConfig());
 builder.Configuration.Bind(nameof(InstrumentationConfig),new InstrumentationConfig());
 builder.Configuration.Bind(nameof(CacheConfig),new CacheConfig());
+builder.Configuration.Bind(nameof(TimeConfig),new TimeConfig());
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddUseCase(builder.Configuration);

@@ -167,7 +167,6 @@ public static class ServiceCollectionExtension
     
     private static IServiceCollection AddDateTimeHandler(this IServiceCollection serviceCollection)
     {
-        serviceCollection.ConfigureOptions(new TimeConfig());
         serviceCollection.AddScoped<IDateTimeHandler, FixedDateTimeHandler>();
         return serviceCollection;
     }
