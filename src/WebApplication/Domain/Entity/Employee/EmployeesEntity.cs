@@ -1,11 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using MasterMemory;
+using MessagePack;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Domain.Entity.Employee;
 
 [Table("employees")]
-public partial class EmployeesEntity
+[MemoryTable(nameof(EmployeesEntity)), MessagePackObject(true)]
+public partial class EmployeesEntity : IHasSeed, IValidatable<EmployeesEntity>
 {
     public enum GenderType
     {
@@ -13,6 +16,7 @@ public partial class EmployeesEntity
         F
     }
 
+    [PrimaryKey]
     [Column("emp_no", TypeName = "int")]
     [Required]
     public int EmpNo { get; set; }
@@ -40,5 +44,14 @@ public partial class EmployeesEntity
     public static partial void OnModelCreating(EntityTypeBuilder<EmployeesEntity> entityTypeBuilder)
     {
         entityTypeBuilder.HasKey(employeesEntity => employeesEntity.EmpNo);
+    }
+
+    public void Validate(IValidator<EmployeesEntity> validator)
+    {
+        validator.Validate(x => x.FirstName.Length > 14, "FirstName length should be less than or equal to 14");
+
+        validator.Validate(x => x.FirstName.Length <= 14, "FirstName length should be less than or equal to 14");
+        validator.Validate(x => x.FirstName.Length >= 1, "FirstName length should be greater than or equal to 1");
+        validator.Validate(x => x.LastName.Length <= 16, "LastName length should be less than or equal to 16");
     }
 }
