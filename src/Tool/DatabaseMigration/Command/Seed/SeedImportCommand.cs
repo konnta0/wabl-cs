@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Domain.Entity;
 using Infrastructure.Database.Context;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +40,10 @@ public sealed class SeedImportCommand : ConsoleAppBase
                 .Where(x => x.GetInterface(nameof(IHasSeed)) is not null)
                 .Where(x => x.GetInterface(nameof(IEntity)) is not null)
                 .ToList();
+            var options = new JsonSerializerOptions
+            {
+                Converters = { new JsonStringEnumConverter() }
+            };
 
             foreach (var type in entityTypes)
             {
@@ -69,7 +74,7 @@ public sealed class SeedImportCommand : ConsoleAppBase
                     await using var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
 
                     var concreteListType = typeof(List<>).MakeGenericType(type);
-                    var deserializedObject = await JsonSerializer.DeserializeAsync(fileStream, concreteListType);
+                    var deserializedObject = await JsonSerializer.DeserializeAsync(fileStream, concreteListType, options);
                     if (deserializedObject is null)
                     {
                         _logger.ZLogInformationWithPayload(schemaName, "Failed to load seed file");

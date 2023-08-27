@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using DatabaseMigration.Domain.Internal.Extension;
 using Domain;
 using Domain.Entity.Employee;
@@ -34,7 +35,11 @@ internal sealed class SeedValidateCommand : ConsoleAppBase
         _logger.ZLogInformation("Start seed validate");
         
         var builder = new DatabaseBuilder();
-        
+        var options = new JsonSerializerOptions
+        {
+            Converters = { new JsonStringEnumConverter() }
+        };
+
         foreach (var dbContext in _dbContextHolder.GetAll())
         {
             var entityTypes = dbContext.GetSeedEntityTypes();
@@ -55,7 +60,8 @@ internal sealed class SeedValidateCommand : ConsoleAppBase
                 await using var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
 
                 var concreteListType = typeof(List<>).MakeGenericType(type);
-                var deserializedObject = await JsonSerializer.DeserializeAsync(fileStream, concreteListType);
+
+                var deserializedObject = await JsonSerializer.DeserializeAsync(fileStream, concreteListType, options);
                 if (deserializedObject is null)
                 {
                     _logger.ZLogInformationWithPayload(schemaName, "Failed to load seed file");
@@ -75,12 +81,11 @@ internal sealed class SeedValidateCommand : ConsoleAppBase
         {
             // Output string format.
             _logger.ZLogError(validateResult.FormatFailedResults());
-
-            // Get the raw FaildItem[]. (.Type, .Message, .Data)
-            // validateResult.FailedResults
+            _logger.ZLogInformation("End seed validate (failed)");
+            return 1;
         }
 
-        _logger.ZLogInformation("End seed validate");
+        _logger.ZLogInformation("End seed validate (succeeded)");
         return 0;
     }
 }
