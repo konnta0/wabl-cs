@@ -16,7 +16,9 @@ public sealed class SeedImportCommand : ConsoleAppBase
     private readonly ILogger<SeedImportCommand> _logger;
     private readonly IDbContextHolder _dbContextHolder;
 
-    public SeedImportCommand(ILogger<SeedImportCommand> logger, IDbContextHolder dbContextHolder)
+    public SeedImportCommand(
+        ILogger<SeedImportCommand> logger,
+        IDbContextHolder dbContextHolder)
     {
         _logger = logger;
         _dbContextHolder = dbContextHolder;
