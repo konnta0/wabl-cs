@@ -6,16 +6,28 @@ FROM workspace AS builder
 WORKDIR /build
 COPY ./WebAppBlueprintCS.sln .
 COPY ./src/WebApplication ./src/WebApplication
-
 RUN dotnet restore ./src/WebApplication/Presentation/Presentation.csproj
 RUN dotnet publish ./src/WebApplication/Presentation/Presentation.csproj -c Release -o out --no-restore
+
+WORKDIR /work
+###########DEBUGGER###########
+COPY ./JetBrains.Rider.RemoteDebuggerUploads.linux-x64.2023.2.zip /work/
+RUN mkdir -p /work/RiderRemoteDebugger/2023.2.2 && unzip -o /work/JetBrains.Rider.RemoteDebuggerUploads.linux-x64.2023.2.zip -d /work/RiderRemoteDebugger/2023.2.2/
+COPY ./jetbrains_debugger_agent_20230319.24.0 /work/jetbrains_debugger_agent
+#############################
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 RUN ln -sf /usr/share/zoneinfo/posix/Japan /etc/localtime
 WORKDIR /app
 COPY --from=builder /build/out .
 COPY ./src/WebApplication/entrypoint.sh /usr/local/bin/
-COPY ./jetbrains_debugger_agent_20230319.24.0 /usr/local/bin/jetbrains_debugger_agent
+
+###########DEBUGGER###########
+COPY --from=builder /work/jetbrains_debugger_agent /usr/local/bin/
 RUN chmod +x /usr/local/bin/jetbrains_debugger_agent
+##############################
+
+COPY --from=builder /work/RiderRemoteDebugger/2023.2.2/ /usr/local/bin/RiderRemoteDebugger/2023.2.2/
+
 EXPOSE 5022
 ENTRYPOINT [ "entrypoint.sh" ]
