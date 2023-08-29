@@ -1,4 +1,8 @@
 using ManagementConsole.Data;
+using ManagementConsole.Internals;
+using ManagementConsole.Internals.Extension;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +13,12 @@ builder.Services.AddScoped<ContextMenuService>();
 
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddHttpClient();
+
+builder.Services.AddHealthChecks().AddCheck<HealthCheck>(
+            nameof(HealthCheck), 
+            HealthStatus.Degraded,
+            new[] { "tool", "management-console" });
 
 var app = builder.Build();
 
@@ -27,6 +37,19 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapBlazorHub();
+app.MapControllers();
 app.MapFallbackToPage("/_Host");
+app.MapHealthChecks("/healthz", new HealthCheckOptions
+{
+    AllowCachingResponses = false,
+    ResultStatusCodes =
+    {
+        [HealthStatus.Healthy] = StatusCodes.Status200OK,
+        [HealthStatus.Degraded] = StatusCodes.Status200OK,
+        [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+    }
+});
+app.UseHealthChecks();
+
 
 app.Run();
