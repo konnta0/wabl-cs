@@ -4,11 +4,8 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using DatabaseMigration.Domain.Internal.Extension;
 using Domain;
-using Domain.Entity.Employee;
 using Infrastructure.Database.Context;
 using MasterMemory;
-using MessagePack;
-using MessagePack.Resolvers;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
@@ -74,12 +71,10 @@ internal sealed class SeedValidateCommand : ConsoleAppBase
         }
         
         var db = new MemoryDatabase(builder.Build());
-        
-        // Get the validate result.
+
         var validateResult = db.Validate();
         if (validateResult.IsValidationFailed)
         {
-            // Output string format.
             _logger.ZLogError(validateResult.FormatFailedResults());
             _logger.ZLogInformation("End seed validate (failed)");
             return 1;
