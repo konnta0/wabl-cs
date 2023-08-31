@@ -138,7 +138,6 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                                 {"name", "Loki"},
                                 {"type", "loki"},
                                 {"uid", "loki"},
-//                                {"access", "proxy"},
                                 {"orgId", 1},
                                 {"url", "http://loki-distributed-query-frontend:3100"},
                                 {"basicAuth", false},
@@ -158,6 +157,18 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                                         }
                                     }
                                 }}
+                            },
+                            new Dictionary<string, object>
+                            {
+                                {"name", "Pyroscope"},
+                                {"type", "grafana-pyroscope-datasource"},
+                                {"uid", "pyroscope"},
+                                {"orgId", 1},
+                                {"url", "http://pyroscope-querier.shared.svc.cluster.local.:4040/"},
+                                {"basicAuth", false},
+                                {"isDefault", false},
+                                {"version", 1},
+                                {"editable", true}
                             }
                         }
                     }
@@ -192,7 +203,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                 Name = "grafana",
                 Chart = "grafana",
                 //  helm search repo grafana/grafana --versions | head -n 5
-                Version = "6.52.9",
+                Version = "6.59.0",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://grafana.github.io/helm-charts"
