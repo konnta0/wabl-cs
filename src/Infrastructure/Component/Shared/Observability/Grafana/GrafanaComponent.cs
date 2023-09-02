@@ -43,7 +43,8 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                         ["enabled"] = true,
                         ["label"] = "grafana_dashboard",
                         ["labelValue"] = bool.TrueString.ToLower(),
-                        ["searchNamespace"] = string.Join(",", namespaceName, _config.GetWebApplicationConfig().Namespace)
+                        ["searchNamespace"] =
+                            string.Join(",", namespaceName, _config.GetWebApplicationConfig().Namespace)
                     }
                 },
                 ["dashboardProviders"] = new Dictionary<string, object>
@@ -63,7 +64,7 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                                 },
                                 ["allowUiUpdates"] = bool.TrueString.ToLower(),
                                 ["orgId"] = 1,
-                                ["type"] =  "file"
+                                ["type"] = "file"
                             }
                         }
                     }
@@ -85,90 +86,97 @@ namespace Infrastructure.Component.Shared.Observability.Grafana
                         {
                             new Dictionary<string, object>
                             {
-                                {"name", "Mimir"},
-                                {"type", "prometheus"},
-                                {"uid", "mimir"},
-                                {"orgId", 1},
-                                {"url", "http://mimir-distributed-query-frontend:8080/prometheus"},
-                                {"jsonData", new Dictionary<string, object>
+                                { "name", "Mimir" },
+                                { "type", "prometheus" },
+                                { "uid", "mimir" },
+                                { "orgId", 1 },
+                                { "url", "http://mimir-distributed-query-frontend:8080/prometheus" },
                                 {
-                                    ["httpHeaderName1"] = "X-Scope-OrgID"
-                                }},
-                                {"secureJsonData", new Dictionary<string, object>
-                                {
-                                    ["httpHeaderValue1"] = "1"
-                                }},
-                                {"basicAuth", false},
-                                {"isDefault", true},
-                                {"version", 1},
-                                {"editable", false}
-                            },
-                            new Dictionary<string, object>
-                            {
-                                {"name", "Tempo"},
-                                {"type", "tempo"},
-//                                {"access", "proxy"},
-                                {"orgId", 1},
-                                {"url", "http://tempo-distributed-query-frontend:3100"},
-                                {"basicAuth", false},
-                                {"isDefault", false},
-                                {"version", 1},
-                                {"editable", false},
-                                {"apiVersion", 1},
-                                {"uid", "tempo"},
-                                {"jsonData", new Dictionary<string, object>
-                                {
-                                    ["tracesToLogsV2"] = new InputMap<object>
+                                    "jsonData", new Dictionary<string, object>
                                     {
-                                        ["datasourceUid"] = "loki",
-                                    },
-                                    ["tracesToMetrics"] = new InputMap<object> 
-                                    {
-                                        ["datasourceUid"] = "mimir"
-                                    },
-                                    ["lokiSearch"] = new InputMap<object>
-                                    {
-                                        ["datasourceUid"] = "loki"
+                                        ["httpHeaderName1"] = "X-Scope-OrgID"
                                     }
-                                }
-                                }
+                                },
+                                {
+                                    "secureJsonData", new Dictionary<string, object>
+                                    {
+                                        ["httpHeaderValue1"] = "1"
+                                    }
+                                },
+                                { "basicAuth", false },
+                                { "isDefault", true },
+                                { "version", 1 },
+                                { "editable", false }
                             },
                             new Dictionary<string, object>
                             {
-                                {"name", "Loki"},
-                                {"type", "loki"},
-                                {"uid", "loki"},
-                                {"orgId", 1},
-                                {"url", "http://loki-distributed-query-frontend:3100"},
-                                {"basicAuth", false},
-                                {"isDefault", false},
-                                {"version", 1},
-                                {"editable", false},
-                                {"jsonData", new Dictionary<string, object>
+                                { "name", "Tempo" },
+                                { "type", "tempo" },
+//                                {"access", "proxy"},
+                                { "orgId", 1 },
+                                { "url", "http://tempo-distributed-query-frontend:3100" },
+                                { "basicAuth", false },
+                                { "isDefault", false },
+                                { "version", 1 },
+                                { "editable", false },
+                                { "apiVersion", 1 },
+                                { "uid", "tempo" },
                                 {
-                                    ["derivedFields"] = new List<object>
+                                    "jsonData", new Dictionary<string, object>
                                     {
-                                        new Dictionary<string, object>
+                                        ["tracesToLogsV2"] = new InputMap<object>
                                         {
-                                            {"datasourceUid", "tempo"},
-                                            {"matcherRegex", "\"TraceID\":\"(\\w+)"},
-                                            {"name", "TraceID"},
-                                            {"url", "$${__value.raw}"}
+                                            ["datasourceUid"] = "loki",
+                                        },
+                                        ["tracesToMetrics"] = new InputMap<object>
+                                        {
+                                            ["datasourceUid"] = "mimir"
+                                        },
+                                        ["lokiSearch"] = new InputMap<object>
+                                        {
+                                            ["datasourceUid"] = "loki"
                                         }
                                     }
-                                }}
+                                }
                             },
                             new Dictionary<string, object>
                             {
-                                {"name", "Pyroscope"},
-                                {"type", "grafana-pyroscope-datasource"},
-                                {"uid", "pyroscope"},
-                                {"orgId", 1},
-                                {"url", "http://pyroscope-querier.shared.svc.cluster.local.:4040/"},
-                                {"basicAuth", false},
-                                {"isDefault", false},
-                                {"version", 1},
-                                {"editable", true}
+                                { "name", "Loki" },
+                                { "type", "loki" },
+                                { "uid", "loki" },
+                                { "orgId", 1 },
+                                { "url", "http://loki-distributed-query-frontend:3100" },
+                                { "basicAuth", false },
+                                { "isDefault", false },
+                                { "version", 1 },
+                                { "editable", false },
+                                {
+                                    "jsonData", new Dictionary<string, object>
+                                    {
+                                        ["derivedFields"] = new List<object>
+                                        {
+                                            new Dictionary<string, object>
+                                            {
+                                                { "datasourceUid", "tempo" },
+                                                { "matcherRegex", "\"TraceID\":\"(\\w+)" },
+                                                { "name", "TraceID" },
+                                                { "url", "$${__value.raw}" }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            new Dictionary<string, object>
+                            {
+                                { "name", "Pyroscope" },
+                                { "type", "grafana-pyroscope-datasource" },
+                                { "uid", "pyroscope" },
+                                { "orgId", 1 },
+                                { "url", "http://pyroscope-querier.shared.svc.cluster.local.:4040/" },
+                                { "basicAuth", false },
+                                { "isDefault", false },
+                                { "version", 1 },
+                                { "editable", true }
                             }
                         }
                     }
