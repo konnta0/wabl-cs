@@ -25,9 +25,11 @@ COPY ./src/WebApplication/entrypoint.sh /usr/local/bin/
 ###########DEBUGGER###########
 COPY --from=builder /work/jetbrains_debugger_agent /usr/local/bin/
 RUN chmod +x /usr/local/bin/jetbrains_debugger_agent
+COPY --from=builder /work/RiderRemoteDebugger/2023.2.2/ /usr/local/bin/RiderRemoteDebugger/2023.2.2/
 ##############################
 
-COPY --from=builder /work/RiderRemoteDebugger/2023.2.2/ /usr/local/bin/RiderRemoteDebugger/2023.2.2/
+COPY --from=pyroscope/pyroscope-dotnet:0.8.8-glibc /Pyroscope.Profiler.Native.so ./Pyroscope.Profiler.Native.so
+COPY --from=pyroscope/pyroscope-dotnet:0.8.8-glibc /Pyroscope.Linux.ApiWrapper.x64.so ./Pyroscope.Linux.ApiWrapper.x64.so
 
 EXPOSE 5022
 ENTRYPOINT [ "entrypoint.sh" ]
