@@ -4,7 +4,6 @@ using ZLogger;
 
 namespace Presentation.Controllers;
 
-[Route("api/[controller]/[action]")]
 [ApiController]
 public class HealthCheckController : WebApiController
 {

@@ -7,21 +7,20 @@ using UseCase.Departments.Dto;
 
 namespace Presentation.Controllers;
 
-[Route("api/[controller]/[action]")]
 [ApiController]
-public class DepartmentsController : WebApiController
+public class EmployeesController : WebApiController
 {
-    private readonly ILogger<DepartmentsController> _logger;
+    private readonly ILogger<EmployeesController> _logger;
     private readonly IUseCaseHandler _useCaseHandler;
     
-    public DepartmentsController(ILogger<DepartmentsController> logger, IUseCaseHandler useCaseHandler)
+    public EmployeesController(ILogger<EmployeesController> logger, IUseCaseHandler useCaseHandler)
     {
         _logger = logger;
         _useCaseHandler = useCaseHandler;
     }
 
-    [HttpGet]
-    public async ValueTask<IActionResult> List()
+    [HttpGet("departments")]
+    public async ValueTask<IActionResult> ListDepartments()
     {
         var listDepartmentsInput = new ListDepartmentsUseCaseInput();
         var listDepartmentsOutput = await _useCaseHandler.InvokeAsync<ListDepartmentsUseCaseInput, ListDepartmentsUseCaseOutput>(listDepartmentsInput);
@@ -29,8 +28,9 @@ public class DepartmentsController : WebApiController
         return Ok(responseData);
     }
 
-    [HttpPost]
-    public async ValueTask<IActionResult> Add([FromBody] AddRequest request)
+    [HttpPost("departments")]
+    [ProducesResponseType(typeof(AddResponse), StatusCodes.Status200OK)]
+    public async ValueTask<IActionResult> AddDepartments([FromBody] AddRequest request)
     {
         var addDepartmentInput = new AddDepartmentsUseCaseInput
         {
