@@ -87,6 +87,13 @@ namespace Infrastructure.Component.Shared.Storage.MinIo
                         ["policy"] = "public",
                         ["purge"] = false,
                         ["versioning"] = false
+                    },
+                    new InputMap<object>
+                    {
+                        ["name"] = "pyroscope",
+                        ["policy"] = "public",
+                        ["purge"] = false,
+                        ["versioning"] = false
                     }
                 }
             };
