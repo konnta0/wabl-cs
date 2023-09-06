@@ -1,7 +1,6 @@
 using Infrastructure.Component.Shared.Observability.Grafana;
 using Infrastructure.Component.Shared.Observability.Loki;
 using Infrastructure.Component.Shared.Observability.Mimir;
-using Infrastructure.Component.Shared.Observability.MinIO;
 using Infrastructure.Component.Shared.Observability.Pyroscope;
 using Infrastructure.Component.Shared.Observability.Tempo;
 using Microsoft.Extensions.Logging;
