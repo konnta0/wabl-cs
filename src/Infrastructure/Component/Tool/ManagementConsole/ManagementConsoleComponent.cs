@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -138,6 +139,13 @@ public class ManagementConsoleComponent : IComponent<ManagementConsoleComponentI
                             }
                         }
                     }
+                }
+            }, new CustomResourceOptions
+            {
+                CustomTimeouts = new CustomTimeouts
+                {
+                    Create = TimeSpan.FromMinutes(2),
+                    Update = TimeSpan.FromMinutes(2)
                 }
             });
         var service = new Service("tool-management-console-service", new ServiceArgs

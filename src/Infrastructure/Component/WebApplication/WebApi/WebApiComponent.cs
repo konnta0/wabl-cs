@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -178,6 +179,13 @@ namespace Infrastructure.Component.WebApplication.WebApi
                                 }
                             }
                         }
+                    }
+                }, new CustomResourceOptions
+                {
+                    CustomTimeouts = new CustomTimeouts
+                    {
+                        Create = TimeSpan.FromMinutes(2),
+                        Update = TimeSpan.FromMinutes(2)
                     }
                 });
             var service = new Service("web-application-web-api-service", new ServiceArgs
