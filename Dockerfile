@@ -16,8 +16,9 @@ RUN mkdir -p /work/RiderRemoteDebugger/2023.2.2 && unzip -o /work/JetBrains.Ride
 COPY ./jetbrains_debugger_agent_20230319.24.0 /work/jetbrains_debugger_agent
 #############################
 
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:7.0.10-alpine3.18 AS runtime
 RUN ln -sf /usr/share/zoneinfo/posix/Japan /etc/localtime
+RUN apk add bash
 WORKDIR /app
 COPY --from=builder /build/out .
 COPY ./src/WebApplication/entrypoint.sh /usr/local/bin/
@@ -28,8 +29,8 @@ RUN chmod +x /usr/local/bin/jetbrains_debugger_agent
 COPY --from=builder /work/RiderRemoteDebugger/2023.2.2/ /usr/local/bin/RiderRemoteDebugger/2023.2.2/
 ##############################
 
-COPY --from=pyroscope/pyroscope-dotnet:0.8.8-glibc /Pyroscope.Profiler.Native.so ./Pyroscope.Profiler.Native.so
-COPY --from=pyroscope/pyroscope-dotnet:0.8.8-glibc /Pyroscope.Linux.ApiWrapper.x64.so ./Pyroscope.Linux.ApiWrapper.x64.so
+COPY --from=pyroscope/pyroscope-dotnet:0.8.8-musl /Pyroscope.Profiler.Native.so ./Pyroscope.Profiler.Native.so
+COPY --from=pyroscope/pyroscope-dotnet:0.8.8-musl /Pyroscope.Linux.ApiWrapper.x64.so ./Pyroscope.Linux.ApiWrapper.x64.so
 
 EXPOSE 5022
 ENTRYPOINT [ "entrypoint.sh" ]
