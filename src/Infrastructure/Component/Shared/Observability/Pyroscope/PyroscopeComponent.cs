@@ -1,4 +1,3 @@
-using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;

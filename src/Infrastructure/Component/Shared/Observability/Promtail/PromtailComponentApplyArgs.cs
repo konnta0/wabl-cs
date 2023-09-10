@@ -1,6 +1,6 @@
 using Pulumi.Kubernetes.Core.V1;
 
-namespace Infrastructure.Component.WebApplication.Promtail
+namespace Infrastructure.Component.Shared.Observability.Promtail
 {
     public sealed class PromtailComponentInput : IComponentInput
     {

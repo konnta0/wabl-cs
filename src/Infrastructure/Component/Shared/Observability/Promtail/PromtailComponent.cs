@@ -3,7 +3,7 @@ using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
-namespace Infrastructure.Component.WebApplication.Promtail
+namespace Infrastructure.Component.Shared.Observability.Promtail
 {
     public class PromtailComponent : IComponent<PromtailComponentInput, PromtailComponentOutput>
     {
