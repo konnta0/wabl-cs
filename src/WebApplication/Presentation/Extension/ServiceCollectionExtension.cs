@@ -42,13 +42,7 @@ internal static class ServiceCollectionExtension
             });
         });
         
-        serviceCollection.AddScoped<TransactionalFlowFilter>();
-
-        serviceCollection.AddControllers(options =>
-        {
-            options.Filters.Add<TransactionalFlowFilter>();
-        });
-
+        serviceCollection.AddFilter();
         serviceCollection.AddApiVersioning();
         serviceCollection.AddVersionedApiExplorer();
         return serviceCollection;
@@ -72,6 +66,19 @@ internal static class ServiceCollectionExtension
             options.GroupNameFormat = "'v'VVV";
             options.SubstituteApiVersionInUrl = true;
         });
+        return serviceCollection;
+    }
+
+    private static IServiceCollection AddFilter(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddControllers(options =>
+        {
+            options.Filters.Add<TransactionalFlowFilter>();
+            options.Filters.Add<ContinuousProfilerFilter>();
+        });
+        
+        serviceCollection.AddScoped<TransactionalFlowFilter>();
+        serviceCollection.AddScoped<ContinuousProfilerFilter>();
         return serviceCollection;
     }
 }

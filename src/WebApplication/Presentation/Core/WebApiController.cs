@@ -7,6 +7,7 @@ namespace Presentation.Core;
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
 [ServiceFilter(typeof(TransactionalFlowFilter))]
+[ServiceFilter(typeof(ContinuousProfilerFilter))]
 public class WebApiController : ControllerBase
 {
     
