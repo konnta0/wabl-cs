@@ -1,4 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection;
+using System.Text.Json;
 using Cysharp.Text;
+using Domain;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Instrumentation.Repository;
@@ -12,6 +16,7 @@ using Infrastructure.Database.Context;
 using Infrastructure.Database.Context.Employee;
 using Infrastructure.Extension.HealthCheck;
 using Infrastructure.Extension.Instrumentation;
+using MasterMemory;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -39,6 +44,7 @@ public static class ServiceCollectionExtension
             .AddLogging()
             .AddDbContexts(configuration.Get<DatabaseConfig>()!)
             .AddCacheClient(configuration.Get<CacheConfig>()!, out var connectionMultiplexer)
+            .AddMemoryDatabase()
             .AddOpenTelemetryTracing(connectionMultiplexer)
             .AddOpenTelemetryMetrics(configuration.Get<InstrumentationConfig>()!);
     }
@@ -174,6 +180,44 @@ public static class ServiceCollectionExtension
     private static IServiceCollection AddRepository(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IRepositoryHandler, RepositoryHandler>();
+        return serviceCollection;
+    }
+    
+    private static IServiceCollection AddMemoryDatabase(this IServiceCollection serviceCollection)
+    {
+        var provider = serviceCollection.BuildServiceProvider();
+        var dbContextHolder = provider.GetRequiredService<IDbContextHolder>();
+        var builder = new DatabaseBuilder();
+
+        foreach (var dbContext in dbContextHolder.GetAll())
+        {
+            var entityTypes = dbContext.GetSeedEntityTypes();
+            foreach (var type in entityTypes)
+            {
+                var entity = Activator.CreateInstance(type);
+                if (entity is null) continue;
+
+                var tableAttribute = type.GetCustomAttribute<TableAttribute>();
+                if (tableAttribute is null)
+                {
+                    continue;
+                }
+
+                var schemaName = tableAttribute.Schema is null ? string.Empty : tableAttribute.Schema + ".";
+                var tableName = tableAttribute.Name;
+
+                var entities = dbContext.Database.SqlQueryRaw<object>($"SELECT * FROM {schemaName}{tableName}");
+                if (!entities.Any())
+                {
+                    continue;
+                }
+                
+                builder.AppendDynamic(type, entities.ToList());
+            }
+        }
+        
+        var db = new MemoryDatabase(builder.Build());
+        serviceCollection.AddSingleton(db);
         return serviceCollection;
     }
 }

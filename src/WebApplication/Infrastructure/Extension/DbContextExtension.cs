@@ -1,9 +1,9 @@
 using Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatabaseMigration.Domain.Internal.Extension;
+namespace Infrastructure.Extension;
 
-internal static class DbContextExtension
+public static class DbContextExtension
 {
     public static Type[] GetSeedEntityTypes(this DbContext dbContext)
     {
