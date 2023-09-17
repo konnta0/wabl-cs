@@ -5,7 +5,7 @@ namespace Infrastructure.Core.Time;
 public class FixedDateTimeHandler : IDateTimeHandler
 {
     private TimeSpan _offset = TimeSpan.Zero;
-    private TimeZoneInfo _timeZoneInfo;
+    private readonly TimeZoneInfo _timeZoneInfo;
     private readonly DateTimeOffset _dateTimeOffset = DateTimeOffset.UtcNow;
 
     public FixedDateTimeHandler(IOptions<TimeConfig> config)
@@ -14,9 +14,8 @@ public class FixedDateTimeHandler : IDateTimeHandler
     }
     
     public void SetOffset(TimeSpan offset) => _offset = offset;
-    
-    public void SetTimeZone(TimeZoneInfo timeZoneInfo) => _timeZoneInfo = timeZoneInfo;
-    
+
+
     public DateTime Now()
     {
         var truncatedDateTimeOffset = new DateTimeOffset(

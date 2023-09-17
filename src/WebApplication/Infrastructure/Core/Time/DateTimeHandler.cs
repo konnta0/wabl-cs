@@ -1,14 +1,19 @@
+using Microsoft.Extensions.Options;
+
 namespace Infrastructure.Core.Time;
 
 public class DateTimeHandler : IDateTimeHandler
 {
     private TimeSpan _offset = TimeSpan.Zero;
-    private TimeZoneInfo _timeZoneInfo = TimeZoneConverter.TZConvert.GetTimeZoneInfo("Asia/Tokyo");
+    private readonly TimeZoneInfo _timeZoneInfo;
+
+    public DateTimeHandler(IOptions<TimeConfig> config)
+    {
+        _timeZoneInfo = config.Value.TimeZoneInfo;
+    }
 
     public void SetOffset(TimeSpan offset) => _offset = offset;
-    
-    public void SetTimeZone(TimeZoneInfo timeZoneInfo) => _timeZoneInfo = timeZoneInfo;
-    
+
     public DateTime Now()
     {
         var now = DateTimeOffset.UtcNow;
