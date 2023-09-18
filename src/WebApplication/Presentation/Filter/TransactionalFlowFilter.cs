@@ -28,7 +28,7 @@ public class TransactionalFlowFilter : IAsyncActionFilter
 
         await next();
 
-        await Task.WhenAll(dbContexts.Select(t => t.SaveChangesAsync(false)).Cast<Task>().ToList());
+        await Task.WhenAll(dbContexts.Select(static t => t.SaveChangesAsync(false)).Cast<Task>().ToList());
         // scope.Complete();
 
         foreach (var c in dbContexts)

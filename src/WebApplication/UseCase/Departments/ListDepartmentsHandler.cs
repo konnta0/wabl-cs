@@ -32,8 +32,8 @@ internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepar
         
         var repositoryOutputData = await _repositoryHandler.InvokeAsync<FindAllInput, FindAllOutput>(new FindAllInput(), cancellationToken);
 
-        _output.Departments = repositoryOutputData.DepartmentsEntities!.SelectMany(x => new[]
-            { new Department { DepotNo = x.DepotNo, DeptName = x.DeptName } });
+        _output.Departments = repositoryOutputData.DepartmentsEntities!
+            .SelectMany(static x => new[] { new Department { DepotNo = x.DepotNo, DeptName = x.DeptName } });
         return new ListDepartmentExecuteResult();
     }
 

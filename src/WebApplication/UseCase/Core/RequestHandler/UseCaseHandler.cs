@@ -23,14 +23,14 @@ public sealed class UseCaseHandler : IUseCaseHandler
         using var activity = _activityStarter.Start();
         
         var results = await _asyncRequestHandler.InvokeAllAsync(input, AsyncPublishStrategy.Parallel);
-        var result = results.Where(x => x is not null).OfType<TOutput>().FirstOrDefault();
+        var result = results.Where(static x => x is not null).OfType<TOutput>().FirstOrDefault();
         if (result is not null)
         {
             return result;
         }
 
         results = _requestHandler.InvokeAll(input);
-        result = results.Where(x => x is not null).OfType<TOutput>().FirstOrDefault();
+        result = results.Where(static x => x is not null).OfType<TOutput>().FirstOrDefault();
 
         if (result is null)
         {

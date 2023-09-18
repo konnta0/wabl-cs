@@ -41,7 +41,11 @@ internal sealed class DepartmentRepositoryHandler : RepositoryHandlerBase<IDepar
     {
         return new FindAllOutput
         {
-            DepartmentsEntities = await _employeesContext.DepartmentsEntities.AsQueryable().AsNoTracking().Select(x => x).ToListAsync(cancellationToken: cancellationToken)
+            DepartmentsEntities = await _employeesContext.DepartmentsEntities
+                .AsQueryable()
+                .AsNoTracking()
+                .Select(static x => x)
+                .ToListAsync(cancellationToken: cancellationToken)
         };
     }
 
