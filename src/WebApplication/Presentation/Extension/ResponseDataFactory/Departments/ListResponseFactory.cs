@@ -11,7 +11,8 @@ internal static class ListResponseFactory
         return new ListResponse
         {
             Departments =
-                useCaseOutput.Departments?.Select(x => new Department { DepotNo = x.DepotNo, DeptName = x.DeptName })
+                useCaseOutput.Departments?
+                    .Select(static x => new Department { DepotNo = x.DepotNo, DeptName = x.DeptName })
         };
     }
 }
