@@ -4,7 +4,7 @@ using MessagePipe;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace UseCase.Core.Instrumentation;
+namespace Application.Core.Instrumentation;
 
 internal class AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData> : AsyncRequestHandlerFilter<TInputData, TOutputData>
 {
