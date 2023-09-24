@@ -1,6 +1,6 @@
-using UseCase.Core.RequestHandler;
+using Application.Core.RequestHandler;
 
-namespace UseCase.Departments.ExecuteResult;
+namespace Application.Departments.ExecuteResult;
 
 public sealed class AddDepartmentExecuteResult : IUseCaseExecuteResult
 {

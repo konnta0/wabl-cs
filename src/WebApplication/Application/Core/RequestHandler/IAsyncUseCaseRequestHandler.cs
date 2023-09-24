@@ -1,4 +1,4 @@
-namespace UseCase.Core.RequestHandler;
+namespace Application.Core.RequestHandler;
 
 internal interface IAsyncUseCaseRequestHandler
 {

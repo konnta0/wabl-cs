@@ -1,6 +1,6 @@
-namespace UseCase.Core.Instrumentation;
+namespace Application.Core.Instrumentation;
 
-public class UseCaseInstrumentationHandler
+public class ApplicationInstrumentationHandler
 {
     
 }

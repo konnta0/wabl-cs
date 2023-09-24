@@ -1,4 +1,4 @@
-namespace UseCase.Departments.Dto;
+namespace Application.Departments.Dto;
 
 public class ListDepartmentsUseCaseInput : IDepartmentsUseCaseInput
 {

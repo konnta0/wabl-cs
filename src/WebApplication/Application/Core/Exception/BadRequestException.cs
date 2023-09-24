@@ -1,4 +1,4 @@
-namespace UseCase.Core.Exception;
+namespace Application.Core.Exception;
 
 public class BadRequestException : System.Exception
 {

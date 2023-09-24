@@ -1,7 +1,7 @@
 using Infrastructure.Core.Instrumentation.UseCase;
 using MessagePipe;
 
-namespace UseCase.Core.RequestHandler;
+namespace Application.Core.RequestHandler;
 
 public abstract class AsyncUseCaseRequestHandlerBase<TInput, TExecuteResult> : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?> where TInput : IUseCaseInput where TExecuteResult : IUseCaseExecuteResult
 {

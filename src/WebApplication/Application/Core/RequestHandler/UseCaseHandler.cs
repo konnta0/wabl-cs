@@ -1,7 +1,7 @@
 using Infrastructure.Core.Instrumentation.UseCase;
 using MessagePipe;
 
-namespace UseCase.Core.RequestHandler;
+namespace Application.Core.RequestHandler;
 
 public sealed class UseCaseHandler : IUseCaseHandler
 {

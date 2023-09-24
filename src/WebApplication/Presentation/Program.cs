@@ -1,3 +1,4 @@
+using Application.Extension;
 using Cysharp.Text;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation;
@@ -8,7 +9,6 @@ using Infrastructure.Extension;
 using Microsoft.AspNetCore.HttpOverrides;
 using OpenTelemetry.Logs;
 using Presentation.Extension;
-using UseCase.Extension;
 using ZLogger;
 using ZLogger.Providers;
 
@@ -76,6 +76,7 @@ app.UseRouting();
 app.UseAuthorization();
 app.UseResponseCaching();
 app.UseHealthChecks();
+app.UseAuthentication();
 
 app.MapControllerRoute(
     name: "default",

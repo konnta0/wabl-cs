@@ -1,6 +1,6 @@
-using UseCase.Departments.Common;
+using Application.Departments.Common;
 
-namespace UseCase.Departments.Dto;
+namespace Application.Departments.Dto;
 
 public class ListDepartmentsUseCaseOutput : IDepartmentsUseCaseOutput
 {

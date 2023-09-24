@@ -1,9 +1,9 @@
+using Application.Core.RequestHandler;
+using Application.Departments.Dto;
 using Domain.RestApi.Departments;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Core;
 using Presentation.Extension.ResponseDataFactory.Departments;
-using UseCase.Core.RequestHandler;
-using UseCase.Departments.Dto;
 
 namespace Presentation.Controllers;
 

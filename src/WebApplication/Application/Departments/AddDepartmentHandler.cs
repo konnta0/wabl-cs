@@ -1,12 +1,12 @@
+using Application.Core.Exception;
+using Application.Core.RequestHandler;
+using Application.Departments.Dto;
+using Application.Departments.ExecuteResult;
 using Infrastructure.Core.Instrumentation.UseCase;
 using Infrastructure.Core.RequestHandler;
 using Infrastructure.Repository.Department;
-using UseCase.Core.Exception;
-using UseCase.Core.RequestHandler;
-using UseCase.Departments.Dto;
-using UseCase.Departments.ExecuteResult;
 
-namespace UseCase.Departments;
+namespace Application.Departments;
 
 public class AddDepartmentHandler : AsyncUseCaseRequestHandlerBase<AddDepartmentsUseCaseInput, AddDepartmentExecuteResult>
 {

@@ -1,9 +1,9 @@
+using Application.Core.BackgroundService;
+using Application.Core.RequestHandler;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using UseCase.Core.BackgroundService;
-using UseCase.Core.RequestHandler;
 
-namespace UseCase.Extension;
+namespace Application.Extension;
 
 public static class ServiceCollection
 {

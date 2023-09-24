@@ -6,12 +6,12 @@ using ZLogger;
 
 namespace Application.Core.Instrumentation;
 
-internal class AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData> : AsyncRequestHandlerFilter<TInputData, TOutputData>
+internal class AsyncApplicationInstrumentationHandlerFilter<TInputData, TOutputData> : AsyncRequestHandlerFilter<TInputData, TOutputData>
 {
-    private readonly ILogger<AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData>> _logger;
+    private readonly ILogger<AsyncApplicationInstrumentationHandlerFilter<TInputData, TOutputData>> _logger;
 
-    public AsyncUseCaseInstrumentationHandlerFilter(
-        ILogger<AsyncUseCaseInstrumentationHandlerFilter<TInputData, TOutputData>> logger)
+    public AsyncApplicationInstrumentationHandlerFilter(
+        ILogger<AsyncApplicationInstrumentationHandlerFilter<TInputData, TOutputData>> logger)
     {
         _logger = logger;
     }

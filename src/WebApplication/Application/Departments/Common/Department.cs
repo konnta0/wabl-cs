@@ -1,4 +1,4 @@
-namespace UseCase.Departments.Common;
+namespace Application.Departments.Common;
 
 public class Department
 {

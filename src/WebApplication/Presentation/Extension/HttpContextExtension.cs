@@ -1,6 +1,6 @@
 using System.Text.Json;
+using Application.Core.Exception;
 using Microsoft.AspNetCore.Diagnostics;
-using UseCase.Core.Exception;
 
 namespace Presentation.Extension;
 

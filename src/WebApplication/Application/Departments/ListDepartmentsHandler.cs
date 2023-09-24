@@ -1,12 +1,12 @@
+using Application.Core.RequestHandler;
+using Application.Departments.Common;
+using Application.Departments.Dto;
+using Application.Departments.ExecuteResult;
 using Infrastructure.Core.Instrumentation.UseCase;
 using Infrastructure.Core.RequestHandler;
 using Infrastructure.Repository.Department;
-using UseCase.Core.RequestHandler;
-using UseCase.Departments.Common;
-using UseCase.Departments.Dto;
-using UseCase.Departments.ExecuteResult;
 
-namespace UseCase.Departments;
+namespace Application.Departments;
 
 internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepartmentsUseCaseInput, ListDepartmentExecuteResult>
 {

@@ -1,6 +1,6 @@
-using UseCase.Core.RequestHandler;
+using Application.Core.RequestHandler;
 
-namespace UseCase.Departments.Dto;
+namespace Application.Departments.Dto;
 
 public interface IDepartmentsUseCaseInput : IUseCaseInput
 {
