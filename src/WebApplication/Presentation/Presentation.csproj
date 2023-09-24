@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Presentation.BackgroundService\Presentation.BackgroundService.csproj" />
   </ItemGroup>
 
   <ItemGroup>

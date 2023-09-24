@@ -8,6 +8,7 @@ using Infrastructure.Database;
 using Infrastructure.Extension;
 using Microsoft.AspNetCore.HttpOverrides;
 using OpenTelemetry.Logs;
+using Presentation.BackgroundService.Extension;
 using Presentation.Extension;
 using ZLogger;
 using ZLogger.Providers;
@@ -42,6 +43,7 @@ builder.Configuration.Bind(nameof(TimeConfig),new TimeConfig());
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddUseCase(builder.Configuration);
 builder.Services.AddPresentation(builder.Configuration);
+builder.Services.AddBackgroundService();
 
 var app = builder.Build();
 

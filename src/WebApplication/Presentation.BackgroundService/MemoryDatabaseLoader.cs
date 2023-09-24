@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace UseCase.Core.BackgroundService;
+namespace Presentation.BackgroundService;
 
 internal sealed class MemoryDatabaseLoader : Microsoft.Extensions.Hosting.BackgroundService
 {
