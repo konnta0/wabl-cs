@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\Presentation.BackgroundService\Presentation.BackgroundService.csproj" />
   </ItemGroup>
 
@@ -27,4 +28,8 @@
     <AdditionalFiles Include="../BannedSymbols.txt" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="WebApplication.Architecture.Test" />
+    <InternalsVisibleTo Include="WebApplication.Test" />
+  </ItemGroup>
 </Project>
