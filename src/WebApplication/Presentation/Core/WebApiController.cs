@@ -10,5 +10,4 @@ namespace Presentation.Core;
 [ServiceFilter(typeof(ContinuousProfilerFilter))]
 public class WebApiController : ControllerBase
 {
-    
 }

@@ -1,10 +1,10 @@
+using Application.Core.RepositoryHandler;
 using Application.Core.RequestHandler;
 using Application.Departments.Common;
 using Application.Departments.Dto;
 using Application.Departments.ExecuteResult;
-using Infrastructure.Core.Instrumentation.UseCase;
-using Infrastructure.Core.RequestHandler;
-using Infrastructure.Repository.Department;
+using Domain.Repository.Department;
+
 
 namespace Application.Departments;
 
@@ -30,7 +30,8 @@ internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepar
     {
         _output = new ListDepartmentsUseCaseOutput();
         
-        var repositoryOutputData = await _repositoryHandler.InvokeAsync<FindAllInput, FindAllOutput>(new FindAllInput(), cancellationToken);
+        var repositoryOutputData = await _repositoryHandler.InvokeAsync<IFindAllInput, IFindAllOutput>(
+            _ => {}, cancellationToken);
 
         _output.Departments = repositoryOutputData.DepartmentsEntities!
             .SelectMany(static x => new[] { new Department { DepotNo = x.DepotNo, DeptName = x.DeptName } });

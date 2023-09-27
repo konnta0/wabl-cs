@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Domain.Instrumentation;
 
 namespace Infrastructure.Core.Instrumentation.UseCase;
 

@@ -1,6 +1,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Text.Json;
+using Application.Core.Database;
+using Application.Core.RepositoryHandler;
 using Cysharp.Text;
 using Domain;
 using Infrastructure.Cache;
@@ -16,6 +18,7 @@ using Infrastructure.Database.Context;
 using Infrastructure.Database.Context.Employee;
 using Infrastructure.Extension.HealthCheck;
 using Infrastructure.Extension.Instrumentation;
+using Infrastructure.Repository;
 using MasterMemory;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
@@ -149,6 +152,7 @@ public static class ServiceCollectionExtension
         });
         
         serviceCollection.AddScoped<IDbContextHolder, DbContextHolder>();
+        serviceCollection.AddTransient<ITransactionalFlow, TransactionalFlow>();
 
         return serviceCollection;
     }
@@ -180,6 +184,7 @@ public static class ServiceCollectionExtension
     private static IServiceCollection AddRepository(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IRepositoryHandler, RepositoryHandler>();
+        serviceCollection.AddSingleton<IRepositoryInputTypeResolver, RepositoryInputTypeResolver>();
         return serviceCollection;
     }
     

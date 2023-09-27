@@ -1,4 +1,3 @@
-using Infrastructure.Core.Instrumentation.UseCase;
 using MessagePipe;
 
 namespace Application.Core.RequestHandler;

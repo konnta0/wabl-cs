@@ -1,3 +1,4 @@
+using Domain.Instrumentation;
 using Infrastructure.Core.Instrumentation.Repository;
 using Infrastructure.Core.Instrumentation.UseCase;
 using OpenTelemetry.Trace;

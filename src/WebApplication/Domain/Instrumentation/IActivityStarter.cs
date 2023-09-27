@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace Infrastructure.Core.Instrumentation;
+namespace Domain.Instrumentation;
 
 public interface IActivityStarter
 {

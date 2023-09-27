@@ -1,7 +1,8 @@
 using Domain.Instrumentation;
 
-namespace Infrastructure.Core.Instrumentation.UseCase;
+namespace Application.Core.RequestHandler;
 
 public interface IUseCaseActivityStarter : IActivityStarter
 {
+    
 }

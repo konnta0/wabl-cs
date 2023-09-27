@@ -5,7 +5,7 @@ using ZLogger;
 
 namespace Infrastructure.Cache;
 
-abstract class CacheClient : ICacheClient
+internal abstract class CacheClient : ICacheClient
 {
     protected readonly ILogger Logger;
     protected readonly IConnectionMultiplexer ConnectionMultiplexer;

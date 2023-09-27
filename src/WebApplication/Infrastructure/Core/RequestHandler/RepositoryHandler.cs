@@ -1,5 +1,7 @@
+using Application.Core.RepositoryHandler;
 using Domain.Repository;
 using Infrastructure.Core.Instrumentation.Repository;
+using Infrastructure.Repository;
 using MessagePipe;
 
 namespace Infrastructure.Core.RequestHandler;
@@ -9,19 +11,25 @@ public class RepositoryHandler : IRepositoryHandler
     private readonly IAsyncRequestAllHandler<IRepositoryInput, IRepositoryOutput?> _asyncRequestHandler;
     private readonly IRequestAllHandler<IRepositoryInput, IRepositoryOutput?> _requestHandler;
     private readonly IRepositoryActivityStarter _activityStarter;
+    private readonly IRepositoryInputTypeResolver _repositoryInputTypeResolver;
     
     public RepositoryHandler(
         IAsyncRequestAllHandler<IRepositoryInput, IRepositoryOutput?> asyncRequestHandler, 
         IRequestAllHandler<IRepositoryInput, IRepositoryOutput?> requestHandler, 
-        IRepositoryActivityStarter activityStarter)
+        IRepositoryActivityStarter activityStarter, IRepositoryInputTypeResolver repositoryInputTypeResolver)
     {
         _asyncRequestHandler = asyncRequestHandler;
         _requestHandler = requestHandler;
         _activityStarter = activityStarter;
+        _repositoryInputTypeResolver = repositoryInputTypeResolver;
     }
 
-    public async ValueTask<TOutput> InvokeAsync<TInput, TOutput>(TInput input, CancellationToken cancellationToken = new ()) where TInput : IRepositoryInput where TOutput : IRepositoryOutput
+    public async ValueTask<TOutput> InvokeAsync<TInput, TOutput>(Action<TInput> inputFunc, CancellationToken cancellationToken = new ()) where TInput : IRepositoryInput where TOutput : IRepositoryOutput
     {
+        var inputType = _repositoryInputTypeResolver.Resolve<TInput>() ?? throw new InvalidOperationException($"Not found {typeof(TInput).Name}.");
+        var input = (TInput)Activator.CreateInstance(inputType)! ?? throw new InvalidOperationException($"Not found {typeof(TInput).Name}.");
+        inputFunc.Invoke(input);
+        
         using var activity = _activityStarter.Start();
         activity?.SetTag("inputType", typeof(TInput).Name);
         

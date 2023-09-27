@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Extension;
 
-public static class ServiceCollection
+public static class ServiceCollectionExtension
 {
     public static IServiceCollection AddUseCase(this IServiceCollection serviceCollection,
         IConfiguration configuration)
