@@ -6,7 +6,7 @@ public static class ServiceCollectionExtension
 {
     public static IServiceCollection AddBackgroundService(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddHostedService<MemoryDatabaseLoader>();
+        serviceCollection.AddHostedService<MemoryDatabaseLoaderService>();
         return serviceCollection;
     }
 }

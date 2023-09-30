@@ -3,11 +3,11 @@ using ZLogger;
 
 namespace Presentation.BackgroundService;
 
-internal sealed class MemoryDatabaseLoader : Microsoft.Extensions.Hosting.BackgroundService
+internal sealed class MemoryDatabaseLoaderService : Microsoft.Extensions.Hosting.BackgroundService
 {
-    private readonly ILogger<MemoryDatabaseLoader> _logger;
+    private readonly ILogger<MemoryDatabaseLoaderService> _logger;
 
-    public MemoryDatabaseLoader(ILogger<MemoryDatabaseLoader> logger)
+    public MemoryDatabaseLoaderService(ILogger<MemoryDatabaseLoaderService> logger)
     {
         _logger = logger;
     }
@@ -15,7 +15,7 @@ internal sealed class MemoryDatabaseLoader : Microsoft.Extensions.Hosting.Backgr
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        stoppingToken.Register(() => _logger.ZLogInformation("MemoryDatabaseLoader is stopping"));
+        stoppingToken.Register(() => _logger.ZLogInformation("MemoryDatabaseLoaderService is stopping"));
         
         while (!stoppingToken.IsCancellationRequested)
         {
