@@ -122,7 +122,7 @@ internal class SeedService : ISeedService, IDisposable
             {
                 DeleteDimension = new DeleteDimensionRequest()
                 {
-                    Range = new DimensionRange()
+                    Range = new DimensionRange
                     {
                         SheetId = sheet.Properties.SheetId,
                         Dimension = "COLUMNS",
