@@ -1,3 +1,5 @@
+using Application.Core.RequestHandler;
+using Application.UseCase.MemoryDatabase.DataTransferObject;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
@@ -6,10 +8,14 @@ namespace Presentation.BackgroundService;
 internal sealed class MemoryDatabaseLoaderService : Microsoft.Extensions.Hosting.BackgroundService
 {
     private readonly ILogger<MemoryDatabaseLoaderService> _logger;
+    private readonly IUseCaseHandler _useCaseHandler;
 
-    public MemoryDatabaseLoaderService(ILogger<MemoryDatabaseLoaderService> logger)
+    public MemoryDatabaseLoaderService(
+        ILogger<MemoryDatabaseLoaderService> logger, 
+        IUseCaseHandler useCaseHandler)
     {
         _logger = logger;
+        _useCaseHandler = useCaseHandler;
     }
 
 
@@ -21,5 +27,7 @@ internal sealed class MemoryDatabaseLoaderService : Microsoft.Extensions.Hosting
         {
             await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
         }
+
+        _= await _useCaseHandler.InvokeAsync<LoadMemoryDatabaseUseCaseInput, LoadMemoryDatabaseUseCaseOutput>(new ());
     }
 }
