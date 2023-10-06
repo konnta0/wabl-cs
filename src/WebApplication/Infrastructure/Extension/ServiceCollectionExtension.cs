@@ -192,37 +192,13 @@ public static class ServiceCollectionExtension
     {
         var provider = serviceCollection.BuildServiceProvider();
         var dbContextHolder = provider.GetRequiredService<IDbContextHolder>();
-        var builder = new DatabaseBuilder();
-
-        foreach (var dbContext in dbContextHolder.GetAll())
-        {
-            var entityTypes = dbContext.GetSeedEntityTypes();
-            foreach (var type in entityTypes)
-            {
-                var entity = Activator.CreateInstance(type);
-                if (entity is null) continue;
-
-                var tableAttribute = type.GetCustomAttribute<TableAttribute>();
-                if (tableAttribute is null)
-                {
-                    continue;
-                }
-
-                var schemaName = tableAttribute.Schema is null ? string.Empty : tableAttribute.Schema + ".";
-                var tableName = tableAttribute.Name;
-
-                var entities = dbContext.Database.SqlQueryRaw<object>($"SELECT * FROM {schemaName}{tableName}");
-                if (!entities.Any())
-                {
-                    continue;
-                }
-                
-                builder.AppendDynamic(type, entities.ToList());
-            }
-        }
         
-        var db = new MemoryDatabase(builder.Build());
-        serviceCollection.AddSingleton(db);
+        var memoryDatabaseProvider = new MemoryDatabaseProvider();
+        var memoryDatabaseLoader = new MemoryDatabaseLoader(dbContextHolder, memoryDatabaseProvider);
+
+        serviceCollection.AddSingleton<IMemoryDatabaseProvider>(_ => memoryDatabaseProvider);
+        serviceCollection.AddSingleton<IMemoryDatabaseHolder>(_ => memoryDatabaseProvider);
+        serviceCollection.AddScoped<IMemoryDatabaseLoader>(_ => memoryDatabaseLoader);
         return serviceCollection;
     }
 }
