@@ -136,10 +136,24 @@ public static class ServiceCollectionExtension
     {
         // TODO: https://learn.microsoft.com/ja-jp/ef/core/performance/advanced-performance-topics?tabs=with-di%2Cexpression-api-with-constant
         // TODO: connection pool. create context factory.
-        serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
-        { 
+        // serviceCollection.AddDbContext<EmployeesContext>(optionsBuilder =>
+        // { 
+        //     var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
+        //     optionsBuilder.UseMySql(
+        //             EmployeesContext.GetConnectionString(databaseConfig),
+        //             serverVersion,
+        //             mySqlOptionsAction =>
+        //             {
+        //                 mySqlOptionsAction.MigrationsAssembly("DatabaseMigration");
+        //                 mySqlOptionsAction.EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null);
+        //             })
+        //         .EnableSensitiveDataLogging()
+        //         .EnableDetailedErrors();
+        // });
+        serviceCollection.AddDbContextPool<EmployeesContext>(optionsAction =>
+        {
             var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
-            optionsBuilder.UseMySql(
+            optionsAction.UseMySql(
                     EmployeesContext.GetConnectionString(databaseConfig),
                     serverVersion,
                     mySqlOptionsAction =>
