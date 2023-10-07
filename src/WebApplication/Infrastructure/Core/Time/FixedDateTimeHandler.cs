@@ -12,9 +12,8 @@ public class FixedDateTimeHandler : IDateTimeHandler
     {
         _timeZoneInfo = config.Value.TimeZoneInfo;
     }
-    
-    public void SetOffset(TimeSpan offset) => _offset = offset;
 
+    public void SetOffset(TimeSpan offset) => _offset = offset;
 
     public DateTime Now()
     {
