@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
 using System.Text.Json;
 using Infrastructure.Component.Shared.CiCd.Tekton.EventListener;
 using Infrastructure.Component.Shared.CiCd.Tekton.Pipeline;
@@ -9,7 +8,6 @@ using Infrastructure.Component.Shared.CiCd.Tekton.Task;
 using Infrastructure.Component.Shared.CiCd.Tekton.TaskRun;
 using Infrastructure.Component.Shared.CiCd.Tekton.TriggerBinding;
 using Infrastructure.Component.Shared.CiCd.Tekton.TriggerTemplate;
-using Infrastructure.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;

@@ -1,3 +1,4 @@
+using Infrastructure.Component.Shared.CiCd.Spinnaker;
 using Infrastructure.Component.Shared.CiCd.Tekton;
 using Infrastructure.Component.Shared.CiCd.Tekton.EventListener;
 using Infrastructure.Component.Shared.CiCd.Tekton.Pipeline;
@@ -15,8 +16,9 @@ namespace Infrastructure.Component.Shared.CiCd.Extension
         internal static IServiceCollection AddCICD(this IServiceCollection serviceCollection)
         {
 
-            serviceCollection.AddScoped<TektonComponent>();
             serviceCollection.AddScoped<CiCdComponent>();
+
+            serviceCollection.AddScoped<TektonComponent>();
             serviceCollection.AddScoped<TektonTaskComponent>();
             serviceCollection.AddScoped<PipelineComponent>();
             serviceCollection.AddScoped<PipelineRunComponent>();
@@ -24,6 +26,8 @@ namespace Infrastructure.Component.Shared.CiCd.Extension
             serviceCollection.AddScoped<TriggerTemplateComponent>();
             serviceCollection.AddScoped<TriggerBindingComponent>();
             serviceCollection.AddScoped<EventListenerComponent>();
+
+            serviceCollection.AddScoped<SpinnakerComponent>();
             return serviceCollection;
         }
     }

@@ -1,5 +1,4 @@
 using System.Collections.Immutable;
-using Infrastructure.CI_CD.Resource.Spinnaker.MinIO;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
