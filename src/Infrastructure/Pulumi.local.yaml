@@ -4,7 +4,7 @@ config:
       CI:
         Email: tekton@cr.test.com
         Password:
-          secure: AAABAGdjAwuFnk+WnSSZL3m+guVBSLBKPXLWuRcyv8XDwFaxh07Oe3hz
+          secure: AAABAGXAx3UOR6U1Oc9Y9V270mhl3pn6wOuHDmFK9PWKL4R5e4OjxYsk
         User: tekton
     Harbor:
       NodeSelector:
@@ -20,6 +20,8 @@ config:
     Enable: true
   Infrastructure:Storage:
     Cache: Redis
+  Infrastructure:Tool:
+    Namespace: tool
   Infrastructure:WebApplication:
     Namespace: webapp
     Deploy: false
@@ -27,5 +29,3 @@ config:
     Namespace: tool
     Deploy: false
   Infrastructure:isMinikube: "true"
-  Infrastructure:Tool:
-    Namespace: tool

@@ -16,13 +16,13 @@ using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.Stack
 {
-    public class DevelopmentStack : Pulumi.Stack
+    public class LocalStack : Pulumi.Stack
     {
-        private readonly ILogger<DevelopmentStack> _logger;
+        private readonly ILogger<LocalStack> _logger;
         private readonly Config _config;
         private readonly ToolComponent _toolComponent;
 
-        public DevelopmentStack(ILogger<DevelopmentStack> logger, Config config, 
+        public LocalStack(ILogger<LocalStack> logger, Config config, 
             CiCdComponent ciCdComponent, 
             ContainerRegistryComponent containerRegistryComponent,
             ObservabilityComponent observabilityComponent,

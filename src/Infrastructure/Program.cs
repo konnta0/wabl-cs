@@ -18,7 +18,7 @@ class Program
     {
         var serviceCollection = new ServiceCollection();
         ConfigureService(serviceCollection);
-        return Deployment.RunAsync<DevelopmentStack>(serviceCollection.BuildServiceProvider());
+        return Deployment.RunAsync<LocalStack>(serviceCollection.BuildServiceProvider());
     }
 
     private static void ConfigureService(IServiceCollection serviceCollection)
@@ -33,7 +33,7 @@ class Program
         serviceCollection.AddWebApplication();
         serviceCollection.AddTool();
         serviceCollection.AddStorageComponent();
-        serviceCollection.AddScoped<DevelopmentStack>();
+        serviceCollection.AddScoped<LocalStack>();
         serviceCollection.AddScoped<SharedComponent>();
     }
 }
