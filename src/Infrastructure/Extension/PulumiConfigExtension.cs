@@ -3,6 +3,7 @@ using Infrastructure.Component.Shared.CiCd;
 using Infrastructure.Component.Shared.ContainerRegistry;
 using Infrastructure.Component.Shared.Observability;
 using Infrastructure.Component.Tool;
+using Infrastructure.Component.Tool.ManagementConsole;
 using Infrastructure.Component.WebApplication;
 using Infrastructure.VersionControlSystem;
 using Pulumi;
@@ -19,11 +20,6 @@ namespace Infrastructure.Extension
         internal static ObservabilityConfig GetObservabilityConfig(this Config config)
         {
             return config.GetObject<ObservabilityConfig>("Observability");
-        }
-
-        internal static CiCdConfig GetCICDConfig(this Config config)
-        {
-            return config.GetObject<CiCdConfig>("CICD");
         }
 
         internal static VersionControlSystemConfig GetVersionControlSystemConfig(this Config config)
@@ -44,6 +40,11 @@ namespace Infrastructure.Extension
         internal static ToolConfig GetToolConfig(this Config config)
         {
             return config.GetObject<ToolConfig>("Tool");
+        }
+        
+        internal static ManagementConsoleConfig GetManagementConsoleConfig(this Config config)
+        {
+            return config.GetObject<ManagementConsoleConfig>("ManagementConsole");
         }
     }
 }

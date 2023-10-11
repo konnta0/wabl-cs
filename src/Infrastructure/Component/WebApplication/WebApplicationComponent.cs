@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Infrastructure.Component.WebApplication.OpenTelemetryOperator;
 using Infrastructure.Component.WebApplication.WebApi;
 using Infrastructure.Extension;
@@ -31,6 +30,11 @@ namespace Infrastructure.Component.WebApplication
 
         public WebApplicationComponentOutput Apply(WebApplicationComponentInput input)
         {
+            if (!_config.GetWebApplicationConfig().Deploy)
+            {
+                return new WebApplicationComponentOutput();
+            }
+            
             var @namespace = new Namespace("namespace-web-application", new NamespaceArgs
             {
                 Metadata = new ObjectMetaArgs
