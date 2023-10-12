@@ -1,8 +1,5 @@
 using System.Collections.Immutable;
 using Pulumi;
-using Pulumi.Kubernetes.Core.V1;
-using Pulumi.Kubernetes.Types.Inputs.Core.V1;
-using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.Component.Shared.CiCd.Spinnaker
@@ -18,27 +15,22 @@ namespace Infrastructure.Component.Shared.CiCd.Spinnaker
 
         public SpinnakerComponentOutput Apply(SpinnakerComponentInput input)
         {
-            new ConfigFile("spinnaker-accounts-crd", new ConfigFileArgs
+            // TODO: crd2pulumi
+            var accountsCrd = new ConfigFile("spinnaker-accounts-crd", new ConfigFileArgs
             {
                 File =
-                    "CiCd/Component/Spinnaker/Yaml/spinnaker-operator/deploy/crds/spinnaker.io_spinnakeraccounts_crd.yaml"
-            }).Ready();
+                    "./Component/Shared/CiCd/Spinnaker/Yaml/spinnaker-operator/deploy/crds/spinnaker.io_spinnakeraccounts.yaml"
+                
+            }, new ComponentResourceOptions { DependsOn = { input.Namespace } }).Ready();
 
-            new ConfigFile("spinnaker-services-crd", new ConfigFileArgs
+            var servicesCrd = new ConfigFile("spinnaker-services-crd", new ConfigFileArgs
             {
                 File =
-                    "CiCd/Component/Spinnaker/Yaml/spinnaker-operator/deploy/crds/spinnaker.io_spinnakerservices_crd.yaml"
-            }).Ready();
+                    "./Component/Shared/CiCd/Spinnaker/Yaml/spinnaker-operator/deploy/crds/spinnaker.io_spinnakerservices.yaml"
+            }, new ComponentResourceOptions { DependsOn = { input.Namespace } }).Ready();
 
-            var ns = new Namespace("cicd-namespace", new NamespaceArgs
-            {
-                Metadata = new ObjectMetaArgs
-                {
-                    Name = "cicd"
-                }
-            });
 
-            var components = new []
+            var components = new[]
             {
                 "deployment",
                 "role",
@@ -51,64 +43,35 @@ namespace Infrastructure.Component.Shared.CiCd.Spinnaker
                 new ConfigFile($"spinnaker-operator-basic-{component}", new ConfigFileArgs
                 {
                     File =
-                        $"CiCd/Component/Spinnaker/Yaml/spinnaker-operator/deploy/operator/basic/{component}.yaml",
+                        $"./Component/Shared/CiCd/Spinnaker/Yaml/spinnaker-operator/deploy/operator/basic/{component}.yaml",
                     Transformations =
                     {
                         (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
                         {
                             var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
                             if (!metadata.ContainsKey("namespace")) return obj;
-                            var @namespace = ns.Metadata.Apply(x => x.Namespace);
-                            return obj.SetItem("metadata", metadata.SetItem("namespace", @namespace));
+                            return obj.SetItem("metadata", metadata.SetItem("namespace", input.Namespace));
                         }
                     }
-                }).Ready();
+                }, new ComponentResourceOptions { DependsOn = { accountsCrd, servicesCrd } }).Ready();
             }
-
-            foreach (var component in components)
-            {
-                new ConfigFile($"spinnaker-operator-cluster-{component}", new ConfigFileArgs
-                {
-                    File =
-                        $"CiCd/Component/Spinnaker/Yaml/spinnaker-operator/deploy/operator/cluster/{component}.yaml",
-                    Transformations =
-                    {
-                        (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
-                        {
-                            var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-                            if (!metadata.ContainsKey("namespace")) return obj;
-                            var @namespace = ns.Metadata.Apply(x => x.Namespace);
-                            return obj.SetItem("metadata", metadata.SetItem("namespace", @namespace));
-                        }
-                    }
-                }).Ready();
-            }
-
-            //_minIoResource.Apply();
-
-            // TODO: change the config.persistentStorage
+            
+            
+            // use crd2pulumi to generate the following resources
             new ConfigFile($"spinnaker-operator-cluster-spinnakerservice", new ConfigFileArgs
             {
                 File =
-                    $"CiCd/Component/Spinnaker/Yaml/spinnaker-operator/deploy/spinnaker/basic/spinnakerservice.yml",
+                    $"./Component/Shared/CiCd/Spinnaker/Yaml/spinnaker-operator/deploy/spinnaker/basic/spinnakerservice.yml",
                 Transformations =
                 {
-                    (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
-                    {
-                        var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
-                        if (!metadata.ContainsKey("namespace")) return obj;
-                        var @namespace = ns.Metadata.Apply(x => x.Namespace);
-                        return obj.SetItem("metadata", metadata.SetItem("namespace", @namespace));
-                    }
+                    // (ImmutableDictionary<string, object> obj, CustomResourceOptions opts) =>
+                    // {
+                    //     var metadata = (ImmutableDictionary<string, object>)obj["metadata"];
+                    //     if (!metadata.ContainsKey("namespace")) return obj;
+                    //     return obj.SetItem("metadata", metadata.SetItem("namespace", input.Namespace));
+                    // }
                 }
             }).Ready();
-
-
-            // var release = new Release("spinnaker-release", new ReleaseArgs
-            // {
-            //     Namespace = ns.Metadata.Apply(x => x.Name),
-            //     Chart = "CI_CD/Resource/Spinnaker/Yaml/spinnaker-operator/helm/Chart.yaml",
-            // });
             return new SpinnakerComponentOutput();
         }
     }
