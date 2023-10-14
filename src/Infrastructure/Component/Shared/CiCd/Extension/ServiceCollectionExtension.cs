@@ -1,3 +1,4 @@
+using Infrastructure.Component.Shared.CiCd.GitHubActions;
 using Infrastructure.Component.Shared.CiCd.Spinnaker;
 using Infrastructure.Component.Shared.CiCd.Tekton;
 using Infrastructure.Component.Shared.CiCd.Tekton.EventListener;
@@ -18,6 +19,7 @@ namespace Infrastructure.Component.Shared.CiCd.Extension
 
             serviceCollection.AddScoped<CiCdComponent>();
 
+            serviceCollection.AddScoped<GitHubActionsComponent>();
             serviceCollection.AddScoped<TektonComponent>();
             serviceCollection.AddScoped<TektonTaskComponent>();
             serviceCollection.AddScoped<PipelineComponent>();

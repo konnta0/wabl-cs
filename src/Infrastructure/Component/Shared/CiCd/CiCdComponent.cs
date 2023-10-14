@@ -1,3 +1,4 @@
+using Infrastructure.Component.Shared.CiCd.GitHubActions;
 using Infrastructure.Component.Shared.CiCd.Spinnaker;
 using Infrastructure.Component.Shared.CiCd.Tekton;
 using Microsoft.Extensions.Logging;
@@ -11,17 +12,19 @@ namespace Infrastructure.Component.Shared.CiCd
         private Config _config;
         private readonly TektonComponent _tekton;
         private readonly SpinnakerComponent _spinnaker;
+        private readonly GitHubActionsComponent _gitHubActionsComponent;
 
         public CiCdComponent(
             ILogger<CiCdComponent> logger, 
             Config config, 
             TektonComponent tekton,
-            SpinnakerComponent spinnaker)
+            SpinnakerComponent spinnaker, GitHubActionsComponent gitHubActionsComponent)
         {
             _logger = logger;
             _config = config;
             _tekton = tekton;
             _spinnaker = spinnaker;
+            _gitHubActionsComponent = gitHubActionsComponent;
         }
 
         public CiCdComponentOutput Apply(CiCdComponentInput input)
@@ -30,7 +33,12 @@ namespace Infrastructure.Component.Shared.CiCd
             // {
             //     Namespace = input.Namespace
             // });
-            _spinnaker.Apply(new SpinnakerComponentInput
+            // _spinnaker.Apply(new SpinnakerComponentInput
+            // {
+            //     Namespace = input.Namespace
+            // });
+
+            _gitHubActionsComponent.Apply(new GitHubActionsComponentInput
             {
                 Namespace = input.Namespace
             });
