@@ -187,7 +187,7 @@ mk-dashboard:
 
 ## Pulumi
 INFRASTRUCTURE_DIR=./src/Infrastructure
-STACK?=develop
+STACK?=local
 .PHONY: p-up # pulumi up
 p-up:
 	pulumi up --cwd $(INFRASTRUCTURE_DIR) -v=6 --stack $(STACK)
