@@ -1,0 +1,24 @@
+name: "Setup Dagger"
+
+description: "Setup Dagger"
+
+inputs:
+  go-version:
+    description: "workflow token"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: ">=${{ inputs.go-version }}"
+
+    - name: Install
+      shell: bash
+      run: go get dagger.io/dagger@latest cloud.google.com/go/run/apiv2
+
+    - name: Install Dagger CLI
+      shell: bash
+      run: cd /usr/local && { curl -L https://dl.dagger.io/dagger/install.sh | sh; cd -; }
