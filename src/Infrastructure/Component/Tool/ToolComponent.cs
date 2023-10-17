@@ -36,11 +36,14 @@ public sealed class ToolComponent : IComponent<ToolComponentInput, ToolComponent
             }
         });
 
-        _managementConsoleComponent.Apply(new ManagementConsoleComponentInput
+        if (_config.GetManagementConsoleConfig().Deploy)
         {
-            Namespace = @namespace
-        });
-
+            _managementConsoleComponent.Apply(new ManagementConsoleComponentInput
+            {
+                Namespace = @namespace
+            });
+        }
+        
         return new ToolComponentOutput();
     }
 }
