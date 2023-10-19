@@ -1,4 +1,5 @@
 using Application.Departments.Common;
+using Application.UseCase.Departments.Dto;
 
 namespace Application.Departments.Dto;
 

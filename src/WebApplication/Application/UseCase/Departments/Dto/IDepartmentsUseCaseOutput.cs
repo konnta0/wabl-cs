@@ -1,6 +1,6 @@
 using Application.Core.RequestHandler;
 
-namespace Application.Departments.Dto;
+namespace Application.UseCase.Departments.Dto;
 
 public interface IDepartmentsUseCaseOutput : IUseCaseOutput
 {

@@ -1,7 +1,9 @@
 
-namespace Application.Departments.Dto;
+using Application.Departments.Dto;
 
-public class AddDepartmentsUseCaseInput : IDepartmentsUseCaseInput
+namespace Application.UseCase.Departments.Dto;
+
+public sealed class AddDepartmentsUseCaseInput : IDepartmentsUseCaseInput
 {
     public string DepotNo { get; init; } = "";
     public string DeptName { get; init; } = "";
