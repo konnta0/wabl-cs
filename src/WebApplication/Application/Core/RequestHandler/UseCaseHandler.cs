@@ -17,11 +17,11 @@ public sealed class UseCaseHandler : IUseCaseHandler
         _activityStarter = activityStarter;
     }
     
-    public async ValueTask<TOutput> InvokeAsync<TInput, TOutput>(TInput input) where TInput : IUseCaseInput where TOutput : IUseCaseOutput
+    public async ValueTask<TOutput> InvokeAsync<TInput, TOutput>(TInput input, CancellationToken cancellationToken = default) where TInput : IUseCaseInput where TOutput : IUseCaseOutput
     {
         using var activity = _activityStarter.Start();
         
-        var results = await _asyncRequestHandler.InvokeAllAsync(input, AsyncPublishStrategy.Parallel);
+        var results = await _asyncRequestHandler.InvokeAllAsync(input, AsyncPublishStrategy.Parallel, cancellationToken);
         var result = results.Where(static x => x is not null).OfType<TOutput>().FirstOrDefault();
         if (result is not null)
         {
