@@ -1,4 +1,5 @@
 using Application.Departments.Dto;
+using Application.UseCase.Departments.Dto;
 using Domain.RestApi.Departments;
 
 namespace Presentation.Extension.ResponseDataFactory.Departments;
