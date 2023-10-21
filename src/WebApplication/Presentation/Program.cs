@@ -1,6 +1,7 @@
 using Application.Extension;
 using Cysharp.Text;
 using Infrastructure.Cache;
+using Infrastructure.Core.Authentication;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Logging;
 using Infrastructure.Core.Time;
@@ -39,6 +40,7 @@ builder.Configuration.Bind(nameof(DatabaseConfig),new DatabaseConfig());
 builder.Configuration.Bind(nameof(InstrumentationConfig),new InstrumentationConfig());
 builder.Configuration.Bind(nameof(CacheConfig),new CacheConfig());
 builder.Configuration.Bind(nameof(TimeConfig),new TimeConfig());
+builder.Configuration.Bind(nameof(AuthenticationConfig), new AuthenticationConfig());
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddUseCase(builder.Configuration);
