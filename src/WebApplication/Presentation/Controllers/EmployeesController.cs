@@ -1,5 +1,6 @@
 using Application.Core.RequestHandler;
 using Application.Departments.Dto;
+using Application.UseCase.Departments.Dto;
 using Domain.RestApi.Departments;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.Core;
