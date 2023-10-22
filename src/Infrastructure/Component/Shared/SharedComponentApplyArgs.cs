@@ -1,3 +1,5 @@
+using Pulumi.Kubernetes.Core.V1;
+
 namespace Infrastructure.Component.Shared
 {
     public sealed class SharedComponentInput : IComponentInput
@@ -6,5 +8,6 @@ namespace Infrastructure.Component.Shared
 
     public sealed class SharedComponentOutput : IComponentOutput
     {
+        public Namespace Namespace { get; init; }
     }
 }

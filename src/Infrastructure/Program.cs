@@ -1,10 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Infrastructure.Component.Shared;
-using Infrastructure.Component.Shared.Certificate.Extension;
-using Infrastructure.Component.Shared.CiCd.Extension;
-using Infrastructure.Component.Shared.ContainerRegistry.Extension;
-using Infrastructure.Component.Shared.Observability.Extension;
-using Infrastructure.Component.Shared.Storage.Extension;
+using Infrastructure.Component.Shared.Extension;
 using Infrastructure.Component.Tool.Extension;
 using Infrastructure.Component.WebApplication.Extension;
 using Infrastructure.Stack;
@@ -25,15 +20,10 @@ class Program
     {
         serviceCollection.AddLogging();
         serviceCollection.AddSingleton<Config>();
-        serviceCollection.AddCICD();
-        serviceCollection.AddContainerRegistry();
-        serviceCollection.AddObservability();
-        serviceCollection.AddCertificate();
         serviceCollection.AddVersionControlSystem();
         serviceCollection.AddWebApplication();
+        serviceCollection.AddShared();
         serviceCollection.AddTool();
-        serviceCollection.AddStorageComponent();
         serviceCollection.AddScoped<LocalStack>();
-        serviceCollection.AddScoped<SharedComponent>();
     }
 }
