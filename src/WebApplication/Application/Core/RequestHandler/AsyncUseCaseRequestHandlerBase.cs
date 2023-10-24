@@ -2,7 +2,7 @@ using MessagePipe;
 
 namespace Application.Core.RequestHandler;
 
-public abstract class AsyncUseCaseRequestHandlerBase<TInput, TExecuteResult> : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?> where TInput : IUseCaseInput where TExecuteResult : IUseCaseExecuteResult
+internal abstract class AsyncUseCaseRequestHandlerBase<TInput, TExecuteResult> : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?> where TInput : IUseCaseInput where TExecuteResult : IUseCaseExecuteResult
 {
     protected AsyncUseCaseRequestHandlerBase(IUseCaseActivityStarter activityStarter)
     {

@@ -1,6 +1,6 @@
 namespace Application.Core.RequestHandler;
 
-public interface IUseCaseExecuteResult
+internal interface IUseCaseExecuteResult
 {
     
 }

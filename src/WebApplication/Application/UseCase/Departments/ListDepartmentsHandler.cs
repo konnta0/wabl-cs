@@ -2,12 +2,11 @@ using Application.Core.RepositoryHandler;
 using Application.Core.RequestHandler;
 using Application.Departments.Common;
 using Application.Departments.Dto;
-using Application.Departments.ExecuteResult;
 using Application.UseCase.Departments.Dto;
+using Application.UseCase.Departments.ExecuteResult;
 using Domain.Repository.Department;
 
-
-namespace Application.Departments;
+namespace Application.UseCase.Departments;
 
 internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepartmentsUseCaseInput, ListDepartmentExecuteResult>
 {

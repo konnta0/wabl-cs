@@ -1,14 +1,13 @@
 using Application.Core.Exception;
 using Application.Core.RepositoryHandler;
 using Application.Core.RequestHandler;
-using Application.Departments.Dto;
-using Application.Departments.ExecuteResult;
 using Application.UseCase.Departments.Dto;
+using Application.UseCase.Departments.ExecuteResult;
 using Domain.Repository.Department;
 
-namespace Application.Departments;
+namespace Application.UseCase.Departments;
 
-public class AddDepartmentHandler : AsyncUseCaseRequestHandlerBase<AddDepartmentsUseCaseInput, AddDepartmentExecuteResult>
+internal class AddDepartmentHandler : AsyncUseCaseRequestHandlerBase<AddDepartmentsUseCaseInput, AddDepartmentExecuteResult>
 {
     private readonly IRepositoryHandler _repositoryHandler;
 

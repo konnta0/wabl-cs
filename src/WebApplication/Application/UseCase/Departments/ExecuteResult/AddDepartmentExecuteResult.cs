@@ -1,6 +1,6 @@
 using Application.Core.RequestHandler;
 
-namespace Application.Departments.ExecuteResult;
+namespace Application.UseCase.Departments.ExecuteResult;
 
 public sealed class AddDepartmentExecuteResult : IUseCaseExecuteResult
 {

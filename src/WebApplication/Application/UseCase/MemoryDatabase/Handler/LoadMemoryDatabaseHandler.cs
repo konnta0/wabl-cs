@@ -4,7 +4,7 @@ using Application.UseCase.MemoryDatabase.DataTransferObject;
 
 namespace Application.UseCase.MemoryDatabase.Handler;
 
-public class LoadMemoryDatabaseHandler : AsyncUseCaseRequestHandlerBase<LoadMemoryDatabaseUseCaseInput, LoadMemoryDatabaseExecuteResult>
+internal class LoadMemoryDatabaseHandler : AsyncUseCaseRequestHandlerBase<LoadMemoryDatabaseUseCaseInput, LoadMemoryDatabaseExecuteResult>
 {
     private readonly IMemoryDatabaseLoader _memoryDatabaseLoader;
     
