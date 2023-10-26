@@ -1,5 +1,6 @@
 using Application.Core.RequestHandler;
 using Application.UseCase.MemoryDatabase.DataTransferObject;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
@@ -8,14 +9,14 @@ namespace Presentation.BackgroundService;
 internal sealed class MemoryDatabaseLoaderService : Microsoft.Extensions.Hosting.BackgroundService
 {
     private readonly ILogger<MemoryDatabaseLoaderService> _logger;
-    private readonly IUseCaseHandler _useCaseHandler;
+    private readonly IServiceProvider _serviceProvider;
 
     public MemoryDatabaseLoaderService(
         ILogger<MemoryDatabaseLoaderService> logger, 
-        IUseCaseHandler useCaseHandler)
+        IServiceProvider serviceProvider)
     {
         _logger = logger;
-        _useCaseHandler = useCaseHandler;
+        _serviceProvider = serviceProvider;
     }
 
 
@@ -28,6 +29,12 @@ internal sealed class MemoryDatabaseLoaderService : Microsoft.Extensions.Hosting
             await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
         }
 
-        _= await _useCaseHandler.InvokeAsync<LoadMemoryDatabaseUseCaseInput, LoadMemoryDatabaseUseCaseOutput>(new ());
+        using (var scope = _serviceProvider.CreateScope())
+        {
+            var useCaseHandler =
+                scope.ServiceProvider.GetRequiredService<IUseCaseHandler>();
+
+            _ = await useCaseHandler.InvokeAsync<LoadMemoryDatabaseUseCaseInput, LoadMemoryDatabaseUseCaseOutput>(new LoadMemoryDatabaseUseCaseInput(), stoppingToken);
+        }
     }
 }
