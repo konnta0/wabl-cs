@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApplication", "WebApplic
 		src\WebApplication\deployment.local.yaml = src\WebApplication\deployment.local.yaml
 		src\WebApplication\BannedSymbols.txt = src\WebApplication\BannedSymbols.txt
 		Dockerfile = Dockerfile
+		src\WebApplication\entrypoint.sh = src\WebApplication\entrypoint.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool", "Tool", "{6C81DDDB-2804-40F5-8826-B12EAD34FE8E}"
