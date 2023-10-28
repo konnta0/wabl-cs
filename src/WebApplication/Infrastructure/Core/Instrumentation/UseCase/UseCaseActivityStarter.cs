@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Application.Core.RequestHandler;
 using Domain.Instrumentation;
 
 namespace Infrastructure.Core.Instrumentation.UseCase;
