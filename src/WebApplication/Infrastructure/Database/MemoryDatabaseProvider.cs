@@ -4,8 +4,8 @@ namespace Infrastructure.Database;
 
 internal class MemoryDatabaseProvider : IMemoryDatabaseProvider
 {
-    public MemoryDatabase Db => _db;
-    private MemoryDatabase _db = new(Array.Empty<byte>());
+    public MemoryDatabase? Db => _db;
+    private MemoryDatabase? _db;
 
     public void Replace(MemoryDatabase db)
     {
