@@ -1,11 +1,15 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
+using System.Text;
 using System.Text.Json;
+using Application.Core.Authentication;
 using Application.Core.Database;
 using Application.Core.RepositoryHandler;
+using Application.Core.RequestHandler;
 using Cysharp.Text;
 using Domain;
 using Infrastructure.Cache;
+using Infrastructure.Core.Authentication;
 using Infrastructure.Core.Instrumentation;
 using Infrastructure.Core.Instrumentation.Repository;
 using Infrastructure.Core.Instrumentation.UseCase;
@@ -20,15 +24,19 @@ using Infrastructure.Extension.HealthCheck;
 using Infrastructure.Extension.Instrumentation;
 using Infrastructure.Repository;
 using MasterMemory;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
+using Polly;
+using Polly.Extensions.Http;
 using StackExchange.Redis;
 using ZLogger;
 using ZLogger.Providers;
@@ -49,7 +57,8 @@ public static class ServiceCollectionExtension
             .AddCacheClient(configuration.Get<CacheConfig>()!, out var connectionMultiplexer)
             .AddMemoryDatabase()
             .AddOpenTelemetryTracing(connectionMultiplexer)
-            .AddOpenTelemetryMetrics(configuration.Get<InstrumentationConfig>()!);
+            .AddOpenTelemetryMetrics(configuration.Get<InstrumentationConfig>()!)
+            .AddAuthentication(configuration.Get<AuthenticationConfig>()!);
     }
 
     private static IServiceCollection AddLogging(this IServiceCollection serviceCollection)
@@ -213,6 +222,31 @@ public static class ServiceCollectionExtension
         serviceCollection.AddSingleton<IMemoryDatabaseProvider>(_ => memoryDatabaseProvider);
         serviceCollection.AddSingleton<IMemoryDatabaseHolder>(_ => memoryDatabaseProvider);
         serviceCollection.AddScoped<IMemoryDatabaseLoader>(_ => memoryDatabaseLoader);
+        return serviceCollection;
+    }
+
+    private static IServiceCollection AddAuthentication(this IServiceCollection serviceCollection, AuthenticationConfig authenticationConfig)
+    {
+        serviceCollection.AddAuthentication(static options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = authenticationConfig.Issuer,
+                ValidAudience = authenticationConfig.Audience,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationConfig.Secret))
+            };
+        });
+
+        serviceCollection.AddHttpClient<IAuthenticationProvider, AuthenticationProvider>()
+            .AddPolicyHandler(HttpPolicyExtensions.HandleTransientHttpError().WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))));
         return serviceCollection;
     }
 }
