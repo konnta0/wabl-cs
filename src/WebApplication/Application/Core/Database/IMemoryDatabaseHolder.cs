@@ -4,5 +4,5 @@ namespace Application.Core.Database;
 
 public interface IMemoryDatabaseHolder
 {
-    MemoryDatabase Db { get; }
+    MemoryDatabase? Db { get; }
 }
