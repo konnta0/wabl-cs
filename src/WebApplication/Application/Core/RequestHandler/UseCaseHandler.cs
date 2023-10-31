@@ -20,6 +20,7 @@ public sealed class UseCaseHandler : IUseCaseHandler
     public async ValueTask<TOutput> InvokeAsync<TInput, TOutput>(TInput input, CancellationToken cancellationToken = default) where TInput : IUseCaseInput where TOutput : IUseCaseOutput
     {
         using var activity = _activityStarter.Start();
+        activity?.SetTag("InputType", typeof(TInput).Name);
         
         var results = await _asyncRequestHandler.InvokeAllAsync(input, AsyncPublishStrategy.Parallel, cancellationToken);
         var result = results.Where(static x => x is not null).OfType<TOutput>().FirstOrDefault();
