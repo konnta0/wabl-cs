@@ -28,12 +28,19 @@ public sealed class Pulumi : ConsoleAppBase
         return target.RunWithoutExitingAsync(new[] { "urns" });
     }
 
-    [Command("delete",
-        "pulumi delete. (e.g.) urn is 'urn:pulumi:develop::Infrastructure::kubernetes:helm.sh/v3:Release::cert-manager'")]
+    [Command("delete", "pulumi delete. (e.g.) urn is 'urn:pulumi:develop::Infrastructure::kubernetes:helm.sh/v3:Release::cert-manager'")]
     public Task Delete([Option("urn", "delete urn")]string urn, [Option("stack")]string stack = "local")
     {
         var target = new Targets();
-        target.Add("delete", () => RunAsync("pulumi", $"pulumi state delete {urn} --cwd {InfrastructureDir} --stack {stack}"));
+        target.Add("delete", () => RunAsync("pulumi", $"state delete {urn} --cwd {InfrastructureDir} --stack {stack}"));
         return target.RunWithoutExitingAsync(new[] { "delete" });
+    }
+
+    [Command("output")]
+    public Task Output([Option("stack")] string stack = "local")
+    {
+        var target = new Targets();
+        target.Add("output", () => RunAsync("pulumi", $"output --cwd {InfrastructureDir} --stack {stack}"));
+        return target.RunWithoutExitingAsync(new[] { "output" });
     }
 }
