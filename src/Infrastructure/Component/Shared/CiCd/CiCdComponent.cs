@@ -41,7 +41,6 @@ namespace Infrastructure.Component.Shared.CiCd
             _gitHubActionsComponent.Apply(new GitHubActionsComponentInput
             {
                 Namespace = input.Namespace,
-                WithActContainer = true
             });
             return new CiCdComponentOutput();
         }
