@@ -24,13 +24,7 @@ public sealed class AuthenticationsController : WebApiController
     {
         throw new NotImplementedException();
     }
-
-    [AllowAnonymous]
-    [HttpPost("sign-out")]
-    public ValueTask SignOut()
-    {
-        throw new NotImplementedException();
-    }
+    
 
     [AllowAnonymous]
     [HttpPost("sign-up")]

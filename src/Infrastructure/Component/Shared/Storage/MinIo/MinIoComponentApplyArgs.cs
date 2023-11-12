@@ -5,11 +5,11 @@ namespace Infrastructure.Component.Shared.Storage.MinIo
 {
     public sealed class MinIoComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public Namespace Namespace { get; init; } = null!;
     }
 
     public sealed class MinIoComponentOutput : IComponentOutput
     {
-        public Release Release { get; set; }
+        public Release Release { get; set; } = null!;
     }
 }

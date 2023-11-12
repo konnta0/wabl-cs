@@ -23,7 +23,7 @@ public sealed class InMemoryLogRecords : Collection<LogRecord>
                 
                 options.StructuredLoggingFormatter = (writer, _) =>
                 {
-                    var copiedLogInfo = new LogInfo(item.CategoryName, item.Timestamp, item.LogLevel, item.EventId,
+                    var copiedLogInfo = new LogInfo(item.CategoryName!, item.Timestamp, item.LogLevel, item.EventId,
                         item.Exception);
                     writer.WriteString(traceIdName, traceIdValue);
                     writer.WriteString(spanIdName, spanIdValue);
@@ -32,7 +32,7 @@ public sealed class InMemoryLogRecords : Collection<LogRecord>
             });
         });
         var logger = loggerFactory.CreateLogger<InMemoryLogRecords>();
-        logger.ZLog(item.LogLevel, item.Exception, item.FormattedMessage);
+        logger.ZLog(item.LogLevel, item.Exception, item.FormattedMessage!);
         loggerFactory.Dispose();
     }
 }

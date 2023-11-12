@@ -10,6 +10,6 @@ namespace Infrastructure.Component.Shared.Certificate
 
     public sealed class CertificateComponentOutput : IComponentOutput
     {
-        public ClusterIssuer ClusterIssuer { get; init; }
+        public ClusterIssuer ClusterIssuer { get; init; } = null!;
     }
 }

@@ -6,7 +6,7 @@ using Pulumi;
 
 namespace Infrastructure.Component.Shared.CiCd
 {
-    public class CiCdComponent : IComponent<CiCdComponentInput, CiCdComponentOutput>
+    public sealed class CiCdComponent : IComponent<CiCdComponentInput, CiCdComponentOutput>
     {
         private readonly ILogger<CiCdComponent> _logger;
         private Config _config;
@@ -40,7 +40,8 @@ namespace Infrastructure.Component.Shared.CiCd
 
             _gitHubActionsComponent.Apply(new GitHubActionsComponentInput
             {
-                Namespace = input.Namespace
+                Namespace = input.Namespace,
+                WithActContainer = true
             });
             return new CiCdComponentOutput();
         }

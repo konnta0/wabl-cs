@@ -92,8 +92,8 @@ namespace Infrastructure.Component.Shared.CiCd.Tekton
                 Immutable = true,
                 StringData = new InputMap<string>
                 {
-                    ["username"] = containerRegistryConfig.GetProperty("Access").GetProperty("CI").GetProperty("User").GetString(),
-                    ["password"] = containerRegistryConfig.GetProperty("Access").GetProperty("CI").GetProperty("Password").GetString()
+                    ["username"] = containerRegistryConfig.GetProperty("Access").GetProperty("CI").GetProperty("User").GetString()!,
+                    ["password"] = containerRegistryConfig.GetProperty("Access").GetProperty("CI").GetProperty("Password").GetString()!
                 },
                 Metadata = new ObjectMetaArgs
                 {

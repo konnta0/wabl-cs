@@ -91,7 +91,7 @@ public static class ServiceCollectionExtension
         return serviceCollection.AddOpenTelemetry().WithTracing(builder =>
         {
             builder.SetResourceBuilder(ResourceBuilder.CreateDefault()
-                .AddService(Environment.GetEnvironmentVariable("OTLP_SERVER_NAME")));
+                .AddService(Environment.GetEnvironmentVariable("OTLP_SERVER_NAME")!));
             builder.AddAspNetCoreInstrumentation(options =>
             {
                 options.RecordException = true;

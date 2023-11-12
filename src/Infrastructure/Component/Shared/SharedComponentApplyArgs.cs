@@ -8,6 +8,6 @@ namespace Infrastructure.Component.Shared
 
     public sealed class SharedComponentOutput : IComponentOutput
     {
-        public Namespace Namespace { get; init; }
+        public Namespace Namespace { get; init; } = null!;
     }
 }
