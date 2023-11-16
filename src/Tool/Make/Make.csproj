@@ -10,6 +10,7 @@
     <ItemGroup>
       <PackageReference Include="Bullseye" Version="4.2.1" />
       <PackageReference Include="ConsoleAppFramework" Version="4.2.4" />
+      <PackageReference Include="ProcessX" Version="1.5.5" />
       <PackageReference Include="SimpleExec" Version="11.0.0" />
     </ItemGroup>
 
