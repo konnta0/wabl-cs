@@ -16,14 +16,15 @@ public sealed class Migration : ConsoleAppBase
     private void AddDotnetCommand(ref Targets target, string command)
     {
         DirectoryUtil.TryGetSolutionDirectoryInfo(out var directoryInfo);
-        target.Add("docker-build", () => RunAsync("docker", "-f Dockerfile.DatabaseMigration -t database_migration ../../../"));
+        target.Add("docker-build", () => RunAsync("docker", $"build -f {directoryInfo.FullName}/Dockerfile.DatabaseMigration -t database_migration ../../../"));
         target.Add("docker-run", DependsOn("docker-build"), () => RunAsync("docker",
+            $"run -it " +
             $"-v {directoryInfo.FullName}/src/Tool/DatabaseMigration:/src/Tool/DatabaseMigration " + 
             $"-v {directoryInfo.FullName}/src/WebApplication:/src/WebApplication " + 
             $"-v {directoryInfo.FullName}/src/Tool/DatabaseMigration/Seed:/src/Seed " + 
             $"-v {directoryInfo.FullName}/src/Tool/Domain.SourceGenerator:/src/Tool/Domain.SourceGenerator " + 
             $"-v {directoryInfo.FullName}/src/Tool/Infrastructure.SourceGenerator:/src/Tool/Infrastructure.SourceGenerator " +
-            $"--env-file=.env " +
+            $"--env-file={directoryInfo.FullName}/.env " +
             $"--name=database_migration " +
             $"--rm " +
             $"-w /src/Tool/DatabaseMigration " +
