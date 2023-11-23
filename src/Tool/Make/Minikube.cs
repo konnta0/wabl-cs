@@ -2,7 +2,7 @@ namespace Make;
 
 internal sealed class Minikube : ConsoleAppBase
 {
-    public async ValueTask Start()
+    public async ValueTask Up()
     {
         const string memory = "16g";
         const string cpu = "7";
@@ -25,7 +25,7 @@ internal sealed class Minikube : ConsoleAppBase
         await target.RunWithoutExitingAsync(new[] { "metrics-server" });
     }
 
-    public async ValueTask Stop()
+    public async ValueTask Down()
     {
         var target = new Targets();
         target.Add("stop", static () => RunAsync("minikube", "stop"));
