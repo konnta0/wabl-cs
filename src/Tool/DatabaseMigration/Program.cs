@@ -1,5 +1,3 @@
-using DatabaseMigration;
-using DatabaseMigration.Command;
 using DatabaseMigration.Command.Seed;
 using DatabaseMigration.Domain.Internal.GoogleApi;
 using DatabaseMigration.Domain.Internal.Seed;
@@ -7,7 +5,6 @@ using DatabaseMigration.Domain.Service.Seed;
 using Infrastructure.Cache;
 using Infrastructure.Database;
 using Infrastructure.Extension;
-using MessagePipe;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,7 +18,6 @@ builder.ConfigureServices((context, collection) =>
     collection.AddCacheClient(new CacheConfig(), out var _);
     collection.AddScoped<ISeedService, SeedService>();
     collection.AddScoped<IGoogleApiHelper, GoogleApiHelper>();
-    collection.AddMessagePipe();
 });
 
 var app = builder.Build();
