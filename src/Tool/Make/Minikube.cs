@@ -38,4 +38,11 @@ internal sealed class Minikube : ConsoleAppBase
         target.Add("pause", static () => RunAsync("minikube", "pause"));
         await target.RunWithoutExitingAsync(new[] { "pause" });
     }
+
+    public async ValueTask UnPause()
+    {
+        var target = new Targets();
+        target.Add("unpause", static async () => await "minikube unpause");
+        await target.RunWithoutExitingAsync(new[] { "unpause" });
+    }
 }
