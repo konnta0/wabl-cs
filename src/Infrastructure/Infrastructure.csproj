@@ -10,7 +10,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Pulumi" Version="3.*" />
-    <PackageReference Include="Pulumi.Docker" Version="3.4.1" />
+    <PackageReference Include="Pulumi.Command" Version="0.9.1" />
+    <PackageReference Include="Pulumi.Docker" Version="4.4.2" />
     <PackageReference Include="Pulumi.Kubernetes" Version="3.*" />
     <PackageReference Include="Pulumi.KubernetesCertManager" Version="0.0.5" />
   </ItemGroup>
@@ -35,6 +36,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Component\Shared\Storage\TiDB\Yaml\prometheus.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Component\Shared\CiCd\Spinnaker\Yaml\spinnaker-operator\deploy\crds\spinnaker.io_spinnakeraccounts.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Component\Shared\CiCd\Spinnaker\Yaml\spinnaker-operator\deploy\crds\spinnaker.io_spinnakerservices.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
