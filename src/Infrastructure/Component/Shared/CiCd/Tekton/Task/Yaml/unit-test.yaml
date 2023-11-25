@@ -14,7 +14,7 @@ spec:
       description: The git repo will be cloned onto the volume backing this Workspace.
   steps:
     - name: unit-test
-      image: mcr.microsoft.com/dotnet/sdk:7.0.305-alpine3.18
+      image: mcr.microsoft.com/dotnet/sdk:8.0.100-1-alpine3.18
       env:
         - name: PROJECT_DIRECTORY
           value: $(params.project-directory)
