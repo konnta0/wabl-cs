@@ -19,7 +19,7 @@ func main() {
 
 	golang := client.
 		Container().
-		From("mcr.microsoft.com/dotnet/sdk:7.0.305-alpine3.18").
+		From("mcr.microsoft.com/dotnet/sdk:8.0.100-1-alpine3.18").
 		WithExec([]string{"dotnet", "test", "--no-restore", "--logger", "\"trx;LogFileName=test-results.trx\""})
 
 	_, err = golang.Stdout(ctx)
