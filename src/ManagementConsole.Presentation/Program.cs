@@ -1,18 +1,15 @@
-using ManagementConsole.Data;
 using ManagementConsole.Internals;
 using ManagementConsole.Internals.Extension;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Radzen;
+using Microsoft.FluentUI.AspNetCore.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddScoped<ContextMenuService>();
-
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddFluentUIComponents();
+builder.Services.AddDataGridEntityFrameworkAdapter();
 builder.Services.AddHttpClient();
 
 builder.Services.AddHealthChecks().AddCheck<HealthCheck>(

@@ -1,0 +1,19 @@
+@inherits LayoutComponentBase
+
+<PageTitle>ManagementConsole</PageTitle>
+<FluentMainLayout NavMenuTitle="Navigation menu">
+    <Header>
+        <h3>ManagementConsole</h3>
+    </Header>
+    <Body>
+    @Body
+    </Body>
+    <NavMenuContent>
+        <FluentNavLink Icon="@(new Icons.Regular.Size20.Home())" Href="/" Match="NavLinkMatch.All">Home</FluentNavLink>
+    </NavMenuContent>
+</FluentMainLayout>
+
+<FluentToastProvider />
+<FluentDialogProvider />
+<FluentTooltipProvider />
+<FluentMessageBarProvider />
