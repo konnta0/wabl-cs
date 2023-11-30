@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
@@ -25,20 +25,9 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
     </ItemGroup>
-
+    
     <ItemGroup>
-      <Folder Include="Domain" />
-      <Folder Include="Infrastructure" />
-      <Folder Include="Presentation" />
-      <Folder Include="UseCase" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\Tool\DatabaseMigration\DatabaseMigration.csproj" />
-      <ProjectReference Include="..\..\src\WebApplication\Domain\Domain.csproj" />
       <ProjectReference Include="..\..\src\WebApplication\Infrastructure\Infrastructure.csproj" />
-      <ProjectReference Include="..\..\src\WebApplication\Presentation\Presentation.csproj" />
-      <ProjectReference Include="..\..\src\WebApplication\Application\Application.csproj" />
       <ProjectReference Include="..\Shared\Shared.csproj" />
     </ItemGroup>
 
