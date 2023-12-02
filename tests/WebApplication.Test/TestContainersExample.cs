@@ -8,6 +8,7 @@ using Infrastructure.Database.Context.Employee;
 using Infrastructure.Extension;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Shared;
 using Xunit;
 
 namespace WebApplication.Test;
