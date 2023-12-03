@@ -1,4 +1,4 @@
-using Application.Extension;
+using WebApplication.Application.Extension;
 using Cysharp.Text;
 using Infrastructure.Cache;
 using Infrastructure.Core.Authentication;

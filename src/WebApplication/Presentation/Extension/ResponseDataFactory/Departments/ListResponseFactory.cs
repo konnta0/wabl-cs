@@ -1,4 +1,4 @@
-using Application.Departments.Dto;
+using WebApplication.Application.Departments.Dto;
 using Domain.RestApi.Departments;
 using Domain.RestApi.Departments.Object;
 

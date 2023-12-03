@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
-using Application.Core.Database;
+using WebApplication.Application.Core.Database;
 using Domain;
 using Infrastructure.Database.Context;
 using Infrastructure.Extension;

@@ -2,10 +2,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
-using Application.Core.Authentication;
-using Application.Core.Database;
-using Application.Core.RepositoryHandler;
-using Application.Core.RequestHandler;
+using WebApplication.Application.Core.Authentication;
+using WebApplication.Application.Core.Database;
+using WebApplication.Application.Core.RepositoryHandler;
+using WebApplication.Application.Core.RequestHandler;
 using Cysharp.Text;
 using Domain;
 using Infrastructure.Cache;
@@ -200,7 +200,7 @@ public static class ServiceCollectionExtension
     
     private static IServiceCollection AddDateTimeHandler(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddScoped<IDateTimeHandler, FixedDateTimeHandler>();
+        serviceCollection.AddScoped<IDateTimeHandler, ZonedFixedTimeProvider>();
         return serviceCollection;
     }
     

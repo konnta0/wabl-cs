@@ -1,4 +1,4 @@
-using Application.Core.Database;
+using WebApplication.Application.Core.Database;
 using Infrastructure.Database.Context;
 
 namespace Infrastructure.Database;

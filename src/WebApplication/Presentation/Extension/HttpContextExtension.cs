@@ -1,5 +1,5 @@
 using System.Text.Json;
-using Application.Core.Exception;
+using WebApplication.Application.Core.Exception;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace Presentation.Extension;

@@ -38,7 +38,7 @@
       <ProjectReference Include="..\..\src\WebApplication\Domain\Domain.csproj" />
       <ProjectReference Include="..\..\src\WebApplication\Infrastructure\Infrastructure.csproj" />
       <ProjectReference Include="..\..\src\WebApplication\Presentation\Presentation.csproj" />
-      <ProjectReference Include="..\..\src\WebApplication\Application\Application.csproj" />
+      <ProjectReference Include="..\..\src\WebApplication\WebApplication.Application\WebApplication.Application.csproj" />
       <ProjectReference Include="..\Shared\Shared.csproj" />
     </ItemGroup>
 
