@@ -2,7 +2,7 @@ using WebApplication.Application.Core.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Presentation.Filter;
+namespace WebApplication.Presentation.Filter;
 
 public class TransactionalFlowFilter : IAsyncActionFilter
 {

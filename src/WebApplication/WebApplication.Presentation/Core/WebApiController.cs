@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Presentation.Filter;
+using WebApplication.Presentation.Filter;
 
-namespace Presentation.Core;
+namespace WebApplication.Presentation.Core;
 
 [Route("api/v{version:apiVersion}/[controller]")]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]

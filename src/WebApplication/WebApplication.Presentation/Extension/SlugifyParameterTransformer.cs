@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Presentation.Extension;
+namespace WebApplication.Presentation.Extension;
 
 public class SlugifyParameterTransformer : IOutboundParameterTransformer
 {

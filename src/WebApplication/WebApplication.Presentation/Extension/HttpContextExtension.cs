@@ -2,7 +2,7 @@ using System.Text.Json;
 using WebApplication.Application.Core.Exception;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace Presentation.Extension;
+namespace WebApplication.Presentation.Extension;
 
 internal static class HttpContextExtension
 {

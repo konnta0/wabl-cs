@@ -9,12 +9,12 @@ using Infrastructure.Database;
 using Infrastructure.Extension;
 using Microsoft.AspNetCore.HttpOverrides;
 using OpenTelemetry.Logs;
-using Presentation.BackgroundService.Extension;
-using Presentation.Extension;
+using WebApplication.Presentation.BackgroundService.Extension;
+using WebApplication.Presentation.Extension;
 using ZLogger;
 using ZLogger.Providers;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder =  Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
 GlobalLogManager.SetLoggerFactory(LoggerFactory.Create(loggingBuilder =>
 {
     loggingBuilder.ClearProviders();

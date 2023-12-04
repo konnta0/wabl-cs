@@ -7,7 +7,7 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="..\..\WebApplication\Presentation\Presentation.csproj" />
+        <ProjectReference Include="..\..\WebApplication\WebApplication.Presentation\WebApplication.Presentation.csproj" />
         <ProjectReference Include="..\..\WebApplication\Domain.SourceGenerator\Domain.SourceGenerator.csproj">
             <OutputItemType>Analyzer</OutputItemType>
             <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

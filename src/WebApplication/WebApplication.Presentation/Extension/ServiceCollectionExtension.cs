@@ -4,9 +4,9 @@ using MessagePipe;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.OpenApi.Models;
-using Presentation.Filter;
+using WebApplication.Presentation.Filter;
 
-namespace Presentation.Extension;
+namespace WebApplication.Presentation.Extension;
 
 internal static class ServiceCollectionExtension
 {

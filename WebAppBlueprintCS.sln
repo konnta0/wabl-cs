@@ -1,12 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "src\WebApplication\Presentation\Presentation.csproj", "{51CEC4E8-CE28-4BC9-B05B-FBC14C220448}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Presentation", "src\WebApplication\WebApplication.Presentation\WebApplication.Presentation.csproj", "{51CEC4E8-CE28-4BC9-B05B-FBC14C220448}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "src\WebApplication\Infrastructure\Infrastructure.csproj", "{13EF989A-B8D6-40B4-984E-86F667F569FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\WebApplication\Domain\Domain.csproj", "{6145AC80-F9B9-4C79-B8B2-3D01BB6401C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\WebApplication\Application\Application.csproj", "{CF1620E0-3E63-4489-B345-9F6AB72AAF2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Application", "src\WebApplication\WebApplication.Application\WebApplication.Application.csproj", "{CF1620E0-3E63-4489-B345-9F6AB72AAF2D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LoadTest", "LoadTest", "{EEE12019-D898-41FF-A6DB-7A474CADB04A}"
 EndProject

@@ -2,7 +2,7 @@ using WebApplication.Application.Departments.Dto;
 using Domain.RestApi.Departments;
 using Domain.RestApi.Departments.Object;
 
-namespace Presentation.Extension.ResponseDataFactory.Departments;
+namespace WebApplication.Presentation.Extension.ResponseDataFactory.Departments;
 
 internal static class ListResponseFactory
 {

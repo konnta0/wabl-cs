@@ -3,10 +3,10 @@ using WebApplication.Application.Departments.Dto;
 using WebApplication.Application.UseCase.Departments.Dto;
 using Domain.RestApi.Departments;
 using Microsoft.AspNetCore.Mvc;
-using Presentation.Core;
-using Presentation.Extension.ResponseDataFactory.Departments;
+using WebApplication.Presentation.Core;
+using WebApplication.Presentation.Extension.ResponseDataFactory.Departments;
 
-namespace Presentation.Controllers;
+namespace WebApplication.Presentation.Controllers;
 
 [ApiController]
 public class EmployeesController : WebApiController

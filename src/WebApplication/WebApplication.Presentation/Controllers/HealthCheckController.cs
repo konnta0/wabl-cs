@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Presentation.Core;
+using WebApplication.Presentation.Core;
 using ZLogger;
 
-namespace Presentation.Controllers;
+namespace WebApplication.Presentation.Controllers;
 
 [ApiController]
 public class HealthCheckController : WebApiController

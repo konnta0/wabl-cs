@@ -1,4 +1,4 @@
-namespace Presentation.Dto.Request;
+namespace WebApplication.Presentation.Dto.Request;
 
 public class SignUpRequest
 {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Presentation.Filter;
+namespace WebApplication.Presentation.Filter;
 
 internal sealed class ContinuousProfilerFilter : IAsyncActionFilter
 {

@@ -2,10 +2,10 @@ using WebApplication.Application.Core.RequestHandler;
 using WebApplication.Application.UseCase.Authentication.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Presentation.Core;
-using Presentation.Dto.Request;
+using WebApplication.Presentation.Core;
+using WebApplication.Presentation.Dto.Request;
 
-namespace Presentation.Controllers;
+namespace WebApplication.Presentation.Controllers;
 
 
 [ApiController]

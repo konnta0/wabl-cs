@@ -21,9 +21,9 @@ public class ArchitectureTest
     [Fact]
     public void ShouldNotPresentationDirectoryReferenceRepository()
     {
-        var result = Types.InNamespace("Presentation.Controllers")
+        var result = Types.InNamespace("WebApplication.Presentation.Controllers")
             .That()
-            .ResideInNamespace("Presentation.Controllers")
+            .ResideInNamespace("WebApplication.Presentation.Controllers")
             .ShouldNot()
             .HaveDependencyOn("Infrastructure.Repository")
             .GetResult();
@@ -37,7 +37,7 @@ public class ArchitectureTest
     {
         var result = Types.InAssembly(typeof(Presentation.Extension.ServiceCollectionExtension).Assembly)
             .That()
-            .ResideInNamespaceStartingWith("Presentation")
+            .ResideInNamespaceStartingWith("WebApplication.Presentation")
             .ShouldNot()
             .HaveDependencyOn("Infrastructure")
             .GetResult();
