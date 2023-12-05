@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\WebApplication.Application\WebApplication.Application.csproj" />
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-    <ProjectReference Include="..\Presentation.BackgroundService\Presentation.BackgroundService.csproj" />
+    <ProjectReference Include="..\WebApplication.Presentation.BackgroundService\WebApplication.Presentation.BackgroundService.csproj" />
   </ItemGroup>
 
   <ItemGroup>

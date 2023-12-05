@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace Presentation.BackgroundService;
+namespace WebApplication.Presentation.BackgroundService;
 
 internal sealed class MemoryDatabaseLoaderService : Microsoft.Extensions.Hosting.BackgroundService
 {

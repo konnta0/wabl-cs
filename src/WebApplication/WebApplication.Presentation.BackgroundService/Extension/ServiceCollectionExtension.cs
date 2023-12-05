@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Presentation.BackgroundService.Extension;
+namespace WebApplication.Presentation.BackgroundService.Extension;
 
 public static class ServiceCollectionExtension
 {

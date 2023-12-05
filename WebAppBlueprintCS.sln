@@ -49,7 +49,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.SourceGenera
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagementConsole.Presentation", "src\ManagementConsole.Presentation\ManagementConsole.Presentation.csproj", "{1422FBD3-A827-49FF-A0F1-2CDB38E5D48E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.BackgroundService", "src\WebApplication\Presentation.BackgroundService\Presentation.BackgroundService.csproj", "{7E43F401-182B-471F-93F2-99F0DE155EAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Presentation.BackgroundService", "src\WebApplication\WebApplication.Presentation.BackgroundService\WebApplication.Presentation.BackgroundService.csproj", "{7E43F401-182B-471F-93F2-99F0DE155EAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Make", "src\Tool\Make\Make.csproj", "{5E15B233-A934-4E11-ADF8-540727829539}"
 EndProject
