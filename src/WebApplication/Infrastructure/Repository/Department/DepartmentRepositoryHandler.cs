@@ -10,22 +10,15 @@ using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Repository.Department;
 
-internal sealed class DepartmentRepositoryHandler : RepositoryHandlerBase<IDepartmentRepositoryInput, IDepartmentRepositoryOutput>, IDepartmentRepository
-{
-    private readonly ILogger<DepartmentRepositoryHandler> _logger;
-    private readonly EmployeesContext _employeesContext;
-
-    public DepartmentRepositoryHandler(
-        ILogger<DepartmentRepositoryHandler> logger, 
-        IVolatileCacheClient cacheClient, 
+internal sealed class DepartmentRepositoryHandler(ILogger<DepartmentRepositoryHandler> logger,
+        IVolatileRedisProvider redisProvider,
         EmployeesContext employeesContext,
-        IRepositoryActivityStarter activityStarter) : base(cacheClient, activityStarter)
-    {
-        CacheClient = cacheClient;
-        _logger = logger;
-        _employeesContext = employeesContext;
-    }
-    
+        IRepositoryActivityStarter activityStarter)
+    : RepositoryHandlerBase<IDepartmentRepositoryInput, IDepartmentRepositoryOutput>(redisProvider, activityStarter),
+        IDepartmentRepository
+{
+    private readonly ILogger<DepartmentRepositoryHandler> _logger = logger;
+
     protected override async ValueTask<IRepositoryOutput?> InvokeInternalAsync(IDepartmentRepositoryInput input,
         CancellationToken cancellationToken = new ())
     {
@@ -41,7 +34,7 @@ internal sealed class DepartmentRepositoryHandler : RepositoryHandlerBase<IDepar
     {
         return new FindAllOutput
         {
-            DepartmentsEntities = await _employeesContext.DepartmentsEntities
+            DepartmentsEntities = await employeesContext.DepartmentsEntities
                 .AsQueryable()
                 .AsNoTracking()
                 .Select(static x => x)
@@ -51,7 +44,7 @@ internal sealed class DepartmentRepositoryHandler : RepositoryHandlerBase<IDepar
 
     public async Task<IAddOutput> AddAsync(IAddInput input, CancellationToken cancellationToken = new ())
     {
-        await _employeesContext.DepartmentsEntities.AddAsync(new DepartmentEntity
+        await employeesContext.DepartmentsEntities.AddAsync(new DepartmentEntity
         {
             DepotNo = input.DepotNo,
             DeptName = input.DeptName

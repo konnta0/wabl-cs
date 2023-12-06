@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bogus;
+using CloudStructures.Structures;
 using Domain.Entity.Employee;
 using FluentAssertions;
 using Infrastructure.Cache;
@@ -73,14 +74,16 @@ public sealed class TestContainersExample2 : TestBase
     {
         const string key = "test";
 
-        var cacheClient = _serviceProvider!.GetRequiredService<IVolatileCacheClient>();
-        var keyExists = await cacheClient.KeyExistsAsync(key);
+        var redisProvider = _serviceProvider!.GetRequiredService<IVolatileRedisProvider>();
+        var redis = redisProvider.String<string>(key, TimeSpan.FromDays(1));
+        
+        var keyExists = await redis.ExistsAsync();
         keyExists.Should().BeFalse();
 
-        var setAddResult = await cacheClient.SetAddAsync(key, "value");
+        var setAddResult = await redis.SetAsync("value");
         setAddResult.Should().BeTrue();
 
-        var keyExistsAfterSet = await cacheClient.KeyExistsAsync(key);
+        var keyExistsAfterSet = await redis.ExistsAsync();
         keyExistsAfterSet.Should().BeTrue();
     }
 }

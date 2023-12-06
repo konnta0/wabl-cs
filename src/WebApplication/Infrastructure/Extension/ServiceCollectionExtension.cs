@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
+using CloudStructures;
 using WebApplication.Application.Core.Authentication;
 using WebApplication.Application.Core.Database;
 using WebApplication.Application.Core.RepositoryHandler;
@@ -85,7 +86,7 @@ public static class ServiceCollectionExtension
             });
     }
 
-    private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, IConnectionMultiplexer connectionMultiplexer)
+    private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, RedisConnection redisConnection)
     {
         
         return serviceCollection.AddOpenTelemetry().WithTracing(builder =>
@@ -108,7 +109,7 @@ public static class ServiceCollectionExtension
             builder.AddRepositoryInstrumentation();
             builder.AddUseCaseInstrumentation();
             
-            builder.AddRedisInstrumentation(connectionMultiplexer, options =>
+            builder.AddRedisInstrumentation(redisConnection.GetConnection(), options =>
             {
                 options.FlushInterval = TimeSpan.FromSeconds(1);
                 options.SetVerboseDatabaseStatements = true;
@@ -186,15 +187,15 @@ public static class ServiceCollectionExtension
         return meterProviderBuilder;
     }
 
-    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection, CacheConfig cacheConfig, out IConnectionMultiplexer connection)
+    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection, CacheConfig cacheConfig, out RedisConnection connection)
     {
-        connection = CacheClientFactory.CreateVolatileCacheConnectionMultiplexer(cacheConfig);
-        var multiplexer = connection;
-        serviceCollection.AddTransient<IVolatileCacheClient>(delegate
+        connection = RedisConnectionFactory.CreateVolatileConnection(cacheConfig);
+        var redisConnection = connection;
+        serviceCollection.AddTransient<IVolatileRedisProvider>(delegate
         {
-            return new VolatileCacheClient(GlobalLogManager.GetLogger<VolatileCacheClient>()!, multiplexer);
+            return new VolatileRedisProvider(GlobalLogManager.GetLogger<VolatileRedisProvider>()!, redisConnection);
         });
-        serviceCollection.AddSingleton(connection);
+        serviceCollection.AddSingleton(redisConnection);
         return serviceCollection;
     }
     

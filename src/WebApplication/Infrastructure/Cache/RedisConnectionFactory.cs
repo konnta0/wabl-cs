@@ -1,12 +1,13 @@
+using CloudStructures;
 using Infrastructure.Core.Logging;
 using StackExchange.Redis;
 using ZLogger;
 
 namespace Infrastructure.Cache;
 
-internal static class CacheClientFactory
+internal static class RedisConnectionFactory
 {
-    public static IConnectionMultiplexer CreateVolatileCacheConnectionMultiplexer(CacheConfig cacheConfig)
+    public static RedisConnection CreateVolatileConnection(CacheConfig cacheConfig)
     {
         return Create(options =>
         {
@@ -18,11 +19,13 @@ internal static class CacheClientFactory
         });
     }
     
-    private static IConnectionMultiplexer Create(Action<ConfigurationOptions> configurationOptions)
+    private static RedisConnection Create(Action<ConfigurationOptions> configurationOptions)
     {
         var options = new ConfigurationOptions();
         configurationOptions(options);
-        GlobalLogManager.GetLogger(nameof(CacheClientFactory))?.ZLogInformationWithPayload(options, "CacheClient options");
-        return ConnectionMultiplexer.Connect(options);
+        GlobalLogManager.GetLogger(nameof(RedisConnectionFactory))?.ZLogInformationWithPayload(options, "CacheClient options");
+        
+        var config = new RedisConfig("volatile", options);
+        return new RedisConnection(config);
     }
 }
