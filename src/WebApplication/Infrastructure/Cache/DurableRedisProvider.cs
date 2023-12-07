@@ -5,4 +5,4 @@ namespace Infrastructure.Cache;
 
 internal class DurableRedisProvider(ILogger<DurableRedisProvider> logger, RedisConnection redisConnection)
     : RedisProvider(logger,
-        redisConnection), IVolatileRedisProvider;
+        redisConnection), IDurableRedisProvider;

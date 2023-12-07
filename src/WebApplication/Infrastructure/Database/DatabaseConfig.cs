@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Database;
 

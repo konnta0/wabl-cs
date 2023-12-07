@@ -1,4 +1,3 @@
-using System.Text.Json;
 using Domain.Repository;
 using Infrastructure.Cache;
 using Infrastructure.Core.Instrumentation.Repository;
@@ -6,19 +5,15 @@ using MessagePipe;
 
 namespace Infrastructure.Core.RequestHandler;
 
-internal abstract class RepositoryHandlerBase<TInput, TOutput> : IAsyncRequestHandler<IRepositoryInput, IRepositoryOutput?> where TInput : IRepositoryInput where TOutput : IRepositoryOutput
-{
-    protected IVolatileCacheClient CacheClient { get; init; }
-    protected IRepositoryActivityStarter ActivityStarter { get; init; }
-    
-    protected RepositoryHandlerBase(
-        IVolatileCacheClient cacheClient, 
+internal abstract class RepositoryHandlerBase<TInput, TOutput>(IVolatileRedisProvider volatileRedisProvider,
         IRepositoryActivityStarter activityStarter)
-    {
-        CacheClient = cacheClient;
-        ActivityStarter = activityStarter;
-    }
-    
+    : IAsyncRequestHandler<IRepositoryInput, IRepositoryOutput?>
+    where TInput : IRepositoryInput
+    where TOutput : IRepositoryOutput
+{
+    protected IVolatileRedisProvider VolatileRedisProvider { get; } = volatileRedisProvider;
+    protected IRepositoryActivityStarter ActivityStarter { get; } = activityStarter;
+
     public async ValueTask<IRepositoryOutput?> InvokeAsync(IRepositoryInput request, CancellationToken cancellationToken = new ())
     {
         if (request is not TInput input)
@@ -37,12 +32,13 @@ internal abstract class RepositoryHandlerBase<TInput, TOutput> : IAsyncRequestHa
             var cacheableInput = (ICacheableRepositoryInput) input;
             cacheKey = cacheableInput.CacheKey;
             expiry = cacheableInput.CacheExpiry;
-            
-            var cache = await CacheClient.HashGetAsync(cacheableInput.CacheKey, cacheableInput.CacheOutputType);
 
-            if (cache is not null)
+            var redisString = VolatileRedisProvider.String<object>(cacheableInput.CacheKey, cacheableInput.CacheExpiry);
+            var redisResult = await redisString.GetAsync();
+
+            if (redisResult.HasValue)
             {
-                if (cache is TOutput o)
+                if (redisResult.Value is TOutput o)
                 {
                     activity?.SetTag("cache", "hit");
                     activity?.SetTag("cacheKey", cacheKey);
@@ -57,14 +53,12 @@ internal abstract class RepositoryHandlerBase<TInput, TOutput> : IAsyncRequestHa
 
         if (isCacheableInput && output is not null)
         {
-            var cached = await CacheClient.HashSetAsync(cacheKey, (object)output);
-            if (cached && expiry != TimeSpan.Zero)
-            {
-                await CacheClient.KeyExpireAsync(cacheKey, expiry);
-            }
+            var redisString = VolatileRedisProvider.String<object>(cacheKey, expiry);
+            var cached = await redisString.SetAsync(output);
             activity?.SetTag("cache", "set");
             activity?.SetTag("cacheKey", cacheKey);
             activity?.SetTag("cacheExpiry", expiry.ToString());
+            activity?.SetTag("cached", cached.ToString());
         }
         
         return output;

@@ -1,14 +1,10 @@
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection;
 using System.Text;
-using System.Text.Json;
 using CloudStructures;
 using WebApplication.Application.Core.Authentication;
 using WebApplication.Application.Core.Database;
 using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Application.Core.RequestHandler;
 using Cysharp.Text;
-using Domain;
 using Infrastructure.Cache;
 using Infrastructure.Core.Authentication;
 using Infrastructure.Core.Instrumentation;
@@ -24,8 +20,8 @@ using Infrastructure.Database.Context.Employee;
 using Infrastructure.Extension.HealthCheck;
 using Infrastructure.Extension.Instrumentation;
 using Infrastructure.Repository;
-using MasterMemory;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +34,6 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Polly;
 using Polly.Extensions.Http;
-using StackExchange.Redis;
 using ZLogger;
 using ZLogger.Providers;
 
@@ -52,12 +47,12 @@ public static class ServiceCollectionExtension
 
         return serviceCollection
             .AddRepository()
-            .AddDateTimeHandler()
+            .AddTimeProvider(configuration.Get<TimeConfig>()!)
             .AddLogging()
             .AddDbContexts(configuration.Get<DatabaseConfig>()!)
-            .AddCacheClient(configuration.Get<CacheConfig>()!, out var connectionMultiplexer)
+            .AddCacheClient(configuration.Get<CacheConfig>()!, out var volatileRedisConnection, out var durableRedisConnection)
             .AddMemoryDatabase()
-            .AddOpenTelemetryTracing(connectionMultiplexer)
+            .AddOpenTelemetryTracing(volatileRedisConnection, durableRedisConnection)
             .AddOpenTelemetryMetrics(configuration.Get<InstrumentationConfig>()!)
             .AddAuthentication(configuration.Get<AuthenticationConfig>()!);
     }
@@ -86,7 +81,7 @@ public static class ServiceCollectionExtension
             });
     }
 
-    private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, RedisConnection redisConnection)
+    private static IServiceCollection AddOpenTelemetryTracing(this IServiceCollection serviceCollection, RedisConnection volatileConnection, RedisConnection durableConnection)
     {
         
         return serviceCollection.AddOpenTelemetry().WithTracing(builder =>
@@ -108,17 +103,26 @@ public static class ServiceCollectionExtension
             });
             builder.AddRepositoryInstrumentation();
             builder.AddUseCaseInstrumentation();
-            
-            builder.AddRedisInstrumentation(redisConnection.GetConnection(), options =>
+
+            builder.AddRedisInstrumentation(volatileConnection.GetConnection(), options =>
             {
                 options.FlushInterval = TimeSpan.FromSeconds(1);
                 options.SetVerboseDatabaseStatements = true;
                 options.Enrich = (activity, command) =>
                 {
-                    if (command.ElapsedTime < TimeSpan.FromMilliseconds(100))
-                    {
-                        activity.SetTag("is_fast", true);
-                    }
+                    activity.SetTag("type", "volatile");
+                    activity.SetTag("is_fast", command.ElapsedTime < TimeSpan.FromMilliseconds(100));
+                };
+            });
+            
+            builder.AddRedisInstrumentation(durableConnection.GetConnection(), options =>
+            {
+                options.FlushInterval = TimeSpan.FromSeconds(1);
+                options.SetVerboseDatabaseStatements = true;
+                options.Enrich = (activity, command) =>
+                {
+                    activity.SetTag("type", "durable");
+                    activity.SetTag("is_fast", command.ElapsedTime < TimeSpan.FromMilliseconds(100));
                 };
             });
         }).Services.AddScoped<IUseCaseActivityStarter, UseCaseActivityStarter>()
@@ -187,21 +191,34 @@ public static class ServiceCollectionExtension
         return meterProviderBuilder;
     }
 
-    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection, CacheConfig cacheConfig, out RedisConnection connection)
+    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection, CacheConfig cacheConfig, out RedisConnection volatileRedisConnection, out RedisConnection durableRedisConnection)
     {
-        connection = RedisConnectionFactory.CreateVolatileConnection(cacheConfig);
-        var redisConnection = connection;
+        volatileRedisConnection = RedisConnectionFactory.CreateVolatileConnection(cacheConfig);
+        var volatileConnection = volatileRedisConnection;
         serviceCollection.AddTransient<IVolatileRedisProvider>(delegate
         {
-            return new VolatileRedisProvider(GlobalLogManager.GetLogger<VolatileRedisProvider>()!, redisConnection);
+            return new VolatileRedisProvider(GlobalLogManager.GetLogger<VolatileRedisProvider>()!, volatileConnection);
         });
-        serviceCollection.AddSingleton(redisConnection);
+
+        durableRedisConnection = RedisConnectionFactory.CreateVolatileConnection(cacheConfig);
+        var durableConnection = durableRedisConnection;
+        serviceCollection.AddTransient<IDurableRedisProvider>(delegate
+        {
+            return new DurableRedisProvider(GlobalLogManager.GetLogger<DurableRedisProvider>()!, durableConnection);
+        });
         return serviceCollection;
     }
     
-    private static IServiceCollection AddDateTimeHandler(this IServiceCollection serviceCollection)
+    private static IServiceCollection AddTimeProvider(this IServiceCollection serviceCollection, TimeConfig config)
     {
-        serviceCollection.AddScoped<IDateTimeHandler, ZonedFixedTimeProvider>();
+        var serviceProvider = serviceCollection.BuildServiceProvider();
+        serviceCollection.AddScoped<TimeProvider>(_ =>
+        {
+            var durableRedisProvider = serviceProvider.GetRequiredService<IDurableRedisProvider>();
+            var environment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+            return TimeProviderFactory.CreateTimeProvider<ZonedFixedTimeProvider>(environment, config, durableRedisProvider);
+        });
+        
         return serviceCollection;
     }
     
