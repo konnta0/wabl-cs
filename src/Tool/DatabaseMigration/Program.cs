@@ -15,7 +15,7 @@ builder.ConfigureServices((context, collection) =>
     context.Configuration.Bind(new SeedServiceConfig());
     
     collection.AddDbContexts(new DatabaseConfig());
-    collection.AddCacheClient(new CacheConfig(), out var _);
+    collection.AddCacheClient(new CacheConfig(), out _, out _);
     collection.AddScoped<ISeedService, SeedService>();
     collection.AddScoped<IGoogleApiHelper, GoogleApiHelper>();
 });
