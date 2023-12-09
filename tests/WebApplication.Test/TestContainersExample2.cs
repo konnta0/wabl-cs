@@ -25,7 +25,7 @@ public sealed class TestContainersExample2 : TestBase
         serviceCollection
             .AddLogging()
             .AddDbContexts(DatabaseConfig!)
-            .AddCacheClient(CacheConfig!, out _);
+            .AddCacheClient(CacheConfig!, out _, out _);
 
         _serviceProvider = serviceCollection.BuildServiceProvider();
         var employeesContext = _serviceProvider!.GetRequiredService<EmployeesContext>();
