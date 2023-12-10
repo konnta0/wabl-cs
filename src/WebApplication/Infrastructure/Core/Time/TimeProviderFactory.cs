@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Infrastructure.Core.Time;
 
-public sealed class TimeProviderFactory
+public static class TimeProviderFactory
 {
     public static TimeProvider CreateTimeProvider<T>(IWebHostEnvironment hostEnvironment, TimeConfig config, IDurableRedisProvider redisProvider)
         where T : MutableTimeProvider

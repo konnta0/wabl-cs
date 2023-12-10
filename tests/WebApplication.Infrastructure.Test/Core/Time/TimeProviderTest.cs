@@ -35,7 +35,7 @@ public sealed class TimeProviderTest() : TestBase(options =>
         {
             TimeZoneId = "Asia/Tokyo"
         });
-        var dateTime = DateTimeOffset.Now.ToOffset(TimeSpan.FromHours(9)).DateTime;
+        var dateTime = DateTimeOffset.Now.ToOffset(TimeSpan.FromHours(9));
         var now = zonedTimeProvider.GetLocalNow();
 
         now.Should().BeCloseTo(dateTime, TimeSpan.FromMilliseconds(200));
@@ -53,7 +53,7 @@ public sealed class TimeProviderTest() : TestBase(options =>
         {
             TimeZoneId = "Asia/Tokyo"
         });
-        var dateTime = DateTimeOffset.Now.ToOffset(TimeSpan.FromHours(9)).DateTime;
+        var dateTime = DateTimeOffset.Now.ToOffset(TimeSpan.FromHours(9));
         var now = zonedTimeProvider.GetLocalNow();
         now.Should().BeCloseTo(dateTime, TimeSpan.FromMilliseconds(200));
         await Task.Delay(200);
@@ -61,12 +61,8 @@ public sealed class TimeProviderTest() : TestBase(options =>
         now.Should().Be(now2);
     }
 
-    private enum A
-    {
-        hoge
-    }
     [Fact]
-    public async Task Fixeda()
+    public void WithServiceCollection()
     {
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddScoped<IDurableRedisProvider>(_ =>
@@ -90,7 +86,6 @@ public sealed class TimeProviderTest() : TestBase(options =>
         });
 
         var provider = serviceCollection.BuildServiceProvider().GetRequiredService<TimeProvider>();
-        Enum.GetValues<A>();
         provider.GetUtcNow();
     }
 }
