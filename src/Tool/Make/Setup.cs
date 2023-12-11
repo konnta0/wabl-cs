@@ -19,11 +19,11 @@ public sealed class Setup : ConsoleAppBase
     }
 
     [Command("minikube")]
-    public Task Minikube() => _target.RunWithoutExitingAsync(new[] { "minikube-remove" });
+    public Task Minikube() => _target.RunWithoutExitingAsync(["minikube-remove"]);
 
     [Command("pulumi")]
-    public Task Pulumi() => _target.RunWithoutExitingAsync(new[] { "pulumi-crd2pulumi" });
+    public Task Pulumi() => _target.RunWithoutExitingAsync(["pulumi-crd2pulumi"]);
 
     [Command("all")]
-    public Task All() => _target.RunWithoutExitingAsync(new[] { "minikube-remove", "pulumi-crd2pulumi" });
+    public Task All() => _target.RunWithoutExitingAsync(["minikube-remove", "pulumi-crd2pulumi"]);
 }
