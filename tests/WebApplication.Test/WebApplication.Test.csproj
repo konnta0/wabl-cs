@@ -36,7 +36,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\src\Tool\DatabaseMigration\DatabaseMigration.csproj" />
       <ProjectReference Include="..\..\src\WebApplication\Domain\Domain.csproj" />
-      <ProjectReference Include="..\..\src\WebApplication\Infrastructure\Infrastructure.csproj" />
+      <ProjectReference Include="..\..\src\WebApplication\WebApplication.Infrastructure\WebApplication.Infrastructure.csproj" />
       <ProjectReference Include="..\..\src\WebApplication\WebApplication.Presentation\WebApplication.Presentation.csproj" />
       <ProjectReference Include="..\..\src\WebApplication\WebApplication.Application\WebApplication.Application.csproj" />
       <ProjectReference Include="..\Shared\Shared.csproj" />

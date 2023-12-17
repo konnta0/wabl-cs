@@ -25,7 +25,7 @@ public class ArchitectureTest
             .That()
             .ResideInNamespace("WebApplication.Presentation.Controllers")
             .ShouldNot()
-            .HaveDependencyOn("Infrastructure.Repository")
+            .HaveDependencyOn("WebApplication.Infrastructure.Repository")
             .GetResult();
         _testOutputHelper.WriteLine("Failure type names is ... " + string.Join("\n", result.FailingTypeNames ?? new List<string?>{"Nothing!!"}));
 
@@ -39,7 +39,7 @@ public class ArchitectureTest
             .That()
             .ResideInNamespaceStartingWith("WebApplication.Presentation")
             .ShouldNot()
-            .HaveDependencyOn("Infrastructure")
+            .HaveDependencyOn("WebApplication.Infrastructure")
             .GetResult();
         _testOutputHelper.WriteLine("Failure type names is ... " + string.Join("\n", result.FailingTypeNames ?? new List<string?>{"Nothing!!"}));
 

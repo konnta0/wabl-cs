@@ -2,9 +2,9 @@ using DatabaseMigration.Command.Seed;
 using DatabaseMigration.Domain.Internal.GoogleApi;
 using DatabaseMigration.Domain.Internal.Seed;
 using DatabaseMigration.Domain.Service.Seed;
-using Infrastructure.Cache;
-using Infrastructure.Database;
-using Infrastructure.Extension;
+using WebApplication.Infrastructure.Cache;
+using WebApplication.Infrastructure.Database;
+using WebApplication.Infrastructure.Extension;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

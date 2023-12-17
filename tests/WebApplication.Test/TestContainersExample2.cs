@@ -5,11 +5,11 @@ using Bogus;
 using CloudStructures.Structures;
 using Domain.Entity.Employee;
 using FluentAssertions;
-using Infrastructure.Cache;
-using Infrastructure.Database.Context.Employee;
+using WebApplication.Infrastructure.Cache;
+using WebApplication.Infrastructure.Database.Context.Employee;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Infrastructure.Extension;
+using WebApplication.Infrastructure.Extension;
 using Shared;
 using Xunit;
 
