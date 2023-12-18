@@ -1,0 +1,31 @@
+config:
+  Infrastructure:ContainerRegistry:
+    Access:
+      CI:
+        Email: tekton@cr.test.com
+        Password:
+          secure: AAABAGXAx3UOR6U1Oc9Y9V270mhl3pn6wOuHDmFK9PWKL4R5e4OjxYsk
+        User: tekton
+    Harbor:
+      NodeSelector:
+        Label: kubernetes.io/hostname
+        Value: minikube
+    Host: core.harbor.cr.test
+    MinIO:
+      NodeSelector:
+        Label: kubernetes.io/hostname
+        Value: minikube
+    User: tekton
+  Infrastructure:Observability:
+    Enable: true
+  Infrastructure:Storage:
+    Cache: Redis
+  Infrastructure:Tool:
+    Namespace: tool
+  Infrastructure:WebApplication:
+    Namespace: webapp
+    Deploy: true
+  Infrastructure:ManagementConsole:
+    Namespace: tool
+    Deploy: false
+  Infrastructure:isMinikube: "true"

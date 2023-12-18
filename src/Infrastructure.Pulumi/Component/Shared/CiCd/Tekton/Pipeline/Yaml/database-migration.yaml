@@ -1,0 +1,68 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  namespace: tekton-worker
+  name: build-image-pipeline
+spec:
+  workspaces: 
+    - name: shared-workspace
+  params:
+    - name: git-url
+      type: string
+    - name: git-revision
+      type: string
+      default: "main"
+    - name: image
+      type: string
+  tasks:
+    - name: fetch-repository
+      taskRef:
+        name: git-clone
+      workspaces:
+        - name: output
+          workspace: shared-workspace
+      params:
+        - name: url
+          value: $(params.git-url)
+        - name: deleteExisting
+          value: "true"
+        - name: revision
+          value: $(params.git-revision)
+    - name: build-push-image
+      taskRef:
+        name: kaniko
+      params:
+        - name: EXTRA_ARGS
+          value: 
+            - --destination=$(params.image):$(tasks.fetch-repository.results.commit)
+            - --skip-tls-verify
+        - name: IMAGE
+          value: $(params.image):latest
+        - name: DOCKERFILE
+          value: "Dockerfile.DatabaseMigration"
+        - name: CONTEXT
+          value: "$(workspaces.source.path)"
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+      runAfter:
+        - fetch-repository
+    - name: migrate-database
+      taskRef:
+        name: kaniko
+      params:
+        - name: EXTRA_ARGS
+          value: 
+            - --destination=$(params.image):$(tasks.fetch-repository.results.commit)
+            - --skip-tls-verify
+        - name: IMAGE
+          value: $(params.image):latest
+        - name: DOCKERFILE
+          value: "Dockerfile.DatabaseMigration"
+        - name: CONTEXT
+          value: "$(workspaces.source.path)"
+      workspaces:
+        - name: source
+          workspace: shared-workspace
+      runAfter:
+        - fetch-repository
