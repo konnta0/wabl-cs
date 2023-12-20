@@ -25,7 +25,7 @@ public sealed class Migration : ConsoleAppBase
             $"-v {directoryInfo.FullName}/src/WebApplication:/src/WebApplication " +
             $"-v {directoryInfo.FullName}/src/Tool/DatabaseMigration/Seed:/src/Seed " +
             $"-v {directoryInfo.FullName}/src/Tool/Domain.SourceGenerator:/src/Tool/Domain.SourceGenerator " +
-            $"-v {directoryInfo.FullName}/src/Tool/Infrastructure.SourceGenerator:/src/Tool/Infrastructure.SourceGenerator " +
+            $"-v {directoryInfo.FullName}/src/Tool/Infrastructure.Pulumi.SourceGenerator:/src/Tool/Infrastructure.Pulumi.SourceGenerator " +
             $"--env-file={directoryInfo.FullName}/.env " +
             $"--name=database_migration " +
             $"--rm " +

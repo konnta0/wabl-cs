@@ -2,7 +2,7 @@ namespace Make;
 
 public sealed class Pulumi : ConsoleAppBase
 {
-    private const string InfrastructureDir = "../../Infrastructure";
+    private const string InfrastructureDir = "../../Infrastructure.Pulumi";
 
     [Command("up", "up")]
     public Task Up([Option("stack")] string stack = "local")
@@ -29,7 +29,7 @@ public sealed class Pulumi : ConsoleAppBase
     }
 
     [Command("delete",
-        "pulumi delete. (e.g.) urn is 'urn:pulumi:develop::Infrastructure::kubernetes:helm.sh/v3:Release::cert-manager'")]
+        "pulumi delete. (e.g.) urn is 'urn:pulumi:develop::Infrastructure.Pulumi::kubernetes:helm.sh/v3:Release::cert-manager'")]
     public Task Delete([Option("urn", "delete urn")] string urn, [Option("stack")] string stack = "local")
     {
         var target = new Targets();
