@@ -1,0 +1,11 @@
+{
+  "language": "csharp",
+  "app": "dotnet run -p Infrastructure.CDKTF.csproj",
+  "projectId": "c73d9c4b-4e8c-43a3-b37a-48cf6185576c",
+  "sendCrashReports": "false",
+  "terraformProviders": [],
+  "terraformModules": [],
+  "context": {
+
+  }
+}
