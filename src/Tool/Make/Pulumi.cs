@@ -44,4 +44,12 @@ public sealed class Pulumi : ConsoleAppBase
         target.Add("output", () => RunAsync("pulumi", $"output --cwd {InfrastructureDir} --stack {stack}"));
         return target.RunWithoutExitingAsync(["output"]);
     }
+
+    [Command("refresh")]
+    public Task Refresh([Option("stack")] string stack = "local")
+    {
+        var target = new Targets();
+        target.Add("refresh", () => RunAsync("pulumi", $"refresh --cwd {InfrastructureDir} --stack {stack}"));
+        return target.RunWithoutExitingAsync(["refresh"]);
+    }
 }
