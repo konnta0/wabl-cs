@@ -1,10 +1,10 @@
 namespace Make;
 
-public sealed class Web : ConsoleAppBase
+public sealed class WebApp : ConsoleAppBase
 {
     private readonly Targets _target;
 
-    public Web()
+    public WebApp()
     {
         _target = new Targets();
         _target.Add("build", () => RunAsync("docker", "build -t core.harbor.cr.test/webapp/web-api:latest ../../../"));
