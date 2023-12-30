@@ -7,14 +7,27 @@ public sealed class WebApp : ConsoleAppBase
     public WebApp()
     {
         _target = new Targets();
-        _target.Add("build", () => RunAsync("docker", "build -t core.harbor.cr.test/webapp/web-api:latest ../../../"));
-        _target.Add("push", DependsOn("build"),
-            () => RunAsync("docker", "push core.harbor.cr.test/webapp/web-api:latest"));
     }
 
-    [Command("build", "build web")]
-    public Task Build() => _target.RunWithoutExitingAsync(["build"]);
+    [Command("build-image", "build web image")]
+    public Task Build([Option("t")] string[]? tags = null)
+    {
+        tags ??= ["latest"];
+        _target.Add("build-image", () => RunAsync("docker", $"build {GetBuildTags(tags)} ../../../"));
 
-    [Command("push", "push web")]
-    public Task Push() => _target.RunWithoutExitingAsync(["push"]);
+        return _target.RunWithoutExitingAsync(["build"]);
+    }
+
+    private string GetBuildTags(string[] tags) => string.Join(" ", tags.Select(static x => $"-t core.harbor.cr.test/webapp/web-api:{x}"));
+    
+    [Command("push-image", "push web image")]
+    public Task Push([Option("t")] string[]? tags = null)
+    {
+        tags ??= ["latest"];
+        _target.Add("build-image", () => RunAsync("docker", $"build {GetBuildTags(tags)} ../../../"));
+        _target.Add("push-image", DependsOn("build"),
+            () => RunAsync("docker", "push -a core.harbor.cr.test/webapp/web-api"));
+
+        return _target.RunWithoutExitingAsync(["push"]);
+    }
 }
