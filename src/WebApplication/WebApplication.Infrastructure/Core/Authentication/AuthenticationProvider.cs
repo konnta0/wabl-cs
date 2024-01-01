@@ -1,8 +1,11 @@
+using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.Logging;
 using WebApplication.Application.Core.Authentication;
 using Microsoft.Extensions.Options;
+using ZLogger;
 
 namespace WebApplication.Infrastructure.Core.Authentication;
 
@@ -10,17 +13,20 @@ internal class AuthenticationProvider : IAuthenticationProvider
 {
     private readonly HttpClient _httpClient;
     private readonly IOptions<AuthenticationConfig> _authenticationConfig;
+    private readonly ILogger<AuthenticationProvider> _logger;
 
     public AuthenticationProvider(
         HttpClient httpClient,
-        IOptions<AuthenticationConfig> authenticationConfig
+        IOptions<AuthenticationConfig> authenticationConfig,
+        ILogger<AuthenticationProvider> logger
         )
     {
         _httpClient = httpClient;
         _authenticationConfig = authenticationConfig;
+        _logger = logger;
     }
     
-    public async ValueTask<SignUpResult> SignUpAsync(string userName, string password, CancellationToken cancellationToken = new CancellationToken())
+    public async ValueTask<SignUpResult> SignUpAsync(string userName, string password, CancellationToken cancellationToken = new ())
     {
         var adminTokenResponse = await _httpClient.PostAsync($"{_authenticationConfig.Value.AuthorityBaseUrl}protocol/openid-connect/token", new FormUrlEncodedContent(new []
         {
@@ -48,15 +54,16 @@ internal class AuthenticationProvider : IAuthenticationProvider
         var response = await _httpClient.SendAsync(request, cancellationToken);
         var resultType = response.IsSuccessStatusCode ? SignUpResultType.Success : SignUpResultType.Failed;
 
-        await SignInAsync(userName, password, cancellationToken);
+        var authenticationResult = await SignInAsync(userName, password, cancellationToken);
 
         return new SignUpResult
         {
-            ResultType = resultType
+            ResultType = resultType,
+            AccessToken = authenticationResult.ResultType is AuthenticationResultType.Success ? authenticationResult.AccessToken : string.Empty
         };
     }
 
-    public async ValueTask<AuthenticationResult> SignInAsync(string userName, string password, CancellationToken cancellationToken = new CancellationToken())
+    public async ValueTask<AuthenticationResult> SignInAsync(string userName, string password, CancellationToken cancellationToken = new ())
     {
         var requestContent = new FormUrlEncodedContent(new[]
         {
@@ -67,22 +74,33 @@ internal class AuthenticationProvider : IAuthenticationProvider
         });
         var response = await _httpClient.PostAsync($"{_authenticationConfig.Value.AuthorityBaseUrl}/auth/realms/{_authenticationConfig.Value.Realm}/protocol/openid-connect/token", requestContent, cancellationToken);
 
+        if (response.StatusCode is not HttpStatusCode.OK)
+        {
+            _logger.ZLogError($"Sign in failed. {response.StatusCode}");
+            return new AuthenticationResult
+            {
+                AccessToken = string.Empty,
+                ResultType = AuthenticationResultType.Failed
+            };
+        }
+
         var contentString = await response.Content.ReadAsStringAsync(cancellationToken);
         var tokenResponse = JsonSerializer.Deserialize<TokenResponse>(contentString);
         var accessToken = tokenResponse!.AccessToken;
         return new AuthenticationResult
         {
-            AccessToken = accessToken
+            AccessToken = accessToken,
+            ResultType = AuthenticationResultType.Success
         };
     }
 
     private class AdminTokenResponse
     {
-        [JsonPropertyName("access_token")] public string AccessToken { get; set; } = default!;
+        [JsonPropertyName("access_token")] public string AccessToken { get; init; } = default!;
     }
     
     private class TokenResponse
     {
-        [JsonPropertyName("access_token")] public string AccessToken { get; set; } = default!;
+        [JsonPropertyName("access_token")] public string AccessToken { get; init; } = default!;
     }
 }

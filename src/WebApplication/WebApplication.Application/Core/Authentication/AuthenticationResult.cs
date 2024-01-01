@@ -2,5 +2,6 @@ namespace WebApplication.Application.Core.Authentication;
 
 public class AuthenticationResult
 {
-    public string AccessToken { get; init; } = string.Empty;
+    public required AuthenticationResultType ResultType { get; init; }
+    public required string AccessToken { get; init; } = string.Empty;
 }
