@@ -24,8 +24,8 @@ config:
     Namespace: tool
   Infrastructure:WebApplication:
     Namespace: webapp
-    Deploy: true
+    Deploy: false
   Infrastructure:ManagementConsole:
     Namespace: tool
     Deploy: false
-  Infrastructure:isMinikube: "true"
+  Infrastructure:isMinikube: "false"
