@@ -150,7 +150,10 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.MinIo
                 Values = values
             });
 
-            return new MinIoComponentOutput();
+            return new MinIoComponentOutput
+            {
+                Release = release
+            };
         }
     }
 }

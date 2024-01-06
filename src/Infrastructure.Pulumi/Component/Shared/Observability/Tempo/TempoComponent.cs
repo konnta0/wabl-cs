@@ -98,8 +98,9 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Tempo
                 },
                 Values = values,
                 RecreatePods = true,
-                Namespace = input.Namespace.Metadata.Apply(x => x.Name)
-            });
+                Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+                Atomic = true
+            }, new CustomResourceOptions { DependsOn = new[] { input.MinIoRelease } });
             
             return new TempoComponentOutput();
         }

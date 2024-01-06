@@ -68,7 +68,8 @@ namespace Infrastructure.Pulumi.Component.Shared
             {
                 _observabilityComponent.Apply(new ObservabilityComponentInput
                 {
-                    Namespace = @namespace
+                    Namespace = @namespace,
+                    MinioRelease = storageComponentOutput.MinIoRelease
                 });
             }
             

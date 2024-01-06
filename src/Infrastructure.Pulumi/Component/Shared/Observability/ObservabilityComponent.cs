@@ -41,7 +41,11 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability
         {
             _grafana.Apply(new GrafanaComponentInput { Namespace = input.Namespace });
             _lokiComponent.Apply(new LokiComponentInput { Namespace = input.Namespace });
-            _tempoComponent.Apply(new TempoComponentInput { Namespace = input.Namespace });
+            _tempoComponent.Apply(new TempoComponentInput
+            {
+                Namespace = input.Namespace,
+                MinIoRelease = input.MinioRelease
+            });
             _mimirComponent.Apply(new MimirComponentInput { Namespace = input.Namespace });
             _pyroscopeComponent.Apply(new PyroscopeComponentInput { Namespace = input.Namespace });
             _promtailComponent.Apply(new PromtailComponentInput { Namespace = input.Namespace });

@@ -30,7 +30,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage
 
         public StorageComponentOutput Apply(StorageComponentInput input)
         {
-            _minIoComponent.Apply(new MinIoComponentInput
+            var minIoOutput = _minIoComponent.Apply(new MinIoComponentInput
             {
                 Namespace = input.Namespace
             });
@@ -56,7 +56,11 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage
             {
                 Namespace = input.Namespace
             });
-            return new StorageComponentOutput();
+
+            return new StorageComponentOutput
+            {
+                MinIoRelease = minIoOutput.Release
+            };
         }
     }
 }
