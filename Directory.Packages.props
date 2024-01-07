@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageVersion Include="MasterMemory" Version="2.4.4" />
+    <PackageVersion Include="MasterMemory.MSBuild.Tasks" Version="2.4.4" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="3.3.3" />
+    <PackageVersion Include="MessagePack" Version="2.3.85" />
+    <PackageVersion Include="MessagePackAnalyzer" Version="2.3.85" />
+    <PackageVersion Include="ZLogger" Version="1.6.1" />
+    <PackageVersion Include="MessagePipe" Version="1.7.4" />
+
+  </ItemGroup>
+</Project>
