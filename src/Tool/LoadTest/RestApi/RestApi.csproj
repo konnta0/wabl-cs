@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="DFrame.RestSdk" Version="1.0.5" />
+      <PackageReference Include="DFrame.RestSdk" />
     </ItemGroup>
 
 </Project>
