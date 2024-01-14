@@ -11,15 +11,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAffinityPodaffinityPreferredduringschedulingignoredduringexecutionPodaffinityterm
+    public sealed class TidbNGMonitoringSpecNgMonitoringAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAffinityPodaffinityPreferredduringschedulingignoredduringexecutionPodaffinitytermLabelselector LabelSelector;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector LabelSelector;
         public readonly ImmutableArray<string> Namespaces;
         public readonly string TopologyKey;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAffinityPodaffinityPreferredduringschedulingignoredduringexecutionPodaffinityterm(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAffinityPodaffinityPreferredduringschedulingignoredduringexecutionPodaffinitytermLabelselector labelSelector,
+        private TidbNGMonitoringSpecNgMonitoringAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTerm(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAffinityPodAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelector labelSelector,
 
             ImmutableArray<string> namespaces,
 

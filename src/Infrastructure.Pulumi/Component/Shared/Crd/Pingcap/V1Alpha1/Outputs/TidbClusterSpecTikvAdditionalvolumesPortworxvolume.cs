@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTikvAdditionalvolumesPortworxvolume
+    public sealed class TidbClusterSpecTikvAdditionalVolumesPortworxVolume
     {
         public readonly string FsType;
         public readonly bool ReadOnly;
         public readonly string VolumeID;
 
         [OutputConstructor]
-        private TidbClusterSpecTikvAdditionalvolumesPortworxvolume(
+        private TidbClusterSpecTikvAdditionalVolumesPortworxVolume(
             string fsType,
 
             bool readOnly,

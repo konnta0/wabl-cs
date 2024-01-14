@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterStatusWorkerFailuremembers
+    public sealed class DMClusterStatusWorkerFailureMembers
     {
         public readonly string CreatedAt;
         public readonly string PodName;
 
         [OutputConstructor]
-        private DMClusterStatusWorkerFailuremembers(
+        private DMClusterStatusWorkerFailureMembers(
             string createdAt,
 
             string podName)

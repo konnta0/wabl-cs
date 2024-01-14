@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesConfigmapArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMapArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesConfigmapItemsArgs>? _items;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesConfigmapItemsArgs> Items
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMapItemsArgs>? _items;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMapItemsArgs> Items
         {
-            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesConfigmapItemsArgs>());
+            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMapItemsArgs>());
             set => _items = value;
         }
 
@@ -26,8 +26,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("optional")]
         public Input<bool>? Optional { get; set; }
 
-        public TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesConfigmapArgs()
+        public TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMapArgs()
         {
         }
+        public static new TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMapArgs Empty => new TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMapArgs();
     }
 }

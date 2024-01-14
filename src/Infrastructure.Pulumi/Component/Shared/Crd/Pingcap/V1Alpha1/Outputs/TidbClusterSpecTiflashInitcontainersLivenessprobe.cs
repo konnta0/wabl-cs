@@ -11,24 +11,24 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashInitcontainersLivenessprobe
+    public sealed class TidbClusterSpecTiflashInitContainersLivenessProbe
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersLivenessprobeExec Exec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersLivenessProbeExec Exec;
         public readonly int FailureThreshold;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersLivenessprobeHttpget HttpGet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersLivenessProbeHttpGet HttpGet;
         public readonly int InitialDelaySeconds;
         public readonly int PeriodSeconds;
         public readonly int SuccessThreshold;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersLivenessprobeTcpsocket TcpSocket;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersLivenessProbeTcpSocket TcpSocket;
         public readonly int TimeoutSeconds;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashInitcontainersLivenessprobe(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersLivenessprobeExec exec,
+        private TidbClusterSpecTiflashInitContainersLivenessProbe(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersLivenessProbeExec exec,
 
             int failureThreshold,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersLivenessprobeHttpget httpGet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersLivenessProbeHttpGet httpGet,
 
             int initialDelaySeconds,
 
@@ -36,7 +36,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int successThreshold,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersLivenessprobeTcpsocket tcpSocket,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersLivenessProbeTcpSocket tcpSocket,
 
             int timeoutSeconds)
         {

@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesNfs
+    public sealed class DMClusterSpecWorkerAdditionalVolumesNfs
     {
         public readonly string Path;
         public readonly bool ReadOnly;
         public readonly string Server;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesNfs(
+        private DMClusterSpecWorkerAdditionalVolumesNfs(
             string path,
 
             bool readOnly,

@@ -11,25 +11,25 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbAdditionalcontainersSecuritycontext
+    public sealed class TidbClusterSpecTidbAdditionalContainersSecurityContext
     {
         public readonly bool AllowPrivilegeEscalation;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalcontainersSecuritycontextCapabilities Capabilities;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalContainersSecurityContextCapabilities Capabilities;
         public readonly bool Privileged;
         public readonly string ProcMount;
         public readonly bool ReadOnlyRootFilesystem;
         public readonly int RunAsGroup;
         public readonly bool RunAsNonRoot;
         public readonly int RunAsUser;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalcontainersSecuritycontextSelinuxoptions SeLinuxOptions;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalcontainersSecuritycontextSeccompprofile SeccompProfile;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalcontainersSecuritycontextWindowsoptions WindowsOptions;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalContainersSecurityContextSeLinuxOptions SeLinuxOptions;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalContainersSecurityContextSeccompProfile SeccompProfile;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalContainersSecurityContextWindowsOptions WindowsOptions;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbAdditionalcontainersSecuritycontext(
+        private TidbClusterSpecTidbAdditionalContainersSecurityContext(
             bool allowPrivilegeEscalation,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalcontainersSecuritycontextCapabilities capabilities,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalContainersSecurityContextCapabilities capabilities,
 
             bool privileged,
 
@@ -43,11 +43,11 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int runAsUser,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalcontainersSecuritycontextSelinuxoptions seLinuxOptions,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalContainersSecurityContextSeLinuxOptions seLinuxOptions,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalcontainersSecuritycontextSeccompprofile seccompProfile,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalContainersSecurityContextSeccompProfile seccompProfile,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalcontainersSecuritycontextWindowsoptions windowsOptions)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalContainersSecurityContextWindowsOptions windowsOptions)
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
             Capabilities = capabilities;

@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecLocalVolumeDownwardapi
+    public sealed class BackupSpecLocalVolumeDownwardApi
     {
         public readonly int DefaultMode;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeDownwardapiItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeDownwardApiItems> Items;
 
         [OutputConstructor]
-        private BackupSpecLocalVolumeDownwardapi(
+        private BackupSpecLocalVolumeDownwardApi(
             int defaultMode,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeDownwardapiItems> items)
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeDownwardApiItems> items)
         {
             DefaultMode = defaultMode;
             Items = items;

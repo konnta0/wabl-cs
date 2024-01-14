@@ -10,26 +10,27 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPumpAffinityPodantiaffinityArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPumpAffinityPodAntiAffinityArgs : global::Pulumi.ResourceArgs
     {
         [Input("preferredDuringSchedulingIgnoredDuringExecution")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionArgs>? _preferredDuringSchedulingIgnoredDuringExecution;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionArgs> PreferredDuringSchedulingIgnoredDuringExecution
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs>? _preferredDuringSchedulingIgnoredDuringExecution;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs> PreferredDuringSchedulingIgnoredDuringExecution
         {
-            get => _preferredDuringSchedulingIgnoredDuringExecution ?? (_preferredDuringSchedulingIgnoredDuringExecution = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionArgs>());
+            get => _preferredDuringSchedulingIgnoredDuringExecution ?? (_preferredDuringSchedulingIgnoredDuringExecution = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs>());
             set => _preferredDuringSchedulingIgnoredDuringExecution = value;
         }
 
         [Input("requiredDuringSchedulingIgnoredDuringExecution")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionArgs>? _requiredDuringSchedulingIgnoredDuringExecution;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionArgs> RequiredDuringSchedulingIgnoredDuringExecution
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs>? _requiredDuringSchedulingIgnoredDuringExecution;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs> RequiredDuringSchedulingIgnoredDuringExecution
         {
-            get => _requiredDuringSchedulingIgnoredDuringExecution ?? (_requiredDuringSchedulingIgnoredDuringExecution = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionArgs>());
+            get => _requiredDuringSchedulingIgnoredDuringExecution ?? (_requiredDuringSchedulingIgnoredDuringExecution = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs>());
             set => _requiredDuringSchedulingIgnoredDuringExecution = value;
         }
 
-        public TidbClusterSpecPumpAffinityPodantiaffinityArgs()
+        public TidbClusterSpecPumpAffinityPodAntiAffinityArgs()
         {
         }
+        public static new TidbClusterSpecPumpAffinityPodAntiAffinityArgs Empty => new TidbClusterSpecPumpAffinityPodAntiAffinityArgs();
     }
 }

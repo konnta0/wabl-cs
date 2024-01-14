@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerImagepullsecrets
+    public sealed class DMClusterSpecWorkerImagePullSecrets
     {
         public readonly string Name;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerImagepullsecrets(string name)
+        private DMClusterSpecWorkerImagePullSecrets(string name)
         {
             Name = name;
         }

@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterInitcontainersReadinessprobeArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterInitContainersReadinessProbeArgs : global::Pulumi.ResourceArgs
     {
         [Input("exec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersReadinessprobeExecArgs>? Exec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersReadinessProbeExecArgs>? Exec { get; set; }
 
         [Input("failureThreshold")]
         public Input<int>? FailureThreshold { get; set; }
 
         [Input("httpGet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersReadinessprobeHttpgetArgs>? HttpGet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersReadinessProbeHttpGetArgs>? HttpGet { get; set; }
 
         [Input("initialDelaySeconds")]
         public Input<int>? InitialDelaySeconds { get; set; }
@@ -31,13 +31,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? SuccessThreshold { get; set; }
 
         [Input("tcpSocket")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersReadinessprobeTcpsocketArgs>? TcpSocket { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersReadinessProbeTcpSocketArgs>? TcpSocket { get; set; }
 
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
-        public DMClusterSpecMasterInitcontainersReadinessprobeArgs()
+        public DMClusterSpecMasterInitContainersReadinessProbeArgs()
         {
         }
+        public static new DMClusterSpecMasterInitContainersReadinessProbeArgs Empty => new DMClusterSpecMasterInitContainersReadinessProbeArgs();
     }
 }

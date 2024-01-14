@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecAdditionalvolumesCephfsSecretref
+    public sealed class TidbMonitorSpecAdditionalVolumesCephfsSecretRef
     {
         public readonly string Name;
 
         [OutputConstructor]
-        private TidbMonitorSpecAdditionalvolumesCephfsSecretref(string name)
+        private TidbMonitorSpecAdditionalVolumesCephfsSecretRef(string name)
         {
             Name = name;
         }

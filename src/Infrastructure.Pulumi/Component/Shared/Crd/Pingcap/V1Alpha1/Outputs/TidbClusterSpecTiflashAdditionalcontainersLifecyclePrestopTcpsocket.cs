@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashAdditionalcontainersLifecyclePrestopTcpsocket
+    public sealed class TidbClusterSpecTiflashAdditionalContainersLifecyclePreStopTcpSocket
     {
         public readonly string Host;
         public readonly Union<int, string> Port;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashAdditionalcontainersLifecyclePrestopTcpsocket(
+        private TidbClusterSpecTiflashAdditionalContainersLifecyclePreStopTcpSocket(
             string host,
 
             Union<int, string> port)

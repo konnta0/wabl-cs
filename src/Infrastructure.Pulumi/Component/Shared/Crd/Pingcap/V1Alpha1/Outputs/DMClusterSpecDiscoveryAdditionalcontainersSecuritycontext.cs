@@ -11,25 +11,25 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalcontainersSecuritycontext
+    public sealed class DMClusterSpecDiscoveryAdditionalContainersSecurityContext
     {
         public readonly bool AllowPrivilegeEscalation;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersSecuritycontextCapabilities Capabilities;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersSecurityContextCapabilities Capabilities;
         public readonly bool Privileged;
         public readonly string ProcMount;
         public readonly bool ReadOnlyRootFilesystem;
         public readonly int RunAsGroup;
         public readonly bool RunAsNonRoot;
         public readonly int RunAsUser;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersSecuritycontextSelinuxoptions SeLinuxOptions;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersSecuritycontextSeccompprofile SeccompProfile;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersSecuritycontextWindowsoptions WindowsOptions;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersSecurityContextSeLinuxOptions SeLinuxOptions;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersSecurityContextSeccompProfile SeccompProfile;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersSecurityContextWindowsOptions WindowsOptions;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalcontainersSecuritycontext(
+        private DMClusterSpecDiscoveryAdditionalContainersSecurityContext(
             bool allowPrivilegeEscalation,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersSecuritycontextCapabilities capabilities,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersSecurityContextCapabilities capabilities,
 
             bool privileged,
 
@@ -43,11 +43,11 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int runAsUser,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersSecuritycontextSelinuxoptions seLinuxOptions,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersSecurityContextSeLinuxOptions seLinuxOptions,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersSecuritycontextSeccompprofile seccompProfile,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersSecurityContextSeccompProfile seccompProfile,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersSecuritycontextWindowsoptions windowsOptions)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersSecurityContextWindowsOptions windowsOptions)
         {
             AllowPrivilegeEscalation = allowPrivilegeEscalation;
             Capabilities = capabilities;

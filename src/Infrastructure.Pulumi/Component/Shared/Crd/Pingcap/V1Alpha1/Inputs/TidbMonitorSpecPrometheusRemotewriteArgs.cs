@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusRemotewriteArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusRemoteWriteArgs : global::Pulumi.ResourceArgs
     {
         [Input("basicAuth")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteBasicauthArgs>? BasicAuth { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteBasicAuthArgs>? BasicAuth { get; set; }
 
         [Input("bearerToken")]
         public Input<string>? BearerToken { get; set; }
@@ -21,31 +21,46 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("bearerTokenFile")]
         public Input<string>? BearerTokenFile { get; set; }
 
+        [Input("headers")]
+        private InputMap<string>? _headers;
+        public InputMap<string> Headers
+        {
+            get => _headers ?? (_headers = new InputMap<string>());
+            set => _headers = value;
+        }
+
+        [Input("metadataConfig")]
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteMetadataConfigArgs>? MetadataConfig { get; set; }
+
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         [Input("proxyUrl")]
         public Input<string>? ProxyUrl { get; set; }
 
         [Input("queueConfig")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteQueueconfigArgs>? QueueConfig { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteQueueConfigArgs>? QueueConfig { get; set; }
 
         [Input("remoteTimeout")]
         public Input<int>? RemoteTimeout { get; set; }
 
         [Input("tlsConfig")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigArgs>? TlsConfig { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigArgs>? TlsConfig { get; set; }
 
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
         [Input("writeRelabelConfigs")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteWriterelabelconfigsArgs>? _writeRelabelConfigs;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteWriterelabelconfigsArgs> WriteRelabelConfigs
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteWriteRelabelConfigsArgs>? _writeRelabelConfigs;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteWriteRelabelConfigsArgs> WriteRelabelConfigs
         {
-            get => _writeRelabelConfigs ?? (_writeRelabelConfigs = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteWriterelabelconfigsArgs>());
+            get => _writeRelabelConfigs ?? (_writeRelabelConfigs = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteWriteRelabelConfigsArgs>());
             set => _writeRelabelConfigs = value;
         }
 
-        public TidbMonitorSpecPrometheusRemotewriteArgs()
+        public TidbMonitorSpecPrometheusRemoteWriteArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusRemoteWriteArgs Empty => new TidbMonitorSpecPrometheusRemoteWriteArgs();
     }
 }

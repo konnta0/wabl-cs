@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecDiscoveryInitcontainersLifecycleArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecDiscoveryInitContainersLifecycleArgs : global::Pulumi.ResourceArgs
     {
         [Input("postStart")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitcontainersLifecyclePoststartArgs>? PostStart { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitContainersLifecyclePostStartArgs>? PostStart { get; set; }
 
         [Input("preStop")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitcontainersLifecyclePrestopArgs>? PreStop { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitContainersLifecyclePreStopArgs>? PreStop { get; set; }
 
-        public TidbClusterSpecDiscoveryInitcontainersLifecycleArgs()
+        public TidbClusterSpecDiscoveryInitContainersLifecycleArgs()
         {
         }
+        public static new TidbClusterSpecDiscoveryInitContainersLifecycleArgs Empty => new TidbClusterSpecDiscoveryInitContainersLifecycleArgs();
     }
 }

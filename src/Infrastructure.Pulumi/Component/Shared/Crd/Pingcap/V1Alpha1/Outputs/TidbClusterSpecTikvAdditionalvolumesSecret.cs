@@ -11,18 +11,18 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTikvAdditionalvolumesSecret
+    public sealed class TidbClusterSpecTikvAdditionalVolumesSecret
     {
         public readonly int DefaultMode;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalvolumesSecretItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalVolumesSecretItems> Items;
         public readonly bool Optional;
         public readonly string SecretName;
 
         [OutputConstructor]
-        private TidbClusterSpecTikvAdditionalvolumesSecret(
+        private TidbClusterSpecTikvAdditionalVolumesSecret(
             int defaultMode,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalvolumesSecretItems> items,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalVolumesSecretItems> items,
 
             bool optional,
 

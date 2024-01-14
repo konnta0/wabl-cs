@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusTicdcArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusTicdcArgs : global::Pulumi.ResourceArgs
     {
         [Input("captures")]
         private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTicdcCapturesArgs>? _captures;
@@ -32,7 +32,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Phase { get; set; }
 
         [Input("statefulSet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTicdcStatefulsetArgs>? StatefulSet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTicdcStatefulSetArgs>? StatefulSet { get; set; }
 
         [Input("synced")]
         public Input<bool>? Synced { get; set; }
@@ -48,5 +48,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterStatusTicdcArgs()
         {
         }
+        public static new TidbClusterStatusTicdcArgs Empty => new TidbClusterStatusTicdcArgs();
     }
 }

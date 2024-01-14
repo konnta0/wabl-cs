@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalcontainersLivenessprobeHttpget
+    public sealed class DMClusterSpecDiscoveryAdditionalContainersLivenessProbeHttpGet
     {
         public readonly string Host;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersLivenessprobeHttpgetHttpheaders> HttpHeaders;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersLivenessProbeHttpGetHttpHeaders> HttpHeaders;
         public readonly string Path;
         public readonly Union<int, string> Port;
         public readonly string Scheme;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalcontainersLivenessprobeHttpget(
+        private DMClusterSpecDiscoveryAdditionalContainersLivenessProbeHttpGet(
             string host,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersLivenessprobeHttpgetHttpheaders> httpHeaders,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersLivenessProbeHttpGetHttpHeaders> httpHeaders,
 
             string path,
 

@@ -10,21 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesDownwardapiArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesDownwardApiArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultMode")]
         public Input<int>? DefaultMode { get; set; }
 
         [Input("items")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesDownwardapiItemsArgs>? _items;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesDownwardapiItemsArgs> Items
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesDownwardApiItemsArgs>? _items;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesDownwardApiItemsArgs> Items
         {
-            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesDownwardapiItemsArgs>());
+            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesDownwardApiItemsArgs>());
             set => _items = value;
         }
 
-        public TidbNGMonitoringSpecNgmonitoringAdditionalvolumesDownwardapiArgs()
+        public TidbNGMonitoringSpecNgMonitoringAdditionalVolumesDownwardApiArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesDownwardApiArgs Empty => new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesDownwardApiArgs();
     }
 }

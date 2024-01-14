@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPumpAdditionalcontainersLifecyclePoststartHttpgetArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPumpAdditionalContainersLifecyclePostStartHttpGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         [Input("httpHeaders")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersLifecyclePoststartHttpgetHttpheadersArgs>? _httpHeaders;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersLifecyclePoststartHttpgetHttpheadersArgs> HttpHeaders
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersLifecyclePostStartHttpGetHttpHeadersArgs>? _httpHeaders;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersLifecyclePostStartHttpGetHttpHeadersArgs> HttpHeaders
         {
-            get => _httpHeaders ?? (_httpHeaders = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersLifecyclePoststartHttpgetHttpheadersArgs>());
+            get => _httpHeaders ?? (_httpHeaders = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersLifecyclePostStartHttpGetHttpHeadersArgs>());
             set => _httpHeaders = value;
         }
 
@@ -32,8 +32,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 
-        public TidbClusterSpecPumpAdditionalcontainersLifecyclePoststartHttpgetArgs()
+        public TidbClusterSpecPumpAdditionalContainersLifecyclePostStartHttpGetArgs()
         {
         }
+        public static new TidbClusterSpecPumpAdditionalContainersLifecyclePostStartHttpGetArgs Empty => new TidbClusterSpecPumpAdditionalContainersLifecyclePostStartHttpGetArgs();
     }
 }

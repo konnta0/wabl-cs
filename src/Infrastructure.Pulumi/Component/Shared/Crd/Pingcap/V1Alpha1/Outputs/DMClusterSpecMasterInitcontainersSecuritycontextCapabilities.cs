@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterInitcontainersSecuritycontextCapabilities
+    public sealed class DMClusterSpecMasterInitContainersSecurityContextCapabilities
     {
         public readonly ImmutableArray<string> Add;
         public readonly ImmutableArray<string> Drop;
 
         [OutputConstructor]
-        private DMClusterSpecMasterInitcontainersSecuritycontextCapabilities(
+        private DMClusterSpecMasterInitContainersSecurityContextCapabilities(
             ImmutableArray<string> add,
 
             ImmutableArray<string> drop)

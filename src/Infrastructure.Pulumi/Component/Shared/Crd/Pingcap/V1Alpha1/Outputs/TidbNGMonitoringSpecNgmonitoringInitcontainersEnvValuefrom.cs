@@ -11,22 +11,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefrom
+    public sealed class TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFrom
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefromConfigmapkeyref ConfigMapKeyRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefromFieldref FieldRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefromResourcefieldref ResourceFieldRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefromSecretkeyref SecretKeyRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFromConfigMapKeyRef ConfigMapKeyRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFromFieldRef FieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFromResourceFieldRef ResourceFieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFromSecretKeyRef SecretKeyRef;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefrom(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefromConfigmapkeyref configMapKeyRef,
+        private TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFrom(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFromConfigMapKeyRef configMapKeyRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefromFieldref fieldRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFromFieldRef fieldRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefromResourcefieldref resourceFieldRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFromResourceFieldRef resourceFieldRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersEnvValuefromSecretkeyref secretKeyRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersEnvValueFromSecretKeyRef secretKeyRef)
         {
             ConfigMapKeyRef = configMapKeyRef;
             FieldRef = fieldRef;

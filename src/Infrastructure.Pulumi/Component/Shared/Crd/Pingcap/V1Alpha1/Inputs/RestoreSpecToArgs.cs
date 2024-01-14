@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecToArgs : Pulumi.ResourceArgs
+    public class RestoreSpecToArgs : global::Pulumi.ResourceArgs
     {
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -30,5 +30,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public RestoreSpecToArgs()
         {
         }
+        public static new RestoreSpecToArgs Empty => new RestoreSpecToArgs();
     }
 }

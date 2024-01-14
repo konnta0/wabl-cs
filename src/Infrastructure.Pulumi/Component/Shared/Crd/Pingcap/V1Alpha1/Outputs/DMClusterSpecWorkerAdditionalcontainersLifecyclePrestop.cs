@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalcontainersLifecyclePrestop
+    public sealed class DMClusterSpecWorkerAdditionalContainersLifecyclePreStop
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersLifecyclePrestopExec Exec;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersLifecyclePrestopHttpget HttpGet;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersLifecyclePrestopTcpsocket TcpSocket;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersLifecyclePreStopExec Exec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersLifecyclePreStopHttpGet HttpGet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersLifecyclePreStopTcpSocket TcpSocket;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalcontainersLifecyclePrestop(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersLifecyclePrestopExec exec,
+        private DMClusterSpecWorkerAdditionalContainersLifecyclePreStop(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersLifecyclePreStopExec exec,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersLifecyclePrestopHttpget httpGet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersLifecyclePreStopHttpGet httpGet,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersLifecyclePrestopTcpsocket tcpSocket)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersLifecyclePreStopTcpSocket tcpSocket)
         {
             Exec = exec;
             HttpGet = httpGet;

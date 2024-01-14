@@ -14,22 +14,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     public sealed class TidbClusterStatusPd
     {
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdConditions> Conditions;
-        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailuremembers> FailureMembers;
+        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailureMembers> FailureMembers;
         public readonly string Image;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdLeader Leader;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdMembers> Members;
-        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeermembers> PeerMembers;
+        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeerMembers> PeerMembers;
         public readonly string Phase;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulset StatefulSet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulSet StatefulSet;
         public readonly bool Synced;
-        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedmembers> UnjoinedMembers;
+        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedMembers> UnjoinedMembers;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdVolumes> Volumes;
 
         [OutputConstructor]
         private TidbClusterStatusPd(
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdConditions> conditions,
 
-            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailuremembers> failureMembers,
+            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailureMembers> failureMembers,
 
             string image,
 
@@ -37,15 +37,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdMembers> members,
 
-            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeermembers> peerMembers,
+            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeerMembers> peerMembers,
 
             string phase,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulset statefulSet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulSet statefulSet,
 
             bool synced,
 
-            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedmembers> unjoinedMembers,
+            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedMembers> unjoinedMembers,
 
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdVolumes> volumes)
         {

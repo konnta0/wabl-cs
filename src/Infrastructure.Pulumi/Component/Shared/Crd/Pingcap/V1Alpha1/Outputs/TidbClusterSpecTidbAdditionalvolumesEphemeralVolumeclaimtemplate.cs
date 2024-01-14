@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbAdditionalvolumesEphemeralVolumeclaimtemplate
+    public sealed class TidbClusterSpecTidbAdditionalVolumesEphemeralVolumeClaimTemplate
     {
         public readonly ImmutableDictionary<string, object> Metadata;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesEphemeralVolumeclaimtemplateSpec Spec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesEphemeralVolumeClaimTemplateSpec Spec;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbAdditionalvolumesEphemeralVolumeclaimtemplate(
+        private TidbClusterSpecTidbAdditionalVolumesEphemeralVolumeClaimTemplate(
             ImmutableDictionary<string, object> metadata,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesEphemeralVolumeclaimtemplateSpec spec)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesEphemeralVolumeClaimTemplateSpec spec)
         {
             Metadata = metadata;
             Spec = spec;

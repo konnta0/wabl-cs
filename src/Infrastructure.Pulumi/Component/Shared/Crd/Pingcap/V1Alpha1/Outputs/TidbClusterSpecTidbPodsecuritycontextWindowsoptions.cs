@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbPodsecuritycontextWindowsoptions
+    public sealed class TidbClusterSpecTidbPodSecurityContextWindowsOptions
     {
         public readonly string GmsaCredentialSpec;
         public readonly string GmsaCredentialSpecName;
         public readonly string RunAsUserName;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbPodsecuritycontextWindowsoptions(
+        private TidbClusterSpecTidbPodSecurityContextWindowsOptions(
             string gmsaCredentialSpec,
 
             string gmsaCredentialSpecName,

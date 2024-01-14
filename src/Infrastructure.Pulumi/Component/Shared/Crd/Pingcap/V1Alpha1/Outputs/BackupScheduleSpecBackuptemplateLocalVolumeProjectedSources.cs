@@ -11,22 +11,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateLocalVolumeProjectedSources
+    public sealed class BackupScheduleSpecBackupTemplateLocalVolumeProjectedSources
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmap ConfigMap;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesDownwardapi DownwardAPI;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesSecret Secret;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesServiceaccounttoken ServiceAccountToken;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMap ConfigMap;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesDownwardApi DownwardAPI;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesSecret Secret;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesServiceAccountToken ServiceAccountToken;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateLocalVolumeProjectedSources(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmap configMap,
+        private BackupScheduleSpecBackupTemplateLocalVolumeProjectedSources(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMap configMap,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesDownwardapi downwardAPI,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesDownwardApi downwardAPI,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesSecret secret,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesSecret secret,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesServiceaccounttoken serviceAccountToken)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesServiceAccountToken serviceAccountToken)
         {
             ConfigMap = configMap;
             DownwardAPI = downwardAPI;

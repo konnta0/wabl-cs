@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterServiceArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -60,5 +60,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public DMClusterSpecMasterServiceArgs()
         {
         }
+        public static new DMClusterSpecMasterServiceArgs Empty => new DMClusterSpecMasterServiceArgs();
     }
 }

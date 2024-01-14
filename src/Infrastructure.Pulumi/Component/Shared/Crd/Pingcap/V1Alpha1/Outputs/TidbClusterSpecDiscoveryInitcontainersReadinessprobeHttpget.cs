@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecDiscoveryInitcontainersReadinessprobeHttpget
+    public sealed class TidbClusterSpecDiscoveryInitContainersReadinessProbeHttpGet
     {
         public readonly string Host;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitcontainersReadinessprobeHttpgetHttpheaders> HttpHeaders;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitContainersReadinessProbeHttpGetHttpHeaders> HttpHeaders;
         public readonly string Path;
         public readonly Union<int, string> Port;
         public readonly string Scheme;
 
         [OutputConstructor]
-        private TidbClusterSpecDiscoveryInitcontainersReadinessprobeHttpget(
+        private TidbClusterSpecDiscoveryInitContainersReadinessProbeHttpGet(
             string host,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitcontainersReadinessprobeHttpgetHttpheaders> httpHeaders,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitContainersReadinessProbeHttpGetHttpHeaders> httpHeaders,
 
             string path,
 

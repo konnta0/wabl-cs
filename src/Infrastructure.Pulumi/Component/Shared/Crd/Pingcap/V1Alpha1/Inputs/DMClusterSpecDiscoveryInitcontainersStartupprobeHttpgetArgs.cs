@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryInitcontainersStartupprobeHttpgetArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryInitContainersStartupProbeHttpGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         [Input("httpHeaders")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersStartupprobeHttpgetHttpheadersArgs>? _httpHeaders;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersStartupprobeHttpgetHttpheadersArgs> HttpHeaders
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersStartupProbeHttpGetHttpHeadersArgs>? _httpHeaders;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersStartupProbeHttpGetHttpHeadersArgs> HttpHeaders
         {
-            get => _httpHeaders ?? (_httpHeaders = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersStartupprobeHttpgetHttpheadersArgs>());
+            get => _httpHeaders ?? (_httpHeaders = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersStartupProbeHttpGetHttpHeadersArgs>());
             set => _httpHeaders = value;
         }
 
@@ -32,8 +32,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 
-        public DMClusterSpecDiscoveryInitcontainersStartupprobeHttpgetArgs()
+        public DMClusterSpecDiscoveryInitContainersStartupProbeHttpGetArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryInitContainersStartupProbeHttpGetArgs Empty => new DMClusterSpecDiscoveryInitContainersStartupProbeHttpGetArgs();
     }
 }

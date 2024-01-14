@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateLocalVolumeProjected
+    public sealed class BackupScheduleSpecBackupTemplateLocalVolumeProjected
     {
         public readonly int DefaultMode;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSources> Sources;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSources> Sources;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateLocalVolumeProjected(
+        private BackupScheduleSpecBackupTemplateLocalVolumeProjected(
             int defaultMode,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSources> sources)
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSources> sources)
         {
             DefaultMode = defaultMode;
             Sources = sources;

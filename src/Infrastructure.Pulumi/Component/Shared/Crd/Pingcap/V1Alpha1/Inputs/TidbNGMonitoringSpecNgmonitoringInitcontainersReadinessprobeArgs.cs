@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringInitcontainersReadinessprobeArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeArgs : global::Pulumi.ResourceArgs
     {
         [Input("exec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersReadinessprobeExecArgs>? Exec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeExecArgs>? Exec { get; set; }
 
         [Input("failureThreshold")]
         public Input<int>? FailureThreshold { get; set; }
 
         [Input("httpGet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersReadinessprobeHttpgetArgs>? HttpGet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeHttpGetArgs>? HttpGet { get; set; }
 
         [Input("initialDelaySeconds")]
         public Input<int>? InitialDelaySeconds { get; set; }
@@ -31,13 +31,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? SuccessThreshold { get; set; }
 
         [Input("tcpSocket")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersReadinessprobeTcpsocketArgs>? TcpSocket { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeTcpSocketArgs>? TcpSocket { get; set; }
 
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
-        public TidbNGMonitoringSpecNgmonitoringInitcontainersReadinessprobeArgs()
+        public TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeArgs Empty => new TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeArgs();
     }
 }

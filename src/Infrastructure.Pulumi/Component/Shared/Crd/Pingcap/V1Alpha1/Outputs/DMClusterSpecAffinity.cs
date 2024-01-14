@@ -13,17 +13,17 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class DMClusterSpecAffinity
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeaffinity NodeAffinity;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodaffinity PodAffinity;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodantiaffinity PodAntiAffinity;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeAffinity NodeAffinity;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodAffinity PodAffinity;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodAntiAffinity PodAntiAffinity;
 
         [OutputConstructor]
         private DMClusterSpecAffinity(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeaffinity nodeAffinity,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeAffinity nodeAffinity,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodaffinity podAffinity,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodAffinity podAffinity,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodantiaffinity podAntiAffinity)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodAntiAffinity podAntiAffinity)
         {
             NodeAffinity = nodeAffinity;
             PodAffinity = podAffinity;

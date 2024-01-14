@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecAdditionalcontainersLifecycle
+    public sealed class TidbMonitorSpecAdditionalContainersLifecycle
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePoststart PostStart;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePrestop PreStop;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePostStart PostStart;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePreStop PreStop;
 
         [OutputConstructor]
-        private TidbMonitorSpecAdditionalcontainersLifecycle(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePoststart postStart,
+        private TidbMonitorSpecAdditionalContainersLifecycle(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePostStart postStart,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePrestop preStop)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePreStop preStop)
         {
             PostStart = postStart;
             PreStop = preStop;

@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("matchExpressions")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>? _matchExpressions;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs> MatchExpressions
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>? _matchExpressions;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs> MatchExpressions
         {
-            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>());
+            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>());
             set => _matchExpressions = value;
         }
 
@@ -28,8 +28,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _matchLabels = value;
         }
 
-        public DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs()
+        public DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs()
         {
         }
+        public static new DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs Empty => new DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs();
     }
 }

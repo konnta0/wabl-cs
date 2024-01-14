@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusConfigConfigmaprefArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusConfigConfigMapRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
-        public TidbMonitorSpecPrometheusConfigConfigmaprefArgs()
+        public TidbMonitorSpecPrometheusConfigConfigMapRefArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusConfigConfigMapRefArgs Empty => new TidbMonitorSpecPrometheusConfigConfigMapRefArgs();
     }
 }

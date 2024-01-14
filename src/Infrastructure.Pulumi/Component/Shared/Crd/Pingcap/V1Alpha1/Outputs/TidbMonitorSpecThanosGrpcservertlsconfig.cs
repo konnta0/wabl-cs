@@ -11,24 +11,24 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecThanosGrpcservertlsconfig
+    public sealed class TidbMonitorSpecThanosGrpcServerTlsConfig
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCa Ca;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCa Ca;
         public readonly string CaFile;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCert Cert;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCert Cert;
         public readonly string CertFile;
         public readonly bool InsecureSkipVerify;
         public readonly string KeyFile;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigKeysecret KeySecret;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigKeySecret KeySecret;
         public readonly string ServerName;
 
         [OutputConstructor]
-        private TidbMonitorSpecThanosGrpcservertlsconfig(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCa ca,
+        private TidbMonitorSpecThanosGrpcServerTlsConfig(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCa ca,
 
             string caFile,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCert cert,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCert cert,
 
             string certFile,
 
@@ -36,7 +36,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string keyFile,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigKeysecret keySecret,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigKeySecret keySecret,
 
             string serverName)
         {

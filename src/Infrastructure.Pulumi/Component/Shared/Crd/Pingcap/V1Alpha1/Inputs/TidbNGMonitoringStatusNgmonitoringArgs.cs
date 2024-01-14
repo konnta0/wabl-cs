@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringStatusNgmonitoringArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringStatusNgMonitoringArgs : global::Pulumi.ResourceArgs
     {
         [Input("phase")]
         public Input<string>? Phase { get; set; }
 
         [Input("statefulSet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoringStatefulsetArgs>? StatefulSet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoringStatefulSetArgs>? StatefulSet { get; set; }
 
         [Input("synced")]
         public Input<bool>? Synced { get; set; }
 
-        public TidbNGMonitoringStatusNgmonitoringArgs()
+        public TidbNGMonitoringStatusNgMonitoringArgs()
         {
         }
+        public static new TidbNGMonitoringStatusNgMonitoringArgs Empty => new TidbNGMonitoringStatusNgMonitoringArgs();
     }
 }

@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterAdditionalcontainersStartupprobeArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterAdditionalContainersStartupProbeArgs : global::Pulumi.ResourceArgs
     {
         [Input("exec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalcontainersStartupprobeExecArgs>? Exec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalContainersStartupProbeExecArgs>? Exec { get; set; }
 
         [Input("failureThreshold")]
         public Input<int>? FailureThreshold { get; set; }
 
         [Input("httpGet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalcontainersStartupprobeHttpgetArgs>? HttpGet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalContainersStartupProbeHttpGetArgs>? HttpGet { get; set; }
 
         [Input("initialDelaySeconds")]
         public Input<int>? InitialDelaySeconds { get; set; }
@@ -31,13 +31,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? SuccessThreshold { get; set; }
 
         [Input("tcpSocket")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalcontainersStartupprobeTcpsocketArgs>? TcpSocket { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalContainersStartupProbeTcpSocketArgs>? TcpSocket { get; set; }
 
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
-        public DMClusterSpecMasterAdditionalcontainersStartupprobeArgs()
+        public DMClusterSpecMasterAdditionalContainersStartupProbeArgs()
         {
         }
+        public static new DMClusterSpecMasterAdditionalContainersStartupProbeArgs Empty => new DMClusterSpecMasterAdditionalContainersStartupProbeArgs();
     }
 }

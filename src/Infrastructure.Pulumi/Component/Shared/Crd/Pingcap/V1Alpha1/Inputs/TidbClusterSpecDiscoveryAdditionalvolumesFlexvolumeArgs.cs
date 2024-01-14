@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecDiscoveryAdditionalvolumesFlexvolumeArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecDiscoveryAdditionalVolumesFlexVolumeArgs : global::Pulumi.ResourceArgs
     {
         [Input("driver", required: true)]
         public Input<string> Driver { get; set; } = null!;
@@ -30,10 +30,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesFlexvolumeSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesFlexVolumeSecretRefArgs>? SecretRef { get; set; }
 
-        public TidbClusterSpecDiscoveryAdditionalvolumesFlexvolumeArgs()
+        public TidbClusterSpecDiscoveryAdditionalVolumesFlexVolumeArgs()
         {
         }
+        public static new TidbClusterSpecDiscoveryAdditionalVolumesFlexVolumeArgs Empty => new TidbClusterSpecDiscoveryAdditionalVolumesFlexVolumeArgs();
     }
 }

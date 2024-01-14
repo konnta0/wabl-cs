@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecAdditionalvolumesProjectedSourcesConfigmapArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecAdditionalVolumesProjectedSourcesConfigMapArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesProjectedSourcesConfigmapItemsArgs>? _items;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesProjectedSourcesConfigmapItemsArgs> Items
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesProjectedSourcesConfigMapItemsArgs>? _items;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesProjectedSourcesConfigMapItemsArgs> Items
         {
-            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesProjectedSourcesConfigmapItemsArgs>());
+            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesProjectedSourcesConfigMapItemsArgs>());
             set => _items = value;
         }
 
@@ -26,8 +26,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("optional")]
         public Input<bool>? Optional { get; set; }
 
-        public TidbMonitorSpecAdditionalvolumesProjectedSourcesConfigmapArgs()
+        public TidbMonitorSpecAdditionalVolumesProjectedSourcesConfigMapArgs()
         {
         }
+        public static new TidbMonitorSpecAdditionalVolumesProjectedSourcesConfigMapArgs Empty => new TidbMonitorSpecAdditionalVolumesProjectedSourcesConfigMapArgs();
     }
 }

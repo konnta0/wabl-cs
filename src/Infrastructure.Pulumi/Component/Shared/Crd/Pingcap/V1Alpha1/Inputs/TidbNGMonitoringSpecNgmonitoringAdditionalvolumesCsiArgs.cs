@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesCsiArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesCsiArgs : global::Pulumi.ResourceArgs
     {
         [Input("driver", required: true)]
         public Input<string> Driver { get; set; } = null!;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? FsType { get; set; }
 
         [Input("nodePublishSecretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesCsiNodepublishsecretrefArgs>? NodePublishSecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesCsiNodePublishSecretRefArgs>? NodePublishSecretRef { get; set; }
 
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
@@ -32,8 +32,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _volumeAttributes = value;
         }
 
-        public TidbNGMonitoringSpecNgmonitoringAdditionalvolumesCsiArgs()
+        public TidbNGMonitoringSpecNgMonitoringAdditionalVolumesCsiArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesCsiArgs Empty => new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesCsiArgs();
     }
 }

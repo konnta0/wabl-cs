@@ -11,21 +11,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplatePodsecuritycontext
+    public sealed class BackupScheduleSpecBackupTemplatePodSecurityContext
     {
         public readonly int FsGroup;
         public readonly string FsGroupChangePolicy;
         public readonly int RunAsGroup;
         public readonly bool RunAsNonRoot;
         public readonly int RunAsUser;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSelinuxoptions SeLinuxOptions;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSeccompprofile SeccompProfile;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSeLinuxOptions SeLinuxOptions;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSeccompProfile SeccompProfile;
         public readonly ImmutableArray<int> SupplementalGroups;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSysctls> Sysctls;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextWindowsoptions WindowsOptions;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSysctls> Sysctls;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextWindowsOptions WindowsOptions;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplatePodsecuritycontext(
+        private BackupScheduleSpecBackupTemplatePodSecurityContext(
             int fsGroup,
 
             string fsGroupChangePolicy,
@@ -36,15 +36,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int runAsUser,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSelinuxoptions seLinuxOptions,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSeLinuxOptions seLinuxOptions,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSeccompprofile seccompProfile,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSeccompProfile seccompProfile,
 
             ImmutableArray<int> supplementalGroups,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSysctls> sysctls,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSysctls> sysctls,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextWindowsoptions windowsOptions)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextWindowsOptions windowsOptions)
         {
             FsGroup = fsGroup;
             FsGroupChangePolicy = fsGroupChangePolicy;

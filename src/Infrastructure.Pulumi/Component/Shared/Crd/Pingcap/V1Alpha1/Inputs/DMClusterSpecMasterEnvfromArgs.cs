@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterEnvfromArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterEnvFromArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMapRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvfromConfigmaprefArgs>? ConfigMapRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvFromConfigMapRefArgs>? ConfigMapRef { get; set; }
 
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvfromSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvFromSecretRefArgs>? SecretRef { get; set; }
 
-        public DMClusterSpecMasterEnvfromArgs()
+        public DMClusterSpecMasterEnvFromArgs()
         {
         }
+        public static new DMClusterSpecMasterEnvFromArgs Empty => new DMClusterSpecMasterEnvFromArgs();
     }
 }

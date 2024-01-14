@@ -11,24 +11,24 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdInitcontainersReadinessprobe
+    public sealed class TidbClusterSpecPdInitContainersReadinessProbe
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitcontainersReadinessprobeExec Exec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitContainersReadinessProbeExec Exec;
         public readonly int FailureThreshold;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitcontainersReadinessprobeHttpget HttpGet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitContainersReadinessProbeHttpGet HttpGet;
         public readonly int InitialDelaySeconds;
         public readonly int PeriodSeconds;
         public readonly int SuccessThreshold;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitcontainersReadinessprobeTcpsocket TcpSocket;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitContainersReadinessProbeTcpSocket TcpSocket;
         public readonly int TimeoutSeconds;
 
         [OutputConstructor]
-        private TidbClusterSpecPdInitcontainersReadinessprobe(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitcontainersReadinessprobeExec exec,
+        private TidbClusterSpecPdInitContainersReadinessProbe(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitContainersReadinessProbeExec exec,
 
             int failureThreshold,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitcontainersReadinessprobeHttpget httpGet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitContainersReadinessProbeHttpGet httpGet,
 
             int initialDelaySeconds,
 
@@ -36,7 +36,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int successThreshold,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitcontainersReadinessprobeTcpsocket tcpSocket,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitContainersReadinessProbeTcpSocket tcpSocket,
 
             int timeoutSeconds)
         {

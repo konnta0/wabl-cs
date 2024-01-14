@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecThanosTracingconfig
+    public sealed class TidbMonitorSpecThanosTracingConfig
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbMonitorSpecThanosTracingconfig(
+        private TidbMonitorSpecThanosTracingConfig(
             string key,
 
             string name,

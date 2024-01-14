@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryInitcontainersLifecyclePrestopHttpget
+    public sealed class DMClusterSpecDiscoveryInitContainersLifecyclePreStopHttpGet
     {
         public readonly string Host;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePrestopHttpgetHttpheaders> HttpHeaders;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePreStopHttpGetHttpHeaders> HttpHeaders;
         public readonly string Path;
         public readonly Union<int, string> Port;
         public readonly string Scheme;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryInitcontainersLifecyclePrestopHttpget(
+        private DMClusterSpecDiscoveryInitContainersLifecyclePreStopHttpGet(
             string host,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePrestopHttpgetHttpheaders> httpHeaders,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePreStopHttpGetHttpHeaders> httpHeaders,
 
             string path,
 

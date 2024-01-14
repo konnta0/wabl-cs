@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecAdditionalcontainersLifecyclePrestopHttpget
+    public sealed class TidbNGMonitoringSpecAdditionalContainersLifecyclePreStopHttpGet
     {
         public readonly string Host;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalcontainersLifecyclePrestopHttpgetHttpheaders> HttpHeaders;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalContainersLifecyclePreStopHttpGetHttpHeaders> HttpHeaders;
         public readonly string Path;
         public readonly Union<int, string> Port;
         public readonly string Scheme;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecAdditionalcontainersLifecyclePrestopHttpget(
+        private TidbNGMonitoringSpecAdditionalContainersLifecyclePreStopHttpGet(
             string host,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalcontainersLifecyclePrestopHttpgetHttpheaders> httpHeaders,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalContainersLifecyclePreStopHttpGetHttpHeaders> httpHeaders,
 
             string path,
 

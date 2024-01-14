@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalvolumesDownwardapi
+    public sealed class DMClusterSpecDiscoveryAdditionalVolumesDownwardApi
     {
         public readonly int DefaultMode;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesDownwardapiItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesDownwardApiItems> Items;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalvolumesDownwardapi(
+        private DMClusterSpecDiscoveryAdditionalVolumesDownwardApi(
             int defaultMode,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesDownwardapiItems> items)
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesDownwardApiItems> items)
         {
             DefaultMode = defaultMode;
             Items = items;

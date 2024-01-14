@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTikvDnsconfigOptionsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTikvDnsConfigOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public TidbClusterSpecTikvDnsconfigOptionsArgs()
+        public TidbClusterSpecTikvDnsConfigOptionsArgs()
         {
         }
+        public static new TidbClusterSpecTikvDnsConfigOptionsArgs Empty => new TidbClusterSpecTikvDnsConfigOptionsArgs();
     }
 }

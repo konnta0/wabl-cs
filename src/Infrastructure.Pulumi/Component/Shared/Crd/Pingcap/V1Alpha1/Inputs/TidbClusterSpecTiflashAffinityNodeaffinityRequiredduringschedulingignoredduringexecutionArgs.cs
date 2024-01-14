@@ -10,18 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs : global::Pulumi.ResourceArgs
     {
         [Input("nodeSelectorTerms", required: true)]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectortermsArgs>? _nodeSelectorTerms;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectortermsArgs> NodeSelectorTerms
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsArgs>? _nodeSelectorTerms;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsArgs> NodeSelectorTerms
         {
-            get => _nodeSelectorTerms ?? (_nodeSelectorTerms = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectortermsArgs>());
+            get => _nodeSelectorTerms ?? (_nodeSelectorTerms = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsArgs>());
             set => _nodeSelectorTerms = value;
         }
 
-        public TidbClusterSpecTiflashAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionArgs()
+        public TidbClusterSpecTiflashAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs()
         {
         }
+        public static new TidbClusterSpecTiflashAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs Empty => new TidbClusterSpecTiflashAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs();
     }
 }

@@ -11,20 +11,20 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecAdditionalvolumesCinder
+    public sealed class TidbMonitorSpecAdditionalVolumesCinder
     {
         public readonly string FsType;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesCinderSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesCinderSecretRef SecretRef;
         public readonly string VolumeID;
 
         [OutputConstructor]
-        private TidbMonitorSpecAdditionalvolumesCinder(
+        private TidbMonitorSpecAdditionalVolumesCinder(
             string fsType,
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesCinderSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesCinderSecretRef secretRef,
 
             string volumeID)
         {

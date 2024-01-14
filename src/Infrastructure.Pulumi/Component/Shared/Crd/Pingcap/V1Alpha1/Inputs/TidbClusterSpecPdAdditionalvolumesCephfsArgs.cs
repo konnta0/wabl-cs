@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPdAdditionalvolumesCephfsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPdAdditionalVolumesCephfsArgs : global::Pulumi.ResourceArgs
     {
         [Input("monitors", required: true)]
         private InputList<string>? _monitors;
@@ -30,13 +30,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? SecretFile { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesCephfsSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesCephfsSecretRefArgs>? SecretRef { get; set; }
 
         [Input("user")]
         public Input<string>? User { get; set; }
 
-        public TidbClusterSpecPdAdditionalvolumesCephfsArgs()
+        public TidbClusterSpecPdAdditionalVolumesCephfsArgs()
         {
         }
+        public static new TidbClusterSpecPdAdditionalVolumesCephfsArgs Empty => new TidbClusterSpecPdAdditionalVolumesCephfsArgs();
     }
 }

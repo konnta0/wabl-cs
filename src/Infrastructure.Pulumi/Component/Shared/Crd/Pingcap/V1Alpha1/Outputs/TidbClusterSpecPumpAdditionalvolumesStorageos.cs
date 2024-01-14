@@ -11,21 +11,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPumpAdditionalvolumesStorageos
+    public sealed class TidbClusterSpecPumpAdditionalVolumesStorageos
     {
         public readonly string FsType;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalvolumesStorageosSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalVolumesStorageosSecretRef SecretRef;
         public readonly string VolumeName;
         public readonly string VolumeNamespace;
 
         [OutputConstructor]
-        private TidbClusterSpecPumpAdditionalvolumesStorageos(
+        private TidbClusterSpecPumpAdditionalVolumesStorageos(
             string fsType,
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalvolumesStorageosSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalVolumesStorageosSecretRef secretRef,
 
             string volumeName,
 

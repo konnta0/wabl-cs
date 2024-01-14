@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecImagepullsecretsArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecImagePullSecretsArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        public BackupScheduleSpecImagepullsecretsArgs()
+        public BackupScheduleSpecImagePullSecretsArgs()
         {
         }
+        public static new BackupScheduleSpecImagePullSecretsArgs Empty => new BackupScheduleSpecImagePullSecretsArgs();
     }
 }

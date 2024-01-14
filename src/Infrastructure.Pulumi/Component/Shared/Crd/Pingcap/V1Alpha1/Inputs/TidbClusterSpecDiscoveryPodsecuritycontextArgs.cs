@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecDiscoveryPodsecuritycontextArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecDiscoveryPodSecurityContextArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsGroup")]
         public Input<int>? FsGroup { get; set; }
@@ -28,10 +28,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? RunAsUser { get; set; }
 
         [Input("seLinuxOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodsecuritycontextSelinuxoptionsArgs>? SeLinuxOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodSecurityContextSeLinuxOptionsArgs>? SeLinuxOptions { get; set; }
 
         [Input("seccompProfile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodsecuritycontextSeccompprofileArgs>? SeccompProfile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodSecurityContextSeccompProfileArgs>? SeccompProfile { get; set; }
 
         [Input("supplementalGroups")]
         private InputList<int>? _supplementalGroups;
@@ -42,18 +42,19 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("sysctls")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodsecuritycontextSysctlsArgs>? _sysctls;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodsecuritycontextSysctlsArgs> Sysctls
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodSecurityContextSysctlsArgs>? _sysctls;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodSecurityContextSysctlsArgs> Sysctls
         {
-            get => _sysctls ?? (_sysctls = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodsecuritycontextSysctlsArgs>());
+            get => _sysctls ?? (_sysctls = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodSecurityContextSysctlsArgs>());
             set => _sysctls = value;
         }
 
         [Input("windowsOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodsecuritycontextWindowsoptionsArgs>? WindowsOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryPodSecurityContextWindowsOptionsArgs>? WindowsOptions { get; set; }
 
-        public TidbClusterSpecDiscoveryPodsecuritycontextArgs()
+        public TidbClusterSpecDiscoveryPodSecurityContextArgs()
         {
         }
+        public static new TidbClusterSpecDiscoveryPodSecurityContextArgs Empty => new TidbClusterSpecDiscoveryPodSecurityContextArgs();
     }
 }

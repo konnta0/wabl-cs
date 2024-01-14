@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalcontainersEnvfrom
+    public sealed class DMClusterSpecWorkerAdditionalContainersEnvFrom
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersEnvfromConfigmapref ConfigMapRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersEnvFromConfigMapRef ConfigMapRef;
         public readonly string Prefix;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersEnvfromSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersEnvFromSecretRef SecretRef;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalcontainersEnvfrom(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersEnvfromConfigmapref configMapRef,
+        private DMClusterSpecWorkerAdditionalContainersEnvFrom(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersEnvFromConfigMapRef configMapRef,
 
             string prefix,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersEnvfromSecretref secretRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersEnvFromSecretRef secretRef)
         {
             ConfigMapRef = configMapRef;
             Prefix = prefix;

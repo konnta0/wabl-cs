@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashInitcontainersSecuritycontextArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashInitContainersSecurityContextArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowPrivilegeEscalation")]
         public Input<bool>? AllowPrivilegeEscalation { get; set; }
 
         [Input("capabilities")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersSecuritycontextCapabilitiesArgs>? Capabilities { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersSecurityContextCapabilitiesArgs>? Capabilities { get; set; }
 
         [Input("privileged")]
         public Input<bool>? Privileged { get; set; }
@@ -37,16 +37,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? RunAsUser { get; set; }
 
         [Input("seLinuxOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersSecuritycontextSelinuxoptionsArgs>? SeLinuxOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersSecurityContextSeLinuxOptionsArgs>? SeLinuxOptions { get; set; }
 
         [Input("seccompProfile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersSecuritycontextSeccompprofileArgs>? SeccompProfile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersSecurityContextSeccompProfileArgs>? SeccompProfile { get; set; }
 
         [Input("windowsOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitcontainersSecuritycontextWindowsoptionsArgs>? WindowsOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashInitContainersSecurityContextWindowsOptionsArgs>? WindowsOptions { get; set; }
 
-        public TidbClusterSpecTiflashInitcontainersSecuritycontextArgs()
+        public TidbClusterSpecTiflashInitContainersSecurityContextArgs()
         {
         }
+        public static new TidbClusterSpecTiflashInitContainersSecurityContextArgs Empty => new TidbClusterSpecTiflashInitContainersSecurityContextArgs();
     }
 }

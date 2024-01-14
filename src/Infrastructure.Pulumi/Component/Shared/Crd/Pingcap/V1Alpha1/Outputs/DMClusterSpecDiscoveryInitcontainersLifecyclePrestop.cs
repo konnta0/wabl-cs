@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryInitcontainersLifecyclePrestop
+    public sealed class DMClusterSpecDiscoveryInitContainersLifecyclePreStop
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePrestopExec Exec;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePrestopHttpget HttpGet;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePrestopTcpsocket TcpSocket;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePreStopExec Exec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePreStopHttpGet HttpGet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePreStopTcpSocket TcpSocket;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryInitcontainersLifecyclePrestop(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePrestopExec exec,
+        private DMClusterSpecDiscoveryInitContainersLifecyclePreStop(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePreStopExec exec,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePrestopHttpget httpGet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePreStopHttpGet httpGet,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePrestopTcpsocket tcpSocket)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePreStopTcpSocket tcpSocket)
         {
             Exec = exec;
             HttpGet = httpGet;

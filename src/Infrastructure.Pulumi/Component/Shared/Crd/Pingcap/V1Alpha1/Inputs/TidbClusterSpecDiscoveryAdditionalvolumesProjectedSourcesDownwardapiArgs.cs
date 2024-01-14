@@ -10,18 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesDownwardapiArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApiArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesDownwardapiItemsArgs>? _items;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesDownwardapiItemsArgs> Items
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApiItemsArgs>? _items;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApiItemsArgs> Items
         {
-            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesDownwardapiItemsArgs>());
+            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApiItemsArgs>());
             set => _items = value;
         }
 
-        public TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesDownwardapiArgs()
+        public TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApiArgs()
         {
         }
+        public static new TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApiArgs Empty => new TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApiArgs();
     }
 }

@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPumpInitcontainersLifecycle
+    public sealed class TidbClusterSpecPumpInitContainersLifecycle
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpInitcontainersLifecyclePoststart PostStart;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpInitcontainersLifecyclePrestop PreStop;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpInitContainersLifecyclePostStart PostStart;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpInitContainersLifecyclePreStop PreStop;
 
         [OutputConstructor]
-        private TidbClusterSpecPumpInitcontainersLifecycle(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpInitcontainersLifecyclePoststart postStart,
+        private TidbClusterSpecPumpInitContainersLifecycle(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpInitContainersLifecyclePostStart postStart,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpInitcontainersLifecyclePrestop preStop)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpInitContainersLifecyclePreStop preStop)
         {
             PostStart = postStart;
             PreStop = preStop;

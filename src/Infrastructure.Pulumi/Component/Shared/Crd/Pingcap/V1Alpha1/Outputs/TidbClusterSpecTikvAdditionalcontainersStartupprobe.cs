@@ -11,24 +11,24 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTikvAdditionalcontainersStartupprobe
+    public sealed class TidbClusterSpecTikvAdditionalContainersStartupProbe
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersStartupprobeExec Exec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersStartupProbeExec Exec;
         public readonly int FailureThreshold;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersStartupprobeHttpget HttpGet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersStartupProbeHttpGet HttpGet;
         public readonly int InitialDelaySeconds;
         public readonly int PeriodSeconds;
         public readonly int SuccessThreshold;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersStartupprobeTcpsocket TcpSocket;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersStartupProbeTcpSocket TcpSocket;
         public readonly int TimeoutSeconds;
 
         [OutputConstructor]
-        private TidbClusterSpecTikvAdditionalcontainersStartupprobe(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersStartupprobeExec exec,
+        private TidbClusterSpecTikvAdditionalContainersStartupProbe(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersStartupProbeExec exec,
 
             int failureThreshold,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersStartupprobeHttpget httpGet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersStartupProbeHttpGet httpGet,
 
             int initialDelaySeconds,
 
@@ -36,7 +36,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int successThreshold,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersStartupprobeTcpsocket tcpSocket,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersStartupProbeTcpSocket tcpSocket,
 
             int timeoutSeconds)
         {

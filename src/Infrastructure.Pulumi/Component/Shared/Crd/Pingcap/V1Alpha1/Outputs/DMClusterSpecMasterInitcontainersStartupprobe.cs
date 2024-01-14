@@ -11,24 +11,24 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterInitcontainersStartupprobe
+    public sealed class DMClusterSpecMasterInitContainersStartupProbe
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersStartupprobeExec Exec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersStartupProbeExec Exec;
         public readonly int FailureThreshold;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersStartupprobeHttpget HttpGet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersStartupProbeHttpGet HttpGet;
         public readonly int InitialDelaySeconds;
         public readonly int PeriodSeconds;
         public readonly int SuccessThreshold;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersStartupprobeTcpsocket TcpSocket;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersStartupProbeTcpSocket TcpSocket;
         public readonly int TimeoutSeconds;
 
         [OutputConstructor]
-        private DMClusterSpecMasterInitcontainersStartupprobe(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersStartupprobeExec exec,
+        private DMClusterSpecMasterInitContainersStartupProbe(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersStartupProbeExec exec,
 
             int failureThreshold,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersStartupprobeHttpget httpGet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersStartupProbeHttpGet httpGet,
 
             int initialDelaySeconds,
 
@@ -36,7 +36,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int successThreshold,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersStartupprobeTcpsocket tcpSocket,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersStartupProbeTcpSocket tcpSocket,
 
             int timeoutSeconds)
         {

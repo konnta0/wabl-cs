@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringInitcontainersSecuritycontextArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringInitContainersSecurityContextArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowPrivilegeEscalation")]
         public Input<bool>? AllowPrivilegeEscalation { get; set; }
 
         [Input("capabilities")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersSecuritycontextCapabilitiesArgs>? Capabilities { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersSecurityContextCapabilitiesArgs>? Capabilities { get; set; }
 
         [Input("privileged")]
         public Input<bool>? Privileged { get; set; }
@@ -37,16 +37,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? RunAsUser { get; set; }
 
         [Input("seLinuxOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersSecuritycontextSelinuxoptionsArgs>? SeLinuxOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersSecurityContextSeLinuxOptionsArgs>? SeLinuxOptions { get; set; }
 
         [Input("seccompProfile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersSecuritycontextSeccompprofileArgs>? SeccompProfile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersSecurityContextSeccompProfileArgs>? SeccompProfile { get; set; }
 
         [Input("windowsOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringInitcontainersSecuritycontextWindowsoptionsArgs>? WindowsOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringInitContainersSecurityContextWindowsOptionsArgs>? WindowsOptions { get; set; }
 
-        public TidbNGMonitoringSpecNgmonitoringInitcontainersSecuritycontextArgs()
+        public TidbNGMonitoringSpecNgMonitoringInitContainersSecurityContextArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringInitContainersSecurityContextArgs Empty => new TidbNGMonitoringSpecNgMonitoringInitContainersSecurityContextArgs();
     }
 }

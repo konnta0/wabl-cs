@@ -10,8 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupStatusArgs : Pulumi.ResourceArgs
+    public class BackupStatusArgs : global::Pulumi.ResourceArgs
     {
+        [Input("backoffRetryStatus")]
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupStatusBackoffRetryStatusArgs>? _backoffRetryStatus;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupStatusBackoffRetryStatusArgs> BackoffRetryStatus
+        {
+            get => _backoffRetryStatus ?? (_backoffRetryStatus = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupStatusBackoffRetryStatusArgs>());
+            set => _backoffRetryStatus = value;
+        }
+
         [Input("backupPath")]
         public Input<string>? BackupPath { get; set; }
 
@@ -32,8 +40,30 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _conditions = value;
         }
 
+        [Input("logCheckpointTs")]
+        public Input<string>? LogCheckpointTs { get; set; }
+
+        [Input("logSubCommandStatuses")]
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupStatusLogSubCommandStatusesArgs>? _logSubCommandStatuses;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupStatusLogSubCommandStatusesArgs> LogSubCommandStatuses
+        {
+            get => _logSubCommandStatuses ?? (_logSubCommandStatuses = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupStatusLogSubCommandStatusesArgs>());
+            set => _logSubCommandStatuses = value;
+        }
+
+        [Input("logSuccessTruncateUntil")]
+        public Input<string>? LogSuccessTruncateUntil { get; set; }
+
         [Input("phase")]
         public Input<string>? Phase { get; set; }
+
+        [Input("progresses")]
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupStatusProgressesArgs>? _progresses;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupStatusProgressesArgs> Progresses
+        {
+            get => _progresses ?? (_progresses = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupStatusProgressesArgs>());
+            set => _progresses = value;
+        }
 
         [Input("timeCompleted")]
         public Input<string>? TimeCompleted { get; set; }
@@ -44,5 +74,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupStatusArgs()
         {
         }
+        public static new BackupStatusArgs Empty => new BackupStatusArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterPodsecuritycontextSeccompprofileArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterPodSecurityContextSeccompProfileArgs : global::Pulumi.ResourceArgs
     {
         [Input("localhostProfile")]
         public Input<string>? LocalhostProfile { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
-        public DMClusterSpecMasterPodsecuritycontextSeccompprofileArgs()
+        public DMClusterSpecMasterPodSecurityContextSeccompProfileArgs()
         {
         }
+        public static new DMClusterSpecMasterPodSecurityContextSeccompProfileArgs Empty => new DMClusterSpecMasterPodSecurityContextSeccompProfileArgs();
     }
 }

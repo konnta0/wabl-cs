@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryInitcontainersLifecyclePoststartArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryInitContainersLifecyclePostStartArgs : global::Pulumi.ResourceArgs
     {
         [Input("exec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePoststartExecArgs>? Exec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePostStartExecArgs>? Exec { get; set; }
 
         [Input("httpGet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePoststartHttpgetArgs>? HttpGet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePostStartHttpGetArgs>? HttpGet { get; set; }
 
         [Input("tcpSocket")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersLifecyclePoststartTcpsocketArgs>? TcpSocket { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersLifecyclePostStartTcpSocketArgs>? TcpSocket { get; set; }
 
-        public DMClusterSpecDiscoveryInitcontainersLifecyclePoststartArgs()
+        public DMClusterSpecDiscoveryInitContainersLifecyclePostStartArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryInitContainersLifecyclePostStartArgs Empty => new DMClusterSpecDiscoveryInitContainersLifecyclePostStartArgs();
     }
 }

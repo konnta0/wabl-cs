@@ -10,29 +10,29 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalContainers")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalcontainersArgs>? _additionalContainers;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalcontainersArgs> AdditionalContainers
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalContainersArgs>? _additionalContainers;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalContainersArgs> AdditionalContainers
         {
-            get => _additionalContainers ?? (_additionalContainers = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalcontainersArgs>());
+            get => _additionalContainers ?? (_additionalContainers = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalContainersArgs>());
             set => _additionalContainers = value;
         }
 
         [Input("additionalVolumeMounts")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumemountsArgs>? _additionalVolumeMounts;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumemountsArgs> AdditionalVolumeMounts
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumeMountsArgs>? _additionalVolumeMounts;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumeMountsArgs> AdditionalVolumeMounts
         {
-            get => _additionalVolumeMounts ?? (_additionalVolumeMounts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumemountsArgs>());
+            get => _additionalVolumeMounts ?? (_additionalVolumeMounts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumeMountsArgs>());
             set => _additionalVolumeMounts = value;
         }
 
         [Input("additionalVolumes")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesArgs>? _additionalVolumes;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesArgs> AdditionalVolumes
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesArgs>? _additionalVolumes;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesArgs> AdditionalVolumes
         {
-            get => _additionalVolumes ?? (_additionalVolumes = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesArgs>());
+            get => _additionalVolumes ?? (_additionalVolumes = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesArgs>());
             set => _additionalVolumes = value;
         }
 
@@ -65,7 +65,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? DataSubDir { get; set; }
 
         [Input("dnsConfig")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsconfigArgs>? DnsConfig { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsConfigArgs>? DnsConfig { get; set; }
 
         [Input("dnsPolicy")]
         public Input<string>? DnsPolicy { get; set; }
@@ -79,10 +79,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("envFrom")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvfromArgs>? _envFrom;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvfromArgs> EnvFrom
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvFromArgs>? _envFrom;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvFromArgs> EnvFrom
         {
-            get => _envFrom ?? (_envFrom = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvfromArgs>());
+            get => _envFrom ?? (_envFrom = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterEnvFromArgs>());
             set => _envFrom = value;
         }
 
@@ -96,18 +96,18 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? ImagePullPolicy { get; set; }
 
         [Input("imagePullSecrets")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterImagepullsecretsArgs>? _imagePullSecrets;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterImagepullsecretsArgs> ImagePullSecrets
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterImagePullSecretsArgs>? _imagePullSecrets;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterImagePullSecretsArgs> ImagePullSecrets
         {
-            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterImagepullsecretsArgs>());
+            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterImagePullSecretsArgs>());
             set => _imagePullSecrets = value;
         }
 
         [Input("initContainers")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersArgs>? _initContainers;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersArgs> InitContainers
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersArgs>? _initContainers;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersArgs> InitContainers
         {
-            get => _initContainers ?? (_initContainers = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitcontainersArgs>());
+            get => _initContainers ?? (_initContainers = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterInitContainersArgs>());
             set => _initContainers = value;
         }
 
@@ -142,10 +142,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? PodManagementPolicy { get; set; }
 
         [Input("podSecurityContext")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterPodsecuritycontextArgs>? PodSecurityContext { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterPodSecurityContextArgs>? PodSecurityContext { get; set; }
 
         [Input("priorityClassName")]
         public Input<string>? PriorityClassName { get; set; }
+
+        [Input("readinessProbe")]
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterReadinessProbeArgs>? ReadinessProbe { get; set; }
 
         [Input("replicas", required: true)]
         public Input<int> Replicas { get; set; } = null!;
@@ -164,6 +167,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("service")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterServiceArgs>? Service { get; set; }
 
+        [Input("startUpScriptVersion")]
+        public Input<string>? StartUpScriptVersion { get; set; }
+
         [Input("statefulSetUpdateStrategy")]
         public Input<string>? StatefulSetUpdateStrategy { get; set; }
 
@@ -174,7 +180,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? StorageSize { get; set; }
 
         [Input("suspendAction")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterSuspendactionArgs>? SuspendAction { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterSuspendActionArgs>? SuspendAction { get; set; }
 
         [Input("terminationGracePeriodSeconds")]
         public Input<int>? TerminationGracePeriodSeconds { get; set; }
@@ -188,10 +194,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("topologySpreadConstraints")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterTopologyspreadconstraintsArgs>? _topologySpreadConstraints;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterTopologyspreadconstraintsArgs> TopologySpreadConstraints
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterTopologySpreadConstraintsArgs>? _topologySpreadConstraints;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterTopologySpreadConstraintsArgs> TopologySpreadConstraints
         {
-            get => _topologySpreadConstraints ?? (_topologySpreadConstraints = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterTopologyspreadconstraintsArgs>());
+            get => _topologySpreadConstraints ?? (_topologySpreadConstraints = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterTopologySpreadConstraintsArgs>());
             set => _topologySpreadConstraints = value;
         }
 
@@ -202,5 +208,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         {
             BaseImage = "pingcap/dm";
         }
+        public static new DMClusterSpecMasterArgs Empty => new DMClusterSpecMasterArgs();
     }
 }

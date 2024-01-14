@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashStorageclaims
+    public sealed class TidbClusterSpecTiflashStorageClaims
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashStorageclaimsResources Resources;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashStorageClaimsResources Resources;
         public readonly string StorageClassName;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashStorageclaims(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashStorageclaimsResources resources,
+        private TidbClusterSpecTiflashStorageClaims(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashStorageClaimsResources resources,
 
             string storageClassName)
         {

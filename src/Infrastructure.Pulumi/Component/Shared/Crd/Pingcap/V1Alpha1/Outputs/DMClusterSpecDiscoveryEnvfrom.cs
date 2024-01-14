@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryEnvfrom
+    public sealed class DMClusterSpecDiscoveryEnvFrom
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvfromConfigmapref ConfigMapRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvFromConfigMapRef ConfigMapRef;
         public readonly string Prefix;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvfromSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvFromSecretRef SecretRef;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryEnvfrom(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvfromConfigmapref configMapRef,
+        private DMClusterSpecDiscoveryEnvFrom(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvFromConfigMapRef configMapRef,
 
             string prefix,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvfromSecretref secretRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvFromSecretRef secretRef)
         {
             ConfigMapRef = configMapRef;
             Prefix = prefix;

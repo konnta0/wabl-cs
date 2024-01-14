@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecThanosArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecThanosArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalVolumeMounts")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalvolumemountsArgs>? _additionalVolumeMounts;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalvolumemountsArgs> AdditionalVolumeMounts
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalVolumeMountsArgs>? _additionalVolumeMounts;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalVolumeMountsArgs> AdditionalVolumeMounts
         {
-            get => _additionalVolumeMounts ?? (_additionalVolumeMounts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalvolumemountsArgs>());
+            get => _additionalVolumeMounts ?? (_additionalVolumeMounts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalVolumeMountsArgs>());
             set => _additionalVolumeMounts = value;
         }
 
@@ -24,7 +24,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? BaseImage { get; set; }
 
         [Input("grpcServerTlsConfig")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigArgs>? GrpcServerTlsConfig { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigArgs>? GrpcServerTlsConfig { get; set; }
 
         [Input("imagePullPolicy")]
         public Input<string>? ImagePullPolicy { get; set; }
@@ -50,7 +50,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? MinTime { get; set; }
 
         [Input("objectStorageConfig")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosObjectstorageconfigArgs>? ObjectStorageConfig { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosObjectStorageConfigArgs>? ObjectStorageConfig { get; set; }
 
         [Input("objectStorageConfigFile")]
         public Input<string>? ObjectStorageConfigFile { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? RoutePrefix { get; set; }
 
         [Input("tracingConfig")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosTracingconfigArgs>? TracingConfig { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosTracingConfigArgs>? TracingConfig { get; set; }
 
         [Input("tracingConfigFile")]
         public Input<string>? TracingConfigFile { get; set; }
@@ -78,5 +78,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbMonitorSpecThanosArgs()
         {
         }
+        public static new TidbMonitorSpecThanosArgs Empty => new TidbMonitorSpecThanosArgs();
     }
 }

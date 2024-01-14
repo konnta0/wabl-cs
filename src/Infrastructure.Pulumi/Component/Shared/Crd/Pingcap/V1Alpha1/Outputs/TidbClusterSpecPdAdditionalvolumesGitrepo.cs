@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdAdditionalvolumesGitrepo
+    public sealed class TidbClusterSpecPdAdditionalVolumesGitRepo
     {
         public readonly string Directory;
         public readonly string Repository;
         public readonly string Revision;
 
         [OutputConstructor]
-        private TidbClusterSpecPdAdditionalvolumesGitrepo(
+        private TidbClusterSpecPdAdditionalVolumesGitRepo(
             string directory,
 
             string repository,

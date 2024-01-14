@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterAdditionalcontainersReadinessprobeHttpgetArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterAdditionalContainersReadinessProbeHttpGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         [Input("httpHeaders")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalcontainersReadinessprobeHttpgetHttpheadersArgs>? _httpHeaders;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalcontainersReadinessprobeHttpgetHttpheadersArgs> HttpHeaders
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalContainersReadinessProbeHttpGetHttpHeadersArgs>? _httpHeaders;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalContainersReadinessProbeHttpGetHttpHeadersArgs> HttpHeaders
         {
-            get => _httpHeaders ?? (_httpHeaders = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalcontainersReadinessprobeHttpgetHttpheadersArgs>());
+            get => _httpHeaders ?? (_httpHeaders = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalContainersReadinessProbeHttpGetHttpHeadersArgs>());
             set => _httpHeaders = value;
         }
 
@@ -32,8 +32,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 
-        public DMClusterSpecMasterAdditionalcontainersReadinessprobeHttpgetArgs()
+        public DMClusterSpecMasterAdditionalContainersReadinessProbeHttpGetArgs()
         {
         }
+        public static new DMClusterSpecMasterAdditionalContainersReadinessProbeHttpGetArgs Empty => new DMClusterSpecMasterAdditionalContainersReadinessProbeHttpGetArgs();
     }
 }

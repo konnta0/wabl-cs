@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionLabelselector
+    public sealed class TidbNGMonitoringSpecNgMonitoringAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionLabelselectorMatchexpressions> MatchExpressions;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressions> MatchExpressions;
         public readonly ImmutableDictionary<string, string> MatchLabels;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionLabelselector(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionLabelselectorMatchexpressions> matchExpressions,
+        private TidbNGMonitoringSpecNgMonitoringAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector(
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressions> matchExpressions,
 
             ImmutableDictionary<string, string> matchLabels)
         {

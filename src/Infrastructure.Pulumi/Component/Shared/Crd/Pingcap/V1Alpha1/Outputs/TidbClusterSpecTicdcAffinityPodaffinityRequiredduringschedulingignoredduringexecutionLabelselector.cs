@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTicdcAffinityPodaffinityRequiredduringschedulingignoredduringexecutionLabelselector
+    public sealed class TidbClusterSpecTicdcAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAffinityPodaffinityRequiredduringschedulingignoredduringexecutionLabelselectorMatchexpressions> MatchExpressions;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressions> MatchExpressions;
         public readonly ImmutableDictionary<string, string> MatchLabels;
 
         [OutputConstructor]
-        private TidbClusterSpecTicdcAffinityPodaffinityRequiredduringschedulingignoredduringexecutionLabelselector(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAffinityPodaffinityRequiredduringschedulingignoredduringexecutionLabelselectorMatchexpressions> matchExpressions,
+        private TidbClusterSpecTicdcAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector(
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressions> matchExpressions,
 
             ImmutableDictionary<string, string> matchLabels)
         {

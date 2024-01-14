@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbInitcontainersLivenessprobeHttpgetArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbInitContainersLivenessProbeHttpGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         [Input("httpHeaders")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitcontainersLivenessprobeHttpgetHttpheadersArgs>? _httpHeaders;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitcontainersLivenessprobeHttpgetHttpheadersArgs> HttpHeaders
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitContainersLivenessProbeHttpGetHttpHeadersArgs>? _httpHeaders;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitContainersLivenessProbeHttpGetHttpHeadersArgs> HttpHeaders
         {
-            get => _httpHeaders ?? (_httpHeaders = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitcontainersLivenessprobeHttpgetHttpheadersArgs>());
+            get => _httpHeaders ?? (_httpHeaders = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitContainersLivenessProbeHttpGetHttpHeadersArgs>());
             set => _httpHeaders = value;
         }
 
@@ -32,8 +32,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 
-        public TidbClusterSpecTidbInitcontainersLivenessprobeHttpgetArgs()
+        public TidbClusterSpecTidbInitContainersLivenessProbeHttpGetArgs()
         {
         }
+        public static new TidbClusterSpecTidbInitContainersLivenessProbeHttpGetArgs Empty => new TidbClusterSpecTidbInitContainersLivenessProbeHttpGetArgs();
     }
 }

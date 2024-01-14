@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateLocalVolumeCinderSecretref
+    public sealed class BackupScheduleSpecBackupTemplateLocalVolumeCinderSecretRef
     {
         public readonly string Name;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateLocalVolumeCinderSecretref(string name)
+        private BackupScheduleSpecBackupTemplateLocalVolumeCinderSecretRef(string name)
         {
             Name = name;
         }

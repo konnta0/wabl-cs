@@ -13,33 +13,34 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class TidbClusterSpecPd
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalcontainers> AdditionalContainers;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumemounts> AdditionalVolumeMounts;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumes> AdditionalVolumes;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalContainers> AdditionalContainers;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumeMounts> AdditionalVolumeMounts;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumes> AdditionalVolumes;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAffinity Affinity;
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string BaseImage;
         public readonly ImmutableDictionary<string, object> Config;
         public readonly string ConfigUpdateStrategy;
         public readonly string DataSubDir;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdDnsconfig DnsConfig;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdDnsConfig DnsConfig;
         public readonly string DnsPolicy;
         public readonly bool EnableDashboardInternalProxy;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdEnv> Env;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdEnvfrom> EnvFrom;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdEnvFrom> EnvFrom;
         public readonly bool HostNetwork;
         public readonly string Image;
         public readonly string ImagePullPolicy;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdImagepullsecrets> ImagePullSecrets;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitcontainers> InitContainers;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdImagePullSecrets> ImagePullSecrets;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitContainers> InitContainers;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly ImmutableDictionary<string, Union<int, string>> Limits;
         public readonly int MaxFailoverCount;
         public readonly bool MountClusterClientSecret;
         public readonly ImmutableDictionary<string, string> NodeSelector;
         public readonly string PodManagementPolicy;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdPodsecuritycontext PodSecurityContext;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdPodSecurityContext PodSecurityContext;
         public readonly string PriorityClassName;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdReadinessProbe ReadinessProbe;
         public readonly int Replicas;
         public readonly ImmutableDictionary<string, Union<int, string>> Requests;
         public readonly string SchedulerName;
@@ -48,21 +49,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string StartUpScriptVersion;
         public readonly string StatefulSetUpdateStrategy;
         public readonly string StorageClassName;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdStoragevolumes> StorageVolumes;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdSuspendaction SuspendAction;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdStorageVolumes> StorageVolumes;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdSuspendAction SuspendAction;
         public readonly int TerminationGracePeriodSeconds;
         public readonly string TlsClientSecretName;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdTolerations> Tolerations;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdTopologyspreadconstraints> TopologySpreadConstraints;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdTopologySpreadConstraints> TopologySpreadConstraints;
         public readonly string Version;
 
         [OutputConstructor]
         private TidbClusterSpecPd(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalcontainers> additionalContainers,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalContainers> additionalContainers,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumemounts> additionalVolumeMounts,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumeMounts> additionalVolumeMounts,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumes> additionalVolumes,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumes> additionalVolumes,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAffinity affinity,
 
@@ -76,7 +77,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string dataSubDir,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdDnsconfig dnsConfig,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdDnsConfig dnsConfig,
 
             string dnsPolicy,
 
@@ -84,7 +85,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdEnv> env,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdEnvfrom> envFrom,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdEnvFrom> envFrom,
 
             bool hostNetwork,
 
@@ -92,9 +93,9 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string imagePullPolicy,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdImagepullsecrets> imagePullSecrets,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdImagePullSecrets> imagePullSecrets,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitcontainers> initContainers,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdInitContainers> initContainers,
 
             ImmutableDictionary<string, string> labels,
 
@@ -108,9 +109,11 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string podManagementPolicy,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdPodsecuritycontext podSecurityContext,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdPodSecurityContext podSecurityContext,
 
             string priorityClassName,
+
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdReadinessProbe readinessProbe,
 
             int replicas,
 
@@ -128,9 +131,9 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string storageClassName,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdStoragevolumes> storageVolumes,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdStorageVolumes> storageVolumes,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdSuspendaction suspendAction,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdSuspendAction suspendAction,
 
             int terminationGracePeriodSeconds,
 
@@ -138,7 +141,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdTolerations> tolerations,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdTopologyspreadconstraints> topologySpreadConstraints,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdTopologySpreadConstraints> topologySpreadConstraints,
 
             string version)
         {
@@ -169,6 +172,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             PodManagementPolicy = podManagementPolicy;
             PodSecurityContext = podSecurityContext;
             PriorityClassName = priorityClassName;
+            ReadinessProbe = readinessProbe;
             Replicas = replicas;
             Requests = requests;
             SchedulerName = schedulerName;

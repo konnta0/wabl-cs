@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecPodsecuritycontextArgs : Pulumi.ResourceArgs
+    public class RestoreSpecPodSecurityContextArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsGroup")]
         public Input<int>? FsGroup { get; set; }
@@ -28,10 +28,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? RunAsUser { get; set; }
 
         [Input("seLinuxOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodsecuritycontextSelinuxoptionsArgs>? SeLinuxOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodSecurityContextSeLinuxOptionsArgs>? SeLinuxOptions { get; set; }
 
         [Input("seccompProfile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodsecuritycontextSeccompprofileArgs>? SeccompProfile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodSecurityContextSeccompProfileArgs>? SeccompProfile { get; set; }
 
         [Input("supplementalGroups")]
         private InputList<int>? _supplementalGroups;
@@ -42,18 +42,19 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("sysctls")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodsecuritycontextSysctlsArgs>? _sysctls;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodsecuritycontextSysctlsArgs> Sysctls
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodSecurityContextSysctlsArgs>? _sysctls;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodSecurityContextSysctlsArgs> Sysctls
         {
-            get => _sysctls ?? (_sysctls = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodsecuritycontextSysctlsArgs>());
+            get => _sysctls ?? (_sysctls = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodSecurityContextSysctlsArgs>());
             set => _sysctls = value;
         }
 
         [Input("windowsOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodsecuritycontextWindowsoptionsArgs>? WindowsOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodSecurityContextWindowsOptionsArgs>? WindowsOptions { get; set; }
 
-        public RestoreSpecPodsecuritycontextArgs()
+        public RestoreSpecPodSecurityContextArgs()
         {
         }
+        public static new RestoreSpecPodSecurityContextArgs Empty => new RestoreSpecPodSecurityContextArgs();
     }
 }

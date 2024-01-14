@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs : global::Pulumi.ResourceArgs
     {
         [Input("labelSelector")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionLabelselectorArgs>? LabelSelector { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs>? LabelSelector { get; set; }
 
         [Input("namespaces")]
         private InputList<string>? _namespaces;
@@ -26,8 +26,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("topologyKey", required: true)]
         public Input<string> TopologyKey { get; set; } = null!;
 
-        public DMClusterSpecDiscoveryAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionArgs()
+        public DMClusterSpecDiscoveryAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs Empty => new DMClusterSpecDiscoveryAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs();
     }
 }

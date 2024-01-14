@@ -11,15 +11,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAffinityPodantiaffinityRequiredduringschedulingignoredduringexecution
+    public sealed class DMClusterSpecDiscoveryAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionLabelselector LabelSelector;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector LabelSelector;
         public readonly ImmutableArray<string> Namespaces;
         public readonly string TopologyKey;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAffinityPodantiaffinityRequiredduringschedulingignoredduringexecution(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionLabelselector labelSelector,
+        private DMClusterSpecDiscoveryAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecution(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelector labelSelector,
 
             ImmutableArray<string> namespaces,
 

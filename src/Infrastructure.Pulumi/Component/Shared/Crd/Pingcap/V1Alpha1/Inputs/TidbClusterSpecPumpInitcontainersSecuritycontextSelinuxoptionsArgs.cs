@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPumpInitcontainersSecuritycontextSelinuxoptionsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPumpInitContainersSecurityContextSeLinuxOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("level")]
         public Input<string>? Level { get; set; }
@@ -24,8 +24,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("user")]
         public Input<string>? User { get; set; }
 
-        public TidbClusterSpecPumpInitcontainersSecuritycontextSelinuxoptionsArgs()
+        public TidbClusterSpecPumpInitContainersSecurityContextSeLinuxOptionsArgs()
         {
         }
+        public static new TidbClusterSpecPumpInitContainersSecurityContextSeLinuxOptionsArgs Empty => new TidbClusterSpecPumpInitContainersSecurityContextSeLinuxOptionsArgs();
     }
 }

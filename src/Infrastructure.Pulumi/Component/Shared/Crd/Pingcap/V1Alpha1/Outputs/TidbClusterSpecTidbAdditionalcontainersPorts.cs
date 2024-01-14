@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbAdditionalcontainersPorts
+    public sealed class TidbClusterSpecTidbAdditionalContainersPorts
     {
         public readonly int ContainerPort;
         public readonly string HostIP;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Protocol;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbAdditionalcontainersPorts(
+        private TidbClusterSpecTidbAdditionalContainersPorts(
             int containerPort,
 
             string hostIP,

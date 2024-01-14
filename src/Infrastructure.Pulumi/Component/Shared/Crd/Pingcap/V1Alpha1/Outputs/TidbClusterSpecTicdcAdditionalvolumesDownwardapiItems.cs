@@ -11,22 +11,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTicdcAdditionalvolumesDownwardapiItems
+    public sealed class TidbClusterSpecTicdcAdditionalVolumesDownwardApiItems
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesDownwardapiItemsFieldref FieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesDownwardApiItemsFieldRef FieldRef;
         public readonly int Mode;
         public readonly string Path;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesDownwardapiItemsResourcefieldref ResourceFieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesDownwardApiItemsResourceFieldRef ResourceFieldRef;
 
         [OutputConstructor]
-        private TidbClusterSpecTicdcAdditionalvolumesDownwardapiItems(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesDownwardapiItemsFieldref fieldRef,
+        private TidbClusterSpecTicdcAdditionalVolumesDownwardApiItems(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesDownwardApiItemsFieldRef fieldRef,
 
             int mode,
 
             string path,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesDownwardapiItemsResourcefieldref resourceFieldRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesDownwardApiItemsResourceFieldRef resourceFieldRef)
         {
             FieldRef = fieldRef;
             Mode = mode;

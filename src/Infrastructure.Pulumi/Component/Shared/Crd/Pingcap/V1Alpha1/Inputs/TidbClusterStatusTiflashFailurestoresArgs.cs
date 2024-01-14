@@ -10,19 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusTiflashFailurestoresArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusTiflashFailureStoresArgs : global::Pulumi.ResourceArgs
     {
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
+        [Input("hostDown")]
+        public Input<bool>? HostDown { get; set; }
+
         [Input("podName")]
         public Input<string>? PodName { get; set; }
+
+        [Input("pvcUIDSet")]
+        private InputMap<ImmutableDictionary<string, object>>? _pvcUIDSet;
+        public InputMap<ImmutableDictionary<string, object>> PvcUIDSet
+        {
+            get => _pvcUIDSet ?? (_pvcUIDSet = new InputMap<ImmutableDictionary<string, object>>());
+            set => _pvcUIDSet = value;
+        }
+
+        [Input("storeDeleted")]
+        public Input<bool>? StoreDeleted { get; set; }
 
         [Input("storeID")]
         public Input<string>? StoreID { get; set; }
 
-        public TidbClusterStatusTiflashFailurestoresArgs()
+        public TidbClusterStatusTiflashFailureStoresArgs()
         {
         }
+        public static new TidbClusterStatusTiflashFailureStoresArgs Empty => new TidbClusterStatusTiflashFailureStoresArgs();
     }
 }

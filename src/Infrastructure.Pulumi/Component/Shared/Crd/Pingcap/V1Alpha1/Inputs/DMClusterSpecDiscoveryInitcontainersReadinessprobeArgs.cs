@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryInitcontainersReadinessprobeArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryInitContainersReadinessProbeArgs : global::Pulumi.ResourceArgs
     {
         [Input("exec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersReadinessprobeExecArgs>? Exec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersReadinessProbeExecArgs>? Exec { get; set; }
 
         [Input("failureThreshold")]
         public Input<int>? FailureThreshold { get; set; }
 
         [Input("httpGet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersReadinessprobeHttpgetArgs>? HttpGet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersReadinessProbeHttpGetArgs>? HttpGet { get; set; }
 
         [Input("initialDelaySeconds")]
         public Input<int>? InitialDelaySeconds { get; set; }
@@ -31,13 +31,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? SuccessThreshold { get; set; }
 
         [Input("tcpSocket")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersReadinessprobeTcpsocketArgs>? TcpSocket { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersReadinessProbeTcpSocketArgs>? TcpSocket { get; set; }
 
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 
-        public DMClusterSpecDiscoveryInitcontainersReadinessprobeArgs()
+        public DMClusterSpecDiscoveryInitContainersReadinessProbeArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryInitContainersReadinessProbeArgs Empty => new DMClusterSpecDiscoveryInitContainersReadinessProbeArgs();
     }
 }

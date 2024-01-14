@@ -11,25 +11,25 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpec
+    public sealed class TidbNGMonitoringSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpec
     {
         public readonly ImmutableArray<string> AccessModes;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource DataSource;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecResources Resources;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelector Selector;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource DataSource;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecResources Resources;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelector Selector;
         public readonly string StorageClassName;
         public readonly string VolumeMode;
         public readonly string VolumeName;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpec(
+        private TidbNGMonitoringSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpec(
             ImmutableArray<string> accessModes,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource dataSource,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource dataSource,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecResources resources,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecResources resources,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelector selector,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelector selector,
 
             string storageClassName,
 

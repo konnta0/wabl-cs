@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmapArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmapItemsArgs>? _items;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmapItemsArgs> Items
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapItemsArgs>? _items;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapItemsArgs> Items
         {
-            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmapItemsArgs>());
+            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapItemsArgs>());
             set => _items = value;
         }
 
@@ -26,8 +26,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("optional")]
         public Input<bool>? Optional { get; set; }
 
-        public BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmapArgs()
+        public BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapArgs Empty => new BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapArgs();
     }
 }

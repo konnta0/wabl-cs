@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterTopologyspreadconstraints
+    public sealed class DMClusterSpecMasterTopologySpreadConstraints
     {
         public readonly string TopologyKey;
 
         [OutputConstructor]
-        private DMClusterSpecMasterTopologyspreadconstraints(string topologyKey)
+        private DMClusterSpecMasterTopologySpreadConstraints(string topologyKey)
         {
             TopologyKey = topologyKey;
         }

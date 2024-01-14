@@ -13,6 +13,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class RestoreSpecBr
     {
+        public readonly bool CheckRequirements;
         public readonly bool Checksum;
         public readonly string Cluster;
         public readonly string ClusterNamespace;
@@ -29,6 +30,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
         [OutputConstructor]
         private RestoreSpecBr(
+            bool checkRequirements,
+
             bool checksum,
 
             string cluster,
@@ -55,6 +58,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string timeAgo)
         {
+            CheckRequirements = checkRequirements;
             Checksum = checksum;
             Cluster = cluster;
             ClusterNamespace = clusterNamespace;

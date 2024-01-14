@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbInitcontainersSecuritycontextArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbInitContainersSecurityContextArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowPrivilegeEscalation")]
         public Input<bool>? AllowPrivilegeEscalation { get; set; }
 
         [Input("capabilities")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitcontainersSecuritycontextCapabilitiesArgs>? Capabilities { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitContainersSecurityContextCapabilitiesArgs>? Capabilities { get; set; }
 
         [Input("privileged")]
         public Input<bool>? Privileged { get; set; }
@@ -37,16 +37,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? RunAsUser { get; set; }
 
         [Input("seLinuxOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitcontainersSecuritycontextSelinuxoptionsArgs>? SeLinuxOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitContainersSecurityContextSeLinuxOptionsArgs>? SeLinuxOptions { get; set; }
 
         [Input("seccompProfile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitcontainersSecuritycontextSeccompprofileArgs>? SeccompProfile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitContainersSecurityContextSeccompProfileArgs>? SeccompProfile { get; set; }
 
         [Input("windowsOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitcontainersSecuritycontextWindowsoptionsArgs>? WindowsOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitContainersSecurityContextWindowsOptionsArgs>? WindowsOptions { get; set; }
 
-        public TidbClusterSpecTidbInitcontainersSecuritycontextArgs()
+        public TidbClusterSpecTidbInitContainersSecurityContextArgs()
         {
         }
+        public static new TidbClusterSpecTidbInitContainersSecurityContextArgs Empty => new TidbClusterSpecTidbInitContainersSecurityContextArgs();
     }
 }

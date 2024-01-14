@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecWorkerInitcontainersLifecycleArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecWorkerInitContainersLifecycleArgs : global::Pulumi.ResourceArgs
     {
         [Input("postStart")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerInitcontainersLifecyclePoststartArgs>? PostStart { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerInitContainersLifecyclePostStartArgs>? PostStart { get; set; }
 
         [Input("preStop")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerInitcontainersLifecyclePrestopArgs>? PreStop { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerInitContainersLifecyclePreStopArgs>? PreStop { get; set; }
 
-        public DMClusterSpecWorkerInitcontainersLifecycleArgs()
+        public DMClusterSpecWorkerInitContainersLifecycleArgs()
         {
         }
+        public static new DMClusterSpecWorkerInitContainersLifecycleArgs Empty => new DMClusterSpecWorkerInitContainersLifecycleArgs();
     }
 }

@@ -11,17 +11,17 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTikvAdditionalvolumesCephfs
+    public sealed class TidbClusterSpecTikvAdditionalVolumesCephfs
     {
         public readonly ImmutableArray<string> Monitors;
         public readonly string Path;
         public readonly bool ReadOnly;
         public readonly string SecretFile;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalvolumesCephfsSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalVolumesCephfsSecretRef SecretRef;
         public readonly string User;
 
         [OutputConstructor]
-        private TidbClusterSpecTikvAdditionalvolumesCephfs(
+        private TidbClusterSpecTikvAdditionalVolumesCephfs(
             ImmutableArray<string> monitors,
 
             string path,
@@ -30,7 +30,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string secretFile,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalvolumesCephfsSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalVolumesCephfsSecretRef secretRef,
 
             string user)
         {

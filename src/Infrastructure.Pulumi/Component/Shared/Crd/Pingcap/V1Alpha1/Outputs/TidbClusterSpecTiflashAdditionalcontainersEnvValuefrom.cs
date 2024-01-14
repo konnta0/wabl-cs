@@ -11,22 +11,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashAdditionalcontainersEnvValuefrom
+    public sealed class TidbClusterSpecTiflashAdditionalContainersEnvValueFrom
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalcontainersEnvValuefromConfigmapkeyref ConfigMapKeyRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalcontainersEnvValuefromFieldref FieldRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalcontainersEnvValuefromResourcefieldref ResourceFieldRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalcontainersEnvValuefromSecretkeyref SecretKeyRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalContainersEnvValueFromConfigMapKeyRef ConfigMapKeyRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalContainersEnvValueFromFieldRef FieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalContainersEnvValueFromResourceFieldRef ResourceFieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalContainersEnvValueFromSecretKeyRef SecretKeyRef;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashAdditionalcontainersEnvValuefrom(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalcontainersEnvValuefromConfigmapkeyref configMapKeyRef,
+        private TidbClusterSpecTiflashAdditionalContainersEnvValueFrom(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalContainersEnvValueFromConfigMapKeyRef configMapKeyRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalcontainersEnvValuefromFieldref fieldRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalContainersEnvValueFromFieldRef fieldRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalcontainersEnvValuefromResourcefieldref resourceFieldRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalContainersEnvValueFromResourceFieldRef resourceFieldRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalcontainersEnvValuefromSecretkeyref secretKeyRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashAdditionalContainersEnvValueFromSecretKeyRef secretKeyRef)
         {
             ConfigMapKeyRef = configMapKeyRef;
             FieldRef = fieldRef;

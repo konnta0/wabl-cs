@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelector
+    public sealed class DMClusterSpecDiscoveryAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelector
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressions> MatchExpressions;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressions> MatchExpressions;
         public readonly ImmutableDictionary<string, string> MatchLabels;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelector(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressions> matchExpressions,
+        private DMClusterSpecDiscoveryAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelector(
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressions> matchExpressions,
 
             ImmutableDictionary<string, string> matchLabels)
         {

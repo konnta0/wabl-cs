@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterAffinityNodeaffinityPreferredduringschedulingignoredduringexecutionArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs : global::Pulumi.ResourceArgs
     {
         [Input("preference", required: true)]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAffinityNodeaffinityPreferredduringschedulingignoredduringexecutionPreferenceArgs> Preference { get; set; } = null!;
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceArgs> Preference { get; set; } = null!;
 
         [Input("weight", required: true)]
         public Input<int> Weight { get; set; } = null!;
 
-        public DMClusterSpecMasterAffinityNodeaffinityPreferredduringschedulingignoredduringexecutionArgs()
+        public DMClusterSpecMasterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs()
         {
         }
+        public static new DMClusterSpecMasterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs Empty => new DMClusterSpecMasterAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs();
     }
 }

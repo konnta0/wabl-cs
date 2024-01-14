@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringEnvfrom
+    public sealed class TidbNGMonitoringSpecNgMonitoringEnvFrom
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringEnvfromConfigmapref ConfigMapRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringEnvFromConfigMapRef ConfigMapRef;
         public readonly string Prefix;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringEnvfromSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringEnvFromSecretRef SecretRef;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringEnvfrom(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringEnvfromConfigmapref configMapRef,
+        private TidbNGMonitoringSpecNgMonitoringEnvFrom(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringEnvFromConfigMapRef configMapRef,
 
             string prefix,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringEnvfromSecretref secretRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringEnvFromSecretRef secretRef)
         {
             ConfigMapRef = configMapRef;
             Prefix = prefix;

@@ -10,22 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryEnvValuefromArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryEnvValueFromArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMapKeyRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvValuefromConfigmapkeyrefArgs>? ConfigMapKeyRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvValueFromConfigMapKeyRefArgs>? ConfigMapKeyRef { get; set; }
 
         [Input("fieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvValuefromFieldrefArgs>? FieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvValueFromFieldRefArgs>? FieldRef { get; set; }
 
         [Input("resourceFieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvValuefromResourcefieldrefArgs>? ResourceFieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvValueFromResourceFieldRefArgs>? ResourceFieldRef { get; set; }
 
         [Input("secretKeyRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvValuefromSecretkeyrefArgs>? SecretKeyRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryEnvValueFromSecretKeyRefArgs>? SecretKeyRef { get; set; }
 
-        public DMClusterSpecDiscoveryEnvValuefromArgs()
+        public DMClusterSpecDiscoveryEnvValueFromArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryEnvValueFromArgs Empty => new DMClusterSpecDiscoveryEnvValueFromArgs();
     }
 }

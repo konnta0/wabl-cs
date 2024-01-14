@@ -11,21 +11,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterAdditionalvolumesStorageos
+    public sealed class DMClusterSpecMasterAdditionalVolumesStorageos
     {
         public readonly string FsType;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesStorageosSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesStorageosSecretRef SecretRef;
         public readonly string VolumeName;
         public readonly string VolumeNamespace;
 
         [OutputConstructor]
-        private DMClusterSpecMasterAdditionalvolumesStorageos(
+        private DMClusterSpecMasterAdditionalVolumesStorageos(
             string fsType,
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesStorageosSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesStorageosSecretRef secretRef,
 
             string volumeName,
 

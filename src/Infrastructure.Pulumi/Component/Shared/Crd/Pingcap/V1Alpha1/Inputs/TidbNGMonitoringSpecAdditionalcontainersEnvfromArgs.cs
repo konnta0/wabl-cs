@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecAdditionalcontainersEnvfromArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecAdditionalContainersEnvFromArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMapRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalcontainersEnvfromConfigmaprefArgs>? ConfigMapRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalContainersEnvFromConfigMapRefArgs>? ConfigMapRef { get; set; }
 
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalcontainersEnvfromSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalContainersEnvFromSecretRefArgs>? SecretRef { get; set; }
 
-        public TidbNGMonitoringSpecAdditionalcontainersEnvfromArgs()
+        public TidbNGMonitoringSpecAdditionalContainersEnvFromArgs()
         {
         }
+        public static new TidbNGMonitoringSpecAdditionalContainersEnvFromArgs Empty => new TidbNGMonitoringSpecAdditionalContainersEnvFromArgs();
     }
 }

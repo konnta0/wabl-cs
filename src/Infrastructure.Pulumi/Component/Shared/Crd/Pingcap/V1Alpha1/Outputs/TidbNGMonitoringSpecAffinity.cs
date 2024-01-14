@@ -13,17 +13,17 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class TidbNGMonitoringSpecAffinity
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityNodeaffinity NodeAffinity;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodaffinity PodAffinity;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodantiaffinity PodAntiAffinity;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityNodeAffinity NodeAffinity;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodAffinity PodAffinity;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodAntiAffinity PodAntiAffinity;
 
         [OutputConstructor]
         private TidbNGMonitoringSpecAffinity(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityNodeaffinity nodeAffinity,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityNodeAffinity nodeAffinity,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodaffinity podAffinity,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodAffinity podAffinity,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodantiaffinity podAntiAffinity)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodAntiAffinity podAntiAffinity)
         {
             NodeAffinity = nodeAffinity;
             PodAffinity = podAffinity;

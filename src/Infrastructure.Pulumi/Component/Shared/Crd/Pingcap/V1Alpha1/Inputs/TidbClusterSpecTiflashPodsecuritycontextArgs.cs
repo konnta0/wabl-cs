@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashPodsecuritycontextArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashPodSecurityContextArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsGroup")]
         public Input<int>? FsGroup { get; set; }
@@ -28,10 +28,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? RunAsUser { get; set; }
 
         [Input("seLinuxOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSelinuxoptionsArgs>? SeLinuxOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSeLinuxOptionsArgs>? SeLinuxOptions { get; set; }
 
         [Input("seccompProfile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSeccompprofileArgs>? SeccompProfile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSeccompProfileArgs>? SeccompProfile { get; set; }
 
         [Input("supplementalGroups")]
         private InputList<int>? _supplementalGroups;
@@ -42,18 +42,19 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("sysctls")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSysctlsArgs>? _sysctls;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSysctlsArgs> Sysctls
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSysctlsArgs>? _sysctls;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSysctlsArgs> Sysctls
         {
-            get => _sysctls ?? (_sysctls = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSysctlsArgs>());
+            get => _sysctls ?? (_sysctls = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSysctlsArgs>());
             set => _sysctls = value;
         }
 
         [Input("windowsOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextWindowsoptionsArgs>? WindowsOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextWindowsOptionsArgs>? WindowsOptions { get; set; }
 
-        public TidbClusterSpecTiflashPodsecuritycontextArgs()
+        public TidbClusterSpecTiflashPodSecurityContextArgs()
         {
         }
+        public static new TidbClusterSpecTiflashPodSecurityContextArgs Empty => new TidbClusterSpecTiflashPodSecurityContextArgs();
     }
 }

@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryAdditionalvolumesProjectedSourcesSecretArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesSecretArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesProjectedSourcesSecretItemsArgs>? _items;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesProjectedSourcesSecretItemsArgs> Items
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesSecretItemsArgs>? _items;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesSecretItemsArgs> Items
         {
-            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesProjectedSourcesSecretItemsArgs>());
+            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesSecretItemsArgs>());
             set => _items = value;
         }
 
@@ -26,8 +26,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("optional")]
         public Input<bool>? Optional { get; set; }
 
-        public DMClusterSpecDiscoveryAdditionalvolumesProjectedSourcesSecretArgs()
+        public DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesSecretArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesSecretArgs Empty => new DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesSecretArgs();
     }
 }

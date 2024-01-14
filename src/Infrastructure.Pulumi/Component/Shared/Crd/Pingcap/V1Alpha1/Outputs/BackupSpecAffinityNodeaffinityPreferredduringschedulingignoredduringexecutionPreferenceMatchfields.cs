@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecAffinityNodeaffinityPreferredduringschedulingignoredduringexecutionPreferenceMatchfields
+    public sealed class BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchFields
     {
         public readonly string Key;
         public readonly string Operator;
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
-        private BackupSpecAffinityNodeaffinityPreferredduringschedulingignoredduringexecutionPreferenceMatchfields(
+        private BackupSpecAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreferenceMatchFields(
             string key,
 
             string @operator,

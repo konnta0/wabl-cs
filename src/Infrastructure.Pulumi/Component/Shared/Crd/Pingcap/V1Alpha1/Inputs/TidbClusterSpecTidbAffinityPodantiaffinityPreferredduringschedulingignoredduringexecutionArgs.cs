@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs : global::Pulumi.ResourceArgs
     {
         [Input("podAffinityTerm", required: true)]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionPodaffinitytermArgs> PodAffinityTerm { get; set; } = null!;
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs> PodAffinityTerm { get; set; } = null!;
 
         [Input("weight", required: true)]
         public Input<int> Weight { get; set; } = null!;
 
-        public TidbClusterSpecTidbAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionArgs()
+        public TidbClusterSpecTidbAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs()
         {
         }
+        public static new TidbClusterSpecTidbAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs Empty => new TidbClusterSpecTidbAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs();
     }
 }

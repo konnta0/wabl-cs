@@ -11,22 +11,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryInitcontainersEnvValuefrom
+    public sealed class DMClusterSpecDiscoveryInitContainersEnvValueFrom
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersEnvValuefromConfigmapkeyref ConfigMapKeyRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersEnvValuefromFieldref FieldRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersEnvValuefromResourcefieldref ResourceFieldRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersEnvValuefromSecretkeyref SecretKeyRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersEnvValueFromConfigMapKeyRef ConfigMapKeyRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersEnvValueFromFieldRef FieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersEnvValueFromResourceFieldRef ResourceFieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersEnvValueFromSecretKeyRef SecretKeyRef;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryInitcontainersEnvValuefrom(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersEnvValuefromConfigmapkeyref configMapKeyRef,
+        private DMClusterSpecDiscoveryInitContainersEnvValueFrom(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersEnvValueFromConfigMapKeyRef configMapKeyRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersEnvValuefromFieldref fieldRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersEnvValueFromFieldRef fieldRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersEnvValuefromResourcefieldref resourceFieldRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersEnvValueFromResourceFieldRef resourceFieldRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitcontainersEnvValuefromSecretkeyref secretKeyRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryInitContainersEnvValueFromSecretKeyRef secretKeyRef)
         {
             ConfigMapKeyRef = configMapKeyRef;
             FieldRef = fieldRef;

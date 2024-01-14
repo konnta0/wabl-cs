@@ -10,22 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcEnvValuefromArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcEnvValueFromArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMapKeyRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcEnvValuefromConfigmapkeyrefArgs>? ConfigMapKeyRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcEnvValueFromConfigMapKeyRefArgs>? ConfigMapKeyRef { get; set; }
 
         [Input("fieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcEnvValuefromFieldrefArgs>? FieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcEnvValueFromFieldRefArgs>? FieldRef { get; set; }
 
         [Input("resourceFieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcEnvValuefromResourcefieldrefArgs>? ResourceFieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcEnvValueFromResourceFieldRefArgs>? ResourceFieldRef { get; set; }
 
         [Input("secretKeyRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcEnvValuefromSecretkeyrefArgs>? SecretKeyRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcEnvValueFromSecretKeyRefArgs>? SecretKeyRef { get; set; }
 
-        public TidbClusterSpecTicdcEnvValuefromArgs()
+        public TidbClusterSpecTicdcEnvValueFromArgs()
         {
         }
+        public static new TidbClusterSpecTicdcEnvValueFromArgs Empty => new TidbClusterSpecTicdcEnvValueFromArgs();
     }
 }

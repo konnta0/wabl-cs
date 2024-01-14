@@ -11,15 +11,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbAdditionalvolumesProjectedSourcesConfigmap
+    public sealed class TidbClusterSpecTidbAdditionalVolumesProjectedSourcesConfigMap
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesProjectedSourcesConfigmapItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesProjectedSourcesConfigMapItems> Items;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbAdditionalvolumesProjectedSourcesConfigmap(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesProjectedSourcesConfigmapItems> items,
+        private TidbClusterSpecTidbAdditionalVolumesProjectedSourcesConfigMap(
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesProjectedSourcesConfigMapItems> items,
 
             string name,
 

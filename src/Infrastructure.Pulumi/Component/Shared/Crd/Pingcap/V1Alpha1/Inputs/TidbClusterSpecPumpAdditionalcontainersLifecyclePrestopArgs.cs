@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPumpAdditionalcontainersLifecyclePrestopArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPumpAdditionalContainersLifecyclePreStopArgs : global::Pulumi.ResourceArgs
     {
         [Input("exec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersLifecyclePrestopExecArgs>? Exec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersLifecyclePreStopExecArgs>? Exec { get; set; }
 
         [Input("httpGet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersLifecyclePrestopHttpgetArgs>? HttpGet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersLifecyclePreStopHttpGetArgs>? HttpGet { get; set; }
 
         [Input("tcpSocket")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersLifecyclePrestopTcpsocketArgs>? TcpSocket { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersLifecyclePreStopTcpSocketArgs>? TcpSocket { get; set; }
 
-        public TidbClusterSpecPumpAdditionalcontainersLifecyclePrestopArgs()
+        public TidbClusterSpecPumpAdditionalContainersLifecyclePreStopArgs()
         {
         }
+        public static new TidbClusterSpecPumpAdditionalContainersLifecyclePreStopArgs Empty => new TidbClusterSpecPumpAdditionalContainersLifecyclePreStopArgs();
     }
 }

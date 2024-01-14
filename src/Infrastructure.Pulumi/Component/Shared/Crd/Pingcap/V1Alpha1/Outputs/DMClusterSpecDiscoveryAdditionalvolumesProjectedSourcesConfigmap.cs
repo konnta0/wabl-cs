@@ -11,15 +11,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalvolumesProjectedSourcesConfigmap
+    public sealed class DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMap
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesProjectedSourcesConfigmapItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMapItems> Items;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalvolumesProjectedSourcesConfigmap(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesProjectedSourcesConfigmapItems> items,
+        private DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMap(
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesProjectedSourcesConfigMapItems> items,
 
             string name,
 

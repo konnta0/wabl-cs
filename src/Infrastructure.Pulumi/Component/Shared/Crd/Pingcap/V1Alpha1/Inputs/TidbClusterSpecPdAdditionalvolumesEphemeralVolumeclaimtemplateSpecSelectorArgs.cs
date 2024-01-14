@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("matchExpressions")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>? _matchExpressions;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs> MatchExpressions
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>? _matchExpressions;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs> MatchExpressions
         {
-            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>());
+            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>());
             set => _matchExpressions = value;
         }
 
@@ -28,8 +28,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _matchLabels = value;
         }
 
-        public TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs()
+        public TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs()
         {
         }
+        public static new TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs Empty => new TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs();
     }
 }

@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecAffinityArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecAffinityArgs : global::Pulumi.ResourceArgs
     {
         [Input("nodeAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityNodeaffinityArgs>? NodeAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityNodeAffinityArgs>? NodeAffinity { get; set; }
 
         [Input("podAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodaffinityArgs>? PodAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodAffinityArgs>? PodAffinity { get; set; }
 
         [Input("podAntiAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodantiaffinityArgs>? PodAntiAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAffinityPodAntiAffinityArgs>? PodAntiAffinity { get; set; }
 
         public TidbNGMonitoringSpecAffinityArgs()
         {
         }
+        public static new TidbNGMonitoringSpecAffinityArgs Empty => new TidbNGMonitoringSpecAffinityArgs();
     }
 }

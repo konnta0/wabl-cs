@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesDownwardapiItemsFieldref
+    public sealed class DMClusterSpecWorkerAdditionalVolumesDownwardApiItemsFieldRef
     {
         public readonly string ApiVersion;
         public readonly string FieldPath;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesDownwardapiItemsFieldref(
+        private DMClusterSpecWorkerAdditionalVolumesDownwardApiItemsFieldRef(
             string apiVersion,
 
             string fieldPath)

@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesFlexvolume
+    public sealed class DMClusterSpecWorkerAdditionalVolumesFlexVolume
     {
         public readonly string Driver;
         public readonly string FsType;
         public readonly ImmutableDictionary<string, string> Options;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesFlexvolumeSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesFlexVolumeSecretRef SecretRef;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesFlexvolume(
+        private DMClusterSpecWorkerAdditionalVolumesFlexVolume(
             string driver,
 
             string fsType,
@@ -29,7 +29,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesFlexvolumeSecretref secretRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesFlexVolumeSecretRef secretRef)
         {
             Driver = driver;
             FsType = fsType;

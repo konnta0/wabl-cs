@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusIngressTlsArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusIngressTlsArgs : global::Pulumi.ResourceArgs
     {
         [Input("hosts")]
         private InputList<string>? _hosts;
@@ -26,5 +26,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbMonitorSpecPrometheusIngressTlsArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusIngressTlsArgs Empty => new TidbMonitorSpecPrometheusIngressTlsArgs();
     }
 }

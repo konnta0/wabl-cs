@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryInitcontainersLifecyclePrestopHttpgetHttpheaders
+    public sealed class DMClusterSpecDiscoveryInitContainersLifecyclePreStopHttpGetHttpHeaders
     {
         public readonly string Name;
         public readonly string Value;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryInitcontainersLifecyclePrestopHttpgetHttpheaders(
+        private DMClusterSpecDiscoveryInitContainersLifecyclePreStopHttpGetHttpHeaders(
             string name,
 
             string value)

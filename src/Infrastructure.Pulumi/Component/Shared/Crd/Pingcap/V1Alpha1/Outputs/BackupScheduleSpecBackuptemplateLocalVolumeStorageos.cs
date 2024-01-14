@@ -11,21 +11,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateLocalVolumeStorageos
+    public sealed class BackupScheduleSpecBackupTemplateLocalVolumeStorageos
     {
         public readonly string FsType;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeStorageosSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeStorageosSecretRef SecretRef;
         public readonly string VolumeName;
         public readonly string VolumeNamespace;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateLocalVolumeStorageos(
+        private BackupScheduleSpecBackupTemplateLocalVolumeStorageos(
             string fsType,
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeStorageosSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeStorageosSecretRef secretRef,
 
             string volumeName,
 

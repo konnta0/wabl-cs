@@ -11,17 +11,17 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecDnsconfig
+    public sealed class TidbNGMonitoringSpecDnsConfig
     {
         public readonly ImmutableArray<string> Nameservers;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecDnsconfigOptions> Options;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecDnsConfigOptions> Options;
         public readonly ImmutableArray<string> Searches;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecDnsconfig(
+        private TidbNGMonitoringSpecDnsConfig(
             ImmutableArray<string> nameservers,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecDnsconfigOptions> options,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecDnsConfigOptions> options,
 
             ImmutableArray<string> searches)
         {

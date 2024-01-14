@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerInitcontainersPorts
+    public sealed class DMClusterSpecWorkerInitContainersPorts
     {
         public readonly int ContainerPort;
         public readonly string HostIP;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Protocol;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerInitcontainersPorts(
+        private DMClusterSpecWorkerInitContainersPorts(
             int containerPort,
 
             string hostIP,

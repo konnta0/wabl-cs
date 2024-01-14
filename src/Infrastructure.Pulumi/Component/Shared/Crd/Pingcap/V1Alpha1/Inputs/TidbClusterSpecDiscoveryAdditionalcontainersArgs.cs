@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecDiscoveryAdditionalcontainersArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecDiscoveryAdditionalContainersArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -29,18 +29,18 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("env")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersEnvArgs>? _env;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersEnvArgs> Env
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersEnvArgs>? _env;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersEnvArgs> Env
         {
-            get => _env ?? (_env = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersEnvArgs>());
+            get => _env ?? (_env = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersEnvArgs>());
             set => _env = value;
         }
 
         [Input("envFrom")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersEnvfromArgs>? _envFrom;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersEnvfromArgs> EnvFrom
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersEnvFromArgs>? _envFrom;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersEnvFromArgs> EnvFrom
         {
-            get => _envFrom ?? (_envFrom = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersEnvfromArgs>());
+            get => _envFrom ?? (_envFrom = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersEnvFromArgs>());
             set => _envFrom = value;
         }
 
@@ -51,33 +51,33 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? ImagePullPolicy { get; set; }
 
         [Input("lifecycle")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersLifecycleArgs>? Lifecycle { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersLifecycleArgs>? Lifecycle { get; set; }
 
         [Input("livenessProbe")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersLivenessprobeArgs>? LivenessProbe { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersLivenessProbeArgs>? LivenessProbe { get; set; }
 
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("ports")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersPortsArgs>? _ports;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersPortsArgs> Ports
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersPortsArgs>? _ports;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersPortsArgs> Ports
         {
-            get => _ports ?? (_ports = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersPortsArgs>());
+            get => _ports ?? (_ports = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersPortsArgs>());
             set => _ports = value;
         }
 
         [Input("readinessProbe")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersReadinessprobeArgs>? ReadinessProbe { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersReadinessProbeArgs>? ReadinessProbe { get; set; }
 
         [Input("resources")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersResourcesArgs>? Resources { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersResourcesArgs>? Resources { get; set; }
 
         [Input("securityContext")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersSecuritycontextArgs>? SecurityContext { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersSecurityContextArgs>? SecurityContext { get; set; }
 
         [Input("startupProbe")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersStartupprobeArgs>? StartupProbe { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersStartupProbeArgs>? StartupProbe { get; set; }
 
         [Input("stdin")]
         public Input<bool>? Stdin { get; set; }
@@ -95,26 +95,27 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? Tty { get; set; }
 
         [Input("volumeDevices")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersVolumedevicesArgs>? _volumeDevices;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersVolumedevicesArgs> VolumeDevices
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersVolumeDevicesArgs>? _volumeDevices;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersVolumeDevicesArgs> VolumeDevices
         {
-            get => _volumeDevices ?? (_volumeDevices = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersVolumedevicesArgs>());
+            get => _volumeDevices ?? (_volumeDevices = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersVolumeDevicesArgs>());
             set => _volumeDevices = value;
         }
 
         [Input("volumeMounts")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersVolumemountsArgs>? _volumeMounts;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersVolumemountsArgs> VolumeMounts
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersVolumeMountsArgs>? _volumeMounts;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersVolumeMountsArgs> VolumeMounts
         {
-            get => _volumeMounts ?? (_volumeMounts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersVolumemountsArgs>());
+            get => _volumeMounts ?? (_volumeMounts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersVolumeMountsArgs>());
             set => _volumeMounts = value;
         }
 
         [Input("workingDir")]
         public Input<string>? WorkingDir { get; set; }
 
-        public TidbClusterSpecDiscoveryAdditionalcontainersArgs()
+        public TidbClusterSpecDiscoveryAdditionalContainersArgs()
         {
         }
+        public static new TidbClusterSpecDiscoveryAdditionalContainersArgs Empty => new TidbClusterSpecDiscoveryAdditionalContainersArgs();
     }
 }

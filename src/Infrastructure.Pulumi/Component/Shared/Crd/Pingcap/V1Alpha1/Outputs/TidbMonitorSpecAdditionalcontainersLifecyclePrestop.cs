@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecAdditionalcontainersLifecyclePrestop
+    public sealed class TidbMonitorSpecAdditionalContainersLifecyclePreStop
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePrestopExec Exec;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePrestopHttpget HttpGet;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePrestopTcpsocket TcpSocket;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePreStopExec Exec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePreStopHttpGet HttpGet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePreStopTcpSocket TcpSocket;
 
         [OutputConstructor]
-        private TidbMonitorSpecAdditionalcontainersLifecyclePrestop(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePrestopExec exec,
+        private TidbMonitorSpecAdditionalContainersLifecyclePreStop(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePreStopExec exec,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePrestopHttpget httpGet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePreStopHttpGet httpGet,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalcontainersLifecyclePrestopTcpsocket tcpSocket)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalContainersLifecyclePreStopTcpSocket tcpSocket)
         {
             Exec = exec;
             HttpGet = httpGet;

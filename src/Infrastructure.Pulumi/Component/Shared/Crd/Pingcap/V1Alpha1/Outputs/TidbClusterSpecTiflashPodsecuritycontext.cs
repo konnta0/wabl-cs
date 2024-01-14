@@ -11,21 +11,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashPodsecuritycontext
+    public sealed class TidbClusterSpecTiflashPodSecurityContext
     {
         public readonly int FsGroup;
         public readonly string FsGroupChangePolicy;
         public readonly int RunAsGroup;
         public readonly bool RunAsNonRoot;
         public readonly int RunAsUser;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSelinuxoptions SeLinuxOptions;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSeccompprofile SeccompProfile;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSeLinuxOptions SeLinuxOptions;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSeccompProfile SeccompProfile;
         public readonly ImmutableArray<int> SupplementalGroups;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSysctls> Sysctls;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextWindowsoptions WindowsOptions;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSysctls> Sysctls;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextWindowsOptions WindowsOptions;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashPodsecuritycontext(
+        private TidbClusterSpecTiflashPodSecurityContext(
             int fsGroup,
 
             string fsGroupChangePolicy,
@@ -36,15 +36,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int runAsUser,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSelinuxoptions seLinuxOptions,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSeLinuxOptions seLinuxOptions,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSeccompprofile seccompProfile,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSeccompProfile seccompProfile,
 
             ImmutableArray<int> supplementalGroups,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextSysctls> sysctls,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextSysctls> sysctls,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodsecuritycontextWindowsoptions windowsOptions)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashPodSecurityContextWindowsOptions windowsOptions)
         {
             FsGroup = fsGroup;
             FsGroupChangePolicy = fsGroupChangePolicy;

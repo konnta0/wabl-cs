@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecDiscoveryAdditionalcontainersLifecyclePoststart
+    public sealed class TidbClusterSpecDiscoveryAdditionalContainersLifecyclePostStart
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersLifecyclePoststartExec Exec;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersLifecyclePoststartHttpget HttpGet;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersLifecyclePoststartTcpsocket TcpSocket;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersLifecyclePostStartExec Exec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersLifecyclePostStartHttpGet HttpGet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersLifecyclePostStartTcpSocket TcpSocket;
 
         [OutputConstructor]
-        private TidbClusterSpecDiscoveryAdditionalcontainersLifecyclePoststart(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersLifecyclePoststartExec exec,
+        private TidbClusterSpecDiscoveryAdditionalContainersLifecyclePostStart(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersLifecyclePostStartExec exec,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersLifecyclePoststartHttpget httpGet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersLifecyclePostStartHttpGet httpGet,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalcontainersLifecyclePoststartTcpsocket tcpSocket)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalContainersLifecyclePostStartTcpSocket tcpSocket)
         {
             Exec = exec;
             HttpGet = httpGet;

@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashAdditionalvolumesGcepersistentdisk
+    public sealed class TidbClusterSpecTiflashAdditionalVolumesGcePersistentDisk
     {
         public readonly string FsType;
         public readonly int Partition;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly bool ReadOnly;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashAdditionalvolumesGcepersistentdisk(
+        private TidbClusterSpecTiflashAdditionalVolumesGcePersistentDisk(
             string fsType,
 
             int partition,

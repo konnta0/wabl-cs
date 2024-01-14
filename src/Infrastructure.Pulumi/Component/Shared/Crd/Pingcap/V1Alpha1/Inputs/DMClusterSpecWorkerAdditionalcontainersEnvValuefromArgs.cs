@@ -10,22 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecWorkerAdditionalcontainersEnvValuefromArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecWorkerAdditionalContainersEnvValueFromArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMapKeyRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersEnvValuefromConfigmapkeyrefArgs>? ConfigMapKeyRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersEnvValueFromConfigMapKeyRefArgs>? ConfigMapKeyRef { get; set; }
 
         [Input("fieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersEnvValuefromFieldrefArgs>? FieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersEnvValueFromFieldRefArgs>? FieldRef { get; set; }
 
         [Input("resourceFieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersEnvValuefromResourcefieldrefArgs>? ResourceFieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersEnvValueFromResourceFieldRefArgs>? ResourceFieldRef { get; set; }
 
         [Input("secretKeyRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalcontainersEnvValuefromSecretkeyrefArgs>? SecretKeyRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalContainersEnvValueFromSecretKeyRefArgs>? SecretKeyRef { get; set; }
 
-        public DMClusterSpecWorkerAdditionalcontainersEnvValuefromArgs()
+        public DMClusterSpecWorkerAdditionalContainersEnvValueFromArgs()
         {
         }
+        public static new DMClusterSpecWorkerAdditionalContainersEnvValueFromArgs Empty => new DMClusterSpecWorkerAdditionalContainersEnvValueFromArgs();
     }
 }

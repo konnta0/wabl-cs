@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPdAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionPodaffinitytermArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPdAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs : global::Pulumi.ResourceArgs
     {
         [Input("labelSelector")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionPodaffinitytermLabelselectorArgs>? LabelSelector { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermLabelSelectorArgs>? LabelSelector { get; set; }
 
         [Input("namespaces")]
         private InputList<string>? _namespaces;
@@ -26,8 +26,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("topologyKey", required: true)]
         public Input<string> TopologyKey { get; set; } = null!;
 
-        public TidbClusterSpecPdAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionPodaffinitytermArgs()
+        public TidbClusterSpecPdAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs()
         {
         }
+        public static new TidbClusterSpecPdAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs Empty => new TidbClusterSpecPdAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs();
     }
 }

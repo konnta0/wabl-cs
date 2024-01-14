@@ -11,15 +11,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesProjectedSourcesSecret
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesProjectedSourcesSecret
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesProjectedSourcesSecretItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesProjectedSourcesSecretItems> Items;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalvolumesProjectedSourcesSecret(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesProjectedSourcesSecretItems> items,
+        private TidbNGMonitoringSpecNgMonitoringAdditionalVolumesProjectedSourcesSecret(
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesProjectedSourcesSecretItems> items,
 
             string name,
 

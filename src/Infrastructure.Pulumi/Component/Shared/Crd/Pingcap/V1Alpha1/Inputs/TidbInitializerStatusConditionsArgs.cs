@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbInitializerStatusConditionsArgs : Pulumi.ResourceArgs
+    public class TidbInitializerStatusConditionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("lastProbeTime")]
         public Input<string>? LastProbeTime { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbInitializerStatusConditionsArgs()
         {
         }
+        public static new TidbInitializerStatusConditionsArgs Empty => new TidbInitializerStatusConditionsArgs();
     }
 }

@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTikvAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTikvAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs : global::Pulumi.ResourceArgs
     {
         [Input("labelSelector")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionLabelselectorArgs>? LabelSelector { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorArgs>? LabelSelector { get; set; }
 
         [Input("namespaces")]
         private InputList<string>? _namespaces;
@@ -26,8 +26,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("topologyKey", required: true)]
         public Input<string> TopologyKey { get; set; } = null!;
 
-        public TidbClusterSpecTikvAffinityPodantiaffinityRequiredduringschedulingignoredduringexecutionArgs()
+        public TidbClusterSpecTikvAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs()
         {
         }
+        public static new TidbClusterSpecTikvAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs Empty => new TidbClusterSpecTikvAffinityPodAntiAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs();
     }
 }

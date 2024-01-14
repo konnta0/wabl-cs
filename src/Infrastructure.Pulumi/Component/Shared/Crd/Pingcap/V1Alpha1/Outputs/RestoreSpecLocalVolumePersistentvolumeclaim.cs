@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class RestoreSpecLocalVolumePersistentvolumeclaim
+    public sealed class RestoreSpecLocalVolumePersistentVolumeClaim
     {
         public readonly string ClaimName;
         public readonly bool ReadOnly;
 
         [OutputConstructor]
-        private RestoreSpecLocalVolumePersistentvolumeclaim(
+        private RestoreSpecLocalVolumePersistentVolumeClaim(
             string claimName,
 
             bool readOnly)

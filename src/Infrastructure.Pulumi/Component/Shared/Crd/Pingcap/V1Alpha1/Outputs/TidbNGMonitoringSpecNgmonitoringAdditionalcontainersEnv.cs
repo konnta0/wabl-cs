@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalcontainersEnv
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalContainersEnv
     {
         public readonly string Name;
         public readonly string Value;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalcontainersEnvValuefrom ValueFrom;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalContainersEnvValueFrom ValueFrom;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalcontainersEnv(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalContainersEnv(
             string name,
 
             string value,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalcontainersEnvValuefrom valueFrom)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalContainersEnvValueFrom valueFrom)
         {
             Name = name;
             Value = value;

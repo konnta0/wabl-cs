@@ -11,20 +11,20 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateLocalVolumeCinder
+    public sealed class BackupScheduleSpecBackupTemplateLocalVolumeCinder
     {
         public readonly string FsType;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeCinderSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeCinderSecretRef SecretRef;
         public readonly string VolumeID;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateLocalVolumeCinder(
+        private BackupScheduleSpecBackupTemplateLocalVolumeCinder(
             string fsType,
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeCinderSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeCinderSecretRef secretRef,
 
             string volumeID)
         {

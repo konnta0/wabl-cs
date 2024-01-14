@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesScaleio
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesScaleIo
     {
         public readonly string FsType;
         public readonly string Gateway;
         public readonly string ProtectionDomain;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesScaleioSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesScaleIoSecretRef SecretRef;
         public readonly bool SslEnabled;
         public readonly string StorageMode;
         public readonly string StoragePool;
@@ -25,7 +25,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string VolumeName;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalvolumesScaleio(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalVolumesScaleIo(
             string fsType,
 
             string gateway,
@@ -34,7 +34,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesScaleioSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesScaleIoSecretRef secretRef,
 
             bool sslEnabled,
 

@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbSlowlogtailer
+    public sealed class TidbClusterSpecTidbSlowLogTailer
     {
         public readonly string Image;
         public readonly string ImagePullPolicy;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableDictionary<string, Union<int, string>> Requests;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbSlowlogtailer(
+        private TidbClusterSpecTidbSlowLogTailer(
             string image,
 
             string imagePullPolicy,

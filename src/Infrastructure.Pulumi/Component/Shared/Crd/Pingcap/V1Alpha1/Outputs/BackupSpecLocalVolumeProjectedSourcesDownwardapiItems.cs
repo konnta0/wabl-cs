@@ -11,22 +11,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecLocalVolumeProjectedSourcesDownwardapiItems
+    public sealed class BackupSpecLocalVolumeProjectedSourcesDownwardApiItems
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardapiItemsFieldref FieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsFieldRef FieldRef;
         public readonly int Mode;
         public readonly string Path;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardapiItemsResourcefieldref ResourceFieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsResourceFieldRef ResourceFieldRef;
 
         [OutputConstructor]
-        private BackupSpecLocalVolumeProjectedSourcesDownwardapiItems(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardapiItemsFieldref fieldRef,
+        private BackupSpecLocalVolumeProjectedSourcesDownwardApiItems(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsFieldRef fieldRef,
 
             int mode,
 
             string path,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardapiItemsResourcefieldref resourceFieldRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsResourceFieldRef resourceFieldRef)
         {
             FieldRef = fieldRef;
             Mode = mode;

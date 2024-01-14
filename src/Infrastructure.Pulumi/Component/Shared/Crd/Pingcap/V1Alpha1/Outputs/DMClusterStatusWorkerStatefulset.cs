@@ -11,10 +11,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterStatusWorkerStatefulset
+    public sealed class DMClusterStatusWorkerStatefulSet
     {
         public readonly int CollisionCount;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulsetConditions> Conditions;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulSetConditions> Conditions;
         public readonly int CurrentReplicas;
         public readonly string CurrentRevision;
         public readonly int ObservedGeneration;
@@ -24,10 +24,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly int UpdatedReplicas;
 
         [OutputConstructor]
-        private DMClusterStatusWorkerStatefulset(
+        private DMClusterStatusWorkerStatefulSet(
             int collisionCount,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulsetConditions> conditions,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulSetConditions> conditions,
 
             int currentReplicas,
 

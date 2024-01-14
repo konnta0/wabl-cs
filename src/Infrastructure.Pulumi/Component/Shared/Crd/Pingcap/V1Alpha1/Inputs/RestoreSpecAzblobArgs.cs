@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecAzblobArgs : Pulumi.ResourceArgs
+    public class RestoreSpecAzblobArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessTier")]
         public Input<string>? AccessTier { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public RestoreSpecAzblobArgs()
         {
         }
+        public static new RestoreSpecAzblobArgs Empty => new RestoreSpecAzblobArgs();
     }
 }

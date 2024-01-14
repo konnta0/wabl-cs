@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPumpAdditionalcontainersEnvfrom
+    public sealed class TidbClusterSpecPumpAdditionalContainersEnvFrom
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersEnvfromConfigmapref ConfigMapRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersEnvFromConfigMapRef ConfigMapRef;
         public readonly string Prefix;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersEnvfromSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersEnvFromSecretRef SecretRef;
 
         [OutputConstructor]
-        private TidbClusterSpecPumpAdditionalcontainersEnvfrom(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersEnvfromConfigmapref configMapRef,
+        private TidbClusterSpecPumpAdditionalContainersEnvFrom(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersEnvFromConfigMapRef configMapRef,
 
             string prefix,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalcontainersEnvfromSecretref secretRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalContainersEnvFromSecretRef secretRef)
         {
             ConfigMapRef = configMapRef;
             Prefix = prefix;

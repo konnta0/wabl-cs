@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTikvAdditionalcontainersSecuritycontextArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTikvAdditionalContainersSecurityContextArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowPrivilegeEscalation")]
         public Input<bool>? AllowPrivilegeEscalation { get; set; }
 
         [Input("capabilities")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersSecuritycontextCapabilitiesArgs>? Capabilities { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersSecurityContextCapabilitiesArgs>? Capabilities { get; set; }
 
         [Input("privileged")]
         public Input<bool>? Privileged { get; set; }
@@ -37,16 +37,17 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? RunAsUser { get; set; }
 
         [Input("seLinuxOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersSecuritycontextSelinuxoptionsArgs>? SeLinuxOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersSecurityContextSeLinuxOptionsArgs>? SeLinuxOptions { get; set; }
 
         [Input("seccompProfile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersSecuritycontextSeccompprofileArgs>? SeccompProfile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersSecurityContextSeccompProfileArgs>? SeccompProfile { get; set; }
 
         [Input("windowsOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalcontainersSecuritycontextWindowsoptionsArgs>? WindowsOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalContainersSecurityContextWindowsOptionsArgs>? WindowsOptions { get; set; }
 
-        public TidbClusterSpecTikvAdditionalcontainersSecuritycontextArgs()
+        public TidbClusterSpecTikvAdditionalContainersSecurityContextArgs()
         {
         }
+        public static new TidbClusterSpecTikvAdditionalContainersSecurityContextArgs Empty => new TidbClusterSpecTikvAdditionalContainersSecurityContextArgs();
     }
 }

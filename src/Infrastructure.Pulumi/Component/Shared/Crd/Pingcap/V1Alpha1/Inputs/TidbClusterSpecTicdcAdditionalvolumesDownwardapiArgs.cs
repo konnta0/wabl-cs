@@ -10,21 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcAdditionalvolumesDownwardapiArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcAdditionalVolumesDownwardApiArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultMode")]
         public Input<int>? DefaultMode { get; set; }
 
         [Input("items")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesDownwardapiItemsArgs>? _items;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesDownwardapiItemsArgs> Items
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesDownwardApiItemsArgs>? _items;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesDownwardApiItemsArgs> Items
         {
-            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesDownwardapiItemsArgs>());
+            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesDownwardApiItemsArgs>());
             set => _items = value;
         }
 
-        public TidbClusterSpecTicdcAdditionalvolumesDownwardapiArgs()
+        public TidbClusterSpecTicdcAdditionalVolumesDownwardApiArgs()
         {
         }
+        public static new TidbClusterSpecTicdcAdditionalVolumesDownwardApiArgs Empty => new TidbClusterSpecTicdcAdditionalVolumesDownwardApiArgs();
     }
 }

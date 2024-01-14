@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecAffinityArgs : Pulumi.ResourceArgs
+    public class BackupSpecAffinityArgs : global::Pulumi.ResourceArgs
     {
         [Input("nodeAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecAffinityNodeaffinityArgs>? NodeAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecAffinityNodeAffinityArgs>? NodeAffinity { get; set; }
 
         [Input("podAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecAffinityPodaffinityArgs>? PodAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecAffinityPodAffinityArgs>? PodAffinity { get; set; }
 
         [Input("podAntiAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecAffinityPodantiaffinityArgs>? PodAntiAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecAffinityPodAntiAffinityArgs>? PodAntiAffinity { get; set; }
 
         public BackupSpecAffinityArgs()
         {
         }
+        public static new BackupSpecAffinityArgs Empty => new BackupSpecAffinityArgs();
     }
 }

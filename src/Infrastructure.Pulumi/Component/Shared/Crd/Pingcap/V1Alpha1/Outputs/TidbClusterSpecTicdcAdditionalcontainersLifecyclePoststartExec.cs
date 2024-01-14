@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTicdcAdditionalcontainersLifecyclePoststartExec
+    public sealed class TidbClusterSpecTicdcAdditionalContainersLifecyclePostStartExec
     {
         public readonly ImmutableArray<string> Command;
 
         [OutputConstructor]
-        private TidbClusterSpecTicdcAdditionalcontainersLifecyclePoststartExec(ImmutableArray<string> command)
+        private TidbClusterSpecTicdcAdditionalContainersLifecyclePostStartExec(ImmutableArray<string> command)
         {
             Command = command;
         }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryAdditionalvolumesDownwardapiItemsFieldrefArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryAdditionalVolumesDownwardApiItemsFieldRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("fieldPath", required: true)]
         public Input<string> FieldPath { get; set; } = null!;
 
-        public DMClusterSpecDiscoveryAdditionalvolumesDownwardapiItemsFieldrefArgs()
+        public DMClusterSpecDiscoveryAdditionalVolumesDownwardApiItemsFieldRefArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryAdditionalVolumesDownwardApiItemsFieldRefArgs Empty => new DMClusterSpecDiscoveryAdditionalVolumesDownwardApiItemsFieldRefArgs();
     }
 }

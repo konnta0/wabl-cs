@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashAdditionalvolumesFcArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashAdditionalVolumesFcArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -37,8 +37,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _wwids = value;
         }
 
-        public TidbClusterSpecTiflashAdditionalvolumesFcArgs()
+        public TidbClusterSpecTiflashAdditionalVolumesFcArgs()
         {
         }
+        public static new TidbClusterSpecTiflashAdditionalVolumesFcArgs Empty => new TidbClusterSpecTiflashAdditionalVolumesFcArgs();
     }
 }

@@ -10,18 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs : global::Pulumi.ResourceArgs
     {
         [Input("nodeSelectorTerms", required: true)]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectortermsArgs>? _nodeSelectorTerms;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectortermsArgs> NodeSelectorTerms
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsArgs>? _nodeSelectorTerms;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsArgs> NodeSelectorTerms
         {
-            get => _nodeSelectorTerms ?? (_nodeSelectorTerms = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectortermsArgs>());
+            get => _nodeSelectorTerms ?? (_nodeSelectorTerms = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsArgs>());
             set => _nodeSelectorTerms = value;
         }
 
-        public BackupScheduleSpecBackuptemplateAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionArgs()
+        public BackupScheduleSpecBackupTemplateAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs Empty => new BackupScheduleSpecBackupTemplateAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionArgs();
     }
 }

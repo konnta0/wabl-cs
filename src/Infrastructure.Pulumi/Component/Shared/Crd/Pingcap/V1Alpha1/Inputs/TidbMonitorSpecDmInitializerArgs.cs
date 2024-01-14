@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecDmInitializerArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecDmInitializerArgs : global::Pulumi.ResourceArgs
     {
         [Input("baseImage")]
         public Input<string>? BaseImage { get; set; }
@@ -48,5 +48,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbMonitorSpecDmInitializerArgs()
         {
         }
+        public static new TidbMonitorSpecDmInitializerArgs Empty => new TidbMonitorSpecDmInitializerArgs();
     }
 }

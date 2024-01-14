@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashImagepullsecrets
+    public sealed class TidbClusterSpecTiflashImagePullSecrets
     {
         public readonly string Name;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashImagepullsecrets(string name)
+        private TidbClusterSpecTiflashImagePullSecrets(string name)
         {
             Name = name;
         }

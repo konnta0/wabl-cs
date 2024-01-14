@@ -10,100 +10,101 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecAdditionalvolumesArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecAdditionalVolumesArgs : global::Pulumi.ResourceArgs
     {
         [Input("awsElasticBlockStore")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesAwselasticblockstoreArgs>? AwsElasticBlockStore { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesAwsElasticBlockStoreArgs>? AwsElasticBlockStore { get; set; }
 
         [Input("azureDisk")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesAzurediskArgs>? AzureDisk { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesAzureDiskArgs>? AzureDisk { get; set; }
 
         [Input("azureFile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesAzurefileArgs>? AzureFile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesAzureFileArgs>? AzureFile { get; set; }
 
         [Input("cephfs")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesCephfsArgs>? Cephfs { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesCephfsArgs>? Cephfs { get; set; }
 
         [Input("cinder")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesCinderArgs>? Cinder { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesCinderArgs>? Cinder { get; set; }
 
         [Input("configMap")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesConfigmapArgs>? ConfigMap { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesConfigMapArgs>? ConfigMap { get; set; }
 
         [Input("csi")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesCsiArgs>? Csi { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesCsiArgs>? Csi { get; set; }
 
         [Input("downwardAPI")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesDownwardapiArgs>? DownwardAPI { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesDownwardApiArgs>? DownwardAPI { get; set; }
 
         [Input("emptyDir")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesEmptydirArgs>? EmptyDir { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesEmptyDirArgs>? EmptyDir { get; set; }
 
         [Input("ephemeral")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesEphemeralArgs>? Ephemeral { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesEphemeralArgs>? Ephemeral { get; set; }
 
         [Input("fc")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesFcArgs>? Fc { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesFcArgs>? Fc { get; set; }
 
         [Input("flexVolume")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesFlexvolumeArgs>? FlexVolume { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesFlexVolumeArgs>? FlexVolume { get; set; }
 
         [Input("flocker")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesFlockerArgs>? Flocker { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesFlockerArgs>? Flocker { get; set; }
 
         [Input("gcePersistentDisk")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesGcepersistentdiskArgs>? GcePersistentDisk { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesGcePersistentDiskArgs>? GcePersistentDisk { get; set; }
 
         [Input("gitRepo")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesGitrepoArgs>? GitRepo { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesGitRepoArgs>? GitRepo { get; set; }
 
         [Input("glusterfs")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesGlusterfsArgs>? Glusterfs { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesGlusterfsArgs>? Glusterfs { get; set; }
 
         [Input("hostPath")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesHostpathArgs>? HostPath { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesHostPathArgs>? HostPath { get; set; }
 
         [Input("iscsi")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesIscsiArgs>? Iscsi { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesIscsiArgs>? Iscsi { get; set; }
 
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("nfs")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesNfsArgs>? Nfs { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesNfsArgs>? Nfs { get; set; }
 
         [Input("persistentVolumeClaim")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesPersistentvolumeclaimArgs>? PersistentVolumeClaim { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesPersistentVolumeClaimArgs>? PersistentVolumeClaim { get; set; }
 
         [Input("photonPersistentDisk")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesPhotonpersistentdiskArgs>? PhotonPersistentDisk { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesPhotonPersistentDiskArgs>? PhotonPersistentDisk { get; set; }
 
         [Input("portworxVolume")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesPortworxvolumeArgs>? PortworxVolume { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesPortworxVolumeArgs>? PortworxVolume { get; set; }
 
         [Input("projected")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesProjectedArgs>? Projected { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesProjectedArgs>? Projected { get; set; }
 
         [Input("quobyte")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesQuobyteArgs>? Quobyte { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesQuobyteArgs>? Quobyte { get; set; }
 
         [Input("rbd")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesRbdArgs>? Rbd { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesRbdArgs>? Rbd { get; set; }
 
         [Input("scaleIO")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesScaleioArgs>? ScaleIO { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesScaleIoArgs>? ScaleIO { get; set; }
 
         [Input("secret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesSecretArgs>? Secret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesSecretArgs>? Secret { get; set; }
 
         [Input("storageos")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesStorageosArgs>? Storageos { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesStorageosArgs>? Storageos { get; set; }
 
         [Input("vsphereVolume")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesVspherevolumeArgs>? VsphereVolume { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesVsphereVolumeArgs>? VsphereVolume { get; set; }
 
-        public TidbNGMonitoringSpecAdditionalvolumesArgs()
+        public TidbNGMonitoringSpecAdditionalVolumesArgs()
         {
         }
+        public static new TidbNGMonitoringSpecAdditionalVolumesArgs Empty => new TidbNGMonitoringSpecAdditionalVolumesArgs();
     }
 }

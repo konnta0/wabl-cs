@@ -11,18 +11,18 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesSecret
+    public sealed class DMClusterSpecWorkerAdditionalVolumesSecret
     {
         public readonly int DefaultMode;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesSecretItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesSecretItems> Items;
         public readonly bool Optional;
         public readonly string SecretName;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesSecret(
+        private DMClusterSpecWorkerAdditionalVolumesSecret(
             int defaultMode,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesSecretItems> items,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesSecretItems> items,
 
             bool optional,
 

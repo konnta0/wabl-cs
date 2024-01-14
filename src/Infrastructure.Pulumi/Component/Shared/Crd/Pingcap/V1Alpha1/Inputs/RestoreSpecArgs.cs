@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecArgs : Pulumi.ResourceArgs
+    public class RestoreSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("affinity")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecAffinityArgs>? Affinity { get; set; }
@@ -36,24 +36,36 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecGcsArgs>? Gcs { get; set; }
 
         [Input("imagePullSecrets")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecImagepullsecretsArgs>? _imagePullSecrets;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecImagepullsecretsArgs> ImagePullSecrets
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecImagePullSecretsArgs>? _imagePullSecrets;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecImagePullSecretsArgs> ImagePullSecrets
         {
-            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecImagepullsecretsArgs>());
+            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecImagePullSecretsArgs>());
             set => _imagePullSecrets = value;
         }
 
         [Input("local")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecLocalArgs>? Local { get; set; }
 
+        [Input("logRestoreStartTs")]
+        public Input<string>? LogRestoreStartTs { get; set; }
+
+        [Input("pitrFullBackupStorageProvider")]
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPitrFullBackupStorageProviderArgs>? PitrFullBackupStorageProvider { get; set; }
+
+        [Input("pitrRestoredTs")]
+        public Input<string>? PitrRestoredTs { get; set; }
+
         [Input("podSecurityContext")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodsecuritycontextArgs>? PodSecurityContext { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecPodSecurityContextArgs>? PodSecurityContext { get; set; }
 
         [Input("priorityClassName")]
         public Input<string>? PriorityClassName { get; set; }
 
         [Input("resources")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecResourcesArgs>? Resources { get; set; }
+
+        [Input("restoreMode")]
+        public Input<string>? RestoreMode { get; set; }
 
         [Input("s3")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecS3Args>? S3 { get; set; }
@@ -97,6 +109,8 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 
         public RestoreSpecArgs()
         {
+            RestoreMode = "snapshot";
         }
+        public static new RestoreSpecArgs Empty => new RestoreSpecArgs();
     }
 }

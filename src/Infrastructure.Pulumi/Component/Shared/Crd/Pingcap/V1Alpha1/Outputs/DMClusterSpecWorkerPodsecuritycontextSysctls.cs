@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerPodsecuritycontextSysctls
+    public sealed class DMClusterSpecWorkerPodSecurityContextSysctls
     {
         public readonly string Name;
         public readonly string Value;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerPodsecuritycontextSysctls(
+        private DMClusterSpecWorkerPodSecurityContextSysctls(
             string name,
 
             string value)

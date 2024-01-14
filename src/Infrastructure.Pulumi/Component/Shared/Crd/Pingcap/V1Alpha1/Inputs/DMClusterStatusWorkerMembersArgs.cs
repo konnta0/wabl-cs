@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterStatusWorkerMembersArgs : Pulumi.ResourceArgs
+    public class DMClusterStatusWorkerMembersArgs : global::Pulumi.ResourceArgs
     {
         [Input("addr")]
         public Input<string>? Addr { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public DMClusterStatusWorkerMembersArgs()
         {
         }
+        public static new DMClusterStatusWorkerMembersArgs Empty => new DMClusterStatusWorkerMembersArgs();
     }
 }

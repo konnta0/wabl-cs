@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPdAdditionalvolumesIscsiArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPdAdditionalVolumesIscsiArgs : global::Pulumi.ResourceArgs
     {
         [Input("chapAuthDiscovery")]
         public Input<bool>? ChapAuthDiscovery { get; set; }
@@ -45,13 +45,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesIscsiSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesIscsiSecretRefArgs>? SecretRef { get; set; }
 
         [Input("targetPortal", required: true)]
         public Input<string> TargetPortal { get; set; } = null!;
 
-        public TidbClusterSpecPdAdditionalvolumesIscsiArgs()
+        public TidbClusterSpecPdAdditionalVolumesIscsiArgs()
         {
         }
+        public static new TidbClusterSpecPdAdditionalVolumesIscsiArgs Empty => new TidbClusterSpecPdAdditionalVolumesIscsiArgs();
     }
 }

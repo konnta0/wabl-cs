@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("matchExpressions")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>? _matchExpressions;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs> MatchExpressions
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>? _matchExpressions;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs> MatchExpressions
         {
-            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>());
+            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>());
             set => _matchExpressions = value;
         }
 
@@ -28,8 +28,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _matchLabels = value;
         }
 
-        public TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs()
+        public TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs Empty => new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs();
     }
 }

@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecInitcontainersLifecyclePoststartArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecInitContainersLifecyclePostStartArgs : global::Pulumi.ResourceArgs
     {
         [Input("exec")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecInitcontainersLifecyclePoststartExecArgs>? Exec { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecInitContainersLifecyclePostStartExecArgs>? Exec { get; set; }
 
         [Input("httpGet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecInitcontainersLifecyclePoststartHttpgetArgs>? HttpGet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecInitContainersLifecyclePostStartHttpGetArgs>? HttpGet { get; set; }
 
         [Input("tcpSocket")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecInitcontainersLifecyclePoststartTcpsocketArgs>? TcpSocket { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecInitContainersLifecyclePostStartTcpSocketArgs>? TcpSocket { get; set; }
 
-        public TidbNGMonitoringSpecInitcontainersLifecyclePoststartArgs()
+        public TidbNGMonitoringSpecInitContainersLifecyclePostStartArgs()
         {
         }
+        public static new TidbNGMonitoringSpecInitContainersLifecyclePostStartArgs Empty => new TidbNGMonitoringSpecInitContainersLifecyclePostStartArgs();
     }
 }

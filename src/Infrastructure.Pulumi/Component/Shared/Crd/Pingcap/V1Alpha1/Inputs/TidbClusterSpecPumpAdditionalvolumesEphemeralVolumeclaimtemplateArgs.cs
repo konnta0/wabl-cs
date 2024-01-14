@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPumpAdditionalvolumesEphemeralVolumeclaimtemplateArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPumpAdditionalVolumesEphemeralVolumeClaimTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("metadata")]
         private InputMap<object>? _metadata;
@@ -21,10 +21,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("spec", required: true)]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalvolumesEphemeralVolumeclaimtemplateSpecArgs> Spec { get; set; } = null!;
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs> Spec { get; set; } = null!;
 
-        public TidbClusterSpecPumpAdditionalvolumesEphemeralVolumeclaimtemplateArgs()
+        public TidbClusterSpecPumpAdditionalVolumesEphemeralVolumeClaimTemplateArgs()
         {
         }
+        public static new TidbClusterSpecPumpAdditionalVolumesEphemeralVolumeClaimTemplateArgs Empty => new TidbClusterSpecPumpAdditionalVolumesEphemeralVolumeClaimTemplateArgs();
     }
 }

@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterAffinityArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterAffinityArgs : global::Pulumi.ResourceArgs
     {
         [Input("nodeAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAffinityNodeaffinityArgs>? NodeAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAffinityNodeAffinityArgs>? NodeAffinity { get; set; }
 
         [Input("podAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAffinityPodaffinityArgs>? PodAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAffinityPodAffinityArgs>? PodAffinity { get; set; }
 
         [Input("podAntiAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAffinityPodantiaffinityArgs>? PodAntiAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAffinityPodAntiAffinityArgs>? PodAntiAffinity { get; set; }
 
         public DMClusterSpecMasterAffinityArgs()
         {
         }
+        public static new DMClusterSpecMasterAffinityArgs Empty => new DMClusterSpecMasterAffinityArgs();
     }
 }

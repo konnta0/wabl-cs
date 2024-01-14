@@ -11,9 +11,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterStatusPdFailuremembers
+    public sealed class TidbClusterStatusPdFailureMembers
     {
         public readonly string CreatedAt;
+        public readonly bool HostDown;
         public readonly bool MemberDeleted;
         public readonly string MemberID;
         public readonly string PodName;
@@ -21,8 +22,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableDictionary<string, ImmutableDictionary<string, object>> PvcUIDSet;
 
         [OutputConstructor]
-        private TidbClusterStatusPdFailuremembers(
+        private TidbClusterStatusPdFailureMembers(
             string createdAt,
+
+            bool hostDown,
 
             bool memberDeleted,
 
@@ -35,6 +38,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             ImmutableDictionary<string, ImmutableDictionary<string, object>> pvcUIDSet)
         {
             CreatedAt = createdAt;
+            HostDown = hostDown;
             MemberDeleted = memberDeleted;
             MemberID = memberID;
             PodName = podName;

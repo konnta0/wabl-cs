@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecPrometheusRemotewriteTlsconfigCert
+    public sealed class TidbMonitorSpecPrometheusRemoteWriteTlsConfigCert
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigCertConfigmap ConfigMap;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigCertSecret Secret;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigCertConfigMap ConfigMap;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigCertSecret Secret;
 
         [OutputConstructor]
-        private TidbMonitorSpecPrometheusRemotewriteTlsconfigCert(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigCertConfigmap configMap,
+        private TidbMonitorSpecPrometheusRemoteWriteTlsConfigCert(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigCertConfigMap configMap,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigCertSecret secret)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigCertSecret secret)
         {
             ConfigMap = configMap;
             Secret = secret;

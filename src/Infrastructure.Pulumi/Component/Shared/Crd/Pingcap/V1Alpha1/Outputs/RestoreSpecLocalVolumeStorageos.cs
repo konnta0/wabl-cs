@@ -15,7 +15,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     {
         public readonly string FsType;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeStorageosSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeStorageosSecretRef SecretRef;
         public readonly string VolumeName;
         public readonly string VolumeNamespace;
 
@@ -25,7 +25,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeStorageosSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeStorageosSecretRef secretRef,
 
             string volumeName,
 

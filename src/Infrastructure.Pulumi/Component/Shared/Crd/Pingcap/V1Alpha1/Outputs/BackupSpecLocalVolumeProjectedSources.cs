@@ -13,20 +13,20 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class BackupSpecLocalVolumeProjectedSources
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesConfigmap ConfigMap;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardapi DownwardAPI;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesConfigMap ConfigMap;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardApi DownwardAPI;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesSecret Secret;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesServiceaccounttoken ServiceAccountToken;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesServiceAccountToken ServiceAccountToken;
 
         [OutputConstructor]
         private BackupSpecLocalVolumeProjectedSources(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesConfigmap configMap,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesConfigMap configMap,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardapi downwardAPI,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardApi downwardAPI,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesSecret secret,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesServiceaccounttoken serviceAccountToken)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesServiceAccountToken serviceAccountToken)
         {
             ConfigMap = configMap;
             DownwardAPI = downwardAPI;

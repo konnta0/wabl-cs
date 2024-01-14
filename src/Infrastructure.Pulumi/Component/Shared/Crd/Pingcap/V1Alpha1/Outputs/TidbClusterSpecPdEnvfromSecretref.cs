@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdEnvfromSecretref
+    public sealed class TidbClusterSpecPdEnvFromSecretRef
     {
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbClusterSpecPdEnvfromSecretref(
+        private TidbClusterSpecPdEnvFromSecretRef(
             string name,
 
             bool optional)

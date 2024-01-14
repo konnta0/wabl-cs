@@ -15,11 +15,11 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     {
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerConditions> Conditions;
         public readonly string FailoverUID;
-        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailuremembers> FailureMembers;
+        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailureMembers> FailureMembers;
         public readonly string Image;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerMembers> Members;
         public readonly string Phase;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulset StatefulSet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulSet StatefulSet;
         public readonly bool Synced;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerVolumes> Volumes;
 
@@ -29,7 +29,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string failoverUID,
 
-            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailuremembers> failureMembers,
+            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailureMembers> failureMembers,
 
             string image,
 
@@ -37,7 +37,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string phase,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulset statefulSet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulSet statefulSet,
 
             bool synced,
 

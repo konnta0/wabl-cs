@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecImagepullsecrets
+    public sealed class BackupSpecImagePullSecrets
     {
         public readonly string Name;
 
         [OutputConstructor]
-        private BackupSpecImagepullsecrets(string name)
+        private BackupSpecImagePullSecrets(string name)
         {
             Name = name;
         }

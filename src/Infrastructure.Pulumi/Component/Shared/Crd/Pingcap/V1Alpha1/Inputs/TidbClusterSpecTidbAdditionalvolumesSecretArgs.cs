@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbAdditionalvolumesSecretArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbAdditionalVolumesSecretArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultMode")]
         public Input<int>? DefaultMode { get; set; }
 
         [Input("items")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesSecretItemsArgs>? _items;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesSecretItemsArgs> Items
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesSecretItemsArgs>? _items;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesSecretItemsArgs> Items
         {
-            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesSecretItemsArgs>());
+            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesSecretItemsArgs>());
             set => _items = value;
         }
 
@@ -29,8 +29,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("secretName")]
         public Input<string>? SecretName { get; set; }
 
-        public TidbClusterSpecTidbAdditionalvolumesSecretArgs()
+        public TidbClusterSpecTidbAdditionalVolumesSecretArgs()
         {
         }
+        public static new TidbClusterSpecTidbAdditionalVolumesSecretArgs Empty => new TidbClusterSpecTidbAdditionalVolumesSecretArgs();
     }
 }

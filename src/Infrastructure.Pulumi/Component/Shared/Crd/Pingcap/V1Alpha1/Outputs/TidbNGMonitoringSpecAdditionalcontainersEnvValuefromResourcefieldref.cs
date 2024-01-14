@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecAdditionalcontainersEnvValuefromResourcefieldref
+    public sealed class TidbNGMonitoringSpecAdditionalContainersEnvValueFromResourceFieldRef
     {
         public readonly string ContainerName;
         public readonly Union<int, string> Divisor;
         public readonly string Resource;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecAdditionalcontainersEnvValuefromResourcefieldref(
+        private TidbNGMonitoringSpecAdditionalContainersEnvValueFromResourceFieldRef(
             string containerName,
 
             Union<int, string> divisor,

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcAdditionalvolumesEphemeralVolumeclaimtemplateSpecArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessModes")]
         private InputList<string>? _accessModes;
@@ -21,13 +21,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("dataSource")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasourceArgs>? DataSource { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSourceArgs>? DataSource { get; set; }
 
         [Input("resources")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesEphemeralVolumeclaimtemplateSpecResourcesArgs>? Resources { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateSpecResourcesArgs>? Resources { get; set; }
 
         [Input("selector")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs>? Selector { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs>? Selector { get; set; }
 
         [Input("storageClassName")]
         public Input<string>? StorageClassName { get; set; }
@@ -38,8 +38,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("volumeName")]
         public Input<string>? VolumeName { get; set; }
 
-        public TidbClusterSpecTicdcAdditionalvolumesEphemeralVolumeclaimtemplateSpecArgs()
+        public TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs()
         {
         }
+        public static new TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs Empty => new TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs();
     }
 }

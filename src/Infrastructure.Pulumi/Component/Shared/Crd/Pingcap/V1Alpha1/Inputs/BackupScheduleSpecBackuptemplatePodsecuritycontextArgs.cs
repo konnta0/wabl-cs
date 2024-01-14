@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplatePodsecuritycontextArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplatePodSecurityContextArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsGroup")]
         public Input<int>? FsGroup { get; set; }
@@ -28,10 +28,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? RunAsUser { get; set; }
 
         [Input("seLinuxOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSelinuxoptionsArgs>? SeLinuxOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSeLinuxOptionsArgs>? SeLinuxOptions { get; set; }
 
         [Input("seccompProfile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSeccompprofileArgs>? SeccompProfile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSeccompProfileArgs>? SeccompProfile { get; set; }
 
         [Input("supplementalGroups")]
         private InputList<int>? _supplementalGroups;
@@ -42,18 +42,19 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("sysctls")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSysctlsArgs>? _sysctls;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSysctlsArgs> Sysctls
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSysctlsArgs>? _sysctls;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSysctlsArgs> Sysctls
         {
-            get => _sysctls ?? (_sysctls = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextSysctlsArgs>());
+            get => _sysctls ?? (_sysctls = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextSysctlsArgs>());
             set => _sysctls = value;
         }
 
         [Input("windowsOptions")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplatePodsecuritycontextWindowsoptionsArgs>? WindowsOptions { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplatePodSecurityContextWindowsOptionsArgs>? WindowsOptions { get; set; }
 
-        public BackupScheduleSpecBackuptemplatePodsecuritycontextArgs()
+        public BackupScheduleSpecBackupTemplatePodSecurityContextArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplatePodSecurityContextArgs Empty => new BackupScheduleSpecBackupTemplatePodSecurityContextArgs();
     }
 }

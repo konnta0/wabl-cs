@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterTopologyspreadconstraintsArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterTopologySpreadConstraintsArgs : global::Pulumi.ResourceArgs
     {
         [Input("topologyKey", required: true)]
         public Input<string> TopologyKey { get; set; } = null!;
 
-        public DMClusterSpecMasterTopologyspreadconstraintsArgs()
+        public DMClusterSpecMasterTopologySpreadConstraintsArgs()
         {
         }
+        public static new DMClusterSpecMasterTopologySpreadConstraintsArgs Empty => new DMClusterSpecMasterTopologySpreadConstraintsArgs();
     }
 }

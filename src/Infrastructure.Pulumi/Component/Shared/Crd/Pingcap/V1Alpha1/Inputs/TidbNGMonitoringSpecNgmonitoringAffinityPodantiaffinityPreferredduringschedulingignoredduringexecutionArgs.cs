@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs : global::Pulumi.ResourceArgs
     {
         [Input("podAffinityTerm", required: true)]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionPodaffinitytermArgs> PodAffinityTerm { get; set; } = null!;
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionPodAffinityTermArgs> PodAffinityTerm { get; set; } = null!;
 
         [Input("weight", required: true)]
         public Input<int> Weight { get; set; } = null!;
 
-        public TidbNGMonitoringSpecNgmonitoringAffinityPodantiaffinityPreferredduringschedulingignoredduringexecutionArgs()
+        public TidbNGMonitoringSpecNgMonitoringAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs Empty => new TidbNGMonitoringSpecNgMonitoringAffinityPodAntiAffinityPreferredDuringSchedulingIgnoredDuringExecutionArgs();
     }
 }

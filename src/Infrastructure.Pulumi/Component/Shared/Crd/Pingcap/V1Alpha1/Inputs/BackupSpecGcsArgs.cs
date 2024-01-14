@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecGcsArgs : Pulumi.ResourceArgs
+    public class BackupSpecGcsArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
@@ -42,5 +42,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecGcsArgs()
         {
         }
+        public static new BackupSpecGcsArgs Empty => new BackupSpecGcsArgs();
     }
 }

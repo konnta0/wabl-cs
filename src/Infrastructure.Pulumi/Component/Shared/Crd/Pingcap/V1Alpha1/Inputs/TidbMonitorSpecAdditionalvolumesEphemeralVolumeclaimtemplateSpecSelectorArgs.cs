@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("matchExpressions")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>? _matchExpressions;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs> MatchExpressions
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>? _matchExpressions;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs> MatchExpressions
         {
-            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>());
+            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>());
             set => _matchExpressions = value;
         }
 
@@ -28,8 +28,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _matchLabels = value;
         }
 
-        public TidbMonitorSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs()
+        public TidbMonitorSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs()
         {
         }
+        public static new TidbMonitorSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs Empty => new TidbMonitorSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs();
     }
 }

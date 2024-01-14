@@ -11,22 +11,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesDownwardapiItems
+    public sealed class DMClusterSpecWorkerAdditionalVolumesDownwardApiItems
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesDownwardapiItemsFieldref FieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesDownwardApiItemsFieldRef FieldRef;
         public readonly int Mode;
         public readonly string Path;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesDownwardapiItemsResourcefieldref ResourceFieldRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesDownwardApiItemsResourceFieldRef ResourceFieldRef;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesDownwardapiItems(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesDownwardapiItemsFieldref fieldRef,
+        private DMClusterSpecWorkerAdditionalVolumesDownwardApiItems(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesDownwardApiItemsFieldRef fieldRef,
 
             int mode,
 
             string path,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesDownwardapiItemsResourcefieldref resourceFieldRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesDownwardApiItemsResourceFieldRef resourceFieldRef)
         {
             FieldRef = fieldRef;
             Mode = mode;

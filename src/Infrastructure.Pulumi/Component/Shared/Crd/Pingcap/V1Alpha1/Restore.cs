@@ -85,7 +85,7 @@ namespace Pulumi.Crds.Pingcap.V1Alpha1
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreArgs : Pulumi.ResourceArgs
+    public class RestoreArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
@@ -105,5 +105,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public RestoreArgs()
         {
         }
+        public static new RestoreArgs Empty => new RestoreArgs();
     }
 }

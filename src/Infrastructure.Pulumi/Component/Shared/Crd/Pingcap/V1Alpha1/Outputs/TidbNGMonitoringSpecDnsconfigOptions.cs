@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecDnsconfigOptions
+    public sealed class TidbNGMonitoringSpecDnsConfigOptions
     {
         public readonly string Name;
         public readonly string Value;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecDnsconfigOptions(
+        private TidbNGMonitoringSpecDnsConfigOptions(
             string name,
 
             string value)

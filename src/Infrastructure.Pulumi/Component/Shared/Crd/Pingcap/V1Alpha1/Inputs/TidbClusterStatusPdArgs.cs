@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusPdArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusPdArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdConditionsArgs>? _conditions;
@@ -21,10 +21,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("failureMembers")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailuremembersArgs>? _failureMembers;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailuremembersArgs> FailureMembers
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailureMembersArgs>? _failureMembers;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailureMembersArgs> FailureMembers
         {
-            get => _failureMembers ?? (_failureMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailuremembersArgs>());
+            get => _failureMembers ?? (_failureMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdFailureMembersArgs>());
             set => _failureMembers = value;
         }
 
@@ -43,10 +43,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("peerMembers")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeermembersArgs>? _peerMembers;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeermembersArgs> PeerMembers
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeerMembersArgs>? _peerMembers;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeerMembersArgs> PeerMembers
         {
-            get => _peerMembers ?? (_peerMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeermembersArgs>());
+            get => _peerMembers ?? (_peerMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdPeerMembersArgs>());
             set => _peerMembers = value;
         }
 
@@ -54,16 +54,16 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Phase { get; set; }
 
         [Input("statefulSet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulsetArgs>? StatefulSet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulSetArgs>? StatefulSet { get; set; }
 
         [Input("synced")]
         public Input<bool>? Synced { get; set; }
 
         [Input("unjoinedMembers")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedmembersArgs>? _unjoinedMembers;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedmembersArgs> UnjoinedMembers
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedMembersArgs>? _unjoinedMembers;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedMembersArgs> UnjoinedMembers
         {
-            get => _unjoinedMembers ?? (_unjoinedMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedmembersArgs>());
+            get => _unjoinedMembers ?? (_unjoinedMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedMembersArgs>());
             set => _unjoinedMembers = value;
         }
 
@@ -78,5 +78,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterStatusPdArgs()
         {
         }
+        public static new TidbClusterStatusPdArgs Empty => new TidbClusterStatusPdArgs();
     }
 }

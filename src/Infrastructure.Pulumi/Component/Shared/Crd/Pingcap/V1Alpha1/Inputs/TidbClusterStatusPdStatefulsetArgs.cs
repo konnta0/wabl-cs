@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusPdStatefulsetArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusPdStatefulSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("collisionCount")]
         public Input<int>? CollisionCount { get; set; }
 
         [Input("conditions")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulsetConditionsArgs>? _conditions;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulsetConditionsArgs> Conditions
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulSetConditionsArgs>? _conditions;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulSetConditionsArgs> Conditions
         {
-            get => _conditions ?? (_conditions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulsetConditionsArgs>());
+            get => _conditions ?? (_conditions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulSetConditionsArgs>());
             set => _conditions = value;
         }
 
@@ -44,8 +44,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("updatedReplicas")]
         public Input<int>? UpdatedReplicas { get; set; }
 
-        public TidbClusterStatusPdStatefulsetArgs()
+        public TidbClusterStatusPdStatefulSetArgs()
         {
         }
+        public static new TidbClusterStatusPdStatefulSetArgs Empty => new TidbClusterStatusPdStatefulSetArgs();
     }
 }

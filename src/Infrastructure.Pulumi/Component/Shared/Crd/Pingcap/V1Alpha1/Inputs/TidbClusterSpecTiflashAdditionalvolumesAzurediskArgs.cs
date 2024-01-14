@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashAdditionalvolumesAzurediskArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashAdditionalVolumesAzureDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("cachingMode")]
         public Input<string>? CachingMode { get; set; }
@@ -30,8 +30,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        public TidbClusterSpecTiflashAdditionalvolumesAzurediskArgs()
+        public TidbClusterSpecTiflashAdditionalVolumesAzureDiskArgs()
         {
         }
+        public static new TidbClusterSpecTiflashAdditionalVolumesAzureDiskArgs Empty => new TidbClusterSpecTiflashAdditionalVolumesAzureDiskArgs();
     }
 }

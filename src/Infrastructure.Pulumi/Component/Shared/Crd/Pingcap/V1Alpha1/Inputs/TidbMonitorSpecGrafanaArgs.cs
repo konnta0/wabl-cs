@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecGrafanaArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecGrafanaArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalVolumeMounts")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalvolumemountsArgs>? _additionalVolumeMounts;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalvolumemountsArgs> AdditionalVolumeMounts
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalVolumeMountsArgs>? _additionalVolumeMounts;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalVolumeMountsArgs> AdditionalVolumeMounts
         {
-            get => _additionalVolumeMounts ?? (_additionalVolumeMounts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalvolumemountsArgs>());
+            get => _additionalVolumeMounts ?? (_additionalVolumeMounts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalVolumeMountsArgs>());
             set => _additionalVolumeMounts = value;
         }
 
@@ -52,7 +52,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Password { get; set; }
 
         [Input("passwordSecret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaPasswordsecretArgs>? PasswordSecret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaPasswordSecretArgs>? PasswordSecret { get; set; }
 
         [Input("requests")]
         private InputMap<Union<int, string>>? _requests;
@@ -69,7 +69,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Username { get; set; }
 
         [Input("usernameSecret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaUsernamesecretArgs>? UsernameSecret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaUsernameSecretArgs>? UsernameSecret { get; set; }
 
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -77,5 +77,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbMonitorSpecGrafanaArgs()
         {
         }
+        public static new TidbMonitorSpecGrafanaArgs Empty => new TidbMonitorSpecGrafanaArgs();
     }
 }

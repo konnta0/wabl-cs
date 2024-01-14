@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTikvAdditionalcontainersResources
+    public sealed class TidbClusterSpecTikvAdditionalContainersResources
     {
         public readonly ImmutableDictionary<string, Union<int, string>> Limits;
         public readonly ImmutableDictionary<string, Union<int, string>> Requests;
 
         [OutputConstructor]
-        private TidbClusterSpecTikvAdditionalcontainersResources(
+        private TidbClusterSpecTikvAdditionalContainersResources(
             ImmutableDictionary<string, Union<int, string>> limits,
 
             ImmutableDictionary<string, Union<int, string>> requests)

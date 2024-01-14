@@ -10,21 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecWorkerAdditionalvolumesProjectedArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecWorkerAdditionalVolumesProjectedArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultMode")]
         public Input<int>? DefaultMode { get; set; }
 
         [Input("sources", required: true)]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesProjectedSourcesArgs>? _sources;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesProjectedSourcesArgs> Sources
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesProjectedSourcesArgs>? _sources;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesProjectedSourcesArgs> Sources
         {
-            get => _sources ?? (_sources = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesProjectedSourcesArgs>());
+            get => _sources ?? (_sources = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesProjectedSourcesArgs>());
             set => _sources = value;
         }
 
-        public DMClusterSpecWorkerAdditionalvolumesProjectedArgs()
+        public DMClusterSpecWorkerAdditionalVolumesProjectedArgs()
         {
         }
+        public static new DMClusterSpecWorkerAdditionalVolumesProjectedArgs Empty => new DMClusterSpecWorkerAdditionalVolumesProjectedArgs();
     }
 }

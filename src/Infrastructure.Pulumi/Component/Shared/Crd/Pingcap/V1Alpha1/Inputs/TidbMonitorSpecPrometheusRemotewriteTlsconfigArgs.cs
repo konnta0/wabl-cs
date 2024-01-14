@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusRemotewriteTlsconfigArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusRemoteWriteTlsConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("ca")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigCaArgs>? Ca { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigCaArgs>? Ca { get; set; }
 
         [Input("caFile")]
         public Input<string>? CaFile { get; set; }
 
         [Input("cert")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigCertArgs>? Cert { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigCertArgs>? Cert { get; set; }
 
         [Input("certFile")]
         public Input<string>? CertFile { get; set; }
@@ -31,13 +31,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? KeyFile { get; set; }
 
         [Input("keySecret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigKeysecretArgs>? KeySecret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigKeySecretArgs>? KeySecret { get; set; }
 
         [Input("serverName")]
         public Input<string>? ServerName { get; set; }
 
-        public TidbMonitorSpecPrometheusRemotewriteTlsconfigArgs()
+        public TidbMonitorSpecPrometheusRemoteWriteTlsConfigArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusRemoteWriteTlsConfigArgs Empty => new TidbMonitorSpecPrometheusRemoteWriteTlsConfigArgs();
     }
 }

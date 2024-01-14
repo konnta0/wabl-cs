@@ -11,20 +11,20 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesCinder
+    public sealed class DMClusterSpecWorkerAdditionalVolumesCinder
     {
         public readonly string FsType;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesCinderSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesCinderSecretRef SecretRef;
         public readonly string VolumeID;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesCinder(
+        private DMClusterSpecWorkerAdditionalVolumesCinder(
             string fsType,
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesCinderSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesCinderSecretRef secretRef,
 
             string volumeID)
         {

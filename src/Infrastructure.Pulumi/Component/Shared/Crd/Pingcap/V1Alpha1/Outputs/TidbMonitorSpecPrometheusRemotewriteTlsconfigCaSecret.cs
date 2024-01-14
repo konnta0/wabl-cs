@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecPrometheusRemotewriteTlsconfigCaSecret
+    public sealed class TidbMonitorSpecPrometheusRemoteWriteTlsConfigCaSecret
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbMonitorSpecPrometheusRemotewriteTlsconfigCaSecret(
+        private TidbMonitorSpecPrometheusRemoteWriteTlsConfigCaSecret(
             string key,
 
             string name,

@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class RestoreSpecLocalVolumeEphemeralVolumeclaimtemplate
+    public sealed class RestoreSpecLocalVolumeEphemeralVolumeClaimTemplate
     {
         public readonly ImmutableDictionary<string, object> Metadata;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpec Spec;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpec Spec;
 
         [OutputConstructor]
-        private RestoreSpecLocalVolumeEphemeralVolumeclaimtemplate(
+        private RestoreSpecLocalVolumeEphemeralVolumeClaimTemplate(
             ImmutableDictionary<string, object> metadata,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpec spec)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpec spec)
         {
             Metadata = metadata;
             Spec = spec;

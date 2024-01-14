@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeEphemeralVolumeclaimtemplateSpecSelectorArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeEphemeralVolumeClaimTemplateSpecSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("matchExpressions")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>? _matchExpressions;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs> MatchExpressions
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>? _matchExpressions;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs> MatchExpressions
         {
-            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeclaimtemplateSpecSelectorMatchexpressionsArgs>());
+            get => _matchExpressions ?? (_matchExpressions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeClaimTemplateSpecSelectorMatchExpressionsArgs>());
             set => _matchExpressions = value;
         }
 
@@ -28,8 +28,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _matchLabels = value;
         }
 
-        public BackupSpecLocalVolumeEphemeralVolumeclaimtemplateSpecSelectorArgs()
+        public BackupSpecLocalVolumeEphemeralVolumeClaimTemplateSpecSelectorArgs()
         {
         }
+        public static new BackupSpecLocalVolumeEphemeralVolumeClaimTemplateSpecSelectorArgs Empty => new BackupSpecLocalVolumeEphemeralVolumeClaimTemplateSpecSelectorArgs();
     }
 }

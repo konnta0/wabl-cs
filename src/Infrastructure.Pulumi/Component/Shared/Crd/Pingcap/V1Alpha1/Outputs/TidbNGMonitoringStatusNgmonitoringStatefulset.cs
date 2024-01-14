@@ -11,10 +11,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringStatusNgmonitoringStatefulset
+    public sealed class TidbNGMonitoringStatusNgMonitoringStatefulSet
     {
         public readonly int CollisionCount;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoringStatefulsetConditions> Conditions;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoringStatefulSetConditions> Conditions;
         public readonly int CurrentReplicas;
         public readonly string CurrentRevision;
         public readonly int ObservedGeneration;
@@ -24,10 +24,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly int UpdatedReplicas;
 
         [OutputConstructor]
-        private TidbNGMonitoringStatusNgmonitoringStatefulset(
+        private TidbNGMonitoringStatusNgMonitoringStatefulSet(
             int collisionCount,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoringStatefulsetConditions> conditions,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoringStatefulSetConditions> conditions,
 
             int currentReplicas,
 

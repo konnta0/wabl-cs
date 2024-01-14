@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAffinityNodeaffinityRequiredduringschedulingignoredduringexecution
+    public sealed class TidbNGMonitoringSpecNgMonitoringAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectorterms> NodeSelectorTerms;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerms> NodeSelectorTerms;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAffinityNodeaffinityRequiredduringschedulingignoredduringexecution(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectorterms> nodeSelectorTerms)
+        private TidbNGMonitoringSpecNgMonitoringAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerms> nodeSelectorTerms)
         {
             NodeSelectorTerms = nodeSelectorTerms;
         }

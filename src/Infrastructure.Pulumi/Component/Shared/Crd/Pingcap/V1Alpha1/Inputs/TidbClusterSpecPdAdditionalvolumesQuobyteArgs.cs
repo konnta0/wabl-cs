@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPdAdditionalvolumesQuobyteArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPdAdditionalVolumesQuobyteArgs : global::Pulumi.ResourceArgs
     {
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -30,8 +30,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("volume", required: true)]
         public Input<string> Volume { get; set; } = null!;
 
-        public TidbClusterSpecPdAdditionalvolumesQuobyteArgs()
+        public TidbClusterSpecPdAdditionalVolumesQuobyteArgs()
         {
         }
+        public static new TidbClusterSpecPdAdditionalVolumesQuobyteArgs Empty => new TidbClusterSpecPdAdditionalVolumesQuobyteArgs();
     }
 }

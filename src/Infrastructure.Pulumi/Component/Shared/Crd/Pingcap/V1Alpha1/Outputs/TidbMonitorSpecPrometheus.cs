@@ -13,7 +13,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class TidbMonitorSpecPrometheus
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusAdditionalvolumemounts> AdditionalVolumeMounts;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusAdditionalVolumeMounts> AdditionalVolumeMounts;
         public readonly string BaseImage;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusConfig Config;
         public readonly bool DisableCompaction;
@@ -21,7 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusIngress Ingress;
         public readonly ImmutableDictionary<string, Union<int, string>> Limits;
         public readonly string LogLevel;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewrite> RemoteWrite;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWrite> RemoteWrite;
         public readonly ImmutableDictionary<string, Union<int, string>> Requests;
         public readonly int ReserveDays;
         public readonly string RetentionTime;
@@ -30,7 +30,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
         [OutputConstructor]
         private TidbMonitorSpecPrometheus(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusAdditionalvolumemounts> additionalVolumeMounts,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusAdditionalVolumeMounts> additionalVolumeMounts,
 
             string baseImage,
 
@@ -46,7 +46,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string logLevel,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewrite> remoteWrite,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWrite> remoteWrite,
 
             ImmutableDictionary<string, Union<int, string>> requests,
 

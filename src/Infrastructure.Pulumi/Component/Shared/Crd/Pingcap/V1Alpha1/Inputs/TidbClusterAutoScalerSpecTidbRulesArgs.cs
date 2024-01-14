@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterAutoScalerSpecTidbRulesArgs : Pulumi.ResourceArgs
+    public class TidbClusterAutoScalerSpecTidbRulesArgs : global::Pulumi.ResourceArgs
     {
         [Input("max_threshold", required: true)]
         public Input<double> Max_threshold { get; set; } = null!;
@@ -29,5 +29,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterAutoScalerSpecTidbRulesArgs()
         {
         }
+        public static new TidbClusterAutoScalerSpecTidbRulesArgs Empty => new TidbClusterAutoScalerSpecTidbRulesArgs();
     }
 }

@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecAffinityNodeaffinityRequiredduringschedulingignoredduringexecution
+    public sealed class DMClusterSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectorterms> NodeSelectorTerms;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerms> NodeSelectorTerms;
 
         [OutputConstructor]
-        private DMClusterSpecAffinityNodeaffinityRequiredduringschedulingignoredduringexecution(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectorterms> nodeSelectorTerms)
+        private DMClusterSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecution(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTerms> nodeSelectorTerms)
         {
             NodeSelectorTerms = nodeSelectorTerms;
         }

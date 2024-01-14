@@ -14,20 +14,20 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     public sealed class TidbClusterStatusTidb
     {
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbConditions> Conditions;
-        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailuremembers> FailureMembers;
+        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailureMembers> FailureMembers;
         public readonly string Image;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbMembers> Members;
         public readonly bool PasswordInitialized;
         public readonly string Phase;
         public readonly int ResignDDLOwnerRetryCount;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbStatefulset StatefulSet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbStatefulSet StatefulSet;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbVolumes> Volumes;
 
         [OutputConstructor]
         private TidbClusterStatusTidb(
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbConditions> conditions,
 
-            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailuremembers> failureMembers,
+            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailureMembers> failureMembers,
 
             string image,
 
@@ -39,7 +39,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int resignDDLOwnerRetryCount,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbStatefulset statefulSet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbStatefulSet statefulSet,
 
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbVolumes> volumes)
         {

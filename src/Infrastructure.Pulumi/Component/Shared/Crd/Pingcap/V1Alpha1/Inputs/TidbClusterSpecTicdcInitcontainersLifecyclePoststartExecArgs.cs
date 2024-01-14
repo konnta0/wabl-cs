@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcInitcontainersLifecyclePoststartExecArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcInitContainersLifecyclePostStartExecArgs : global::Pulumi.ResourceArgs
     {
         [Input("command")]
         private InputList<string>? _command;
@@ -20,8 +20,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _command = value;
         }
 
-        public TidbClusterSpecTicdcInitcontainersLifecyclePoststartExecArgs()
+        public TidbClusterSpecTicdcInitContainersLifecyclePostStartExecArgs()
         {
         }
+        public static new TidbClusterSpecTicdcInitContainersLifecyclePostStartExecArgs Empty => new TidbClusterSpecTicdcInitContainersLifecyclePostStartExecArgs();
     }
 }

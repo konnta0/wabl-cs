@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdAdditionalvolumesDownwardapiItemsResourcefieldref
+    public sealed class TidbClusterSpecPdAdditionalVolumesDownwardApiItemsResourceFieldRef
     {
         public readonly string ContainerName;
         public readonly Union<int, string> Divisor;
         public readonly string Resource;
 
         [OutputConstructor]
-        private TidbClusterSpecPdAdditionalvolumesDownwardapiItemsResourcefieldref(
+        private TidbClusterSpecPdAdditionalVolumesDownwardApiItemsResourceFieldRef(
             string containerName,
 
             Union<int, string> divisor,

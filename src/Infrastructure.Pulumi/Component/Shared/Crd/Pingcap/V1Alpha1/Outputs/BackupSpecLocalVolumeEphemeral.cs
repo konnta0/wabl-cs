@@ -14,13 +14,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     public sealed class BackupSpecLocalVolumeEphemeral
     {
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeclaimtemplate VolumeClaimTemplate;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeClaimTemplate VolumeClaimTemplate;
 
         [OutputConstructor]
         private BackupSpecLocalVolumeEphemeral(
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeclaimtemplate volumeClaimTemplate)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralVolumeClaimTemplate volumeClaimTemplate)
         {
             ReadOnly = readOnly;
             VolumeClaimTemplate = volumeClaimTemplate;

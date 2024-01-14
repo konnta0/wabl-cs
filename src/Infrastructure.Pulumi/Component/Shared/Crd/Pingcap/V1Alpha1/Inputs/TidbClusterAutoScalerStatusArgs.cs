@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterAutoScalerStatusArgs : Pulumi.ResourceArgs
+    public class TidbClusterAutoScalerStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("tidb")]
         private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterAutoScalerStatusTidbArgs>? _tidb;
@@ -31,5 +31,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterAutoScalerStatusArgs()
         {
         }
+        public static new TidbClusterAutoScalerStatusArgs Empty => new TidbClusterAutoScalerStatusArgs();
     }
 }

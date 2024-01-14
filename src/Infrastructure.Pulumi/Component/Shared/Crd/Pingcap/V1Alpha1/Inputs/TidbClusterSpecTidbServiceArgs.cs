@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbServiceArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalPorts")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalportsArgs>? _additionalPorts;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalportsArgs> AdditionalPorts
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalPortsArgs>? _additionalPorts;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalPortsArgs> AdditionalPorts
         {
-            get => _additionalPorts ?? (_additionalPorts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalportsArgs>());
+            get => _additionalPorts ?? (_additionalPorts = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalPortsArgs>());
             set => _additionalPorts = value;
         }
 
@@ -74,5 +74,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterSpecTidbServiceArgs()
         {
         }
+        public static new TidbClusterSpecTidbServiceArgs Empty => new TidbClusterSpecTidbServiceArgs();
     }
 }

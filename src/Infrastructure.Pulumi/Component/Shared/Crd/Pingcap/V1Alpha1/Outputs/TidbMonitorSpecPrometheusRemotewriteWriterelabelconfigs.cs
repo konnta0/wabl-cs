@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecPrometheusRemotewriteWriterelabelconfigs
+    public sealed class TidbMonitorSpecPrometheusRemoteWriteWriteRelabelConfigs
     {
         public readonly string Action;
         public readonly int Modulus;
@@ -22,7 +22,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string TargetLabel;
 
         [OutputConstructor]
-        private TidbMonitorSpecPrometheusRemotewriteWriterelabelconfigs(
+        private TidbMonitorSpecPrometheusRemoteWriteWriteRelabelConfigs(
             string action,
 
             int modulus,

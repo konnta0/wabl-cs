@@ -15,7 +15,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     {
         public readonly string Name;
         public readonly string Value;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecEnvValuefrom ValueFrom;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecEnvValueFrom ValueFrom;
 
         [OutputConstructor]
         private RestoreSpecEnv(
@@ -23,7 +23,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string value,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecEnvValuefrom valueFrom)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecEnvValueFrom valueFrom)
         {
             Name = name;
             Value = value;

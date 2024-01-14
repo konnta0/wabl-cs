@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecLocalVolumemountArgs : Pulumi.ResourceArgs
+    public class RestoreSpecLocalVolumeMountArgs : global::Pulumi.ResourceArgs
     {
         [Input("mountPath", required: true)]
         public Input<string> MountPath { get; set; } = null!;
@@ -30,8 +30,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("subPathExpr")]
         public Input<string>? SubPathExpr { get; set; }
 
-        public RestoreSpecLocalVolumemountArgs()
+        public RestoreSpecLocalVolumeMountArgs()
         {
         }
+        public static new RestoreSpecLocalVolumeMountArgs Empty => new RestoreSpecLocalVolumeMountArgs();
     }
 }

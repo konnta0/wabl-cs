@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterStatusPdPeermembers
+    public sealed class TidbClusterStatusPdPeerMembers
     {
         public readonly string ClientURL;
         public readonly bool Health;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Name;
 
         [OutputConstructor]
-        private TidbClusterStatusPdPeermembers(
+        private TidbClusterStatusPdPeerMembers(
             string clientURL,
 
             bool health,

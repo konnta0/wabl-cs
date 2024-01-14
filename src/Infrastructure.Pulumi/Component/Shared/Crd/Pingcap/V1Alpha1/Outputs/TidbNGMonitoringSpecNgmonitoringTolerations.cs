@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringTolerations
+    public sealed class TidbNGMonitoringSpecNgMonitoringTolerations
     {
         public readonly string Effect;
         public readonly string Key;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Value;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringTolerations(
+        private TidbNGMonitoringSpecNgMonitoringTolerations(
             string effect,
 
             string key,

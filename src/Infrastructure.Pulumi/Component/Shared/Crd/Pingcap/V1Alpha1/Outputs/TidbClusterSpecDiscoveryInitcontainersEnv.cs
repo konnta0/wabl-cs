@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecDiscoveryInitcontainersEnv
+    public sealed class TidbClusterSpecDiscoveryInitContainersEnv
     {
         public readonly string Name;
         public readonly string Value;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitcontainersEnvValuefrom ValueFrom;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitContainersEnvValueFrom ValueFrom;
 
         [OutputConstructor]
-        private TidbClusterSpecDiscoveryInitcontainersEnv(
+        private TidbClusterSpecDiscoveryInitContainersEnv(
             string name,
 
             string value,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitcontainersEnvValuefrom valueFrom)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryInitContainersEnvValueFrom valueFrom)
         {
             Name = name;
             Value = value;

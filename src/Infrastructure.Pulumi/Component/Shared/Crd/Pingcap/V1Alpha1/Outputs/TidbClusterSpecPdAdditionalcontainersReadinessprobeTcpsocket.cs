@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdAdditionalcontainersReadinessprobeTcpsocket
+    public sealed class TidbClusterSpecPdAdditionalContainersReadinessProbeTcpSocket
     {
         public readonly string Host;
         public readonly Union<int, string> Port;
 
         [OutputConstructor]
-        private TidbClusterSpecPdAdditionalcontainersReadinessprobeTcpsocket(
+        private TidbClusterSpecPdAdditionalContainersReadinessProbeTcpSocket(
             string host,
 
             Union<int, string> port)

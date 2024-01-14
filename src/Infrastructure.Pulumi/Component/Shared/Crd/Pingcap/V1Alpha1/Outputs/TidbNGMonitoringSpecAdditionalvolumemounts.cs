@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecAdditionalvolumemounts
+    public sealed class TidbNGMonitoringSpecAdditionalVolumeMounts
     {
         public readonly string MountPath;
         public readonly string MountPropagation;
@@ -21,7 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string SubPathExpr;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecAdditionalvolumemounts(
+        private TidbNGMonitoringSpecAdditionalVolumeMounts(
             string mountPath,
 
             string mountPropagation,

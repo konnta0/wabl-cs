@@ -10,22 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMap")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmapArgs>? ConfigMap { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapArgs>? ConfigMap { get; set; }
 
         [Input("downwardAPI")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesDownwardapiArgs>? DownwardAPI { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesDownwardApiArgs>? DownwardAPI { get; set; }
 
         [Input("secret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesSecretArgs>? Secret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesSecretArgs>? Secret { get; set; }
 
         [Input("serviceAccountToken")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesServiceaccounttokenArgs>? ServiceAccountToken { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesServiceAccountTokenArgs>? ServiceAccountToken { get; set; }
 
-        public BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesArgs()
+        public BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesArgs Empty => new BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesArgs();
     }
 }

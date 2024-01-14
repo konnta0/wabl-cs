@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryAdditionalcontainersEnvfromArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryAdditionalContainersEnvFromArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMapRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersEnvfromConfigmaprefArgs>? ConfigMapRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersEnvFromConfigMapRefArgs>? ConfigMapRef { get; set; }
 
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalcontainersEnvfromSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalContainersEnvFromSecretRefArgs>? SecretRef { get; set; }
 
-        public DMClusterSpecDiscoveryAdditionalcontainersEnvfromArgs()
+        public DMClusterSpecDiscoveryAdditionalContainersEnvFromArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryAdditionalContainersEnvFromArgs Empty => new DMClusterSpecDiscoveryAdditionalContainersEnvFromArgs();
     }
 }

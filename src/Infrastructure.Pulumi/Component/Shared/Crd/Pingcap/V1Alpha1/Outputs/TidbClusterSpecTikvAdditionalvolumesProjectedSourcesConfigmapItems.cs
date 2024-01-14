@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTikvAdditionalvolumesProjectedSourcesConfigmapItems
+    public sealed class TidbClusterSpecTikvAdditionalVolumesProjectedSourcesConfigMapItems
     {
         public readonly string Key;
         public readonly int Mode;
         public readonly string Path;
 
         [OutputConstructor]
-        private TidbClusterSpecTikvAdditionalvolumesProjectedSourcesConfigmapItems(
+        private TidbClusterSpecTikvAdditionalVolumesProjectedSourcesConfigMapItems(
             string key,
 
             int mode,

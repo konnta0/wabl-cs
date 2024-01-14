@@ -10,18 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterAdditionalvolumesProjectedSourcesDownwardapiArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApiArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesProjectedSourcesDownwardapiItemsArgs>? _items;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesProjectedSourcesDownwardapiItemsArgs> Items
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApiItemsArgs>? _items;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApiItemsArgs> Items
         {
-            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesProjectedSourcesDownwardapiItemsArgs>());
+            get => _items ?? (_items = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApiItemsArgs>());
             set => _items = value;
         }
 
-        public DMClusterSpecMasterAdditionalvolumesProjectedSourcesDownwardapiArgs()
+        public DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApiArgs()
         {
         }
+        public static new DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApiArgs Empty => new DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApiArgs();
     }
 }

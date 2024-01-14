@@ -10,22 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecAdditionalvolumesProjectedSourcesArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecAdditionalVolumesProjectedSourcesArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMap")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesProjectedSourcesConfigmapArgs>? ConfigMap { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesProjectedSourcesConfigMapArgs>? ConfigMap { get; set; }
 
         [Input("downwardAPI")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesProjectedSourcesDownwardapiArgs>? DownwardAPI { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesProjectedSourcesDownwardApiArgs>? DownwardAPI { get; set; }
 
         [Input("secret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesProjectedSourcesSecretArgs>? Secret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesProjectedSourcesSecretArgs>? Secret { get; set; }
 
         [Input("serviceAccountToken")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalvolumesProjectedSourcesServiceaccounttokenArgs>? ServiceAccountToken { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecAdditionalVolumesProjectedSourcesServiceAccountTokenArgs>? ServiceAccountToken { get; set; }
 
-        public TidbMonitorSpecAdditionalvolumesProjectedSourcesArgs()
+        public TidbMonitorSpecAdditionalVolumesProjectedSourcesArgs()
         {
         }
+        public static new TidbMonitorSpecAdditionalVolumesProjectedSourcesArgs Empty => new TidbMonitorSpecAdditionalVolumesProjectedSourcesArgs();
     }
 }

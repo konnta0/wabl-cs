@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecDiscoveryAdditionalcontainersSecuritycontextCapabilities
+    public sealed class TidbClusterSpecDiscoveryAdditionalContainersSecurityContextCapabilities
     {
         public readonly ImmutableArray<string> Add;
         public readonly ImmutableArray<string> Drop;
 
         [OutputConstructor]
-        private TidbClusterSpecDiscoveryAdditionalcontainersSecuritycontextCapabilities(
+        private TidbClusterSpecDiscoveryAdditionalContainersSecurityContextCapabilities(
             ImmutableArray<string> add,
 
             ImmutableArray<string> drop)

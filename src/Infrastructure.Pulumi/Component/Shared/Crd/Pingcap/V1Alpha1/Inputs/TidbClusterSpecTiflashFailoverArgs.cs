@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashFailoverArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashFailoverArgs : global::Pulumi.ResourceArgs
     {
         [Input("recoverByUID")]
         public Input<string>? RecoverByUID { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterSpecTiflashFailoverArgs()
         {
         }
+        public static new TidbClusterSpecTiflashFailoverArgs Empty => new TidbClusterSpecTiflashFailoverArgs();
     }
 }

@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdAdditionalvolumesNfs
+    public sealed class TidbClusterSpecPdAdditionalVolumesNfs
     {
         public readonly string Path;
         public readonly bool ReadOnly;
         public readonly string Server;
 
         [OutputConstructor]
-        private TidbClusterSpecPdAdditionalvolumesNfs(
+        private TidbClusterSpecPdAdditionalVolumesNfs(
             string path,
 
             bool readOnly,

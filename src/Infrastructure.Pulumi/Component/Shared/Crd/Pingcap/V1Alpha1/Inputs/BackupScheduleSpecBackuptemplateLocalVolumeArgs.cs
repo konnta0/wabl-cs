@@ -10,100 +10,101 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateLocalVolumeArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateLocalVolumeArgs : global::Pulumi.ResourceArgs
     {
         [Input("awsElasticBlockStore")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeAwselasticblockstoreArgs>? AwsElasticBlockStore { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeAwsElasticBlockStoreArgs>? AwsElasticBlockStore { get; set; }
 
         [Input("azureDisk")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeAzurediskArgs>? AzureDisk { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeAzureDiskArgs>? AzureDisk { get; set; }
 
         [Input("azureFile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeAzurefileArgs>? AzureFile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeAzureFileArgs>? AzureFile { get; set; }
 
         [Input("cephfs")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeCephfsArgs>? Cephfs { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeCephfsArgs>? Cephfs { get; set; }
 
         [Input("cinder")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeCinderArgs>? Cinder { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeCinderArgs>? Cinder { get; set; }
 
         [Input("configMap")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeConfigmapArgs>? ConfigMap { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeConfigMapArgs>? ConfigMap { get; set; }
 
         [Input("csi")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeCsiArgs>? Csi { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeCsiArgs>? Csi { get; set; }
 
         [Input("downwardAPI")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeDownwardapiArgs>? DownwardAPI { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeDownwardApiArgs>? DownwardAPI { get; set; }
 
         [Input("emptyDir")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeEmptydirArgs>? EmptyDir { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeEmptyDirArgs>? EmptyDir { get; set; }
 
         [Input("ephemeral")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeEphemeralArgs>? Ephemeral { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeEphemeralArgs>? Ephemeral { get; set; }
 
         [Input("fc")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeFcArgs>? Fc { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeFcArgs>? Fc { get; set; }
 
         [Input("flexVolume")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeFlexvolumeArgs>? FlexVolume { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeFlexVolumeArgs>? FlexVolume { get; set; }
 
         [Input("flocker")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeFlockerArgs>? Flocker { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeFlockerArgs>? Flocker { get; set; }
 
         [Input("gcePersistentDisk")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeGcepersistentdiskArgs>? GcePersistentDisk { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeGcePersistentDiskArgs>? GcePersistentDisk { get; set; }
 
         [Input("gitRepo")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeGitrepoArgs>? GitRepo { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeGitRepoArgs>? GitRepo { get; set; }
 
         [Input("glusterfs")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeGlusterfsArgs>? Glusterfs { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeGlusterfsArgs>? Glusterfs { get; set; }
 
         [Input("hostPath")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeHostpathArgs>? HostPath { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeHostPathArgs>? HostPath { get; set; }
 
         [Input("iscsi")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeIscsiArgs>? Iscsi { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeIscsiArgs>? Iscsi { get; set; }
 
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("nfs")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeNfsArgs>? Nfs { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeNfsArgs>? Nfs { get; set; }
 
         [Input("persistentVolumeClaim")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumePersistentvolumeclaimArgs>? PersistentVolumeClaim { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumePersistentVolumeClaimArgs>? PersistentVolumeClaim { get; set; }
 
         [Input("photonPersistentDisk")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumePhotonpersistentdiskArgs>? PhotonPersistentDisk { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumePhotonPersistentDiskArgs>? PhotonPersistentDisk { get; set; }
 
         [Input("portworxVolume")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumePortworxvolumeArgs>? PortworxVolume { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumePortworxVolumeArgs>? PortworxVolume { get; set; }
 
         [Input("projected")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeProjectedArgs>? Projected { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeProjectedArgs>? Projected { get; set; }
 
         [Input("quobyte")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeQuobyteArgs>? Quobyte { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeQuobyteArgs>? Quobyte { get; set; }
 
         [Input("rbd")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeRbdArgs>? Rbd { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeRbdArgs>? Rbd { get; set; }
 
         [Input("scaleIO")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeScaleioArgs>? ScaleIO { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeScaleIoArgs>? ScaleIO { get; set; }
 
         [Input("secret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeSecretArgs>? Secret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeSecretArgs>? Secret { get; set; }
 
         [Input("storageos")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeStorageosArgs>? Storageos { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeStorageosArgs>? Storageos { get; set; }
 
         [Input("vsphereVolume")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeVspherevolumeArgs>? VsphereVolume { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeVsphereVolumeArgs>? VsphereVolume { get; set; }
 
-        public BackupScheduleSpecBackuptemplateLocalVolumeArgs()
+        public BackupScheduleSpecBackupTemplateLocalVolumeArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateLocalVolumeArgs Empty => new BackupScheduleSpecBackupTemplateLocalVolumeArgs();
     }
 }

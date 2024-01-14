@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbAdditionalcontainersPortsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbAdditionalContainersPortsArgs : global::Pulumi.ResourceArgs
     {
         [Input("containerPort", required: true)]
         public Input<int> ContainerPort { get; set; } = null!;
@@ -27,9 +27,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
-        public TidbClusterSpecTidbAdditionalcontainersPortsArgs()
+        public TidbClusterSpecTidbAdditionalContainersPortsArgs()
         {
             Protocol = "TCP";
         }
+        public static new TidbClusterSpecTidbAdditionalContainersPortsArgs Empty => new TidbClusterSpecTidbAdditionalContainersPortsArgs();
     }
 }

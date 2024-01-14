@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPdTolerationsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPdTolerationsArgs : global::Pulumi.ResourceArgs
     {
         [Input("effect")]
         public Input<string>? Effect { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterSpecPdTolerationsArgs()
         {
         }
+        public static new TidbClusterSpecPdTolerationsArgs Empty => new TidbClusterSpecPdTolerationsArgs();
     }
 }

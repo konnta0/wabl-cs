@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbAdditionalvolumesRbd
+    public sealed class TidbClusterSpecTidbAdditionalVolumesRbd
     {
         public readonly string FsType;
         public readonly string Image;
@@ -19,11 +19,11 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableArray<string> Monitors;
         public readonly string Pool;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesRbdSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesRbdSecretRef SecretRef;
         public readonly string User;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbAdditionalvolumesRbd(
+        private TidbClusterSpecTidbAdditionalVolumesRbd(
             string fsType,
 
             string image,
@@ -36,7 +36,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesRbdSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesRbdSecretRef secretRef,
 
             string user)
         {

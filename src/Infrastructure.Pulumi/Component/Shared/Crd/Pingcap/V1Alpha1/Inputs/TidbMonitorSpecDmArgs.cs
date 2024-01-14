@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecDmArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecDmArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusters", required: true)]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecDmClustersArgs>? _clusters;
@@ -26,5 +26,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbMonitorSpecDmArgs()
         {
         }
+        public static new TidbMonitorSpecDmArgs Empty => new TidbMonitorSpecDmArgs();
     }
 }

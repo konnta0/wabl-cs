@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbInitcontainersEnvfromArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbInitContainersEnvFromArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMapRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitcontainersEnvfromConfigmaprefArgs>? ConfigMapRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitContainersEnvFromConfigMapRefArgs>? ConfigMapRef { get; set; }
 
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitcontainersEnvfromSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTidbInitContainersEnvFromSecretRefArgs>? SecretRef { get; set; }
 
-        public TidbClusterSpecTidbInitcontainersEnvfromArgs()
+        public TidbClusterSpecTidbInitContainersEnvFromArgs()
         {
         }
+        public static new TidbClusterSpecTidbInitContainersEnvFromArgs Empty => new TidbClusterSpecTidbInitContainersEnvFromArgs();
     }
 }

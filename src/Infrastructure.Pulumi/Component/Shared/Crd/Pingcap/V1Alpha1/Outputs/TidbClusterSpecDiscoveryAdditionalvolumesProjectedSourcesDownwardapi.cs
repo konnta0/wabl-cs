@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesDownwardapi
+    public sealed class TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApi
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesDownwardapiItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApiItems> Items;
 
         [OutputConstructor]
-        private TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesDownwardapi(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesProjectedSourcesDownwardapiItems> items)
+        private TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApi(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesProjectedSourcesDownwardApiItems> items)
         {
             Items = items;
         }

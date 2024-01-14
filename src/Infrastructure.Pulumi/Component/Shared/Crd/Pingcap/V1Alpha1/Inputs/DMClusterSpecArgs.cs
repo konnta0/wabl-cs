@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("affinity")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecAffinityArgs>? Affinity { get; set; }
@@ -30,7 +30,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryArgs>? Discovery { get; set; }
 
         [Input("dnsConfig")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDnsconfigArgs>? DnsConfig { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecDnsConfigArgs>? DnsConfig { get; set; }
 
         [Input("dnsPolicy")]
         public Input<string>? DnsPolicy { get; set; }
@@ -45,10 +45,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? ImagePullPolicy { get; set; }
 
         [Input("imagePullSecrets")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecImagepullsecretsArgs>? _imagePullSecrets;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecImagepullsecretsArgs> ImagePullSecrets
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecImagePullSecretsArgs>? _imagePullSecrets;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecImagePullSecretsArgs> ImagePullSecrets
         {
-            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecImagepullsecretsArgs>());
+            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecImagePullSecretsArgs>());
             set => _imagePullSecrets = value;
         }
 
@@ -78,7 +78,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? PodManagementPolicy { get; set; }
 
         [Input("podSecurityContext")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecPodsecuritycontextArgs>? PodSecurityContext { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecPodSecurityContextArgs>? PodSecurityContext { get; set; }
 
         [Input("priorityClassName")]
         public Input<string>? PriorityClassName { get; set; }
@@ -93,7 +93,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? StatefulSetUpdateStrategy { get; set; }
 
         [Input("suspendAction")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecSuspendactionArgs>? SuspendAction { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecSuspendActionArgs>? SuspendAction { get; set; }
 
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
@@ -107,7 +107,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("tlsCluster")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecTlsclusterArgs>? TlsCluster { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecTlsClusterArgs>? TlsCluster { get; set; }
 
         [Input("tolerations")]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecTolerationsArgs>? _tolerations;
@@ -118,10 +118,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("topologySpreadConstraints")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecTopologyspreadconstraintsArgs>? _topologySpreadConstraints;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecTopologyspreadconstraintsArgs> TopologySpreadConstraints
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecTopologySpreadConstraintsArgs>? _topologySpreadConstraints;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecTopologySpreadConstraintsArgs> TopologySpreadConstraints
         {
-            get => _topologySpreadConstraints ?? (_topologySpreadConstraints = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecTopologyspreadconstraintsArgs>());
+            get => _topologySpreadConstraints ?? (_topologySpreadConstraints = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecTopologySpreadConstraintsArgs>());
             set => _topologySpreadConstraints = value;
         }
 
@@ -136,5 +136,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             ImagePullPolicy = "IfNotPresent";
             PvReclaimPolicy = "Retain";
         }
+        public static new DMClusterSpecArgs Empty => new DMClusterSpecArgs();
     }
 }

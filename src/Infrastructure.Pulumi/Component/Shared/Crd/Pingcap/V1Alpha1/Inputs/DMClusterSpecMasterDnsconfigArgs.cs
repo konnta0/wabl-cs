@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterDnsconfigArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterDnsConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("nameservers")]
         private InputList<string>? _nameservers;
@@ -21,10 +21,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("options")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsconfigOptionsArgs>? _options;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsconfigOptionsArgs> Options
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsConfigOptionsArgs>? _options;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsConfigOptionsArgs> Options
         {
-            get => _options ?? (_options = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsconfigOptionsArgs>());
+            get => _options ?? (_options = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsConfigOptionsArgs>());
             set => _options = value;
         }
 
@@ -36,8 +36,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _searches = value;
         }
 
-        public DMClusterSpecMasterDnsconfigArgs()
+        public DMClusterSpecMasterDnsConfigArgs()
         {
         }
+        public static new DMClusterSpecMasterDnsConfigArgs Empty => new DMClusterSpecMasterDnsConfigArgs();
     }
 }

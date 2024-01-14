@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeNfsArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeNfsArgs : global::Pulumi.ResourceArgs
     {
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecLocalVolumeNfsArgs()
         {
         }
+        public static new BackupSpecLocalVolumeNfsArgs Empty => new BackupSpecLocalVolumeNfsArgs();
     }
 }

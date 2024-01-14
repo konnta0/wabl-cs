@@ -10,22 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecWorkerAdditionalvolumesProjectedSourcesArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecWorkerAdditionalVolumesProjectedSourcesArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMap")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesProjectedSourcesConfigmapArgs>? ConfigMap { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesProjectedSourcesConfigMapArgs>? ConfigMap { get; set; }
 
         [Input("downwardAPI")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesProjectedSourcesDownwardapiArgs>? DownwardAPI { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesProjectedSourcesDownwardApiArgs>? DownwardAPI { get; set; }
 
         [Input("secret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesProjectedSourcesSecretArgs>? Secret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesProjectedSourcesSecretArgs>? Secret { get; set; }
 
         [Input("serviceAccountToken")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesProjectedSourcesServiceaccounttokenArgs>? ServiceAccountToken { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesProjectedSourcesServiceAccountTokenArgs>? ServiceAccountToken { get; set; }
 
-        public DMClusterSpecWorkerAdditionalvolumesProjectedSourcesArgs()
+        public DMClusterSpecWorkerAdditionalVolumesProjectedSourcesArgs()
         {
         }
+        public static new DMClusterSpecWorkerAdditionalVolumesProjectedSourcesArgs Empty => new DMClusterSpecWorkerAdditionalVolumesProjectedSourcesArgs();
     }
 }

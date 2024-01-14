@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTikvAdditionalvolumesGlusterfs
+    public sealed class TidbClusterSpecTikvAdditionalVolumesGlusterfs
     {
         public readonly string Endpoints;
         public readonly string Path;
         public readonly bool ReadOnly;
 
         [OutputConstructor]
-        private TidbClusterSpecTikvAdditionalvolumesGlusterfs(
+        private TidbClusterSpecTikvAdditionalVolumesGlusterfs(
             string endpoints,
 
             string path,

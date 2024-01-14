@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecThanosObjectstorageconfig
+    public sealed class TidbMonitorSpecThanosObjectStorageConfig
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbMonitorSpecThanosObjectstorageconfig(
+        private TidbMonitorSpecThanosObjectStorageConfig(
             string key,
 
             string name,

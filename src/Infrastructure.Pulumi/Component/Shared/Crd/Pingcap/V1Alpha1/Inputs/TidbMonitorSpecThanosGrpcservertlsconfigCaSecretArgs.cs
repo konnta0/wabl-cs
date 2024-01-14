@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecThanosGrpcservertlsconfigCaSecretArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecThanosGrpcServerTlsConfigCaSecretArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("optional")]
         public Input<bool>? Optional { get; set; }
 
-        public TidbMonitorSpecThanosGrpcservertlsconfigCaSecretArgs()
+        public TidbMonitorSpecThanosGrpcServerTlsConfigCaSecretArgs()
         {
         }
+        public static new TidbMonitorSpecThanosGrpcServerTlsConfigCaSecretArgs Empty => new TidbMonitorSpecThanosGrpcServerTlsConfigCaSecretArgs();
     }
 }

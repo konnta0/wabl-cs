@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterPodsecuritycontextSelinuxoptionsArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterPodSecurityContextSeLinuxOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("level")]
         public Input<string>? Level { get; set; }
@@ -24,8 +24,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("user")]
         public Input<string>? User { get; set; }
 
-        public DMClusterSpecMasterPodsecuritycontextSelinuxoptionsArgs()
+        public DMClusterSpecMasterPodSecurityContextSeLinuxOptionsArgs()
         {
         }
+        public static new DMClusterSpecMasterPodSecurityContextSeLinuxOptionsArgs Empty => new DMClusterSpecMasterPodSecurityContextSeLinuxOptionsArgs();
     }
 }

@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbAdditionalvolumesEmptydir
+    public sealed class TidbClusterSpecTidbAdditionalVolumesEmptyDir
     {
         public readonly string Medium;
         public readonly Union<int, string> SizeLimit;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbAdditionalvolumesEmptydir(
+        private TidbClusterSpecTidbAdditionalVolumesEmptyDir(
             string medium,
 
             Union<int, string> sizeLimit)

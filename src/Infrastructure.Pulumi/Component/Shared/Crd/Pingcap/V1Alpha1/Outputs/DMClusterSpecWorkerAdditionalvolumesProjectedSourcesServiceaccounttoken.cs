@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesProjectedSourcesServiceaccounttoken
+    public sealed class DMClusterSpecWorkerAdditionalVolumesProjectedSourcesServiceAccountToken
     {
         public readonly string Audience;
         public readonly int ExpirationSeconds;
         public readonly string Path;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesProjectedSourcesServiceaccounttoken(
+        private DMClusterSpecWorkerAdditionalVolumesProjectedSourcesServiceAccountToken(
             string audience,
 
             int expirationSeconds,

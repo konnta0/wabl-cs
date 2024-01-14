@@ -11,21 +11,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalvolumesCsi
+    public sealed class DMClusterSpecDiscoveryAdditionalVolumesCsi
     {
         public readonly string Driver;
         public readonly string FsType;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesCsiNodepublishsecretref NodePublishSecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesCsiNodePublishSecretRef NodePublishSecretRef;
         public readonly bool ReadOnly;
         public readonly ImmutableDictionary<string, string> VolumeAttributes;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalvolumesCsi(
+        private DMClusterSpecDiscoveryAdditionalVolumesCsi(
             string driver,
 
             string fsType,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalvolumesCsiNodepublishsecretref nodePublishSecretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecDiscoveryAdditionalVolumesCsiNodePublishSecretRef nodePublishSecretRef,
 
             bool readOnly,
 

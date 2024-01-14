@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecDiscoveryInitcontainersVolumemounts
+    public sealed class TidbClusterSpecDiscoveryInitContainersVolumeMounts
     {
         public readonly string MountPath;
         public readonly string MountPropagation;
@@ -21,7 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string SubPathExpr;
 
         [OutputConstructor]
-        private TidbClusterSpecDiscoveryInitcontainersVolumemounts(
+        private TidbClusterSpecDiscoveryInitContainersVolumeMounts(
             string mountPath,
 
             string mountPropagation,

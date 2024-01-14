@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterAdditionalvolumesIscsiSecretrefArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterAdditionalVolumesIscsiSecretRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        public DMClusterSpecMasterAdditionalvolumesIscsiSecretrefArgs()
+        public DMClusterSpecMasterAdditionalVolumesIscsiSecretRefArgs()
         {
         }
+        public static new DMClusterSpecMasterAdditionalVolumesIscsiSecretRefArgs Empty => new DMClusterSpecMasterAdditionalVolumesIscsiSecretRefArgs();
     }
 }

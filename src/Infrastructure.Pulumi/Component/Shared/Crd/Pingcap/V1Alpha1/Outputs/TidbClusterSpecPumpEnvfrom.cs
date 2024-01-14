@@ -11,19 +11,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPumpEnvfrom
+    public sealed class TidbClusterSpecPumpEnvFrom
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpEnvfromConfigmapref ConfigMapRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpEnvFromConfigMapRef ConfigMapRef;
         public readonly string Prefix;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpEnvfromSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpEnvFromSecretRef SecretRef;
 
         [OutputConstructor]
-        private TidbClusterSpecPumpEnvfrom(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpEnvfromConfigmapref configMapRef,
+        private TidbClusterSpecPumpEnvFrom(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpEnvFromConfigMapRef configMapRef,
 
             string prefix,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpEnvfromSecretref secretRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPumpEnvFromSecretRef secretRef)
         {
             ConfigMapRef = configMapRef;
             Prefix = prefix;

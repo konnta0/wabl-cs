@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusTidbArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusTidbArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbConditionsArgs>? _conditions;
@@ -21,10 +21,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("failureMembers")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailuremembersArgs>? _failureMembers;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailuremembersArgs> FailureMembers
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailureMembersArgs>? _failureMembers;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailureMembersArgs> FailureMembers
         {
-            get => _failureMembers ?? (_failureMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailuremembersArgs>());
+            get => _failureMembers ?? (_failureMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbFailureMembersArgs>());
             set => _failureMembers = value;
         }
 
@@ -49,7 +49,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int>? ResignDDLOwnerRetryCount { get; set; }
 
         [Input("statefulSet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbStatefulsetArgs>? StatefulSet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbStatefulSetArgs>? StatefulSet { get; set; }
 
         [Input("volumes")]
         private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbVolumesArgs>? _volumes;
@@ -62,5 +62,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterStatusTidbArgs()
         {
         }
+        public static new TidbClusterStatusTidbArgs Empty => new TidbClusterStatusTidbArgs();
     }
 }

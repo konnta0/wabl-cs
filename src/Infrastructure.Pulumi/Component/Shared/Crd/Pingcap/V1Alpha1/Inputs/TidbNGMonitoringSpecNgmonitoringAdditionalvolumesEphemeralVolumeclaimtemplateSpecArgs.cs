@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessModes")]
         private InputList<string>? _accessModes;
@@ -21,13 +21,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("dataSource")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasourceArgs>? DataSource { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSourceArgs>? DataSource { get; set; }
 
         [Input("resources")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecResourcesArgs>? Resources { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecResourcesArgs>? Resources { get; set; }
 
         [Input("selector")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs>? Selector { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs>? Selector { get; set; }
 
         [Input("storageClassName")]
         public Input<string>? StorageClassName { get; set; }
@@ -38,8 +38,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("volumeName")]
         public Input<string>? VolumeName { get; set; }
 
-        public TidbNGMonitoringSpecNgmonitoringAdditionalvolumesEphemeralVolumeclaimtemplateSpecArgs()
+        public TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs Empty => new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs();
     }
 }

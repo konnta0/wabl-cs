@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashSuspendactionArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashSuspendActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("suspendStatefulSet")]
         public Input<bool>? SuspendStatefulSet { get; set; }
 
-        public TidbClusterSpecTiflashSuspendactionArgs()
+        public TidbClusterSpecTiflashSuspendActionArgs()
         {
         }
+        public static new TidbClusterSpecTiflashSuspendActionArgs Empty => new TidbClusterSpecTiflashSuspendActionArgs();
     }
 }

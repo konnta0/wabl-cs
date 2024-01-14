@@ -13,14 +13,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class TidbMonitorStatus
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusDeploymentstoragestatus DeploymentStorageStatus;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulset StatefulSet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusDeploymentStorageStatus DeploymentStorageStatus;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulSet StatefulSet;
 
         [OutputConstructor]
         private TidbMonitorStatus(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusDeploymentstoragestatus deploymentStorageStatus,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusDeploymentStorageStatus deploymentStorageStatus,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulset statefulSet)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulSet statefulSet)
         {
             DeploymentStorageStatus = deploymentStorageStatus;
             StatefulSet = statefulSet;

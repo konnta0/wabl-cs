@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectortermsMatchfields
+    public sealed class DMClusterSpecWorkerAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsMatchFields
     {
         public readonly string Key;
         public readonly string Operator;
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAffinityNodeaffinityRequiredduringschedulingignoredduringexecutionNodeselectortermsMatchfields(
+        private DMClusterSpecWorkerAffinityNodeAffinityRequiredDuringSchedulingIgnoredDuringExecutionNodeSelectorTermsMatchFields(
             string key,
 
             string @operator,

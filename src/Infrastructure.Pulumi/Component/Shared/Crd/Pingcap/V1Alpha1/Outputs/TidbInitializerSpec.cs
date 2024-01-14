@@ -16,12 +16,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecCluster Cluster;
         public readonly string Image;
         public readonly string ImagePullPolicy;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecImagepullsecrets> ImagePullSecrets;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecImagePullSecrets> ImagePullSecrets;
         public readonly string InitSql;
         public readonly string InitSqlConfigMap;
         public readonly string PasswordSecret;
         public readonly string PermitHost;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecPodsecuritycontext PodSecurityContext;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecPodSecurityContext PodSecurityContext;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecResources Resources;
         public readonly string Timezone;
         public readonly string TlsClientSecretName;
@@ -34,7 +34,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string imagePullPolicy,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecImagepullsecrets> imagePullSecrets,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecImagePullSecrets> imagePullSecrets,
 
             string initSql,
 
@@ -44,7 +44,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string permitHost,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecPodsecuritycontext podSecurityContext,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecPodSecurityContext podSecurityContext,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecResources resources,
 

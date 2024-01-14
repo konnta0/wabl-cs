@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecSuspendaction
+    public sealed class DMClusterSpecSuspendAction
     {
         public readonly bool SuspendStatefulSet;
 
         [OutputConstructor]
-        private DMClusterSpecSuspendaction(bool suspendStatefulSet)
+        private DMClusterSpecSuspendAction(bool suspendStatefulSet)
         {
             SuspendStatefulSet = suspendStatefulSet;
         }

@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class RestoreSpecPodsecuritycontextSelinuxoptions
+    public sealed class RestoreSpecPodSecurityContextSeLinuxOptions
     {
         public readonly string Level;
         public readonly string Role;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string User;
 
         [OutputConstructor]
-        private RestoreSpecPodsecuritycontextSelinuxoptions(
+        private RestoreSpecPodSecurityContextSeLinuxOptions(
             string level,
 
             string role,

@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbAdditionalvolumesDownwardapi
+    public sealed class TidbClusterSpecTidbAdditionalVolumesDownwardApi
     {
         public readonly int DefaultMode;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesDownwardapiItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesDownwardApiItems> Items;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbAdditionalvolumesDownwardapi(
+        private TidbClusterSpecTidbAdditionalVolumesDownwardApi(
             int defaultMode,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalvolumesDownwardapiItems> items)
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbAdditionalVolumesDownwardApiItems> items)
         {
             DefaultMode = defaultMode;
             Items = items;

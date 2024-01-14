@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalcontainersVolumedevices
+    public sealed class DMClusterSpecWorkerAdditionalContainersVolumeDevices
     {
         public readonly string DevicePath;
         public readonly string Name;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalcontainersVolumedevices(
+        private DMClusterSpecWorkerAdditionalContainersVolumeDevices(
             string devicePath,
 
             string name)

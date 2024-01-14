@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcAdditionalvolumesProjectedSourcesDownwardapiItemsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcAdditionalVolumesProjectedSourcesDownwardApiItemsArgs : global::Pulumi.ResourceArgs
     {
         [Input("fieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesProjectedSourcesDownwardapiItemsFieldrefArgs>? FieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesProjectedSourcesDownwardApiItemsFieldRefArgs>? FieldRef { get; set; }
 
         [Input("mode")]
         public Input<int>? Mode { get; set; }
@@ -22,10 +22,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string> Path { get; set; } = null!;
 
         [Input("resourceFieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesProjectedSourcesDownwardapiItemsResourcefieldrefArgs>? ResourceFieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesProjectedSourcesDownwardApiItemsResourceFieldRefArgs>? ResourceFieldRef { get; set; }
 
-        public TidbClusterSpecTicdcAdditionalvolumesProjectedSourcesDownwardapiItemsArgs()
+        public TidbClusterSpecTicdcAdditionalVolumesProjectedSourcesDownwardApiItemsArgs()
         {
         }
+        public static new TidbClusterSpecTicdcAdditionalVolumesProjectedSourcesDownwardApiItemsArgs Empty => new TidbClusterSpecTicdcAdditionalVolumesProjectedSourcesDownwardApiItemsArgs();
     }
 }

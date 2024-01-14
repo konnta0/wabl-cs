@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdAdditionalvolumesEphemeral
+    public sealed class TidbClusterSpecPdAdditionalVolumesEphemeral
     {
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplate VolumeClaimTemplate;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplate VolumeClaimTemplate;
 
         [OutputConstructor]
-        private TidbClusterSpecPdAdditionalvolumesEphemeral(
+        private TidbClusterSpecPdAdditionalVolumesEphemeral(
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplate volumeClaimTemplate)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplate volumeClaimTemplate)
         {
             ReadOnly = readOnly;
             VolumeClaimTemplate = volumeClaimTemplate;

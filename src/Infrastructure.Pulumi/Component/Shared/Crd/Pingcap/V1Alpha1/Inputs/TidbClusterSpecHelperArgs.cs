@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecHelperArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecHelperArgs : global::Pulumi.ResourceArgs
     {
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterSpecHelperArgs()
         {
         }
+        public static new TidbClusterSpecHelperArgs Empty => new TidbClusterSpecHelperArgs();
     }
 }

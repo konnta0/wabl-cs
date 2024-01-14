@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterAdditionalvolumesStorageosSecretref
+    public sealed class DMClusterSpecMasterAdditionalVolumesStorageosSecretRef
     {
         public readonly string Name;
 
         [OutputConstructor]
-        private DMClusterSpecMasterAdditionalvolumesStorageosSecretref(string name)
+        private DMClusterSpecMasterAdditionalVolumesStorageosSecretRef(string name)
         {
             Name = name;
         }

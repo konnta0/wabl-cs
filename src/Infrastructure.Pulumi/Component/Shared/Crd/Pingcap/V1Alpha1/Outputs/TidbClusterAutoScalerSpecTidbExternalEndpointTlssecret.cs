@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterAutoScalerSpecTidbExternalEndpointTlssecret
+    public sealed class TidbClusterAutoScalerSpecTidbExternalEndpointTlsSecret
     {
         public readonly string Name;
         public readonly string Namespace;
 
         [OutputConstructor]
-        private TidbClusterAutoScalerSpecTidbExternalEndpointTlssecret(
+        private TidbClusterAutoScalerSpecTidbExternalEndpointTlsSecret(
             string name,
 
             string @namespace)

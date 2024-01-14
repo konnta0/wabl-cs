@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecThanosGrpcservertlsconfigCertConfigmap
+    public sealed class TidbMonitorSpecThanosGrpcServerTlsConfigCertConfigMap
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbMonitorSpecThanosGrpcservertlsconfigCertConfigmap(
+        private TidbMonitorSpecThanosGrpcServerTlsConfigCertConfigMap(
             string key,
 
             string name,

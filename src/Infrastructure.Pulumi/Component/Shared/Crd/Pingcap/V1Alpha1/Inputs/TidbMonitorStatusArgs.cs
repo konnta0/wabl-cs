@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorStatusArgs : Pulumi.ResourceArgs
+    public class TidbMonitorStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("deploymentStorageStatus")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorStatusDeploymentstoragestatusArgs>? DeploymentStorageStatus { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorStatusDeploymentStorageStatusArgs>? DeploymentStorageStatus { get; set; }
 
         [Input("statefulSet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulsetArgs>? StatefulSet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulSetArgs>? StatefulSet { get; set; }
 
         public TidbMonitorStatusArgs()
         {
         }
+        public static new TidbMonitorStatusArgs Empty => new TidbMonitorStatusArgs();
     }
 }

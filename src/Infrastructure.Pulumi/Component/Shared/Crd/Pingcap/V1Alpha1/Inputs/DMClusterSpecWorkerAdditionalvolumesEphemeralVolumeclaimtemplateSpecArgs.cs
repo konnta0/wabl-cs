@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessModes")]
         private InputList<string>? _accessModes;
@@ -21,13 +21,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("dataSource")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasourceArgs>? DataSource { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSourceArgs>? DataSource { get; set; }
 
         [Input("resources")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecResourcesArgs>? Resources { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecResourcesArgs>? Resources { get; set; }
 
         [Input("selector")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorArgs>? Selector { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorArgs>? Selector { get; set; }
 
         [Input("storageClassName")]
         public Input<string>? StorageClassName { get; set; }
@@ -38,8 +38,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("volumeName")]
         public Input<string>? VolumeName { get; set; }
 
-        public DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecArgs()
+        public DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs()
         {
         }
+        public static new DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs Empty => new DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecArgs();
     }
 }

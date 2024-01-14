@@ -10,10 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeProjectedSourcesDownwardapiItemsArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsArgs : global::Pulumi.ResourceArgs
     {
         [Input("fieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardapiItemsFieldrefArgs>? FieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsFieldRefArgs>? FieldRef { get; set; }
 
         [Input("mode")]
         public Input<int>? Mode { get; set; }
@@ -22,10 +22,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string> Path { get; set; } = null!;
 
         [Input("resourceFieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardapiItemsResourcefieldrefArgs>? ResourceFieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsResourceFieldRefArgs>? ResourceFieldRef { get; set; }
 
-        public BackupSpecLocalVolumeProjectedSourcesDownwardapiItemsArgs()
+        public BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsArgs()
         {
         }
+        public static new BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsArgs Empty => new BackupSpecLocalVolumeProjectedSourcesDownwardApiItemsArgs();
     }
 }

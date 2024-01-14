@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcAdditionalvolumesEphemeralArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcAdditionalVolumesEphemeralArgs : global::Pulumi.ResourceArgs
     {
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("volumeClaimTemplate")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesEphemeralVolumeclaimtemplateArgs>? VolumeClaimTemplate { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateArgs>? VolumeClaimTemplate { get; set; }
 
-        public TidbClusterSpecTicdcAdditionalvolumesEphemeralArgs()
+        public TidbClusterSpecTicdcAdditionalVolumesEphemeralArgs()
         {
         }
+        public static new TidbClusterSpecTicdcAdditionalVolumesEphemeralArgs Empty => new TidbClusterSpecTicdcAdditionalVolumesEphemeralArgs();
     }
 }

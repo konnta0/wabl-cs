@@ -11,21 +11,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecDiscoveryAdditionalvolumesCsi
+    public sealed class TidbClusterSpecDiscoveryAdditionalVolumesCsi
     {
         public readonly string Driver;
         public readonly string FsType;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesCsiNodepublishsecretref NodePublishSecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesCsiNodePublishSecretRef NodePublishSecretRef;
         public readonly bool ReadOnly;
         public readonly ImmutableDictionary<string, string> VolumeAttributes;
 
         [OutputConstructor]
-        private TidbClusterSpecDiscoveryAdditionalvolumesCsi(
+        private TidbClusterSpecDiscoveryAdditionalVolumesCsi(
             string driver,
 
             string fsType,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalvolumesCsiNodepublishsecretref nodePublishSecretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryAdditionalVolumesCsiNodePublishSecretRef nodePublishSecretRef,
 
             bool readOnly,
 

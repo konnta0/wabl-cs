@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesIscsiArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesIscsiArgs : global::Pulumi.ResourceArgs
     {
         [Input("chapAuthDiscovery")]
         public Input<bool>? ChapAuthDiscovery { get; set; }
@@ -45,13 +45,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAdditionalvolumesIscsiSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAdditionalVolumesIscsiSecretRefArgs>? SecretRef { get; set; }
 
         [Input("targetPortal", required: true)]
         public Input<string> TargetPortal { get; set; } = null!;
 
-        public TidbNGMonitoringSpecNgmonitoringAdditionalvolumesIscsiArgs()
+        public TidbNGMonitoringSpecNgMonitoringAdditionalVolumesIscsiArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesIscsiArgs Empty => new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesIscsiArgs();
     }
 }

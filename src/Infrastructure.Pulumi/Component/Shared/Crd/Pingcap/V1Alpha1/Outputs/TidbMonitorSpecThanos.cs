@@ -13,30 +13,30 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class TidbMonitorSpecThanos
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalvolumemounts> AdditionalVolumeMounts;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalVolumeMounts> AdditionalVolumeMounts;
         public readonly string BaseImage;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfig GrpcServerTlsConfig;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfig GrpcServerTlsConfig;
         public readonly string ImagePullPolicy;
         public readonly ImmutableDictionary<string, Union<int, string>> Limits;
         public readonly bool ListenLocal;
         public readonly string LogFormat;
         public readonly string LogLevel;
         public readonly string MinTime;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosObjectstorageconfig ObjectStorageConfig;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosObjectStorageConfig ObjectStorageConfig;
         public readonly string ObjectStorageConfigFile;
         public readonly ImmutableDictionary<string, Union<int, string>> Requests;
         public readonly string RoutePrefix;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosTracingconfig TracingConfig;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosTracingConfig TracingConfig;
         public readonly string TracingConfigFile;
         public readonly string Version;
 
         [OutputConstructor]
         private TidbMonitorSpecThanos(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalvolumemounts> additionalVolumeMounts,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosAdditionalVolumeMounts> additionalVolumeMounts,
 
             string baseImage,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfig grpcServerTlsConfig,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfig grpcServerTlsConfig,
 
             string imagePullPolicy,
 
@@ -50,7 +50,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string minTime,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosObjectstorageconfig objectStorageConfig,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosObjectStorageConfig objectStorageConfig,
 
             string objectStorageConfigFile,
 
@@ -58,7 +58,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string routePrefix,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosTracingconfig tracingConfig,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosTracingConfig tracingConfig,
 
             string tracingConfigFile,
 

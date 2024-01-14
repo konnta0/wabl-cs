@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecPodsecuritycontextSelinuxoptions
+    public sealed class BackupSpecPodSecurityContextSeLinuxOptions
     {
         public readonly string Level;
         public readonly string Role;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string User;
 
         [OutputConstructor]
-        private BackupSpecPodsecuritycontextSelinuxoptions(
+        private BackupSpecPodSecurityContextSeLinuxOptions(
             string level,
 
             string role,

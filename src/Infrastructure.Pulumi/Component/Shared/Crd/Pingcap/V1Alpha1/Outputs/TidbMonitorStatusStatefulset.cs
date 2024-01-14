@@ -11,10 +11,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorStatusStatefulset
+    public sealed class TidbMonitorStatusStatefulSet
     {
         public readonly int CollisionCount;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulsetConditions> Conditions;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulSetConditions> Conditions;
         public readonly int CurrentReplicas;
         public readonly string CurrentRevision;
         public readonly int ObservedGeneration;
@@ -24,10 +24,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly int UpdatedReplicas;
 
         [OutputConstructor]
-        private TidbMonitorStatusStatefulset(
+        private TidbMonitorStatusStatefulSet(
             int collisionCount,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulsetConditions> conditions,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorStatusStatefulSetConditions> conditions,
 
             int currentReplicas,
 

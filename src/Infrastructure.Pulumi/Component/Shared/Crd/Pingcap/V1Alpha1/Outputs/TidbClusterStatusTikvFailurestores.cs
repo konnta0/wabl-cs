@@ -11,22 +11,34 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterStatusTikvFailurestores
+    public sealed class TidbClusterStatusTikvFailureStores
     {
         public readonly string CreatedAt;
+        public readonly bool HostDown;
         public readonly string PodName;
+        public readonly ImmutableDictionary<string, ImmutableDictionary<string, object>> PvcUIDSet;
+        public readonly bool StoreDeleted;
         public readonly string StoreID;
 
         [OutputConstructor]
-        private TidbClusterStatusTikvFailurestores(
+        private TidbClusterStatusTikvFailureStores(
             string createdAt,
 
+            bool hostDown,
+
             string podName,
+
+            ImmutableDictionary<string, ImmutableDictionary<string, object>> pvcUIDSet,
+
+            bool storeDeleted,
 
             string storeID)
         {
             CreatedAt = createdAt;
+            HostDown = hostDown;
             PodName = podName;
+            PvcUIDSet = pvcUIDSet;
+            StoreDeleted = storeDeleted;
             StoreID = storeID;
         }
     }

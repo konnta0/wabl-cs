@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusTikvStoresArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusTikvStoresArgs : global::Pulumi.ResourceArgs
     {
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterStatusTikvStoresArgs()
         {
         }
+        public static new TidbClusterStatusTikvStoresArgs Empty => new TidbClusterStatusTikvStoresArgs();
     }
 }

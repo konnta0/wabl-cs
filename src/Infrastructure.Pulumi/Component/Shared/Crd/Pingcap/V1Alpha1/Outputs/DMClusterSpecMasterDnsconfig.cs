@@ -11,17 +11,17 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterDnsconfig
+    public sealed class DMClusterSpecMasterDnsConfig
     {
         public readonly ImmutableArray<string> Nameservers;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsconfigOptions> Options;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsConfigOptions> Options;
         public readonly ImmutableArray<string> Searches;
 
         [OutputConstructor]
-        private DMClusterSpecMasterDnsconfig(
+        private DMClusterSpecMasterDnsConfig(
             ImmutableArray<string> nameservers,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsconfigOptions> options,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterDnsConfigOptions> options,
 
             ImmutableArray<string> searches)
         {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateS3Args : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateS3Args : global::Pulumi.ResourceArgs
     {
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -50,8 +50,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }
 
-        public BackupScheduleSpecBackuptemplateS3Args()
+        public BackupScheduleSpecBackupTemplateS3Args()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateS3Args Empty => new BackupScheduleSpecBackupTemplateS3Args();
     }
 }

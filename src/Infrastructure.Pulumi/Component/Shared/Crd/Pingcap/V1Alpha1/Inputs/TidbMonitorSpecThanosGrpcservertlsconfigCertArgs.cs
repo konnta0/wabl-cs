@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecThanosGrpcservertlsconfigCertArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecThanosGrpcServerTlsConfigCertArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMap")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCertConfigmapArgs>? ConfigMap { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCertConfigMapArgs>? ConfigMap { get; set; }
 
         [Input("secret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCertSecretArgs>? Secret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCertSecretArgs>? Secret { get; set; }
 
-        public TidbMonitorSpecThanosGrpcservertlsconfigCertArgs()
+        public TidbMonitorSpecThanosGrpcServerTlsConfigCertArgs()
         {
         }
+        public static new TidbMonitorSpecThanosGrpcServerTlsConfigCertArgs Empty => new TidbMonitorSpecThanosGrpcServerTlsConfigCertArgs();
     }
 }

@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesQuobyte
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesQuobyte
     {
         public readonly string Group;
         public readonly bool ReadOnly;
@@ -21,7 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Volume;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalvolumesQuobyte(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalVolumesQuobyte(
             string group,
 
             bool readOnly,

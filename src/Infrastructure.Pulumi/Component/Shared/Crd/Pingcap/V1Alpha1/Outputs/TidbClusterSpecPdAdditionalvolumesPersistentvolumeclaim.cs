@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdAdditionalvolumesPersistentvolumeclaim
+    public sealed class TidbClusterSpecPdAdditionalVolumesPersistentVolumeClaim
     {
         public readonly string ClaimName;
         public readonly bool ReadOnly;
 
         [OutputConstructor]
-        private TidbClusterSpecPdAdditionalvolumesPersistentvolumeclaim(
+        private TidbClusterSpecPdAdditionalVolumesPersistentVolumeClaim(
             string claimName,
 
             bool readOnly)

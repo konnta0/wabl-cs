@@ -10,21 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcAdditionalvolumesProjectedArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcAdditionalVolumesProjectedArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultMode")]
         public Input<int>? DefaultMode { get; set; }
 
         [Input("sources", required: true)]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesProjectedSourcesArgs>? _sources;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesProjectedSourcesArgs> Sources
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesProjectedSourcesArgs>? _sources;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesProjectedSourcesArgs> Sources
         {
-            get => _sources ?? (_sources = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesProjectedSourcesArgs>());
+            get => _sources ?? (_sources = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesProjectedSourcesArgs>());
             set => _sources = value;
         }
 
-        public TidbClusterSpecTicdcAdditionalvolumesProjectedArgs()
+        public TidbClusterSpecTicdcAdditionalVolumesProjectedArgs()
         {
         }
+        public static new TidbClusterSpecTicdcAdditionalVolumesProjectedArgs Empty => new TidbClusterSpecTicdcAdditionalVolumesProjectedArgs();
     }
 }

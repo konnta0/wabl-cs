@@ -11,25 +11,25 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpec
+    public sealed class TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpec
     {
         public readonly ImmutableArray<string> AccessModes;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource DataSource;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecResources Resources;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelector Selector;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource DataSource;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecResources Resources;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelector Selector;
         public readonly string StorageClassName;
         public readonly string VolumeMode;
         public readonly string VolumeName;
 
         [OutputConstructor]
-        private TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpec(
+        private TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpec(
             ImmutableArray<string> accessModes,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource dataSource,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource dataSource,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecResources resources,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecResources resources,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelector selector,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelector selector,
 
             string storageClassName,
 

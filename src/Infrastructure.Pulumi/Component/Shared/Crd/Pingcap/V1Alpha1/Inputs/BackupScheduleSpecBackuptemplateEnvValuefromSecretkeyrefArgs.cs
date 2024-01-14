@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateEnvValuefromSecretkeyrefArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateEnvValueFromSecretKeyRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("optional")]
         public Input<bool>? Optional { get; set; }
 
-        public BackupScheduleSpecBackuptemplateEnvValuefromSecretkeyrefArgs()
+        public BackupScheduleSpecBackupTemplateEnvValueFromSecretKeyRefArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateEnvValueFromSecretKeyRefArgs Empty => new BackupScheduleSpecBackupTemplateEnvValueFromSecretKeyRefArgs();
     }
 }

@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeArgs : global::Pulumi.ResourceArgs
     {
         [Input("awsElasticBlockStore")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeAwselasticblockstoreArgs>? AwsElasticBlockStore { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeAwsElasticBlockStoreArgs>? AwsElasticBlockStore { get; set; }
 
         [Input("azureDisk")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeAzurediskArgs>? AzureDisk { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeAzureDiskArgs>? AzureDisk { get; set; }
 
         [Input("azureFile")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeAzurefileArgs>? AzureFile { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeAzureFileArgs>? AzureFile { get; set; }
 
         [Input("cephfs")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeCephfsArgs>? Cephfs { get; set; }
@@ -28,16 +28,16 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeCinderArgs>? Cinder { get; set; }
 
         [Input("configMap")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeConfigmapArgs>? ConfigMap { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeConfigMapArgs>? ConfigMap { get; set; }
 
         [Input("csi")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeCsiArgs>? Csi { get; set; }
 
         [Input("downwardAPI")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeDownwardapiArgs>? DownwardAPI { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeDownwardApiArgs>? DownwardAPI { get; set; }
 
         [Input("emptyDir")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEmptydirArgs>? EmptyDir { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEmptyDirArgs>? EmptyDir { get; set; }
 
         [Input("ephemeral")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeEphemeralArgs>? Ephemeral { get; set; }
@@ -46,22 +46,22 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeFcArgs>? Fc { get; set; }
 
         [Input("flexVolume")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeFlexvolumeArgs>? FlexVolume { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeFlexVolumeArgs>? FlexVolume { get; set; }
 
         [Input("flocker")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeFlockerArgs>? Flocker { get; set; }
 
         [Input("gcePersistentDisk")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeGcepersistentdiskArgs>? GcePersistentDisk { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeGcePersistentDiskArgs>? GcePersistentDisk { get; set; }
 
         [Input("gitRepo")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeGitrepoArgs>? GitRepo { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeGitRepoArgs>? GitRepo { get; set; }
 
         [Input("glusterfs")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeGlusterfsArgs>? Glusterfs { get; set; }
 
         [Input("hostPath")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeHostpathArgs>? HostPath { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeHostPathArgs>? HostPath { get; set; }
 
         [Input("iscsi")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeIscsiArgs>? Iscsi { get; set; }
@@ -73,13 +73,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeNfsArgs>? Nfs { get; set; }
 
         [Input("persistentVolumeClaim")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumePersistentvolumeclaimArgs>? PersistentVolumeClaim { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumePersistentVolumeClaimArgs>? PersistentVolumeClaim { get; set; }
 
         [Input("photonPersistentDisk")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumePhotonpersistentdiskArgs>? PhotonPersistentDisk { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumePhotonPersistentDiskArgs>? PhotonPersistentDisk { get; set; }
 
         [Input("portworxVolume")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumePortworxvolumeArgs>? PortworxVolume { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumePortworxVolumeArgs>? PortworxVolume { get; set; }
 
         [Input("projected")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedArgs>? Projected { get; set; }
@@ -91,7 +91,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeRbdArgs>? Rbd { get; set; }
 
         [Input("scaleIO")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeScaleioArgs>? ScaleIO { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeScaleIoArgs>? ScaleIO { get; set; }
 
         [Input("secret")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeSecretArgs>? Secret { get; set; }
@@ -100,10 +100,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeStorageosArgs>? Storageos { get; set; }
 
         [Input("vsphereVolume")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeVspherevolumeArgs>? VsphereVolume { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeVsphereVolumeArgs>? VsphereVolume { get; set; }
 
         public BackupSpecLocalVolumeArgs()
         {
         }
+        public static new BackupSpecLocalVolumeArgs Empty => new BackupSpecLocalVolumeArgs();
     }
 }

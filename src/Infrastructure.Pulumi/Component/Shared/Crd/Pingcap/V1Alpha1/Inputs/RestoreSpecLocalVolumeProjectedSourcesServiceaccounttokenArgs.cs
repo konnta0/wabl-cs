@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecLocalVolumeProjectedSourcesServiceaccounttokenArgs : Pulumi.ResourceArgs
+    public class RestoreSpecLocalVolumeProjectedSourcesServiceAccountTokenArgs : global::Pulumi.ResourceArgs
     {
         [Input("audience")]
         public Input<string>? Audience { get; set; }
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
-        public RestoreSpecLocalVolumeProjectedSourcesServiceaccounttokenArgs()
+        public RestoreSpecLocalVolumeProjectedSourcesServiceAccountTokenArgs()
         {
         }
+        public static new RestoreSpecLocalVolumeProjectedSourcesServiceAccountTokenArgs Empty => new RestoreSpecLocalVolumeProjectedSourcesServiceAccountTokenArgs();
     }
 }

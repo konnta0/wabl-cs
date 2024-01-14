@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesProjectedSourcesConfigmapItems
+    public sealed class DMClusterSpecWorkerAdditionalVolumesProjectedSourcesConfigMapItems
     {
         public readonly string Key;
         public readonly int Mode;
         public readonly string Path;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesProjectedSourcesConfigmapItems(
+        private DMClusterSpecWorkerAdditionalVolumesProjectedSourcesConfigMapItems(
             string key,
 
             int mode,

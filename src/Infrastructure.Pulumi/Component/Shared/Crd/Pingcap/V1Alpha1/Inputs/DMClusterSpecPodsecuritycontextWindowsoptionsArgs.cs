@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecPodsecuritycontextWindowsoptionsArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecPodSecurityContextWindowsOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("gmsaCredentialSpec")]
         public Input<string>? GmsaCredentialSpec { get; set; }
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
-        public DMClusterSpecPodsecuritycontextWindowsoptionsArgs()
+        public DMClusterSpecPodSecurityContextWindowsOptionsArgs()
         {
         }
+        public static new DMClusterSpecPodSecurityContextWindowsOptionsArgs Empty => new DMClusterSpecPodSecurityContextWindowsOptionsArgs();
     }
 }

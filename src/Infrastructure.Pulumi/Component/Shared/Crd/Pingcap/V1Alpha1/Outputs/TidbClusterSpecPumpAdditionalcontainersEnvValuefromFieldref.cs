@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPumpAdditionalcontainersEnvValuefromFieldref
+    public sealed class TidbClusterSpecPumpAdditionalContainersEnvValueFromFieldRef
     {
         public readonly string ApiVersion;
         public readonly string FieldPath;
 
         [OutputConstructor]
-        private TidbClusterSpecPumpAdditionalcontainersEnvValuefromFieldref(
+        private TidbClusterSpecPumpAdditionalContainersEnvValueFromFieldRef(
             string apiVersion,
 
             string fieldPath)

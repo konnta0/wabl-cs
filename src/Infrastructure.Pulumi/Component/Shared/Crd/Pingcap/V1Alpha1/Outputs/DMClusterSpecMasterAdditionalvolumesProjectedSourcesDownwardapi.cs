@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterAdditionalvolumesProjectedSourcesDownwardapi
+    public sealed class DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApi
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesProjectedSourcesDownwardapiItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApiItems> Items;
 
         [OutputConstructor]
-        private DMClusterSpecMasterAdditionalvolumesProjectedSourcesDownwardapi(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalvolumesProjectedSourcesDownwardapiItems> items)
+        private DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApi(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecMasterAdditionalVolumesProjectedSourcesDownwardApiItems> items)
         {
             Items = items;
         }

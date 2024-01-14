@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTicdcAffinityPodaffinityRequiredduringschedulingignoredduringexecutionLabelselectorMatchexpressions
+    public sealed class TidbClusterSpecTicdcAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressions
     {
         public readonly string Key;
         public readonly string Operator;
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
-        private TidbClusterSpecTicdcAffinityPodaffinityRequiredduringschedulingignoredduringexecutionLabelselectorMatchexpressions(
+        private TidbClusterSpecTicdcAffinityPodAffinityRequiredDuringSchedulingIgnoredDuringExecutionLabelSelectorMatchExpressions(
             string key,
 
             string @operator,

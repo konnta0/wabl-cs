@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class RestoreSpecLocalVolumeFlexvolume
+    public sealed class RestoreSpecLocalVolumeFlexVolume
     {
         public readonly string Driver;
         public readonly string FsType;
         public readonly ImmutableDictionary<string, string> Options;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeFlexvolumeSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeFlexVolumeSecretRef SecretRef;
 
         [OutputConstructor]
-        private RestoreSpecLocalVolumeFlexvolume(
+        private RestoreSpecLocalVolumeFlexVolume(
             string driver,
 
             string fsType,
@@ -29,7 +29,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeFlexvolumeSecretref secretRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeFlexVolumeSecretRef secretRef)
         {
             Driver = driver;
             FsType = fsType;

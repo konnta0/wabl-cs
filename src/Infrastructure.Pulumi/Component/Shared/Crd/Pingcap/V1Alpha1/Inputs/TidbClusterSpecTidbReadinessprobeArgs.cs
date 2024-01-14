@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbReadinessprobeArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbReadinessProbeArgs : global::Pulumi.ResourceArgs
     {
         [Input("initialDelaySeconds")]
         public Input<int>? InitialDelaySeconds { get; set; }
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        public TidbClusterSpecTidbReadinessprobeArgs()
+        public TidbClusterSpecTidbReadinessProbeArgs()
         {
         }
+        public static new TidbClusterSpecTidbReadinessProbeArgs Empty => new TidbClusterSpecTidbReadinessProbeArgs();
     }
 }

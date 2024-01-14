@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecLocalVolumeEmptydirArgs : Pulumi.ResourceArgs
+    public class RestoreSpecLocalVolumeEmptyDirArgs : global::Pulumi.ResourceArgs
     {
         [Input("medium")]
         public Input<string>? Medium { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("sizeLimit")]
         public InputUnion<int, string>? SizeLimit { get; set; }
 
-        public RestoreSpecLocalVolumeEmptydirArgs()
+        public RestoreSpecLocalVolumeEmptyDirArgs()
         {
         }
+        public static new RestoreSpecLocalVolumeEmptyDirArgs Empty => new RestoreSpecLocalVolumeEmptyDirArgs();
     }
 }

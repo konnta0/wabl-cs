@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeIscsiArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeIscsiArgs : global::Pulumi.ResourceArgs
     {
         [Input("chapAuthDiscovery")]
         public Input<bool>? ChapAuthDiscovery { get; set; }
@@ -45,7 +45,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeIscsiSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeIscsiSecretRefArgs>? SecretRef { get; set; }
 
         [Input("targetPortal", required: true)]
         public Input<string> TargetPortal { get; set; } = null!;
@@ -53,5 +53,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecLocalVolumeIscsiArgs()
         {
         }
+        public static new BackupSpecLocalVolumeIscsiArgs Empty => new BackupSpecLocalVolumeIscsiArgs();
     }
 }

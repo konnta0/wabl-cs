@@ -10,22 +10,23 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecEnvValuefromArgs : Pulumi.ResourceArgs
+    public class BackupSpecEnvValueFromArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMapKeyRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecEnvValuefromConfigmapkeyrefArgs>? ConfigMapKeyRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecEnvValueFromConfigMapKeyRefArgs>? ConfigMapKeyRef { get; set; }
 
         [Input("fieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecEnvValuefromFieldrefArgs>? FieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecEnvValueFromFieldRefArgs>? FieldRef { get; set; }
 
         [Input("resourceFieldRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecEnvValuefromResourcefieldrefArgs>? ResourceFieldRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecEnvValueFromResourceFieldRefArgs>? ResourceFieldRef { get; set; }
 
         [Input("secretKeyRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecEnvValuefromSecretkeyrefArgs>? SecretKeyRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecEnvValueFromSecretKeyRefArgs>? SecretKeyRef { get; set; }
 
-        public BackupSpecEnvValuefromArgs()
+        public BackupSpecEnvValueFromArgs()
         {
         }
+        public static new BackupSpecEnvValueFromArgs Empty => new BackupSpecEnvValueFromArgs();
     }
 }

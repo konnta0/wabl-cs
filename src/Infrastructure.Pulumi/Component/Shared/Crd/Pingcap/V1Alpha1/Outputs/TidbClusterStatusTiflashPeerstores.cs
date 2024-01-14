@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterStatusTiflashPeerstores
+    public sealed class TidbClusterStatusTiflashPeerStores
     {
         public readonly string Id;
         public readonly string Ip;
@@ -21,7 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string State;
 
         [OutputConstructor]
-        private TidbClusterStatusTiflashPeerstores(
+        private TidbClusterStatusTiflashPeerStores(
             string id,
 
             string ip,

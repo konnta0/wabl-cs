@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterAutoScalerSpecTidbExternalEndpointArgs : Pulumi.ResourceArgs
+    public class TidbClusterAutoScalerSpecTidbExternalEndpointArgs : global::Pulumi.ResourceArgs
     {
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -22,10 +22,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<int> Port { get; set; } = null!;
 
         [Input("tlsSecret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterAutoScalerSpecTidbExternalEndpointTlssecretArgs>? TlsSecret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterAutoScalerSpecTidbExternalEndpointTlsSecretArgs>? TlsSecret { get; set; }
 
         public TidbClusterAutoScalerSpecTidbExternalEndpointArgs()
         {
         }
+        public static new TidbClusterAutoScalerSpecTidbExternalEndpointArgs Empty => new TidbClusterAutoScalerSpecTidbExternalEndpointArgs();
     }
 }

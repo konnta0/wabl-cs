@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecDumplingArgs : Pulumi.ResourceArgs
+    public class BackupSpecDumplingArgs : global::Pulumi.ResourceArgs
     {
         [Input("options")]
         private InputList<string>? _options;
@@ -31,5 +31,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecDumplingArgs()
         {
         }
+        public static new BackupSpecDumplingArgs Empty => new BackupSpecDumplingArgs();
     }
 }

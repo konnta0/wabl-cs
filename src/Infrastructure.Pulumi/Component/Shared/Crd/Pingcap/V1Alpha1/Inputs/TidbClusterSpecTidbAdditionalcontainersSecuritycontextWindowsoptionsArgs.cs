@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbAdditionalcontainersSecuritycontextWindowsoptionsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbAdditionalContainersSecurityContextWindowsOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("gmsaCredentialSpec")]
         public Input<string>? GmsaCredentialSpec { get; set; }
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("runAsUserName")]
         public Input<string>? RunAsUserName { get; set; }
 
-        public TidbClusterSpecTidbAdditionalcontainersSecuritycontextWindowsoptionsArgs()
+        public TidbClusterSpecTidbAdditionalContainersSecurityContextWindowsOptionsArgs()
         {
         }
+        public static new TidbClusterSpecTidbAdditionalContainersSecurityContextWindowsOptionsArgs Empty => new TidbClusterSpecTidbAdditionalContainersSecurityContextWindowsOptionsArgs();
     }
 }

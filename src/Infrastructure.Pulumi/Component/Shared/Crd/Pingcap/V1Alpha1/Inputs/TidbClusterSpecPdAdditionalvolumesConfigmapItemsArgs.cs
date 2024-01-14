@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPdAdditionalvolumesConfigmapItemsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPdAdditionalVolumesConfigMapItemsArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
-        public TidbClusterSpecPdAdditionalvolumesConfigmapItemsArgs()
+        public TidbClusterSpecPdAdditionalVolumesConfigMapItemsArgs()
         {
         }
+        public static new TidbClusterSpecPdAdditionalVolumesConfigMapItemsArgs Empty => new TidbClusterSpecPdAdditionalVolumesConfigMapItemsArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTikvAdditionalvolumesScaleioArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTikvAdditionalVolumesScaleIoArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef", required: true)]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalvolumesScaleioSecretrefArgs> SecretRef { get; set; } = null!;
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTikvAdditionalVolumesScaleIoSecretRefArgs> SecretRef { get; set; } = null!;
 
         [Input("sslEnabled")]
         public Input<bool>? SslEnabled { get; set; }
@@ -42,8 +42,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("volumeName")]
         public Input<string>? VolumeName { get; set; }
 
-        public TidbClusterSpecTikvAdditionalvolumesScaleioArgs()
+        public TidbClusterSpecTikvAdditionalVolumesScaleIoArgs()
         {
         }
+        public static new TidbClusterSpecTikvAdditionalVolumesScaleIoArgs Empty => new TidbClusterSpecTikvAdditionalVolumesScaleIoArgs();
     }
 }

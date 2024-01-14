@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalvolumesFc
+    public sealed class DMClusterSpecDiscoveryAdditionalVolumesFc
     {
         public readonly string FsType;
         public readonly int Lun;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableArray<string> Wwids;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalvolumesFc(
+        private DMClusterSpecDiscoveryAdditionalVolumesFc(
             string fsType,
 
             int lun,

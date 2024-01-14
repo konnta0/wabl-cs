@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecDiscoveryDnsconfigArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecDiscoveryDnsConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("nameservers")]
         private InputList<string>? _nameservers;
@@ -21,10 +21,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("options")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryDnsconfigOptionsArgs>? _options;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryDnsconfigOptionsArgs> Options
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryDnsConfigOptionsArgs>? _options;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryDnsConfigOptionsArgs> Options
         {
-            get => _options ?? (_options = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryDnsconfigOptionsArgs>());
+            get => _options ?? (_options = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecDiscoveryDnsConfigOptionsArgs>());
             set => _options = value;
         }
 
@@ -36,8 +36,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _searches = value;
         }
 
-        public TidbClusterSpecDiscoveryDnsconfigArgs()
+        public TidbClusterSpecDiscoveryDnsConfigArgs()
         {
         }
+        public static new TidbClusterSpecDiscoveryDnsConfigArgs Empty => new TidbClusterSpecDiscoveryDnsConfigArgs();
     }
 }

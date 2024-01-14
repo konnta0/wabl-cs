@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecPrometheusreloader
+    public sealed class TidbMonitorSpecPrometheusReloader
     {
         public readonly string BaseImage;
         public readonly string ImagePullPolicy;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Version;
 
         [OutputConstructor]
-        private TidbMonitorSpecPrometheusreloader(
+        private TidbMonitorSpecPrometheusReloader(
             string baseImage,
 
             string imagePullPolicy,

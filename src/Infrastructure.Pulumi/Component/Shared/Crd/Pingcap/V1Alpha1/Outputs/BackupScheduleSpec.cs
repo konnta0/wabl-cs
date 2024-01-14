@@ -13,8 +13,9 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class BackupScheduleSpec
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplate BackupTemplate;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecImagepullsecrets> ImagePullSecrets;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplate BackupTemplate;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecImagePullSecrets> ImagePullSecrets;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplate LogBackupTemplate;
         public readonly int MaxBackups;
         public readonly string MaxReservedTime;
         public readonly bool Pause;
@@ -24,9 +25,11 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
         [OutputConstructor]
         private BackupScheduleSpec(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplate backupTemplate,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplate backupTemplate,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecImagepullsecrets> imagePullSecrets,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecImagePullSecrets> imagePullSecrets,
+
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplate logBackupTemplate,
 
             int maxBackups,
 
@@ -42,6 +45,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         {
             BackupTemplate = backupTemplate;
             ImagePullSecrets = imagePullSecrets;
+            LogBackupTemplate = logBackupTemplate;
             MaxBackups = maxBackups;
             MaxReservedTime = maxReservedTime;
             Pause = pause;

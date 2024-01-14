@@ -10,13 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecArgs : Pulumi.ResourceArgs
+    public class BackupSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("affinity")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecAffinityArgs>? Affinity { get; set; }
 
         [Input("azblob")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecAzblobArgs>? Azblob { get; set; }
+
+        [Input("backoffRetryPolicy")]
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecBackoffRetryPolicyArgs>? BackoffRetryPolicy { get; set; }
+
+        [Input("backupMode")]
+        public Input<string>? BackupMode { get; set; }
 
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
@@ -25,10 +31,13 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecBrArgs>? Br { get; set; }
 
         [Input("cleanOption")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecCleanoptionArgs>? CleanOption { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecCleanOptionArgs>? CleanOption { get; set; }
 
         [Input("cleanPolicy")]
         public Input<string>? CleanPolicy { get; set; }
+
+        [Input("commitTs")]
+        public Input<string>? CommitTs { get; set; }
 
         [Input("dumpling")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecDumplingArgs>? Dumpling { get; set; }
@@ -48,18 +57,24 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecGcsArgs>? Gcs { get; set; }
 
         [Input("imagePullSecrets")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecImagepullsecretsArgs>? _imagePullSecrets;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecImagepullsecretsArgs> ImagePullSecrets
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecImagePullSecretsArgs>? _imagePullSecrets;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecImagePullSecretsArgs> ImagePullSecrets
         {
-            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecImagepullsecretsArgs>());
+            get => _imagePullSecrets ?? (_imagePullSecrets = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecImagePullSecretsArgs>());
             set => _imagePullSecrets = value;
         }
 
         [Input("local")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalArgs>? Local { get; set; }
 
+        [Input("logStop")]
+        public Input<bool>? LogStop { get; set; }
+
+        [Input("logTruncateUntil")]
+        public Input<string>? LogTruncateUntil { get; set; }
+
         [Input("podSecurityContext")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecPodsecuritycontextArgs>? PodSecurityContext { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecPodSecurityContextArgs>? PodSecurityContext { get; set; }
 
         [Input("priorityClassName")]
         public Input<string>? PriorityClassName { get; set; }
@@ -106,6 +121,8 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 
         public BackupSpecArgs()
         {
+            BackupMode = "snapshot";
         }
+        public static new BackupSpecArgs Empty => new BackupSpecArgs();
     }
 }

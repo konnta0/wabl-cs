@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecResourcesArgs : Pulumi.ResourceArgs
+    public class BackupSpecResourcesArgs : global::Pulumi.ResourceArgs
     {
         [Input("limits")]
         private InputMap<Union<int, string>>? _limits;
@@ -31,5 +31,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecResourcesArgs()
         {
         }
+        public static new BackupSpecResourcesArgs Empty => new BackupSpecResourcesArgs();
     }
 }

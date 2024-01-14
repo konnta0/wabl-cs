@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecLocalVolumeCephfsArgs : Pulumi.ResourceArgs
+    public class RestoreSpecLocalVolumeCephfsArgs : global::Pulumi.ResourceArgs
     {
         [Input("monitors", required: true)]
         private InputList<string>? _monitors;
@@ -30,7 +30,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? SecretFile { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeCephfsSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeCephfsSecretRefArgs>? SecretRef { get; set; }
 
         [Input("user")]
         public Input<string>? User { get; set; }
@@ -38,5 +38,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public RestoreSpecLocalVolumeCephfsArgs()
         {
         }
+        public static new RestoreSpecLocalVolumeCephfsArgs Empty => new RestoreSpecLocalVolumeCephfsArgs();
     }
 }

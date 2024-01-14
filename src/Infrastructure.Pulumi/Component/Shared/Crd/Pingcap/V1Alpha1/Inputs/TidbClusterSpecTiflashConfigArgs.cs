@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashConfigArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("config")]
         private InputMap<object>? _config;
@@ -31,5 +31,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterSpecTiflashConfigArgs()
         {
         }
+        public static new TidbClusterSpecTiflashConfigArgs Empty => new TidbClusterSpecTiflashConfigArgs();
     }
 }

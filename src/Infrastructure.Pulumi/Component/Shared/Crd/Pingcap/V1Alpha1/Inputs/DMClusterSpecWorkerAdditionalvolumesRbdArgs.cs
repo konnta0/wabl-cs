@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecWorkerAdditionalvolumesRbdArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecWorkerAdditionalVolumesRbdArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -36,13 +36,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesRbdSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesRbdSecretRefArgs>? SecretRef { get; set; }
 
         [Input("user")]
         public Input<string>? User { get; set; }
 
-        public DMClusterSpecWorkerAdditionalvolumesRbdArgs()
+        public DMClusterSpecWorkerAdditionalVolumesRbdArgs()
         {
         }
+        public static new DMClusterSpecWorkerAdditionalVolumesRbdArgs Empty => new DMClusterSpecWorkerAdditionalVolumesRbdArgs();
     }
 }

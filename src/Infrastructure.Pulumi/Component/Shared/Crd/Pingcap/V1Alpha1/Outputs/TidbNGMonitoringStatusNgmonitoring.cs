@@ -11,17 +11,17 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringStatusNgmonitoring
+    public sealed class TidbNGMonitoringStatusNgMonitoring
     {
         public readonly string Phase;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoringStatefulset StatefulSet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoringStatefulSet StatefulSet;
         public readonly bool Synced;
 
         [OutputConstructor]
-        private TidbNGMonitoringStatusNgmonitoring(
+        private TidbNGMonitoringStatusNgMonitoring(
             string phase,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoringStatefulset statefulSet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoringStatefulSet statefulSet,
 
             bool synced)
         {

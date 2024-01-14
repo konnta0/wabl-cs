@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashAdditionalvolumesEphemeralVolumeclaimtemplateSpecResources
+    public sealed class TidbClusterSpecTiflashAdditionalVolumesEphemeralVolumeClaimTemplateSpecResources
     {
         public readonly ImmutableDictionary<string, Union<int, string>> Limits;
         public readonly ImmutableDictionary<string, Union<int, string>> Requests;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashAdditionalvolumesEphemeralVolumeclaimtemplateSpecResources(
+        private TidbClusterSpecTiflashAdditionalVolumesEphemeralVolumeClaimTemplateSpecResources(
             ImmutableDictionary<string, Union<int, string>> limits,
 
             ImmutableDictionary<string, Union<int, string>> requests)

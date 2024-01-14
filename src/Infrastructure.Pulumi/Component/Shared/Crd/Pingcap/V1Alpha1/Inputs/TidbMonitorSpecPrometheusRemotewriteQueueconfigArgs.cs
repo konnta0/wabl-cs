@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusRemotewriteQueueconfigArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusRemoteWriteQueueConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("batchSendDeadline")]
         public Input<int>? BatchSendDeadline { get; set; }
@@ -33,8 +33,12 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("minBackoff")]
         public Input<int>? MinBackoff { get; set; }
 
-        public TidbMonitorSpecPrometheusRemotewriteQueueconfigArgs()
+        [Input("minShards")]
+        public Input<int>? MinShards { get; set; }
+
+        public TidbMonitorSpecPrometheusRemoteWriteQueueConfigArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusRemoteWriteQueueConfigArgs Empty => new TidbMonitorSpecPrometheusRemoteWriteQueueConfigArgs();
     }
 }

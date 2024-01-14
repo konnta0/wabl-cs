@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTicdcAdditionalvolumesFc
+    public sealed class TidbClusterSpecTicdcAdditionalVolumesFc
     {
         public readonly string FsType;
         public readonly int Lun;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableArray<string> Wwids;
 
         [OutputConstructor]
-        private TidbClusterSpecTicdcAdditionalvolumesFc(
+        private TidbClusterSpecTicdcAdditionalVolumesFc(
             string fsType,
 
             int lun,

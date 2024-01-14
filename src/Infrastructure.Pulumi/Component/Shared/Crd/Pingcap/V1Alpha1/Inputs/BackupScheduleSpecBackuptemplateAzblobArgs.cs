@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateAzblobArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateAzblobArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessTier")]
         public Input<string>? AccessTier { get; set; }
@@ -27,8 +27,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("secretName")]
         public Input<string>? SecretName { get; set; }
 
-        public BackupScheduleSpecBackuptemplateAzblobArgs()
+        public BackupScheduleSpecBackupTemplateAzblobArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateAzblobArgs Empty => new BackupScheduleSpecBackupTemplateAzblobArgs();
     }
 }

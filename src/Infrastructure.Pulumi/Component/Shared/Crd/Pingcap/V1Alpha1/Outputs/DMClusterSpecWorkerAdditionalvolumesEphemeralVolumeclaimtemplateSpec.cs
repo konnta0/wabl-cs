@@ -11,25 +11,25 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpec
+    public sealed class DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpec
     {
         public readonly ImmutableArray<string> AccessModes;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource DataSource;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecResources Resources;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelector Selector;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource DataSource;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecResources Resources;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelector Selector;
         public readonly string StorageClassName;
         public readonly string VolumeMode;
         public readonly string VolumeName;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpec(
+        private DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpec(
             ImmutableArray<string> accessModes,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource dataSource,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource dataSource,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecResources resources,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecResources resources,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelector selector,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterSpecWorkerAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelector selector,
 
             string storageClassName,
 

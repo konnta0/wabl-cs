@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTikvAdditionalvolumesAzurefileArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTikvAdditionalVolumesAzureFileArgs : global::Pulumi.ResourceArgs
     {
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("shareName", required: true)]
         public Input<string> ShareName { get; set; } = null!;
 
-        public TidbClusterSpecTikvAdditionalvolumesAzurefileArgs()
+        public TidbClusterSpecTikvAdditionalVolumesAzureFileArgs()
         {
         }
+        public static new TidbClusterSpecTikvAdditionalVolumesAzureFileArgs Empty => new TidbClusterSpecTikvAdditionalVolumesAzureFileArgs();
     }
 }

@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalcontainersEnvValuefromFieldref
+    public sealed class DMClusterSpecDiscoveryAdditionalContainersEnvValueFromFieldRef
     {
         public readonly string ApiVersion;
         public readonly string FieldPath;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalcontainersEnvValuefromFieldref(
+        private DMClusterSpecDiscoveryAdditionalContainersEnvValueFromFieldRef(
             string apiVersion,
 
             string fieldPath)

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeFcArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeFcArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -40,5 +40,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecLocalVolumeFcArgs()
         {
         }
+        public static new BackupSpecLocalVolumeFcArgs Empty => new BackupSpecLocalVolumeFcArgs();
     }
 }

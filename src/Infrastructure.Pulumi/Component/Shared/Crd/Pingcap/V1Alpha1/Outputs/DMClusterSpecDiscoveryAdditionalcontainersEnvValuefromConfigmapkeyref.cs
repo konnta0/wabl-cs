@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalcontainersEnvValuefromConfigmapkeyref
+    public sealed class DMClusterSpecDiscoveryAdditionalContainersEnvValueFromConfigMapKeyRef
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalcontainersEnvValuefromConfigmapkeyref(
+        private DMClusterSpecDiscoveryAdditionalContainersEnvValueFromConfigMapKeyRef(
             string key,
 
             string name,

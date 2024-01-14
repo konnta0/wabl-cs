@@ -11,17 +11,17 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbDnsconfig
+    public sealed class TidbClusterSpecTidbDnsConfig
     {
         public readonly ImmutableArray<string> Nameservers;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbDnsconfigOptions> Options;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbDnsConfigOptions> Options;
         public readonly ImmutableArray<string> Searches;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbDnsconfig(
+        private TidbClusterSpecTidbDnsConfig(
             ImmutableArray<string> nameservers,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbDnsconfigOptions> options,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbDnsConfigOptions> options,
 
             ImmutableArray<string> searches)
         {

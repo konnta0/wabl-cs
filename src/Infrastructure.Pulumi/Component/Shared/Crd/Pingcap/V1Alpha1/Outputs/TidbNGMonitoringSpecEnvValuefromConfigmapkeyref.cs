@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecEnvValuefromConfigmapkeyref
+    public sealed class TidbNGMonitoringSpecEnvValueFromConfigMapKeyRef
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecEnvValuefromConfigmapkeyref(
+        private TidbNGMonitoringSpecEnvValueFromConfigMapKeyRef(
             string key,
 
             string name,

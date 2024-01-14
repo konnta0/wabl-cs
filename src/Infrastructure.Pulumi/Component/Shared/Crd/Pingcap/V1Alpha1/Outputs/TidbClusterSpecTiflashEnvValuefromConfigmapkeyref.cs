@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashEnvValuefromConfigmapkeyref
+    public sealed class TidbClusterSpecTiflashEnvValueFromConfigMapKeyRef
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashEnvValuefromConfigmapkeyref(
+        private TidbClusterSpecTiflashEnvValueFromConfigMapKeyRef(
             string key,
 
             string name,

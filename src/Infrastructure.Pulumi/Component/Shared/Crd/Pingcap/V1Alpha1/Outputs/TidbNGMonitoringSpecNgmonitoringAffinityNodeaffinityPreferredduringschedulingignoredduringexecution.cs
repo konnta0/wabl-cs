@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAffinityNodeaffinityPreferredduringschedulingignoredduringexecution
+    public sealed class TidbNGMonitoringSpecNgMonitoringAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAffinityNodeaffinityPreferredduringschedulingignoredduringexecutionPreference Preference;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference Preference;
         public readonly int Weight;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAffinityNodeaffinityPreferredduringschedulingignoredduringexecution(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgmonitoringAffinityNodeaffinityPreferredduringschedulingignoredduringexecutionPreference preference,
+        private TidbNGMonitoringSpecNgMonitoringAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecution(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecNgMonitoringAffinityNodeAffinityPreferredDuringSchedulingIgnoredDuringExecutionPreference preference,
 
             int weight)
         {

@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbAdditionalvolumesProjectedSourcesDownwardapiItemsFieldref
+    public sealed class TidbClusterSpecTidbAdditionalVolumesProjectedSourcesDownwardApiItemsFieldRef
     {
         public readonly string ApiVersion;
         public readonly string FieldPath;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbAdditionalvolumesProjectedSourcesDownwardapiItemsFieldref(
+        private TidbClusterSpecTidbAdditionalVolumesProjectedSourcesDownwardApiItemsFieldRef(
             string apiVersion,
 
             string fieldPath)

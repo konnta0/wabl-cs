@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashAdditionalvolumesPhotonpersistentdisk
+    public sealed class TidbClusterSpecTiflashAdditionalVolumesPhotonPersistentDisk
     {
         public readonly string FsType;
         public readonly string PdID;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashAdditionalvolumesPhotonpersistentdisk(
+        private TidbClusterSpecTiflashAdditionalVolumesPhotonPersistentDisk(
             string fsType,
 
             string pdID)

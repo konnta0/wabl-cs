@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTikvInitcontainersEnvValuefromConfigmapkeyref
+    public sealed class TidbClusterSpecTikvInitContainersEnvValueFromConfigMapKeyRef
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbClusterSpecTikvInitcontainersEnvValuefromConfigmapkeyref(
+        private TidbClusterSpecTikvInitContainersEnvValueFromConfigMapKeyRef(
             string key,
 
             string name,

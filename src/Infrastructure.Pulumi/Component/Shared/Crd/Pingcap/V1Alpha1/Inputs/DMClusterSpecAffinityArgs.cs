@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecAffinityArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecAffinityArgs : global::Pulumi.ResourceArgs
     {
         [Input("nodeAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeaffinityArgs>? NodeAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecAffinityNodeAffinityArgs>? NodeAffinity { get; set; }
 
         [Input("podAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodaffinityArgs>? PodAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodAffinityArgs>? PodAffinity { get; set; }
 
         [Input("podAntiAffinity")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodantiaffinityArgs>? PodAntiAffinity { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterSpecAffinityPodAntiAffinityArgs>? PodAntiAffinity { get; set; }
 
         public DMClusterSpecAffinityArgs()
         {
         }
+        public static new DMClusterSpecAffinityArgs Empty => new DMClusterSpecAffinityArgs();
     }
 }

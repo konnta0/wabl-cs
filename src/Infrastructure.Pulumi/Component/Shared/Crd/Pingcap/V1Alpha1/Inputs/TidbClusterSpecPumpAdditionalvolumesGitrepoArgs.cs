@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPumpAdditionalvolumesGitrepoArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPumpAdditionalVolumesGitRepoArgs : global::Pulumi.ResourceArgs
     {
         [Input("directory")]
         public Input<string>? Directory { get; set; }
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("revision")]
         public Input<string>? Revision { get; set; }
 
-        public TidbClusterSpecPumpAdditionalvolumesGitrepoArgs()
+        public TidbClusterSpecPumpAdditionalVolumesGitRepoArgs()
         {
         }
+        public static new TidbClusterSpecPumpAdditionalVolumesGitRepoArgs Empty => new TidbClusterSpecPumpAdditionalVolumesGitRepoArgs();
     }
 }

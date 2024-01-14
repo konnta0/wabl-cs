@@ -10,19 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateLocalArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateLocalArgs : global::Pulumi.ResourceArgs
     {
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         [Input("volume", required: true)]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeArgs> Volume { get; set; } = null!;
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeArgs> Volume { get; set; } = null!;
 
         [Input("volumeMount", required: true)]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumemountArgs> VolumeMount { get; set; } = null!;
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeMountArgs> VolumeMount { get; set; } = null!;
 
-        public BackupScheduleSpecBackuptemplateLocalArgs()
+        public BackupScheduleSpecBackupTemplateLocalArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateLocalArgs Empty => new BackupScheduleSpecBackupTemplateLocalArgs();
     }
 }

@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecTlscluster
+    public sealed class DMClusterSpecTlsCluster
     {
         public readonly bool Enabled;
 
         [OutputConstructor]
-        private DMClusterSpecTlscluster(bool enabled)
+        private DMClusterSpecTlsCluster(bool enabled)
         {
             Enabled = enabled;
         }

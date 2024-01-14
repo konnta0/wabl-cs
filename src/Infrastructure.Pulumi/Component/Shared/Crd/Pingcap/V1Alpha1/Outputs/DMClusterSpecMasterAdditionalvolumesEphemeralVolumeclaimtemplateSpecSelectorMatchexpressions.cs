@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressions
+    public sealed class DMClusterSpecMasterAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressions
     {
         public readonly string Key;
         public readonly string Operator;
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
-        private DMClusterSpecMasterAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressions(
+        private DMClusterSpecMasterAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressions(
             string key,
 
             string @operator,

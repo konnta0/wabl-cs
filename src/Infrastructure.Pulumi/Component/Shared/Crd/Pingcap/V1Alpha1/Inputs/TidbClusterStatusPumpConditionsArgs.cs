@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusPumpConditionsArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusPumpConditionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("lastTransitionTime", required: true)]
         public Input<string> LastTransitionTime { get; set; } = null!;
@@ -33,5 +33,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterStatusPumpConditionsArgs()
         {
         }
+        public static new TidbClusterStatusPumpConditionsArgs Empty => new TidbClusterStatusPumpConditionsArgs();
     }
 }

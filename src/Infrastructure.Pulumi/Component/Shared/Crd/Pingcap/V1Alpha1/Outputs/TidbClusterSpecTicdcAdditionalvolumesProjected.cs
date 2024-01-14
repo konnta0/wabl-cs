@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTicdcAdditionalvolumesProjected
+    public sealed class TidbClusterSpecTicdcAdditionalVolumesProjected
     {
         public readonly int DefaultMode;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesProjectedSources> Sources;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesProjectedSources> Sources;
 
         [OutputConstructor]
-        private TidbClusterSpecTicdcAdditionalvolumesProjected(
+        private TidbClusterSpecTicdcAdditionalVolumesProjected(
             int defaultMode,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesProjectedSources> sources)
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesProjectedSources> sources)
         {
             DefaultMode = defaultMode;
             Sources = sources;

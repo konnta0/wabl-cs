@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeProjectedSourcesSecretArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeProjectedSourcesSecretArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesSecretItemsArgs>? _items;
@@ -29,5 +29,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecLocalVolumeProjectedSourcesSecretArgs()
         {
         }
+        public static new BackupSpecLocalVolumeProjectedSourcesSecretArgs Empty => new BackupSpecLocalVolumeProjectedSourcesSecretArgs();
     }
 }

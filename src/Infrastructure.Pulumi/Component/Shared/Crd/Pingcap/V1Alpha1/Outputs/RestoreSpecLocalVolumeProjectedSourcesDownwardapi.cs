@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class RestoreSpecLocalVolumeProjectedSourcesDownwardapi
+    public sealed class RestoreSpecLocalVolumeProjectedSourcesDownwardApi
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeProjectedSourcesDownwardapiItems> Items;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeProjectedSourcesDownwardApiItems> Items;
 
         [OutputConstructor]
-        private RestoreSpecLocalVolumeProjectedSourcesDownwardapi(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeProjectedSourcesDownwardapiItems> items)
+        private RestoreSpecLocalVolumeProjectedSourcesDownwardApi(ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeProjectedSourcesDownwardApiItems> items)
         {
             Items = items;
         }

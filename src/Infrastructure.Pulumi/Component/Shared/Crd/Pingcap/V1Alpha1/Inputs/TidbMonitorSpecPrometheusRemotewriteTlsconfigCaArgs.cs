@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusRemotewriteTlsconfigCaArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusRemoteWriteTlsConfigCaArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMap")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigCaConfigmapArgs>? ConfigMap { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigCaConfigMapArgs>? ConfigMap { get; set; }
 
         [Input("secret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteTlsconfigCaSecretArgs>? Secret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteTlsConfigCaSecretArgs>? Secret { get; set; }
 
-        public TidbMonitorSpecPrometheusRemotewriteTlsconfigCaArgs()
+        public TidbMonitorSpecPrometheusRemoteWriteTlsConfigCaArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusRemoteWriteTlsConfigCaArgs Empty => new TidbMonitorSpecPrometheusRemoteWriteTlsConfigCaArgs();
     }
 }

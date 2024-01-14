@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterStatusTikvEvictleader
+    public sealed class TidbClusterStatusTikvEvictLeader
     {
         public readonly string BeginTime;
         public readonly string PodCreateTime;
         public readonly string Value;
 
         [OutputConstructor]
-        private TidbClusterStatusTikvEvictleader(
+        private TidbClusterStatusTikvEvictLeader(
             string beginTime,
 
             string podCreateTime,

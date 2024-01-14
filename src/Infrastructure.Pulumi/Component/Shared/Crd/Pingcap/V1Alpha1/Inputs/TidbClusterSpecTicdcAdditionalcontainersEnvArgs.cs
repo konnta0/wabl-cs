@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcAdditionalcontainersEnvArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcAdditionalContainersEnvArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -19,10 +19,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Value { get; set; }
 
         [Input("valueFrom")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalcontainersEnvValuefromArgs>? ValueFrom { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalContainersEnvValueFromArgs>? ValueFrom { get; set; }
 
-        public TidbClusterSpecTicdcAdditionalcontainersEnvArgs()
+        public TidbClusterSpecTicdcAdditionalContainersEnvArgs()
         {
         }
+        public static new TidbClusterSpecTicdcAdditionalContainersEnvArgs Empty => new TidbClusterSpecTicdcAdditionalContainersEnvArgs();
     }
 }

@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalcontainersVolumedevices
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalContainersVolumeDevices
     {
         public readonly string DevicePath;
         public readonly string Name;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalcontainersVolumedevices(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalContainersVolumeDevices(
             string devicePath,
 
             string name)

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecAdditionalvolumesStorageosArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecAdditionalVolumesStorageosArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalvolumesStorageosSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecAdditionalVolumesStorageosSecretRefArgs>? SecretRef { get; set; }
 
         [Input("volumeName")]
         public Input<string>? VolumeName { get; set; }
@@ -27,8 +27,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("volumeNamespace")]
         public Input<string>? VolumeNamespace { get; set; }
 
-        public TidbNGMonitoringSpecAdditionalvolumesStorageosArgs()
+        public TidbNGMonitoringSpecAdditionalVolumesStorageosArgs()
         {
         }
+        public static new TidbNGMonitoringSpecAdditionalVolumesStorageosArgs Empty => new TidbNGMonitoringSpecAdditionalVolumesStorageosArgs();
     }
 }

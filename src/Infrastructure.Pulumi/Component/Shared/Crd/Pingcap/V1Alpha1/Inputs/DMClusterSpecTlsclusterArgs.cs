@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecTlsclusterArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecTlsClusterArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        public DMClusterSpecTlsclusterArgs()
+        public DMClusterSpecTlsClusterArgs()
         {
         }
+        public static new DMClusterSpecTlsClusterArgs Empty => new DMClusterSpecTlsClusterArgs();
     }
 }

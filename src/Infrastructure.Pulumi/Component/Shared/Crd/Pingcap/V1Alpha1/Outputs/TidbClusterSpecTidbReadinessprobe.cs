@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbReadinessprobe
+    public sealed class TidbClusterSpecTidbReadinessProbe
     {
         public readonly int InitialDelaySeconds;
         public readonly int PeriodSeconds;
         public readonly string Type;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbReadinessprobe(
+        private TidbClusterSpecTidbReadinessProbe(
             int initialDelaySeconds,
 
             int periodSeconds,

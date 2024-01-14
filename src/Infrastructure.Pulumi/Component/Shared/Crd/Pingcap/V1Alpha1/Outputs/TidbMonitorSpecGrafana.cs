@@ -13,7 +13,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class TidbMonitorSpecGrafana
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalvolumemounts> AdditionalVolumeMounts;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalVolumeMounts> AdditionalVolumeMounts;
         public readonly string BaseImage;
         public readonly ImmutableDictionary<string, string> Envs;
         public readonly string ImagePullPolicy;
@@ -21,16 +21,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableDictionary<string, Union<int, string>> Limits;
         public readonly string LogLevel;
         public readonly string Password;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaPasswordsecret PasswordSecret;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaPasswordSecret PasswordSecret;
         public readonly ImmutableDictionary<string, Union<int, string>> Requests;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaService Service;
         public readonly string Username;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaUsernamesecret UsernameSecret;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaUsernameSecret UsernameSecret;
         public readonly string Version;
 
         [OutputConstructor]
         private TidbMonitorSpecGrafana(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalvolumemounts> additionalVolumeMounts,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaAdditionalVolumeMounts> additionalVolumeMounts,
 
             string baseImage,
 
@@ -46,7 +46,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string password,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaPasswordsecret passwordSecret,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaPasswordSecret passwordSecret,
 
             ImmutableDictionary<string, Union<int, string>> requests,
 
@@ -54,7 +54,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string username,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaUsernamesecret usernameSecret,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecGrafanaUsernameSecret usernameSecret,
 
             string version)
         {

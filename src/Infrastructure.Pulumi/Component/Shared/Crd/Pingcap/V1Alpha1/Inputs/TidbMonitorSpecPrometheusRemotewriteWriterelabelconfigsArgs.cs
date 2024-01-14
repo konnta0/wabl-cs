@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusRemotewriteWriterelabelconfigsArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusRemoteWriteWriteRelabelConfigsArgs : global::Pulumi.ResourceArgs
     {
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -38,8 +38,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("targetLabel")]
         public Input<string>? TargetLabel { get; set; }
 
-        public TidbMonitorSpecPrometheusRemotewriteWriterelabelconfigsArgs()
+        public TidbMonitorSpecPrometheusRemoteWriteWriteRelabelConfigsArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusRemoteWriteWriteRelabelConfigsArgs Empty => new TidbMonitorSpecPrometheusRemoteWriteWriteRelabelConfigsArgs();
     }
 }

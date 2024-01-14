@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorStatusDeploymentstoragestatus
+    public sealed class TidbMonitorStatusDeploymentStorageStatus
     {
         public readonly string PvName;
 
         [OutputConstructor]
-        private TidbMonitorStatusDeploymentstoragestatus(string pvName)
+        private TidbMonitorStatusDeploymentStorageStatus(string pvName)
         {
             PvName = pvName;
         }

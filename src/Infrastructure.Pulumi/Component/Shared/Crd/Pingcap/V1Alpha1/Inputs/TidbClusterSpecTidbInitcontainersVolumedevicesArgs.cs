@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbInitcontainersVolumedevicesArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbInitContainersVolumeDevicesArgs : global::Pulumi.ResourceArgs
     {
         [Input("devicePath", required: true)]
         public Input<string> DevicePath { get; set; } = null!;
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        public TidbClusterSpecTidbInitcontainersVolumedevicesArgs()
+        public TidbClusterSpecTidbInitContainersVolumeDevicesArgs()
         {
         }
+        public static new TidbClusterSpecTidbInitContainersVolumeDevicesArgs Empty => new TidbClusterSpecTidbInitContainersVolumeDevicesArgs();
     }
 }

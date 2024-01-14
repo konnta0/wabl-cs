@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringAdditionalcontainersSecuritycontextCapabilitiesArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringAdditionalContainersSecurityContextCapabilitiesArgs : global::Pulumi.ResourceArgs
     {
         [Input("add")]
         private InputList<string>? _add;
@@ -28,8 +28,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _drop = value;
         }
 
-        public TidbNGMonitoringSpecNgmonitoringAdditionalcontainersSecuritycontextCapabilitiesArgs()
+        public TidbNGMonitoringSpecNgMonitoringAdditionalContainersSecurityContextCapabilitiesArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringAdditionalContainersSecurityContextCapabilitiesArgs Empty => new TidbNGMonitoringSpecNgMonitoringAdditionalContainersSecurityContextCapabilitiesArgs();
     }
 }

@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateEnvValuefromResourcefieldref
+    public sealed class BackupScheduleSpecBackupTemplateEnvValueFromResourceFieldRef
     {
         public readonly string ContainerName;
         public readonly Union<int, string> Divisor;
         public readonly string Resource;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateEnvValuefromResourcefieldref(
+        private BackupScheduleSpecBackupTemplateEnvValueFromResourceFieldRef(
             string containerName,
 
             Union<int, string> divisor,

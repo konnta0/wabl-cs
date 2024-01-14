@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecGrafanaUsernamesecret
+    public sealed class TidbMonitorSpecGrafanaUsernameSecret
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbMonitorSpecGrafanaUsernamesecret(
+        private TidbMonitorSpecGrafanaUsernameSecret(
             string key,
 
             string name,

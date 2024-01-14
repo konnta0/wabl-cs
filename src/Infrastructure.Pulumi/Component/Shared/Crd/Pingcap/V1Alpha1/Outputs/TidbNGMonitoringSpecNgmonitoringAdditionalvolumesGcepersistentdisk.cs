@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesGcepersistentdisk
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesGcePersistentDisk
     {
         public readonly string FsType;
         public readonly int Partition;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly bool ReadOnly;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalvolumesGcepersistentdisk(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalVolumesGcePersistentDisk(
             string fsType,
 
             int partition,

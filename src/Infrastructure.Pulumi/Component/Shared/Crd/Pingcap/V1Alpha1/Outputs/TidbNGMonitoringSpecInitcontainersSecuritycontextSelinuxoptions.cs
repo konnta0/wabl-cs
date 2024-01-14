@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecInitcontainersSecuritycontextSelinuxoptions
+    public sealed class TidbNGMonitoringSpecInitContainersSecurityContextSeLinuxOptions
     {
         public readonly string Level;
         public readonly string Role;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string User;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecInitcontainersSecuritycontextSelinuxoptions(
+        private TidbNGMonitoringSpecInitContainersSecurityContextSeLinuxOptions(
             string level,
 
             string role,

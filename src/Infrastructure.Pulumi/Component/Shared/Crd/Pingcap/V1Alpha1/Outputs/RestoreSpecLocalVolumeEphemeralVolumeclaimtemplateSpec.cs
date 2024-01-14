@@ -11,25 +11,25 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpec
+    public sealed class RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpec
     {
         public readonly ImmutableArray<string> AccessModes;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpecDatasource DataSource;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpecResources Resources;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpecSelector Selector;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpecDataSource DataSource;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpecResources Resources;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpecSelector Selector;
         public readonly string StorageClassName;
         public readonly string VolumeMode;
         public readonly string VolumeName;
 
         [OutputConstructor]
-        private RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpec(
+        private RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpec(
             ImmutableArray<string> accessModes,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpecDatasource dataSource,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpecDataSource dataSource,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpecResources resources,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpecResources resources,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpecSelector selector,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpecSelector selector,
 
             string storageClassName,
 

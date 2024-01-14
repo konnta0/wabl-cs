@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecThanosGrpcservertlsconfigArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecThanosGrpcServerTlsConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("ca")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCaArgs>? Ca { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCaArgs>? Ca { get; set; }
 
         [Input("caFile")]
         public Input<string>? CaFile { get; set; }
 
         [Input("cert")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCertArgs>? Cert { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCertArgs>? Cert { get; set; }
 
         [Input("certFile")]
         public Input<string>? CertFile { get; set; }
@@ -31,13 +31,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? KeyFile { get; set; }
 
         [Input("keySecret")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigKeysecretArgs>? KeySecret { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigKeySecretArgs>? KeySecret { get; set; }
 
         [Input("serverName")]
         public Input<string>? ServerName { get; set; }
 
-        public TidbMonitorSpecThanosGrpcservertlsconfigArgs()
+        public TidbMonitorSpecThanosGrpcServerTlsConfigArgs()
         {
         }
+        public static new TidbMonitorSpecThanosGrpcServerTlsConfigArgs Empty => new TidbMonitorSpecThanosGrpcServerTlsConfigArgs();
     }
 }

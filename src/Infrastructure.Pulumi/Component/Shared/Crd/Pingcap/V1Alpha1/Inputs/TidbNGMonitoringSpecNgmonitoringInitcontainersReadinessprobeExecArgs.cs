@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringInitcontainersReadinessprobeExecArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeExecArgs : global::Pulumi.ResourceArgs
     {
         [Input("command")]
         private InputList<string>? _command;
@@ -20,8 +20,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _command = value;
         }
 
-        public TidbNGMonitoringSpecNgmonitoringInitcontainersReadinessprobeExecArgs()
+        public TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeExecArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeExecArgs Empty => new TidbNGMonitoringSpecNgMonitoringInitContainersReadinessProbeExecArgs();
     }
 }

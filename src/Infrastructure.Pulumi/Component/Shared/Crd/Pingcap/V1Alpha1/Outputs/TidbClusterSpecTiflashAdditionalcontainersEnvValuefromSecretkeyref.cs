@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashAdditionalcontainersEnvValuefromSecretkeyref
+    public sealed class TidbClusterSpecTiflashAdditionalContainersEnvValueFromSecretKeyRef
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashAdditionalcontainersEnvValuefromSecretkeyref(
+        private TidbClusterSpecTiflashAdditionalContainersEnvValueFromSecretKeyRef(
             string key,
 
             string name,

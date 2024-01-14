@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecLocalVolumeProjectedSourcesServiceaccounttoken
+    public sealed class BackupSpecLocalVolumeProjectedSourcesServiceAccountToken
     {
         public readonly string Audience;
         public readonly int ExpirationSeconds;
         public readonly string Path;
 
         [OutputConstructor]
-        private BackupSpecLocalVolumeProjectedSourcesServiceaccounttoken(
+        private BackupSpecLocalVolumeProjectedSourcesServiceAccountToken(
             string audience,
 
             int expirationSeconds,

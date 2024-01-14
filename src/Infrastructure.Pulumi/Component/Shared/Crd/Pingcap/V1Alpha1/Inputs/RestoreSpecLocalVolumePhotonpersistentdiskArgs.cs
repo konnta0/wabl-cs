@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecLocalVolumePhotonpersistentdiskArgs : Pulumi.ResourceArgs
+    public class RestoreSpecLocalVolumePhotonPersistentDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("pdID", required: true)]
         public Input<string> PdID { get; set; } = null!;
 
-        public RestoreSpecLocalVolumePhotonpersistentdiskArgs()
+        public RestoreSpecLocalVolumePhotonPersistentDiskArgs()
         {
         }
+        public static new RestoreSpecLocalVolumePhotonPersistentDiskArgs Empty => new RestoreSpecLocalVolumePhotonPersistentDiskArgs();
     }
 }

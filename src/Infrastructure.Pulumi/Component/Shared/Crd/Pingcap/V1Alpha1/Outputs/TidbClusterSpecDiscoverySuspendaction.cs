@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecDiscoverySuspendaction
+    public sealed class TidbClusterSpecDiscoverySuspendAction
     {
         public readonly bool SuspendStatefulSet;
 
         [OutputConstructor]
-        private TidbClusterSpecDiscoverySuspendaction(bool suspendStatefulSet)
+        private TidbClusterSpecDiscoverySuspendAction(bool suspendStatefulSet)
         {
             SuspendStatefulSet = suspendStatefulSet;
         }

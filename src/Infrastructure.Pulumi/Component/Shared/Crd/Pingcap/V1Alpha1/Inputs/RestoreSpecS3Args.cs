@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecS3Args : Pulumi.ResourceArgs
+    public class RestoreSpecS3Args : global::Pulumi.ResourceArgs
     {
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -53,5 +53,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public RestoreSpecS3Args()
         {
         }
+        public static new RestoreSpecS3Args Empty => new RestoreSpecS3Args();
     }
 }

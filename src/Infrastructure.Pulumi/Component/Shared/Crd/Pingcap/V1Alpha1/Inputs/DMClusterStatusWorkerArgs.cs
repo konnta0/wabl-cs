@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterStatusWorkerArgs : Pulumi.ResourceArgs
+    public class DMClusterStatusWorkerArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusWorkerConditionsArgs>? _conditions;
@@ -24,10 +24,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? FailoverUID { get; set; }
 
         [Input("failureMembers")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailuremembersArgs>? _failureMembers;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailuremembersArgs> FailureMembers
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailureMembersArgs>? _failureMembers;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailureMembersArgs> FailureMembers
         {
-            get => _failureMembers ?? (_failureMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailuremembersArgs>());
+            get => _failureMembers ?? (_failureMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusWorkerFailureMembersArgs>());
             set => _failureMembers = value;
         }
 
@@ -46,7 +46,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Phase { get; set; }
 
         [Input("statefulSet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulsetArgs>? StatefulSet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusWorkerStatefulSetArgs>? StatefulSet { get; set; }
 
         [Input("synced")]
         public Input<bool>? Synced { get; set; }
@@ -62,5 +62,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public DMClusterStatusWorkerArgs()
         {
         }
+        public static new DMClusterStatusWorkerArgs Empty => new DMClusterStatusWorkerArgs();
     }
 }

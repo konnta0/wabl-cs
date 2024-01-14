@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecEnvValuefromFieldref
+    public sealed class TidbNGMonitoringSpecEnvValueFromFieldRef
     {
         public readonly string ApiVersion;
         public readonly string FieldPath;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecEnvValuefromFieldref(
+        private TidbNGMonitoringSpecEnvValueFromFieldRef(
             string apiVersion,
 
             string fieldPath)

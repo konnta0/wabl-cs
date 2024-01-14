@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringStoragevolumes
+    public sealed class TidbNGMonitoringSpecNgMonitoringStorageVolumes
     {
         public readonly string MountPath;
         public readonly string Name;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string StorageSize;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringStoragevolumes(
+        private TidbNGMonitoringSpecNgMonitoringStorageVolumes(
             string mountPath,
 
             string name,

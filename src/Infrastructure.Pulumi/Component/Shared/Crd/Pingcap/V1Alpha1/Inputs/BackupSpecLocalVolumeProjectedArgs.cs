@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeProjectedArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeProjectedArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultMode")]
         public Input<int>? DefaultMode { get; set; }
@@ -26,5 +26,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecLocalVolumeProjectedArgs()
         {
         }
+        public static new BackupSpecLocalVolumeProjectedArgs Empty => new BackupSpecLocalVolumeProjectedArgs();
     }
 }

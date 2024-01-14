@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterStatusPdUnjoinedmembers
+    public sealed class TidbClusterStatusPdUnjoinedMembers
     {
         public readonly string CreatedAt;
         public readonly string PodName;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableDictionary<string, ImmutableDictionary<string, object>> PvcUIDSet;
 
         [OutputConstructor]
-        private TidbClusterStatusPdUnjoinedmembers(
+        private TidbClusterStatusPdUnjoinedMembers(
             string createdAt,
 
             string podName,

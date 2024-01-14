@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateLocalVolumeStorageosArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateLocalVolumeStorageosArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackuptemplateLocalVolumeStorageosSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecBackupTemplateLocalVolumeStorageosSecretRefArgs>? SecretRef { get; set; }
 
         [Input("volumeName")]
         public Input<string>? VolumeName { get; set; }
@@ -27,8 +27,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("volumeNamespace")]
         public Input<string>? VolumeNamespace { get; set; }
 
-        public BackupScheduleSpecBackuptemplateLocalVolumeStorageosArgs()
+        public BackupScheduleSpecBackupTemplateLocalVolumeStorageosArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateLocalVolumeStorageosArgs Empty => new BackupScheduleSpecBackupTemplateLocalVolumeStorageosArgs();
     }
 }

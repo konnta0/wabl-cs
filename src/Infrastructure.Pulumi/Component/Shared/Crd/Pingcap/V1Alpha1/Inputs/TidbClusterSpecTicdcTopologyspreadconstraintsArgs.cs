@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcTopologyspreadconstraintsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcTopologySpreadConstraintsArgs : global::Pulumi.ResourceArgs
     {
         [Input("topologyKey", required: true)]
         public Input<string> TopologyKey { get; set; } = null!;
 
-        public TidbClusterSpecTicdcTopologyspreadconstraintsArgs()
+        public TidbClusterSpecTicdcTopologySpreadConstraintsArgs()
         {
         }
+        public static new TidbClusterSpecTicdcTopologySpreadConstraintsArgs Empty => new TidbClusterSpecTicdcTopologySpreadConstraintsArgs();
     }
 }

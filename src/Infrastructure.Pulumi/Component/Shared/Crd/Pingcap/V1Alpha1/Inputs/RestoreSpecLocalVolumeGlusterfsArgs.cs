@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecLocalVolumeGlusterfsArgs : Pulumi.ResourceArgs
+    public class RestoreSpecLocalVolumeGlusterfsArgs : global::Pulumi.ResourceArgs
     {
         [Input("endpoints", required: true)]
         public Input<string> Endpoints { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public RestoreSpecLocalVolumeGlusterfsArgs()
         {
         }
+        public static new RestoreSpecLocalVolumeGlusterfsArgs Empty => new RestoreSpecLocalVolumeGlusterfsArgs();
     }
 }

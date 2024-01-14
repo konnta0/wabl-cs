@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterStatusArgs : Pulumi.ResourceArgs
+    public class DMClusterStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusConditionsArgs>? _conditions;
@@ -29,5 +29,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public DMClusterStatusArgs()
         {
         }
+        public static new DMClusterStatusArgs Empty => new DMClusterStatusArgs();
     }
 }

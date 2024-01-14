@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecWorkerInitcontainersEnvValuefromFieldrefArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecWorkerInitContainersEnvValueFromFieldRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("fieldPath", required: true)]
         public Input<string> FieldPath { get; set; } = null!;
 
-        public DMClusterSpecWorkerInitcontainersEnvValuefromFieldrefArgs()
+        public DMClusterSpecWorkerInitContainersEnvValueFromFieldRefArgs()
         {
         }
+        public static new DMClusterSpecWorkerInitContainersEnvValueFromFieldRefArgs Empty => new DMClusterSpecWorkerInitContainersEnvValueFromFieldRefArgs();
     }
 }

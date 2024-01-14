@@ -13,6 +13,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class BackupStatusConditions
     {
+        public readonly string Command;
         public readonly string LastTransitionTime;
         public readonly string Message;
         public readonly string Reason;
@@ -21,6 +22,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
         [OutputConstructor]
         private BackupStatusConditions(
+            string command,
+
             string lastTransitionTime,
 
             string message,
@@ -31,6 +34,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string type)
         {
+            Command = command;
             LastTransitionTime = lastTransitionTime;
             Message = message;
             Reason = reason;

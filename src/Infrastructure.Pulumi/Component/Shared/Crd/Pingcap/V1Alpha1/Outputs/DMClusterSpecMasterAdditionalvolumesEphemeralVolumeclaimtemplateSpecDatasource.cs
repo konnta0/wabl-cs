@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource
+    public sealed class DMClusterSpecMasterAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource
     {
         public readonly string ApiGroup;
         public readonly string Kind;
         public readonly string Name;
 
         [OutputConstructor]
-        private DMClusterSpecMasterAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource(
+        private DMClusterSpecMasterAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource(
             string apiGroup,
 
             string kind,

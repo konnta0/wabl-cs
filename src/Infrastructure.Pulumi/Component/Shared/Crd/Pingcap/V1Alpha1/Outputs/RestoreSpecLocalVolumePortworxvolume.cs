@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class RestoreSpecLocalVolumePortworxvolume
+    public sealed class RestoreSpecLocalVolumePortworxVolume
     {
         public readonly string FsType;
         public readonly bool ReadOnly;
         public readonly string VolumeID;
 
         [OutputConstructor]
-        private RestoreSpecLocalVolumePortworxvolume(
+        private RestoreSpecLocalVolumePortworxVolume(
             string fsType,
 
             bool readOnly,

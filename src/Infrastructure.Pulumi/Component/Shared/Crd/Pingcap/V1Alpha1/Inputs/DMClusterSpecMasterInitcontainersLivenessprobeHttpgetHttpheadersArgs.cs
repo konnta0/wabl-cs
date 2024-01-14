@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecMasterInitcontainersLivenessprobeHttpgetHttpheadersArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecMasterInitContainersLivenessProbeHttpGetHttpHeadersArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
-        public DMClusterSpecMasterInitcontainersLivenessprobeHttpgetHttpheadersArgs()
+        public DMClusterSpecMasterInitContainersLivenessProbeHttpGetHttpHeadersArgs()
         {
         }
+        public static new DMClusterSpecMasterInitContainersLivenessProbeHttpGetHttpHeadersArgs Empty => new DMClusterSpecMasterInitContainersLivenessProbeHttpGetHttpHeadersArgs();
     }
 }

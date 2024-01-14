@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTikvStoragevolumesArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTikvStorageVolumesArgs : global::Pulumi.ResourceArgs
     {
         [Input("mountPath")]
         public Input<string>? MountPath { get; set; }
@@ -24,8 +24,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("storageSize", required: true)]
         public Input<string> StorageSize { get; set; } = null!;
 
-        public TidbClusterSpecTikvStoragevolumesArgs()
+        public TidbClusterSpecTikvStorageVolumesArgs()
         {
         }
+        public static new TidbClusterSpecTikvStorageVolumesArgs Empty => new TidbClusterSpecTikvStorageVolumesArgs();
     }
 }

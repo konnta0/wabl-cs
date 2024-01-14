@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterStatusConditionsArgs : Pulumi.ResourceArgs
+    public class DMClusterStatusConditionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("lastTransitionTime")]
         public Input<string>? LastTransitionTime { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public DMClusterStatusConditionsArgs()
         {
         }
+        public static new DMClusterStatusConditionsArgs Empty => new DMClusterStatusConditionsArgs();
     }
 }

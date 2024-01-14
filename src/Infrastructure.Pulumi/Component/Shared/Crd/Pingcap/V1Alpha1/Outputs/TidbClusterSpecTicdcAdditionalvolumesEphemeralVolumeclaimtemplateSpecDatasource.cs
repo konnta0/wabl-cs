@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTicdcAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource
+    public sealed class TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource
     {
         public readonly string ApiGroup;
         public readonly string Kind;
         public readonly string Name;
 
         [OutputConstructor]
-        private TidbClusterSpecTicdcAdditionalvolumesEphemeralVolumeclaimtemplateSpecDatasource(
+        private TidbClusterSpecTicdcAdditionalVolumesEphemeralVolumeClaimTemplateSpecDataSource(
             string apiGroup,
 
             string kind,

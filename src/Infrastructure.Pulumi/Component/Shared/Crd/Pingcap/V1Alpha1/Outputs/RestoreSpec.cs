@@ -19,11 +19,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecBr Br;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecEnv> Env;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecGcs Gcs;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecImagepullsecrets> ImagePullSecrets;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecImagePullSecrets> ImagePullSecrets;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocal Local;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecPodsecuritycontext PodSecurityContext;
+        public readonly string LogRestoreStartTs;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecPitrFullBackupStorageProvider PitrFullBackupStorageProvider;
+        public readonly string PitrRestoredTs;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecPodSecurityContext PodSecurityContext;
         public readonly string PriorityClassName;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecResources Resources;
+        public readonly string RestoreMode;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecS3 S3;
         public readonly string ServiceAccount;
         public readonly string StorageClassName;
@@ -49,15 +53,23 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecGcs gcs,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecImagepullsecrets> imagePullSecrets,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecImagePullSecrets> imagePullSecrets,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocal local,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecPodsecuritycontext podSecurityContext,
+            string logRestoreStartTs,
+
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecPitrFullBackupStorageProvider pitrFullBackupStorageProvider,
+
+            string pitrRestoredTs,
+
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecPodSecurityContext podSecurityContext,
 
             string priorityClassName,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecResources resources,
+
+            string restoreMode,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecS3 s3,
 
@@ -87,9 +99,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Gcs = gcs;
             ImagePullSecrets = imagePullSecrets;
             Local = local;
+            LogRestoreStartTs = logRestoreStartTs;
+            PitrFullBackupStorageProvider = pitrFullBackupStorageProvider;
+            PitrRestoredTs = pitrRestoredTs;
             PodSecurityContext = podSecurityContext;
             PriorityClassName = priorityClassName;
             Resources = resources;
+            RestoreMode = restoreMode;
             S3 = s3;
             ServiceAccount = serviceAccount;
             StorageClassName = storageClassName;

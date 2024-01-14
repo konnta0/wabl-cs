@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbInitializerArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbInitializerArgs : global::Pulumi.ResourceArgs
     {
         [Input("createPassword")]
         public Input<bool>? CreatePassword { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterSpecTidbInitializerArgs()
         {
         }
+        public static new TidbClusterSpecTidbInitializerArgs Empty => new TidbClusterSpecTidbInitializerArgs();
     }
 }

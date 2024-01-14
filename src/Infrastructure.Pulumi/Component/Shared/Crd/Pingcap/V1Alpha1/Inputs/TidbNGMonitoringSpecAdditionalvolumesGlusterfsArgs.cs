@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecAdditionalvolumesGlusterfsArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecAdditionalVolumesGlusterfsArgs : global::Pulumi.ResourceArgs
     {
         [Input("endpoints", required: true)]
         public Input<string> Endpoints { get; set; } = null!;
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        public TidbNGMonitoringSpecAdditionalvolumesGlusterfsArgs()
+        public TidbNGMonitoringSpecAdditionalVolumesGlusterfsArgs()
         {
         }
+        public static new TidbNGMonitoringSpecAdditionalVolumesGlusterfsArgs Empty => new TidbNGMonitoringSpecAdditionalVolumesGlusterfsArgs();
     }
 }

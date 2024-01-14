@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcAdditionalvolumesHostpathArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcAdditionalVolumesHostPathArgs : global::Pulumi.ResourceArgs
     {
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        public TidbClusterSpecTicdcAdditionalvolumesHostpathArgs()
+        public TidbClusterSpecTicdcAdditionalVolumesHostPathArgs()
         {
         }
+        public static new TidbClusterSpecTicdcAdditionalVolumesHostPathArgs Empty => new TidbClusterSpecTicdcAdditionalVolumesHostPathArgs();
     }
 }

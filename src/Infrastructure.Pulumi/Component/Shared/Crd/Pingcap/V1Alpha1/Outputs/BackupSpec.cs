@@ -15,17 +15,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     {
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecAffinity Affinity;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecAzblob Azblob;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecBackoffRetryPolicy BackoffRetryPolicy;
+        public readonly string BackupMode;
         public readonly string BackupType;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecBr Br;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecCleanoption CleanOption;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecCleanOption CleanOption;
         public readonly string CleanPolicy;
+        public readonly string CommitTs;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecDumpling Dumpling;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecEnv> Env;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecFrom From;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecGcs Gcs;
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecImagepullsecrets> ImagePullSecrets;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecImagePullSecrets> ImagePullSecrets;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocal Local;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecPodsecuritycontext PodSecurityContext;
+        public readonly bool LogStop;
+        public readonly string LogTruncateUntil;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecPodSecurityContext PodSecurityContext;
         public readonly string PriorityClassName;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecResources Resources;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecS3 S3;
@@ -44,13 +49,19 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecAzblob azblob,
 
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecBackoffRetryPolicy backoffRetryPolicy,
+
+            string backupMode,
+
             string backupType,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecBr br,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecCleanoption cleanOption,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecCleanOption cleanOption,
 
             string cleanPolicy,
+
+            string commitTs,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecDumpling dumpling,
 
@@ -60,11 +71,15 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecGcs gcs,
 
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecImagepullsecrets> imagePullSecrets,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecImagePullSecrets> imagePullSecrets,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecLocal local,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecPodsecuritycontext podSecurityContext,
+            bool logStop,
+
+            string logTruncateUntil,
+
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecPodSecurityContext podSecurityContext,
 
             string priorityClassName,
 
@@ -90,16 +105,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         {
             Affinity = affinity;
             Azblob = azblob;
+            BackoffRetryPolicy = backoffRetryPolicy;
+            BackupMode = backupMode;
             BackupType = backupType;
             Br = br;
             CleanOption = cleanOption;
             CleanPolicy = cleanPolicy;
+            CommitTs = commitTs;
             Dumpling = dumpling;
             Env = env;
             From = from;
             Gcs = gcs;
             ImagePullSecrets = imagePullSecrets;
             Local = local;
+            LogStop = logStop;
+            LogTruncateUntil = logTruncateUntil;
             PodSecurityContext = podSecurityContext;
             PriorityClassName = priorityClassName;
             Resources = resources;

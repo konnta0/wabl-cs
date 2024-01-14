@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdAdditionalvolumesAzuredisk
+    public sealed class TidbClusterSpecPdAdditionalVolumesAzureDisk
     {
         public readonly string CachingMode;
         public readonly string DiskName;
@@ -21,7 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly bool ReadOnly;
 
         [OutputConstructor]
-        private TidbClusterSpecPdAdditionalvolumesAzuredisk(
+        private TidbClusterSpecPdAdditionalVolumesAzureDisk(
             string cachingMode,
 
             string diskName,

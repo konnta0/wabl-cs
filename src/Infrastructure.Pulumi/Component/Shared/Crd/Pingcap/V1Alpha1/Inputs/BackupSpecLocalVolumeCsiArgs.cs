@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeCsiArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeCsiArgs : global::Pulumi.ResourceArgs
     {
         [Input("driver", required: true)]
         public Input<string> Driver { get; set; } = null!;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? FsType { get; set; }
 
         [Input("nodePublishSecretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeCsiNodepublishsecretrefArgs>? NodePublishSecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeCsiNodePublishSecretRefArgs>? NodePublishSecretRef { get; set; }
 
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
@@ -35,5 +35,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecLocalVolumeCsiArgs()
         {
         }
+        public static new BackupSpecLocalVolumeCsiArgs Empty => new BackupSpecLocalVolumeCsiArgs();
     }
 }

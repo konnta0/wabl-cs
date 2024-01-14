@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorStatusDeploymentstoragestatusArgs : Pulumi.ResourceArgs
+    public class TidbMonitorStatusDeploymentStorageStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("pvName")]
         public Input<string>? PvName { get; set; }
 
-        public TidbMonitorStatusDeploymentstoragestatusArgs()
+        public TidbMonitorStatusDeploymentStorageStatusArgs()
         {
         }
+        public static new TidbMonitorStatusDeploymentStorageStatusArgs Empty => new TidbMonitorStatusDeploymentStorageStatusArgs();
     }
 }

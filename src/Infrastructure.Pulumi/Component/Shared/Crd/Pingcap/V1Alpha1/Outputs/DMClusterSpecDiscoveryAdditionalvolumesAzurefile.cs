@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalvolumesAzurefile
+    public sealed class DMClusterSpecDiscoveryAdditionalVolumesAzureFile
     {
         public readonly bool ReadOnly;
         public readonly string SecretName;
         public readonly string ShareName;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalvolumesAzurefile(
+        private DMClusterSpecDiscoveryAdditionalVolumesAzureFile(
             bool readOnly,
 
             string secretName,

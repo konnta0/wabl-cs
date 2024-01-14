@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusTidbFailuremembersArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusTidbFailureMembersArgs : global::Pulumi.ResourceArgs
     {
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("podName")]
         public Input<string>? PodName { get; set; }
 
-        public TidbClusterStatusTidbFailuremembersArgs()
+        public TidbClusterStatusTidbFailureMembersArgs()
         {
         }
+        public static new TidbClusterStatusTidbFailureMembersArgs Empty => new TidbClusterStatusTidbFailureMembersArgs();
     }
 }

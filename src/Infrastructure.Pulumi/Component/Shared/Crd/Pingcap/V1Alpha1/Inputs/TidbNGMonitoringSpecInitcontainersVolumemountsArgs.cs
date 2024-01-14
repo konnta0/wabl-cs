@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecInitcontainersVolumemountsArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecInitContainersVolumeMountsArgs : global::Pulumi.ResourceArgs
     {
         [Input("mountPath", required: true)]
         public Input<string> MountPath { get; set; } = null!;
@@ -30,8 +30,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("subPathExpr")]
         public Input<string>? SubPathExpr { get; set; }
 
-        public TidbNGMonitoringSpecInitcontainersVolumemountsArgs()
+        public TidbNGMonitoringSpecInitContainersVolumeMountsArgs()
         {
         }
+        public static new TidbNGMonitoringSpecInitContainersVolumeMountsArgs Empty => new TidbNGMonitoringSpecInitContainersVolumeMountsArgs();
     }
 }

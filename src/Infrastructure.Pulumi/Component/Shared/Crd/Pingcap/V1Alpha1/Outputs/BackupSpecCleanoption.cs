@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecCleanoption
+    public sealed class BackupSpecCleanOption
     {
         public readonly bool BackoffEnabled;
         public readonly int BatchConcurrency;
@@ -21,7 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly int RoutineConcurrency;
 
         [OutputConstructor]
-        private BackupSpecCleanoption(
+        private BackupSpecCleanOption(
             bool backoffEnabled,
 
             int batchConcurrency,

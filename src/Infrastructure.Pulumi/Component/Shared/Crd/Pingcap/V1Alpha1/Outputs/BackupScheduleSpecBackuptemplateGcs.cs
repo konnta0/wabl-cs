@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateGcs
+    public sealed class BackupScheduleSpecBackupTemplateGcs
     {
         public readonly string Bucket;
         public readonly string BucketAcl;
@@ -24,7 +24,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string StorageClass;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateGcs(
+        private BackupScheduleSpecBackupTemplateGcs(
             string bucket,
 
             string bucketAcl,

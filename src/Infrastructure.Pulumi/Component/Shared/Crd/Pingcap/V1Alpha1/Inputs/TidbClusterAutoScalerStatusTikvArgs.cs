@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterAutoScalerStatusTikvArgs : Pulumi.ResourceArgs
+    public class TidbClusterAutoScalerStatusTikvArgs : global::Pulumi.ResourceArgs
     {
         [Input("lastAutoScalingTimestamp")]
         public Input<string>? LastAutoScalingTimestamp { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterAutoScalerStatusTikvArgs()
         {
         }
+        public static new TidbClusterAutoScalerStatusTikvArgs Empty => new TidbClusterAutoScalerStatusTikvArgs();
     }
 }

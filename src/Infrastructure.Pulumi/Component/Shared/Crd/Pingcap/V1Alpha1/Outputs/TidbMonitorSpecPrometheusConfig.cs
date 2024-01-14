@@ -14,16 +14,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     public sealed class TidbMonitorSpecPrometheusConfig
     {
         public readonly ImmutableArray<string> CommandOptions;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusConfigConfigmapref ConfigMapRef;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusConfigRuleconfigref RuleConfigRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusConfigConfigMapRef ConfigMapRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusConfigRuleConfigRef RuleConfigRef;
 
         [OutputConstructor]
         private TidbMonitorSpecPrometheusConfig(
             ImmutableArray<string> commandOptions,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusConfigConfigmapref configMapRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusConfigConfigMapRef configMapRef,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusConfigRuleconfigref ruleConfigRef)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusConfigRuleConfigRef ruleConfigRef)
         {
             CommandOptions = commandOptions;
             ConfigMapRef = configMapRef;

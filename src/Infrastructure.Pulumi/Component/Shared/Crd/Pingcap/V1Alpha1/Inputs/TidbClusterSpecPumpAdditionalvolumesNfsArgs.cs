@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPumpAdditionalvolumesNfsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPumpAdditionalVolumesNfsArgs : global::Pulumi.ResourceArgs
     {
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("server", required: true)]
         public Input<string> Server { get; set; } = null!;
 
-        public TidbClusterSpecPumpAdditionalvolumesNfsArgs()
+        public TidbClusterSpecPumpAdditionalVolumesNfsArgs()
         {
         }
+        public static new TidbClusterSpecPumpAdditionalVolumesNfsArgs Empty => new TidbClusterSpecPumpAdditionalVolumesNfsArgs();
     }
 }

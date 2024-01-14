@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringStatusNgmonitoringStatefulsetArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringStatusNgMonitoringStatefulSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("collisionCount")]
         public Input<int>? CollisionCount { get; set; }
 
         [Input("conditions")]
-        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoringStatefulsetConditionsArgs>? _conditions;
-        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoringStatefulsetConditionsArgs> Conditions
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoringStatefulSetConditionsArgs>? _conditions;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoringStatefulSetConditionsArgs> Conditions
         {
-            get => _conditions ?? (_conditions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoringStatefulsetConditionsArgs>());
+            get => _conditions ?? (_conditions = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoringStatefulSetConditionsArgs>());
             set => _conditions = value;
         }
 
@@ -44,8 +44,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("updatedReplicas")]
         public Input<int>? UpdatedReplicas { get; set; }
 
-        public TidbNGMonitoringStatusNgmonitoringStatefulsetArgs()
+        public TidbNGMonitoringStatusNgMonitoringStatefulSetArgs()
         {
         }
+        public static new TidbNGMonitoringStatusNgMonitoringStatefulSetArgs Empty => new TidbNGMonitoringStatusNgMonitoringStatefulSetArgs();
     }
 }

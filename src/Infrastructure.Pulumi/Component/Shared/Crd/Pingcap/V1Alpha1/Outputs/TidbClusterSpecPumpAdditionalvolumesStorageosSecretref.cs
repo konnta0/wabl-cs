@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPumpAdditionalvolumesStorageosSecretref
+    public sealed class TidbClusterSpecPumpAdditionalVolumesStorageosSecretRef
     {
         public readonly string Name;
 
         [OutputConstructor]
-        private TidbClusterSpecPumpAdditionalvolumesStorageosSecretref(string name)
+        private TidbClusterSpecPumpAdditionalVolumesStorageosSecretRef(string name)
         {
             Name = name;
         }

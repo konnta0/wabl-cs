@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPumpAdditionalvolumesCinderArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPumpAdditionalVolumesCinderArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -19,13 +19,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalvolumesCinderSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecPumpAdditionalVolumesCinderSecretRefArgs>? SecretRef { get; set; }
 
         [Input("volumeID", required: true)]
         public Input<string> VolumeID { get; set; } = null!;
 
-        public TidbClusterSpecPumpAdditionalvolumesCinderArgs()
+        public TidbClusterSpecPumpAdditionalVolumesCinderArgs()
         {
         }
+        public static new TidbClusterSpecPumpAdditionalVolumesCinderArgs Empty => new TidbClusterSpecPumpAdditionalVolumesCinderArgs();
     }
 }

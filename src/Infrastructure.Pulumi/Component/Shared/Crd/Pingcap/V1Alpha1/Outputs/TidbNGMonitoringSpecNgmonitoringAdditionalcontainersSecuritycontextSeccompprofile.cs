@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalcontainersSecuritycontextSeccompprofile
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalContainersSecurityContextSeccompProfile
     {
         public readonly string LocalhostProfile;
         public readonly string Type;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalcontainersSecuritycontextSeccompprofile(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalContainersSecurityContextSeccompProfile(
             string localhostProfile,
 
             string type)

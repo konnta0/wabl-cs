@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecEnvValuefromConfigmapkeyrefArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecEnvValueFromConfigMapKeyRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("optional")]
         public Input<bool>? Optional { get; set; }
 
-        public TidbNGMonitoringSpecEnvValuefromConfigmapkeyrefArgs()
+        public TidbNGMonitoringSpecEnvValueFromConfigMapKeyRefArgs()
         {
         }
+        public static new TidbNGMonitoringSpecEnvValueFromConfigMapKeyRefArgs Empty => new TidbNGMonitoringSpecEnvValueFromConfigMapKeyRefArgs();
     }
 }

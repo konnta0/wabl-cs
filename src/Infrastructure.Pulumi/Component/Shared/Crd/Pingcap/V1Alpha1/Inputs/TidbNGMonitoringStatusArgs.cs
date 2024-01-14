@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringStatusArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("ngMonitoring")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoringArgs>? NgMonitoring { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoringArgs>? NgMonitoring { get; set; }
 
         public TidbNGMonitoringStatusArgs()
         {
         }
+        public static new TidbNGMonitoringStatusArgs Empty => new TidbNGMonitoringStatusArgs();
     }
 }

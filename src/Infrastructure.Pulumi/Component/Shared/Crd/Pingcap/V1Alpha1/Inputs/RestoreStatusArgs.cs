@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreStatusArgs : Pulumi.ResourceArgs
+    public class RestoreStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("commitTs")]
         public Input<string>? CommitTs { get; set; }
@@ -26,6 +26,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("phase")]
         public Input<string>? Phase { get; set; }
 
+        [Input("progresses")]
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreStatusProgressesArgs>? _progresses;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreStatusProgressesArgs> Progresses
+        {
+            get => _progresses ?? (_progresses = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreStatusProgressesArgs>());
+            set => _progresses = value;
+        }
+
         [Input("timeCompleted")]
         public Input<string>? TimeCompleted { get; set; }
 
@@ -35,5 +43,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public RestoreStatusArgs()
         {
         }
+        public static new RestoreStatusArgs Empty => new RestoreStatusArgs();
     }
 }

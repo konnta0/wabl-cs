@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateTolerationsArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateTolerationsArgs : global::Pulumi.ResourceArgs
     {
         [Input("effect")]
         public Input<string>? Effect { get; set; }
@@ -27,8 +27,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public BackupScheduleSpecBackuptemplateTolerationsArgs()
+        public BackupScheduleSpecBackupTemplateTolerationsArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateTolerationsArgs Empty => new BackupScheduleSpecBackupTemplateTolerationsArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbTlsclientArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbTlsClientArgs : global::Pulumi.ResourceArgs
     {
         [Input("disableClientAuthn")]
         public Input<bool>? DisableClientAuthn { get; set; }
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("skipInternalClientCA")]
         public Input<bool>? SkipInternalClientCA { get; set; }
 
-        public TidbClusterSpecTidbTlsclientArgs()
+        public TidbClusterSpecTidbTlsClientArgs()
         {
         }
+        public static new TidbClusterSpecTidbTlsClientArgs Empty => new TidbClusterSpecTidbTlsClientArgs();
     }
 }

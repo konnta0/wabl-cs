@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTicdcAdditionalvolumesEmptydirArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTicdcAdditionalVolumesEmptyDirArgs : global::Pulumi.ResourceArgs
     {
         [Input("medium")]
         public Input<string>? Medium { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("sizeLimit")]
         public InputUnion<int, string>? SizeLimit { get; set; }
 
-        public TidbClusterSpecTicdcAdditionalvolumesEmptydirArgs()
+        public TidbClusterSpecTicdcAdditionalVolumesEmptyDirArgs()
         {
         }
+        public static new TidbClusterSpecTicdcAdditionalVolumesEmptyDirArgs Empty => new TidbClusterSpecTicdcAdditionalVolumesEmptyDirArgs();
     }
 }

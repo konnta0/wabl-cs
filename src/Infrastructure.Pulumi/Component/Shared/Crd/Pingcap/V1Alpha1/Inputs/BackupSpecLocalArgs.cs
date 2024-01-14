@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalArgs : global::Pulumi.ResourceArgs
     {
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
@@ -19,10 +19,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeArgs> Volume { get; set; } = null!;
 
         [Input("volumeMount", required: true)]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumemountArgs> VolumeMount { get; set; } = null!;
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeMountArgs> VolumeMount { get; set; } = null!;
 
         public BackupSpecLocalArgs()
         {
         }
+        public static new BackupSpecLocalArgs Empty => new BackupSpecLocalArgs();
     }
 }

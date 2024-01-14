@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateLocalVolumeStorageosSecretrefArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateLocalVolumeStorageosSecretRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        public BackupScheduleSpecBackuptemplateLocalVolumeStorageosSecretrefArgs()
+        public BackupScheduleSpecBackupTemplateLocalVolumeStorageosSecretRefArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateLocalVolumeStorageosSecretRefArgs Empty => new BackupScheduleSpecBackupTemplateLocalVolumeStorageosSecretRefArgs();
     }
 }

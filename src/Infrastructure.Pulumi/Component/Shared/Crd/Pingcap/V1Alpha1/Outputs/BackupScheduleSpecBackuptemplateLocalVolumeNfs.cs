@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateLocalVolumeNfs
+    public sealed class BackupScheduleSpecBackupTemplateLocalVolumeNfs
     {
         public readonly string Path;
         public readonly bool ReadOnly;
         public readonly string Server;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateLocalVolumeNfs(
+        private BackupScheduleSpecBackupTemplateLocalVolumeNfs(
             string path,
 
             bool readOnly,

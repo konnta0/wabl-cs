@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashAdditionalvolumesCinderSecretref
+    public sealed class TidbClusterSpecTiflashAdditionalVolumesCinderSecretRef
     {
         public readonly string Name;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashAdditionalvolumesCinderSecretref(string name)
+        private TidbClusterSpecTiflashAdditionalVolumesCinderSecretRef(string name)
         {
             Name = name;
         }

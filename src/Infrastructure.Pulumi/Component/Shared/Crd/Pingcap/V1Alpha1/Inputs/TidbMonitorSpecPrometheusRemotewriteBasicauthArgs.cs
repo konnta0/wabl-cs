@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusRemotewriteBasicauthArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusRemoteWriteBasicAuthArgs : global::Pulumi.ResourceArgs
     {
         [Input("password")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteBasicauthPasswordArgs>? Password { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteBasicAuthPasswordArgs>? Password { get; set; }
 
         [Input("username")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemotewriteBasicauthUsernameArgs>? Username { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusRemoteWriteBasicAuthUsernameArgs>? Username { get; set; }
 
-        public TidbMonitorSpecPrometheusRemotewriteBasicauthArgs()
+        public TidbMonitorSpecPrometheusRemoteWriteBasicAuthArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusRemoteWriteBasicAuthArgs Empty => new TidbMonitorSpecPrometheusRemoteWriteBasicAuthArgs();
     }
 }

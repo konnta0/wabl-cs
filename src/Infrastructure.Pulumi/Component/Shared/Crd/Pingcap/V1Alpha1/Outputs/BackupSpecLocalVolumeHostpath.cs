@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecLocalVolumeHostpath
+    public sealed class BackupSpecLocalVolumeHostPath
     {
         public readonly string Path;
         public readonly string Type;
 
         [OutputConstructor]
-        private BackupSpecLocalVolumeHostpath(
+        private BackupSpecLocalVolumeHostPath(
             string path,
 
             string type)

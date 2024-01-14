@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleStatusArgs : Pulumi.ResourceArgs
+    public class BackupScheduleStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("allBackupCleanTime")]
         public Input<string>? AllBackupCleanTime { get; set; }
@@ -21,8 +21,12 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("lastBackupTime")]
         public Input<string>? LastBackupTime { get; set; }
 
+        [Input("logBackup")]
+        public Input<string>? LogBackup { get; set; }
+
         public BackupScheduleStatusArgs()
         {
         }
+        public static new BackupScheduleStatusArgs Empty => new BackupScheduleStatusArgs();
     }
 }

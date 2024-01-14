@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateLocalVolumeFlocker
+    public sealed class BackupScheduleSpecBackupTemplateLocalVolumeFlocker
     {
         public readonly string DatasetName;
         public readonly string DatasetUUID;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateLocalVolumeFlocker(
+        private BackupScheduleSpecBackupTemplateLocalVolumeFlocker(
             string datasetName,
 
             string datasetUUID)

@@ -16,7 +16,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Host;
         public readonly string Path;
         public readonly int Port;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterAutoScalerSpecTidbExternalEndpointTlssecret TlsSecret;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterAutoScalerSpecTidbExternalEndpointTlsSecret TlsSecret;
 
         [OutputConstructor]
         private TidbClusterAutoScalerSpecTidbExternalEndpoint(
@@ -26,7 +26,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int port,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterAutoScalerSpecTidbExternalEndpointTlssecret tlsSecret)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterAutoScalerSpecTidbExternalEndpointTlsSecret tlsSecret)
         {
             Host = host;
             Path = path;

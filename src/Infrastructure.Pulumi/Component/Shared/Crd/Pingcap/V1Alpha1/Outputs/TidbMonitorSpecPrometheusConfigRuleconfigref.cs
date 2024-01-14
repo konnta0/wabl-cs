@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecPrometheusConfigRuleconfigref
+    public sealed class TidbMonitorSpecPrometheusConfigRuleConfigRef
     {
         public readonly string Name;
         public readonly string Namespace;
 
         [OutputConstructor]
-        private TidbMonitorSpecPrometheusConfigRuleconfigref(
+        private TidbMonitorSpecPrometheusConfigRuleConfigRef(
             string name,
 
             string @namespace)

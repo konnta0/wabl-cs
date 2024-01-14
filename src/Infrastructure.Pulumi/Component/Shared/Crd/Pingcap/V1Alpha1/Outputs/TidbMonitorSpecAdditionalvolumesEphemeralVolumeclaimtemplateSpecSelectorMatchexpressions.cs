@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressions
+    public sealed class TidbMonitorSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressions
     {
         public readonly string Key;
         public readonly string Operator;
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
-        private TidbMonitorSpecAdditionalvolumesEphemeralVolumeclaimtemplateSpecSelectorMatchexpressions(
+        private TidbMonitorSpecAdditionalVolumesEphemeralVolumeClaimTemplateSpecSelectorMatchExpressions(
             string key,
 
             string @operator,

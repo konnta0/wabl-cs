@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTiflashAdditionalcontainersReadinessprobeExec
+    public sealed class TidbClusterSpecTiflashAdditionalContainersReadinessProbeExec
     {
         public readonly ImmutableArray<string> Command;
 
         [OutputConstructor]
-        private TidbClusterSpecTiflashAdditionalcontainersReadinessprobeExec(ImmutableArray<string> command)
+        private TidbClusterSpecTiflashAdditionalContainersReadinessProbeExec(ImmutableArray<string> command)
         {
             Command = command;
         }

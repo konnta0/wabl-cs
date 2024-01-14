@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateArgs : Pulumi.ResourceArgs
+    public class RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("metadata")]
         private InputMap<object>? _metadata;
@@ -21,10 +21,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("spec", required: true)]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateSpecArgs> Spec { get; set; } = null!;
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateSpecArgs> Spec { get; set; } = null!;
 
-        public RestoreSpecLocalVolumeEphemeralVolumeclaimtemplateArgs()
+        public RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateArgs()
         {
         }
+        public static new RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateArgs Empty => new RestoreSpecLocalVolumeEphemeralVolumeClaimTemplateArgs();
     }
 }

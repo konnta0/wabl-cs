@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTidbSlowlogtailerArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTidbSlowLogTailerArgs : global::Pulumi.ResourceArgs
     {
         [Input("image")]
         public Input<string>? Image { get; set; }
@@ -34,8 +34,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _requests = value;
         }
 
-        public TidbClusterSpecTidbSlowlogtailerArgs()
+        public TidbClusterSpecTidbSlowLogTailerArgs()
         {
         }
+        public static new TidbClusterSpecTidbSlowLogTailerArgs Empty => new TidbClusterSpecTidbSlowLogTailerArgs();
     }
 }

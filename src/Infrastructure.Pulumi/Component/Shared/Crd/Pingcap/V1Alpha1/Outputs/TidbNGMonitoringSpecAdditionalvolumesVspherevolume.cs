@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecAdditionalvolumesVspherevolume
+    public sealed class TidbNGMonitoringSpecAdditionalVolumesVsphereVolume
     {
         public readonly string FsType;
         public readonly string StoragePolicyID;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string VolumePath;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecAdditionalvolumesVspherevolume(
+        private TidbNGMonitoringSpecAdditionalVolumesVsphereVolume(
             string fsType,
 
             string storagePolicyID,

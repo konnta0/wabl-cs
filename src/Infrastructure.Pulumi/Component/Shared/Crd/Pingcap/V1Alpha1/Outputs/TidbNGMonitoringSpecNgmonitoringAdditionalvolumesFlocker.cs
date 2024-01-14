@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesFlocker
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesFlocker
     {
         public readonly string DatasetName;
         public readonly string DatasetUUID;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalvolumesFlocker(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalVolumesFlocker(
             string datasetName,
 
             string datasetUUID)

@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTicdcAdditionalvolumesIscsi
+    public sealed class TidbClusterSpecTicdcAdditionalVolumesIscsi
     {
         public readonly bool ChapAuthDiscovery;
         public readonly bool ChapAuthSession;
@@ -22,11 +22,11 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly int Lun;
         public readonly ImmutableArray<string> Portals;
         public readonly bool ReadOnly;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesIscsiSecretref SecretRef;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesIscsiSecretRef SecretRef;
         public readonly string TargetPortal;
 
         [OutputConstructor]
-        private TidbClusterSpecTicdcAdditionalvolumesIscsi(
+        private TidbClusterSpecTicdcAdditionalVolumesIscsi(
             bool chapAuthDiscovery,
 
             bool chapAuthSession,
@@ -45,7 +45,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             bool readOnly,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalvolumesIscsiSecretref secretRef,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTicdcAdditionalVolumesIscsiSecretRef secretRef,
 
             string targetPortal)
         {

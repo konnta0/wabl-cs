@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecPrometheusRemotewriteQueueconfig
+    public sealed class TidbMonitorSpecPrometheusRemoteWriteQueueConfig
     {
         public readonly int BatchSendDeadline;
         public readonly int Capacity;
@@ -20,9 +20,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly int MaxSamplesPerSend;
         public readonly int MaxShards;
         public readonly int MinBackoff;
+        public readonly int MinShards;
 
         [OutputConstructor]
-        private TidbMonitorSpecPrometheusRemotewriteQueueconfig(
+        private TidbMonitorSpecPrometheusRemoteWriteQueueConfig(
             int batchSendDeadline,
 
             int capacity,
@@ -35,7 +36,9 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int maxShards,
 
-            int minBackoff)
+            int minBackoff,
+
+            int minShards)
         {
             BatchSendDeadline = batchSendDeadline;
             Capacity = capacity;
@@ -44,6 +47,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             MaxSamplesPerSend = maxSamplesPerSend;
             MaxShards = maxShards;
             MinBackoff = minBackoff;
+            MinShards = minShards;
         }
     }
 }

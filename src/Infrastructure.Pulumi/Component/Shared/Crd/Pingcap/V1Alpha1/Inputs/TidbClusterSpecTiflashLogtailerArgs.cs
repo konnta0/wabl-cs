@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashLogtailerArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashLogTailerArgs : global::Pulumi.ResourceArgs
     {
         [Input("limits")]
         private InputMap<Union<int, string>>? _limits;
@@ -28,8 +28,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _requests = value;
         }
 
-        public TidbClusterSpecTiflashLogtailerArgs()
+        public TidbClusterSpecTiflashLogTailerArgs()
         {
         }
+        public static new TidbClusterSpecTiflashLogTailerArgs Empty => new TidbClusterSpecTiflashLogTailerArgs();
     }
 }

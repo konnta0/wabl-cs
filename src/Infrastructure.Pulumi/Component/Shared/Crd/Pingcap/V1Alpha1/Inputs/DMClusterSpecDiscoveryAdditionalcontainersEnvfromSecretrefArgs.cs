@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryAdditionalcontainersEnvfromSecretrefArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryAdditionalContainersEnvFromSecretRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("optional")]
         public Input<bool>? Optional { get; set; }
 
-        public DMClusterSpecDiscoveryAdditionalcontainersEnvfromSecretrefArgs()
+        public DMClusterSpecDiscoveryAdditionalContainersEnvFromSecretRefArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryAdditionalContainersEnvFromSecretRefArgs Empty => new DMClusterSpecDiscoveryAdditionalContainersEnvFromSecretRefArgs();
     }
 }

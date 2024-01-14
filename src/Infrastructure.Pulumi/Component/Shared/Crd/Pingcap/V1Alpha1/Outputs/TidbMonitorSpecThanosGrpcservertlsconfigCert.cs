@@ -11,16 +11,16 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecThanosGrpcservertlsconfigCert
+    public sealed class TidbMonitorSpecThanosGrpcServerTlsConfigCert
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCertConfigmap ConfigMap;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCertSecret Secret;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCertConfigMap ConfigMap;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCertSecret Secret;
 
         [OutputConstructor]
-        private TidbMonitorSpecThanosGrpcservertlsconfigCert(
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCertConfigmap configMap,
+        private TidbMonitorSpecThanosGrpcServerTlsConfigCert(
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCertConfigMap configMap,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcservertlsconfigCertSecret secret)
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecThanosGrpcServerTlsConfigCertSecret secret)
         {
             ConfigMap = configMap;
             Secret = secret;

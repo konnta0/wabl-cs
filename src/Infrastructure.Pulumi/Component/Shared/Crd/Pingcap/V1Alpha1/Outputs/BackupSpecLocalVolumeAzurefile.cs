@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecLocalVolumeAzurefile
+    public sealed class BackupSpecLocalVolumeAzureFile
     {
         public readonly bool ReadOnly;
         public readonly string SecretName;
         public readonly string ShareName;
 
         [OutputConstructor]
-        private BackupSpecLocalVolumeAzurefile(
+        private BackupSpecLocalVolumeAzureFile(
             bool readOnly,
 
             string secretName,

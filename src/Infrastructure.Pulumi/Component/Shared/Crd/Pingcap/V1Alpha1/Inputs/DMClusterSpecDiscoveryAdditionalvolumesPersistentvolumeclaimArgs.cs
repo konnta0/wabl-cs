@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryAdditionalvolumesPersistentvolumeclaimArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryAdditionalVolumesPersistentVolumeClaimArgs : global::Pulumi.ResourceArgs
     {
         [Input("claimName", required: true)]
         public Input<string> ClaimName { get; set; } = null!;
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        public DMClusterSpecDiscoveryAdditionalvolumesPersistentvolumeclaimArgs()
+        public DMClusterSpecDiscoveryAdditionalVolumesPersistentVolumeClaimArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryAdditionalVolumesPersistentVolumeClaimArgs Empty => new DMClusterSpecDiscoveryAdditionalVolumesPersistentVolumeClaimArgs();
     }
 }

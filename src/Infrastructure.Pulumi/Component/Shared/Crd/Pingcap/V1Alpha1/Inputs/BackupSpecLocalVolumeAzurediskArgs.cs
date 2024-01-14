@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeAzurediskArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeAzureDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("cachingMode")]
         public Input<string>? CachingMode { get; set; }
@@ -30,8 +30,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        public BackupSpecLocalVolumeAzurediskArgs()
+        public BackupSpecLocalVolumeAzureDiskArgs()
         {
         }
+        public static new BackupSpecLocalVolumeAzureDiskArgs Empty => new BackupSpecLocalVolumeAzureDiskArgs();
     }
 }

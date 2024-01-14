@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPumpInitcontainersEnvValuefromFieldrefArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPumpInitContainersEnvValueFromFieldRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("fieldPath", required: true)]
         public Input<string> FieldPath { get; set; } = null!;
 
-        public TidbClusterSpecPumpInitcontainersEnvValuefromFieldrefArgs()
+        public TidbClusterSpecPumpInitContainersEnvValueFromFieldRefArgs()
         {
         }
+        public static new TidbClusterSpecPumpInitContainersEnvValueFromFieldRefArgs Empty => new TidbClusterSpecPumpInitContainersEnvValueFromFieldRefArgs();
     }
 }

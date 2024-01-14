@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateAzblob
+    public sealed class BackupScheduleSpecBackupTemplateAzblob
     {
         public readonly string AccessTier;
         public readonly string Container;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string SecretName;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateAzblob(
+        private BackupScheduleSpecBackupTemplateAzblob(
             string accessTier,
 
             string container,

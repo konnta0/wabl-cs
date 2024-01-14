@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterStatusTidbStatefulsetConditions
+    public sealed class TidbClusterStatusTidbStatefulSetConditions
     {
         public readonly string LastTransitionTime;
         public readonly string Message;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Type;
 
         [OutputConstructor]
-        private TidbClusterStatusTidbStatefulsetConditions(
+        private TidbClusterStatusTidbStatefulSetConditions(
             string lastTransitionTime,
 
             string message,

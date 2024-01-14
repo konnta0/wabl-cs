@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalvolumesFlocker
+    public sealed class DMClusterSpecWorkerAdditionalVolumesFlocker
     {
         public readonly string DatasetName;
         public readonly string DatasetUUID;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalvolumesFlocker(
+        private DMClusterSpecWorkerAdditionalVolumesFlocker(
             string datasetName,
 
             string datasetUUID)

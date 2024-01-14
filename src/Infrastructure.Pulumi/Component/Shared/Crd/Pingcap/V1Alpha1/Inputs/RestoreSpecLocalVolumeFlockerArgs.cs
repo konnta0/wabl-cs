@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecLocalVolumeFlockerArgs : Pulumi.ResourceArgs
+    public class RestoreSpecLocalVolumeFlockerArgs : global::Pulumi.ResourceArgs
     {
         [Input("datasetName")]
         public Input<string>? DatasetName { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public RestoreSpecLocalVolumeFlockerArgs()
         {
         }
+        public static new RestoreSpecLocalVolumeFlockerArgs Empty => new RestoreSpecLocalVolumeFlockerArgs();
     }
 }

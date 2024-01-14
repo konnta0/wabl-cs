@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbServiceAdditionalports
+    public sealed class TidbClusterSpecTidbServiceAdditionalPorts
     {
         public readonly string AppProtocol;
         public readonly string Name;
@@ -21,7 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly Union<int, string> TargetPort;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbServiceAdditionalports(
+        private TidbClusterSpecTidbServiceAdditionalPorts(
             string appProtocol,
 
             string name,

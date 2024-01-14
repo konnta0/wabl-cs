@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class RestoreSpecLocalVolumeQuobyteArgs : Pulumi.ResourceArgs
+    public class RestoreSpecLocalVolumeQuobyteArgs : global::Pulumi.ResourceArgs
     {
         [Input("group")]
         public Input<string>? Group { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public RestoreSpecLocalVolumeQuobyteArgs()
         {
         }
+        public static new RestoreSpecLocalVolumeQuobyteArgs Empty => new RestoreSpecLocalVolumeQuobyteArgs();
     }
 }

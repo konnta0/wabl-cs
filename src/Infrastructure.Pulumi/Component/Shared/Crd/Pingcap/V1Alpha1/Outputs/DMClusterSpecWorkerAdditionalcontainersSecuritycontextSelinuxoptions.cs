@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerAdditionalcontainersSecuritycontextSelinuxoptions
+    public sealed class DMClusterSpecWorkerAdditionalContainersSecurityContextSeLinuxOptions
     {
         public readonly string Level;
         public readonly string Role;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string User;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerAdditionalcontainersSecuritycontextSelinuxoptions(
+        private DMClusterSpecWorkerAdditionalContainersSecurityContextSeLinuxOptions(
             string level,
 
             string role,

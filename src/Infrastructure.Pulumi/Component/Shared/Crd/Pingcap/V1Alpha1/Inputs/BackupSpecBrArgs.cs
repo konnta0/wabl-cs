@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecBrArgs : Pulumi.ResourceArgs
+    public class BackupSpecBrArgs : global::Pulumi.ResourceArgs
     {
+        [Input("checkRequirements")]
+        public Input<bool>? CheckRequirements { get; set; }
+
         [Input("checksum")]
         public Input<bool>? Checksum { get; set; }
 
@@ -59,5 +62,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupSpecBrArgs()
         {
         }
+        public static new BackupSpecBrArgs Empty => new BackupSpecBrArgs();
     }
 }

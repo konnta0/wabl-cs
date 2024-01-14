@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterAutoScalerSpecTidbExternalArgs : Pulumi.ResourceArgs
+    public class TidbClusterAutoScalerSpecTidbExternalArgs : global::Pulumi.ResourceArgs
     {
         [Input("endpoint")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterAutoScalerSpecTidbExternalEndpointArgs>? Endpoint { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterAutoScalerSpecTidbExternalArgs()
         {
         }
+        public static new TidbClusterAutoScalerSpecTidbExternalArgs Empty => new TidbClusterAutoScalerSpecTidbExternalArgs();
     }
 }

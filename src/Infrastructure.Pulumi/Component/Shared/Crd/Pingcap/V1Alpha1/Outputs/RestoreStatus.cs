@@ -16,6 +16,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string CommitTs;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreStatusConditions> Conditions;
         public readonly string Phase;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreStatusProgresses> Progresses;
         public readonly string TimeCompleted;
         public readonly string TimeStarted;
 
@@ -27,6 +28,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string phase,
 
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreStatusProgresses> progresses,
+
             string timeCompleted,
 
             string timeStarted)
@@ -34,6 +37,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             CommitTs = commitTs;
             Conditions = conditions;
             Phase = phase;
+            Progresses = progresses;
             TimeCompleted = timeCompleted;
             TimeStarted = timeStarted;
         }

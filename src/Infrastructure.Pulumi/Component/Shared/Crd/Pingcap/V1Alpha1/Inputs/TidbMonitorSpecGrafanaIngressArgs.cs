@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecGrafanaIngressArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecGrafanaIngressArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -39,5 +39,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbMonitorSpecGrafanaIngressArgs()
         {
         }
+        public static new TidbMonitorSpecGrafanaIngressArgs Empty => new TidbMonitorSpecGrafanaIngressArgs();
     }
 }

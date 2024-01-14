@@ -10,10 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusPdFailuremembersArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusPdFailureMembersArgs : global::Pulumi.ResourceArgs
     {
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        [Input("hostDown")]
+        public Input<bool>? HostDown { get; set; }
 
         [Input("memberDeleted")]
         public Input<bool>? MemberDeleted { get; set; }
@@ -35,8 +38,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _pvcUIDSet = value;
         }
 
-        public TidbClusterStatusPdFailuremembersArgs()
+        public TidbClusterStatusPdFailureMembersArgs()
         {
         }
+        public static new TidbClusterStatusPdFailureMembersArgs Empty => new TidbClusterStatusPdFailureMembersArgs();
     }
 }

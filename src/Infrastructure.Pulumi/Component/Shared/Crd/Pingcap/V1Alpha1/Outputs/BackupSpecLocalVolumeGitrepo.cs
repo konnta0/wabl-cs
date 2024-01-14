@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecLocalVolumeGitrepo
+    public sealed class BackupSpecLocalVolumeGitRepo
     {
         public readonly string Directory;
         public readonly string Repository;
         public readonly string Revision;
 
         [OutputConstructor]
-        private BackupSpecLocalVolumeGitrepo(
+        private BackupSpecLocalVolumeGitRepo(
             string directory,
 
             string repository,

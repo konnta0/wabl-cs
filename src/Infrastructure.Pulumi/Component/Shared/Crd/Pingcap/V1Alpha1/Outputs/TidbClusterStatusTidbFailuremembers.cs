@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterStatusTidbFailuremembers
+    public sealed class TidbClusterStatusTidbFailureMembers
     {
         public readonly string CreatedAt;
         public readonly string PodName;
 
         [OutputConstructor]
-        private TidbClusterStatusTidbFailuremembers(
+        private TidbClusterStatusTidbFailureMembers(
             string createdAt,
 
             string podName)

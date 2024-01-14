@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesPersistentvolumeclaim
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesPersistentVolumeClaim
     {
         public readonly string ClaimName;
         public readonly bool ReadOnly;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalvolumesPersistentvolumeclaim(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalVolumesPersistentVolumeClaim(
             string claimName,
 
             bool readOnly)

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusTiflashArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusTiflashArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashConditionsArgs>? _conditions;
@@ -24,10 +24,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? FailoverUID { get; set; }
 
         [Input("failureStores")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashFailurestoresArgs>? _failureStores;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashFailurestoresArgs> FailureStores
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashFailureStoresArgs>? _failureStores;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashFailureStoresArgs> FailureStores
         {
-            get => _failureStores ?? (_failureStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashFailurestoresArgs>());
+            get => _failureStores ?? (_failureStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashFailureStoresArgs>());
             set => _failureStores = value;
         }
 
@@ -35,10 +35,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Image { get; set; }
 
         [Input("peerStores")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashPeerstoresArgs>? _peerStores;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashPeerstoresArgs> PeerStores
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashPeerStoresArgs>? _peerStores;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashPeerStoresArgs> PeerStores
         {
-            get => _peerStores ?? (_peerStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashPeerstoresArgs>());
+            get => _peerStores ?? (_peerStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashPeerStoresArgs>());
             set => _peerStores = value;
         }
 
@@ -46,7 +46,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Phase { get; set; }
 
         [Input("statefulSet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashStatefulsetArgs>? StatefulSet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashStatefulSetArgs>? StatefulSet { get; set; }
 
         [Input("stores")]
         private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashStoresArgs>? _stores;
@@ -60,10 +60,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? Synced { get; set; }
 
         [Input("tombstoneStores")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashTombstonestoresArgs>? _tombstoneStores;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashTombstonestoresArgs> TombstoneStores
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashTombstoneStoresArgs>? _tombstoneStores;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashTombstoneStoresArgs> TombstoneStores
         {
-            get => _tombstoneStores ?? (_tombstoneStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashTombstonestoresArgs>());
+            get => _tombstoneStores ?? (_tombstoneStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiflashTombstoneStoresArgs>());
             set => _tombstoneStores = value;
         }
 
@@ -78,5 +78,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterStatusTiflashArgs()
         {
         }
+        public static new TidbClusterStatusTiflashArgs Empty => new TidbClusterStatusTiflashArgs();
     }
 }

@@ -16,6 +16,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string AllBackupCleanTime;
         public readonly string LastBackup;
         public readonly string LastBackupTime;
+        public readonly string LogBackup;
 
         [OutputConstructor]
         private BackupScheduleStatus(
@@ -23,11 +24,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string lastBackup,
 
-            string lastBackupTime)
+            string lastBackupTime,
+
+            string logBackup)
         {
             AllBackupCleanTime = allBackupCleanTime;
             LastBackup = lastBackup;
             LastBackupTime = lastBackupTime;
+            LogBackup = logBackup;
         }
     }
 }

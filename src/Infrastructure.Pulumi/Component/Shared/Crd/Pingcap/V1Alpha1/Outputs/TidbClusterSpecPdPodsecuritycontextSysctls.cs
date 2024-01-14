@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecPdPodsecuritycontextSysctls
+    public sealed class TidbClusterSpecPdPodSecurityContextSysctls
     {
         public readonly string Name;
         public readonly string Value;
 
         [OutputConstructor]
-        private TidbClusterSpecPdPodsecuritycontextSysctls(
+        private TidbClusterSpecPdPodSecurityContextSysctls(
             string name,
 
             string value)

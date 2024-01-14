@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterStatusMasterMembersArgs : Pulumi.ResourceArgs
+    public class DMClusterStatusMasterMembersArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientURL", required: true)]
         public Input<string> ClientURL { get; set; } = null!;
@@ -30,5 +30,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public DMClusterStatusMasterMembersArgs()
         {
         }
+        public static new DMClusterStatusMasterMembersArgs Empty => new DMClusterStatusMasterMembersArgs();
     }
 }

@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterStatusMasterFailuremembers
+    public sealed class DMClusterStatusMasterFailureMembers
     {
         public readonly string CreatedAt;
         public readonly bool MemberDeleted;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string PvcUID;
 
         [OutputConstructor]
-        private DMClusterStatusMasterFailuremembers(
+        private DMClusterStatusMasterFailureMembers(
             string createdAt,
 
             bool memberDeleted,

@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesStorageosSecretrefArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesStorageosSecretRefArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        public TidbNGMonitoringSpecNgmonitoringAdditionalvolumesStorageosSecretrefArgs()
+        public TidbNGMonitoringSpecNgMonitoringAdditionalVolumesStorageosSecretRefArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesStorageosSecretRefArgs Empty => new TidbNGMonitoringSpecNgMonitoringAdditionalVolumesStorageosSecretRefArgs();
     }
 }

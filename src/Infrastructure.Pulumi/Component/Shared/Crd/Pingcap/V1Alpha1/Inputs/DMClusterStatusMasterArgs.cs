@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterStatusMasterArgs : Pulumi.ResourceArgs
+    public class DMClusterStatusMasterArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterConditionsArgs>? _conditions;
@@ -21,10 +21,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("failureMembers")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailuremembersArgs>? _failureMembers;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailuremembersArgs> FailureMembers
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailureMembersArgs>? _failureMembers;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailureMembersArgs> FailureMembers
         {
-            get => _failureMembers ?? (_failureMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailuremembersArgs>());
+            get => _failureMembers ?? (_failureMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailureMembersArgs>());
             set => _failureMembers = value;
         }
 
@@ -46,16 +46,16 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Phase { get; set; }
 
         [Input("statefulSet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterStatefulsetArgs>? StatefulSet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterStatefulSetArgs>? StatefulSet { get; set; }
 
         [Input("synced")]
         public Input<bool>? Synced { get; set; }
 
         [Input("unjoinedMembers")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedmembersArgs>? _unjoinedMembers;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedmembersArgs> UnjoinedMembers
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedMembersArgs>? _unjoinedMembers;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedMembersArgs> UnjoinedMembers
         {
-            get => _unjoinedMembers ?? (_unjoinedMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedmembersArgs>());
+            get => _unjoinedMembers ?? (_unjoinedMembers = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedMembersArgs>());
             set => _unjoinedMembers = value;
         }
 
@@ -70,5 +70,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public DMClusterStatusMasterArgs()
         {
         }
+        public static new DMClusterStatusMasterArgs Empty => new DMClusterStatusMasterArgs();
     }
 }

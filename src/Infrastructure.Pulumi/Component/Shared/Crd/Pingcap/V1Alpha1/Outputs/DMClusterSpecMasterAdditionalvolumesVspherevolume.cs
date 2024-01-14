@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterAdditionalvolumesVspherevolume
+    public sealed class DMClusterSpecMasterAdditionalVolumesVsphereVolume
     {
         public readonly string FsType;
         public readonly string StoragePolicyID;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string VolumePath;
 
         [OutputConstructor]
-        private DMClusterSpecMasterAdditionalvolumesVspherevolume(
+        private DMClusterSpecMasterAdditionalVolumesVsphereVolume(
             string fsType,
 
             string storagePolicyID,

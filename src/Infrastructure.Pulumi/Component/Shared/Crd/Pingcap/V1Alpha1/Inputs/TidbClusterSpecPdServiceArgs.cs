@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecPdServiceArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecPdServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -54,5 +54,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterSpecPdServiceArgs()
         {
         }
+        public static new TidbClusterSpecPdServiceArgs Empty => new TidbClusterSpecPdServiceArgs();
     }
 }

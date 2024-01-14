@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesAwselasticblockstore
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesAwsElasticBlockStore
     {
         public readonly string FsType;
         public readonly int Partition;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string VolumeID;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalvolumesAwselasticblockstore(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalVolumesAwsElasticBlockStore(
             string fsType,
 
             int partition,

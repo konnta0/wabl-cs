@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterStatusWorkerStatefulsetConditions
+    public sealed class DMClusterStatusWorkerStatefulSetConditions
     {
         public readonly string LastTransitionTime;
         public readonly string Message;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Type;
 
         [OutputConstructor]
-        private DMClusterStatusWorkerStatefulsetConditions(
+        private DMClusterStatusWorkerStatefulSetConditions(
             string lastTransitionTime,
 
             string message,

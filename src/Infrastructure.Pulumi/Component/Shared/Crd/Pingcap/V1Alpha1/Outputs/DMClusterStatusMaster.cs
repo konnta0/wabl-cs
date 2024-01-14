@@ -14,21 +14,21 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     public sealed class DMClusterStatusMaster
     {
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterConditions> Conditions;
-        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailuremembers> FailureMembers;
+        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailureMembers> FailureMembers;
         public readonly string Image;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterLeader Leader;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterMembers> Members;
         public readonly string Phase;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterStatefulset StatefulSet;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterStatefulSet StatefulSet;
         public readonly bool Synced;
-        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedmembers> UnjoinedMembers;
+        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedMembers> UnjoinedMembers;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterVolumes> Volumes;
 
         [OutputConstructor]
         private DMClusterStatusMaster(
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterConditions> conditions,
 
-            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailuremembers> failureMembers,
+            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterFailureMembers> failureMembers,
 
             string image,
 
@@ -38,11 +38,11 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string phase,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterStatefulset statefulSet,
+            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterStatefulSet statefulSet,
 
             bool synced,
 
-            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedmembers> unjoinedMembers,
+            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterUnjoinedMembers> unjoinedMembers,
 
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.DMClusterStatusMasterVolumes> volumes)
         {

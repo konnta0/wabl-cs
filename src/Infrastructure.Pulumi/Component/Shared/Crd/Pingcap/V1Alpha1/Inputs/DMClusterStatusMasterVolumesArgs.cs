@@ -10,22 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterStatusMasterVolumesArgs : Pulumi.ResourceArgs
+    public class DMClusterStatusMasterVolumesArgs : global::Pulumi.ResourceArgs
     {
         [Input("boundCount")]
         public Input<int>? BoundCount { get; set; }
 
-        [Input("currentCapacity", required: true)]
-        public InputUnion<int, string> CurrentCapacity { get; set; } = null!;
+        [Input("currentCapacity")]
+        public InputUnion<int, string>? CurrentCapacity { get; set; }
 
         [Input("currentCount")]
         public Input<int>? CurrentCount { get; set; }
 
+        [Input("currentStorageClass")]
+        public Input<string>? CurrentStorageClass { get; set; }
+
+        [Input("modifiedCapacity")]
+        public InputUnion<int, string>? ModifiedCapacity { get; set; }
+
+        [Input("modifiedCount")]
+        public Input<int>? ModifiedCount { get; set; }
+
+        [Input("modifiedStorageClass")]
+        public Input<string>? ModifiedStorageClass { get; set; }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("resizedCapacity", required: true)]
-        public InputUnion<int, string> ResizedCapacity { get; set; } = null!;
+        [Input("resizedCapacity")]
+        public InputUnion<int, string>? ResizedCapacity { get; set; }
 
         [Input("resizedCount")]
         public Input<int>? ResizedCount { get; set; }
@@ -33,5 +45,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public DMClusterStatusMasterVolumesArgs()
         {
         }
+        public static new DMClusterStatusMasterVolumesArgs Empty => new DMClusterStatusMasterVolumesArgs();
     }
 }

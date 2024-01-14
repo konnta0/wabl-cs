@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbTlsclient
+    public sealed class TidbClusterSpecTidbTlsClient
     {
         public readonly bool DisableClientAuthn;
         public readonly bool Enabled;
         public readonly bool SkipInternalClientCA;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbTlsclient(
+        private TidbClusterSpecTidbTlsClient(
             bool disableClientAuthn,
 
             bool enabled,

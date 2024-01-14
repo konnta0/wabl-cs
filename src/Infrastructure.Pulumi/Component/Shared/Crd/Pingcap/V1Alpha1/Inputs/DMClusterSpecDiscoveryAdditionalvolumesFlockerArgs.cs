@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterSpecDiscoveryAdditionalvolumesFlockerArgs : Pulumi.ResourceArgs
+    public class DMClusterSpecDiscoveryAdditionalVolumesFlockerArgs : global::Pulumi.ResourceArgs
     {
         [Input("datasetName")]
         public Input<string>? DatasetName { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("datasetUUID")]
         public Input<string>? DatasetUUID { get; set; }
 
-        public DMClusterSpecDiscoveryAdditionalvolumesFlockerArgs()
+        public DMClusterSpecDiscoveryAdditionalVolumesFlockerArgs()
         {
         }
+        public static new DMClusterSpecDiscoveryAdditionalVolumesFlockerArgs Empty => new DMClusterSpecDiscoveryAdditionalVolumesFlockerArgs();
     }
 }

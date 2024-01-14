@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbInitializerStatusArgs : Pulumi.ResourceArgs
+    public class TidbInitializerStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("active")]
         public Input<int>? Active { get; set; }
@@ -41,5 +41,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbInitializerStatusArgs()
         {
         }
+        public static new TidbInitializerStatusArgs Empty => new TidbInitializerStatusArgs();
     }
 }

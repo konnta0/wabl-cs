@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusreloaderArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusReloaderArgs : global::Pulumi.ResourceArgs
     {
         [Input("baseImage")]
         public Input<string>? BaseImage { get; set; }
@@ -37,8 +37,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("version")]
         public Input<string>? Version { get; set; }
 
-        public TidbMonitorSpecPrometheusreloaderArgs()
+        public TidbMonitorSpecPrometheusReloaderArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusReloaderArgs Empty => new TidbMonitorSpecPrometheusReloaderArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateLocalVolumeFlockerArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateLocalVolumeFlockerArgs : global::Pulumi.ResourceArgs
     {
         [Input("datasetName")]
         public Input<string>? DatasetName { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("datasetUUID")]
         public Input<string>? DatasetUUID { get; set; }
 
-        public BackupScheduleSpecBackuptemplateLocalVolumeFlockerArgs()
+        public BackupScheduleSpecBackupTemplateLocalVolumeFlockerArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateLocalVolumeFlockerArgs Empty => new BackupScheduleSpecBackupTemplateLocalVolumeFlockerArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecInitcontainersStartupprobeHttpgetHttpheadersArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecInitContainersStartupProbeHttpGetHttpHeadersArgs : global::Pulumi.ResourceArgs
     {
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
-        public TidbNGMonitoringSpecInitcontainersStartupprobeHttpgetHttpheadersArgs()
+        public TidbNGMonitoringSpecInitContainersStartupProbeHttpGetHttpHeadersArgs()
         {
         }
+        public static new TidbNGMonitoringSpecInitContainersStartupProbeHttpGetHttpHeadersArgs Empty => new TidbNGMonitoringSpecInitContainersStartupProbeHttpGetHttpHeadersArgs();
     }
 }

@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmapItems
+    public sealed class BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapItems
     {
         public readonly string Key;
         public readonly int Mode;
         public readonly string Path;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateLocalVolumeProjectedSourcesConfigmapItems(
+        private BackupScheduleSpecBackupTemplateLocalVolumeProjectedSourcesConfigMapItems(
             string key,
 
             int mode,

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTikvAdditionalvolumesGcepersistentdiskArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTikvAdditionalVolumesGcePersistentDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -24,8 +24,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        public TidbClusterSpecTikvAdditionalvolumesGcepersistentdiskArgs()
+        public TidbClusterSpecTikvAdditionalVolumesGcePersistentDiskArgs()
         {
         }
+        public static new TidbClusterSpecTikvAdditionalVolumesGcePersistentDiskArgs Empty => new TidbClusterSpecTikvAdditionalVolumesGcePersistentDiskArgs();
     }
 }

@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbEnvValuefromSecretkeyref
+    public sealed class TidbClusterSpecTidbEnvValueFromSecretKeyRef
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbEnvValuefromSecretkeyref(
+        private TidbClusterSpecTidbEnvValueFromSecretKeyRef(
             string key,
 
             string name,

@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecLocalVolumeAwselasticblockstore
+    public sealed class BackupSpecLocalVolumeAwsElasticBlockStore
     {
         public readonly string FsType;
         public readonly int Partition;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string VolumeID;
 
         [OutputConstructor]
-        private BackupSpecLocalVolumeAwselasticblockstore(
+        private BackupSpecLocalVolumeAwsElasticBlockStore(
             string fsType,
 
             int partition,

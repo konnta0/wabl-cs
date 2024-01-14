@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusPumpMembersArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusPumpMembersArgs : global::Pulumi.ResourceArgs
     {
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -24,5 +24,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterStatusPumpMembersArgs()
         {
         }
+        public static new TidbClusterStatusPumpMembersArgs Empty => new TidbClusterStatusPumpMembersArgs();
     }
 }

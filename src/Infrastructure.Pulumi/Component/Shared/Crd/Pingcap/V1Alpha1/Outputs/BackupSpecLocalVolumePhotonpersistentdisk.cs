@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecLocalVolumePhotonpersistentdisk
+    public sealed class BackupSpecLocalVolumePhotonPersistentDisk
     {
         public readonly string FsType;
         public readonly string PdID;
 
         [OutputConstructor]
-        private BackupSpecLocalVolumePhotonpersistentdisk(
+        private BackupSpecLocalVolumePhotonPersistentDisk(
             string fsType,
 
             string pdID)

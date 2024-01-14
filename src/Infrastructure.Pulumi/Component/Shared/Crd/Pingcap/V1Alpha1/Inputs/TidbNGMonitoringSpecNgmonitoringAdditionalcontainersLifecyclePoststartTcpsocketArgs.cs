@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringSpecNgmonitoringAdditionalcontainersLifecyclePoststartTcpsocketArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringSpecNgMonitoringAdditionalContainersLifecyclePostStartTcpSocketArgs : global::Pulumi.ResourceArgs
     {
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("port", required: true)]
         public InputUnion<int, string> Port { get; set; } = null!;
 
-        public TidbNGMonitoringSpecNgmonitoringAdditionalcontainersLifecyclePoststartTcpsocketArgs()
+        public TidbNGMonitoringSpecNgMonitoringAdditionalContainersLifecyclePostStartTcpSocketArgs()
         {
         }
+        public static new TidbNGMonitoringSpecNgMonitoringAdditionalContainersLifecyclePostStartTcpSocketArgs Empty => new TidbNGMonitoringSpecNgMonitoringAdditionalContainersLifecyclePostStartTcpSocketArgs();
     }
 }

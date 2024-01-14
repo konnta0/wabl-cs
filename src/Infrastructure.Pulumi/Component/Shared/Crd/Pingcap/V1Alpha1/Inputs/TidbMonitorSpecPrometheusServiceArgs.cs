@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbMonitorSpecPrometheusServiceArgs : Pulumi.ResourceArgs
+    public class TidbMonitorSpecPrometheusServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -54,5 +54,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbMonitorSpecPrometheusServiceArgs()
         {
         }
+        public static new TidbMonitorSpecPrometheusServiceArgs Empty => new TidbMonitorSpecPrometheusServiceArgs();
     }
 }

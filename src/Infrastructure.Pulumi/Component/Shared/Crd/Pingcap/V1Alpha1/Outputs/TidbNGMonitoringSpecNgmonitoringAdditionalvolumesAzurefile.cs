@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecNgmonitoringAdditionalvolumesAzurefile
+    public sealed class TidbNGMonitoringSpecNgMonitoringAdditionalVolumesAzureFile
     {
         public readonly bool ReadOnly;
         public readonly string SecretName;
         public readonly string ShareName;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecNgmonitoringAdditionalvolumesAzurefile(
+        private TidbNGMonitoringSpecNgMonitoringAdditionalVolumesAzureFile(
             bool readOnly,
 
             string secretName,

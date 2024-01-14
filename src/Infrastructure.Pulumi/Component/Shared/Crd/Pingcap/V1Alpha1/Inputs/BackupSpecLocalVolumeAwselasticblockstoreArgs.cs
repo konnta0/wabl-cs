@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeAwselasticblockstoreArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeAwsElasticBlockStoreArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -24,8 +24,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("volumeID", required: true)]
         public Input<string> VolumeID { get; set; } = null!;
 
-        public BackupSpecLocalVolumeAwselasticblockstoreArgs()
+        public BackupSpecLocalVolumeAwsElasticBlockStoreArgs()
         {
         }
+        public static new BackupSpecLocalVolumeAwsElasticBlockStoreArgs Empty => new BackupSpecLocalVolumeAwsElasticBlockStoreArgs();
     }
 }

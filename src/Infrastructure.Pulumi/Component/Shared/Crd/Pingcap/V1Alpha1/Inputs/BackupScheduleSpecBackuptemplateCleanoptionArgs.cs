@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateCleanoptionArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateCleanOptionArgs : global::Pulumi.ResourceArgs
     {
         [Input("backoffEnabled")]
         public Input<bool>? BackoffEnabled { get; set; }
@@ -30,9 +30,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("routineConcurrency")]
         public Input<int>? RoutineConcurrency { get; set; }
 
-        public BackupScheduleSpecBackuptemplateCleanoptionArgs()
+        public BackupScheduleSpecBackupTemplateCleanOptionArgs()
         {
             RetryCount = 5;
         }
+        public static new BackupScheduleSpecBackupTemplateCleanOptionArgs Empty => new BackupScheduleSpecBackupTemplateCleanOptionArgs();
     }
 }

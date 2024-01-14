@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryInitcontainersEnvValuefromResourcefieldref
+    public sealed class DMClusterSpecDiscoveryInitContainersEnvValueFromResourceFieldRef
     {
         public readonly string ContainerName;
         public readonly Union<int, string> Divisor;
         public readonly string Resource;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryInitcontainersEnvValuefromResourcefieldref(
+        private DMClusterSpecDiscoveryInitContainersEnvValueFromResourceFieldRef(
             string containerName,
 
             Union<int, string> divisor,

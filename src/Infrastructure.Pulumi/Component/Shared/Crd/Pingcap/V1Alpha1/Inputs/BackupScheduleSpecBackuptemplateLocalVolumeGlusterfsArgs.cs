@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateLocalVolumeGlusterfsArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateLocalVolumeGlusterfsArgs : global::Pulumi.ResourceArgs
     {
         [Input("endpoints", required: true)]
         public Input<string> Endpoints { get; set; } = null!;
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
-        public BackupScheduleSpecBackuptemplateLocalVolumeGlusterfsArgs()
+        public BackupScheduleSpecBackupTemplateLocalVolumeGlusterfsArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateLocalVolumeGlusterfsArgs Empty => new BackupScheduleSpecBackupTemplateLocalVolumeGlusterfsArgs();
     }
 }

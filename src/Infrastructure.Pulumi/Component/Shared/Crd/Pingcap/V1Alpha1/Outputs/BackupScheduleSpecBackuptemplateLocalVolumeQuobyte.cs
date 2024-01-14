@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateLocalVolumeQuobyte
+    public sealed class BackupScheduleSpecBackupTemplateLocalVolumeQuobyte
     {
         public readonly string Group;
         public readonly bool ReadOnly;
@@ -21,7 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Volume;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateLocalVolumeQuobyte(
+        private BackupScheduleSpecBackupTemplateLocalVolumeQuobyte(
             string group,
 
             bool readOnly,

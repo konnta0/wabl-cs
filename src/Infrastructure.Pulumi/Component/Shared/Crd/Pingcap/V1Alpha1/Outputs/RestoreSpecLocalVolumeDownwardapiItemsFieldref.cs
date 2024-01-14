@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class RestoreSpecLocalVolumeDownwardapiItemsFieldref
+    public sealed class RestoreSpecLocalVolumeDownwardApiItemsFieldRef
     {
         public readonly string ApiVersion;
         public readonly string FieldPath;
 
         [OutputConstructor]
-        private RestoreSpecLocalVolumeDownwardapiItemsFieldref(
+        private RestoreSpecLocalVolumeDownwardApiItemsFieldRef(
             string apiVersion,
 
             string fieldPath)

@@ -85,7 +85,7 @@ namespace Pulumi.Crds.Pingcap.V1Alpha1
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbNGMonitoringArgs : Pulumi.ResourceArgs
+    public class TidbNGMonitoringArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
@@ -105,5 +105,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbNGMonitoringArgs()
         {
         }
+        public static new TidbNGMonitoringArgs Empty => new TidbNGMonitoringArgs();
     }
 }

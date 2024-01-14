@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTikvAdditionalvolumesProjectedSourcesServiceaccounttoken
+    public sealed class TidbClusterSpecTikvAdditionalVolumesProjectedSourcesServiceAccountToken
     {
         public readonly string Audience;
         public readonly int ExpirationSeconds;
         public readonly string Path;
 
         [OutputConstructor]
-        private TidbClusterSpecTikvAdditionalvolumesProjectedSourcesServiceaccounttoken(
+        private TidbClusterSpecTikvAdditionalVolumesProjectedSourcesServiceAccountToken(
             string audience,
 
             int expirationSeconds,

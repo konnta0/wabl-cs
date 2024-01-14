@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class DMClusterStatusMasterUnjoinedmembersArgs : Pulumi.ResourceArgs
+    public class DMClusterStatusMasterUnjoinedMembersArgs : global::Pulumi.ResourceArgs
     {
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
@@ -29,8 +29,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _pvcUIDSet = value;
         }
 
-        public DMClusterStatusMasterUnjoinedmembersArgs()
+        public DMClusterStatusMasterUnjoinedMembersArgs()
         {
         }
+        public static new DMClusterStatusMasterUnjoinedMembersArgs Empty => new DMClusterStatusMasterUnjoinedMembersArgs();
     }
 }

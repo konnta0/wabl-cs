@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupStatusConditionsArgs : Pulumi.ResourceArgs
+    public class BackupStatusConditionsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("command")]
+        public Input<string>? Command { get; set; }
+
         [Input("lastTransitionTime")]
         public Input<string>? LastTransitionTime { get; set; }
 
@@ -30,5 +33,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupStatusConditionsArgs()
         {
         }
+        public static new BackupStatusConditionsArgs Empty => new BackupStatusConditionsArgs();
     }
 }

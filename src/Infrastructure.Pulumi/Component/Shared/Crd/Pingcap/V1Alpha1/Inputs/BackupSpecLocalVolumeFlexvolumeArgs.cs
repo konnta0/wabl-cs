@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupSpecLocalVolumeFlexvolumeArgs : Pulumi.ResourceArgs
+    public class BackupSpecLocalVolumeFlexVolumeArgs : global::Pulumi.ResourceArgs
     {
         [Input("driver", required: true)]
         public Input<string> Driver { get; set; } = null!;
@@ -30,10 +30,11 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? ReadOnly { get; set; }
 
         [Input("secretRef")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeFlexvolumeSecretrefArgs>? SecretRef { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeFlexVolumeSecretRefArgs>? SecretRef { get; set; }
 
-        public BackupSpecLocalVolumeFlexvolumeArgs()
+        public BackupSpecLocalVolumeFlexVolumeArgs()
         {
         }
+        public static new BackupSpecLocalVolumeFlexVolumeArgs Empty => new BackupSpecLocalVolumeFlexVolumeArgs();
     }
 }

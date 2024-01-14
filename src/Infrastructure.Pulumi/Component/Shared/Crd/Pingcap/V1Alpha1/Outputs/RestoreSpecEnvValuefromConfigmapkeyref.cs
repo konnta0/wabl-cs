@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class RestoreSpecEnvValuefromConfigmapkeyref
+    public sealed class RestoreSpecEnvValueFromConfigMapKeyRef
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private RestoreSpecEnvValuefromConfigmapkeyref(
+        private RestoreSpecEnvValueFromConfigMapKeyRef(
             string key,
 
             string name,

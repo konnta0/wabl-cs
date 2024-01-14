@@ -13,10 +13,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class TidbNGMonitoringStatus
     {
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoring NgMonitoring;
+        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoring NgMonitoring;
 
         [OutputConstructor]
-        private TidbNGMonitoringStatus(Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgmonitoring ngMonitoring)
+        private TidbNGMonitoringStatus(Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringStatusNgMonitoring ngMonitoring)
         {
             NgMonitoring = ngMonitoring;
         }

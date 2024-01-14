@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecDiscoveryAdditionalvolumesAwselasticblockstore
+    public sealed class DMClusterSpecDiscoveryAdditionalVolumesAwsElasticBlockStore
     {
         public readonly string FsType;
         public readonly int Partition;
@@ -19,7 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string VolumeID;
 
         [OutputConstructor]
-        private DMClusterSpecDiscoveryAdditionalvolumesAwselasticblockstore(
+        private DMClusterSpecDiscoveryAdditionalVolumesAwsElasticBlockStore(
             string fsType,
 
             int partition,

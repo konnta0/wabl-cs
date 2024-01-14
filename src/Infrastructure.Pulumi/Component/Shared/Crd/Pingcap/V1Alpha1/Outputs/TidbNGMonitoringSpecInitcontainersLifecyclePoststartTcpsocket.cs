@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbNGMonitoringSpecInitcontainersLifecyclePoststartTcpsocket
+    public sealed class TidbNGMonitoringSpecInitContainersLifecyclePostStartTcpSocket
     {
         public readonly string Host;
         public readonly Union<int, string> Port;
 
         [OutputConstructor]
-        private TidbNGMonitoringSpecInitcontainersLifecyclePoststartTcpsocket(
+        private TidbNGMonitoringSpecInitContainersLifecyclePostStartTcpSocket(
             string host,
 
             Union<int, string> port)

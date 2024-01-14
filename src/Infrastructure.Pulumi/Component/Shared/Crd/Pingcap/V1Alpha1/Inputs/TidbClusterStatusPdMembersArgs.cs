@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusPdMembersArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusPdMembersArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientURL", required: true)]
         public Input<string> ClientURL { get; set; } = null!;
@@ -30,5 +30,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterStatusPdMembersArgs()
         {
         }
+        public static new TidbClusterStatusPdMembersArgs Empty => new TidbClusterStatusPdMembersArgs();
     }
 }

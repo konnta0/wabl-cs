@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTlsclusterArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTlsClusterArgs : global::Pulumi.ResourceArgs
     {
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        public TidbClusterSpecTlsclusterArgs()
+        public TidbClusterSpecTlsClusterArgs()
         {
         }
+        public static new TidbClusterSpecTlsClusterArgs Empty => new TidbClusterSpecTlsClusterArgs();
     }
 }

@@ -11,14 +11,14 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecMasterEnvValuefromSecretkeyref
+    public sealed class DMClusterSpecMasterEnvValueFromSecretKeyRef
     {
         public readonly string Key;
         public readonly string Name;
         public readonly bool Optional;
 
         [OutputConstructor]
-        private DMClusterSpecMasterEnvValuefromSecretkeyref(
+        private DMClusterSpecMasterEnvValueFromSecretKeyRef(
             string key,
 
             string name,

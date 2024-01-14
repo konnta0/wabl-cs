@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecLocalVolumeScaleioSecretref
+    public sealed class BackupSpecLocalVolumeScaleIoSecretRef
     {
         public readonly string Name;
 
         [OutputConstructor]
-        private BackupSpecLocalVolumeScaleioSecretref(string name)
+        private BackupSpecLocalVolumeScaleIoSecretRef(string name)
         {
             Name = name;
         }

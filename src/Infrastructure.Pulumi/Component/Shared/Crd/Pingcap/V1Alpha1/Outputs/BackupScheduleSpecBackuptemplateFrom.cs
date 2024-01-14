@@ -11,7 +11,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateFrom
+    public sealed class BackupScheduleSpecBackupTemplateFrom
     {
         public readonly string Host;
         public readonly int Port;
@@ -20,7 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string User;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateFrom(
+        private BackupScheduleSpecBackupTemplateFrom(
             string host,
 
             int port,

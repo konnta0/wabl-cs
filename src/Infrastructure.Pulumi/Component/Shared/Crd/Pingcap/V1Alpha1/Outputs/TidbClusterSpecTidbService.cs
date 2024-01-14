@@ -13,7 +13,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     [OutputType]
     public sealed class TidbClusterSpecTidbService
     {
-        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalports> AdditionalPorts;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalPorts> AdditionalPorts;
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string ClusterIP;
         public readonly bool ExposeStatus;
@@ -29,7 +29,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
         [OutputConstructor]
         private TidbClusterSpecTidbService(
-            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalports> additionalPorts,
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbServiceAdditionalPorts> additionalPorts,
 
             ImmutableDictionary<string, string> annotations,
 

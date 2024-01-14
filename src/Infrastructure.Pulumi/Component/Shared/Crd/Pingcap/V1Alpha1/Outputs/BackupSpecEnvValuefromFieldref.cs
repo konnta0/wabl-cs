@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupSpecEnvValuefromFieldref
+    public sealed class BackupSpecEnvValueFromFieldRef
     {
         public readonly string ApiVersion;
         public readonly string FieldPath;
 
         [OutputConstructor]
-        private BackupSpecEnvValuefromFieldref(
+        private BackupSpecEnvValueFromFieldRef(
             string apiVersion,
 
             string fieldPath)

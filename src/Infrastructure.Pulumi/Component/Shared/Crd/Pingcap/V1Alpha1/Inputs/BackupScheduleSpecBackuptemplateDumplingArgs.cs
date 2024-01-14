@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateDumplingArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateDumplingArgs : global::Pulumi.ResourceArgs
     {
         [Input("options")]
         private InputList<string>? _options;
@@ -28,8 +28,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _tableFilter = value;
         }
 
-        public BackupScheduleSpecBackuptemplateDumplingArgs()
+        public BackupScheduleSpecBackupTemplateDumplingArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateDumplingArgs Empty => new BackupScheduleSpecBackupTemplateDumplingArgs();
     }
 }

@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTikvImagepullsecretsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTikvImagePullSecretsArgs : global::Pulumi.ResourceArgs
     {
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        public TidbClusterSpecTikvImagepullsecretsArgs()
+        public TidbClusterSpecTikvImagePullSecretsArgs()
         {
         }
+        public static new TidbClusterSpecTikvImagePullSecretsArgs Empty => new TidbClusterSpecTikvImagePullSecretsArgs();
     }
 }

@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTidbInitcontainersReadinessprobeHttpgetHttpheaders
+    public sealed class TidbClusterSpecTidbInitContainersReadinessProbeHttpGetHttpHeaders
     {
         public readonly string Name;
         public readonly string Value;
 
         [OutputConstructor]
-        private TidbClusterSpecTidbInitcontainersReadinessprobeHttpgetHttpheaders(
+        private TidbClusterSpecTidbInitContainersReadinessProbeHttpGetHttpHeaders(
             string name,
 
             string value)

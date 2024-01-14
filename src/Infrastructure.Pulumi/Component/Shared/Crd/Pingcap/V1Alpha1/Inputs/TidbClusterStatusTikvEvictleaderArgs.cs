@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusTikvEvictleaderArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusTikvEvictLeaderArgs : global::Pulumi.ResourceArgs
     {
         [Input("beginTime")]
         public Input<string>? BeginTime { get; set; }
@@ -21,8 +21,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public TidbClusterStatusTikvEvictleaderArgs()
+        public TidbClusterStatusTikvEvictLeaderArgs()
         {
         }
+        public static new TidbClusterStatusTikvEvictLeaderArgs Empty => new TidbClusterStatusTikvEvictLeaderArgs();
     }
 }

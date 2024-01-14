@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class DMClusterSpecWorkerPodsecuritycontextSeccompprofile
+    public sealed class DMClusterSpecWorkerPodSecurityContextSeccompProfile
     {
         public readonly string LocalhostProfile;
         public readonly string Type;
 
         [OutputConstructor]
-        private DMClusterSpecWorkerPodsecuritycontextSeccompprofile(
+        private DMClusterSpecWorkerPodSecurityContextSeccompProfile(
             string localhostProfile,
 
             string type)

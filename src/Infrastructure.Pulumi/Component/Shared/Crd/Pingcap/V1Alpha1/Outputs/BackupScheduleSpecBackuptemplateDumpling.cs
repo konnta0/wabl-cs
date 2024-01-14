@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class BackupScheduleSpecBackuptemplateDumpling
+    public sealed class BackupScheduleSpecBackupTemplateDumpling
     {
         public readonly ImmutableArray<string> Options;
         public readonly ImmutableArray<string> TableFilter;
 
         [OutputConstructor]
-        private BackupScheduleSpecBackuptemplateDumpling(
+        private BackupScheduleSpecBackupTemplateDumpling(
             ImmutableArray<string> options,
 
             ImmutableArray<string> tableFilter)

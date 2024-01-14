@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class BackupScheduleSpecBackuptemplateBrArgs : Pulumi.ResourceArgs
+    public class BackupScheduleSpecBackupTemplateBrArgs : global::Pulumi.ResourceArgs
     {
+        [Input("checkRequirements")]
+        public Input<bool>? CheckRequirements { get; set; }
+
         [Input("checksum")]
         public Input<bool>? Checksum { get; set; }
 
@@ -56,8 +59,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("timeAgo")]
         public Input<string>? TimeAgo { get; set; }
 
-        public BackupScheduleSpecBackuptemplateBrArgs()
+        public BackupScheduleSpecBackupTemplateBrArgs()
         {
         }
+        public static new BackupScheduleSpecBackupTemplateBrArgs Empty => new BackupScheduleSpecBackupTemplateBrArgs();
     }
 }

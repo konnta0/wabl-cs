@@ -11,12 +11,12 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbClusterSpecTopologyspreadconstraints
+    public sealed class TidbClusterSpecTopologySpreadConstraints
     {
         public readonly string TopologyKey;
 
         [OutputConstructor]
-        private TidbClusterSpecTopologyspreadconstraints(string topologyKey)
+        private TidbClusterSpecTopologySpreadConstraints(string topologyKey)
         {
             TopologyKey = topologyKey;
         }

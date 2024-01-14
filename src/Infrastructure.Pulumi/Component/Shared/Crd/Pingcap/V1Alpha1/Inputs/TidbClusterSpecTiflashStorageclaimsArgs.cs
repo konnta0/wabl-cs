@@ -10,16 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecTiflashStorageclaimsArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecTiflashStorageClaimsArgs : global::Pulumi.ResourceArgs
     {
         [Input("resources")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashStorageclaimsResourcesArgs>? Resources { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiflashStorageClaimsResourcesArgs>? Resources { get; set; }
 
         [Input("storageClassName")]
         public Input<string>? StorageClassName { get; set; }
 
-        public TidbClusterSpecTiflashStorageclaimsArgs()
+        public TidbClusterSpecTiflashStorageClaimsArgs()
         {
         }
+        public static new TidbClusterSpecTiflashStorageClaimsArgs Empty => new TidbClusterSpecTiflashStorageClaimsArgs();
     }
 }

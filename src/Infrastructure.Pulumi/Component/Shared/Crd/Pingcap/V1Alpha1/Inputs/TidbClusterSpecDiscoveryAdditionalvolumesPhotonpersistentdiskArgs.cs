@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterSpecDiscoveryAdditionalvolumesPhotonpersistentdiskArgs : Pulumi.ResourceArgs
+    public class TidbClusterSpecDiscoveryAdditionalVolumesPhotonPersistentDiskArgs : global::Pulumi.ResourceArgs
     {
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -18,8 +18,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("pdID", required: true)]
         public Input<string> PdID { get; set; } = null!;
 
-        public TidbClusterSpecDiscoveryAdditionalvolumesPhotonpersistentdiskArgs()
+        public TidbClusterSpecDiscoveryAdditionalVolumesPhotonPersistentDiskArgs()
         {
         }
+        public static new TidbClusterSpecDiscoveryAdditionalVolumesPhotonPersistentDiskArgs Empty => new TidbClusterSpecDiscoveryAdditionalVolumesPhotonPersistentDiskArgs();
     }
 }

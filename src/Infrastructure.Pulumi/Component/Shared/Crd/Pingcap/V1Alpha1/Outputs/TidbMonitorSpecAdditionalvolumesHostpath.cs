@@ -11,13 +11,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 {
 
     [OutputType]
-    public sealed class TidbMonitorSpecAdditionalvolumesHostpath
+    public sealed class TidbMonitorSpecAdditionalVolumesHostPath
     {
         public readonly string Path;
         public readonly string Type;
 
         [OutputConstructor]
-        private TidbMonitorSpecAdditionalvolumesHostpath(
+        private TidbMonitorSpecAdditionalVolumesHostPath(
             string path,
 
             string type)

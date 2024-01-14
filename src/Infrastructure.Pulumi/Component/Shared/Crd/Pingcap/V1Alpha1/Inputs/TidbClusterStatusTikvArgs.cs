@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 {
 
-    public class TidbClusterStatusTikvArgs : Pulumi.ResourceArgs
+    public class TidbClusterStatusTikvArgs : global::Pulumi.ResourceArgs
     {
         [Input("bootStrapped")]
         public Input<bool>? BootStrapped { get; set; }
@@ -24,10 +24,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         }
 
         [Input("evictLeader")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvEvictleaderArgs>? _evictLeader;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvEvictleaderArgs> EvictLeader
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvEvictLeaderArgs>? _evictLeader;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvEvictLeaderArgs> EvictLeader
         {
-            get => _evictLeader ?? (_evictLeader = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvEvictleaderArgs>());
+            get => _evictLeader ?? (_evictLeader = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvEvictLeaderArgs>());
             set => _evictLeader = value;
         }
 
@@ -35,10 +35,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? FailoverUID { get; set; }
 
         [Input("failureStores")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvFailurestoresArgs>? _failureStores;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvFailurestoresArgs> FailureStores
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvFailureStoresArgs>? _failureStores;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvFailureStoresArgs> FailureStores
         {
-            get => _failureStores ?? (_failureStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvFailurestoresArgs>());
+            get => _failureStores ?? (_failureStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvFailureStoresArgs>());
             set => _failureStores = value;
         }
 
@@ -46,10 +46,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Image { get; set; }
 
         [Input("peerStores")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvPeerstoresArgs>? _peerStores;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvPeerstoresArgs> PeerStores
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvPeerStoresArgs>? _peerStores;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvPeerStoresArgs> PeerStores
         {
-            get => _peerStores ?? (_peerStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvPeerstoresArgs>());
+            get => _peerStores ?? (_peerStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvPeerStoresArgs>());
             set => _peerStores = value;
         }
 
@@ -57,7 +57,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<string>? Phase { get; set; }
 
         [Input("statefulSet")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvStatefulsetArgs>? StatefulSet { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvStatefulSetArgs>? StatefulSet { get; set; }
 
         [Input("stores")]
         private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvStoresArgs>? _stores;
@@ -71,10 +71,10 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public Input<bool>? Synced { get; set; }
 
         [Input("tombstoneStores")]
-        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvTombstonestoresArgs>? _tombstoneStores;
-        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvTombstonestoresArgs> TombstoneStores
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvTombstoneStoresArgs>? _tombstoneStores;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvTombstoneStoresArgs> TombstoneStores
         {
-            get => _tombstoneStores ?? (_tombstoneStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvTombstonestoresArgs>());
+            get => _tombstoneStores ?? (_tombstoneStores = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvTombstoneStoresArgs>());
             set => _tombstoneStores = value;
         }
 
@@ -89,5 +89,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterStatusTikvArgs()
         {
         }
+        public static new TidbClusterStatusTikvArgs Empty => new TidbClusterStatusTikvArgs();
     }
 }
