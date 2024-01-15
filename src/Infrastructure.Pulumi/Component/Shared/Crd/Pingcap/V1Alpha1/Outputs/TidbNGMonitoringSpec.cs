@@ -36,6 +36,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly bool Paused;
         public readonly string PodManagementPolicy;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecPodSecurityContext PodSecurityContext;
+        public readonly bool PreferIPv6;
         public readonly string PriorityClassName;
         public readonly string PvReclaimPolicy;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecReadinessProbe ReadinessProbe;
@@ -95,6 +96,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecPodSecurityContext podSecurityContext,
 
+            bool preferIPv6,
+
             string priorityClassName,
 
             string pvReclaimPolicy,
@@ -138,6 +141,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Paused = paused;
             PodManagementPolicy = podManagementPolicy;
             PodSecurityContext = podSecurityContext;
+            PreferIPv6 = preferIPv6;
             PriorityClassName = priorityClassName;
             PvReclaimPolicy = pvReclaimPolicy;
             ReadinessProbe = readinessProbe;

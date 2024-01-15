@@ -23,6 +23,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdStatefulSet StatefulSet;
         public readonly bool Synced;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedMembers> UnjoinedMembers;
+        public readonly bool VolReplaceInProgress;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdVolumes> Volumes;
 
         [OutputConstructor]
@@ -47,6 +48,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdUnjoinedMembers> unjoinedMembers,
 
+            bool volReplaceInProgress,
+
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusPdVolumes> volumes)
         {
             Conditions = conditions;
@@ -59,6 +62,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             StatefulSet = statefulSet;
             Synced = synced;
             UnjoinedMembers = unjoinedMembers;
+            VolReplaceInProgress = volReplaceInProgress;
             Volumes = volumes;
         }
     }

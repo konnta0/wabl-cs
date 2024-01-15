@@ -250,6 +250,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("version")]
         public Input<string>? Version { get; set; }
 
+        [Input("waitLeaderTransferBackTimeout")]
+        public Input<string>? WaitLeaderTransferBackTimeout { get; set; }
+
         public TidbClusterSpecTikvArgs()
         {
             BaseImage = "pingcap/tikv";

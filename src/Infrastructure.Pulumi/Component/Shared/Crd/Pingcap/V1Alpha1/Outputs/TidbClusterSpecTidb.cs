@@ -20,6 +20,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string BaseImage;
         public readonly bool BinlogEnabled;
+        public readonly string BootstrapSQLConfigMapName;
         public readonly ImmutableDictionary<string, object> Config;
         public readonly string ConfigUpdateStrategy;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTidbDnsConfig DnsConfig;
@@ -76,6 +77,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             string baseImage,
 
             bool binlogEnabled,
+
+            string bootstrapSQLConfigMapName,
 
             ImmutableDictionary<string, object> config,
 
@@ -164,6 +167,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Annotations = annotations;
             BaseImage = baseImage;
             BinlogEnabled = binlogEnabled;
+            BootstrapSQLConfigMapName = bootstrapSQLConfigMapName;
             Config = config;
             ConfigUpdateStrategy = configUpdateStrategy;
             DnsConfig = dnsConfig;

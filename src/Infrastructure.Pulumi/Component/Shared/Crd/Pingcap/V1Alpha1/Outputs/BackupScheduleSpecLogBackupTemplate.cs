@@ -19,11 +19,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string BackupMode;
         public readonly string BackupType;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateBr Br;
+        public readonly string CalcSizeLevel;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateCleanOption CleanOption;
         public readonly string CleanPolicy;
         public readonly string CommitTs;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateDumpling Dumpling;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateEnv> Env;
+        public readonly string FederalVolumeBackupPhase;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateFrom From;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateGcs Gcs;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateImagePullSecrets> ImagePullSecrets;
@@ -33,6 +35,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplatePodSecurityContext PodSecurityContext;
         public readonly string PriorityClassName;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateResources Resources;
+        public readonly bool ResumeGcSchedule;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateS3 S3;
         public readonly string ServiceAccount;
         public readonly string StorageClassName;
@@ -57,6 +60,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateBr br,
 
+            string calcSizeLevel,
+
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateCleanOption cleanOption,
 
             string cleanPolicy,
@@ -66,6 +71,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateDumpling dumpling,
 
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateEnv> env,
+
+            string federalVolumeBackupPhase,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateFrom from,
 
@@ -84,6 +91,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             string priorityClassName,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateResources resources,
+
+            bool resumeGcSchedule,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateS3 s3,
 
@@ -109,11 +118,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             BackupMode = backupMode;
             BackupType = backupType;
             Br = br;
+            CalcSizeLevel = calcSizeLevel;
             CleanOption = cleanOption;
             CleanPolicy = cleanPolicy;
             CommitTs = commitTs;
             Dumpling = dumpling;
             Env = env;
+            FederalVolumeBackupPhase = federalVolumeBackupPhase;
             From = from;
             Gcs = gcs;
             ImagePullSecrets = imagePullSecrets;
@@ -123,6 +134,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             PodSecurityContext = podSecurityContext;
             PriorityClassName = priorityClassName;
             Resources = resources;
+            ResumeGcSchedule = resumeGcSchedule;
             S3 = s3;
             ServiceAccount = serviceAccount;
             StorageClassName = storageClassName;

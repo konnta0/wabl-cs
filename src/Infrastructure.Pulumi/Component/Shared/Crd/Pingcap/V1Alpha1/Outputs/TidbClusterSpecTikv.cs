@@ -64,6 +64,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvTolerations> Tolerations;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvTopologySpreadConstraints> TopologySpreadConstraints;
         public readonly string Version;
+        public readonly string WaitLeaderTransferBackTimeout;
 
         [OutputConstructor]
         private TidbClusterSpecTikv(
@@ -167,7 +168,9 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTikvTopologySpreadConstraints> topologySpreadConstraints,
 
-            string version)
+            string version,
+
+            string waitLeaderTransferBackTimeout)
         {
             AdditionalContainers = additionalContainers;
             AdditionalVolumeMounts = additionalVolumeMounts;
@@ -220,6 +223,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Tolerations = tolerations;
             TopologySpreadConstraints = topologySpreadConstraints;
             Version = version;
+            WaitLeaderTransferBackTimeout = waitLeaderTransferBackTimeout;
         }
     }
 }

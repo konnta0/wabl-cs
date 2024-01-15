@@ -40,6 +40,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("timeStarted")]
         public Input<string>? TimeStarted { get; set; }
 
+        [Input("timeTaken")]
+        public Input<string>? TimeTaken { get; set; }
+
         public RestoreStatusArgs()
         {
         }

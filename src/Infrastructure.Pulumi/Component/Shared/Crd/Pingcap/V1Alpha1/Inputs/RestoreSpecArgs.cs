@@ -32,6 +32,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _env = value;
         }
 
+        [Input("federalVolumeRestorePhase")]
+        public Input<string>? FederalVolumeRestorePhase { get; set; }
+
         [Input("gcs")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.RestoreSpecGcsArgs>? Gcs { get; set; }
 
@@ -107,9 +110,22 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("useKMS")]
         public Input<bool>? UseKMS { get; set; }
 
+        [Input("volumeAZ")]
+        public Input<string>? VolumeAZ { get; set; }
+
+        [Input("warmup")]
+        public Input<string>? Warmup { get; set; }
+
+        [Input("warmupImage")]
+        public Input<string>? WarmupImage { get; set; }
+
+        [Input("warmupStrategy")]
+        public Input<string>? WarmupStrategy { get; set; }
+
         public RestoreSpecArgs()
         {
             RestoreMode = "snapshot";
+            WarmupStrategy = "hybrid";
         }
         public static new RestoreSpecArgs Empty => new RestoreSpecArgs();
     }

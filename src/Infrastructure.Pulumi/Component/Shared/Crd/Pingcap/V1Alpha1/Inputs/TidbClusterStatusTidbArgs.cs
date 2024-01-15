@@ -51,6 +51,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("statefulSet")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbStatefulSetArgs>? StatefulSet { get; set; }
 
+        [Input("volReplaceInProgress")]
+        public Input<bool>? VolReplaceInProgress { get; set; }
+
         [Input("volumes")]
         private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbVolumesArgs>? _volumes;
         public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTidbVolumesArgs> Volumes

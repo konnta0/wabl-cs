@@ -25,6 +25,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTikvStores> Stores;
         public readonly bool Synced;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTikvTombstoneStores> TombstoneStores;
+        public readonly bool VolReplaceInProgress;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTikvVolumes> Volumes;
 
         [OutputConstructor]
@@ -53,6 +54,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTikvTombstoneStores> tombstoneStores,
 
+            bool volReplaceInProgress,
+
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTikvVolumes> volumes)
         {
             BootStrapped = bootStrapped;
@@ -67,6 +70,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Stores = stores;
             Synced = synced;
             TombstoneStores = tombstoneStores;
+            VolReplaceInProgress = volReplaceInProgress;
             Volumes = volumes;
         }
     }

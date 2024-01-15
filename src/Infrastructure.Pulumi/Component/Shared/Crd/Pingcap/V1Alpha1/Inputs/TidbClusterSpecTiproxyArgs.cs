@@ -50,6 +50,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("baseImage")]
         public Input<string>? BaseImage { get; set; }
 
+        [Input("config")]
+        private InputMap<object>? _config;
+        public InputMap<object> Config
+        {
+            get => _config ?? (_config = new InputMap<object>());
+            set => _config = value;
+        }
+
         [Input("configUpdateStrategy")]
         public Input<string>? ConfigUpdateStrategy { get; set; }
 
@@ -132,9 +140,6 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 
         [Input("priorityClassName")]
         public Input<string>? PriorityClassName { get; set; }
-
-        [Input("proxy")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyProxyArgs>? Proxy { get; set; }
 
         [Input("readinessProbe")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyReadinessProbeArgs>? ReadinessProbe { get; set; }

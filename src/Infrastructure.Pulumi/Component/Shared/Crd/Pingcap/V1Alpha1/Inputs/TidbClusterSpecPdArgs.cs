@@ -176,6 +176,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        [Input("startTimeout")]
+        public Input<int>? StartTimeout { get; set; }
+
         [Input("startUpScriptVersion")]
         public Input<string>? StartUpScriptVersion { get; set; }
 
@@ -224,6 +227,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public TidbClusterSpecPdArgs()
         {
             BaseImage = "pingcap/pd";
+            StartTimeout = 30;
         }
         public static new TidbClusterSpecPdArgs Empty => new TidbClusterSpecPdArgs();
     }

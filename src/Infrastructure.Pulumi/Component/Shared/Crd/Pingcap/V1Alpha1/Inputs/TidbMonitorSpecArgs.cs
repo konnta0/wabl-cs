@@ -109,6 +109,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("podSecurityContext")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPodSecurityContextArgs>? PodSecurityContext { get; set; }
 
+        [Input("preferIPv6")]
+        public Input<bool>? PreferIPv6 { get; set; }
+
         [Input("prometheus", required: true)]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusArgs> Prometheus { get; set; } = null!;
 

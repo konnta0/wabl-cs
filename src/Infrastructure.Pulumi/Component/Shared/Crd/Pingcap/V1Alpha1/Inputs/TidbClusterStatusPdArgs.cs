@@ -67,6 +67,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _unjoinedMembers = value;
         }
 
+        [Input("volReplaceInProgress")]
+        public Input<bool>? VolReplaceInProgress { get; set; }
+
         [Input("volumes")]
         private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdVolumesArgs>? _volumes;
         public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusPdVolumesArgs> Volumes

@@ -25,6 +25,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecResources Resources;
         public readonly string Timezone;
         public readonly string TlsClientSecretName;
+        public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecTolerations> Tolerations;
 
         [OutputConstructor]
         private TidbInitializerSpec(
@@ -50,7 +51,9 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string timezone,
 
-            string tlsClientSecretName)
+            string tlsClientSecretName,
+
+            ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbInitializerSpecTolerations> tolerations)
         {
             Cluster = cluster;
             Image = image;
@@ -64,6 +67,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Resources = resources;
             Timezone = timezone;
             TlsClientSecretName = tlsClientSecretName;
+            Tolerations = tolerations;
         }
     }
 }

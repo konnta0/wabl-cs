@@ -18,6 +18,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string BackupType;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecBr Br;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecEnv> Env;
+        public readonly string FederalVolumeRestorePhase;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecGcs Gcs;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecImagePullSecrets> ImagePullSecrets;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecLocal Local;
@@ -38,6 +39,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecTolerations> Tolerations;
         public readonly string ToolImage;
         public readonly bool UseKMS;
+        public readonly string VolumeAZ;
+        public readonly string Warmup;
+        public readonly string WarmupImage;
+        public readonly string WarmupStrategy;
 
         [OutputConstructor]
         private RestoreSpec(
@@ -50,6 +55,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecBr br,
 
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecEnv> env,
+
+            string federalVolumeRestorePhase,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreSpecGcs gcs,
 
@@ -89,13 +96,22 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string toolImage,
 
-            bool useKMS)
+            bool useKMS,
+
+            string volumeAZ,
+
+            string warmup,
+
+            string warmupImage,
+
+            string warmupStrategy)
         {
             Affinity = affinity;
             Azblob = azblob;
             BackupType = backupType;
             Br = br;
             Env = env;
+            FederalVolumeRestorePhase = federalVolumeRestorePhase;
             Gcs = gcs;
             ImagePullSecrets = imagePullSecrets;
             Local = local;
@@ -116,6 +132,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Tolerations = tolerations;
             ToolImage = toolImage;
             UseKMS = useKMS;
+            VolumeAZ = volumeAZ;
+            Warmup = warmup;
+            WarmupImage = warmupImage;
+            WarmupStrategy = warmupStrategy;
         }
     }
 }

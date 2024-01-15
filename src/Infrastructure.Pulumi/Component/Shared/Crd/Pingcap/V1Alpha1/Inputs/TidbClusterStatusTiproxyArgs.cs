@@ -20,11 +20,16 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _conditions = value;
         }
 
+        [Input("members")]
+        private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyMembersArgs>? _members;
+        public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyMembersArgs> Members
+        {
+            get => _members ?? (_members = new InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyMembersArgs>());
+            set => _members = value;
+        }
+
         [Input("phase")]
         public Input<string>? Phase { get; set; }
-
-        [Input("proxy")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyProxyArgs>? Proxy { get; set; }
 
         [Input("statefulSet")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyStatefulSetArgs>? StatefulSet { get; set; }

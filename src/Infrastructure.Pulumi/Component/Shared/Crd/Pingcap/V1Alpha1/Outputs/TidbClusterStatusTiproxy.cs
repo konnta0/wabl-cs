@@ -14,8 +14,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
     public sealed class TidbClusterStatusTiproxy
     {
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyConditions> Conditions;
+        public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyMembers> Members;
         public readonly string Phase;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyProxy Proxy;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyStatefulSet StatefulSet;
         public readonly bool Synced;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyVolumes> Volumes;
@@ -24,9 +24,9 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         private TidbClusterStatusTiproxy(
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyConditions> conditions,
 
-            string phase,
+            ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyMembers> members,
 
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyProxy proxy,
+            string phase,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyStatefulSet statefulSet,
 
@@ -35,8 +35,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTiproxyVolumes> volumes)
         {
             Conditions = conditions;
+            Members = members;
             Phase = phase;
-            Proxy = proxy;
             StatefulSet = statefulSet;
             Synced = synced;
             Volumes = volumes;

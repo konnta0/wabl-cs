@@ -19,11 +19,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string BackupMode;
         public readonly string BackupType;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecBr Br;
+        public readonly string CalcSizeLevel;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecCleanOption CleanOption;
         public readonly string CleanPolicy;
         public readonly string CommitTs;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecDumpling Dumpling;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecEnv> Env;
+        public readonly string FederalVolumeBackupPhase;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecFrom From;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecGcs Gcs;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecImagePullSecrets> ImagePullSecrets;
@@ -33,6 +35,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecPodSecurityContext PodSecurityContext;
         public readonly string PriorityClassName;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecResources Resources;
+        public readonly bool ResumeGcSchedule;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecS3 S3;
         public readonly string ServiceAccount;
         public readonly string StorageClassName;
@@ -57,6 +60,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecBr br,
 
+            string calcSizeLevel,
+
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecCleanOption cleanOption,
 
             string cleanPolicy,
@@ -66,6 +71,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecDumpling dumpling,
 
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecEnv> env,
+
+            string federalVolumeBackupPhase,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecFrom from,
 
@@ -84,6 +91,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             string priorityClassName,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecResources resources,
+
+            bool resumeGcSchedule,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupSpecS3 s3,
 
@@ -109,11 +118,13 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             BackupMode = backupMode;
             BackupType = backupType;
             Br = br;
+            CalcSizeLevel = calcSizeLevel;
             CleanOption = cleanOption;
             CleanPolicy = cleanPolicy;
             CommitTs = commitTs;
             Dumpling = dumpling;
             Env = env;
+            FederalVolumeBackupPhase = federalVolumeBackupPhase;
             From = from;
             Gcs = gcs;
             ImagePullSecrets = imagePullSecrets;
@@ -123,6 +134,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             PodSecurityContext = podSecurityContext;
             PriorityClassName = priorityClassName;
             Resources = resources;
+            ResumeGcSchedule = resumeGcSchedule;
             S3 = s3;
             ServiceAccount = serviceAccount;
             StorageClassName = storageClassName;

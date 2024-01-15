@@ -32,6 +32,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableDictionary<string, string> NodeSelector;
         public readonly bool Persistent;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPodSecurityContext PodSecurityContext;
+        public readonly bool PreferIPv6;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheus Prometheus;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusReloader PrometheusReloader;
         public readonly string PvReclaimPolicy;
@@ -85,6 +86,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPodSecurityContext podSecurityContext,
 
+            bool preferIPv6,
+
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheus prometheus,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbMonitorSpecPrometheusReloader prometheusReloader,
@@ -128,6 +131,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             NodeSelector = nodeSelector;
             Persistent = persistent;
             PodSecurityContext = podSecurityContext;
+            PreferIPv6 = preferIPv6;
             Prometheus = prometheus;
             PrometheusReloader = prometheusReloader;
             PvReclaimPolicy = pvReclaimPolicy;

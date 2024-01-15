@@ -24,6 +24,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("leaderCount", required: true)]
         public Input<int> LeaderCount { get; set; } = null!;
 
+        [Input("leaderCountBeforeUpgrade")]
+        public Input<int>? LeaderCountBeforeUpgrade { get; set; }
+
         [Input("podName", required: true)]
         public Input<string> PodName { get; set; } = null!;
 

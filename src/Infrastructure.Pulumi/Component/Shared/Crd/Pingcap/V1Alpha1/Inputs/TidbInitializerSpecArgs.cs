@@ -53,6 +53,14 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("tlsClientSecretName")]
         public Input<string>? TlsClientSecretName { get; set; }
 
+        [Input("tolerations")]
+        private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbInitializerSpecTolerationsArgs>? _tolerations;
+        public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbInitializerSpecTolerationsArgs> Tolerations
+        {
+            get => _tolerations ?? (_tolerations = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbInitializerSpecTolerationsArgs>());
+            set => _tolerations = value;
+        }
+
         public TidbInitializerSpecArgs()
         {
         }

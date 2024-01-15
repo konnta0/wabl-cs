@@ -37,6 +37,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string PathPrefix;
         public readonly string PodManagementPolicy;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbDashboardSpecPodSecurityContext PodSecurityContext;
+        public readonly bool PreferIPv6;
         public readonly string PriorityClassName;
         public readonly string PvReclaimPolicy;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbDashboardSpecReadinessProbe ReadinessProbe;
@@ -103,6 +104,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbDashboardSpecPodSecurityContext podSecurityContext,
 
+            bool preferIPv6,
+
             string priorityClassName,
 
             string pvReclaimPolicy,
@@ -157,6 +160,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             PathPrefix = pathPrefix;
             PodManagementPolicy = podManagementPolicy;
             PodSecurityContext = podSecurityContext;
+            PreferIPv6 = preferIPv6;
             PriorityClassName = priorityClassName;
             PvReclaimPolicy = pvReclaimPolicy;
             ReadinessProbe = readinessProbe;

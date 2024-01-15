@@ -53,6 +53,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("binlogEnabled")]
         public Input<bool>? BinlogEnabled { get; set; }
 
+        [Input("bootstrapSQLConfigMapName")]
+        public Input<string>? BootstrapSQLConfigMapName { get; set; }
+
         [Input("config")]
         private InputMap<object>? _config;
         public InputMap<object> Config

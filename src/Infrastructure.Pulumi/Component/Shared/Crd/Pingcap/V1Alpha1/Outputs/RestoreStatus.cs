@@ -19,6 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.RestoreStatusProgresses> Progresses;
         public readonly string TimeCompleted;
         public readonly string TimeStarted;
+        public readonly string TimeTaken;
 
         [OutputConstructor]
         private RestoreStatus(
@@ -32,7 +33,9 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string timeCompleted,
 
-            string timeStarted)
+            string timeStarted,
+
+            string timeTaken)
         {
             CommitTs = commitTs;
             Conditions = conditions;
@@ -40,6 +43,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Progresses = progresses;
             TimeCompleted = timeCompleted;
             TimeStarted = timeStarted;
+            TimeTaken = timeTaken;
         }
     }
 }

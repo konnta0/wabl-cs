@@ -40,6 +40,12 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _conditions = value;
         }
 
+        [Input("incrementalBackupSize")]
+        public Input<int>? IncrementalBackupSize { get; set; }
+
+        [Input("incrementalBackupSizeReadable")]
+        public Input<string>? IncrementalBackupSizeReadable { get; set; }
+
         [Input("logCheckpointTs")]
         public Input<string>? LogCheckpointTs { get; set; }
 
@@ -70,6 +76,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 
         [Input("timeStarted")]
         public Input<string>? TimeStarted { get; set; }
+
+        [Input("timeTaken")]
+        public Input<string>? TimeTaken { get; set; }
 
         public BackupStatusArgs()
         {

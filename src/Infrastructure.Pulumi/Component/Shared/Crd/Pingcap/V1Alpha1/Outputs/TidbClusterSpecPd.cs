@@ -46,6 +46,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string SchedulerName;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecPdService Service;
         public readonly string ServiceAccount;
+        public readonly int StartTimeout;
         public readonly string StartUpScriptVersion;
         public readonly string StatefulSetUpdateStrategy;
         public readonly string StorageClassName;
@@ -125,6 +126,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string serviceAccount,
 
+            int startTimeout,
+
             string startUpScriptVersion,
 
             string statefulSetUpdateStrategy,
@@ -178,6 +181,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             SchedulerName = schedulerName;
             Service = service;
             ServiceAccount = serviceAccount;
+            StartTimeout = startTimeout;
             StartUpScriptVersion = startUpScriptVersion;
             StatefulSetUpdateStrategy = statefulSetUpdateStrategy;
             StorageClassName = storageClassName;

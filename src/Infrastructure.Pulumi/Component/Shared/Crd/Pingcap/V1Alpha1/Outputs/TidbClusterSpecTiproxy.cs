@@ -19,6 +19,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyAffinity Affinity;
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string BaseImage;
+        public readonly ImmutableDictionary<string, object> Config;
         public readonly string ConfigUpdateStrategy;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyDnsConfig DnsConfig;
         public readonly string DnsPolicy;
@@ -35,7 +36,6 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string PodManagementPolicy;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyPodSecurityContext PodSecurityContext;
         public readonly string PriorityClassName;
-        public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyProxy Proxy;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyReadinessProbe ReadinessProbe;
         public readonly int Replicas;
         public readonly ImmutableDictionary<string, Union<int, string>> Requests;
@@ -64,6 +64,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             ImmutableDictionary<string, string> annotations,
 
             string baseImage,
+
+            ImmutableDictionary<string, object> config,
 
             string configUpdateStrategy,
 
@@ -96,8 +98,6 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyPodSecurityContext podSecurityContext,
 
             string priorityClassName,
-
-            Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyProxy proxy,
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterSpecTiproxyReadinessProbe readinessProbe,
 
@@ -133,6 +133,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Affinity = affinity;
             Annotations = annotations;
             BaseImage = baseImage;
+            Config = config;
             ConfigUpdateStrategy = configUpdateStrategy;
             DnsConfig = dnsConfig;
             DnsPolicy = dnsPolicy;
@@ -149,7 +150,6 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             PodManagementPolicy = podManagementPolicy;
             PodSecurityContext = podSecurityContext;
             PriorityClassName = priorityClassName;
-            Proxy = proxy;
             ReadinessProbe = readinessProbe;
             Replicas = replicas;
             Requests = requests;

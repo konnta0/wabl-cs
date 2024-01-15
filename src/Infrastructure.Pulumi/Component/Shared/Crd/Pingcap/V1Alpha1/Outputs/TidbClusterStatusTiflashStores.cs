@@ -17,6 +17,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Ip;
         public readonly string LastTransitionTime;
         public readonly int LeaderCount;
+        public readonly int LeaderCountBeforeUpgrade;
         public readonly string PodName;
         public readonly string State;
 
@@ -30,6 +31,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             int leaderCount,
 
+            int leaderCountBeforeUpgrade,
+
             string podName,
 
             string state)
@@ -38,6 +41,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Ip = ip;
             LastTransitionTime = lastTransitionTime;
             LeaderCount = leaderCount;
+            LeaderCountBeforeUpgrade = leaderCountBeforeUpgrade;
             PodName = podName;
             State = state;
         }

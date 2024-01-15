@@ -21,6 +21,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string Phase;
         public readonly int ResignDDLOwnerRetryCount;
         public readonly Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbStatefulSet StatefulSet;
+        public readonly bool VolReplaceInProgress;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbVolumes> Volumes;
 
         [OutputConstructor]
@@ -41,6 +42,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbStatefulSet statefulSet,
 
+            bool volReplaceInProgress,
+
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.TidbClusterStatusTidbVolumes> volumes)
         {
             Conditions = conditions;
@@ -51,6 +54,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Phase = phase;
             ResignDDLOwnerRetryCount = resignDDLOwnerRetryCount;
             StatefulSet = statefulSet;
+            VolReplaceInProgress = volReplaceInProgress;
             Volumes = volumes;
         }
     }

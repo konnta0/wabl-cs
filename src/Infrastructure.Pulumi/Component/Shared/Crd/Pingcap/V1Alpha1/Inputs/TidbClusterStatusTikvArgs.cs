@@ -78,6 +78,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             set => _tombstoneStores = value;
         }
 
+        [Input("volReplaceInProgress")]
+        public Input<bool>? VolReplaceInProgress { get; set; }
+
         [Input("volumes")]
         private InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvVolumesArgs>? _volumes;
         public InputMap<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusTikvVolumesArgs> Volumes

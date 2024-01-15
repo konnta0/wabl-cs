@@ -136,6 +136,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("podSecurityContext")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbNGMonitoringSpecPodSecurityContextArgs>? PodSecurityContext { get; set; }
 
+        [Input("preferIPv6")]
+        public Input<bool>? PreferIPv6 { get; set; }
+
         [Input("priorityClassName")]
         public Input<string>? PriorityClassName { get; set; }
 

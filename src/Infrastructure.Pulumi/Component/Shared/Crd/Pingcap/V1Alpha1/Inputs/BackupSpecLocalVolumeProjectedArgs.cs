@@ -15,7 +15,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("defaultMode")]
         public Input<int>? DefaultMode { get; set; }
 
-        [Input("sources", required: true)]
+        [Input("sources")]
         private InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesArgs>? _sources;
         public InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupSpecLocalVolumeProjectedSourcesArgs> Sources
         {

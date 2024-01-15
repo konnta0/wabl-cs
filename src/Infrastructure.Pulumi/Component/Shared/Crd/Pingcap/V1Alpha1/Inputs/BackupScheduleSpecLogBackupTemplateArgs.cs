@@ -30,6 +30,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         [Input("br")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateBrArgs>? Br { get; set; }
 
+        [Input("calcSizeLevel")]
+        public Input<string>? CalcSizeLevel { get; set; }
+
         [Input("cleanOption")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateCleanOptionArgs>? CleanOption { get; set; }
 
@@ -49,6 +52,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
             get => _env ?? (_env = new InputList<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateEnvArgs>());
             set => _env = value;
         }
+
+        [Input("federalVolumeBackupPhase")]
+        public Input<string>? FederalVolumeBackupPhase { get; set; }
 
         [Input("from")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateFromArgs>? From { get; set; }
@@ -81,6 +87,9 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
 
         [Input("resources")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateResourcesArgs>? Resources { get; set; }
+
+        [Input("resumeGcSchedule")]
+        public Input<bool>? ResumeGcSchedule { get; set; }
 
         [Input("s3")]
         public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.BackupScheduleSpecLogBackupTemplateS3Args>? S3 { get; set; }
@@ -122,6 +131,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
         public BackupScheduleSpecLogBackupTemplateArgs()
         {
             BackupMode = "snapshot";
+            CalcSizeLevel = "all";
         }
         public static new BackupScheduleSpecLogBackupTemplateArgs Empty => new BackupScheduleSpecLogBackupTemplateArgs();
     }

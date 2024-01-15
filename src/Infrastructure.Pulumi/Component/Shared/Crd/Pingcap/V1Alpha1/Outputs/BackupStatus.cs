@@ -19,6 +19,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly string BackupSizeReadable;
         public readonly string CommitTs;
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupStatusConditions> Conditions;
+        public readonly int IncrementalBackupSize;
+        public readonly string IncrementalBackupSizeReadable;
         public readonly string LogCheckpointTs;
         public readonly ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupStatusLogSubCommandStatuses> LogSubCommandStatuses;
         public readonly string LogSuccessTruncateUntil;
@@ -26,6 +28,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
         public readonly ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupStatusProgresses> Progresses;
         public readonly string TimeCompleted;
         public readonly string TimeStarted;
+        public readonly string TimeTaken;
 
         [OutputConstructor]
         private BackupStatus(
@@ -41,6 +44,10 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             ImmutableArray<Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupStatusConditions> conditions,
 
+            int incrementalBackupSize,
+
+            string incrementalBackupSizeReadable,
+
             string logCheckpointTs,
 
             ImmutableDictionary<string, Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1.BackupStatusLogSubCommandStatuses> logSubCommandStatuses,
@@ -53,7 +60,9 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
 
             string timeCompleted,
 
-            string timeStarted)
+            string timeStarted,
+
+            string timeTaken)
         {
             BackoffRetryStatus = backoffRetryStatus;
             BackupPath = backupPath;
@@ -61,6 +70,8 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             BackupSizeReadable = backupSizeReadable;
             CommitTs = commitTs;
             Conditions = conditions;
+            IncrementalBackupSize = incrementalBackupSize;
+            IncrementalBackupSizeReadable = incrementalBackupSizeReadable;
             LogCheckpointTs = logCheckpointTs;
             LogSubCommandStatuses = logSubCommandStatuses;
             LogSuccessTruncateUntil = logSuccessTruncateUntil;
@@ -68,6 +79,7 @@ namespace Pulumi.Kubernetes.Types.Outputs.Pingcap.V1Alpha1
             Progresses = progresses;
             TimeCompleted = timeCompleted;
             TimeStarted = timeStarted;
+            TimeTaken = timeTaken;
         }
     }
 }
