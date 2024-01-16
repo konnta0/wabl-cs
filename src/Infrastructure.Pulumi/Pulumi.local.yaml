@@ -7,6 +7,7 @@ config:
           secure: AAABAGXAx3UOR6U1Oc9Y9V270mhl3pn6wOuHDmFK9PWKL4R5e4OjxYsk
         User: tekton
     Harbor:
+      Deploy: false
       NodeSelector:
         Label: kubernetes.io/hostname
         Value: minikube
