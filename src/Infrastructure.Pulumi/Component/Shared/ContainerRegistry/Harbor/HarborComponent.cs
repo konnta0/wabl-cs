@@ -201,8 +201,8 @@ namespace Infrastructure.Pulumi.Component.Shared.ContainerRegistry.Harbor
             var harbor = new Release("harbor", new ReleaseArgs
             {
                 Chart = "harbor",
-                // https://github.com/goharbor/harbor-helm/releases/tag/v1.9.1
-                Version = "v1.11.1",
+                // https://github.com/goharbor/harbor-helm/releases/tag/v1.11.4
+                Version = "v1.11.4",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://helm.goharbor.io"
