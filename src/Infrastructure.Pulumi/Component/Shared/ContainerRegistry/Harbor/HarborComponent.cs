@@ -23,6 +23,8 @@ namespace Infrastructure.Pulumi.Component.Shared.ContainerRegistry.Harbor
 
         public HarborComponentOutput Apply(HarborComponentInput input)
         {
+            var containerRegistryConfig = _config.GetContainerRegistryConfig();
+
             var certificate = new global::Pulumi.Crds.Certmanager.V1.Certificate("harbor-certificate", new CertificateArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -42,7 +44,7 @@ namespace Infrastructure.Pulumi.Component.Shared.ContainerRegistry.Harbor
                     },
                     CommonName = "harbor-cn",
                     Duration = "8760h",
-                    DnsNames = { "cr.test", "core.harbor.cr.test" },
+                    DnsNames = { "cr.test", containerRegistryConfig.Host },
                     SecretName = "harbor-certificate",
                     IssuerRef = new CertificateSpecIssuerrefArgs
                     {
@@ -76,12 +78,12 @@ namespace Infrastructure.Pulumi.Component.Shared.ContainerRegistry.Harbor
                     {
                         ["hosts"] = new InputMap<object>
                         {
-                            ["core"] = "core.harbor.cr.test",
+                            ["core"] = containerRegistryConfig.Host,
                             ["notary"] = "notary.harbor.cr.test"
                         }
                     }
                 },
-                ["externalURL"] = "https://core.harbor.cr.test",
+                ["externalURL"] = $"https://{containerRegistryConfig.Host}",
                 ["harborAdminPassword"] = "Harbor1234",
                 // ["persistence"] = new InputMap<object>
                 // {
@@ -116,7 +118,6 @@ namespace Infrastructure.Pulumi.Component.Shared.ContainerRegistry.Harbor
 
             if (_config.IsMinikube())
             {
-                var containerRegistryConfig = _config.GetContainerRegistryConfig();
                 values.TryAdd("notary", new InputMap<object>
                 {
                     ["server"] = new InputMap<object>
