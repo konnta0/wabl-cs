@@ -13,7 +13,7 @@ namespace Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1
     public class TidbClusterStatusArgs : global::Pulumi.ResourceArgs
     {
         [Input("auto-scaler")]
-        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusAutoScalerArgs>? Auto-scaler { get; set; }
+        public Input<Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1.TidbClusterStatusAutoScalerArgs>? AutoScaler { get; set; }
 
         [Input("clusterID")]
         public Input<string>? ClusterID { get; set; }
