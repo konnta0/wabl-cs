@@ -104,7 +104,7 @@ namespace Infrastructure.Pulumi.Component.Shared.CiCd.Tekton
                     Annotations = new Dictionary<string, string>
                     {
                         // https://tekton.dev/vault/pipelines-v0.16.3/auth/#configuring-basic-auth-authentication-for-docker
-                        ["tekton.dev/docker-0"] = "core.harbor.cr.test"
+                        ["tekton.dev/docker-0"] = containerRegistryConfig.GetProperty("Host").GetString()!
                     }
                 }
             });
