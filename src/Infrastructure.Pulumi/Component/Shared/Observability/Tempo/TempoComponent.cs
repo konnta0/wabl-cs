@@ -61,6 +61,19 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Tempo
                     ["config"] = new Dictionary<string, object>
                     {
                         ["replication_factor"] = 1
+                    },
+                    ["resources"] = new Dictionary<string, object>
+                    {
+                        ["limits"] = new Dictionary<string, object>
+                        {
+                            ["cpu"] = "500m",
+                            ["memory"] = "500Mi"
+                        },
+                        ["requests"] = new Dictionary<string, object>
+                        {
+                            ["cpu"] = "100m",
+                            ["memory"] = "128Mi"
+                        }
                     }
                 },
                 ["minio"] = new InputMap<object>
