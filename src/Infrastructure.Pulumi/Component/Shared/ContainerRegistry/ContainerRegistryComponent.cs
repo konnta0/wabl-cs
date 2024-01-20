@@ -1,4 +1,5 @@
 using Infrastructure.Pulumi.Component.Shared.ContainerRegistry.Harbor;
+using Infrastructure.Pulumi.Extension;
 using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Crds.Certmanager.V1;
@@ -22,57 +23,63 @@ namespace Infrastructure.Pulumi.Component.Shared.ContainerRegistry
 
         public ContainerRegistryComponentOutput Apply(ContainerRegistryComponentInput input)
         {
-            var certificate = new global::Pulumi.Crds.Certmanager.V1.Certificate("container-registry-certificate",
-                new CertificateArgs
+            var config = _config.GetContainerRegistryConfig();
+
+            if (config.Harbor.Deploy)
+            {
+                var certificate = new global::Pulumi.Crds.Certmanager.V1.Certificate("container-registry-certificate",
+                    new CertificateArgs
+                    {
+                        Metadata = new ObjectMetaArgs
+                        {
+                            Name = "selfsigned-ca-for-harbor",
+                            Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                        },
+                        Spec = new CertificateSpecArgs
+                        {
+                            IsCA = true,
+                            CommonName = "selfsigned-ca-for-harbor",
+                            Duration = "438000h",
+                            SecretName = "selfsigned-ca-cert",
+                            PrivateKey = new CertificateSpecPrivatekeyArgs
+                            {
+                                Algorithm = "RSA",
+                                Size = 2048
+                            },
+                            IssuerRef = new CertificateSpecIssuerrefArgs
+                            {
+                                Name = input.ClusterIssuer.Metadata.Apply(x => x.Name),
+                                Kind = nameof(ClusterIssuer),
+                                Group = "cert-manager.io"
+                            },
+                            DnsNames = { "cr.test", config.Host }
+                        }
+                    });
+
+                var issuer = new Issuer("container-registry-issuer", new IssuerArgs
                 {
                     Metadata = new ObjectMetaArgs
                     {
-                        Name = "selfsigned-ca-for-harbor",
+                        Name = "ca-issuer",
                         Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                     },
-                    Spec = new CertificateSpecArgs
+                    Spec = new IssuerSpecArgs
                     {
-                        IsCA = true,
-                        CommonName = "selfsigned-ca-for-harbor",
-                        Duration = "438000h",
-                        SecretName = "selfsigned-ca-cert",
-                        PrivateKey = new CertificateSpecPrivatekeyArgs
+                        Ca = new IssuerSpecCaArgs
                         {
-                            Algorithm = "RSA",
-                            Size = 2048
-                        },
-                        IssuerRef = new CertificateSpecIssuerrefArgs
-                        {
-                            Name = input.ClusterIssuer.Metadata.Apply(x => x.Name),
-                            Kind = nameof(ClusterIssuer),
-                            Group = "cert-manager.io"
-                        },
-                        DnsNames = { "cr.test", "core.harbor.cr.test" }
+                            SecretName = certificate.Spec.Apply(x => x.SecretName)
+                        }
                     }
                 });
-            
-            var issuer = new Issuer("container-registry-issuer", new IssuerArgs
-            {
-                Metadata = new ObjectMetaArgs
-                {
-                    Name = "ca-issuer",
-                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
-                },
-                Spec = new IssuerSpecArgs
-                {
-                    Ca = new IssuerSpecCaArgs
-                    {
-                        SecretName = certificate.Spec.Apply(x => x.SecretName)
-                    }
-                }
-            });
 
-            //var minioConsoleHost = _minIo.Apply(_namespaceName);
-            var harborComponentOutput = _harborComponent.Apply(new HarborComponentInput
-            {
-                Namespace = input.Namespace,
-                Issuer = issuer
-            });
+                //var minioConsoleHost = _minIo.Apply(_namespaceName);
+                var harborComponentOutput = _harborComponent.Apply(new HarborComponentInput
+                {
+                    Namespace = input.Namespace,
+                    Issuer = issuer
+                });
+            
+            }
             return new ContainerRegistryComponentOutput();
         }
     }
