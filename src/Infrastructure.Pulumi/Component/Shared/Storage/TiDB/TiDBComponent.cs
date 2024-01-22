@@ -34,17 +34,26 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
             });
             configFile.Ready();
 
+            var tidbOperatorValues = new Dictionary<string, object>
+            {
+                ["scheduler"] = new Dictionary<string, object>
+                {
+                    // see: https://github.com/pingcap/tidb-operator/issues/5355#issuecomment-1782483397
+                    ["create"] = false
+                }
+            };
+            // https://github.com/pingcap/tidb-operator/blob/v1.5.1/charts/tidb-operator/values.yaml
             var tidbOperator = new Release("tidb-operator", new ReleaseArgs
             {
                 Chart = "tidb-operator",
                 // helm search repo pingcap/tidb-operator --versions
-                // NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-                Version = "v1.3.7",
+                Version = "v1.5.1",
                 RepositoryOpts = new RepositoryOptsArgs
                 {
                     Repo = "https://charts.pingcap.org"
                 },
                 Atomic = true,
+                Values = tidbOperatorValues,
                 Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             }, new CustomResourceOptions { DependsOn = { configFile } });
 
