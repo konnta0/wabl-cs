@@ -3,6 +3,7 @@ using System.IO;
 using System.Text.Json;
 using Infrastructure.Pulumi.Extension;
 using Pulumi;
+using Pulumi.Crds.Pingcap.V1Alpha1;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Rbac.V1;
@@ -10,6 +11,7 @@ using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
+using Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1;
 using Pulumi.Kubernetes.Types.Inputs.Rbac.V1;
 using Pulumi.Kubernetes.Yaml;
 using Deployment = Pulumi.Kubernetes.Apps.V1.Deployment;
@@ -56,6 +58,82 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                 Values = tidbOperatorValues,
                 Namespace = input.Namespace.Metadata.Apply(x => x.Name)
             }, new CustomResourceOptions { DependsOn = { configFile } });
+
+            var tikvPVC = new PersistentVolumeClaim("tikv-pvc", new PersistentVolumeClaimArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+                    Name = "tikv-pvc",
+                },
+                Spec = new PersistentVolumeClaimSpecArgs
+                {
+                    AccessModes = "ReadWriteOnce",
+                    VolumeMode = "Filesystem",
+                    Resources = new ResourceRequirementsArgs
+                    {
+                        Requests =
+                        {
+                            ["storage"] = "3Gi"
+                        }
+                    },
+                    StorageClassName = "standard"
+                }
+            }, new CustomResourceOptions { DependsOn = { tidbOperator } });
+
+            var pdPVC = new PersistentVolumeClaim("pd-pvc", new PersistentVolumeClaimArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+                    Name = "pd-pvc",
+                },
+                Spec = new PersistentVolumeClaimSpecArgs
+                {
+                    AccessModes = "ReadWriteOnce",
+                    VolumeMode = "Filesystem",
+                    Resources = new ResourceRequirementsArgs
+                    {
+                        Requests =
+                        {
+                            ["storage"] = "3Gi"
+                        }
+                    },
+                    StorageClassName = "standard"
+                }
+            }, new CustomResourceOptions { DependsOn = { tidbOperator } });
+
+            var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
+            {
+                Spec = new TidbClusterSpecArgs
+                {
+                    
+                    Pd = new TidbClusterSpecPdArgs
+                    {
+                        StorageClassName = pdPVC.Spec.Apply(x => x.StorageClassName),
+                        Replicas = 1
+                    },
+                    Tikv = new TidbClusterSpecTikvArgs
+                    {
+                        StorageClassName = tikvPVC.Spec.Apply(x => x.StorageClassName),
+                        Replicas = 2,
+                        Requests = new InputMap<Union<int, string>>
+                        {
+                            ["storage"] = Union<int, string>.FromT1("3Gi")
+                        }
+                    },
+                    Tidb = new TidbClusterSpecTidbArgs
+                    {
+                        Replicas = 2,
+                        Requests = new InputMap<Union<int, string>>
+                        {
+                            ["storage"] = Union<int, string>.FromT1("3Gi")
+                        }
+                    }
+                }
+            });
+            
+            return new TiDBComponentOutput();
 
             // https://github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/values.yaml
             var values = new Dictionary<string, object>
@@ -143,8 +221,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     }
                 }
             }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster } });
-
-
+            
+            
             var serviceAccount = new ServiceAccount("tidb-monitor-service-account", new ServiceAccountArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -159,7 +237,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     }
                 }
             }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster } });
-
+            
             var role = new Role("tidb-monitor-role", new RoleArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -194,7 +272,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     }
                 }
             });
-
+            
             var roleBinding = new RoleBinding("tidb-monitor-role-binding", new RoleBindingArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -223,8 +301,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     ApiGroup = "rbac.authorization.k8s.io"
                 }
             }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster } });
-
-
+            
+            
             var pvc = new PersistentVolumeClaim("tidb-monitor-grafana-pvc", new PersistentVolumeClaimArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -252,7 +330,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     StorageClassName = pv.Spec.Apply(x => x.StorageClassName)
                 }
             }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster } });
-
+            
             var dashboardConfig = new Dictionary<string, object>
             {
                 ["apiVersion"] = 1,
@@ -271,13 +349,13 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     }
                 }
             };
-
+            
             string prometheusConfigYaml;
             using (var sr = new StreamReader("./Component/Shared/Storage/TiDB/Yaml/prometheus.yaml"))
             {
                 prometheusConfigYaml = sr.ReadToEnd();
             }
-
+            
             var monitorConfigMap = new ConfigMap("tidb-monitor-configmap", new ConfigMapArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -297,7 +375,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     { "dashboard-config", JsonSerializer.Serialize(dashboardConfig) }
                 }
             }, new CustomResourceOptions { DeletedWith = tidbCluster, DependsOn = { tidbCluster }});
-
+            
             // https://github.com/pingcap/tidb-operator/blob/master/charts/tidb-cluster/templates/monitor-deployment.yaml
             var monitorDeployment = new Deployment("tidb-monitor-deployment",
                 new DeploymentArgs
