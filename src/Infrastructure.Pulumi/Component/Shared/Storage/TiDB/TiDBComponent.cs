@@ -142,10 +142,9 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                             ["storage"] = "3Gi"
                         }
                     },
-                    StorageClassName = "standard"
+                    StorageClassName = "microk8s-hostpath"
                 }
             }, new CustomResourceOptions { DependsOn = { tidbOperator } });
-
             var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
             {
                 Spec = new TidbClusterSpecArgs
