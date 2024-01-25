@@ -80,6 +80,49 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     StorageClassName = "standard"
                 }
             }, new CustomResourceOptions { DependsOn = { tidbOperator } });
+            // var tikvPVC = new PersistentVolumeClaim("tikv-pvc", new PersistentVolumeClaimArgs
+            // {
+            //     Metadata = new ObjectMetaArgs
+            //     {
+            //         Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+            //         Name = "tikv-pvc",
+            //     },
+            //     Spec = new PersistentVolumeClaimSpecArgs
+            //     {
+            //         AccessModes = "ReadWriteOnce",
+            //         VolumeMode = "Filesystem",
+            //         Resources = new ResourceRequirementsArgs
+            //         {
+            //             Requests =
+            //             {
+            //                 ["storage"] = "3Gi"
+            //             }
+            //         },
+            //         StorageClassName = "microk8s-hostpath"
+            //     }
+            // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
+            //
+            // var pdPVC = new PersistentVolumeClaim("pd-pvc", new PersistentVolumeClaimArgs
+            // {
+            //     Metadata = new ObjectMetaArgs
+            //     {
+            //         Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+            //         Name = "pd-pvc",
+            //     },
+            //     Spec = new PersistentVolumeClaimSpecArgs
+            //     {
+            //         AccessModes = "ReadWriteOnce",
+            //         VolumeMode = "Filesystem",
+            //         Resources = new ResourceRequirementsArgs
+            //         {
+            //             Requests =
+            //             {
+            //                 ["storage"] = "3Gi"
+            //             }
+            //         },
+            //         StorageClassName = "microk8s-hostpath"
+            //     }
+            // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
 
             var pdPVC = new PersistentVolumeClaim("pd-pvc", new PersistentVolumeClaimArgs
             {
