@@ -103,12 +103,12 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
             //     }
             // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
 
-            var pdPVC = new PersistentVolumeClaim("pd-pvc", new PersistentVolumeClaimArgs
+            var tiflash = new PersistentVolumeClaim("pvc-tiflash", new PersistentVolumeClaimArgs
             {
                 Metadata = new ObjectMetaArgs
                 {
                     Namespace = input.Namespace.Metadata.Apply(x => x.Name),
-                    Name = "pd-pvc",
+                    Name = "pvc-tiflash",
                 },
                 Spec = new PersistentVolumeClaimSpecArgs
                 {
@@ -131,24 +131,49 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     
                     Pd = new TidbClusterSpecPdArgs
                     {
-                        StorageClassName = pdPVC.Spec.Apply(x => x.StorageClassName),
                         Replicas = 1
                     },
                     Tikv = new TidbClusterSpecTikvArgs
                     {
-                        StorageClassName = tikvPVC.Spec.Apply(x => x.StorageClassName),
-                        Replicas = 2,
-                        Requests = new InputMap<Union<int, string>>
-                        {
-                            ["storage"] = Union<int, string>.FromT1("3Gi")
-                        }
+                        Replicas = 2
                     },
                     Tidb = new TidbClusterSpecTidbArgs
                     {
                         Replicas = 2,
                         Requests = new InputMap<Union<int, string>>
                         {
-                            ["storage"] = Union<int, string>.FromT1("3Gi")
+                            ["storage"] = Union<int, string>.FromT1("2Gi")
+                        }
+                    },
+                    Discovery = new TidbClusterSpecDiscoveryArgs
+                    {
+                        Limits = new InputMap<Union<int, string>>
+                        {
+                            ["cpu"] = Union<int, string>.FromT1("0.2")
+                        },
+                        Requests = new InputMap<Union<int, string>>
+                        {
+                            ["cpu"] = Union<int, string>.FromT1("0.2")
+                        }
+                    },
+                    Tiflash = new TidbClusterSpecTiflashArgs
+                    {
+                        BaseImage = "pingcap/tiflash",
+                        MaxFailoverCount = 0,
+                        Replicas = 1,
+                        StorageClaims = new InputList<TidbClusterSpecTiflashStorageClaimsArgs>
+                        {
+                            new TidbClusterSpecTiflashStorageClaimsArgs
+                            {
+                                StorageClassName = "microk8s-hostpath",
+                                Resources = new TidbClusterSpecTiflashStorageClaimsResourcesArgs
+                                {
+                                    Requests =
+                                    {
+                                        ["storage"] = Union<int, string>.FromT1("5Gi")
+                                    }
+                                }
+                            }
                         }
                     }
                 }
