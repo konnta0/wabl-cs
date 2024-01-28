@@ -11,8 +11,8 @@ RUN dotnet publish ./src/WebApplication/Presentation/Presentation.csproj -c Rele
 
 WORKDIR /work
 ###########DEBUGGER###########
-COPY ./JetBrains.Rider.RemoteDebuggerUploads.linux-x64.2023.2.zip /work/
-RUN mkdir -p /work/RiderRemoteDebugger/2023.2.2 && unzip -o /work/JetBrains.Rider.RemoteDebuggerUploads.linux-x64.2023.2.zip -d /work/RiderRemoteDebugger/2023.2.2/
+COPY ./JetBrains.Rider.RemoteDebuggerUploads.linux-musl-arm64.2023.2.2.zip /work/
+RUN mkdir -p /work/RiderRemoteDebugger/2023.2.2 && unzip -o /work/JetBrains.Rider.RemoteDebuggerUploads.linux-musl-arm64.2023.2.2.zip -d /work/RiderRemoteDebugger/2023.2.2/
 COPY ./jetbrains_debugger_agent_20230319.24.0 /work/jetbrains_debugger_agent
 #############################
 
@@ -26,7 +26,11 @@ COPY ./src/WebApplication/entrypoint.sh /usr/local/bin/
 ###########DEBUGGER###########
 COPY --from=builder /work/jetbrains_debugger_agent /usr/local/bin/
 RUN chmod +x /usr/local/bin/jetbrains_debugger_agent
-COPY --from=builder /work/RiderRemoteDebugger/2023.2.2/ /usr/local/bin/RiderRemoteDebugger/2023.2.2/
+
+#COPY --from=builder /work/RiderRemoteDebugger/2023.2.2/ /root/.local/share/JetBrains/RiderRemoteDebugger/2023.2.2/
+COPY --from=builder /work/RiderRemoteDebugger/2023.2.2/ /root/.local/share/JetBrains/RiderRemoteDebugger/2023.2.2/
+RUN chmod -R +x /root/.local/share/JetBrains/RiderRemoteDebugger/2023.2.2/*
+
 ##############################
 
 COPY --from=pyroscope/pyroscope-dotnet:0.8.8-musl /Pyroscope.Profiler.Native.so ./Pyroscope.Profiler.Native.so
