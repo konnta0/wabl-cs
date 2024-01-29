@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace DatabaseMigration.Domain.Internal.Spreadsheet;
+namespace Tool.DatabaseMigration.Domain.Internal.Spreadsheet;
 
 internal class SpreadsheetCell
 {

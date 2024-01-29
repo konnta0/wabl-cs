@@ -29,7 +29,7 @@
     
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Tool\DatabaseMigration\DatabaseMigration.csproj" />
+      <ProjectReference Include="..\..\src\Tool\Tool.DatabaseMigration\Tool.DatabaseMigration.csproj" />
     </ItemGroup>
 
 </Project>

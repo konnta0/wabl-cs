@@ -3,13 +3,13 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Domain;
-using WebApplication.Infrastructure.Database.Context;
-using WebApplication.Infrastructure.Extension;
 using MasterMemory;
 using Microsoft.Extensions.Logging;
+using WebApplication.Infrastructure.Database.Context;
+using WebApplication.Infrastructure.Extension;
 using ZLogger;
 
-namespace DatabaseMigration.Command.Seed;
+namespace Tool.DatabaseMigration.Command.Seed;
 
 internal sealed class SeedValidateCommand : ConsoleAppBase
 {

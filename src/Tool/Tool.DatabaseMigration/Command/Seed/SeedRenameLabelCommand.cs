@@ -1,11 +1,11 @@
-using DatabaseMigration.Domain.Internal.GoogleApi;
-using DatabaseMigration.Domain.Service.Seed;
 using Google.Apis.Drive.v3;
 using Google.Apis.Sheets.v4;
 using Microsoft.Extensions.Logging;
+using Tool.DatabaseMigration.Domain.Internal.GoogleApi;
+using Tool.DatabaseMigration.Domain.Service.Seed;
 using ZLogger;
 
-namespace DatabaseMigration.Command.Seed;
+namespace Tool.DatabaseMigration.Command.Seed;
 
 // ReSharper disable once UnusedType.Global
 internal sealed class SeedRenameLabelCommand : ConsoleAppBase

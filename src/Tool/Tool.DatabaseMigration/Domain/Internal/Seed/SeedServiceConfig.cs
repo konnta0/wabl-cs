@@ -1,8 +1,7 @@
-using DatabaseMigration.Command;
-using DatabaseMigration.Domain.Internal.Spreadsheet;
-using DatabaseMigration.Domain.Service.Seed;
+using Tool.DatabaseMigration.Domain.Internal.Spreadsheet;
+using Tool.DatabaseMigration.Domain.Service.Seed;
 
-namespace DatabaseMigration.Domain.Internal.Seed;
+namespace Tool.DatabaseMigration.Domain.Internal.Seed;
 
 internal sealed class SeedServiceConfig
 {

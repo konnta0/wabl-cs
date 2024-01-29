@@ -1,8 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
-using DatabaseMigration.Command;
-using DatabaseMigration.Domain.Internal.Seed;
-using DatabaseMigration.Domain.Internal.Spreadsheet;
 using Domain.Entity;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
@@ -11,9 +8,11 @@ using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 using Microsoft.Extensions.Options;
+using Tool.DatabaseMigration.Domain.Internal.Seed;
+using Tool.DatabaseMigration.Domain.Internal.Spreadsheet;
 using File = Google.Apis.Drive.v3.Data.File;
 
-namespace DatabaseMigration.Domain.Service.Seed;
+namespace Tool.DatabaseMigration.Domain.Service.Seed;
 
 internal class SeedService : ISeedService, IDisposable
 {

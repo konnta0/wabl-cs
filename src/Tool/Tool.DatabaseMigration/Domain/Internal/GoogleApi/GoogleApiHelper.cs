@@ -1,8 +1,7 @@
-using DatabaseMigration.Command;
 using Google.Apis.Auth.OAuth2;
 using Microsoft.Extensions.Logging;
 
-namespace DatabaseMigration.Domain.Internal.GoogleApi;
+namespace Tool.DatabaseMigration.Domain.Internal.GoogleApi;
 
 internal sealed class GoogleApiHelper : IGoogleApiHelper
 {

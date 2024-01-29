@@ -15,9 +15,9 @@
         "CACHE_SERVER_PORT": "6379",
         "CACHE_SERVER_USER": "redis",
         "CACHE_SERVER_PASSWORD": "redis",
-        "GOOGLE_APPLICATION_CREDENTIALS": "",
-        "TEMPLATE_SPREADSHEET_ID": "",
-        "SPREADSHEET_FOLDER_ID": ""
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/ks/ghq/github.com/konnta0/wabl-cs/gha-creds-test-temp.json",
+        "TEMPLATE_SPREADSHEET_ID": "1nB4uhlO3RlftlDX25M_nCfSSFzA0-zD9rky8w7cVuGA",
+        "SPREADSHEET_FOLDER_ID": "13mOB99GGxUfEz5YDbVNzYSram0M7CNgR"
       }
     },
     "RenameLabel": {
@@ -34,9 +34,9 @@
         "CACHE_SERVER_PORT": "6379",
         "CACHE_SERVER_USER": "redis",
         "CACHE_SERVER_PASSWORD": "redis",
-        "GOOGLE_APPLICATION_CREDENTIALS": "",
-        "TEMPLATE_SPREADSHEET_ID": "",
-        "SPREADSHEET_FOLDER_ID": ""
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/ks/ghq/github.com/konnta0/wabl-cs/gha-creds-test-temp.json",
+        "TEMPLATE_SPREADSHEET_ID": "1nB4uhlO3RlftlDX25M_nCfSSFzA0-zD9rky8w7cVuGA",
+        "SPREADSHEET_FOLDER_ID": "13mOB99GGxUfEz5YDbVNzYSram0M7CNgR"
       }
     },
     "Download": {
@@ -53,9 +53,29 @@
         "CACHE_SERVER_PORT": "6379",
         "CACHE_SERVER_USER": "redis",
         "CACHE_SERVER_PASSWORD": "redis",
-        "GOOGLE_APPLICATION_CREDENTIALS": "",
-        "TEMPLATE_SPREADSHEET_ID": "",
-        "SPREADSHEET_FOLDER_ID": ""
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/ks/ghq/github.com/konnta0/dotnet-metric-test/gha-creds-test-temp.json",
+        "TEMPLATE_SPREADSHEET_ID": "1nB4uhlO3RlftlDX25M_nCfSSFzA0-zD9rky8w7cVuGA",
+        "SPREADSHEET_FOLDER_ID": "13mOB99GGxUfEz5YDbVNzYSram0M7CNgR"
+      }
+    },
+    "Validate": {
+      "commandName": "Project",
+      "commandLineArgs": "seed-validate -s ./seed",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_SERVER_HOST": "host.docker.internal",
+        "DB_SERVER_PORT": "3306",
+        "DB_SERVER_USER": "root",
+        "DB_SERVER_PASSWORD": "root",
+        "OTLP_SERVER_NAME": "dotnet-metric",
+        "OTLP_ENDPOINT": "http://otel-collector:4317",
+        "CACHE_SERVER_HOST": "app_cache",
+        "CACHE_SERVER_PORT": "6379",
+        "CACHE_SERVER_USER": "redis",
+        "CACHE_SERVER_PASSWORD": "redis",
+        "GOOGLE_APPLICATION_CREDENTIALS": "/Users/ks/ghq/github.com/konnta0/dotnet-metric-test/gha-creds-test-temp.json",
+        "TEMPLATE_SPREADSHEET_ID": "1nB4uhlO3RlftlDX25M_nCfSSFzA0-zD9rky8w7cVuGA",
+        "SPREADSHEET_FOLDER_ID": "13mOB99GGxUfEz5YDbVNzYSram0M7CNgR"
       }
     }
   }

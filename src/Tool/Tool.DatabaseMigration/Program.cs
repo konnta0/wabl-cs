@@ -1,12 +1,12 @@
-using DatabaseMigration.Command.Seed;
-using DatabaseMigration.Domain.Internal.GoogleApi;
-using DatabaseMigration.Domain.Internal.Seed;
-using DatabaseMigration.Domain.Service.Seed;
 using WebApplication.Infrastructure.Cache;
 using WebApplication.Infrastructure.Database;
 using WebApplication.Infrastructure.Extension;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Tool.DatabaseMigration.Command.Seed;
+using Tool.DatabaseMigration.Domain.Internal.GoogleApi;
+using Tool.DatabaseMigration.Domain.Internal.Seed;
+using Tool.DatabaseMigration.Domain.Service.Seed;
 
 var builder = ConsoleApp.CreateBuilder(args);
 

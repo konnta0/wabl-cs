@@ -158,7 +158,7 @@ public static class ServiceCollectionExtension
         //             serverVersion,
         //             mySqlOptionsAction =>
         //             {
-        //                 mySqlOptionsAction.MigrationsAssembly("DatabaseMigration");
+        //                 mySqlOptionsAction.MigrationsAssembly("Tool.DatabaseMigration");
         //                 mySqlOptionsAction.EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null);
         //             })
         //         .EnableSensitiveDataLogging()
@@ -172,7 +172,7 @@ public static class ServiceCollectionExtension
                     serverVersion,
                     mySqlOptionsAction =>
                     {
-                        mySqlOptionsAction.MigrationsAssembly("DatabaseMigration");
+                        mySqlOptionsAction.MigrationsAssembly("Tool.DatabaseMigration");
                         mySqlOptionsAction.EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null);
                     })
                 .EnableSensitiveDataLogging()

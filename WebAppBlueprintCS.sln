@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Architecture
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.RestApi", "src\WebApplication\Domain.RestApi\Domain.RestApi.csproj", "{B5A66F89-4B23-4153-993B-283DCB4C6E5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseMigration", "src\Tool\DatabaseMigration\DatabaseMigration.csproj", "{9459D3FD-3ACF-4962-8AA4-8C259060B586}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.DatabaseMigration", "src\Tool\Tool.DatabaseMigration\Tool.DatabaseMigration.csproj", "{9459D3FD-3ACF-4962-8AA4-8C259060B586}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Pulumi", "src\Infrastructure.Pulumi\Infrastructure.Pulumi.csproj", "{DF5EBBCD-1157-4196-85C0-A57D1F6283E4}"
 EndProject

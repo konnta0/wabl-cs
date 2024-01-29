@@ -1,6 +1,6 @@
 using Google.Apis.Auth.OAuth2;
 
-namespace DatabaseMigration.Domain.Internal.GoogleApi;
+namespace Tool.DatabaseMigration.Domain.Internal.GoogleApi;
 
 internal interface IGoogleApiHelper
 {

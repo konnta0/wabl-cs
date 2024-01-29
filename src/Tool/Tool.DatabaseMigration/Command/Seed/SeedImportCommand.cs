@@ -4,12 +4,12 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Domain.Entity;
-using WebApplication.Infrastructure.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using WebApplication.Infrastructure.Database.Context;
 using ZLogger;
 
-namespace DatabaseMigration.Command.Seed;
+namespace Tool.DatabaseMigration.Command.Seed;
 
 // ReSharper disable once ClassNeverInstantiated.Global
 public sealed class SeedImportCommand : ConsoleAppBase

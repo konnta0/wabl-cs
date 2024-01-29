@@ -1,6 +1,6 @@
 using Google.Apis.Auth.OAuth2;
 
-namespace DatabaseMigration.Domain.Service.Seed;
+namespace Tool.DatabaseMigration.Domain.Service.Seed;
 
 internal interface ISeedService
 {
