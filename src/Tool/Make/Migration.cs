@@ -21,15 +21,15 @@ public sealed class Migration : ConsoleAppBase
                 $"build -f {directoryInfo.FullName}/Dockerfile.Tool.DatabaseMigration -t database_migration ../../../"));
         target.Add("docker-run", DependsOn("docker-build"), () => RunAsync("docker",
             $"run -it " +
-            $"-v {directoryInfo.FullName}/src/Tool/Tool.DatabaseMigration:/src/Tool/Tool.DatabaseMigration " +
+            $"-v {directoryInfo.FullName}/src/Tool.DatabaseMigration:/src/Tool.DatabaseMigration " +
             $"-v {directoryInfo.FullName}/src/WebApplication:/src/WebApplication " +
-            $"-v {directoryInfo.FullName}/src/Tool/Tool.DatabaseMigration/Seed:/src/Seed " +
-            $"-v {directoryInfo.FullName}/src/Tool/Domain.SourceGenerator:/src/Tool/Domain.SourceGenerator " +
-            $"-v {directoryInfo.FullName}/src/Tool/Infrastructure.Pulumi.SourceGenerator:/src/Tool/Infrastructure.Pulumi.SourceGenerator " +
+            $"-v {directoryInfo.FullName}/src/Tool.DatabaseMigration/Seed:/src/Seed " +
+            $"-v {directoryInfo.FullName}/src/Domain.SourceGenerator:/src/Domain.SourceGenerator " +
+            $"-v {directoryInfo.FullName}/src/Infrastructure.Pulumi.SourceGenerator:/src/Infrastructure.Pulumi.SourceGenerator " +
             $"--env-file={directoryInfo.FullName}/.env " +
             $"--name=database_migration " +
             $"--rm " +
-            $"-w /src/Tool/Tool.DatabaseMigration " +
+            $"-w /src/Tool.DatabaseMigration " +
             $"database_migration " +
             $"dotnet {command}"
         ));
