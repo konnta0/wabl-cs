@@ -2,7 +2,7 @@ using System.Globalization;
 using DFrame;
 using Microsoft.Extensions.Logging;
 
-namespace Worker.Workload;
+namespace Tool.LoadTest.Worker.Workload;
 
 [Workload(nameof(ListWorkload))]
 public class ListWorkload : DFrame.Workload

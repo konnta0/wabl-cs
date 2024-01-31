@@ -1,4 +1,4 @@
-namespace Make.Common;
+namespace Tool.Make.Common;
 
 public static class DirectoryUtil
 {

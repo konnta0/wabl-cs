@@ -1,4 +1,4 @@
-namespace Make;
+namespace Tool.Make;
 
 public sealed class Pulumi : ConsoleAppBase
 {

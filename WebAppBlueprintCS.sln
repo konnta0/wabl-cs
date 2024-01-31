@@ -21,11 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApplication", "WebApplic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool", "Tool", "{6C81DDDB-2804-40F5-8826-B12EAD34FE8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "src\Tool\LoadTest\Controller\Controller.csproj", "{E4D67126-CFC3-4FB6-9829-B927B6E5DFBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.LoadTest.Controller", "src\Tool.LoadTest.Controller\Tool.LoadTest.Controller.csproj", "{E4D67126-CFC3-4FB6-9829-B927B6E5DFBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "src\Tool\LoadTest\Worker\Worker.csproj", "{464E6138-975D-4E37-9FD3-ED8C0DCC61F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.LoadTest.Worker", "src\Tool.LoadTest.Worker\Tool.LoadTest.Worker.csproj", "{464E6138-975D-4E37-9FD3-ED8C0DCC61F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApi", "src\Tool\LoadTest\RestApi\RestApi.csproj", "{1D8F831F-3683-4645-A1D8-8146175B275A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.LoadTest.RestApi", "src\Tool.LoadTest.RestApi\Tool.LoadTest.RestApi.csproj", "{1D8F831F-3683-4645-A1D8-8146175B275A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4A6A7A37-BD50-4A5A-A8D3-C09B3EA8F1A9}"
 EndProject
@@ -51,7 +51,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagementConsole.Presentat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Presentation.BackgroundService", "src\WebApplication\WebApplication.Presentation.BackgroundService\WebApplication.Presentation.BackgroundService.csproj", "{7E43F401-182B-471F-93F2-99F0DE155EAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Make", "src\Tool\Make\Make.csproj", "{5E15B233-A934-4E11-ADF8-540727829539}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.Make", "src\Tool.Make\Tool.Make.csproj", "{5E15B233-A934-4E11-ADF8-540727829539}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ManagementConsole", "ManagementConsole", "{31663D11-D865-449C-B1C3-6C0C66D7922D}"
 EndProject
@@ -189,5 +189,6 @@ Global
 		{F04F0AA3-5929-4245-A5B5-58801E4C06B0} = {5F68A2C2-FE70-4C0F-8A19-4BC2F48D777B}
 		{E9490217-2DB0-4FBB-9A93-D2EA7AFC0DAD} = {4A6A7A37-BD50-4A5A-A8D3-C09B3EA8F1A9}
 		{91C372D1-58F5-4904-B7D1-41EFCA04DF42} = {4A6A7A37-BD50-4A5A-A8D3-C09B3EA8F1A9}
+		{EEE12019-D898-41FF-A6DB-7A474CADB04A} = {6C81DDDB-2804-40F5-8826-B12EAD34FE8E}
 	EndGlobalSection
 EndGlobal

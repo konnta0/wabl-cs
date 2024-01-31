@@ -1,6 +1,6 @@
-using Make.Common;
+using Tool.Make.Common;
 
-namespace Make;
+namespace Tool.Make;
 
 public sealed class Migration : ConsoleAppBase
 {

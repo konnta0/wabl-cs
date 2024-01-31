@@ -1,4 +1,4 @@
-namespace Make;
+namespace Tool.Make;
 
 internal sealed class Minikube : ConsoleAppBase
 {
