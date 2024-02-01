@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0.100-1-alpine3.18 AS workspace
 
 FROM workspace AS builder
 WORKDIR /build
-COPY ./RestApi ./src/Tool/LoadTest/RestApi
+COPY ./Tool.LoadTest.RestApi ./src/Tool/LoadTest/RestApi
 
 RUN echo 'Restore&Build RestApi'
 RUN dotnet restore ./src/Tool/LoadTest/RestApi/RestApi.csproj  

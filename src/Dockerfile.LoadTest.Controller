@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0.100-1-alpine3.18 AS workspace
 
 FROM workspace AS builder
 WORKDIR /build
-COPY ./Controller ./src/Tool/LoadTest/Controller
+COPY ./Tool.LoadTest.Controller ./src/Tool/LoadTest/Controller
 
 RUN echo 'Restore&Build Controller'
 RUN dotnet restore ./src/Tool/LoadTest/Controller/Controller.csproj  
