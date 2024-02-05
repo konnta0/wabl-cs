@@ -2,7 +2,7 @@ namespace Tool.Make;
 
 public sealed class Pulumi : ConsoleAppBase
 {
-    private const string InfrastructureDir = "../../Infrastructure.Pulumi";
+    private const string InfrastructureDir = "../Infrastructure.Pulumi";
 
     [Command("up", "up")]
     public Task Up([Option("stack")] string stack = "local")
