@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\WebApplication\Domain.RestApi\Domain.RestApi.csproj" />
+      <ProjectReference Include="..\WebApplication\Domain.RestApi\Domain.RestApi.csproj" />
     </ItemGroup>
 
 </Project>
