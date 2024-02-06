@@ -1,6 +1,6 @@
 using MessagePack;
 
-namespace Domain.RestApi.Departments;
+namespace WebApplication.Domain.RestApi.Departments;
 
 public class List : IApi<ListRequest, ListResponse>
 {

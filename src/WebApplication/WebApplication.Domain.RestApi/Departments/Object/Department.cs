@@ -1,6 +1,6 @@
 using MessagePack;
 
-namespace Domain.RestApi.Departments.Object;
+namespace WebApplication.Domain.RestApi.Departments.Object;
 
 [MessagePackObject]
 public class Department

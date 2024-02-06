@@ -26,7 +26,7 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
 
-    <ProjectReference Include="..\Domain.RestApi\Domain.RestApi.csproj" />
+    <ProjectReference Include="..\WebApplication.Domain.RestApi\WebApplication.Domain.RestApi.csproj" />
   </ItemGroup>
   <!-- Call code generator before-build. -->
   <Target Name="MasterMemoryGen" BeforeTargets="BeforeBuild">

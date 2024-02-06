@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Test", "test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Architecture.Test", "tests\WebApplication.Architecture.Test\WebApplication.Architecture.Test.csproj", "{6016CCC5-018D-406E-ACCA-024BD526F26D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.RestApi", "src\WebApplication\Domain.RestApi\Domain.RestApi.csproj", "{B5A66F89-4B23-4153-993B-283DCB4C6E5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Domain.RestApi", "src\WebApplication\WebApplication.Domain.RestApi\WebApplication.Domain.RestApi.csproj", "{B5A66F89-4B23-4153-993B-283DCB4C6E5E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.DatabaseMigration", "src\Tool.DatabaseMigration\Tool.DatabaseMigration.csproj", "{9459D3FD-3ACF-4962-8AA4-8C259060B586}"
 EndProject

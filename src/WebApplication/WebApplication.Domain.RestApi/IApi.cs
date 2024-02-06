@@ -1,4 +1,4 @@
-namespace Domain.RestApi;
+namespace WebApplication.Domain.RestApi;
 
 public interface IApi<TRequest, TResponse> where TRequest : IRequestData where TResponse : IResponseData
 {
