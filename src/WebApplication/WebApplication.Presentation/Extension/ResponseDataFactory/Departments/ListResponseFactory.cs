@@ -1,6 +1,6 @@
 using WebApplication.Application.Departments.Dto;
-using Domain.RestApi.Departments;
-using Domain.RestApi.Departments.Object;
+using WebApplication.Domain.RestApi.Departments;
+using WebApplication.Domain.RestApi.Departments.Object;
 
 namespace WebApplication.Presentation.Extension.ResponseDataFactory.Departments;
 

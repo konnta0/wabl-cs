@@ -1,8 +1,8 @@
 using WebApplication.Application.Core.RequestHandler;
 using WebApplication.Application.Departments.Dto;
 using WebApplication.Application.UseCase.Departments.Dto;
-using Domain.RestApi.Departments;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication.Domain.RestApi.Departments;
 using WebApplication.Presentation.Core;
 using WebApplication.Presentation.Extension.ResponseDataFactory.Departments;
 
