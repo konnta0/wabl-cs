@@ -1,4 +1,4 @@
-using Domain.Instrumentation;
+using WebApplication.Domain.Instrumentation;
 
 namespace WebApplication.Application.Core.RequestHandler;
 

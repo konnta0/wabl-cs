@@ -1,4 +1,4 @@
-using Domain.Repository.Department;
+using WebApplication.Domain.Repository.Department;
 using WebApplication.Application.Core.Exception;
 using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Application.Core.RequestHandler;

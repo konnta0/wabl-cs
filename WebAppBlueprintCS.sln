@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Presentation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Infrastructure", "src\WebApplication\WebApplication.Infrastructure\WebApplication.Infrastructure.csproj", "{13EF989A-B8D6-40B4-984E-86F667F569FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\WebApplication\Domain\Domain.csproj", "{6145AC80-F9B9-4C79-B8B2-3D01BB6401C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Domain", "src\WebApplication\WebApplication.Domain\WebApplication.Domain.csproj", "{6145AC80-F9B9-4C79-B8B2-3D01BB6401C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Application", "src\WebApplication\WebApplication.Application\WebApplication.Application.csproj", "{CF1620E0-3E63-4489-B345-9F6AB72AAF2D}"
 EndProject

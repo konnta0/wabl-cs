@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using Domain.Instrumentation;
+using WebApplication.Domain.Instrumentation;
 using MessagePipe;
 using Microsoft.Extensions.Logging;
 using ZLogger;

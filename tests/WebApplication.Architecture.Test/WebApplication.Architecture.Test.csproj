@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\WebApplication\Domain\Domain.csproj" />
+      <ProjectReference Include="..\..\src\WebApplication\WebApplication.Domain\WebApplication.Domain.csproj" />
       <ProjectReference Include="..\..\src\WebApplication\WebApplication.Infrastructure\WebApplication.Infrastructure.csproj" />
       <ProjectReference Include="..\..\src\WebApplication\WebApplication.Presentation\WebApplication.Presentation.csproj" />
       <ProjectReference Include="..\..\src\WebApplication\WebApplication.Application\WebApplication.Application.csproj" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bogus;
 using CloudStructures.Structures;
-using Domain.Entity.Employee;
+using WebApplication.Domain.Entity.Employee;
 using FluentAssertions;
 using WebApplication.Infrastructure.Cache;
 using WebApplication.Infrastructure.Database.Context.Employee;

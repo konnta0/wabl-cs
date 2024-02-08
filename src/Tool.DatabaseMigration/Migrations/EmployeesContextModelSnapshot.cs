@@ -19,7 +19,7 @@ namespace DatabaseMigration.Migrations
                 .HasAnnotation("ProductVersion", "6.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("Domain.Entity.Employee.DepartmentEntity", b =>
+            modelBuilder.Entity("WebApplication.Domain.Entity.Employee.DepartmentEntity", b =>
                 {
                     b.Property<string>("DepotNo")
                         .HasColumnType("char(4)")
@@ -46,7 +46,7 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("departments");
                 });
 
-            modelBuilder.Entity("Domain.Entity.Employee.DeptEmpEntity", b =>
+            modelBuilder.Entity("WebApplication.Domain.Entity.Employee.DeptEmpEntity", b =>
                 {
                     b.Property<int>("EmpNo")
                         .HasColumnType("int")
@@ -71,7 +71,7 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("dept_emp");
                 });
 
-            modelBuilder.Entity("Domain.Entity.Employee.EmployeesEntity", b =>
+            modelBuilder.Entity("WebApplication.Domain.Entity.Employee.EmployeesEntity", b =>
                 {
                     b.Property<int>("EmpNo")
                         .ValueGeneratedOnAdd()
@@ -114,7 +114,7 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("employees");
                 });
 
-            modelBuilder.Entity("Domain.Entity.Employee.SalariesEntity", b =>
+            modelBuilder.Entity("WebApplication.Domain.Entity.Employee.SalariesEntity", b =>
                 {
                     b.Property<int>("EmpNo")
                         .HasColumnType("int")
@@ -137,7 +137,7 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("salaries");
                 });
 
-            modelBuilder.Entity("Domain.Entity.Employee.TitlesEntity", b =>
+            modelBuilder.Entity("WebApplication.Domain.Entity.Employee.TitlesEntity", b =>
                 {
                     b.Property<int>("EmpNo")
                         .HasColumnType("int")
@@ -160,32 +160,32 @@ namespace DatabaseMigration.Migrations
                     b.ToTable("titles");
                 });
 
-            modelBuilder.Entity("Domain.Entity.Employee.DepartmentEntity", b =>
+            modelBuilder.Entity("WebApplication.Domain.Entity.Employee.DepartmentEntity", b =>
                 {
-                    b.HasOne("Domain.Entity.Employee.DeptEmpEntity", null)
+                    b.HasOne("WebApplication.Domain.Entity.Employee.DeptEmpEntity", null)
                         .WithMany()
                         .HasForeignKey("DeptEmpEntityEmpNo", "DeptEmpEntityDeptNo");
                 });
 
-            modelBuilder.Entity("Domain.Entity.Employee.EmployeesEntity", b =>
+            modelBuilder.Entity("WebApplication.Domain.Entity.Employee.EmployeesEntity", b =>
                 {
-                    b.HasOne("Domain.Entity.Employee.DeptEmpEntity", null)
+                    b.HasOne("WebApplication.Domain.Entity.Employee.DeptEmpEntity", null)
                         .WithMany()
                         .HasForeignKey("DeptEmpEntityEmpNo", "DeptEmpEntityDeptNo");
                 });
 
-            modelBuilder.Entity("Domain.Entity.Employee.SalariesEntity", b =>
+            modelBuilder.Entity("WebApplication.Domain.Entity.Employee.SalariesEntity", b =>
                 {
-                    b.HasOne("Domain.Entity.Employee.EmployeesEntity", null)
+                    b.HasOne("WebApplication.Domain.Entity.Employee.EmployeesEntity", null)
                         .WithMany()
                         .HasForeignKey("EmpNo")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Entity.Employee.TitlesEntity", b =>
+            modelBuilder.Entity("WebApplication.Domain.Entity.Employee.TitlesEntity", b =>
                 {
-                    b.HasOne("Domain.Entity.Employee.EmployeesEntity", null)
+                    b.HasOne("WebApplication.Domain.Entity.Employee.EmployeesEntity", null)
                         .WithMany()
                         .HasForeignKey("EmpNo")
                         .OnDelete(DeleteBehavior.Cascade)

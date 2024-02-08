@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bogus;
-using Domain.Entity.Employee;
+using WebApplication.Domain.Entity.Employee;
 using FluentAssertions;
 using WebApplication.Infrastructure.Database.Context.Employee;
 using WebApplication.Infrastructure.Extension;

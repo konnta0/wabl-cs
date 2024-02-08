@@ -1,4 +1,4 @@
-using Domain;
+using WebApplication.Domain;
 
 namespace WebApplication.Application.Core.Database;
 
