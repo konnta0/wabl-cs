@@ -1,5 +1,5 @@
-using Domain.Entity.Employee;
 using Microsoft.EntityFrameworkCore;
+using WebApplication.Domain.Entity.Employee;
 
 namespace WebApplication.Infrastructure.Database.Context.Employee;
 

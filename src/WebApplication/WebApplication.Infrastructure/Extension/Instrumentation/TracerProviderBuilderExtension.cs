@@ -1,7 +1,7 @@
-using Domain.Instrumentation;
 using OpenTelemetry.Trace;
 using WebApplication.Infrastructure.Core.Instrumentation.Repository;
 using WebApplication.Infrastructure.Core.Instrumentation.UseCase;
+using WebApplication.Domain.Instrumentation;
 
 namespace WebApplication.Infrastructure.Extension.Instrumentation;
 

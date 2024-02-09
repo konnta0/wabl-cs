@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Domain.Entity.Employee;
+using WebApplication.Domain.Entity.Employee;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 Console.WriteLine("Hello World!");

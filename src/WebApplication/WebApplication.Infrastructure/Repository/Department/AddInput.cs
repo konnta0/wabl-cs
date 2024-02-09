@@ -1,4 +1,4 @@
-using Domain.Repository.Department;
+using WebApplication.Domain.Repository.Department;
 
 namespace WebApplication.Infrastructure.Repository.Department;
 

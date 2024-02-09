@@ -1,12 +1,12 @@
-using Domain.Entity.Employee;
-using Domain.Repository;
-using Domain.Repository.Department;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using WebApplication.Infrastructure.Cache;
 using WebApplication.Infrastructure.Core.Instrumentation.Repository;
 using WebApplication.Infrastructure.Core.RequestHandler;
 using WebApplication.Infrastructure.Database.Context.Employee;
+using WebApplication.Domain.Entity.Employee;
+using WebApplication.Domain.Repository;
+using WebApplication.Domain.Repository.Department;
 
 namespace WebApplication.Infrastructure.Repository.Department;
 

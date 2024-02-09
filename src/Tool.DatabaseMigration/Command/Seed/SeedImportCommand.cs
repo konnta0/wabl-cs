@@ -3,10 +3,10 @@ using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using WebApplication.Infrastructure.Database.Context;
+using WebApplication.Domain.Entity;
 using ZLogger;
 
 namespace Tool.DatabaseMigration.Command.Seed;

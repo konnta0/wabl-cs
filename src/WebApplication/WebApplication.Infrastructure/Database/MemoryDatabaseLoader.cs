@@ -1,10 +1,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using WebApplication.Application.Core.Database;
-using Domain;
 using WebApplication.Infrastructure.Extension;
 using MasterMemory;
 using Microsoft.EntityFrameworkCore;
+using WebApplication.Domain;
 using WebApplication.Infrastructure.Database.Context;
 
 namespace WebApplication.Infrastructure.Database;

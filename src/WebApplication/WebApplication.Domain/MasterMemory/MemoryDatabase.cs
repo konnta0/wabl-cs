@@ -130,8 +130,8 @@ namespace WebApplication.Domain
             if (metaTable != null) return metaTable;
 
             var dict = new Dictionary<string, MasterMemory.Meta.MetaTable>();
-            dict.Add("EmployeesEntity", Domain.Tables.EmployeesEntityTable.CreateMetaTable());
-            dict.Add("TitlesEntity", Domain.Tables.TitlesEntityTable.CreateMetaTable());
+            dict.Add("EmployeesEntity", WebApplication.Domain.Tables.EmployeesEntityTable.CreateMetaTable());
+            dict.Add("TitlesEntity", WebApplication.Domain.Tables.TitlesEntityTable.CreateMetaTable());
 
             metaTable = new MasterMemory.Meta.MetaDatabase(dict);
             return metaTable;

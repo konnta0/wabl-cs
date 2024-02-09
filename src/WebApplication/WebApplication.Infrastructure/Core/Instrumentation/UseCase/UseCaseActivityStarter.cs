@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using WebApplication.Application.Core.RequestHandler;
-using Domain.Instrumentation;
+using WebApplication.Domain.Instrumentation;
 
 namespace WebApplication.Infrastructure.Core.Instrumentation.UseCase;
 

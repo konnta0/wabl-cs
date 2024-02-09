@@ -9,8 +9,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using System;
-using WebApplication.Domain.Tables;
 using WebApplication.Domain.Entity.Employee;
+using WebApplication.Domain.Tables;
 
 namespace WebApplication.Domain
 {

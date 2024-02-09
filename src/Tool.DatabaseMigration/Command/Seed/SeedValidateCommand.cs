@@ -2,11 +2,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Domain;
 using MasterMemory;
 using Microsoft.Extensions.Logging;
 using WebApplication.Infrastructure.Database.Context;
 using WebApplication.Infrastructure.Extension;
+using WebApplication.Domain;
 using ZLogger;
 
 namespace Tool.DatabaseMigration.Command.Seed;

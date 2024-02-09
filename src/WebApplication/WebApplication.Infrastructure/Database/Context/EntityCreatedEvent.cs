@@ -1,6 +1,6 @@
-using Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using WebApplication.Domain.Entity;
 
 namespace WebApplication.Infrastructure.Database.Context;
 

@@ -1,5 +1,5 @@
-using Domain.Repository;
-using Domain.Repository.Department;
+using WebApplication.Domain.Repository;
+using WebApplication.Domain.Repository.Department;
 using WebApplication.Infrastructure.Repository.Department;
 
 namespace WebApplication.Infrastructure.Repository;

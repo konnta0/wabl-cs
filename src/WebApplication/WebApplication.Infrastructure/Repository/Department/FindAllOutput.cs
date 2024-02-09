@@ -1,5 +1,5 @@
-using Domain.Entity.Employee;
-using Domain.Repository.Department;
+using WebApplication.Domain.Entity.Employee;
+using WebApplication.Domain.Repository.Department;
 
 namespace WebApplication.Infrastructure.Repository.Department;
 

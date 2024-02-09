@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json;
-using Domain.Entity;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
 using Google.Apis.Http;
@@ -11,6 +10,7 @@ using Microsoft.Extensions.Options;
 using Tool.DatabaseMigration.Domain.Internal.Seed;
 using Tool.DatabaseMigration.Domain.Internal.Spreadsheet;
 using File = Google.Apis.Drive.v3.Data.File;
+using WebApplication.Domain.Entity;
 
 namespace Tool.DatabaseMigration.Domain.Service.Seed;
 
