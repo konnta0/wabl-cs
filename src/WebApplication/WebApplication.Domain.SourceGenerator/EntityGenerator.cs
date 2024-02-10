@@ -1,6 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 
-namespace Domain.SourceGenerator
+namespace WebApplication.Domain.SourceGenerator
 {
     [Generator(LanguageNames.CSharp)]
     public class EntityGenerator : IIncrementalGenerator

@@ -39,7 +39,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tool.DatabaseMigration", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Pulumi", "src\Infrastructure.Pulumi\Infrastructure.Pulumi.csproj", "{DF5EBBCD-1157-4196-85C0-A57D1F6283E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.SourceGenerator", "src\WebApplication\Domain.SourceGenerator\Domain.SourceGenerator.csproj", "{E835C9D6-894A-41F7-A74E-2517233023A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Domain.SourceGenerator", "src\WebApplication\WebApplication.Domain.SourceGenerator\WebApplication.Domain.SourceGenerator.csproj", "{E835C9D6-894A-41F7-A74E-2517233023A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForSouceGeneratorDebug", "src\Tool\ForSouceGeneratorDebug\ForSouceGeneratorDebug.csproj", "{39BB4633-5F18-4CF8-AFAD-BBADEF0401E6}"
 EndProject
