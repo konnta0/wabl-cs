@@ -103,79 +103,106 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
             //     }
             // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
 
-            var tiflash = new PersistentVolumeClaim("pvc-tiflash", new PersistentVolumeClaimArgs
+            // var tiflash = new PersistentVolumeClaim("pvc-tiflash", new PersistentVolumeClaimArgs
+            // {
+            //     Metadata = new ObjectMetaArgs
+            //     {
+            //         Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+            //         Name = "pvc-tiflash",
+            //     },
+            //     Spec = new PersistentVolumeClaimSpecArgs
+            //     {
+            //         AccessModes = "ReadWriteOnce",
+            //         VolumeMode = "Filesystem",
+            //         Resources = new ResourceRequirementsArgs
+            //         {
+            //             Requests =
+            //             {
+            //                 ["storage"] = "3Gi"
+            //             }
+            //         },
+            //         StorageClassName = "microk8s-hostpath"
+            //     }
+            // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
+            // var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
+            // {
+            //     Spec = new TidbClusterSpecArgs
+            //     {
+            //         Cluster = new TidbClusterSpecClusterArgs
+            //         {
+            //             Name = "tidb-cluster",
+            //             Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+            //         },
+            //         Pd = new TidbClusterSpecPdArgs
+            //         {
+            //             Replicas = 1,
+            //             Requests = new InputMap<Union<int, string>>
+            //             {
+            //                 ["storage"] = Union<int, string>.FromT1("2Gi")
+            //             }
+            //         },
+            //         Tikv = new TidbClusterSpecTikvArgs
+            //         {
+            //             Replicas = 2,
+            //             Requests = new InputMap<Union<int, string>>
+            //             {
+            //                 ["storage"] = Union<int, string>.FromT1("2Gi")
+            //             }
+            //         },
+            //         Tidb = new TidbClusterSpecTidbArgs
+            //         {
+            //             Replicas = 2,
+            //             Requests = new InputMap<Union<int, string>>
+            //             {
+            //                 ["storage"] = Union<int, string>.FromT1("2Gi")
+            //             }
+            //         },
+            //         Discovery = new TidbClusterSpecDiscoveryArgs
+            //         {
+            //             Limits = new InputMap<Union<int, string>>
+            //             {
+            //                 ["cpu"] = Union<int, string>.FromT1("0.2")
+            //             },
+            //             Requests = new InputMap<Union<int, string>>
+            //             {
+            //                 ["cpu"] = Union<int, string>.FromT1("0.2")
+            //             }
+            //         },
+            //         Tiflash = new TidbClusterSpecTiflashArgs
+            //         {
+            //             BaseImage = "pingcap/tiflash",
+            //             MaxFailoverCount = 0,
+            //             Replicas = 1,
+            //             StorageClaims = new InputList<TidbClusterSpecTiflashStorageClaimsArgs>
+            //             {
+            //                 new TidbClusterSpecTiflashStorageClaimsArgs
+            //                 {
+            //                     StorageClassName = "microk8s-hostpath",
+            //                     Resources = new TidbClusterSpecTiflashStorageClaimsResourcesArgs
+            //                     {
+            //                         Requests =
+            //                         {
+            //                             ["storage"] = Union<int, string>.FromT1("5Gi")
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // });
+
+
+            var initializer = new TidbInitializer("tidb-initializer", new TidbInitializerArgs
             {
-                Metadata = new ObjectMetaArgs
+                Spec = new TidbInitializerSpecArgs
                 {
-                    Namespace = input.Namespace.Metadata.Apply(x => x.Name),
-                    Name = "pvc-tiflash",
-                },
-                Spec = new PersistentVolumeClaimSpecArgs
-                {
-                    AccessModes = "ReadWriteOnce",
-                    VolumeMode = "Filesystem",
-                    Resources = new ResourceRequirementsArgs
+                    Image = "tnir/mysqlclient",
+                    Cluster = new TidbInitializerSpecClusterArgs
                     {
-                        Requests =
-                        {
-                            ["storage"] = "3Gi"
-                        }
+                        Name = "tidb-initializer",
+                        Namespace = input.Namespace.Metadata.Apply(static x => x.Name)
                     },
-                    StorageClassName = "microk8s-hostpath"
-                }
-            }, new CustomResourceOptions { DependsOn = { tidbOperator } });
-            var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
-            {
-                Spec = new TidbClusterSpecArgs
-                {
-                    
-                    Pd = new TidbClusterSpecPdArgs
-                    {
-                        Replicas = 1
-                    },
-                    Tikv = new TidbClusterSpecTikvArgs
-                    {
-                        Replicas = 2
-                    },
-                    Tidb = new TidbClusterSpecTidbArgs
-                    {
-                        Replicas = 2,
-                        Requests = new InputMap<Union<int, string>>
-                        {
-                            ["storage"] = Union<int, string>.FromT1("2Gi")
-                        }
-                    },
-                    Discovery = new TidbClusterSpecDiscoveryArgs
-                    {
-                        Limits = new InputMap<Union<int, string>>
-                        {
-                            ["cpu"] = Union<int, string>.FromT1("0.2")
-                        },
-                        Requests = new InputMap<Union<int, string>>
-                        {
-                            ["cpu"] = Union<int, string>.FromT1("0.2")
-                        }
-                    },
-                    Tiflash = new TidbClusterSpecTiflashArgs
-                    {
-                        BaseImage = "pingcap/tiflash",
-                        MaxFailoverCount = 0,
-                        Replicas = 1,
-                        StorageClaims = new InputList<TidbClusterSpecTiflashStorageClaimsArgs>
-                        {
-                            new TidbClusterSpecTiflashStorageClaimsArgs
-                            {
-                                StorageClassName = "microk8s-hostpath",
-                                Resources = new TidbClusterSpecTiflashStorageClaimsResourcesArgs
-                                {
-                                    Requests =
-                                    {
-                                        ["storage"] = Union<int, string>.FromT1("5Gi")
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    InitSql = "CREATE DATABASE app;",
                 }
             });
             
