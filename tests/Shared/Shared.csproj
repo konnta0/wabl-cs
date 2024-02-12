@@ -26,10 +26,10 @@
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
     </ItemGroup>
-    
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Tool\Tool.DatabaseMigration\Tool.DatabaseMigration.csproj" />
+      <ProjectReference Include="..\..\src\Tool.DatabaseMigration\Tool.DatabaseMigration.csproj" />
+      <ProjectReference Include="..\..\src\WebApplication\WebApplication.Infrastructure\WebApplication.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
