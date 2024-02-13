@@ -4,15 +4,11 @@ using WebApplication.Application.UseCase.MemoryDatabase.DataTransferObject;
 
 namespace WebApplication.Application.UseCase.MemoryDatabase.Handler;
 
-internal class LoadMemoryDatabaseHandler : AsyncUseCaseRequestHandlerBase<LoadMemoryDatabaseUseCaseInput, LoadMemoryDatabaseExecuteResult>
+internal class LoadMemoryDatabaseHandler(
+    IUseCaseActivityStarter activityStarter,
+    IMemoryDatabaseLoader memoryDatabaseLoader)
+    : AsyncUseCaseRequestHandlerBase<LoadMemoryDatabaseUseCaseInput, LoadMemoryDatabaseExecuteResult>(activityStarter)
 {
-    private readonly IMemoryDatabaseLoader _memoryDatabaseLoader;
-    
-    public LoadMemoryDatabaseHandler(IUseCaseActivityStarter activityStarter, IMemoryDatabaseLoader memoryDatabaseLoader) : base(activityStarter)
-    {
-        _memoryDatabaseLoader = memoryDatabaseLoader;
-    }
-
     protected override ValueTask ValidateAsync(LoadMemoryDatabaseUseCaseInput input,
         CancellationToken cancellationToken = new ())
     {
@@ -22,7 +18,7 @@ internal class LoadMemoryDatabaseHandler : AsyncUseCaseRequestHandlerBase<LoadMe
     protected override async ValueTask<LoadMemoryDatabaseExecuteResult> ExecuteAsync(LoadMemoryDatabaseUseCaseInput input,
         CancellationToken cancellationToken = new ())
     {
-        await _memoryDatabaseLoader.Load();
+        await memoryDatabaseLoader.Load();
         return new LoadMemoryDatabaseExecuteResult();
     }
 
