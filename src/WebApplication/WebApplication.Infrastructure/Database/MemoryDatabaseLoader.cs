@@ -43,7 +43,7 @@ internal class MemoryDatabaseLoader : IMemoryDatabaseLoader
                 var schemaName = tableAttribute.Schema is null ? string.Empty : tableAttribute.Schema + ".";
                 var tableName = tableAttribute.Name;
 
-                var entities = dbContext.Database.SqlQueryRaw<object>($"SELECT * FROM {schemaName}{tableName}");
+                var entities = dbContext.Database.SqlQuery<object>($"SELECT * FROM {schemaName}{tableName}");
                 if (!entities.Any())
                 {
                     continue;
