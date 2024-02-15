@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
 {
     public sealed class TiDBComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public Namespace Namespace { get; init; } = null!;
     }
 
     public sealed class TiDBComponentOutput : IComponentOutput
