@@ -44,6 +44,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     ["create"] = false
                 }
             };
+            
             // https://github.com/pingcap/tidb-operator/blob/v1.5.1/charts/tidb-operator/values.yaml
             var tidbOperator = new Release("tidb-operator", new ReleaseArgs
             {
@@ -124,85 +125,109 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
             //         StorageClassName = "microk8s-hostpath"
             //     }
             // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
-            // var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
-            // {
-            //     Spec = new TidbClusterSpecArgs
-            //     {
-            //         Cluster = new TidbClusterSpecClusterArgs
-            //         {
-            //             Name = "tidb-cluster",
-            //             Namespace = input.Namespace.Metadata.Apply(x => x.Name),
-            //         },
-            //         Pd = new TidbClusterSpecPdArgs
-            //         {
-            //             Replicas = 1,
-            //             Requests = new InputMap<Union<int, string>>
-            //             {
-            //                 ["storage"] = Union<int, string>.FromT1("2Gi")
-            //             }
-            //         },
-            //         Tikv = new TidbClusterSpecTikvArgs
-            //         {
-            //             Replicas = 2,
-            //             Requests = new InputMap<Union<int, string>>
-            //             {
-            //                 ["storage"] = Union<int, string>.FromT1("2Gi")
-            //             }
-            //         },
-            //         Tidb = new TidbClusterSpecTidbArgs
-            //         {
-            //             Replicas = 2,
-            //             Requests = new InputMap<Union<int, string>>
-            //             {
-            //                 ["storage"] = Union<int, string>.FromT1("2Gi")
-            //             }
-            //         },
-            //         Discovery = new TidbClusterSpecDiscoveryArgs
-            //         {
-            //             Limits = new InputMap<Union<int, string>>
-            //             {
-            //                 ["cpu"] = Union<int, string>.FromT1("0.2")
-            //             },
-            //             Requests = new InputMap<Union<int, string>>
-            //             {
-            //                 ["cpu"] = Union<int, string>.FromT1("0.2")
-            //             }
-            //         },
-            //         Tiflash = new TidbClusterSpecTiflashArgs
-            //         {
-            //             BaseImage = "pingcap/tiflash",
-            //             MaxFailoverCount = 0,
-            //             Replicas = 1,
-            //             StorageClaims = new InputList<TidbClusterSpecTiflashStorageClaimsArgs>
-            //             {
-            //                 new TidbClusterSpecTiflashStorageClaimsArgs
-            //                 {
-            //                     StorageClassName = "microk8s-hostpath",
-            //                     Resources = new TidbClusterSpecTiflashStorageClaimsResourcesArgs
-            //                     {
-            //                         Requests =
-            //                         {
-            //                             ["storage"] = Union<int, string>.FromT1("5Gi")
-            //                         }
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     }
-            // });
+
+            var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
+            {
+                Spec = new TidbClusterSpecArgs
+                {
+                    Cluster = new TidbClusterSpecClusterArgs
+                    {
+                        Name = "tidb-cluster",
+                        Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+                    },
+                    Pd = new TidbClusterSpecPdArgs
+                    {
+                        BaseImage = "pingcap/pd-arm64",
+                        Replicas = 1,
+                        Requests = new InputMap<Union<int, string>>
+                        {
+                            ["storage"] = Union<int, string>.FromT1("2Gi")
+                        }
+                    },
+                    Tikv = new TidbClusterSpecTikvArgs
+                    {
+                        BaseImage = "pingcap/tikv-arm64",
+                        Replicas = 2,
+                        Requests = new InputMap<Union<int, string>>
+                        {
+                            ["storage"] = Union<int, string>.FromT1("2Gi")
+                        }
+                    },
+                    Tidb = new TidbClusterSpecTidbArgs
+                    {
+                        BaseImage = "pingcap/tidb-arm64",
+                        Replicas = 2,
+                        Requests = new InputMap<Union<int, string>>
+                        {
+                            ["storage"] = Union<int, string>.FromT1("2Gi")
+                        }
+                    },
+                    Discovery = new TidbClusterSpecDiscoveryArgs
+                    {
+                        Limits = new InputMap<Union<int, string>>
+                        {
+                            ["cpu"] = Union<int, string>.FromT1("0.2")
+                        },
+                        Requests = new InputMap<Union<int, string>>
+                        {
+                            ["cpu"] = Union<int, string>.FromT1("0.2")
+                        }
+                    },
+                    Tiflash = new TidbClusterSpecTiflashArgs
+                    {
+                        BaseImage = "pingcap/tiflash-arm64",
+                        MaxFailoverCount = 0,
+                        Replicas = 1,
+                        StorageClaims = new InputList<TidbClusterSpecTiflashStorageClaimsArgs>
+                        {
+                            new TidbClusterSpecTiflashStorageClaimsArgs
+                            {
+                                StorageClassName = "microk8s-hostpath",
+                                Resources = new TidbClusterSpecTiflashStorageClaimsResourcesArgs
+                                {
+                                    Requests =
+                                    {
+                                        ["storage"] = Union<int, string>.FromT1("5Gi")
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    Pump = new TidbClusterSpecPumpArgs
+                    {
+                        BaseImage = "pingcap/tidb-binlog-arm64",
+                    },
+                    Ticdc = new TidbClusterSpecTicdcArgs
+                    {
+                        BaseImage = "pingcap/ticdc-arm64",
+                    }
+                }
+            });
 
 
             var initializer = new TidbInitializer("tidb-initializer", new TidbInitializerArgs
             {
                 Spec = new TidbInitializerSpecArgs
                 {
-                    Image = "tnir/mysqlclient",
+                    Image = "kanshiori/mysqlclient-arm64",
                     Cluster = new TidbInitializerSpecClusterArgs
                     {
                         Name = "tidb-initializer",
                         Namespace = input.Namespace.Metadata.Apply(static x => x.Name)
                     },
                     InitSql = "CREATE DATABASE app;",
+                }
+            });
+
+            var monitor = new TidbMonitor("tidb-monitor", new TidbMonitorArgs
+            {
+                Spec = new TidbMonitorSpecArgs
+                {
+                    Initializer = new TidbMonitorSpecInitializerArgs
+                    {
+                        BaseImage = "pingcap/tidb-monitor-initializer-arm64",
+                        
+                    }
                 }
             });
             
