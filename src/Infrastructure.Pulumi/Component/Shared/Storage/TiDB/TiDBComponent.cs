@@ -223,10 +223,23 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
             {
                 Spec = new TidbMonitorSpecArgs
                 {
+                    Clusters = new TidbMonitorSpecClustersArgs
+                    {
+                        Name = "tidb-cluster",
+                        Namespace = input.Namespace.Metadata.Apply(x => x.Name)  
+                    },
                     Initializer = new TidbMonitorSpecInitializerArgs
                     {
                         BaseImage = "pingcap/tidb-monitor-initializer-arm64",
-                        
+                    },
+                    Prometheus = new TidbMonitorSpecPrometheusArgs
+                    {
+                        BaseImage = "prom/prometheus",
+                        Version = "v2.27.1",
+                        Service = new TidbMonitorSpecPrometheusServiceArgs
+                        {
+                            Type = "NodePort"
+                        }
                     }
                 }
             });
