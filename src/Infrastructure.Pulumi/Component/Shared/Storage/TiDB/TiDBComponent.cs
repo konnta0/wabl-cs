@@ -241,6 +241,11 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                             Type = "NodePort"
                         }
                     }
+                    },
+                    Reloader = new TidbMonitorSpecReloaderArgs
+                    {
+                        BaseImage = "pingcap/tidb-monitor-reloader-arm64",
+                    }
                 }
             });
             
