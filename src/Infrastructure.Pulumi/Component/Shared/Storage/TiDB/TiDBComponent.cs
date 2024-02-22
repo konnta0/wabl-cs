@@ -200,6 +200,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     Ticdc = new TidbClusterSpecTicdcArgs
                     {
                         BaseImage = "pingcap/ticdc-arm64",
+                        Replicas = 1
                     }
                 }
             });
@@ -240,7 +241,6 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                         {
                             Type = "NodePort"
                         }
-                    }
                     },
                     Reloader = new TidbMonitorSpecReloaderArgs
                     {
