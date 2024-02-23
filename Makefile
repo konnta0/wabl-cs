@@ -150,41 +150,6 @@ migration-prepare-seed-import:
 migration-seed-import: migration-prepare-seed-import migration-run
 
 
-## Minikube
-.PHONY: mount-dir #
-mount-dir:
-	mkdir -p $(PWD)/.data/mnt
-	minikube mount $(PWD)/.data/mnt:/mnt
-	# minikube ssh "sudo mkdir /mnt/{ssd,sharedssd,monitoring,backup}"
-
-
-.PHONY: mk-start #  must be install qemu
-mk-start: 
-	minikube start --memory='16g' --cpus=7 --driver=docker --container-runtime=containerd --disk-size=200gb --nodes=1 --insecure-registry="core.harbor.cr.test" --kubernetes-version v1.24.6
-	minikube addons enable ingress
-	minikube addons enable ingress-dns
-	# For Docker for Mac, recommend using the following for ingress-dns
-	# https://github.com/chipmk/docker-mac-net-connect
-	minikube addons enable metrics-server
-	#minikube node add --worker=true
-	#minikube node add --worker=true
-
-.PHONY: mk-pause # 
-mk-pause:
-	minikube pause
-
-.PHONY: mk-unpause # 
-mk-unpause:
-	minikube unpause
-
-.PHONY: mk-stop # 
-mk-stop:
-	minikube stop
-
-.PHONY: mk-dashboard # 
-mk-dashboard:
-	minikube dashboard
-
 ## Pulumi
 INFRASTRUCTURE_DIR=./src/Infrastructure
 STACK?=local
