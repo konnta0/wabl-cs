@@ -196,6 +196,11 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     Pump = new TidbClusterSpecPumpArgs
                     {
                         BaseImage = "pingcap/tidb-binlog-arm64",
+                        Replicas = 1,
+                        Requests = new InputMap<Union<int, string>>
+                        {
+                            ["storage"] = Union<int, string>.FromT1("2Gi")
+                        }
                     },
                     Ticdc = new TidbClusterSpecTicdcArgs
                     {
