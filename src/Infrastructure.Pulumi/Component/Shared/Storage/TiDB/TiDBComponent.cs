@@ -213,6 +213,10 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
 
             var initializer = new TidbInitializer("tidb-initializer", new TidbInitializerArgs
             {
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                },
                 Spec = new TidbInitializerSpecArgs
                 {
                     Image = "kanshiori/mysqlclient-arm64",
@@ -227,6 +231,10 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
 
             var monitor = new TidbMonitor("tidb-monitor", new TidbMonitorArgs
             {
+                Metadata = new ObjectMetaArgs
+                {
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                },
                 Spec = new TidbMonitorSpecArgs
                 {
                     Clusters = new TidbMonitorSpecClustersArgs
