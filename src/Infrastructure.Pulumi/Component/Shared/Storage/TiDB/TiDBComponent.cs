@@ -137,7 +137,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Pd = new TidbClusterSpecPdArgs
                     {
-                        BaseImage = "pingcap/pd-arm64",
+                        MaxFailoverCount = 0,
+                        BaseImage = "pingcap/pd",
                         Replicas = 1,
                         Requests = new InputMap<Union<int, string>>
                         {
@@ -146,7 +147,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Tikv = new TidbClusterSpecTikvArgs
                     {
-                        BaseImage = "pingcap/tikv-arm64",
+                        MaxFailoverCount = 0,
+                        BaseImage = "pingcap/tikv",
                         Replicas = 2,
                         Requests = new InputMap<Union<int, string>>
                         {
@@ -155,7 +157,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Tidb = new TidbClusterSpecTidbArgs
                     {
-                        BaseImage = "pingcap/tidb-arm64",
+                        MaxFailoverCount = 0,
+                        BaseImage = "pingcap/tidb",
                         Replicas = 2,
                         Requests = new InputMap<Union<int, string>>
                         {
@@ -175,7 +178,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Tiflash = new TidbClusterSpecTiflashArgs
                     {
-                        BaseImage = "pingcap/tiflash-arm64",
+                        BaseImage = "pingcap/tiflash",
                         MaxFailoverCount = 0,
                         Replicas = 1,
                         StorageClaims = new InputList<TidbClusterSpecTiflashStorageClaimsArgs>
@@ -195,7 +198,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Pump = new TidbClusterSpecPumpArgs
                     {
-                        BaseImage = "pingcap/tidb-binlog-arm64",
+                        BaseImage = "pingcap/tidb-binlog",
                         Replicas = 1,
                         Requests = new InputMap<Union<int, string>>
                         {
@@ -204,7 +207,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Ticdc = new TidbClusterSpecTicdcArgs
                     {
-                        BaseImage = "pingcap/ticdc-arm64",
+                        BaseImage = "pingcap/ticdc",
                         Replicas = 1
                     }
                 }
@@ -244,7 +247,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Initializer = new TidbMonitorSpecInitializerArgs
                     {
-                        BaseImage = "pingcap/tidb-monitor-initializer-arm64",
+                        BaseImage = "pingcap/tidb-monitor-initializer",
+                        Version = "v5.4.2"
                     },
                     Prometheus = new TidbMonitorSpecPrometheusArgs
                     {
@@ -257,7 +261,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Reloader = new TidbMonitorSpecReloaderArgs
                     {
-                        BaseImage = "pingcap/tidb-monitor-reloader-arm64",
+                        BaseImage = "pingcap/tidb-monitor-reloader",
+                        Version = "v1.0.1"
                     }
                 }
             });
