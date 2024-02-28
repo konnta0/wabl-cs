@@ -236,6 +236,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
             {
                 Metadata = new ObjectMetaArgs
                 {
+                    Name = "tidb-monitor",
                     Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new TidbMonitorSpecArgs
