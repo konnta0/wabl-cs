@@ -128,6 +128,11 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
 
             var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
             {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "tidb-cluster",
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                },
                 Spec = new TidbClusterSpecArgs
                 {
                     Cluster = new TidbClusterSpecClusterArgs
