@@ -135,6 +135,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                 },
                 Spec = new TidbClusterSpecArgs
                 {
+                    EnableDynamicConfiguration = true,
+                    ConfigUpdateStrategy = "RollingUpdate",
                     Cluster = new TidbClusterSpecClusterArgs
                     {
                         Name = "tidb-cluster",
