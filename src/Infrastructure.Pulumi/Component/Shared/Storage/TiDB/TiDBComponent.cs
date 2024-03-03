@@ -174,6 +174,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Discovery = new TidbClusterSpecDiscoveryArgs
                     {
+                        Image = "pingcap/tidb-discovery",
                         Limits = new InputMap<Union<int, string>>
                         {
                             ["cpu"] = Union<int, string>.FromT1("0.2")
