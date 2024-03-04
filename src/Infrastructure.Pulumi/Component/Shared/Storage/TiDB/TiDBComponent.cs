@@ -126,6 +126,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
             //     }
             // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
 
+            // example: https://github.com/pingcap/tidb-operator/blob/master/examples/basic/tidb-cluster.yaml
             var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -146,6 +147,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     {
                         MaxFailoverCount = 0,
                         BaseImage = "pingcap/pd",
+                        Version = "v7.5.0",
                         Replicas = 1,
                         Requests = new InputMap<Union<int, string>>
                         {
@@ -156,6 +158,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     {
                         MaxFailoverCount = 0,
                         BaseImage = "pingcap/tikv",
+                        Version = "v7.5.0",
                         Replicas = 2,
                         Requests = new InputMap<Union<int, string>>
                         {
@@ -166,6 +169,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     {
                         MaxFailoverCount = 0,
                         BaseImage = "pingcap/tidb",
+                        Version = "v7.5.0",
                         Replicas = 2,
                         Requests = new InputMap<Union<int, string>>
                         {
@@ -187,6 +191,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     Tiflash = new TidbClusterSpecTiflashArgs
                     {
                         BaseImage = "pingcap/tiflash",
+                        Version = "v7.5.0",
                         MaxFailoverCount = 0,
                         Replicas = 1,
                         StorageClaims = new InputList<TidbClusterSpecTiflashStorageClaimsArgs>
@@ -207,6 +212,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     Pump = new TidbClusterSpecPumpArgs
                     {
                         BaseImage = "pingcap/tidb-binlog",
+                        Version = "v7.5.0",
                         Replicas = 1,
                         Requests = new InputMap<Union<int, string>>
                         {
@@ -216,7 +222,12 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     Ticdc = new TidbClusterSpecTicdcArgs
                     {
                         BaseImage = "pingcap/ticdc",
+                        Version = "v7.5.0",
                         Replicas = 1
+                    },
+                    Helper = new TidbClusterSpecHelperArgs
+                    {
+                        Image = "alpine:3.16.0"
                     }
                 }
             });
