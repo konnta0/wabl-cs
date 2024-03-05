@@ -4,19 +4,11 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace WebApplication.Presentation.Filter;
 
-public class TransactionalFlowFilter : IAsyncActionFilter
+public class TransactionalFlowFilter(ITransactionalFlow transactionalFlow) : IAsyncActionFilter
 {
-    private readonly ITransactionalFlow _transactionalFlow;
-
-    public TransactionalFlowFilter(ITransactionalFlow transactionalFlow)
-    {
-
-        _transactionalFlow = transactionalFlow;
-    }
-    
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
-        if (!context.ActionDescriptor.EndpointMetadata.OfType<HttpPostAttribute>().Any())
+        if (context.ActionDescriptor.EndpointMetadata.OfType<HttpGetAttribute>().Any())
         {
             await next();
             return;
@@ -27,9 +19,9 @@ public class TransactionalFlowFilter : IAsyncActionFilter
 
         await next();
 
-        await _transactionalFlow.SaveChangesAsync();
+        await transactionalFlow.SaveChangesAsync();
         // scope.Complete();
 
-        _transactionalFlow.AcceptAllChangesAsync();
+        transactionalFlow.AcceptAllChangesAsync();
     }
 }
