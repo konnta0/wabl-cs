@@ -8,7 +8,7 @@ internal abstract class RedisProvider : IRedisProvider
 {
     protected readonly ILogger Logger;
 
-    public RedisConnection Connection { get; init; }
+    public RedisConnection Connection { get; }
 
     protected RedisProvider(ILogger logger, RedisConnection redisConnection)
     {
