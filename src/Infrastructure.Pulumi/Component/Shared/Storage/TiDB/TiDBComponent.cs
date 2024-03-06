@@ -152,6 +152,10 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                         Requests = new InputMap<Union<int, string>>
                         {
                             ["storage"] = Union<int, string>.FromT1("2Gi")
+                        },
+                        Config = new InputMap<object>
+                        {
+                            //["enable-placement-rules"] = "true"
                         }
                     },
                     Tikv = new TidbClusterSpecTikvArgs
