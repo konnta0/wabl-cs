@@ -1,6 +1,12 @@
 ﻿using DFrame.RestSdk;
 
 
+var mode = Environment.GetEnvironmentVariable("MODE");
+if (string.IsNullOrEmpty(mode))
+{
+    throw new ArgumentException($"Invalid env. MODE: {mode}");
+}
+
 var rootAddress = Environment.GetEnvironmentVariable("CONTROLLER_ROOT_ADDRESS");
 if (string.IsNullOrEmpty(rootAddress))
 {
