@@ -20,8 +20,4 @@ internal abstract class RedisProvider : IRedisProvider
         connectionMultiplexer.ConnectionFailed += (sender, args) => Logger.ZLogErrorWithPayload(args, "ConnectionMultiplexer ConnectionFailed");
         connectionMultiplexer.ConnectionRestored += (sender, args) => Logger.ZLogInformationWithPayload(args, "ConnectionMultiplexer ConnectionRestored");
     }
-
-    public void Dispose()
-    {
-    }
 }
