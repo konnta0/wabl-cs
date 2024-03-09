@@ -78,3 +78,6 @@ switch (mode.ToLower())
 await client.WaitUntilCanExecute();
 
 var result = await client.GetLatestResultAsync();
+if (result is null) return;
+
+Console.WriteLine($"TotalRequest: {result.Summary.TotalRequest}");
