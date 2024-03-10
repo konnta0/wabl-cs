@@ -72,6 +72,8 @@ switch (mode.ToLower())
             IncreaseTotalWorker = increaseTotalWorker,
         });
         break;
+    default:
+        throw new ArgumentException($"Invalid env. MODE: {mode}");
 }
 
 
