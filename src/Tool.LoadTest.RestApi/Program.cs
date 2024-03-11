@@ -29,16 +29,17 @@ if (!int.TryParse(Environment.GetEnvironmentVariable("TOTAL_REQUEST"), out var t
     throw new ArgumentException($"Invalid env. TOTAL_REQUEST: {totalRequest}");
 }
 
+int? workerLimit = null;
+if (int.TryParse(Environment.GetEnvironmentVariable("WORKER_LIMIT"), out var limit))
+{
+    workerLimit = limit;
+}
+
 var client = new DFrameClient(rootAddress);
 
 switch (mode.ToLower())
 {
     case "request":
-        int? workerLimit = null;
-        if (int.TryParse(Environment.GetEnvironmentVariable("WORKER_LIMIT"), out var limit))
-        {
-            workerLimit = limit;
-        }
         
         await client.ExecuteRequestAsync(new()
         {
