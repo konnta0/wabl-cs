@@ -73,6 +73,19 @@ switch (mode.ToLower())
             IncreaseTotalWorker = increaseTotalWorker,
         });
         break;
+    case "duration":
+        if (!int.TryParse(Environment.GetEnvironmentVariable("EXECUTE_TIME_SECONDS"), out var executeTimeSeconds))
+        {
+            throw new ArgumentException($"Invalid env. EXECUTE_TIME_SECONDS: {executeTimeSeconds}");
+        }
+        await client.ExecuteDurationAsync(new()
+        {
+            Workload = workloadName,
+            Concurrency = concurrency,
+            ExecuteTimeSeconds = executeTimeSeconds,
+            Parameters = null
+        });
+        break;
     default:
         throw new ArgumentException($"Invalid env. MODE: {mode}");
 }
