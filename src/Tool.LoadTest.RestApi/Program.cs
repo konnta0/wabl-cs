@@ -86,6 +86,15 @@ switch (mode.ToLower())
             Parameters = null
         });
         break;
+    case "infinite":
+        await client.ExecuteInfiniteAsync(new()
+        {
+            Workload = workloadName,
+            Concurrency = concurrency,
+            Workerlimit = workerLimit,
+            Parameters = null
+        });
+        break;
     default:
         throw new ArgumentException($"Invalid env. MODE: {mode}");
 }
