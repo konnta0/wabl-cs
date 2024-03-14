@@ -7,8 +7,8 @@ class Program
 {
     public static void Main(string[] args)
     {
-        App app = new App();
-        new MainStack(app, "Infrastructure.CDKTF");
+        var app = new App();
+        _ = new MainStack(app, "Infrastructure.CDKTF");
         app.Synth();
         Console.WriteLine("App synth complete");
     }
