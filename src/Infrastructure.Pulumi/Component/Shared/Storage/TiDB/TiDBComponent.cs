@@ -29,6 +29,14 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
 
         public TiDBComponentOutput Apply(TiDBComponentInput input)
         {
+            var @tidbAdminNamespace = new Namespace("namespace-tidb-admin", new NamespaceArgs
+            {
+                Metadata = new ObjectMetaArgs
+                {
+                    Name = "tidb-admin"
+                }
+            });
+            
             // https://docs.pingcap.com/tidb-in-kubernetes/v1.0/deploy-tidb-from-kubernetes-minikube#add-helm-repo
             var configFile = new ConfigFile("tidb-crd", new ConfigFileArgs
             {
