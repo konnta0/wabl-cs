@@ -144,7 +144,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                 },
                 Spec = new TidbClusterSpecArgs
                 {
-                    EnableDynamicConfiguration = true,
+                    Version = "v7.5.0",
                     ConfigUpdateStrategy = "RollingUpdate",
                     Cluster = new TidbClusterSpecClusterArgs
                     {
@@ -153,98 +153,102 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     },
                     Pd = new TidbClusterSpecPdArgs
                     {
-                        MaxFailoverCount = 0,
                         BaseImage = "pingcap/pd",
                         Version = "v7.5.0",
-                        Replicas = 1,
+                        Replicas = 3,
                         Requests = new InputMap<Union<int, string>>
                         {
-                            ["storage"] = Union<int, string>.FromT1("2Gi")
+                            ["storage"] = Union<int, string>.FromT1("10Gi")
                         },
-                        Config = new InputMap<object>
-                        {
-                            //["enable-placement-rules"] = "true"
-                        }
+                        Config = new InputMap<object>()
                     },
                     Tikv = new TidbClusterSpecTikvArgs
                     {
-                        MaxFailoverCount = 0,
                         BaseImage = "pingcap/tikv",
                         Version = "v7.5.0",
-                        Replicas = 2,
+                        Replicas = 3,
                         Requests = new InputMap<Union<int, string>>
                         {
-                            ["storage"] = Union<int, string>.FromT1("2Gi")
-                        }
+                            ["storage"] = Union<int, string>.FromT1("10Gi")
+                        },
+                        Config = new InputMap<object>()
                     },
                     Tidb = new TidbClusterSpecTidbArgs
                     {
-                        MaxFailoverCount = 0,
                         BaseImage = "pingcap/tidb",
                         Version = "v7.5.0",
-                        Replicas = 2,
-                        Requests = new InputMap<Union<int, string>>
+                        SlowLogTailer = new TidbClusterSpecTidbSlowLogTailerArgs
                         {
-                            ["storage"] = Union<int, string>.FromT1("2Gi")
-                        }
-                    },
-                    Discovery = new TidbClusterSpecDiscoveryArgs
-                    {
-                        Image = "pingcap/tidb-discovery",
-                        Limits = new InputMap<Union<int, string>>
-                        {
-                            ["cpu"] = Union<int, string>.FromT1("0.2")
+                            Image = "arm64v8/busybox:1.26.2"
                         },
+                        Replicas = 3,
                         Requests = new InputMap<Union<int, string>>
                         {
-                            ["cpu"] = Union<int, string>.FromT1("0.2")
-                        }
-                    },
-                    Tiflash = new TidbClusterSpecTiflashArgs
-                    {
-                        BaseImage = "pingcap/tiflash",
-                        Version = "v7.5.0",
-                        MaxFailoverCount = 0,
-                        Replicas = 1,
-                        StorageClaims = new InputList<TidbClusterSpecTiflashStorageClaimsArgs>
+                            ["storage"] = Union<int, string>.FromT1("10Gi")
+                        },
+                        Service = new TidbClusterSpecTidbServiceArgs
                         {
-                            new TidbClusterSpecTiflashStorageClaimsArgs
-                            {
-                                StorageClassName = "microk8s-hostpath",
-                                Resources = new TidbClusterSpecTiflashStorageClaimsResourcesArgs
-                                {
-                                    Requests =
-                                    {
-                                        ["storage"] = Union<int, string>.FromT1("5Gi")
-                                    }
-                                }
-                            }
-                        }
+                            Type = "LoadBalancer"
+                        },
+                        Config = new InputMap<object>()
                     },
-                    Pump = new TidbClusterSpecPumpArgs
-                    {
-                        BaseImage = "pingcap/tidb-binlog",
-                        Version = "v7.5.0",
-                        Replicas = 1,
-                        Requests = new InputMap<Union<int, string>>
-                        {
-                            ["storage"] = Union<int, string>.FromT1("2Gi")
-                        }
-                    },
-                    Ticdc = new TidbClusterSpecTicdcArgs
-                    {
-                        BaseImage = "pingcap/ticdc",
-                        Version = "v7.5.0",
-                        Replicas = 1
-                    },
-                    Helper = new TidbClusterSpecHelperArgs
-                    {
-                        Image = "alpine:3.16.0"
-                    }
+                    // Discovery = new TidbClusterSpecDiscoveryArgs
+                    // {
+                    //     Image = "pingcap/tidb-discovery",
+                    //     Limits = new InputMap<Union<int, string>>
+                    //     {
+                    //         ["cpu"] = Union<int, string>.FromT1("0.2")
+                    //     },
+                    //     Requests = new InputMap<Union<int, string>>
+                    //     {
+                    //         ["cpu"] = Union<int, string>.FromT1("0.2")
+                    //     }
+                    // },
+                    // Tiflash = new TidbClusterSpecTiflashArgs
+                    // {
+                    //     BaseImage = "pingcap/tiflash",
+                    //     //Version = "v7.5.0",
+                    //     MaxFailoverCount = 0,
+                    //     Replicas = 1,
+                    //     StorageClaims = new InputList<TidbClusterSpecTiflashStorageClaimsArgs>
+                    //     {
+                    //         new TidbClusterSpecTiflashStorageClaimsArgs
+                    //         {
+                    //             StorageClassName = "microk8s-hostpath",
+                    //             Resources = new TidbClusterSpecTiflashStorageClaimsResourcesArgs
+                    //             {
+                    //                 Requests =
+                    //                 {
+                    //                     ["storage"] = Union<int, string>.FromT1("5Gi")
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+                    // },
+                    // Pump = new TidbClusterSpecPumpArgs
+                    // {
+                    //     BaseImage = "pingcap/tidb-binlog",
+                    //     //Version = "v7.5.0",
+                    //     Replicas = 1,
+                    //     Requests = new InputMap<Union<int, string>>
+                    //     {
+                    //         ["storage"] = Union<int, string>.FromT1("2Gi")
+                    //     }
+                    // },
+                    // Ticdc = new TidbClusterSpecTicdcArgs
+                    // {
+                    //     BaseImage = "pingcap/ticdc",
+                    //     //Version = "v7.5.0",
+                    //     Replicas = 1
+                    // },
+                    // Helper = new TidbClusterSpecHelperArgs
+                    // {
+                    //     Image = "alpine:3.16.0"
+                    // }
                 }
             });
 
-
+            return new();
             var initializer = new TidbInitializer("tidb-initializer", new TidbInitializerArgs
             {
                 Metadata = new ObjectMetaArgs
