@@ -52,95 +52,35 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     ["create"] = false
                 }
             };
-            
+
             // https://github.com/pingcap/tidb-operator/blob/v1.5.1/charts/tidb-operator/values.yaml
-            var tidbOperator = new Release("tidb-operator", new ReleaseArgs
-            {
-                Chart = "tidb-operator",
-                // helm search repo pingcap/tidb-operator --versions
-                Version = "v1.5.1",
-                RepositoryOpts = new RepositoryOptsArgs
-                {
-                    Repo = "https://charts.pingcap.org"
-                },
-                Atomic = true,
-                Values = tidbOperatorValues,
-                Namespace = input.Namespace.Metadata.Apply(x => x.Name)
-            }, new CustomResourceOptions { DependsOn = { configFile } });
+            // var tidbOperator = new Release("tidb-operator", new ReleaseArgs
+            // {
+            //     Chart = "tidb-operator",
+            //     // helm search repo pingcap/tidb-operator --versions
+            //     Version = "v1.5.1",
+            //     RepositoryOpts = new RepositoryOptsArgs
+            //     {
+            //         Repo = "https://charts.pingcap.org"
+            //     },
+            //     Atomic = true,
+            //     Values = tidbOperatorValues,
+            //     Namespace = tidbAdminNamespace.Metadata.Apply(x => x.Name)
+            // }, new CustomResourceOptions { DependsOn = { configFile } });
 
-            // var tikvPVC = new PersistentVolumeClaim("tikv-pvc", new PersistentVolumeClaimArgs
-            // {
-            //     Metadata = new ObjectMetaArgs
-            //     {
-            //         Namespace = input.Namespace.Metadata.Apply(x => x.Name),
-            //         Name = "tikv-pvc",
-            //     },
-            //     Spec = new PersistentVolumeClaimSpecArgs
-            //     {
-            //         AccessModes = "ReadWriteOnce",
-            //         VolumeMode = "Filesystem",
-            //         Resources = new ResourceRequirementsArgs
-            //         {
-            //             Requests =
-            //             {
-            //                 ["storage"] = "3Gi"
-            //             }
-            //         },
-            //         StorageClassName = "microk8s-hostpath"
-            //     }
-            // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
-            //
-            // var pdPVC = new PersistentVolumeClaim("pd-pvc", new PersistentVolumeClaimArgs
-            // {
-            //     Metadata = new ObjectMetaArgs
-            //     {
-            //         Namespace = input.Namespace.Metadata.Apply(x => x.Name),
-            //         Name = "pd-pvc",
-            //     },
-            //     Spec = new PersistentVolumeClaimSpecArgs
-            //     {
-            //         AccessModes = "ReadWriteOnce",
-            //         VolumeMode = "Filesystem",
-            //         Resources = new ResourceRequirementsArgs
-            //         {
-            //             Requests =
-            //             {
-            //                 ["storage"] = "3Gi"
-            //             }
-            //         },
-            //         StorageClassName = "microk8s-hostpath"
-            //     }
-            // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
-
-            // var tiflash = new PersistentVolumeClaim("pvc-tiflash", new PersistentVolumeClaimArgs
-            // {
-            //     Metadata = new ObjectMetaArgs
-            //     {
-            //         Namespace = input.Namespace.Metadata.Apply(x => x.Name),
-            //         Name = "pvc-tiflash",
-            //     },
-            //     Spec = new PersistentVolumeClaimSpecArgs
-            //     {
-            //         AccessModes = "ReadWriteOnce",
-            //         VolumeMode = "Filesystem",
-            //         Resources = new ResourceRequirementsArgs
-            //         {
-            //             Requests =
-            //             {
-            //                 ["storage"] = "3Gi"
-            //             }
-            //         },
-            //         StorageClassName = "microk8s-hostpath"
-            //     }
-            // }, new CustomResourceOptions { DependsOn = { tidbOperator } });
 
             // example: https://github.com/pingcap/tidb-operator/blob/master/examples/basic/tidb-cluster.yaml
+
+            // note: if you use microk8s, you need to use the following command to update file discriptor limit 
+            // https://github.com/canonical/microk8s/issues/1096#issuecomment-610264253
+
             var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
             {
+                ApiVersion = "pingcap.com/v1alpha1",
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "tidb-cluster",
-                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                    Namespace = "sample"//input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new TidbClusterSpecArgs
                 {
@@ -149,7 +89,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     Cluster = new TidbClusterSpecClusterArgs
                     {
                         Name = "tidb-cluster",
-                        Namespace = input.Namespace.Metadata.Apply(x => x.Name),
+                        Namespace = "sample"//input.Namespace.Metadata.Apply(x => x.Name),
                     },
                     Pd = new TidbClusterSpecPdArgs
                     {
