@@ -29,7 +29,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
 
         public TiDBComponentOutput Apply(TiDBComponentInput input)
         {
-            var @tidbAdminNamespace = new Namespace("namespace-tidb-admin", new NamespaceArgs
+            var tidbAdminNamespace = new Namespace("namespace-tidb-admin", new NamespaceArgs
             {
                 Metadata = new ObjectMetaArgs
                 {
