@@ -1,6 +1,6 @@
 namespace Tool.Make;
 
-public sealed class Setup : ConsoleAppBase
+internal sealed class Setup : ConsoleAppBase
 {
     private readonly Targets _target;
 
@@ -8,10 +8,10 @@ public sealed class Setup : ConsoleAppBase
     {
         _target = new Targets();
         _target.Add("minikube-curl", static () => RunAsync("curl", "-LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64"));
-        _target.Add("minikube-chmod", DependsOn("minikube-chmod"), static () => RunAsync("chmod", "+x minikube-darwin-amd64"));
-        _target.Add("minikube-install", DependsOn("minikube-install"), static () => RunAsync("sudo", "install minikube-darwin-amd64 /usr/local/bin/minikube"));
-        _target.Add("minikube-version", DependsOn("minikube-version"), static () => RunAsync("minikube", "version"));
-        _target.Add("minikube-remove", DependsOn("minikube-remove"), static () => RunAsync("rm", "-f minikube-darwin-amd64"));
+        _target.Add("minikube-chmod", DependsOn("minikube-curl"), static () => RunAsync("chmod", "+x minikube-darwin-amd64"));
+        _target.Add("minikube-install", DependsOn("minikube-chmod"), static () => RunAsync("sudo", "install minikube-darwin-amd64 /usr/local/bin/minikube"));
+        _target.Add("minikube-version", DependsOn("minikube-install"), static () => RunAsync("minikube", "version"));
+        _target.Add("minikube-remove", static () => RunAsync("rm", "-f minikube-darwin-amd64"));
 
         _target.Add("microk8s-brew-install", static () => RunAsync("brew", "install ubuntu/microk8s/microk8s"));
         _target.Add("microk8s-install", DependsOn("microk8s-brew-install"), static () => RunAsync("microk8s", "install --mem=16 --cpu=7"));
