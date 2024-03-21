@@ -54,19 +54,19 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
             };
 
             // https://github.com/pingcap/tidb-operator/blob/v1.5.1/charts/tidb-operator/values.yaml
-            // var tidbOperator = new Release("tidb-operator", new ReleaseArgs
-            // {
-            //     Chart = "tidb-operator",
-            //     // helm search repo pingcap/tidb-operator --versions
-            //     Version = "v1.5.1",
-            //     RepositoryOpts = new RepositoryOptsArgs
-            //     {
-            //         Repo = "https://charts.pingcap.org"
-            //     },
-            //     Atomic = true,
-            //     Values = tidbOperatorValues,
-            //     Namespace = tidbAdminNamespace.Metadata.Apply(x => x.Name)
-            // }, new CustomResourceOptions { DependsOn = { configFile } });
+            var tidbOperator = new Release("tidb-operator", new ReleaseArgs
+            {
+                Chart = "tidb-operator",
+                // helm search repo pingcap/tidb-operator --versions
+                Version = "v1.5.1",
+                RepositoryOpts = new RepositoryOptsArgs
+                {
+                    Repo = "https://charts.pingcap.org"
+                },
+                Atomic = true,
+                Values = tidbOperatorValues,
+                Namespace = tidbAdminNamespace.Metadata.Apply(x => x.Name)
+            }, new CustomResourceOptions { DependsOn = { configFile } });
 
 
             // example: https://github.com/pingcap/tidb-operator/blob/master/examples/basic/tidb-cluster.yaml
