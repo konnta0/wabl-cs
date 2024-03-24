@@ -34,5 +34,9 @@ class MainStack : TerraformStack
                 Name = "webapp"
             }
         });
+
+        var certManagerModule = new Modules.Certificate.CertManagerModule(this, "cert-manager",
+            new Modules.Certificate.CertManagerConfig(sharedNamespace));
+        
     }
 }
