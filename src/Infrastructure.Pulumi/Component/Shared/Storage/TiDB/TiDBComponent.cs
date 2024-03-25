@@ -68,34 +68,27 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                 Namespace = tidbAdminNamespace.Metadata.Apply(x => x.Name)
             }, new CustomResourceOptions { DependsOn = { configFile } });
 
-
-            // example: https://github.com/pingcap/tidb-operator/blob/master/examples/basic/tidb-cluster.yaml
-
-            // note: if you use microk8s, you need to use the following command to update file discriptor limit 
+            // note: if you use microk8s, you need to use the following command to update file descriptor limit 
             // https://github.com/canonical/microk8s/issues/1096#issuecomment-610264253
+            // sudo vi /var/snap/microk8s/current/args/containerd-env
+            // ulimit -n 1048576
 
             var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
             {
-                ApiVersion = "pingcap.com/v1alpha1",
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "tidb-cluster",
-                    Namespace = "sample"//input.Namespace.Metadata.Apply(x => x.Name)
+                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
                 },
                 Spec = new TidbClusterSpecArgs
                 {
                     Version = "v7.5.0",
                     ConfigUpdateStrategy = "RollingUpdate",
-                    Cluster = new TidbClusterSpecClusterArgs
-                    {
-                        Name = "tidb-cluster",
-                        Namespace = "sample"//input.Namespace.Metadata.Apply(x => x.Name),
-                    },
                     Pd = new TidbClusterSpecPdArgs
                     {
                         BaseImage = "pingcap/pd",
                         Version = "v7.5.0",
-                        Replicas = 3,
+                        Replicas = 2,
                         Requests = new InputMap<Union<int, string>>
                         {
                             ["storage"] = Union<int, string>.FromT1("10Gi")
@@ -106,7 +99,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     {
                         BaseImage = "pingcap/tikv",
                         Version = "v7.5.0",
-                        Replicas = 3,
+                        Replicas = 2,
                         Requests = new InputMap<Union<int, string>>
                         {
                             ["storage"] = Union<int, string>.FromT1("10Gi")
@@ -121,7 +114,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                         {
                             Image = "arm64v8/busybox:1.26.2"
                         },
-                        Replicas = 3,
+                        Replicas = 2,
                         Requests = new InputMap<Union<int, string>>
                         {
                             ["storage"] = Union<int, string>.FromT1("10Gi")
@@ -186,6 +179,9 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     //     Image = "alpine:3.16.0"
                     // }
                 }
+            }, new CustomResourceOptions
+            {
+                DeleteBeforeReplace = true,
             });
 
             return new();
