@@ -14,7 +14,7 @@ internal sealed class Setup : ConsoleAppBase
         _target.Add("minikube-remove", static () => RunAsync("rm", "-f minikube-darwin-amd64"));
 
         _target.Add("microk8s-brew-install", static () => RunAsync("brew", "install ubuntu/microk8s/microk8s"));
-        _target.Add("microk8s-install", DependsOn("microk8s-brew-install"), static () => RunAsync("microk8s", "install --mem=16 --cpu=7"));
+        _target.Add("microk8s-install", DependsOn("microk8s-brew-install"), static () => RunAsync("microk8s", "install --mem=24 --cpu=7"));
         _target.Add("microk8s-enable-plugins", DependsOn("microk8s-install"), async () =>
         {
              await "microk8s enable dashboard";
