@@ -7,7 +7,6 @@ public sealed class GitHubActionsComponentInput : IComponentInput
 {
     public Namespace Namespace { get; set; } = null!;
     public string Version { get; set; } = "0.6.1";
-    public bool WithActContainer { get; set; } = false;
 }
 
 public sealed class GitHubActionsComponentOutput : IComponentOutput

@@ -45,11 +45,6 @@ public sealed class GitHubActionsComponent : IComponent<GitHubActionsComponentIn
         {
             DependsOn = controller
         });
-
-        if (input.WithActContainer)
-        {
-            
-        }
         
         return new GitHubActionsComponentOutput
         {
