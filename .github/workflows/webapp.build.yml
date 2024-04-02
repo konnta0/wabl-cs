@@ -15,7 +15,13 @@ jobs:
         with:
           dotnet-version: "8.0.x"
 
+      - name: Get short sha
+        id: short_sha
+        run: |
+          sha=$(echo ${{ github.sha }} | cut -c1-7)
+          echo "sha=$sha" >> $GITHUB_OUTPUT
+
       - name: Build and Push Image
         working-directory: ./src/Tool/Make
         run: |
-          dotnet run -- webapp push-image --tags=[${{ github.sha }}, latest]
+          dotnet run -- webapp push-image --tags=[${{ steps.short_sha.outputs.sha }}, latest]
