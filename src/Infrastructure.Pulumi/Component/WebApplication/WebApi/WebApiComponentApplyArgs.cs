@@ -5,8 +5,9 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
 {
     public sealed class WebApiComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
-        public ConfigFile OpenTelemetryCrd { get; set; } = null!;
+        public Namespace Namespace { get; init; } = null!;
+        public string Tag { get; init; } = "";
+        public ConfigFile OpenTelemetryCrd { get; init; } = null!;
     }
 
     public sealed class WebApiComponentOutput : IComponentOutput

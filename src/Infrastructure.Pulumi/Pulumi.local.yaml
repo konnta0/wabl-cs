@@ -26,6 +26,7 @@ config:
   Infrastructure:WebApplication:
     Namespace: webapp
     Deploy: false
+    Tag: latest
   Infrastructure:ManagementConsole:
     Namespace: tool
     Deploy: false

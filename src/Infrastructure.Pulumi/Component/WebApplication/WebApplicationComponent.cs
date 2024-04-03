@@ -51,6 +51,7 @@ namespace Infrastructure.Pulumi.Component.WebApplication
             _webApiComponent.Apply(new WebApiComponentInput
             {
                 Namespace = @namespace,
+                Tag = _config.GetWebApplicationConfig().Tag,
                 OpenTelemetryCrd = openTelemetryOperatorComponentOutput.OpenTelemetryCrd
             });
             return new WebApplicationComponentOutput();

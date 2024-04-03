@@ -1,8 +1,8 @@
-namespace Infrastructure.Pulumi.Component.WebApplication
+namespace Infrastructure.Pulumi.Component.WebApplication;
+
+public struct WebApplicationConfig
 {
-    public struct WebApplicationConfig
-    {
-        public string Namespace { get; set; }
-        public bool Deploy { get; set; }
-    }
+    public string Namespace { get; init; }
+    public bool Deploy { get; init; }
+    public string Tag { get; init; }
 }

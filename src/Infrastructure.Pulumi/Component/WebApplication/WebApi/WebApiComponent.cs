@@ -145,7 +145,7 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
                                 {
                                     new ContainerArgs
                                     {
-                                        Image = $"{_config.GetContainerRegistryConfig().Host}/webapp/web-api:latest",
+                                        Image = $"{_config.GetContainerRegistryConfig().Host}/webapp/web-api:{input.Tag}",
                                         Name = "web-api",
                                         Ports =
                                         {
