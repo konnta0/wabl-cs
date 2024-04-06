@@ -36,4 +36,13 @@ public sealed class WebApp : ConsoleAppBase
 
         return _target.RunWithoutExitingAsync(["push"]);
     }
+    
+    [Command("deploy", "deploy web app")]
+    public async Task Deploy(
+        [Option("s")] string stack, 
+        [Option("t")] string? tag = "latest")
+    {
+        await $"pulumi config set --stack {stack} --path 'WebApplication.Tag' {tag}";
+        await $"pulumi up --stack {stack} --yes --target **web-application-web-api-deployment** --cwd ../../Tool.Infrastructure.Pulumi";
+    }
 }
