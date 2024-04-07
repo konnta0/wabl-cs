@@ -18,6 +18,9 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: "8.0.x"
+        # see: https://github.com/actions/setup-dotnet/issues/327#issuecomment-1277284874
+        env:
+          DOTNET_INSTALL_DIR: "./.dotnet"
 
       - name: Get short sha
         id: short_sha
