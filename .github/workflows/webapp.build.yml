@@ -29,6 +29,6 @@ jobs:
           echo "sha=$sha" >> $GITHUB_OUTPUT
 
       - name: Build and Push Image
-        working-directory: ./src/Tool/Make
+        working-directory: ./src/Tool.Make
         run: |
           dotnet run -- webapp push-image --tags=[${{ steps.short_sha.outputs.sha }}, latest]
