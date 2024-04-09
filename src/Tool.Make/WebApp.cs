@@ -14,7 +14,7 @@ internal sealed class WebApp : ConsoleAppBase
     public Task Build([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
     {
         tags ??= ["latest"];
-        _target.Add("build-image", () => RunAsync("docker", $"build {GetBuildTags(host, tags)} ../../../"));
+        _target.Add("build-image", () => RunAsync("docker", $"build {GetBuildTags(host, tags)} ../../"));
 
         return _target.RunWithoutExitingAsync(["build-image"]);
     }
@@ -25,11 +25,11 @@ internal sealed class WebApp : ConsoleAppBase
     public Task Push([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
     {
         tags ??= ["latest"];
-        _target.Add("build-image", () => RunAsync("docker", $"build {GetBuildTags(host, tags)} ../../../"));
+        _target.Add("build-image", () => RunAsync("docker", $"build {GetBuildTags(host, tags)} ../../"));
         _target.Add("push-image", DependsOn("build-image"),
             () => RunAsync("docker", $"push -a {DockerRegistryHost}/webapp/web-api"));
 
-        return _target.RunWithoutExitingAsync(["push"]);
+        return _target.RunWithoutExitingAsync(["push-image"]);
     }
     
     [Command("deploy", "deploy web app")]
