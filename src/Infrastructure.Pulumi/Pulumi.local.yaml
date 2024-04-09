@@ -1,4 +1,8 @@
 config:
+  Infrastructure:CiCd:
+    Gha:
+      Pat:
+        secure: AAABAKhX4a163BkV8b/AWdiMBCmf0G0WidYxrUKPEFYWtthSvFIS1gsB890avxCsetqA1tML9lxnaXw6L7mIFitXrFgtSnYp
   Infrastructure:ContainerRegistry:
     Access:
       CI:
@@ -17,6 +21,9 @@ config:
         Label: kubernetes.io/hostname
         Value: minikube
     User: tekton
+  Infrastructure:ManagementConsole:
+    Deploy: false
+    Namespace: tool
   Infrastructure:Observability:
     Enable: true
   Infrastructure:Storage:
@@ -27,7 +34,4 @@ config:
     Deploy: false
     Namespace: webapp
     Tag: latest
-  Infrastructure:ManagementConsole:
-    Namespace: tool
-    Deploy: false
   Infrastructure:isMinikube: "false"
