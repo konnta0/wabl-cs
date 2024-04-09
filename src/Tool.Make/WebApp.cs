@@ -4,16 +4,11 @@ namespace Tool.Make;
 /// Build and push web app image
 /// When you run these command in out of the kubenetes cluster and using the microk8s's internal registry, you need to set insecure-registries in /var/snap/microk8s/current/args/containerd-template.toml (or ~/.docker/daemon.json)
 /// </summary>
-public sealed class WebApp : ConsoleAppBase
+internal sealed class WebApp : ConsoleAppBase
 {
-    private readonly Targets _target;
+    private readonly Targets _target = new();
 
     private const string DockerRegistryHost = "192.168.105.27:32000";
-    
-    public WebApp()
-    {
-        _target = new Targets();
-    }
 
     [Command("build-image", "build web image")]
     public Task Build([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
@@ -21,7 +16,7 @@ public sealed class WebApp : ConsoleAppBase
         tags ??= ["latest"];
         _target.Add("build-image", () => RunAsync("docker", $"build {GetBuildTags(host, tags)} ../../../"));
 
-        return _target.RunWithoutExitingAsync(["build"]);
+        return _target.RunWithoutExitingAsync(["build-image"]);
     }
 
     private string GetBuildTags(string host, string[] tags) => string.Join(" ", tags.Select(x => $"-t {host}/webapp/web-api:{x}"));
@@ -31,7 +26,7 @@ public sealed class WebApp : ConsoleAppBase
     {
         tags ??= ["latest"];
         _target.Add("build-image", () => RunAsync("docker", $"build {GetBuildTags(host, tags)} ../../../"));
-        _target.Add("push-image", DependsOn("build"),
+        _target.Add("push-image", DependsOn("build-image"),
             () => RunAsync("docker", $"push -a {DockerRegistryHost}/webapp/web-api"));
 
         return _target.RunWithoutExitingAsync(["push"]);
