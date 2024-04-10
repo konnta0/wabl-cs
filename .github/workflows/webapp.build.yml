@@ -31,14 +31,23 @@ jobs:
           sha=$(echo ${{ github.sha }} | cut -c1-7)
           echo "sha=$sha" >> $GITHUB_OUTPUT
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          push: true
-          tags: 192.168.105.27:32000/webapp/web-api:${{ steps.short_sha.outputs.sha }}
+      # - name: Build and push Docker image
+      #   uses: docker/build-push-action@v5
+      #   with:
+      #     context: .
+      #     file: ./Dockerfile
+      #     push: true
+      #     tags: 192.168.105.27:32000/webapp/web-api:${{ steps.short_sha.outputs.sha }}
           
+      - name: Kaniko build
+        uses: aevea/action-kaniko@master
+        with:
+          image: webapp/web-api
+          registry: 192.168.105.27:32000
+          tag: ${{ steps.short_sha.outputs.sha }}
+          build_file: ./Dockerfile
+          path: .
+          tag_with_latest: true
 
       - name: Build and Push Image
         working-directory: ./src/Tool.Make
