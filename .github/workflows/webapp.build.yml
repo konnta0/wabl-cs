@@ -32,7 +32,7 @@ jobs:
           echo "sha=$sha" >> $GITHUB_OUTPUT
 
       - name: Kaniko build
-        uses: aevea/action-kaniko@v0.12
+        uses: aevea/action-kaniko@v0.12.0
         with:
           image: webapp/web-api
           registry: 192.168.105.27:32000
