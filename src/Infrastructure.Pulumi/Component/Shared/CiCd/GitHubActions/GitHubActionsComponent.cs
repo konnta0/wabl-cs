@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using System.Text.Json;
 using Pulumi;
 using Pulumi.Kubernetes.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 
 namespace Infrastructure.Pulumi.Component.Shared.CiCd.GitHubActions;
 
-public sealed class GitHubActionsComponent : IComponent<GitHubActionsComponentInput, GitHubActionsComponentOutput>
+public sealed class GitHubActionsComponent(Config config)
+    : IComponent<GitHubActionsComponentInput, GitHubActionsComponentOutput>
 {
     public GitHubActionsComponentOutput Apply(GitHubActionsComponentInput input)
     {
@@ -19,7 +21,10 @@ public sealed class GitHubActionsComponent : IComponent<GitHubActionsComponentIn
         });
 
 
-        // https://github.com/actions/actions-runner-controller/blob/gha-runner-scale-set-0.6.1/charts/gha-runner-scale-set/values.yaml
+        // https://github.com/actions/actions-runner-controller/blob/gha-runner-scale-set-0.8.3/charts/gha-runner-scale-set/values.yaml
+        var containerRegistryConfig = config.RequireObject<JsonElement>("CiCd");
+
+        var githubToken = containerRegistryConfig.GetProperty("Gha").GetProperty("Pat").GetString();
         var values = new InputMap<object>
         {
             ["githubConfigUrl"] = "https://github.com/konnta0/wabl-cs",
