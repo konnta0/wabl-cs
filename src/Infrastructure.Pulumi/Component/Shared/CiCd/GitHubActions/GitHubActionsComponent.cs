@@ -30,7 +30,11 @@ public sealed class GitHubActionsComponent(Config config)
             ["githubConfigUrl"] = "https://github.com/konnta0/wabl-cs",
             ["githubConfigSecret"] = new Dictionary<string, object>
             {
-                ["github_token"] = "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"
+                ["github_token"] = githubToken!
+            },
+            ["containerMode"] = new Dictionary<string, object>
+            {
+                ["type"] = "dind"
             },
             ["controllerServiceAccount"] = new Dictionary<string, object>
             {
