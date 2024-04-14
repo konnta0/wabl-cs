@@ -3,6 +3,9 @@ name: WebApp/Build
 on:
   workflow_dispatch:
 
+env:
+  CONTAINER_REGISTRY: 192.168.105.27:32000
+
 jobs:
   build:
     runs-on: arc-runner-set
@@ -43,13 +46,21 @@ jobs:
       #     username: ""
       #     password: ""
 
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-config-inline: |
+            [registry."${{ env.CONTAINER_REGISTRY }}"]
+              http = true
+              insecure = true
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: 192.168.105.27:32000/webapp/web-api:${{ steps.short_sha.outputs.sha }}
+          tags: ${{ env.CONTAINER_REGISTRY }}/webapp/web-api:${{ steps.short_sha.outputs.sha }}
 
       - name: Build and Push Image
         working-directory: ./src/Tool.Make
