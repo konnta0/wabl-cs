@@ -5,8 +5,8 @@ namespace Infrastructure.Pulumi.Component.Shared.CiCd.GitHubActions;
 
 public sealed class GitHubActionsComponentInput : IComponentInput
 {
-    public Namespace Namespace { get; set; } = null!;
-    public string Version { get; set; } = "0.6.1";
+    public Namespace Namespace { get; init; } = null!;
+    public string Version { get; init; } = "0.8.3";
 }
 
 public sealed class GitHubActionsComponentOutput : IComponentOutput
