@@ -34,18 +34,6 @@ jobs:
           sha=$(echo ${{ github.sha }} | cut -c1-7)
           echo "sha=$sha" >> $GITHUB_OUTPUT
 
-      # - name: Kaniko build
-      #   uses: aevea/action-kaniko@v0.12.0
-      #   with:
-      #     image: webapp/web-api
-      #     registry: 192.168.105.27:32000
-      #     tag: ${{ steps.short_sha.outputs.sha }}
-      #     build_file: ./Dockerfile
-      #     path: .
-      #     tag_with_latest: true
-      #     username: ""
-      #     password: ""
-
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
         with:
