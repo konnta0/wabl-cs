@@ -15,7 +15,7 @@ config:
       NodeSelector:
         Label: kubernetes.io/hostname
         Value: minikube
-    Host: core.harbor.cr.test
+    Host: 192.168.105.27:32000
     MinIO:
       NodeSelector:
         Label: kubernetes.io/hostname
