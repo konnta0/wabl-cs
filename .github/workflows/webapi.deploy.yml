@@ -1,4 +1,4 @@
-name: WebApp/Deploy
+name: WebApi/Deploy
 
 on:
   workflow_dispatch:
