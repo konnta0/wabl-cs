@@ -23,15 +23,8 @@ using ServiceArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ServiceArgs;
 
 namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
 {
-    public class WebApiComponent : IComponent<WebApiComponentInput, WebApiComponentOutput>
+    public class WebApiComponent(Config config) : IComponent<WebApiComponentInput, WebApiComponentOutput>
     {
-        private readonly Config _config;
-
-        public WebApiComponent(Config config)
-        {
-            _config = config;
-        }
-
         public WebApiComponentOutput Apply(WebApiComponentInput input)
         {
             var envInputMap = new InputMap<string>();
@@ -145,7 +138,7 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
                                 {
                                     new ContainerArgs
                                     {
-                                        Image = $"{_config.GetContainerRegistryConfig().Host}/webapp/web-api:{input.Tag}",
+                                        Image = $"{config.GetContainerRegistryConfig().Host}/webapp/web-api:{input.Tag}",
                                         Name = "web-api",
                                         Ports =
                                         {

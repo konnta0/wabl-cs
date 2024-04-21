@@ -9,28 +9,18 @@ using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 
 namespace Infrastructure.Pulumi.Component.WebApplication
 {
-    public class WebApplicationComponent : IComponent<WebApplicationComponentInput, WebApplicationComponentOutput>
+    public class WebApplicationComponent(
+        ILogger<WebApplicationComponent> logger,
+        Config config,
+        WebApiComponent webApiComponent,
+        OpenTelemetryOperatorComponent openTelemetryOperatorComponent)
+        : IComponent<WebApplicationComponentInput, WebApplicationComponentOutput>
     {
-        private readonly ILogger<WebApplicationComponent> _logger;
-        private Config _config;
-        private readonly WebApiComponent _webApiComponent;
-        private readonly OpenTelemetryOperatorComponent _openTelemetryOperatorComponent;
-
-        public WebApplicationComponent(
-            ILogger<WebApplicationComponent> logger,
-            Config config, 
-            WebApiComponent webApiComponent,
-            OpenTelemetryOperatorComponent openTelemetryOperatorComponent)
-        {
-            _logger = logger;
-            _config = config;
-            _webApiComponent = webApiComponent;
-            _openTelemetryOperatorComponent = openTelemetryOperatorComponent;
-        }
+        private readonly ILogger<WebApplicationComponent> _logger = logger;
 
         public WebApplicationComponentOutput Apply(WebApplicationComponentInput input)
         {
-            if (!_config.GetWebApplicationConfig().Deploy)
+            if (!config.GetWebApplicationConfig().Deploy)
             {
                 return new WebApplicationComponentOutput();
             }
@@ -39,19 +29,19 @@ namespace Infrastructure.Pulumi.Component.WebApplication
             {
                 Metadata = new ObjectMetaArgs
                 {
-                    Name = _config.GetWebApplicationConfig().Namespace
+                    Name = config.GetWebApplicationConfig().Namespace
                 }
             });
 
-            var openTelemetryOperatorComponentOutput = _openTelemetryOperatorComponent.Apply(new OpenTelemetryOperatorComponentInput
+            var openTelemetryOperatorComponentOutput = openTelemetryOperatorComponent.Apply(new OpenTelemetryOperatorComponentInput
             {
                 Namespace = @namespace
             });
             
-            _webApiComponent.Apply(new WebApiComponentInput
+            webApiComponent.Apply(new WebApiComponentInput
             {
                 Namespace = @namespace,
-                Tag = _config.GetWebApplicationConfig().Tag,
+                Tag = config.GetWebApplicationConfig().Tag,
                 OpenTelemetryCrd = openTelemetryOperatorComponentOutput.OpenTelemetryCrd
             });
             return new WebApplicationComponentOutput();
