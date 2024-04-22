@@ -36,6 +36,7 @@ internal sealed class WebApi : ConsoleAppBase
         [Option("t")] string? tag = "latest")
     {
         await $"pulumi config set --stack {stack} --cwd ../Infrastructure.Pulumi --path 'WebApplication.Tag' {tag}";
-        await $"pulumi up --stack {stack} --yes --target **web-application-web-api-deployment** --cwd ../Infrastructure.Pulumi";
+        // add '--disable-integrity-checking' https://github.com/pulumi/pulumi/issues/15959
+        await $"pulumi up --stack {stack} --yes --target **web-application-web-api-deployment** --target-dependents --disable-integrity-checking --cwd ../Infrastructure.Pulumi";
     }
 }
