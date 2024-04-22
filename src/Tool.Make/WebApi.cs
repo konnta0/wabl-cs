@@ -4,7 +4,7 @@ namespace Tool.Make;
 /// Build and push web app image
 /// When you run these command in out of the kubenetes cluster and using the microk8s's internal registry, you need to set insecure-registries in /var/snap/microk8s/current/args/containerd-template.toml (or ~/.docker/daemon.json)
 /// </summary>
-internal sealed class WebApp : ConsoleAppBase
+internal sealed class WebApi : ConsoleAppBase
 {
     private readonly Targets _target = new();
 
