@@ -47,8 +47,8 @@ public sealed class KeycloakComponent : IComponent<KeycloakComponentInput, Keycl
                     },
                     Spec = new PodSpecArgs
                     {
-                        Containers = new InputList<ContainerArgs>
-                        {
+                        Containers =
+                        [
                             new ContainerArgs
                             {
                                 Name = "keycloak",
@@ -92,9 +92,22 @@ public sealed class KeycloakComponent : IComponent<KeycloakComponentInput, Keycl
                                     PeriodSeconds = 10,
                                     SuccessThreshold = 1,
                                     FailureThreshold = 3
-                                }
+                                },
+                                Resources = new ResourceRequirementsArgs
+                                {
+                                    Requests =
+                                    {
+                                        {"memory", "512Mi"},
+                                        { "cpu", "200m" }
+                                    },
+                                    Limits =
+                                    {
+                                        {"memory", "1024Mi"},
+                                        { "cpu", "500m"}
+                                    }
+                                },
                             }
-                        }
+                        ]
                     }
                 }
             }
@@ -113,8 +126,8 @@ public sealed class KeycloakComponent : IComponent<KeycloakComponentInput, Keycl
             },
             Spec = new ServiceSpecArgs
             {
-                Ports = new InputList<ServicePortArgs>
-                {
+                Ports =
+                [
                     new ServicePortArgs
                     {
                         Name = "http",
@@ -122,7 +135,7 @@ public sealed class KeycloakComponent : IComponent<KeycloakComponentInput, Keycl
                         TargetPort = deployment.Spec.Apply(static x =>
                             x.Template.Spec.Containers[0].Ports[0].ContainerPortValue)
                     }
-                },
+                ],
                 Selector = new InputMap<string>
                 {
                     { "app", "keycloak" }
