@@ -23,18 +23,12 @@ using ServiceArgs = Pulumi.Kubernetes.Types.Inputs.Core.V1.ServiceArgs;
 
 namespace Infrastructure.Pulumi.Component.Tool.ManagementConsole;
 
-public class ManagementConsoleComponent : IComponent<ManagementConsoleComponentInput, ManagementConsoleComponentOutput>
+public class ManagementConsoleComponent(
+    ILogger<ManagementConsoleComponent> logger,
+    Config config)
+    : IComponent<ManagementConsoleComponentInput, ManagementConsoleComponentOutput>
 {
-    private readonly ILogger<ManagementConsoleComponent> _logger;
-    private readonly Config _config;
-
-    public ManagementConsoleComponent(
-        ILogger<ManagementConsoleComponent> logger,
-        Config config)
-    {
-        _logger = logger;
-        _config = config;
-    }
+    private readonly ILogger<ManagementConsoleComponent> _logger = logger;
 
     public ManagementConsoleComponentOutput Apply(ManagementConsoleComponentInput input)
     {
@@ -101,7 +95,7 @@ public class ManagementConsoleComponent : IComponent<ManagementConsoleComponentI
                             {
                                 new ContainerArgs
                                 {
-                                    Image = $"{_config.GetContainerRegistryConfig().Host}/tool/management-console:latest",
+                                    Image = $"{config.GetContainerRegistryConfig().Host}/tool/management-console:latest",
                                     Name = "management-console",
                                     Ports =
                                     {
