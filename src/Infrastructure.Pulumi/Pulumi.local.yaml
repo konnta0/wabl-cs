@@ -15,7 +15,7 @@ config:
       NodeSelector:
         Label: kubernetes.io/hostname
         Value: minikube
-    Host: 192.168.105.27:32000
+    Host: localhost:32000
     MinIO:
       NodeSelector:
         Label: kubernetes.io/hostname
