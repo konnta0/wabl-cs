@@ -24,6 +24,7 @@ config:
   Infrastructure:ManagementConsole:
     Deploy: false
     Namespace: tool
+    Tag: latest
   Infrastructure:Observability:
     Enable: true
   Infrastructure:Storage:
@@ -31,7 +32,7 @@ config:
   Infrastructure:Tool:
     Namespace: tool
   Infrastructure:WebApplication:
-    Deploy: false
+    Deploy: true
     Namespace: webapp
     Tag: latest
   Infrastructure:isMinikube: "false"
