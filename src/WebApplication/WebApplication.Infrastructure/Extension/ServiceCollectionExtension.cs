@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using OpenTelemetry.Logs;
@@ -46,11 +47,11 @@ public static class ServiceCollectionExtension
         serviceCollection.AddHealthChecks().AddChecks();
 
         return serviceCollection
-            .AddRepository()
-            .AddTimeProvider(configuration.Get<TimeConfig>()!)
             .AddLogging()
             .AddDbContexts(configuration.Get<DatabaseConfig>()!)
             .AddCacheClient(configuration.Get<CacheConfig>()!, out var volatileRedisConnection, out var durableRedisConnection)
+            .AddRepository()
+            .AddTimeProvider(configuration.Get<TimeConfig>()!)
             .AddMemoryDatabase()
             .AddOpenTelemetryTracing(volatileRedisConnection, durableRedisConnection)
             .AddOpenTelemetryMetrics(configuration.Get<InstrumentationConfig>()!)
@@ -212,13 +213,19 @@ public static class ServiceCollectionExtension
     private static IServiceCollection AddTimeProvider(this IServiceCollection serviceCollection, TimeConfig config)
     {
         var serviceProvider = serviceCollection.BuildServiceProvider();
-        serviceCollection.AddScoped<TimeProvider>(_ =>
+        serviceCollection.AddScoped<ZonedFixedTimeProvider>(_ =>
         {
             var durableRedisProvider = serviceProvider.GetRequiredService<IDurableRedisProvider>();
             var environment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
-            return TimeProviderFactory.CreateTimeProvider<ZonedFixedTimeProvider>(environment, config, durableRedisProvider);
+            return TimeProviderFactory.CreateZonedFixedTimeProvider(environment, config, durableRedisProvider);
         });
-        
+
+        serviceCollection.TryAddSingleton<TimeProvider>(_ =>
+        {
+            var durableRedisProvider = serviceProvider.GetRequiredService<IDurableRedisProvider>();
+            var environment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+            return TimeProviderFactory.CreateTimeProvider<ZonedTimeProvider>(environment, config, durableRedisProvider);
+        });
         return serviceCollection;
     }
     
