@@ -24,4 +24,17 @@ public static class TimeProviderFactory
 
         return mutableTimeProvider;
     }
+    
+    public static ZonedFixedTimeProvider CreateZonedFixedTimeProvider(IWebHostEnvironment hostEnvironment, TimeConfig config, IDurableRedisProvider redisProvider)
+    {
+        var timeProvider = new ZonedFixedTimeProvider(config);
+
+        var redisValue = redisProvider.Connection.GetConnection().GetDatabase().StringGet("TimeProvider:DiffTicks");
+        if (redisValue.HasValue)
+        {
+            timeProvider.SetDiffTicks((long)redisValue);
+        }
+
+        return timeProvider;
+    }
 }
