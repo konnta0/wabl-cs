@@ -1,20 +1,13 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using Infrastructure.Pulumi.Extension;
 using Pulumi;
 using Pulumi.Crds.Pingcap.V1Alpha1;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
-using Pulumi.Kubernetes.Rbac.V1;
-using Pulumi.Kubernetes.Types.Inputs.Apps.V1;
 using Pulumi.Kubernetes.Types.Inputs.Core.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Types.Inputs.Pingcap.V1Alpha1;
-using Pulumi.Kubernetes.Types.Inputs.Rbac.V1;
 using Pulumi.Kubernetes.Yaml;
-using Deployment = Pulumi.Kubernetes.Apps.V1.Deployment;
 
 namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
 {
