@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  CONTAINER_REGISTRY: 192.168.105.27:32000
+  CONTAINER_REGISTRY: 192.168.112.5:32000
 
 jobs:
   build:

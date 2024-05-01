@@ -8,7 +8,7 @@ internal sealed class WebApi : ConsoleAppBase
 {
     private readonly Targets _target = new();
 
-    private const string DockerRegistryHost = "192.168.105.27:32000";
+    private const string DockerRegistryHost = "192.168.112.5:32000";
 
     [Command("build-image", "build web image")]
     public Task Build([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
