@@ -189,13 +189,17 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                     Image = "kanshiori/mysqlclient-arm64",
                     Cluster = new TidbInitializerSpecClusterArgs
                     {
-                        Name = "tidb-initializer",
-                        Namespace = input.Namespace.Metadata.Apply(static x => x.Name)
+                        Name = cluster.Metadata.Apply(x => x.Name),
+                        Namespace = cluster.Metadata.Apply(static x => x.Namespace)
                     },
-                    InitSql = "CREATE DATABASE app;",
+                    InitSql = "CREATE DATABASE IF NOT EXISTS app_db;\nCREATE USER IF NOT EXISTS 'developer' IDENTIFIED BY '3edc4rfv5';\nGRANT ALL PRIVILEGES ON app_db.* TO 'developer'@'%';",
                 }
+            }, new CustomResourceOptions
+            {
+                DeleteBeforeReplace = true,
             });
 
+            return new();
             var monitor = new TidbMonitor("tidb-monitor", new TidbMonitorArgs
             {
                 Metadata = new ObjectMetaArgs
