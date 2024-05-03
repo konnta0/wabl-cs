@@ -65,6 +65,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
             // https://github.com/canonical/microk8s/issues/1096#issuecomment-610264253
             // sudo vi /var/snap/microk8s/current/args/containerd-env
             // ulimit -n 1048576
+            // microk8s.stop; microk8s.start
 
             var cluster = new TidbCluster("tidb-cluster", new TidbClusterArgs
             {
@@ -177,7 +178,6 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                 DeleteBeforeReplace = true,
             });
 
-            return new();
             var initializer = new TidbInitializer("tidb-initializer", new TidbInitializerArgs
             {
                 Metadata = new ObjectMetaArgs
