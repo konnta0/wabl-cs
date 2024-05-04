@@ -2,13 +2,9 @@ name: Database/Update
 
 on:
   workflow_dispatch:
-    inputs:
-      environment:
-        type: environment
 
 jobs:
-  buildAndTest:
-    environment: ${{ github.event.inputs.environment }}
+  update-database:
     runs-on: arc-runner-set
     steps:
       - name: Checkout
