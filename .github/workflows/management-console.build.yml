@@ -1,0 +1,45 @@
+name: ManagementConsole/Build
+
+on:
+  workflow_dispatch:
+
+env:
+  CONTAINER_REGISTRY_HOST: 192.168.112.5:32000
+
+jobs:
+  build:
+    runs-on: arc-runner-set
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # see: https://github.com/actions/actions-runner-controller/issues/3130
+      - name: Install curl
+        run: sudo apt update -y && sudo apt install curl -y
+
+      - name: Setup dotnet 8.0.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"
+        # see: https://github.com/actions/setup-dotnet/issues/327#issuecomment-1277284874
+        env:
+          DOTNET_INSTALL_DIR: "./.dotnet"
+
+      - name: Get short sha
+        id: short_sha
+        run: |
+          sha=$(echo ${{ github.sha }} | cut -c1-7)
+          echo "sha=$sha" >> $GITHUB_OUTPUT
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          buildkitd-config-inline: |
+            [registry."${{ env.CONTAINER_REGISTRY_HOST }}"]
+              http = true
+              insecure = true
+
+      - name: Build and Push Image
+        working-directory: ./src/Tool.Make
+        run: |
+          dotnet run -- management-console push-image --tags ${{ steps.short_sha.outputs.sha }},latest
