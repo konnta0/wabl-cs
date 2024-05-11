@@ -11,14 +11,9 @@ using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
 {
-    public class TiDBComponent : IComponent<TiDBComponentInput, TiDBComponentOutput>
+    public class TiDBComponent(Config config) : IComponent<TiDBComponentInput, TiDBComponentOutput>
     {
-        private readonly Config _config;
-
-        public TiDBComponent(Config config)
-        {
-            _config = config;
-        }
+        private readonly Config _config = config;
 
         public TiDBComponentOutput Apply(TiDBComponentInput input)
         {
@@ -87,7 +82,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                         {
                             ["storage"] = Union<int, string>.FromT1("10Gi")
                         },
-                        Config = new InputMap<object>()
+                        Config = []
                     },
                     Tikv = new TidbClusterSpecTikvArgs
                     {
@@ -98,7 +93,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                         {
                             ["storage"] = Union<int, string>.FromT1("10Gi")
                         },
-                        Config = new InputMap<object>()
+                        Config = []
                     },
                     Tidb = new TidbClusterSpecTidbArgs
                     {
@@ -117,7 +112,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.TiDB
                         {
                             Type = "LoadBalancer"
                         },
-                        Config = new InputMap<object>()
+                        Config = []
                     },
                     // Discovery = new TidbClusterSpecDiscoveryArgs
                     // {
