@@ -34,5 +34,6 @@ config:
   Infrastructure:WebApplication:
     Deploy: true
     Namespace: webapp
+    CanaryTag: latest
     Tag: latest
   Infrastructure:isMinikube: "false"
