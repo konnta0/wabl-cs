@@ -9,22 +9,15 @@ using WebApplication.Presentation.Extension.ResponseDataFactory.Departments;
 namespace WebApplication.Presentation.Controllers;
 
 [ApiController]
-public class EmployeesController : WebApiController
+public class EmployeesController(ILogger<EmployeesController> logger, IUseCaseHandler useCaseHandler)
+    : WebApiController
 {
-    private readonly ILogger<EmployeesController> _logger;
-    private readonly IUseCaseHandler _useCaseHandler;
-    
-    public EmployeesController(ILogger<EmployeesController> logger, IUseCaseHandler useCaseHandler)
-    {
-        _logger = logger;
-        _useCaseHandler = useCaseHandler;
-    }
 
     [HttpGet("departments")]
     public async ValueTask<IActionResult> ListDepartments()
     {
         var listDepartmentsInput = new ListDepartmentsUseCaseInput();
-        var listDepartmentsOutput = await _useCaseHandler.InvokeAsync<ListDepartmentsUseCaseInput, ListDepartmentsUseCaseOutput>(listDepartmentsInput);
+        var listDepartmentsOutput = await useCaseHandler.InvokeAsync<ListDepartmentsUseCaseInput, ListDepartmentsUseCaseOutput>(listDepartmentsInput);
         var responseData = ListResponseFactory.Create(listDepartmentsOutput);
         return Ok(responseData);
     }
@@ -38,7 +31,7 @@ public class EmployeesController : WebApiController
             DepotNo = request.DepotNo,
             DeptName = request.DeptName
         };
-        var addDepartmentOutput = await _useCaseHandler.InvokeAsync<AddDepartmentsUseCaseInput, AddDepartmentsUseCaseOutput>(addDepartmentInput);
+        var addDepartmentOutput = await useCaseHandler.InvokeAsync<AddDepartmentsUseCaseInput, AddDepartmentsUseCaseOutput>(addDepartmentInput);
         var responseData = AddResponseFactory.Create(addDepartmentOutput);
         return Ok(responseData);
     }

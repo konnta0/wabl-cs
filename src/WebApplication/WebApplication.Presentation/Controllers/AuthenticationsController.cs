@@ -9,15 +9,8 @@ namespace WebApplication.Presentation.Controllers;
 
 
 [ApiController]
-public sealed class AuthenticationsController : WebApiController
+public sealed class AuthenticationsController(IUseCaseHandler useCaseHandler) : WebApiController
 {
-    private readonly IUseCaseHandler _useCaseHandler;
-
-    public AuthenticationsController(IUseCaseHandler useCaseHandler)
-    {
-        _useCaseHandler = useCaseHandler;
-    }
-
     [AllowAnonymous]
     [HttpPost("sign-in")]
     public ValueTask SignIn()
@@ -38,6 +31,6 @@ public sealed class AuthenticationsController : WebApiController
             UserName = request.UserName,
             Password = request.Password
         };
-        await _useCaseHandler.InvokeAsync<SignUpUseCaseInput, SignUpUseCaseOutput>(input, cancellationToken);
+        await useCaseHandler.InvokeAsync<SignUpUseCaseInput, SignUpUseCaseOutput>(input, cancellationToken);
     }
 }
