@@ -8,7 +8,7 @@ internal sealed class ManagementConsole : ConsoleAppBase
 {
     private readonly Targets _target = new();
 
-    private const string DockerRegistryHost = "192.168.112.5:32000";
+    private const string DockerRegistryHost = "192.168.116.3:32000";
 
     [Command("build-image", "build management consle image")]
     public Task Build([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
@@ -29,10 +29,10 @@ internal sealed class ManagementConsole : ConsoleAppBase
 
         return _target.RunWithoutExitingAsync(["build-and-push-image"]);
     }
-    
+
     [Command("deploy", "deploy management console")]
     public async Task Deploy(
-        [Option("s")] string stack, 
+        [Option("s")] string stack,
         [Option("t")] string? tag = "latest")
     {
         await $"pulumi config set --stack {stack} --cwd ../Infrastructure.Pulumi --path 'ManagementConsole.Tag' {tag}";
