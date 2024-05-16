@@ -2,7 +2,7 @@ namespace Tool.Make;
 
 /// <summary>
 /// Build and push management console image
-/// When you run these command in out of the kubenetes cluster and using the microk8s's internal registry, you need to set insecure-registries in /var/snap/microk8s/current/args/containerd-template.toml (or ~/.docker/daemon.json)
+/// When you run these command in out of the kubernetes cluster and using the microk8s's internal registry, you need to set insecure-registries in /var/snap/microk8s/current/args/containerd-template.toml (or ~/.docker/daemon.json)
 /// </summary>
 internal sealed class ManagementConsole : ConsoleAppBase
 {
@@ -19,7 +19,7 @@ internal sealed class ManagementConsole : ConsoleAppBase
         return _target.RunWithoutExitingAsync(["build-image"]);
     }
 
-    private string GetBuildTags(string host, string[] tags) => string.Join(" ", tags.Select(x => $"-t {host}/webapp/management-console:{x}"));
+    private string GetBuildTags(string host, string[] tags) => string.Join(" ", tags.Select(x => $"-t {host}/tool/management-console:{x}"));
 
     [Command("push-image", "push management console image")]
     public Task Push([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
