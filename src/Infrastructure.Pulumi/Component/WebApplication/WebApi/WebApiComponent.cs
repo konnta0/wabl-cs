@@ -46,7 +46,7 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
                 Metadata = new ObjectMetaArgs
                 {
                     Name = "web-api-env-secret",
-                    Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                    Namespace = input.Namespace.Metadata.Apply(static x => x.Name)
                 },
                 Type = "Opaque",
                 StringData = envInputMap
@@ -189,6 +189,7 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
                         Update = TimeSpan.FromMinutes(2)
                     }
                 });
+
             var service = new Service("web-application-web-api-service", new ServiceArgs
             {
                 Metadata = new ObjectMetaArgs
@@ -198,8 +199,8 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
                 },
                 Spec = new ServiceSpecArgs
                 {
-                    Ports = new InputList<ServicePortArgs>
-                    {
+                    Ports =
+                    [
                         new ServicePortArgs
                         {
                             Name = "http",
@@ -207,7 +208,7 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
                             Protocol = "TCP",
                             TargetPort = 80
                         }
-                    },
+                    ],
                     Selector = deployment.Spec.Apply(x => x.Template.Metadata.Labels)
                 }
             });
@@ -226,7 +227,7 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
                         IngressClassName = "nginx",
                         Rules = new List<IngressRuleArgs>
                         {
-                            new IngressRuleArgs
+                            new()
                             {
                                 Host = "api.webapp.test",
                                 Http = new HTTPIngressRuleValueArgs
