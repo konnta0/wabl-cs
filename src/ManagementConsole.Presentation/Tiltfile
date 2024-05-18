@@ -4,7 +4,7 @@
 load('ext://restart_process', 'docker_build_with_restart')
 
 docker_build_with_restart(
-    'core.harbor.cr.test/tool/management-console:latest',
+    '192.168.116.3:32000/tool/management-console:latest',
     '../../../',
     entrypoint='entrypoint.sh',
     dockerfile='../../../Dockerfile.ManagementConsole',
@@ -14,7 +14,7 @@ docker_build_with_restart(
 )
 
 settings = read_json('tilt_option.json', default={})
-default_registry(settings.get('default_registry', 'core.harbor.cr.test/tool'))
+default_registry(settings.get('default_registry', '192.168.116.3:32000/tool'))
 
 k8s_yaml('deployment.local.yaml')
 k8s_resource('management-console', port_forwards=['8080:80', '5033:5033'])
