@@ -24,6 +24,8 @@ internal sealed class Setup : ConsoleAppBase
         });
 
         _target.Add("microk8s-notice", static () => Console.WriteLine("Please run `microk8s kubectl config view --raw >> ~/.kube/config`"));
+
+        _target.Add("k3d-install", static () => RunAsync("brew", "install k3d"));
         
         _target.Add("pulumi-curl", static () => RunAsync("curl", "-fsSL https://get.pulumi.com | sh"));
         _target.Add("pulumi-version", DependsOn("pulumi-curl"), static () => RunAsync("pulumi", "version"));
@@ -40,6 +42,12 @@ internal sealed class Setup : ConsoleAppBase
         await _target.RunWithoutExitingAsync(["microk8s-notice"]);
     }
 
+    [Command("k3d")]
+    public async ValueTask K3d()
+    {
+        await _target.RunWithoutExitingAsync(["k3d-install"]);
+    }
+    
     [Command("pulumi")]
     public Task Pulumi() => _target.RunWithoutExitingAsync(["pulumi-crd2pulumi"]);
 
