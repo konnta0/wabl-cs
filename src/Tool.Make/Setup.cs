@@ -33,10 +33,10 @@ internal sealed class Setup : ConsoleAppBase
     }
 
     [Command("minikube")]
-    public Task Minikube() => _target.RunWithoutExitingAsync(["minikube-remove"]);
+    public async ValueTask Minikube() => await _target.RunWithoutExitingAsync(["minikube-remove"]);
 
     [Command("microk8s")]
-    public async Task Microk8s()
+    public async ValueTask Microk8s()
     {
         await _target.RunWithoutExitingAsync(["microk8s-enable-plugins"]);
         await _target.RunWithoutExitingAsync(["microk8s-notice"]);
@@ -49,8 +49,8 @@ internal sealed class Setup : ConsoleAppBase
     }
     
     [Command("pulumi")]
-    public Task Pulumi() => _target.RunWithoutExitingAsync(["pulumi-crd2pulumi"]);
+    public async ValueTask Pulumi() => await _target.RunWithoutExitingAsync(["pulumi-crd2pulumi"]);
 
     [Command("all")]
-    public Task All() => _target.RunWithoutExitingAsync(["minikube-remove", "pulumi-crd2pulumi"]);
+    public async ValueTask All() => await _target.RunWithoutExitingAsync(["minikube-remove", "pulumi-crd2pulumi"]);
 }
