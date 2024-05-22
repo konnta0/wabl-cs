@@ -1,3 +1,5 @@
+using Tool.Make.Constant;
+
 namespace Tool.Make;
 
 /// <summary>
@@ -7,11 +9,9 @@ namespace Tool.Make;
 internal sealed class ManagementConsole : ConsoleAppBase
 {
     private readonly Targets _target = new();
-
-    private const string DockerRegistryHost = "192.168.116.3:32000";
-
+    
     [Command("build-image", "build management consle image")]
-    public Task Build([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
+    public Task Build([Option("t")] string[]? tags = null, [Option("h")] string host = Define.ContainerRegistryHost)
     {
         tags ??= ["latest"];
         _target.Add("build-image", () => RunAsync("docker", $"buildx build {GetBuildTags(host, tags)} -f ../../Dockerfile.ManagementConsole ../../"));
@@ -22,7 +22,7 @@ internal sealed class ManagementConsole : ConsoleAppBase
     private string GetBuildTags(string host, string[] tags) => string.Join(" ", tags.Select(x => $"-t {host}/tool/management-console:{x}"));
 
     [Command("push-image", "push management console image")]
-    public Task Push([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
+    public Task Push([Option("t")] string[]? tags = null, [Option("h")] string host = Define.ContainerRegistryHost)
     {
         tags ??= ["latest"];
         _target.Add("build-and-push-image", () => RunAsync("docker", $"buildx build {GetBuildTags(host, tags)} -f ../../Dockerfile.ManagementConsole ../../ --push"));

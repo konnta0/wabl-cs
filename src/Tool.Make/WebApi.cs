@@ -1,3 +1,5 @@
+using Tool.Make.Constant;
+
 namespace Tool.Make;
 
 /// <summary>
@@ -8,10 +10,8 @@ internal sealed class WebApi : ConsoleAppBase
 {
     private readonly Targets _target = new();
 
-    private const string DockerRegistryHost = "192.168.116.3:32000";
-
     [Command("build-image", "build web image")]
-    public Task Build([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
+    public Task Build([Option("t")] string[]? tags = null, [Option("h")] string host = Define.ContainerRegistryHost)
     {
         tags ??= ["latest"];
         _target.Add("build-image", () => RunAsync("docker", $"buildx build {GetBuildTags(host, tags)} ../../"));
@@ -22,7 +22,7 @@ internal sealed class WebApi : ConsoleAppBase
     private string GetBuildTags(string host, string[] tags) => string.Join(" ", tags.Select(x => $"-t {host}/webapp/web-api:{x}"));
 
     [Command("push-image", "push web image")]
-    public Task Push([Option("t")] string[]? tags = null, [Option("h")] string host = DockerRegistryHost)
+    public Task Push([Option("t")] string[]? tags = null, [Option("h")] string host = Define.ContainerRegistryHost)
     {
         tags ??= ["latest"];
         _target.Add("build-and-push-image", () => RunAsync("docker", $"buildx build {GetBuildTags(host, tags)} ../../ --push"));
