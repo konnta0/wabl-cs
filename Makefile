@@ -226,11 +226,11 @@ setup-local: install-minikube install-pulumi
 ## Container image(app)
 .PHONY: build-image # build image
 build-image:
-	docker build -t 192.168.116.3:32000/webapp/web-api:latest .
+	docker build -t k3d-wabl-cs-registry:58063/webapp/web-api:latest .
 
 .PHONY: push-image # build and push image
 push-image: build-image
-	docker image push 192.168.116.3:32000/webapp/web-api:latest
+	docker image push k3d-wabl-cs-registry:58063/webapp/web-api:latest
 
 ## Container image(management console)
 .PHONY: build-image-management-console # build image
