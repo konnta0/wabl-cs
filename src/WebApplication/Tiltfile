@@ -4,7 +4,7 @@
 load('ext://restart_process', 'docker_build_with_restart')
 
 docker_build_with_restart(
-    '192.168.116.3:32000/webapp/web-api:latest',
+    'k3d-wabl-cs-registry:58063/webapp/web-api:latest',
     '../../',
     entrypoint='entrypoint.sh',
     dockerfile='../../Dockerfile',
@@ -14,7 +14,7 @@ docker_build_with_restart(
 )
 
 settings = read_json('tilt_option.json', default={})
-default_registry(settings.get('default_registry', '192.168.116.3:32000/webapp'))
+default_registry(settings.get('default_registry', 'k3d-wabl-cs-registry:58063/webapp'))
 
 k8s_yaml('deployment.local.yaml')
 k8s_resource('web-api', port_forwards=['8080:80', '5022:5022'])
