@@ -11,9 +11,7 @@ public class List : IApi<ListRequest, ListResponse>
 }
 
 [MessagePackObject]
-public class ListRequest : IRequestData
-{
-}
+public class ListRequest : IRequestData;
 
 [MessagePackObject]
 public class ListResponse : IResponseData
