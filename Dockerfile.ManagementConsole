@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:8.0.100-1-alpine3.18 AS workspace
+FROM mcr.microsoft.com/dotnet/sdk:8.0.203-alpine3.19 AS workspace
 WORKDIR /work
 
 FROM workspace AS builder
