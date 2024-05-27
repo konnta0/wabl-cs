@@ -2,12 +2,12 @@ using MessagePack;
 
 namespace WebApplication.Domain.RestApi.Departments;
 
-public class Add : IApi<ListRequest, ListResponse>
+public class Add : IApi<AddRequest, AddResponse>
 {
     public HttpMethod HttpMethod => HttpMethod.Post;
     public string Endpoint => "departments/add";
-    public ListRequest? RequestData { get; init; }
-    public ListResponse? ResponseData { get; init; }
+    public AddRequest? RequestData { get; init; }
+    public AddResponse? ResponseData { get; init; }
 }
 
 [MessagePackObject]
