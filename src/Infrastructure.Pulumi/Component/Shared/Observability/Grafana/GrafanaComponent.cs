@@ -235,7 +235,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Grafana
                 },
                 Spec = new IngressSpecArgs
                 {
-                    IngressClassName = "nginx",
+                    IngressClassName = "traefik",
                     Rules = new List<IngressRuleArgs>
                     {
                         new()

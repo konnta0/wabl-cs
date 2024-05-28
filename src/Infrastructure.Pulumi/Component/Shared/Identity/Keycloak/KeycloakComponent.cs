@@ -155,7 +155,7 @@ public sealed class KeycloakComponent : IComponent<KeycloakComponentInput, Keycl
                 },
                 Spec = new IngressSpecArgs
                 {
-                    IngressClassName = "nginx",
+                    IngressClassName = "traefik",
                     Rules = new List<IngressRuleArgs>
                     {
                         new()
