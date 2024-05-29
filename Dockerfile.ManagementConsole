@@ -11,9 +11,8 @@ RUN dotnet restore ./src/ManagementConsole.Presentation/ManagementConsole.Presen
 RUN dotnet publish ./src/ManagementConsole.Presentation/ManagementConsole.Presentation.csproj -c Release -o out --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0.3-alpine3.19 AS runtime
-RUN apk --no-cache add tzdata && \
-    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
-    apk del tzdata
+ENV TZ=Asia/Tokyo
+RUN  apk --no-cache add tzdata
 
 WORKDIR /app
 COPY --from=builder /build/out .
