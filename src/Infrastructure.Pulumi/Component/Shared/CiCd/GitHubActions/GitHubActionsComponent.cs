@@ -40,7 +40,8 @@ public sealed class GitHubActionsComponent(Config config)
             {
                 ["namespace"] = input.Namespace.Metadata.Apply(static x => x.Name),
                 ["name"] = controller.Name.Apply(static x => x + "-gha-rs-controller")
-            }
+            },
+            ["minRunners"] = 1
         };
         var scaleSet = new Release("gha-runner-scale-set", new ReleaseArgs
         {
@@ -49,7 +50,9 @@ public sealed class GitHubActionsComponent(Config config)
             Chart = "oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set",
             Values = values,
             Namespace = input.Namespace.Metadata.Apply(static x => x.Name),
-            RecreatePods = true
+            RecreatePods = true,
+            Atomic = true,
+            Replace = true
         }, new CustomResourceOptions
         {
             DependsOn = controller
