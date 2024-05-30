@@ -13,18 +13,10 @@ using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
 namespace Infrastructure.Pulumi.Component.Shared.Observability.Grafana
 {
-    public class GrafanaComponent : IComponent<GrafanaComponentInput, GrafanaComponentOutput>
+    public class GrafanaComponent(ILogger<GrafanaComponent> logger, Config config)
+        : IComponent<GrafanaComponentInput, GrafanaComponentOutput>
     {
-
-        private readonly ILogger<GrafanaComponent> _logger;
-        private readonly Config _config;
-
-        public GrafanaComponent(ILogger<GrafanaComponent> logger, Config config)
-        {
-            _logger = logger;
-            _config = config;
-        }
-
+        
         public GrafanaComponentOutput Apply(GrafanaComponentInput input)
         {
             string testDashboardJsonString;
@@ -79,7 +71,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Grafana
                             ["label"] = "grafana_dashboard",
                             ["labelValue"] = bool.TrueString.ToLower(),
                             ["searchNamespace"] =
-                                string.Join(",", namespaceName, _config.GetWebApplicationConfig().Namespace)
+                                string.Join(",", namespaceName, config.GetWebApplicationConfig().Namespace)
                         }
                     },
                     ["dashboardProviders"] = new Dictionary<string, object>
