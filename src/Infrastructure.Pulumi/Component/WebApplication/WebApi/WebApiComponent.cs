@@ -213,18 +213,18 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
                 }
             });
 
-            var ingress = new Ingress("web-application-wen-api-ingress",
+            var ingress = new Ingress("web-application-web-api-ingress",
                 new IngressArgs
                 {
                     ApiVersion = "networking.k8s.io/v1",
                     Metadata = new ObjectMetaArgs
                     {
                         Name = "web-api-ingress",
-                        Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+                        Namespace = input.Namespace.Metadata.Apply(x => x.Name),
                     },
                     Spec = new IngressSpecArgs
                     {
-                        IngressClassName = "nginx",
+                        IngressClassName = "traefik",
                         Rules = new List<IngressRuleArgs>
                         {
                             new()
