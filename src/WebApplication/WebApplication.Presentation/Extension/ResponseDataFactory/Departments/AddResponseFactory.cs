@@ -3,7 +3,7 @@ using WebApplication.Domain.RestApi.Departments;
 
 namespace WebApplication.Presentation.Extension.ResponseDataFactory.Departments;
 
-public class AddResponseFactory
+internal class AddResponseFactory : IResponseDataFactory<AddResponse, AddDepartmentsUseCaseOutput>
 {
     public static AddResponse Create(AddDepartmentsUseCaseOutput useCaseOutput)
     {
@@ -12,3 +12,4 @@ public class AddResponseFactory
         };
     }
 }
+

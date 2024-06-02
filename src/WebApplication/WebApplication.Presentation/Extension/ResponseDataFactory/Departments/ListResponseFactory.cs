@@ -4,7 +4,7 @@ using WebApplication.Domain.RestApi.Departments.Object;
 
 namespace WebApplication.Presentation.Extension.ResponseDataFactory.Departments;
 
-internal static class ListResponseFactory
+internal class ListResponseFactory : IResponseDataFactory<ListResponse, ListDepartmentsUseCaseOutput>
 {
     public static ListResponse Create(ListDepartmentsUseCaseOutput useCaseOutput)
     {

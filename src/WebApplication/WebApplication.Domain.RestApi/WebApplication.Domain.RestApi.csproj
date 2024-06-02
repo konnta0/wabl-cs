@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="HelthCheck" />
       <Folder Include="Home" />
     </ItemGroup>
 
