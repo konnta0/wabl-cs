@@ -41,7 +41,72 @@ public sealed class GitHubActionsComponent(Config config)
                 ["namespace"] = input.Namespace.Metadata.Apply(static x => x.Name),
                 ["name"] = controller.Name.Apply(static x => x + "-gha-rs-controller")
             },
-            ["minRunners"] = 1
+            ["minRunners"] = 1,
+            // ["template"] = new InputMap<object>
+            // {
+            //     ["spec"] = new InputMap<object>
+            //     {
+            //         {
+            //             "containers", new InputList<InputMap<object>>
+            //             {
+            //                 new InputMap<object>
+            //                 {
+            //                     { "name", "dind" },
+            //                     { "image", "docker:dind" },
+            //                     {
+            //                         "args", new InputList<string>
+            //                         {
+            //                             "dockerd",
+            //                             "-host=unix:///run/docker/docker.sock",
+            //                             "--group=$(DOCKER_GROUP_GID)"
+            //                         }
+            //                     },
+            //                     {
+            //                         "env", new InputList<InputMap<object>>
+            //                         {
+            //                             new InputMap<object>
+            //                             {
+            //                                 { "name", "DOCKERD_ROOTLESS_ROOTLESSKIT_MTU" },
+            //                                 { "value", "1450" },
+            //                             },
+            //                             new InputMap<object>
+            //                             {
+            //                                 { "name", "DOCKER_GROUP_GID" },
+            //                                 { "value", "123" },
+            //                             }
+            //                         }
+            //                     },
+            //                     {
+            //                         "securityContext", new InputMap<object>
+            //                         {
+            //                             { "privileged", true }
+            //                         }
+            //                     },
+            //                     {
+            //                         "volumeMounts", new InputList<InputMap<object>>
+            //                         {
+            //                             new InputMap<object>
+            //                             {
+            //                                 { "name", "work" },
+            //                                 { "mountPath", "/home/runner/_work" }
+            //                             },
+            //                             new InputMap<object>
+            //                             {
+            //                                 { "name", "dind-sock" },
+            //                                 { "emptyDir", "/run/docker" }
+            //                             },
+            //                             new InputMap<object>
+            //                             {
+            //                                 { "name", "dind-externals" },
+            //                                 { "emptyDir", "/home/runner/externals" }
+            //                             },
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
         };
         var scaleSet = new Release("gha-runner-scale-set", new ReleaseArgs
         {
