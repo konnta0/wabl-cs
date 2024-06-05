@@ -6,7 +6,6 @@ using Pulumi.Kubernetes.Types.Inputs.Certmanager.V1;
 using Pulumi.Kubernetes.Types.Inputs.Helm.V3;
 using Pulumi.Kubernetes.Types.Inputs.Meta.V1;
 using Pulumi.Kubernetes.Yaml;
-using Pulumi.KubernetesCertManager;
 
 namespace Infrastructure.Pulumi.Component.Shared.Certificate.CertManager
 {
