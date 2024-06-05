@@ -42,4 +42,4 @@ jobs:
       - name: Build and Push Image
         working-directory: ./src/Tool.Make
         run: |
-          dotnet run -- management-console push-image --tags ${{ steps.short_sha.outputs.sha }},latest
+          dotnet run -- management-console push-image --tags ${{ steps.short_sha.outputs.sha }},latest --host ${{ env.CONTAINER_REGISTRY_HOST }}
