@@ -13,7 +13,7 @@ using Pulumi.Kubernetes.Types.Inputs.Networking.V1;
 
 namespace Infrastructure.Pulumi.Component.Shared.Observability.Grafana
 {
-    public class GrafanaComponent(ILogger<GrafanaComponent> logger, Config config)
+    public class GrafanaComponent(Config config)
         : IComponent<GrafanaComponentInput, GrafanaComponentOutput>
     {
         
@@ -43,12 +43,6 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Grafana
             });
 
             // ref: https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
-            var namespaceName = string.Empty; 
-            input.Namespace.Metadata.Apply(x =>
-            {
-                namespaceName = x.Name;
-                return x;
-            });
             var grafana = new Release("grafana", new ReleaseArgs
             {
                 Name = "grafana",
@@ -71,7 +65,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Grafana
                             ["label"] = "grafana_dashboard",
                             ["labelValue"] = bool.TrueString.ToLower(),
                             ["searchNamespace"] =
-                                string.Join(",", namespaceName, config.GetWebApplicationConfig().Namespace)
+                                string.Join(",", "shared", config.GetWebApplicationConfig().Namespace)
                         }
                     },
                     ["dashboardProviders"] = new Dictionary<string, object>
