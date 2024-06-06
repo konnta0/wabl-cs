@@ -37,7 +37,6 @@ jobs:
           buildkitd-config-inline: |
             [registry."${{ env.CONTAINER_REGISTRY_HOST }}"]
               http = true
-              insecure = true
 
       - name: Build and Push Image
         working-directory: ./src/Tool.Make
