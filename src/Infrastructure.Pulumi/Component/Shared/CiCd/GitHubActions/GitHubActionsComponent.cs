@@ -34,7 +34,7 @@ public sealed class GitHubActionsComponent(Config config)
             },
             ["containerMode"] = new Dictionary<string, object>
             {
-                ["type"] = "dind"
+                ["type"] = ""
             },
             ["controllerServiceAccount"] = new Dictionary<string, object>
             {
@@ -42,71 +42,149 @@ public sealed class GitHubActionsComponent(Config config)
                 ["name"] = controller.Name.Apply(static x => x + "-gha-rs-controller")
             },
             ["minRunners"] = 1,
-            // ["template"] = new InputMap<object>
-            // {
-            //     ["spec"] = new InputMap<object>
-            //     {
-            //         {
-            //             "containers", new InputList<InputMap<object>>
-            //             {
-            //                 new InputMap<object>
-            //                 {
-            //                     { "name", "dind" },
-            //                     { "image", "docker:dind" },
-            //                     {
-            //                         "args", new InputList<string>
-            //                         {
-            //                             "dockerd",
-            //                             "-host=unix:///run/docker/docker.sock",
-            //                             "--group=$(DOCKER_GROUP_GID)"
-            //                         }
-            //                     },
-            //                     {
-            //                         "env", new InputList<InputMap<object>>
-            //                         {
-            //                             new InputMap<object>
-            //                             {
-            //                                 { "name", "DOCKERD_ROOTLESS_ROOTLESSKIT_MTU" },
-            //                                 { "value", "1450" },
-            //                             },
-            //                             new InputMap<object>
-            //                             {
-            //                                 { "name", "DOCKER_GROUP_GID" },
-            //                                 { "value", "123" },
-            //                             }
-            //                         }
-            //                     },
-            //                     {
-            //                         "securityContext", new InputMap<object>
-            //                         {
-            //                             { "privileged", true }
-            //                         }
-            //                     },
-            //                     {
-            //                         "volumeMounts", new InputList<InputMap<object>>
-            //                         {
-            //                             new InputMap<object>
-            //                             {
-            //                                 { "name", "work" },
-            //                                 { "mountPath", "/home/runner/_work" }
-            //                             },
-            //                             new InputMap<object>
-            //                             {
-            //                                 { "name", "dind-sock" },
-            //                                 { "emptyDir", "/run/docker" }
-            //                             },
-            //                             new InputMap<object>
-            //                             {
-            //                                 { "name", "dind-externals" },
-            //                                 { "emptyDir", "/home/runner/externals" }
-            //                             },
-            //                         }
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
+            ["template"] = new InputMap<object>
+            {
+                ["spec"] = new InputMap<object>
+                {
+                    {
+                        "initContainers", new InputList<InputMap<object>>
+                        {
+                            new InputMap<object>
+                            {
+                                { "name", "init-dind-externals" },
+                                { "image", "ghcr.io/actions/actions-runner:latest" },
+                                {
+                                    "command",
+                                    new InputList<string>
+                                        { "cp", "-r", "-v", "/home/runner/externals/.", "/home/runner/tmpDir/" }
+                                },
+                                {
+                                    "volumeMounts", new InputList<InputMap<object>>
+                                    {
+                                        new InputMap<object>
+                                        {
+                                            { "name", "dind-externals" },
+                                            { "mountPath", "/home/runner/tmpDir" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "containers", new InputList<InputMap<object>>
+                        {
+                            new InputMap<object>
+                            {
+                                { "name", "runner" },
+                                { "image", "ghcr.io/actions/actions-runner:latest" },
+                                { "command", new InputList<string> { "/home/runner/run.sh" }  },
+                                {
+                                    "env", new InputList<InputMap<object>>
+                                    {
+                                        new InputMap<object>
+                                        {
+                                            { "name", "DOCKER_HOST" },
+                                            { "value", "unix:///run/docker/docker.sock" }
+                                        }
+                                    }
+                                },
+                                {
+                                    "volumeMounts", new InputList<InputMap<object>>
+                                    {
+                                        new InputMap<object>
+                                        {
+                                            { "name", "work" },
+                                            { "mountPath", "/home/runner/_work" }
+                                        },
+                                        new InputMap<object>
+                                        {
+                                            { "name", "dind-sock" },
+                                            { "mountPath", "/run/docker" },
+                                            { "readOnly", true }
+                                        }
+                                    }
+                                }
+                            },
+                            new InputMap<object>
+                            {
+                                { "name", "dind" },
+                                { "image", "docker:dind" },
+                                {
+                                    "args", new InputList<string>
+                                    {
+                                        "dockerd",
+                                        "--host=unix:///run/docker/docker.sock",
+                                        "--group=$(DOCKER_GROUP_GID)",
+                                        "--mtu=$(DOCKERD_ROOTLESS_ROOTLESSKIT_MTU)"
+                                    }
+                                },
+                                {
+                                    "env", new InputList<InputMap<object>>
+                                    {
+                                        new InputMap<object>
+                                        {
+                                            { "name", "DOCKERD_ROOTLESS_ROOTLESSKIT_MTU" },
+                                            { "value", "1450" },
+                                        },
+                                        new InputMap<object>
+                                        {
+                                            { "name", "DOCKER_GROUP_GID" },
+                                            { "value", "123" },
+                                        }
+                                    }
+                                },
+                                {
+                                    "securityContext", new InputMap<object>
+                                    {
+                                        { "privileged", true }
+                                    }
+                                },
+                                {
+                                    "volumeMounts", new InputList<InputMap<object>>
+                                    {
+                                        new InputMap<object>
+                                        {
+                                            { "name", "work" },
+                                            { "mountPath", "/home/runner/_work" }
+                                        },
+                                        new InputMap<object>
+                                        {
+                                            { "name", "dind-sock" },
+                                            { "mountPath", "/run/docker" }
+                                        },
+                                        new InputMap<object>
+                                        {
+                                            { "name", "dind-externals" },
+                                            { "mountPath", "/home/runner/externals" }
+                                        },
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "volumes", new InputList<InputMap<object>>
+                        {
+                            new InputMap<object>
+                            {
+                                { "name", "work" },
+                                { "emptyDir", new Dictionary<string, string>() }
+                            },
+                            new InputMap<object>
+                            {
+                                { "name", "dind-sock" },
+                                { "emptyDir", new Dictionary<string, string>() }
+                            },
+                            new InputMap<object>
+                            {
+                                { "name", "dind-externals" },
+                                { "emptyDir", new Dictionary<string, string>() }
+                            }
+                        }
+                    }
+                }
+            }
         };
         var scaleSet = new Release("gha-runner-scale-set", new ReleaseArgs
         {
