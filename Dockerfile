@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:8.0.100-1-alpine3.18 AS workspace
+FROM mcr.microsoft.com/dotnet/sdk:8.0.203-alpine3.19 AS workspace
 WORKDIR /work
 
 FROM workspace AS builder
@@ -18,7 +18,10 @@ COPY ./jetbrains_debugger_agent_20230319.24.0 /work/jetbrains_debugger_agent
 #############################
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0.0-alpine3.18 AS runtime
-RUN ln -sf /usr/share/zoneinfo/posix/Japan /etc/localtime
+RUN apk --no-cache add tzdata && \
+    cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    apk del tzdata
+
 RUN apk add bash
 WORKDIR /app
 COPY --from=builder /build/out .
