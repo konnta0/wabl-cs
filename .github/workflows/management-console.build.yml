@@ -39,9 +39,7 @@ jobs:
               http = true
       - name: debug
         run: |
-          docker pull nginx:latest
-          docker tag nginx:latest ${{ env.CONTAINER_REGISTRY_HOST }}/nginx:latest
-          docker push ${{ env.CONTAINER_REGISTRY_HOST }}/nginx:latest
+          docker buildx build -t k3d-wabl-cs-registry:58063/tool/magement-console:latest -f Dockerfile.ManagementConsole --push .
 
 
       - name: Build and Push Image
