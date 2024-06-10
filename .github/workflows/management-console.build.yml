@@ -37,6 +37,12 @@ jobs:
           buildkitd-config-inline: |
             [registry."${{ env.CONTAINER_REGISTRY_HOST }}"]
               http = true
+      - name: debug
+        run: |
+          docker pull nginx:latest
+          docker tag nginx:latest ${{ env.CONTAINER_REGISTRY_HOST }}/nginx:latest
+          docker push ${{ env.CONTAINER_REGISTRY_HOST }}/nginx:latest
+
 
       - name: Build and Push Image
         working-directory: ./src/Tool.Make
