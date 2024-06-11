@@ -101,94 +101,94 @@ namespace Infrastructure.Pulumi.Component.WebApplication.WebApi
                     }
                 }, new CustomResourceOptions { DependsOn = { input.OpenTelemetryCrd } });
 
-            var canaryDeployment = new Deployment("web-application-web-api-canary-deployment",
-                new DeploymentArgs
-                {
-                    Metadata = new ObjectMetaArgs
-                    {
-                        Name = "web-api-canary",
-                        Labels =
-                        {
-                            { "app", "web" }
-                        },
-                        Namespace = input.Namespace.Metadata.Apply(x => x.Name)
-                    },
-                    Spec = new DeploymentSpecArgs
-                    {
-                        Replicas = 1,
-                        Selector = new LabelSelectorArgs
-                        {
-                            MatchLabels =
-                            {
-                                { "app", "web" }
-                            }
-                        },
-                        Template = new PodTemplateSpecArgs
-                        {
-                            Metadata = new ObjectMetaArgs
-                            {
-                                Labels =
-                                {
-                                    { "app", "web" }
-                                },
-                                Annotations =
-                                {
-                                    { "sidecar.opentelemetry.io/inject", bool.TrueString },
-                                    { "instrumentation.opentelemetry.io/inject-dotnet", bool.FalseString }
-                                }
-                            },
-                            Spec = new PodSpecArgs
-                            {
-                                Containers =
-                                {
-                                    new ContainerArgs
-                                    {
-                                        Image = $"{config.GetContainerRegistryConfig().Host}/webapp/web-api:{input.CanaryTag}",
-                                        Name = "web-api-canary",
-                                        Ports =
-                                        {
-                                            new ContainerPortArgs
-                                            {
-                                                ContainerPortValue = 80
-                                            }
-                                        },
-                                        EnvFrom = new EnvFromSourceArgs
-                                        {
-                                            SecretRef = new SecretEnvSourceArgs
-                                            {
-                                                Name = secret.Metadata.Apply(x => x.Name)
-                                            }
-                                        },
-                                        Resources = new ResourceRequirementsArgs
-                                        {
-                                            Requests =
-                                            {
-                                                { "cpu", "200m" }
-                                            }
-                                        },
-                                        LivenessProbe = new ProbeArgs
-                                        {
-                                            HttpGet = new HTTPGetActionArgs
-                                            {
-                                                Path = "healthz",
-                                                Port = 80
-                                            },
-                                            InitialDelaySeconds = 3,
-                                            PeriodSeconds = 10
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }, new CustomResourceOptions
-                {
-                    CustomTimeouts = new CustomTimeouts
-                    {
-                        Create = TimeSpan.FromMinutes(2),
-                        Update = TimeSpan.FromMinutes(2)
-                    }
-                });
+            // var canaryDeployment = new Deployment("web-application-web-api-canary-deployment",
+            //     new DeploymentArgs
+            //     {
+            //         Metadata = new ObjectMetaArgs
+            //         {
+            //             Name = "web-api-canary",
+            //             Labels =
+            //             {
+            //                 { "app", "web-canary" }
+            //             },
+            //             Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+            //         },
+            //         Spec = new DeploymentSpecArgs
+            //         {
+            //             Replicas = 1,
+            //             Selector = new LabelSelectorArgs
+            //             {
+            //                 MatchLabels =
+            //                 {
+            //                     { "app", "web-canary" }
+            //                 }
+            //             },
+            //             Template = new PodTemplateSpecArgs
+            //             {
+            //                 Metadata = new ObjectMetaArgs
+            //                 {
+            //                     Labels =
+            //                     {
+            //                         { "app", "web-canary" }
+            //                     },
+            //                     Annotations =
+            //                     {
+            //                         { "sidecar.opentelemetry.io/inject", bool.TrueString },
+            //                         { "instrumentation.opentelemetry.io/inject-dotnet", bool.FalseString }
+            //                     }
+            //                 },
+            //                 Spec = new PodSpecArgs
+            //                 {
+            //                     Containers =
+            //                     {
+            //                         new ContainerArgs
+            //                         {
+            //                             Image = $"{config.GetContainerRegistryConfig().Host}/webapp/web-api:{input.CanaryTag}",
+            //                             Name = "web-api-canary",
+            //                             Ports =
+            //                             {
+            //                                 new ContainerPortArgs
+            //                                 {
+            //                                     ContainerPortValue = 80
+            //                                 }
+            //                             },
+            //                             EnvFrom = new EnvFromSourceArgs
+            //                             {
+            //                                 SecretRef = new SecretEnvSourceArgs
+            //                                 {
+            //                                     Name = secret.Metadata.Apply(x => x.Name)
+            //                                 }
+            //                             },
+            //                             Resources = new ResourceRequirementsArgs
+            //                             {
+            //                                 Requests =
+            //                                 {
+            //                                     { "cpu", "200m" }
+            //                                 }
+            //                             },
+            //                             LivenessProbe = new ProbeArgs
+            //                             {
+            //                                 HttpGet = new HTTPGetActionArgs
+            //                                 {
+            //                                     Path = "healthz",
+            //                                     Port = 80
+            //                                 },
+            //                                 InitialDelaySeconds = 3,
+            //                                 PeriodSeconds = 10
+            //                             }
+            //                         }
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }, new CustomResourceOptions
+            //     {
+            //         CustomTimeouts = new CustomTimeouts
+            //         {
+            //             Create = TimeSpan.FromMinutes(2),
+            //             Update = TimeSpan.FromMinutes(2)
+            //         }
+            //     });
 
             var deployment = new Deployment("web-application-web-api-deployment",
                 new DeploymentArgs
