@@ -37,9 +37,9 @@ jobs:
           buildkitd-config-inline: |
             [registry."${{ env.CONTAINER_REGISTRY_HOST }}"]
               http = true
-      - name: debug
-        run: |
-          docker buildx build -t k3d-wabl-cs-registry:58063/tool/magement-console:latest -f Dockerfile.ManagementConsole --push .
+      # - name: debug
+      #   run: |
+      #     docker buildx build -t k3d-wabl-cs-registry:58063/tool/magement-console:latest -f Dockerfile.ManagementConsole --push .
 
 
       - name: Build and Push Image
