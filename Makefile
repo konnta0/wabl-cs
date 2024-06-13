@@ -235,11 +235,11 @@ push-image: build-image
 ## Container image(management console)
 .PHONY: build-image-management-console # build image
 build-image-management-console:
-	docker build -t core.harbor.cr.test/tool/management-console:latest -f ./Dockerfile.ManagementConsole .
+	docker build -t k3d-wabl-cs-registry:58063/tool/management-console:latest -f ./Dockerfile.ManagementConsole .
 
 .PHONY: push-image-management-console # build and push image
 push-image-management-console: build-image-management-console
-	docker image push core.harbor.cr.test/tool/management-console:latest
+	docker image push k3d-wabl-cs-registry:58063/tool/management-console:latest
 
 ## k8s tools
 .PHONY: redis-cli # exec redis-cli in k8s
