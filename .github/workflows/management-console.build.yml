@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  CONTAINER_REGISTRY_HOST: k3d-wabl-cs-registry.localhost
+  CONTAINER_REGISTRY_HOST: k3d-wabl-cs-registry.localhost:58063
 
 jobs:
   build:
