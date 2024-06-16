@@ -61,7 +61,8 @@ public class SharedComponent(
             
         return new SharedComponentOutput
         {
-            Namespace = @namespace
+            Namespace = @namespace,
+            CertificateComponentOutput = certificateComponentOutput
         };
     }
 }
