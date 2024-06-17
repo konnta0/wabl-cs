@@ -19,9 +19,12 @@ namespace Infrastructure.Pulumi.Stack
             _logger = logger;
             _logger.LogInformation("start development stack");
 
-            sharedComponent.Apply(new SharedComponentInput());
+            var sharedOutput = sharedComponent.Apply(new SharedComponentInput());
             //GitLabHost = versionControlSystemComponent.Apply();
-            webApplicationComponent.Apply(new WebApplicationComponentInput());
+            webApplicationComponent.Apply(new WebApplicationComponentInput
+            {
+                CertificateComponentOutput = sharedOutput.CertificateComponentOutput
+            });
             toolComponent.Apply(new ToolComponentInput());
         }
 

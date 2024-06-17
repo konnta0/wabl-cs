@@ -9,15 +9,9 @@ using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.Pulumi.Component.Shared.Certificate.CertManager
 {
-    public class CertManagerComponent : IComponent<CertManagerComponentInput, CertManagerComponentOutput>
+    public class CertManagerComponent
+        : IComponent<CertManagerComponentInput, CertManagerComponentOutput>
     {
-        private readonly ILogger<CertManagerComponent> _logger;
-
-        public CertManagerComponent(ILogger<CertManagerComponent> logger)
-        {
-            _logger = logger;
-        }
-        
 
         public CertManagerComponentOutput Apply(CertManagerComponentInput input)
         {
@@ -46,7 +40,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Certificate.CertManager
                     Repo = "https://charts.jetstack.io"
                 },
                 Namespace = input.Namespace.Metadata.Apply(x => x.Name),
-                Atomic = true
+                Atomic = true,
+                Timeout = 300
             });
 
             var clusterIssuer = new ClusterIssuer("cluster-issuer", new ClusterIssuerArgs

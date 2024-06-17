@@ -31,7 +31,7 @@ namespace Infrastructure.Pulumi.Component.WebApplication
                 {
                     Name = config.GetWebApplicationConfig().Namespace
                 }
-            });
+            }, new CustomResourceOptions { DependsOn = input.CertificateComponentOutput.ClusterIssuer });
 
             var openTelemetryOperatorComponentOutput = openTelemetryOperatorComponent.Apply(new OpenTelemetryOperatorComponentInput
             {

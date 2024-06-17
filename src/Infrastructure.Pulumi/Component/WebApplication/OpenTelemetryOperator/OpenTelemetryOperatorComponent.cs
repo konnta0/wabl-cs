@@ -4,15 +4,9 @@ using Pulumi.Kubernetes.Yaml;
 
 namespace Infrastructure.Pulumi.Component.WebApplication.OpenTelemetryOperator
 {
-    public class OpenTelemetryOperatorComponent : IComponent<OpenTelemetryOperatorComponentInput, OpenTelemetryOperatorComponentOutput>
+    public class OpenTelemetryOperatorComponent
+        : IComponent<OpenTelemetryOperatorComponentInput, OpenTelemetryOperatorComponentOutput>
     {
-        private readonly Config _config;
-
-        public OpenTelemetryOperatorComponent(Config config)
-        {
-            _config = config;
-        }
-
         [Pure]
         public OpenTelemetryOperatorComponentOutput Apply(OpenTelemetryOperatorComponentInput input)
         {
