@@ -38,6 +38,6 @@ jobs:
       - name: Deploy Management Console
         working-directory: ./src/Tool.Make
         run: |
-          dotnet run -- management-console deploy --stack=${{ env.STACK }} --tag=${{ inputs.deploy-tag }}
+          dotnet run -- management-console deploy --stack ${{ env.STACK }} --tag ${{ inputs.deploy-tag }}
         env:
           PULUMI_ACCESS_TOKEN: ${{ env.PULUMI_ACCESS_TOKEN }}
