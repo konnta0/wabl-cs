@@ -18,6 +18,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # see: https://github.com/actions/actions-runner-controller/issues/3130
+      - name: Install curl
+        run: sudo apt update -y && sudo apt install curl -y
+
       - name: Install Pulumi
         uses: pulumi/actions@v5
         with:
