@@ -36,6 +36,6 @@ internal sealed class ManagementConsole : ConsoleAppBase
         [Option("t")] string? tag = "latest")
     {
         await $"pulumi config set --stack {stack} --cwd ../Infrastructure.Pulumi --path 'ManagementConsole.Tag' {tag}";
-        await $"pulumi up --stack {stack} --yes --target **tool-management-console-deployment** --target-dependents --disable-integrity-checking --cwd ../Infrastructure.Pulumi";
+        await $"pulumi up -s {stack} --yes --target **tool-management-console-deployment** --target-dependents --disable-integrity-checking --cwd ../Infrastructure.Pulumi";
     }
 }
