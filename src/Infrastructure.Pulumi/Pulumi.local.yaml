@@ -15,7 +15,7 @@ config:
       NodeSelector:
         Label: kubernetes.io/hostname
         Value: minikube
-    Host: k3d-wabl-cs-registry:58063
+    Host: k3d-wabl-cs-registry.localhost:5000
     MinIO:
       NodeSelector:
         Label: kubernetes.io/hostname
