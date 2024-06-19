@@ -1,16 +1,17 @@
+using ConsoleAppFramework;
+
 namespace Tool.Make;
 
 
-internal class K3d : ConsoleAppBase
+internal class K3d
 {
     private const string ClusterName = "wabl-cs";
-    private const string RegistryName = "wabl-cs-registry";
+    private const string RegistryName = "wabl-cs-registry.localhost";
     private const int RegistryPort = 58063;
     
     [Command("create")]
-    public async ValueTask CreateAsync()
+    public async Task CreateAsync()
     {
-        
         var target = new Targets();
         target.Add("message", static () => Console.WriteLine("Creating k3d cluster..."));
         target.Add("create-registry", DependsOn("message"), static () => RunAsync("k3d", $"registry create {RegistryName} --port {RegistryPort}"));
@@ -21,7 +22,7 @@ internal class K3d : ConsoleAppBase
     }
 
     [Command("delete")]
-    public async ValueTask DeleteAsync()
+    public async Task DeleteAsync()
     {
         var target = new Targets();
         target.Add("delete-cluster", static () => RunAsync("k3d", $"cluster delete {ClusterName}"));
@@ -32,7 +33,7 @@ internal class K3d : ConsoleAppBase
     }
 
     [Command("start")]
-    public async ValueTask StartAsync()
+    public async Task StartAsync()
     {
         var target = new Targets();
         target.Add("start", static () => RunAsync("k3d", $"cluster start {ClusterName}"));
@@ -41,7 +42,7 @@ internal class K3d : ConsoleAppBase
     }
     
     [Command("stop")]
-    public async ValueTask StopAsync()
+    public async Task StopAsync()
     {
         var target = new Targets();
         target.Add("stop", static () => RunAsync("k3d", $"cluster stop {ClusterName}"));

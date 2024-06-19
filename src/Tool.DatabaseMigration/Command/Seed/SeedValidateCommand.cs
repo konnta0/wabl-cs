@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ConsoleAppFramework;
 using MasterMemory;
 using Microsoft.Extensions.Logging;
 using WebApplication.Infrastructure.Database.Context;
@@ -11,25 +12,19 @@ using ZLogger;
 
 namespace Tool.DatabaseMigration.Command.Seed;
 
-internal sealed class SeedValidateCommand : ConsoleAppBase
+internal sealed class SeedValidateCommand(
+    ILogger<SeedValidateCommand> logger,
+    IDbContextHolder dbContextHolder)
 {
-    private readonly ILogger<SeedValidateCommand> _logger;
-    private readonly IDbContextHolder _dbContextHolder;
-
-    public SeedValidateCommand(
-        ILogger<SeedValidateCommand> logger,
-        IDbContextHolder dbContextHolder)
-    {
-        _logger = logger;
-        _dbContextHolder = dbContextHolder;
-    }
-    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="seedPath">-s, seed directory path</param>
+    /// <returns></returns>
     [Command("seed-validate")]
-    public async ValueTask<int> ValidateAsync(
-        [Option("s", "seed directory path")] string seedPath = "/src/Seed"
-        )
+    public async ValueTask<int> ValidateAsync(string seedPath = "/src/Seed")
     {
-        _logger.ZLogInformation("Start seed validate");
+        logger.ZLogInformation("Start seed validate");
         
         var builder = new DatabaseBuilder();
         var options = new JsonSerializerOptions
@@ -37,7 +32,7 @@ internal sealed class SeedValidateCommand : ConsoleAppBase
             Converters = { new JsonStringEnumConverter() }
         };
 
-        foreach (var dbContext in _dbContextHolder.GetAll())
+        foreach (var dbContext in dbContextHolder.GetAll())
         {
             var entityTypes = dbContext.GetSeedEntityTypes();
             foreach (var type in entityTypes)
@@ -48,7 +43,7 @@ internal sealed class SeedValidateCommand : ConsoleAppBase
                 var tableAttribute = type.GetCustomAttribute<TableAttribute>();
                 if (tableAttribute is null)
                 {
-                    _logger.ZLogCritical($"{type} is should be apply TableAttribute");
+                    logger.ZLogCritical($"{type} is should be apply TableAttribute");
                     continue;
                 }
                 
@@ -61,7 +56,7 @@ internal sealed class SeedValidateCommand : ConsoleAppBase
                 var deserializedObject = await JsonSerializer.DeserializeAsync(fileStream, concreteListType, options);
                 if (deserializedObject is null)
                 {
-                    _logger.ZLogInformationWithPayload(schemaName, "Failed to load seed file");
+                    logger.ZLogInformationWithPayload(schemaName, "Failed to load seed file");
                     continue;
                 }
 
@@ -75,12 +70,12 @@ internal sealed class SeedValidateCommand : ConsoleAppBase
         var validateResult = db.Validate();
         if (validateResult.IsValidationFailed)
         {
-            _logger.ZLogError(validateResult.FormatFailedResults());
-            _logger.ZLogInformation("End seed validate (failed)");
+            logger.ZLogError(validateResult.FormatFailedResults());
+            logger.ZLogInformation("End seed validate (failed)");
             return 1;
         }
 
-        _logger.ZLogInformation("End seed validate (succeeded)");
+        logger.ZLogInformation("End seed validate (succeeded)");
         return 0;
     }
 }

@@ -1,8 +1,8 @@
 namespace Tool.Make;
 
-internal sealed class Minikube : ConsoleAppBase
+internal sealed class Minikube
 {
-    public async ValueTask Up()
+    public async Task Up()
     {
         const string memory = "16g";
         const string cpu = "7";
@@ -25,21 +25,21 @@ internal sealed class Minikube : ConsoleAppBase
         await target.RunWithoutExitingAsync(["metrics-server"]);
     }
 
-    public async ValueTask Down()
+    public async Task Down()
     {
         var target = new Targets();
         target.Add("stop", static () => RunAsync("minikube", "stop"));
         await target.RunWithoutExitingAsync(["stop"]);
     }
 
-    public async ValueTask Pause()
+    public async Task Pause()
     {
         var target = new Targets();
         target.Add("pause", static () => RunAsync("minikube", "pause"));
         await target.RunWithoutExitingAsync(["pause"]);
     }
 
-    public async ValueTask UnPause()
+    public async Task UnPause()
     {
         var target = new Targets();
         target.Add("unpause", static async () => await "minikube unpause");

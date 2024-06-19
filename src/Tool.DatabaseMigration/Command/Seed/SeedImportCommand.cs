@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using ConsoleAppFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using WebApplication.Infrastructure.Database.Context;
@@ -12,28 +12,22 @@ using ZLogger;
 namespace Tool.DatabaseMigration.Command.Seed;
 
 // ReSharper disable once ClassNeverInstantiated.Global
-public sealed class SeedImportCommand : ConsoleAppBase
+internal sealed class SeedImportCommand(
+    ILogger<SeedImportCommand> logger,
+    IDbContextHolder dbContextHolder)
 {
-    private readonly ILogger<SeedImportCommand> _logger;
-    private readonly IDbContextHolder _dbContextHolder;
-
-    public SeedImportCommand(
-        ILogger<SeedImportCommand> logger,
-        IDbContextHolder dbContextHolder)
-    {
-        _logger = logger;
-        _dbContextHolder = dbContextHolder;
-    }
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tableName">-t, target table</param>
+    /// <param name="resetTable">-r, reset table</param>
+    /// <param name="seedPath">-s, seed directory path</param>
     [Command("seed-import")]
-    public async ValueTask RunAsync([Option("t", "target table")] string tableName = "",
-        [Option("r", "reset table.")] bool resetTable = true,
-        [Option("s", "seed directory path")] string seedPath = "/src/Seed")
+    public async Task RunAsync(string tableName = "", bool resetTable = true, string seedPath = "/src/Seed")
     {
-        _logger.ZLogInformation(Context.Timestamp.ToString(CultureInfo.InvariantCulture));
-        _logger.ZLogInformationWithPayload(tableName, "Start seed import");
+        logger.ZLogInformationWithPayload(tableName, "Start seed import");
 
-        foreach (var dbContext in _dbContextHolder.GetAll())
+        foreach (var dbContext in dbContextHolder.GetAll())
         {
             var entityTypes = dbContext.Model.GetEntityTypes()
                 .Select(t => t.ClrType)
@@ -55,7 +49,7 @@ public sealed class SeedImportCommand : ConsoleAppBase
                 var tableAttribute = type.GetCustomAttribute<TableAttribute>();
                 if (tableAttribute is null)
                 {
-                    _logger.ZLogCritical($"{type} is should be apply TableAttribute");
+                    logger.ZLogCritical($"{type} is should be apply TableAttribute");
                     continue;
                 }
 
@@ -64,10 +58,10 @@ public sealed class SeedImportCommand : ConsoleAppBase
                     var schemaName = tableAttribute.Name;
                     if (resetTable)
                     {
-                        using var scope = _logger.BeginScope(schemaName);
-                        _logger.ZLogInformationWithPayload(schemaName, "Truncating...");
+                        using var scope = logger.BeginScope(schemaName);
+                        logger.ZLogInformationWithPayload(schemaName, "Truncating...");
                         await dbContext.Database.ExecuteSqlRawAsync($"TRUNCATE TABLE `{schemaName}`");
-                        _logger.ZLogInformationWithPayload(schemaName, "Truncated");
+                        logger.ZLogInformationWithPayload(schemaName, "Truncated");
                     }
 
                     var path = Path.Combine(seedPath, dbContext.GetType().Name.Replace("Context", string.Empty), $"{schemaName}.json");
@@ -77,7 +71,7 @@ public sealed class SeedImportCommand : ConsoleAppBase
                     var deserializedObject = await JsonSerializer.DeserializeAsync(fileStream, concreteListType, options);
                     if (deserializedObject is null)
                     {
-                        _logger.ZLogInformationWithPayload(schemaName, "Failed to load seed file");
+                        logger.ZLogInformationWithPayload(schemaName, "Failed to load seed file");
                         continue;
                     }
 
@@ -90,7 +84,7 @@ public sealed class SeedImportCommand : ConsoleAppBase
                 }
                 catch (Exception e)
                 {
-                    _logger.ZLogErrorWithPayload(e, "Seed import failed");
+                    logger.ZLogErrorWithPayload(e, "Seed import failed");
                     throw;
                 }
             }

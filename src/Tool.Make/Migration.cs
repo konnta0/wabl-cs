@@ -1,11 +1,17 @@
+using ConsoleAppFramework;
 using Tool.Make.Common;
 
 namespace Tool.Make;
 
-public sealed class Migration : ConsoleAppBase
+internal sealed class Migration
 {
-    [Command("add", "add migration")]
-    public Task Add([Option("name", "migration name")] string name)
+    /// <summary>
+    /// add migration
+    /// </summary>
+    /// <param name="name">migration name</param>
+    /// <returns></returns>
+    [Command("add")]
+    public Task Add(string name)
     {
         var target = new Targets();
 
@@ -35,7 +41,11 @@ public sealed class Migration : ConsoleAppBase
         ));
     }
 
-    [Command("update", "update database")]
+    /// <summary>
+    /// update database
+    /// </summary>
+    /// <returns></returns>
+    [Command("update")]
     public Task Update()
     {
         var target = new Targets();
@@ -44,7 +54,11 @@ public sealed class Migration : ConsoleAppBase
         return target.RunWithoutExitingAsync(["docker-run"]);
     }
 
-    [Command("seed-import", "import seed data")]
+    /// <summary>
+    /// import seed data
+    /// </summary>
+    /// <returns></returns>
+    [Command("seed-import")]
     public Task ImportSeed()
     {
         var target = new Targets();

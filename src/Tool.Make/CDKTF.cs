@@ -1,6 +1,8 @@
+using ConsoleAppFramework;
+
 namespace Tool.Make;
 
-public sealed class CDKTF : ConsoleAppBase
+internal sealed class CDKTF
 {
     private readonly Targets _target;
 
@@ -13,7 +15,10 @@ public sealed class CDKTF : ConsoleAppBase
         _target.Add("install", DependsOn("install-node"), () => RunAsync("npm", "install -g cdktf-cli"));
     }
 
-
-    [Command("install", "install cdktf")]
+    /// <summary>
+    /// "install cdktf"
+    /// </summary>
+    /// <returns></returns>
+    [Command("install")]
     public Task Install() => _target.RunWithoutExitingAsync(["install"]);
 }

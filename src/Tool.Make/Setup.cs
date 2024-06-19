@@ -1,6 +1,6 @@
 namespace Tool.Make;
 
-internal sealed class Setup : ConsoleAppBase
+internal sealed class Setup
 {
     private readonly Targets _target;
 
@@ -33,24 +33,24 @@ internal sealed class Setup : ConsoleAppBase
     }
 
     [Command("minikube")]
-    public async ValueTask Minikube() => await _target.RunWithoutExitingAsync(["minikube-remove"]);
+    public async Task Minikube() => await _target.RunWithoutExitingAsync(["minikube-remove"]);
 
     [Command("microk8s")]
-    public async ValueTask Microk8s()
+    public async Task Microk8s()
     {
         await _target.RunWithoutExitingAsync(["microk8s-enable-plugins"]);
         await _target.RunWithoutExitingAsync(["microk8s-notice"]);
     }
 
     [Command("k3d")]
-    public async ValueTask K3d()
+    public async Task K3d()
     {
         await _target.RunWithoutExitingAsync(["k3d-install"]);
     }
     
     [Command("pulumi")]
-    public async ValueTask Pulumi() => await _target.RunWithoutExitingAsync(["pulumi-crd2pulumi"]);
+    public async Task Pulumi() => await _target.RunWithoutExitingAsync(["pulumi-crd2pulumi"]);
 
     [Command("all")]
-    public async ValueTask All() => await _target.RunWithoutExitingAsync(["minikube-remove", "pulumi-crd2pulumi"]);
+    public async Task All() => await _target.RunWithoutExitingAsync(["minikube-remove", "pulumi-crd2pulumi"]);
 }

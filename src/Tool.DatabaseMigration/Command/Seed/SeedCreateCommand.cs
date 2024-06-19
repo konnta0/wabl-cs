@@ -1,3 +1,4 @@
+using ConsoleAppFramework;
 using Google.Apis.Sheets.v4;
 using Microsoft.Extensions.Logging;
 using Tool.DatabaseMigration.Domain.Internal.GoogleApi;
@@ -7,33 +8,26 @@ using ZLogger;
 namespace Tool.DatabaseMigration.Command.Seed;
 
 // ReSharper disable once ClassNeverInstantiated.Global
-internal sealed class SeedCreateCommand : ConsoleAppBase
+internal sealed class SeedCreateCommand(
+    ILogger<SeedCreateCommand> logger,
+    IGoogleApiHelper googleApiHelper,
+    ISeedService seedService)
 {
-    private readonly ILogger<SeedCreateCommand> _logger;
-    private readonly IGoogleApiHelper _googleApiHelper;
-    private readonly ISeedService _seedService;
-
-    public SeedCreateCommand(
-        ILogger<SeedCreateCommand> logger, 
-        IGoogleApiHelper googleApiHelper,
-        ISeedService seedService)
-    {
-        _logger = logger;
-        _googleApiHelper = googleApiHelper;
-        _seedService = seedService;
-    }
-    
+    /// <summary>
+    /// seed create
+    /// </summary>
+    /// <param name="groupName">-g, table group name</param>
+    /// <param name="tableName">-t, table name</param>
+    /// <returns></returns>
     [Command("seed-create")]
-    public async ValueTask<int> RunAsync(
-        [Option("g", "table group name")] string groupName,
-        [Option("t", "table name")] string tableName)
+    public async Task<int> RunAsync(string groupName, string tableName)
     {
-        _logger.ZLogInformation("Start seed create");
+        logger.ZLogInformation("Start seed create");
 
-        var credential = await _googleApiHelper.GetGoogleCredentialAsync(SheetsService.Scope.Spreadsheets,
+        var credential = await googleApiHelper.GetGoogleCredentialAsync(SheetsService.Scope.Spreadsheets,
             SheetsService.Scope.Drive);
 
-        await _seedService.CreateAsync(credential, groupName, tableName);
+        await seedService.CreateAsync(credential, groupName, tableName);
         return 0;
     }
 }

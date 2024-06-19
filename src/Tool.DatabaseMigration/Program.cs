@@ -1,29 +1,32 @@
-using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Database;
-using WebApplication.Infrastructure.Extension;
+using ConsoleAppFramework;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using WebApplication.Infrastructure.Cache;
+using WebApplication.Infrastructure.Database;
 using Tool.DatabaseMigration.Command.Seed;
 using Tool.DatabaseMigration.Domain.Internal.GoogleApi;
 using Tool.DatabaseMigration.Domain.Internal.Seed;
 using Tool.DatabaseMigration.Domain.Service.Seed;
+using WebApplication.Infrastructure.Extension;
 
-var builder = ConsoleApp.CreateBuilder(args);
+using var host = Host
+    .CreateDefaultBuilder()
+    .ConfigureServices((context, service) =>
+    {
+        context.Configuration.Bind(new SeedServiceConfig());
+        service.AddDbContexts(new DatabaseConfig());
+        service.AddCacheClient(new CacheConfig(), out _, out _);
+        service.AddScoped<ISeedService, SeedService>();
+        service.AddScoped<IGoogleApiHelper, GoogleApiHelper>();
+    }).Build();
 
-builder.ConfigureServices((context, collection) =>
-{
-    context.Configuration.Bind(new SeedServiceConfig());
-    
-    collection.AddDbContexts(new DatabaseConfig());
-    collection.AddCacheClient(new CacheConfig(), out _, out _);
-    collection.AddScoped<ISeedService, SeedService>();
-    collection.AddScoped<IGoogleApiHelper, GoogleApiHelper>();
-});
+ConsoleApp.ServiceProvider = host.Services;
 
-var app = builder.Build();
-app.AddCommands<SeedCreateCommand>();
-app.AddCommands<SeedDownloadCommand>();
-app.AddCommands<SeedImportCommand>();
-app.AddCommands<SeedRenameLabelCommand>();
-app.AddCommands<SeedValidateCommand>();
-app.Run();
+var app = ConsoleApp.Create();
+app.Add<SeedCreateCommand>();
+app.Add<SeedDownloadCommand>();
+app.Add<SeedImportCommand>();
+app.Add<SeedRenameLabelCommand>();
+app.Add<SeedValidateCommand>();
+await app.RunAsync(args);

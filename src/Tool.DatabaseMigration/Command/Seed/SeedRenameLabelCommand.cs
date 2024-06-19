@@ -1,3 +1,4 @@
+using ConsoleAppFramework;
 using Google.Apis.Drive.v3;
 using Google.Apis.Sheets.v4;
 using Microsoft.Extensions.Logging;
@@ -8,32 +9,24 @@ using ZLogger;
 namespace Tool.DatabaseMigration.Command.Seed;
 
 // ReSharper disable once UnusedType.Global
-internal sealed class SeedRenameLabelCommand : ConsoleAppBase
+internal sealed class SeedRenameLabelCommand(
+    ILogger<SeedRenameLabelCommand> logger,
+    IGoogleApiHelper googleApiHelper,
+    ISeedService seedService)
 {
-    private readonly ILogger<SeedRenameLabelCommand> _logger;
-    private readonly IGoogleApiHelper _googleApiHelper;
-    private readonly ISeedService _seedService;
-
-    public SeedRenameLabelCommand(
-        ILogger<SeedRenameLabelCommand> logger,
-        IGoogleApiHelper googleApiHelper,
-        ISeedService seedService)
-    {
-        _logger = logger;
-        _googleApiHelper = googleApiHelper;
-        _seedService = seedService;
-    }
-    
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="labels">-l, rename target labels</param>
+    /// <param name="newLabel">-n, rename new label</param>
     [Command("rename-seed-label")]
     // ReSharper disable once UnusedMember.Global
-    public async ValueTask RenameSeedLabelsAsync(
-        [Option("l", "rename target labels")] string[] labels,
-        [Option("n", "rename new label")] string newLabel)
+    public async Task RenameSeedLabelsAsync(string[] labels, string newLabel)
     {
-        _logger.ZLogInformation("Start rename seed labels");
-        var credential = await _googleApiHelper.GetGoogleCredentialAsync(SheetsService.Scope.Spreadsheets, DriveService.Scope.Drive);
+        logger.ZLogInformation("Start rename seed labels");
+        var credential = await googleApiHelper.GetGoogleCredentialAsync(SheetsService.Scope.Spreadsheets, DriveService.Scope.Drive);
 
-        await _seedService.RenameLabelsAsync(credential, labels, newLabel);
-        _logger.ZLogInformation("End rename seed labels");
+        await seedService.RenameLabelsAsync(credential, labels, newLabel);
+        logger.ZLogInformation("End rename seed labels");
     }
 }

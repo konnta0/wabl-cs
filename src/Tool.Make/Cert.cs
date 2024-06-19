@@ -1,6 +1,8 @@
+using ConsoleAppFramework;
+
 namespace Tool.Make;
 
-public sealed class Cert : ConsoleAppBase
+internal sealed class Cert
 {
     private const string Domain = "cr.test";
     private const string CertificatePath = "ca.crt";

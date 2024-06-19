@@ -10,6 +10,7 @@
     <ItemGroup>
       <PackageReference Include="Bullseye" />
       <PackageReference Include="ConsoleAppFramework" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" />
       <PackageReference Include="ProcessX" />
       <PackageReference Include="SimpleExec" />
     </ItemGroup>

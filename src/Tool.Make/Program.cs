@@ -1,12 +1,22 @@
-﻿ConsoleApp
-    .Create(args)
-    .AddAllCommandType()
-    .AddCommand("example", "one shot example command", () =>
-    {
-        var target = new Targets();
-        Tool.Make.Common.DirectoryUtil.TryGetSolutionDirectoryInfo(out var directory);
-        target.Add("test", async () => await $"echo {directory.FullName}" );
+﻿using Tool.Make;
 
-        return target.RunWithoutExitingAsync(new[] { "test" });
-    })
-    .Run();
+var app = ConsoleApp.Create();
+app.Add<CDKTF>("cdktf");
+app.Add<Cert>("cert");
+app.Add<K3d>("k3d");
+app.Add<ManagementConsole>("management-console");
+app.Add<Microk8s>("microk8s");
+app.Add<Migration>("migration");
+app.Add<Minikube>("minikube");
+app.Add<Pulumi>("pulumi");
+app.Add<Setup>("setup");
+app.Add<WebApi>("webapi");
+app.Add("example", () =>
+{
+    var target = new Targets();
+    Tool.Make.Common.DirectoryUtil.TryGetSolutionDirectoryInfo(out var directory);
+    target.Add("test", async () => await $"echo {directory.FullName}");
+
+    return target.RunWithoutExitingAsync(new[] { "test" });
+});
+await app.RunAsync(args);

@@ -1,55 +1,77 @@
+using ConsoleAppFramework;
+
 namespace Tool.Make;
 
-public sealed class Pulumi : ConsoleAppBase
+public sealed class Pulumi
 {
     private const string InfrastructureDir = "../Infrastructure.Pulumi";
 
-    [Command("up", "up")]
-    public Task Up([Option("stack")] string stack = "local")
+    /// <summary>
+    /// up
+    /// </summary>
+    /// <param name="stack"></param>
+    /// <returns></returns>
+    [Command("up")]
+    public Task Up(string stack = "local")
     {
         var target = new Targets();
-        target.Add("up", () => RunAsync("pulumi", $"up --cwd {InfrastructureDir} -v=6 --stack {stack}"));
+        target.Add("up", () => RunAsync("pulumi", $"up --cwd {InfrastructureDir} -v=6 -s {stack}"));
         return target.RunWithoutExitingAsync(["up"]);
     }
 
-    [Command("destroy", "destroy infrastructure")]
-    public Task Destroy([Option("stack")] string stack = "local")
+    /// <summary>
+    /// destroy infrastructure
+    /// </summary>
+    /// <param name="stack"></param>
+    /// <returns></returns>
+    [Command("destroy")]
+    public Task Destroy(string stack = "local")
     {
         var target = new Targets();
-        target.Add("destroy", () => RunAsync("pulumi", $"destroy --cwd {InfrastructureDir} --stack {stack}"));
+        target.Add("destroy", () => RunAsync("pulumi", $"destroy --cwd {InfrastructureDir} -s {stack}"));
         return target.RunWithoutExitingAsync(["destroy"]);
     }
 
-    [Command("urns", "show urns")]
-    public Task Urns([Option("stack")] string stack = "local")
+    /// <summary>
+    /// show urns
+    /// </summary>
+    /// <param name="stack"></param>
+    /// <returns></returns>
+    [Command("urns")]
+    public Task Urns(string stack = "local")
     {
         var target = new Targets();
-        target.Add("urns", () => RunAsync("pulumi", $"stack --show-urns --cwd {InfrastructureDir} --stack {stack}"));
+        target.Add("urns", () => RunAsync("pulumi", $"stack --show-urns --cwd {InfrastructureDir} -s {stack}"));
         return target.RunWithoutExitingAsync(["urns"]);
     }
 
-    [Command("delete",
-        "pulumi delete. (e.g.) urn is 'urn:pulumi:develop::Infrastructure.Pulumi::kubernetes:helm.sh/v3:Release::cert-manager'")]
-    public Task Delete([Option("urn", "delete urn")] string urn, [Option("stack")] string stack = "local")
+    /// <summary>
+    /// pulumi delete. (e.g.) urn is 'urn:pulumi:develop::Infrastructure.Pulumi::kubernetes:helm.sh/v3:Release::cert-manager'
+    /// </summary>
+    /// <param name="urn">delete urn</param>
+    /// <param name="stack">stack</param>
+    /// <returns></returns>
+    [Command("delete")]
+    public Task Delete(string urn, string stack = "local")
     {
         var target = new Targets();
-        target.Add("delete", () => RunAsync("pulumi", $"state delete {urn} --cwd {InfrastructureDir} --stack {stack}"));
+        target.Add("delete", () => RunAsync("pulumi", $"state delete {urn} --cwd {InfrastructureDir} -s {stack}"));
         return target.RunWithoutExitingAsync(["delete"]);
     }
 
     [Command("output")]
-    public Task Output([Option("stack")] string stack = "local")
+    public Task Output(string stack = "local")
     {
         var target = new Targets();
-        target.Add("output", () => RunAsync("pulumi", $"output --cwd {InfrastructureDir} --stack {stack}"));
+        target.Add("output", () => RunAsync("pulumi", $"output --cwd {InfrastructureDir} -s {stack}"));
         return target.RunWithoutExitingAsync(["output"]);
     }
 
     [Command("refresh")]
-    public Task Refresh([Option("stack")] string stack = "local")
+    public Task Refresh(string stack = "local")
     {
         var target = new Targets();
-        target.Add("refresh", () => RunAsync("pulumi", $"refresh --cwd {InfrastructureDir} --stack {stack}"));
+        target.Add("refresh", () => RunAsync("pulumi", $"refresh --cwd {InfrastructureDir} -s {stack}"));
         return target.RunWithoutExitingAsync(["refresh"]);
     }
 }
