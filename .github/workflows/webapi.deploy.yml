@@ -7,6 +7,11 @@ on:
         description: 'Tag to deploy'
         required: true
         default: 'latest'
+
+      runs-on:
+        description: 'Runner set'
+        required: true
+        default: 'arc-runner-set'
 env:
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   STACK: local
@@ -18,6 +23,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # see: https://github.com/actions/actions-runner-controller/issues/3130
+      - name: Install curl
+        run: sudo apt update -y && sudo apt install curl -y
+
       - name: Install Pulumi
         uses: pulumi/actions@v5
         with:
@@ -27,10 +36,13 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: "8.0.x"
+          # see: https://github.com/actions/setup-dotnet/issues/327#issuecomment-1277284874
+        env:
+          DOTNET_INSTALL_DIR: "./.dotnet"
 
       - name: Deploy WebApp
         working-directory: ./src/Tool/Make
         run: |
-          dotnet run -- webapp deploy --stack=${{ env.STACK }} --tag=${{ inputs.deploy-tag }}
+          dotnet run -- webapp deploy --stack ${{ env.STACK }} --tag ${{ inputs.deploy-tag }}
         env:
           PULUMI_ACCESS_TOKEN: ${{ env.PULUMI_ACCESS_TOKEN }}

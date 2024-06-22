@@ -2,6 +2,11 @@ name: ManagementConsole/Build
 
 on:
   workflow_dispatch:
+    inputs:
+      runs-on:
+        description: 'Runner set'
+        required: true
+        default: 'arc-runner-set'
 
 env:
   CONTAINER_REGISTRY_HOST: k3d-wabl-cs-registry.localhost:5000
