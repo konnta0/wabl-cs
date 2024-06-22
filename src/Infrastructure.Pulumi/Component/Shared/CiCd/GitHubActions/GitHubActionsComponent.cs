@@ -22,9 +22,9 @@ public sealed class GitHubActionsComponent(Config config)
 
 
         // https://github.com/actions/actions-runner-controller/blob/gha-runner-scale-set-0.8.3/charts/gha-runner-scale-set/values.yaml
-        var containerRegistryConfig = config.RequireObject<JsonElement>("CiCd");
+        var ciCdConfig = config.RequireObject<JsonElement>("CiCd");
 
-        var githubToken = containerRegistryConfig.GetProperty("Gha").GetProperty("Pat").GetString();
+        var githubToken = ciCdConfig.GetProperty("Gha").GetProperty("Pat").GetString();
         var values = new InputMap<object>
         {
             ["githubConfigUrl"] = "https://github.com/konnta0/wabl-cs",
@@ -299,9 +299,11 @@ public sealed class GitHubActionsComponent(Config config)
                 }
             }
         };
+        
+        var runnerName = ciCdConfig.GetProperty("Runner").GetProperty("Name").GetString()!;
         var scaleSet = new Release("gha-runner-scale-set", new ReleaseArgs
         {
-            Name = "arc-runner-set",
+            Name = runnerName,
             Version = input.Version,
             Chart = "oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set",
             Values = values,
