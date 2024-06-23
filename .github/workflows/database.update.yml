@@ -2,10 +2,15 @@ name: Database/Update
 
 on:
   workflow_dispatch:
+    inputs:
+      runs-on:
+        description: 'Runner set'
+        required: true
+        default: 'arc-runner-set'
 
 jobs:
   update-database:
-    runs-on: arc-runner-set
+    runs-on:  ${{ github.event.inputs.runs-on }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -14,8 +19,11 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: "8.0.x"
+          # see: https://github.com/actions/setup-dotnet/issues/327#issuecomment-1277284874
+        env:
+          DOTNET_INSTALL_DIR: "./.dotnet"
 
       - name: Update database
-        working-directory: ./src/Tool/Make
+        working-directory: ./src/Tool.Make
         run: |
           dotnet run -- migration update
