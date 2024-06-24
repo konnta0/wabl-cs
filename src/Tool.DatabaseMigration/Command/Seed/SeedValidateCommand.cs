@@ -22,7 +22,7 @@ internal sealed class SeedValidateCommand(
     /// <param name="seedPath">-s, seed directory path</param>
     /// <returns></returns>
     [Command("seed-validate")]
-    public async ValueTask<int> ValidateAsync(string seedPath = "/src/Seed")
+    public async Task<int> ValidateAsync(string seedPath = "/src/Seed")
     {
         logger.ZLogInformation("Start seed validate");
         

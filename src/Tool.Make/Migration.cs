@@ -24,14 +24,13 @@ internal sealed class Migration
         DirectoryUtil.TryGetSolutionDirectoryInfo(out var directoryInfo);
         target.Add("docker-build",
             () => RunAsync("docker",
-                $"build -f {directoryInfo.FullName}/Dockerfile.Tool.DatabaseMigration -t database_migration ../../../"));
+                $"build -f {directoryInfo.FullName}/Dockerfile.DatabaseMigration -t database_migration ../../"));
         target.Add("docker-run", DependsOn("docker-build"), () => RunAsync("docker",
             $"run -it " +
             $"-v {directoryInfo.FullName}/src/Tool.DatabaseMigration:/src/Tool.DatabaseMigration " +
             $"-v {directoryInfo.FullName}/src/WebApplication:/src/WebApplication " +
             $"-v {directoryInfo.FullName}/src/Tool.DatabaseMigration/Seed:/src/Seed " +
-            $"-v {directoryInfo.FullName}/src/WebApplication.Domain.SourceGenerator:/src/WebApplication.Domain.SourceGenerator " +
-            $"-v {directoryInfo.FullName}/src/Infrastructure.Pulumi.SourceGenerator:/src/Infrastructure.Pulumi.SourceGenerator " +
+            $"-v {directoryInfo.FullName}/Directory.Packages.props:/Directory.Packages.props " +
             $"--env-file={directoryInfo.FullName}/.env " +
             $"--name=database_migration " +
             $"--rm " +
