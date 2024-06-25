@@ -1,4 +1,3 @@
-using ConsoleAppFramework;
 using Tool.Make.Common;
 
 namespace Tool.Make;
@@ -26,7 +25,7 @@ internal sealed class Migration
             () => RunAsync("docker",
                 $"build -f {directoryInfo.FullName}/Dockerfile.DatabaseMigration -t database_migration ../../"));
         target.Add("docker-run", DependsOn("docker-build"), () => RunAsync("docker",
-            $"run -it " +
+            $"run " +
             $"-v {directoryInfo.FullName}/src/Tool.DatabaseMigration:/src/Tool.DatabaseMigration " +
             $"-v {directoryInfo.FullName}/src/WebApplication:/src/WebApplication " +
             $"-v {directoryInfo.FullName}/src/Tool.DatabaseMigration/Seed:/src/Seed " +
