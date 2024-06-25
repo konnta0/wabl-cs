@@ -5,7 +5,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace WebApplication.Infrastructure.Extension;
 
-public static class ApplicationBuilder
+public static class ApplicationBuilderExtension
 {
     public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder applicationBuilder)
     {
