@@ -55,4 +55,23 @@ internal sealed class WebApi
         // add '--disable-integrity-checking' https://github.com/pulumi/pulumi/issues/15959
         await $"pulumi up -s {stack} --yes --target **web-application-web-api-deployment** --target-dependents --disable-integrity-checking --cwd ../Infrastructure.Pulumi";
     }
+
+    /// <summary>
+    /// tilt
+    /// </summary>
+    /// <param name="down">-d, down</param>
+    /// <param name="up">-u, up</param>
+    [Command("tilt")]
+    public async Task Tilt(bool down, bool up)
+    {
+        if (down)
+        {
+            await "tilt down -f ../ManagementConsole.Presentation/Tiltfile";
+        }
+
+        if (up)
+        {
+            await "tilt up -f ../ManagementConsole.Presentation/Tiltfile";
+        }
+    }
 }

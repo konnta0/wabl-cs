@@ -54,4 +54,23 @@ internal sealed class ManagementConsole
         await $"pulumi config set --stack {stack} --cwd ../Infrastructure.Pulumi --path 'ManagementConsole.Tag' {tag}";
         await $"pulumi up -s {stack} --yes --target **tool-management-console-deployment** --target-dependents --disable-integrity-checking --cwd ../Infrastructure.Pulumi";
     }
+
+    /// <summary>
+    /// tilt
+    /// </summary>
+    /// <param name="down">-d, down</param>
+    /// <param name="up">-u, up</param>
+    [Command("tilt")]
+    public async Task Tilt(bool down, bool up)
+    {
+        if (down)
+        {
+            await "tilt down -f ../ManagementConsole.Presentation/Tiltfile";
+        }
+
+        if (up)
+        {
+            await "tilt up -f ../ManagementConsole.Presentation/Tiltfile";
+        }
+    }
 }
