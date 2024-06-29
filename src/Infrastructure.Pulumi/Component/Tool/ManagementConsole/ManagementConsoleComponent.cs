@@ -103,7 +103,7 @@ public class ManagementConsoleComponent(
                                         {
                                             new ContainerPortArgs
                                             {
-                                                ContainerPortValue = 80 // http
+                                                ContainerPortValue = 8080 // http
                                             }
                                         }
                                     },
@@ -126,7 +126,7 @@ public class ManagementConsoleComponent(
                                         HttpGet = new HTTPGetActionArgs
                                         {
                                             Path = "healthz",
-                                            Port = 80 // http
+                                            Port = 8080 // http
                                         },
                                         InitialDelaySeconds = 3,
                                         PeriodSeconds = 10
@@ -153,16 +153,16 @@ public class ManagementConsoleComponent(
             },
             Spec = new ServiceSpecArgs
             {
-                Ports = new InputList<ServicePortArgs>
-                {
+                Ports =
+                [
                     new ServicePortArgs
                     {
                         Name = "http",
-                        Port = 8080,
+                        Port = 80,
                         Protocol = "TCP",
-                        TargetPort = 80
+                        TargetPort = 8080
                     }
-                },
+                ],
                 Selector = deployment.Spec.Apply(x => x.Template.Metadata.Labels)
             }
         });
@@ -181,7 +181,7 @@ public class ManagementConsoleComponent(
                     IngressClassName = "nginx",
                     Rules = new List<IngressRuleArgs>
                     {
-                        new IngressRuleArgs
+                        new()
                         {
                             Host = "management-console.tool.test",
                             Http = new HTTPIngressRuleValueArgs
@@ -196,7 +196,7 @@ public class ManagementConsoleComponent(
                                         {
                                             Name = service.Metadata.Apply(x => x.Name),
                                             Port = new ServiceBackendPortArgs
-                                                { Number = service.Spec.Apply(x => x.Ports.First().Port) }
+                                                { Number = service.Spec.Apply(x => x.Ports.First().TargetPort.AsT0) }
                                         }
                                     }
                                 }
@@ -205,36 +205,36 @@ public class ManagementConsoleComponent(
                     }
                 }
             });
-        var hpa = new HorizontalPodAutoscaler("tool-management-console-hpa", new HorizontalPodAutoscalerArgs
-        {
-            Metadata = new ObjectMetaArgs
-            {
-                Namespace = input.Namespace.Metadata.Apply(x => x.Name)
-            },
-            Spec = new HorizontalPodAutoscalerSpecArgs
-            {
-                ScaleTargetRef = new CrossVersionObjectReferenceArgs
-                {
-                    ApiVersion = "apps/v1",
-                    Kind = "Deployment",
-                    Name = deployment.Metadata.Apply(x => x.Name)
-                },
-                MinReplicas = 1,
-                MaxReplicas = 10,
-                Metrics = new MetricSpecArgs
-                {
-                    Type = "Resource",
-                    Resource = new ResourceMetricSourceArgs
-                    {
-                        Name = "cpu",
-                        Target = new MetricTargetArgs
-                        {
-                            Type = "Utilization",
-                            AverageUtilization = 45
-                        }
-                    }
-                }
-            }
+        // var hpa = new HorizontalPodAutoscaler("tool-management-console-hpa", new HorizontalPodAutoscalerArgs
+        // {
+        //     Metadata = new ObjectMetaArgs
+        //     {
+        //         Namespace = input.Namespace.Metadata.Apply(x => x.Name)
+        //     },
+        //     Spec = new HorizontalPodAutoscalerSpecArgs
+        //     {
+        //         ScaleTargetRef = new CrossVersionObjectReferenceArgs
+        //         {
+        //             ApiVersion = "apps/v1",
+        //             Kind = "Deployment",
+        //             Name = deployment.Metadata.Apply(x => x.Name)
+        //         },
+        //         MinReplicas = 1,
+        //         MaxReplicas = 10,
+        //         Metrics = new MetricSpecArgs
+        //         {
+        //             Type = "Resource",
+        //             Resource = new ResourceMetricSourceArgs
+        //             {
+        //                 Name = "cpu",
+        //                 Target = new MetricTargetArgs
+        //                 {
+        //                     Type = "Utilization",
+        //                     AverageUtilization = 45
+        //                 }
+        //             }
+        //         }
+        //     }
         });
         return new ManagementConsoleComponentOutput();
     }
