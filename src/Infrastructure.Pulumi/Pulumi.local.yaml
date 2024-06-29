@@ -3,6 +3,8 @@ config:
     Gha:
       Pat:
         secure: AAABAKhX4a163BkV8b/AWdiMBCmf0G0WidYxrUKPEFYWtthSvFIS1gsB890avxCsetqA1tML9lxnaXw6L7mIFitXrFgtSnYp
+    Runner:
+      Name: "arc-runner-set"
   Infrastructure:ContainerRegistry:
     Access:
       CI:
