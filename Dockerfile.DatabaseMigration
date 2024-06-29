@@ -1,7 +1,7 @@
 # https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:8.0.100-1-alpine3.18 AS base
+FROM mcr.microsoft.com/dotnet/sdk:8.0.203-alpine3.19 AS base
 FROM base AS workspace
 
 RUN ln -sf /usr/share/zoneinfo/posix/Japan /etc/localtime
 ENV PATH="$PATH:/root/.dotnet/tools"
-RUN dotnet tool install --global dotnet-ef --version 7.0.10
+RUN dotnet tool install --global dotnet-ef --version 8.0.0
