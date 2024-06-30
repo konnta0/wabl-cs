@@ -235,7 +235,7 @@ public class ManagementConsoleComponent(
         //             }
         //         }
         //     }
-        });
+        //});
         return new ManagementConsoleComponentOutput();
     }
 }
