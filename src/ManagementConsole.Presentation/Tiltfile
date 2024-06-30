@@ -5,9 +5,9 @@ load('ext://restart_process', 'docker_build_with_restart')
 
 docker_build_with_restart(
     'k3d-wabl-cs-registry:58063/tool/management-console:latest',
-    '../../../',
+    '../../',
     entrypoint='entrypoint.sh',
-    dockerfile='../../../Dockerfile.ManagementConsole',
+    dockerfile='../../Dockerfile.ManagementConsole',
     live_update=[
         sync('out', '/app/out'),
     ],
