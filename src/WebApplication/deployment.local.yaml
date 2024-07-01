@@ -30,7 +30,7 @@ spec:
         - envFrom:
             - secretRef:
                 name: web-api-env-secret
-          image: core.harbor.cr.test/webapp/web-api:latest
+          image: k3d-wabl-cs-registry:58063/webapp/web-api:latest
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
