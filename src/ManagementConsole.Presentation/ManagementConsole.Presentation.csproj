@@ -32,4 +32,9 @@
       <_ContentIncludedByDefault Remove="Pages\Index.razor" />
       <_ContentIncludedByDefault Remove="Shared\MainLayout.razor" />
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ManagementConsole.Application\ManagementConsole.Application.csproj" />
+      <ProjectReference Include="..\ManagementConsole.Infrastructure\ManagementConsole.Infrastructure.csproj" />
+    </ItemGroup>
 </Project>
