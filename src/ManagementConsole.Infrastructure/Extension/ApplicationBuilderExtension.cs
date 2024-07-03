@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace ManagementConsole.Internals.Extension;
+namespace ManagementConsole.Infrastructure.Extension;
 
-internal static class ApplicationBuilderExtension
+public static class ApplicationBuilderExtension
 {
     public static IApplicationBuilder UseHealthChecks(this IApplicationBuilder applicationBuilder)
     {

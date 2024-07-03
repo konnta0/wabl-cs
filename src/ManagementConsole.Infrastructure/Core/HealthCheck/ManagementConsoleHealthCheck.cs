@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace ManagementConsole.Internals;
+namespace ManagementConsole.Infrastructure.Core.HealthCheck;
 
-internal sealed class HealthCheck : IHealthCheck
+internal sealed class ManagementConsoleHealthCheck : IHealthCheck
 {
     public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = new ())
     {
