@@ -1,10 +1,10 @@
 using WebApplication.Application.Core.Authentication;
 using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Application.Core.RequestHandler;
-using WebApplication.Application.UseCase.Authentication.Dto;
-using WebApplication.Application.UseCase.Authentication.ExecuteResult;
+using WebApplication.Application.UseCase.Authentication.DataTransferObject;
+using WebApplication.Application.UseCase.Authentication.ExecutionResult;
 
-namespace WebApplication.Application.UseCase.Authentication;
+namespace WebApplication.Application.UseCase.Authentication.Handler;
 
 internal sealed class SignUpHandler(
     IUseCaseActivityStarter activityStarter,

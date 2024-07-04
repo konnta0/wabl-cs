@@ -1,4 +1,4 @@
-using WebApplication.Application.UseCase.Departments.Dto;
+using WebApplication.Application.UseCase.Departments.DataTransferObject;
 using WebApplication.Domain.RestApi.Departments;
 
 namespace WebApplication.Presentation.Extension.ResponseDataFactory.Departments;

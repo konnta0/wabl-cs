@@ -1,5 +1,3 @@
 namespace WebApplication.Application.UseCase.MemoryDatabase.DataTransferObject;
 
-public class LoadMemoryDatabaseUseCaseOutput : ILoadMemoryDatabaseUseCaseOutput
-{
-}
+public class LoadMemoryDatabaseUseCaseOutput : ILoadMemoryDatabaseUseCaseOutput;

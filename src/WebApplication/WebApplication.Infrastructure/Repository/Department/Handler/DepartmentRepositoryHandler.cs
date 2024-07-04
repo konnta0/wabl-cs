@@ -7,6 +7,7 @@ using WebApplication.Infrastructure.Database.Context.Employee;
 using WebApplication.Domain.Entity.Employee;
 using WebApplication.Domain.Repository;
 using WebApplication.Domain.Repository.Department;
+using WebApplication.Domain.Repository.Department.Core;
 
 namespace WebApplication.Infrastructure.Repository.Department;
 

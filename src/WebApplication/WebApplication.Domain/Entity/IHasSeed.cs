@@ -1,5 +1,3 @@
 namespace WebApplication.Domain.Entity;
 
-public interface IHasSeed
-{
-}
+public interface IHasSeed;

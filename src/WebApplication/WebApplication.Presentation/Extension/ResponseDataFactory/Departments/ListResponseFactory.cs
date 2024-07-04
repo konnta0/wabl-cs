@@ -1,4 +1,4 @@
-using WebApplication.Application.Departments.Dto;
+using WebApplication.Application.UseCase.Departments.DataTransferObject;
 using WebApplication.Domain.RestApi.Departments;
 using WebApplication.Domain.RestApi.Departments.Object;
 

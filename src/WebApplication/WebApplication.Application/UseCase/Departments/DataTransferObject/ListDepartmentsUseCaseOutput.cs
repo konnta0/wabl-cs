@@ -1,7 +1,6 @@
 using WebApplication.Application.Departments.Common;
-using WebApplication.Application.UseCase.Departments.Dto;
 
-namespace WebApplication.Application.Departments.Dto;
+namespace WebApplication.Application.UseCase.Departments.DataTransferObject;
 
 public class ListDepartmentsUseCaseOutput : IDepartmentsUseCaseOutput
 {

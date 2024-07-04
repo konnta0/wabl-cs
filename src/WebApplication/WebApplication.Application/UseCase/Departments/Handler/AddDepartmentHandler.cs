@@ -2,7 +2,7 @@ using WebApplication.Domain.Repository.Department;
 using WebApplication.Application.Core.Exception;
 using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Application.Core.RequestHandler;
-using WebApplication.Application.UseCase.Departments.Dto;
+using WebApplication.Application.UseCase.Departments.DataTransferObject;
 using WebApplication.Application.UseCase.Departments.ExecuteResult;
 
 namespace WebApplication.Application.UseCase.Departments;

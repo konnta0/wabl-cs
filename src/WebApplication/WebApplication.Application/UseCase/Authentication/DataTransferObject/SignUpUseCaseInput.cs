@@ -1,4 +1,4 @@
-namespace WebApplication.Application.UseCase.Authentication.Dto;
+namespace WebApplication.Application.UseCase.Authentication.DataTransferObject;
 
 public sealed class SignUpUseCaseInput : ISignUpUseCaseInput
 {

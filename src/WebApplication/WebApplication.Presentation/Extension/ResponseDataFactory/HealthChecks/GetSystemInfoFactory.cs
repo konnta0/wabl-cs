@@ -1,4 +1,4 @@
-using WebApplication.Application.UseCase.Departments.Dto;
+using WebApplication.Application.UseCase.HealthCheck.DataTransferObject;
 using WebApplication.Domain.RestApi.HealthCheck;
 
 namespace WebApplication.Presentation.Extension.ResponseDataFactory.HealthChecks;

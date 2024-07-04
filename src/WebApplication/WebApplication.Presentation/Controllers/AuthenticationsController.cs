@@ -1,7 +1,7 @@
 using WebApplication.Application.Core.RequestHandler;
-using WebApplication.Application.UseCase.Authentication.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication.Application.UseCase.Authentication.DataTransferObject;
 using WebApplication.Presentation.Core;
 using WebApplication.Presentation.Dto.Request;
 

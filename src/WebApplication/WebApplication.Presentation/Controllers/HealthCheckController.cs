@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication.Application.Core.RequestHandler;
-using WebApplication.Application.UseCase.Departments.Dto;
+using WebApplication.Application.UseCase.HealthCheck.DataTransferObject;
 using WebApplication.Presentation.Core;
-using WebApplication.Presentation.Extension.ResponseDataFactory.Departments;
 using WebApplication.Presentation.Extension.ResponseDataFactory.HealthChecks;
 using ZLogger;
 
