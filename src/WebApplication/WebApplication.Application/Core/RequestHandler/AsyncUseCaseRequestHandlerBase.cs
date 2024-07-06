@@ -2,14 +2,12 @@ using MessagePipe;
 
 namespace WebApplication.Application.Core.RequestHandler;
 
-internal abstract class AsyncUseCaseRequestHandlerBase<TInput, TExecuteResult> : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?> where TInput : IUseCaseInput where TExecuteResult : IUseCaseExecuteResult
+internal abstract class AsyncUseCaseRequestHandlerBase<TInput, TExecuteResult>(IUseCaseActivityStarter activityStarter)
+    : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?>
+    where TInput : IUseCaseInput
+    where TExecuteResult : IUseCaseExecuteResult
 {
-    protected AsyncUseCaseRequestHandlerBase(IUseCaseActivityStarter activityStarter)
-    {
-        ActivityStarter = activityStarter;
-    }
-
-    protected IUseCaseActivityStarter ActivityStarter { get; }
+    protected IUseCaseActivityStarter ActivityStarter { get; } = activityStarter;
 
     public async ValueTask<IUseCaseOutput?> InvokeAsync(IUseCaseInput request, CancellationToken cancellationToken = new ())
     {

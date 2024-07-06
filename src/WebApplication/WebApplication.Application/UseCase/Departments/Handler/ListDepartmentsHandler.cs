@@ -7,18 +7,13 @@ using WebApplication.Application.UseCase.Departments.ExecuteResult;
 
 namespace WebApplication.Application.UseCase.Departments;
 
-internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepartmentsUseCaseInput, ListDepartmentExecuteResult>
+internal class ListDepartmentsHandler(
+    IUseCaseActivityStarter activityStarter,
+    IRepositoryHandler repositoryHandler)
+    : AsyncUseCaseRequestHandlerBase<ListDepartmentsUseCaseInput, ListDepartmentExecuteResult>(activityStarter)
 {
-    private readonly IRepositoryHandler _repositoryHandler;
     private ListDepartmentsUseCaseOutput _output = null!;
 
-    public ListDepartmentsHandler(
-        IUseCaseActivityStarter activityStarter, 
-        IRepositoryHandler repositoryHandler) : base(activityStarter)
-    {
-        _repositoryHandler = repositoryHandler;
-    }
-    
     protected override ValueTask ValidateAsync(ListDepartmentsUseCaseInput useCaseInput, CancellationToken cancellationToken = new ())
     {
         // nop
@@ -29,7 +24,7 @@ internal class ListDepartmentsHandler : AsyncUseCaseRequestHandlerBase<ListDepar
     {
         _output = new ListDepartmentsUseCaseOutput();
         
-        var repositoryOutputData = await _repositoryHandler.InvokeAsync<IFindAllInput, IFindAllOutput>(
+        var repositoryOutputData = await repositoryHandler.InvokeAsync<IFindAllInput, IFindAllOutput>(
             _ => {}, cancellationToken);
 
         _output.Departments = repositoryOutputData.DepartmentsEntities!

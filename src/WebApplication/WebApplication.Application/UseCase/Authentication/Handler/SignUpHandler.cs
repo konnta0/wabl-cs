@@ -12,9 +12,6 @@ internal sealed class SignUpHandler(
     IRepositoryHandler repositoryHandler)
     : AsyncUseCaseRequestHandlerBase<SignUpUseCaseInput, SignUpExecuteResult>(activityStarter)
 {
-    private readonly IRepositoryHandler _repositoryHandler = repositoryHandler;
-
-
     protected override ValueTask ValidateAsync(SignUpUseCaseInput input, CancellationToken cancellationToken = new ())
     {
         return ValueTask.CompletedTask;
