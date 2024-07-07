@@ -3,7 +3,7 @@ using WebApplication.Application.Core.Exception;
 using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Application.Core.RequestHandler;
 using WebApplication.Application.UseCase.Departments.DataTransferObject;
-using WebApplication.Application.UseCase.Departments.ExecuteResult;
+using WebApplication.Application.UseCase.Departments.ExecutionResult;
 
 namespace WebApplication.Application.UseCase.Departments;
 
@@ -40,7 +40,7 @@ internal class AddDepartmentHandler : AsyncUseCaseRequestHandlerBase<AddDepartme
 
     protected override ValueTask<IUseCaseOutput> CollectResponseAsync(
         AddDepartmentsUseCaseInput input,
-        AddDepartmentExecuteResult executeResult,
+        AddDepartmentExecuteResult executionResult,
         CancellationToken cancellationToken = new ())
     {
         var output = new AddDepartmentsUseCaseOutput();

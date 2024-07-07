@@ -28,7 +28,7 @@ internal sealed class SignUpHandler(
         return new SignUpExecuteResult();
     }
 
-    protected override ValueTask<IUseCaseOutput> CollectResponseAsync(SignUpUseCaseInput input, SignUpExecuteResult executeResult,
+    protected override ValueTask<IUseCaseOutput> CollectResponseAsync(SignUpUseCaseInput input, SignUpExecuteResult executionResult,
         CancellationToken cancellationToken = new ())
     {
         return new ValueTask<IUseCaseOutput>(new SignUpUseCaseOutput());

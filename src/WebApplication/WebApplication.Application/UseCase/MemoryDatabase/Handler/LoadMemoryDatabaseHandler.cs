@@ -22,7 +22,7 @@ internal class LoadMemoryDatabaseHandler(
         return new LoadMemoryDatabaseExecuteResult();
     }
 
-    protected override ValueTask<IUseCaseOutput> CollectResponseAsync(LoadMemoryDatabaseUseCaseInput input, LoadMemoryDatabaseExecuteResult executeResult,
+    protected override ValueTask<IUseCaseOutput> CollectResponseAsync(LoadMemoryDatabaseUseCaseInput input, LoadMemoryDatabaseExecuteResult executionResult,
         CancellationToken cancellationToken = new ())
     {
         return new ValueTask<IUseCaseOutput>();

@@ -3,7 +3,7 @@ using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Application.Core.RequestHandler;
 using WebApplication.Application.Departments.Common;
 using WebApplication.Application.UseCase.Departments.DataTransferObject;
-using WebApplication.Application.UseCase.Departments.ExecuteResult;
+using WebApplication.Application.UseCase.Departments.ExecutionResult;
 
 namespace WebApplication.Application.UseCase.Departments;
 
@@ -34,7 +34,7 @@ internal class ListDepartmentsHandler(
 
     protected override ValueTask<IUseCaseOutput> CollectResponseAsync(
         ListDepartmentsUseCaseInput useCaseInput,
-        ListDepartmentExecuteResult executeResult,
+        ListDepartmentExecuteResult executionResult,
         CancellationToken cancellationToken = new ())
     {
         return _output is null ? throw new NullReferenceException() : new ValueTask<IUseCaseOutput>(_output);

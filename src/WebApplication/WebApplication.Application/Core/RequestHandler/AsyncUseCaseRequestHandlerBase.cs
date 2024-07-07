@@ -2,10 +2,10 @@ using MessagePipe;
 
 namespace WebApplication.Application.Core.RequestHandler;
 
-internal abstract class AsyncUseCaseRequestHandlerBase<TInput, TExecuteResult>(IUseCaseActivityStarter activityStarter)
+internal abstract class AsyncUseCaseRequestHandlerBase<TInput, TExecutionResult>(IUseCaseActivityStarter activityStarter)
     : IAsyncRequestHandler<IUseCaseInput, IUseCaseOutput?>
     where TInput : IUseCaseInput
-    where TExecuteResult : IUseCaseExecuteResult
+    where TExecutionResult : IUseCaseExecuteResult
 {
     protected IUseCaseActivityStarter ActivityStarter { get; } = activityStarter;
 
@@ -30,7 +30,7 @@ internal abstract class AsyncUseCaseRequestHandlerBase<TInput, TExecuteResult>(I
 
     protected abstract ValueTask ValidateAsync(TInput input, CancellationToken cancellationToken = new());
     
-    protected abstract ValueTask<TExecuteResult> ExecuteAsync(TInput input, CancellationToken cancellationToken = new());
+    protected abstract ValueTask<TExecutionResult> ExecuteAsync(TInput input, CancellationToken cancellationToken = new());
     
-    protected abstract ValueTask<IUseCaseOutput> CollectResponseAsync(TInput input, TExecuteResult executeResult, CancellationToken cancellationToken = new());
+    protected abstract ValueTask<IUseCaseOutput> CollectResponseAsync(TInput input, TExecutionResult executionResult, CancellationToken cancellationToken = new());
 }
