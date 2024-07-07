@@ -4,7 +4,7 @@ using WebApplication.Presentation.Models;
 
 namespace WebApplication.Presentation.Controllers;
 
-public class HomeController(ILogger<HomeController> logger) : Controller
+public class HomeController : Controller
 {
     public IActionResult Index()
     {

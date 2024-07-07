@@ -8,7 +8,7 @@ using WebApplication.Presentation.Extension.ResponseDataFactory.Departments;
 namespace WebApplication.Presentation.Controllers;
 
 [ApiController]
-public class EmployeesController(ILogger<EmployeesController> logger, IUseCaseHandler useCaseHandler)
+public class EmployeesController(IUseCaseHandler useCaseHandler)
     : WebApiController
 {
 
