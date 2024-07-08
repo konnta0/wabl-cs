@@ -1,15 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Core.Instrumentation.Repository;
-using WebApplication.Infrastructure.Core.RequestHandler;
-using WebApplication.Infrastructure.Database.Context.Employee;
 using WebApplication.Domain.Entity.Employee;
 using WebApplication.Domain.Repository;
 using WebApplication.Domain.Repository.Department;
 using WebApplication.Domain.Repository.Department.Core;
+using WebApplication.Infrastructure.Cache;
+using WebApplication.Infrastructure.Core.Instrumentation.Repository;
+using WebApplication.Infrastructure.Core.RequestHandler;
+using WebApplication.Infrastructure.Database.Context.Employee;
 
-namespace WebApplication.Infrastructure.Repository.Department;
+namespace WebApplication.Infrastructure.Repository.Department.Handler;
 
 internal sealed class DepartmentRepositoryHandler(ILogger<DepartmentRepositoryHandler> logger,
         IVolatileRedisProvider redisProvider,

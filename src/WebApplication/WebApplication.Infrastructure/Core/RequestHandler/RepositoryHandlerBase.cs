@@ -5,8 +5,9 @@ using WebApplication.Infrastructure.Core.Instrumentation.Repository;
 
 namespace WebApplication.Infrastructure.Core.RequestHandler;
 
-internal abstract class RepositoryHandlerBase<TInput, TOutput>(IVolatileRedisProvider volatileRedisProvider,
-        IRepositoryActivityStarter activityStarter)
+public abstract class RepositoryHandlerBase<TInput, TOutput>(
+    IVolatileRedisProvider volatileRedisProvider,
+    IRepositoryActivityStarter activityStarter)
     : IAsyncRequestHandler<IRepositoryInput, IRepositoryOutput?>
     where TInput : IRepositoryInput
     where TOutput : IRepositoryOutput

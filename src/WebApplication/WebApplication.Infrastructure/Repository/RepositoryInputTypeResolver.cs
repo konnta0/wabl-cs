@@ -1,6 +1,8 @@
 using WebApplication.Domain.Repository;
 using WebApplication.Domain.Repository.Department;
+using WebApplication.Domain.Repository.System;
 using WebApplication.Infrastructure.Repository.Department;
+using WebApplication.Infrastructure.Repository.System;
 
 namespace WebApplication.Infrastructure.Repository;
 
@@ -15,6 +17,7 @@ internal class RepositoryInputTypeResolver : IRepositoryInputTypeResolver
     private static readonly Dictionary<Type, Type> TypeMap = new()
     {
         { typeof(IAddInput), typeof(AddInput) },
-        { typeof(IFindAllInput), typeof(FindAllInput) }
+        { typeof(IFindAllInput), typeof(FindAllInput) },
+        { typeof(IGetSystemInfoInput), typeof(GetSystemInfoInput)}
     };
 }
