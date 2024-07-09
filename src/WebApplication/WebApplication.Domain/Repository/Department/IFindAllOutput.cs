@@ -1,4 +1,5 @@
 using WebApplication.Domain.Entity.Employee;
+using WebApplication.Domain.Repository.Department.Core;
 
 namespace WebApplication.Domain.Repository.Department;
 

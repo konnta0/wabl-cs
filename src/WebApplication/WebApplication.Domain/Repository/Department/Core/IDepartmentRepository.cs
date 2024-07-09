@@ -1,4 +1,4 @@
-namespace WebApplication.Domain.Repository.Department;
+namespace WebApplication.Domain.Repository.Department.Core;
 
 public interface IDepartmentRepository : IRepository
 {
