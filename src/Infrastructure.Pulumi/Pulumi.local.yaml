@@ -24,7 +24,7 @@ config:
         Value: minikube
     User: tekton
   Infrastructure:ManagementConsole:
-    Deploy: false
+    Deploy: true
     Namespace: tool
     Tag: latest
   Infrastructure:Observability:
@@ -34,8 +34,8 @@ config:
   Infrastructure:Tool:
     Namespace: tool
   Infrastructure:WebApplication:
-    Deploy: true
-    Namespace: webapp
     CanaryTag: latest
+    Deploy: false
+    Namespace: webapp
     Tag: latest
   Infrastructure:isMinikube: "false"
