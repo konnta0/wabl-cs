@@ -7,4 +7,12 @@
         <RootNamespace>Shared.Infrastructure</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Database\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    </ItemGroup>
+
 </Project>

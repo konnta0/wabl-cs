@@ -21,10 +21,6 @@
     <AdditionalFiles Include="../BannedSymbols.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebApplication.Domain.SourceGenerator\WebApplication.Domain.SourceGenerator.csproj">
-      <OutputItemType>Analyzer</OutputItemType>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
 
     <ProjectReference Include="..\WebApplication.Domain.RestApi\WebApplication.Domain.RestApi.csproj" />
   </ItemGroup>

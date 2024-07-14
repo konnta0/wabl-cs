@@ -5,7 +5,7 @@ using MasterMemory;
 using MessagePack;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace WebApplication.Domain.Entity.Employee;
+namespace Shared.Domain.Entity.Employee;
 
 [Table("employees")]
 [MemoryTable(nameof(EmployeesEntity)), MessagePackObject(true)]

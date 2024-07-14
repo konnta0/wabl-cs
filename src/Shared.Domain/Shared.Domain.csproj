@@ -6,4 +6,16 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MasterMemory" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="../Shared.Domain.SourceGenerator/Shared.Domain.SourceGenerator.csproj">
+            <OutputItemType>Analyzer</OutputItemType>
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+        </ProjectReference>
+    </ItemGroup>
+
 </Project>

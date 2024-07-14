@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace WebApplication.Domain.Entity.Employee;
+namespace Shared.Domain.Entity.Employee;
 
 [Table("salaries")]
 public partial class SalariesEntity
