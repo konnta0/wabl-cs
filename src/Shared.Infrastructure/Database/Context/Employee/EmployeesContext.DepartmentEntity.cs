@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication.Domain.Entity.Employee;
+using Shared.Domain.Entity.Employee;
 
-namespace WebApplication.Infrastructure.Database.Context.Employee;
+namespace Shared.Infrastructure.Database.Context.Employee;
 
 public partial class EmployeesContext
 {

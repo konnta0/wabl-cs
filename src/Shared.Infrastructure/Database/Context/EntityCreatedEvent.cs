@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WebApplication.Domain.Entity;
+using Shared.Domain.Entity;
 
-namespace WebApplication.Infrastructure.Database.Context;
+namespace Shared.Infrastructure.Database.Context;
 
 public readonly struct EntityCreatedEvent
 {

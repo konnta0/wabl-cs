@@ -1,5 +1,5 @@
 
-namespace WebApplication.Infrastructure.Database;
+namespace Shared.Infrastructure.Database;
 
 public class DatabaseConfig
 {

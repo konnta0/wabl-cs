@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace WebApplication.Infrastructure.Database.Context.Employee;
+namespace Shared.Infrastructure.Database.Context.Employee;
 
 public partial class EmployeesContext(DbContextOptions<EmployeesContext> dbContextOptions) : DbContext(dbContextOptions)
 {

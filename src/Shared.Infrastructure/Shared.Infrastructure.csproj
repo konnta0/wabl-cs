@@ -8,11 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Database\" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" />
+      <ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj" />
     </ItemGroup>
 
 </Project>

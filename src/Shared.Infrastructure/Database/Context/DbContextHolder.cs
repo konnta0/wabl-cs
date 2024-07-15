@@ -1,8 +1,8 @@
 using System.Collections.Immutable;
 using Microsoft.EntityFrameworkCore;
-using WebApplication.Infrastructure.Database.Context.Employee;
+using EmployeesContext = Shared.Infrastructure.Database.Context.Employee.EmployeesContext;
 
-namespace WebApplication.Infrastructure.Database.Context;
+namespace Shared.Infrastructure.Database.Context;
 
 public class DbContextHolder : IDbContextHolder, IDisposable
 {

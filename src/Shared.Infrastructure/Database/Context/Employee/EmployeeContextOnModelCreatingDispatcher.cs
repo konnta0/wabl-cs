@@ -1,11 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication.Domain.Entity.Employee;
+using Shared.Domain.Entity.Employee;
+using WebApplication.Infrastructure.Database.Context;
 
-namespace WebApplication.Infrastructure.Database.Context.Employee;
+namespace Shared.Infrastructure.Database.Context.Employee;
 
-public interface IEmployeesContextOnModelCreatingDispatcher : IContextOnModelCreatingDispatcher
-{
-}
+public interface IEmployeesContextOnModelCreatingDispatcher : IContextOnModelCreatingDispatcher;
 
 public class EmployeesContextOnModelCreatingDispatcher : IEmployeesContextOnModelCreatingDispatcher
 {
