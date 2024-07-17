@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Bogus;
-using WebApplication.Domain.Entity.Employee;
 using FluentAssertions;
-using WebApplication.Infrastructure.Database.Context.Employee;
 using WebApplication.Infrastructure.Extension;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Shared;
+using Shared.Domain.Entity.Employee;
+using Shared.Infrastructure.Database.Context.Employee;
 using Xunit;
 
 namespace WebApplication.Test;

@@ -6,11 +6,12 @@ using CloudStructures.Structures;
 using WebApplication.Domain.Entity.Employee;
 using FluentAssertions;
 using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Database.Context.Employee;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication.Infrastructure.Extension;
 using Shared;
+using Shared.Domain.Entity.Employee;
+using Shared.Infrastructure.Database.Context.Employee;
 using Xunit;
 
 namespace WebApplication.Test;

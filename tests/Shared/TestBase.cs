@@ -7,9 +7,9 @@ using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Configurations;
 using DotNet.Testcontainers.Containers;
 using DotNet.Testcontainers.Networks;
+using Shared.Infrastructure.Database;
 using Testcontainers.MySql;
 using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Database;
 using Xunit;
 
 namespace Shared;
