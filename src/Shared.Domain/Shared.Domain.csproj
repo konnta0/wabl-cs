@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="MasterMemory" />
+      <PackageReference Include="MasterMemory.MSBuild.Tasks"/>
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
         
     </ItemGroup>
@@ -17,5 +18,9 @@
             <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
         </ProjectReference>
     </ItemGroup>
-
+  <!-- Call code generator before-build. -->
+  <Target Name="MasterMemoryGen" BeforeTargets="BeforeBuild">
+      <!-- Configuration of Code-Generator, `UsingNamespace`, `InputDirectory`, `OutputDirectory` and `AddImmutableConstructor`. -->
+      <MasterMemoryGenerator UsingNamespace="$(ProjectName)" InputDirectory="$(ProjectDir)" OutputDirectory="$(ProjectDir)MasterMemory" />
+  </Target>
 </Project>

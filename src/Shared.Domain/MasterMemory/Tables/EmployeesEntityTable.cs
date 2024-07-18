@@ -4,14 +4,14 @@ using MasterMemory.Validation;
 using MasterMemory;
 using MessagePack;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Shared.Domain.Entity.Employee;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using System;
-using WebApplication.Domain.Entity.Employee;
 
-namespace WebApplication.Domain.Tables
+namespace Shared.Domain.Tables
 {
    public sealed partial class EmployeesEntityTable : TableBase<EmployeesEntity>, ITableUniqueValidate
    {

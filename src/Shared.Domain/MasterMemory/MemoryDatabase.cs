@@ -4,15 +4,15 @@ using MasterMemory.Validation;
 using MasterMemory;
 using MessagePack;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Shared.Domain.Entity.Employee;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using System;
-using WebApplication.Domain.Entity.Employee;
-using WebApplication.Domain.Tables;
+using Shared.Domain.Tables;
 
-namespace WebApplication.Domain
+namespace Shared.Domain
 {
    public sealed class MemoryDatabase : MemoryDatabaseBase
    {
@@ -130,8 +130,8 @@ namespace WebApplication.Domain
             if (metaTable != null) return metaTable;
 
             var dict = new Dictionary<string, MasterMemory.Meta.MetaTable>();
-            dict.Add("EmployeesEntity", WebApplication.Domain.Tables.EmployeesEntityTable.CreateMetaTable());
-            dict.Add("TitlesEntity", WebApplication.Domain.Tables.TitlesEntityTable.CreateMetaTable());
+            dict.Add("EmployeesEntity", Shared.Domain.Tables.EmployeesEntityTable.CreateMetaTable());
+            dict.Add("TitlesEntity", Shared.Domain.Tables.TitlesEntityTable.CreateMetaTable());
 
             metaTable = new MasterMemory.Meta.MetaDatabase(dict);
             return metaTable;

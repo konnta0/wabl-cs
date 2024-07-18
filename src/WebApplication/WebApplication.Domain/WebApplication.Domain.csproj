@@ -22,11 +22,9 @@
   </ItemGroup>
   <ItemGroup>
 
+    <ProjectReference Include="..\..\Shared.Domain\Shared.Domain.csproj" />
+
     <ProjectReference Include="..\WebApplication.Domain.RestApi\WebApplication.Domain.RestApi.csproj" />
   </ItemGroup>
-  <!-- Call code generator before-build. -->
-  <Target Name="MasterMemoryGen" BeforeTargets="BeforeBuild">
-      <!-- Configuration of Code-Generator, `UsingNamespace`, `InputDirectory`, `OutputDirectory` and `AddImmutableConstructor`. -->
-      <MasterMemoryGenerator UsingNamespace="$(ProjectName)" InputDirectory="$(ProjectDir)" OutputDirectory="$(ProjectDir)MasterMemory" />
-  </Target>
+
 </Project>

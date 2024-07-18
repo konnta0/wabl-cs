@@ -4,15 +4,15 @@ using MasterMemory.Validation;
 using MasterMemory;
 using MessagePack;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Shared.Domain.Entity.Employee;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using System;
-using WebApplication.Domain.Entity.Employee;
-using WebApplication.Domain.Tables;
+using Shared.Domain.Tables;
 
-namespace WebApplication.Domain
+namespace Shared.Domain
 {
     public class MasterMemoryResolver : global::MessagePack.IFormatterResolver
     {
