@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using WebApplication.Domain.Entity.Employee;
+using Shared.Domain.Entity.Employee;
+using Shared.Infrastructure.Database.Context.Employee;
 using WebApplication.Domain.Repository;
 using WebApplication.Domain.Repository.Department;
 using WebApplication.Domain.Repository.Department.Core;
 using WebApplication.Infrastructure.Cache;
 using WebApplication.Infrastructure.Core.Instrumentation.Repository;
 using WebApplication.Infrastructure.Core.RequestHandler;
-using WebApplication.Infrastructure.Database.Context.Employee;
 
 namespace WebApplication.Infrastructure.Repository.Department.Handler;
 

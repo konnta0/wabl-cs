@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using WebApplication.Domain.Entity.Employee;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-Console.WriteLine("Hello World!");
+﻿Console.WriteLine("Hello World!");
 
 // var mc = new ExampleEntity();
 // Console.WriteLine(mc);

@@ -1,5 +1,5 @@
+using Shared.Infrastructure.Database.Context;
 using WebApplication.Application.Core.Database;
-using WebApplication.Infrastructure.Database.Context;
 
 namespace WebApplication.Infrastructure.Database;
 

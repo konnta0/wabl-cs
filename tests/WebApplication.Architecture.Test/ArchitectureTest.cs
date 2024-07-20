@@ -52,7 +52,7 @@ public class ArchitectureTest
         var assemblies = new List<Assembly>
         {
             typeof(Application.Extension.ServiceCollectionExtension).Assembly,
-            typeof(Domain.MasterMemoryResolver).Assembly,
+            typeof(Domain.Repository.IRepository).Assembly,
             typeof(Domain.RestApi.IApi<,>).Assembly,
             typeof(Infrastructure.Extension.ServiceCollectionExtension).Assembly,
             typeof(Presentation.Extension.ServiceCollectionExtension).Assembly,

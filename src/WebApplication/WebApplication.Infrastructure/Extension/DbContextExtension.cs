@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication.Domain.Entity;
+using Shared.Domain.Entity;
 
 namespace WebApplication.Infrastructure.Extension;
 

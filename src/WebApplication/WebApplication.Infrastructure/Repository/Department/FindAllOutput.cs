@@ -1,4 +1,4 @@
-using WebApplication.Domain.Entity.Employee;
+using Shared.Domain.Entity.Employee;
 using WebApplication.Domain.Repository.Department;
 
 namespace WebApplication.Infrastructure.Repository.Department;

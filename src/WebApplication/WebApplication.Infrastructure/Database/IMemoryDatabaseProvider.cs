@@ -1,5 +1,5 @@
+using Shared.Domain;
 using WebApplication.Application.Core.Database;
-using WebApplication.Domain;
 
 namespace WebApplication.Infrastructure.Database;
 

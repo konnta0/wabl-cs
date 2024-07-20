@@ -4,8 +4,8 @@ using WebApplication.Application.Core.Database;
 using WebApplication.Infrastructure.Extension;
 using MasterMemory;
 using Microsoft.EntityFrameworkCore;
-using WebApplication.Domain;
-using WebApplication.Infrastructure.Database.Context;
+using Shared.Domain;
+using Shared.Infrastructure.Database.Context;
 
 namespace WebApplication.Infrastructure.Database;
 
