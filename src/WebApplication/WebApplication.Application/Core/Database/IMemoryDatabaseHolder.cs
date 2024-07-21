@@ -1,4 +1,4 @@
-using WebApplication.Domain;
+using Shared.Domain;
 
 namespace WebApplication.Application.Core.Database;
 
