@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebApplication.Infrastructure.Database.Context.Employee;
+using Shared.Infrastructure.Database.Context.Employee;
 
 #nullable disable
 

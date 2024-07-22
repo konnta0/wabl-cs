@@ -5,9 +5,9 @@ using System.Text.Json.Serialization;
 using ConsoleAppFramework;
 using MasterMemory;
 using Microsoft.Extensions.Logging;
-using WebApplication.Infrastructure.Database.Context;
+using Shared.Domain;
+using Shared.Infrastructure.Database.Context;
 using WebApplication.Infrastructure.Extension;
-using WebApplication.Domain;
 using ZLogger;
 
 namespace Tool.DatabaseMigration.Command.Seed;

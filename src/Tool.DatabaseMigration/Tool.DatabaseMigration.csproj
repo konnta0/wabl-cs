@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj" />
       <ProjectReference Include="..\WebApplication\WebApplication.Infrastructure\WebApplication.Infrastructure.csproj" />
     </ItemGroup>
 </Project>
