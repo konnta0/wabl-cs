@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="MessagePipe"/>
+    </ItemGroup>
+    <ItemGroup>
       <ProjectReference Include="..\ManagementConsole.Domain\ManagementConsole.Domain.csproj" />
+      <ProjectReference Include="..\Shared.Application\Shared.Application.csproj" />
     </ItemGroup>
 
 </Project>

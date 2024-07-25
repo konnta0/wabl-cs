@@ -18,6 +18,7 @@
     <AdditionalFiles Include="../BannedSymbols.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared.Application\Shared.Application.csproj" />
     <ProjectReference Include="..\WebApplication.Domain\WebApplication.Domain.csproj" />
   </ItemGroup>
   

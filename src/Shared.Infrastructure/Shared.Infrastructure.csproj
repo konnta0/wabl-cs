@@ -9,9 +9,15 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" >
+            <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Shared.Application\Shared.Application.csproj" />
       <ProjectReference Include="..\Shared.Domain\Shared.Domain.csproj" />
     </ItemGroup>
 

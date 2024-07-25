@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Shared.Domain.Entity;
 
-namespace WebApplication.Infrastructure.Extension;
+namespace Shared.Infrastructure.Extension;
 
 public static class DbContextExtension
 {

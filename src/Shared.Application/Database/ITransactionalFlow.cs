@@ -1,4 +1,4 @@
-namespace WebApplication.Application.Core.Database;
+namespace Shared.Application.Database;
 
 public interface ITransactionalFlow
 {

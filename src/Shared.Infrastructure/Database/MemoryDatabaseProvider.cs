@@ -1,8 +1,8 @@
 using Shared.Domain;
 
-namespace WebApplication.Infrastructure.Database;
+namespace Shared.Infrastructure.Database;
 
-internal class MemoryDatabaseProvider : IMemoryDatabaseProvider
+public class MemoryDatabaseProvider : IMemoryDatabaseProvider
 {
     public MemoryDatabase? Db => _db;
     private MemoryDatabase? _db;

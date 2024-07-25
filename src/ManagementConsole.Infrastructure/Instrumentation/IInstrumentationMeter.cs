@@ -1,0 +1,3 @@
+namespace ManagementConsole.Infrastructure.Instrumentation;
+
+public interface IInstrumentationMeter;

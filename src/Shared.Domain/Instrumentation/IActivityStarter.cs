@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace WebApplication.Domain.Instrumentation;
+namespace Shared.Domain.Instrumentation;
 
 public interface IActivityStarter
 {

@@ -1,32 +1,24 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
-using WebApplication.Application.Core.Database;
-using WebApplication.Infrastructure.Extension;
 using MasterMemory;
 using Microsoft.EntityFrameworkCore;
+using Shared.Application.Database;
 using Shared.Domain;
 using Shared.Infrastructure.Database.Context;
+using Shared.Infrastructure.Extension;
 
-namespace WebApplication.Infrastructure.Database;
+namespace Shared.Infrastructure.Database;
 
-internal class MemoryDatabaseLoader : IMemoryDatabaseLoader
+public class MemoryDatabaseLoader(
+    IDbContextHolder dbContextHolder,
+    IMemoryDatabaseProvider memoryDatabaseProvider)
+    : IMemoryDatabaseLoader
 {
-    private readonly IDbContextHolder _dbContextHolder;
-    private readonly IMemoryDatabaseProvider _memoryDatabaseProvider;
-
-    internal MemoryDatabaseLoader(
-        IDbContextHolder dbContextHolder, 
-        IMemoryDatabaseProvider memoryDatabaseProvider)
-    {
-        _dbContextHolder = dbContextHolder;
-        _memoryDatabaseProvider = memoryDatabaseProvider;
-    }
-
     public ValueTask Load()
     {
         var builder = new DatabaseBuilder();
 
-        foreach (var dbContext in _dbContextHolder.GetAll())
+        foreach (var dbContext in dbContextHolder.GetAll())
         {
             var entityTypes = dbContext.GetSeedEntityTypes();
             foreach (var type in entityTypes)
@@ -53,7 +45,7 @@ internal class MemoryDatabaseLoader : IMemoryDatabaseLoader
             }
         }
         
-        _memoryDatabaseProvider.Replace(builder.Build());
+        memoryDatabaseProvider.Replace(builder.Build());
         return ValueTask.CompletedTask;
     }
 }

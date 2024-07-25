@@ -8,13 +8,23 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ManagementConsole.Application\ManagementConsole.Application.csproj" />
+      <ProjectReference Include="..\Shared.Infrastructure\Shared.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Diagnostics.Middleware" />
-      <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks" />
-      <PackageReference Include="StackExchange.Redis" />
-      <PackageReference Include="ZLogger" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.Middleware"/>
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks"/>
+        <PackageReference Include="OpenTelemetry.Exporter.Console"/>
+        <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol"/>
+        <PackageReference Include="OpenTelemetry.Exporter.Prometheus"/>
+        <PackageReference Include="OpenTelemetry.Exporter.InMemory"/>
+        <PackageReference Include="OpenTelemetry.Extensions.Hosting"/>
+        <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore"/>
+        <PackageReference Include="OpenTelemetry.Instrumentation.Http"/>
+        <PackageReference Include="OpenTelemetry.Contrib.Instrumentation.EntityFrameworkCore"/>
+        <PackageReference Include="OpenTelemetry.Instrumentation.StackExchangeRedis"/>
+        <PackageReference Include="StackExchange.Redis"/>
+        <PackageReference Include="ZLogger"/>
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
-using WebApplication.Application.Core.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Shared.Application.Database;
 
 namespace WebApplication.Presentation.Filter;
 

@@ -1,8 +1,8 @@
+using ManagementConsole.Application.RequestHandler;
+using ManagementConsole.Application.UseCase.MemoryDatabase.DataTransferObject;
 using Shared.Application.Database;
-using WebApplication.Application.Core.RequestHandler;
-using WebApplication.Application.UseCase.MemoryDatabase.DataTransferObject;
 
-namespace WebApplication.Application.UseCase.MemoryDatabase.Handler;
+namespace ManagementConsole.Application.UseCase.MemoryDatabase.Handler;
 
 internal class LoadMemoryDatabaseHandler(
     IUseCaseActivityStarter activityStarter,

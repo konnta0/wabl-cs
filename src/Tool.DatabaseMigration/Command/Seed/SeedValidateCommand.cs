@@ -7,6 +7,7 @@ using MasterMemory;
 using Microsoft.Extensions.Logging;
 using Shared.Domain;
 using Shared.Infrastructure.Database.Context;
+using Shared.Infrastructure.Extension;
 using WebApplication.Infrastructure.Extension;
 using ZLogger;
 

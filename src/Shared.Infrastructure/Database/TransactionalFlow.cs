@@ -1,7 +1,7 @@
+using Shared.Application.Database;
 using Shared.Infrastructure.Database.Context;
-using WebApplication.Application.Core.Database;
 
-namespace WebApplication.Infrastructure.Database;
+namespace Shared.Infrastructure.Database;
 
 public class TransactionalFlow(IDbContextHolder dbContextHolder) : ITransactionalFlow
 {

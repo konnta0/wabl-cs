@@ -1,5 +1,5 @@
 using Shared.Domain.Instrumentation;
 
-namespace WebApplication.Application.Core.RequestHandler;
+namespace ManagementConsole.Application.RequestHandler;
 
 public interface IUseCaseActivityStarter : IActivityStarter;

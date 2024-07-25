@@ -1,0 +1,3 @@
+namespace ManagementConsole.Application.RequestHandler;
+
+internal interface IAsyncUseCaseRequestHandler;

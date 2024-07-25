@@ -1,7 +1,6 @@
 using System.Text;
 using CloudStructures;
 using WebApplication.Application.Core.Authentication;
-using WebApplication.Application.Core.Database;
 using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Application.Core.RequestHandler;
 using Cysharp.Text;
@@ -22,6 +21,7 @@ using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Polly;
 using Polly.Extensions.Http;
+using Shared.Application.Database;
 using Shared.Infrastructure.Database;
 using Shared.Infrastructure.Database.Context;
 using Shared.Infrastructure.Database.Context.Employee;
