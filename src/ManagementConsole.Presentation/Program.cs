@@ -1,8 +1,9 @@
+using ManagementConsole.Application.Extension;
 using ManagementConsole.Components;
 using ManagementConsole.Infrastructure.Extension;
 using Microsoft.FluentUI.AspNetCore.Components;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = Microsoft.AspNetCore.Builder.WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
@@ -10,6 +11,7 @@ builder.Services.AddFluentUIComponents();
 builder.Services.AddDataGridEntityFrameworkAdapter();
 builder.Services.AddHttpClient();
 builder.Services.AddInfrastructure();
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
