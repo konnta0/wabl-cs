@@ -1,5 +1,6 @@
 using ManagementConsole.Application.Extension;
 using ManagementConsole.Components;
+using ManagementConsole.Domain.Extension;
 using ManagementConsole.Infrastructure.Extension;
 using Microsoft.FluentUI.AspNetCore.Components;
 
@@ -10,6 +11,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddFluentUIComponents();
 builder.Services.AddDataGridEntityFrameworkAdapter();
 builder.Services.AddHttpClient();
+builder.Services.AddDomain();
 builder.Services.AddInfrastructure();
 builder.Services.AddApplication();
 
