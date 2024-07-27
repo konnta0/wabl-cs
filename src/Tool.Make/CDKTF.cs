@@ -21,4 +21,46 @@ internal sealed class CDKTF
     /// <returns></returns>
     [Command("install")]
     public Task Install() => _target.RunWithoutExitingAsync(["install"]);
+
+    /// <summary>
+    /// Synthesize Terraform resources
+    /// </summary>
+    /// <returns></returns>
+    [Command("synth")]
+    public async Task Synthesize()
+    {
+        await "cd ../Infrastructure.CDKTF; cdktf synth";
+    }
+
+    /// <summary>
+    /// Synthesize Terraform resources
+    /// </summary>
+    /// <param name="stack"></param>
+    [Command("diff")]
+    public async Task Diff(string stack)
+    {
+        await $"cd ../Infrastructure.CDKTF; cdktf diff {stack}";
+    }
+
+    /// <summary>
+    /// Deploy specified stacks using CDKTF
+    /// </summary>
+    /// <param name="stacks">An array of stack names to deploy</param>
+    [Command("deploy")]
+    public async Task Deploy(string[] stacks)
+    {
+        var s = string.Join(' ', stacks);
+        await $"cd ../Infrastructure.CDKTF; cdktf deploy {s}";
+    }
+
+    /// <summary>
+    /// Destroy specified stacks using CDKTF
+    /// </summary>
+    /// <param name="stacks">An array of stack names to destroy</param>
+    [Command("destroy")]
+    public async Task Destroy(string[] stacks)
+    {
+        var s = string.Join(' ', stacks);
+        await $"cd ../Infrastructure.CDKTF; cdktf destroy {s}";
+    }
 }
