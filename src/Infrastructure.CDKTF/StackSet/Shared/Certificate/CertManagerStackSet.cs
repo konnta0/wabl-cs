@@ -1,19 +1,16 @@
-using System.Collections.Generic;
-using Constructs;
 using HashiCorp.Cdktf;
 using HashiCorp.Cdktf.Providers.Helm.Release;
-using HashiCorp.Cdktf.Providers.Kubernetes.Manifest;
 
-namespace Infrastructure.CDKTF.Modules.Certificate;
+namespace Infrastructure.CDKTF.StackSet.Shared.Certificate;
 
-public sealed class CertManagerModule : TerraformModule
+internal sealed class CertManagerStackSet
 {
-    public CertManagerModule(Construct scope, string id, CertManagerConfig config) : base(scope, id, config)
+    public CertManagerStackSet(App app, string id)
     {
         // helm search repo cert-manager
         // NAME                                    CHART VERSION   APP VERSION     DESCRIPTION
         // jetstack/cert-manager                   v1.8.0          v1.8.0          A Helm chart for cert-manager
-        _ = new Release(this, id, new ReleaseConfig
+        _ = new Release(app, id, new ReleaseConfig
         {
             Chart = "cert-manager",
             Version = "v1.8.0",
@@ -22,15 +19,9 @@ public sealed class CertManagerModule : TerraformModule
             CreateNamespace = false
         });
 
-        new TerraformAsset(this, "cert-manager-crds", new TerraformAssetConfig
+        _ = new TerraformAsset(app, "cert-manager-crds", new TerraformAssetConfig
         {
             Path = "https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.crds.yaml"
-        });
-        var data = new DataConfig();
-        
-        new Manifest_(scope, id, new ManifestConfig
-        {
-            Manifest = new Dictionary<string, object>()
         });
     }
 }

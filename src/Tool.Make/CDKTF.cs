@@ -29,7 +29,7 @@ internal sealed class CDKTF
     [Command("synth")]
     public async Task Synthesize()
     {
-        await "cd ../Infrastructure.CDKTF; cdktf synth";
+        await "cd ../Infrastructure.CDKTF; cdktf synth --hcl";
     }
 
     /// <summary>

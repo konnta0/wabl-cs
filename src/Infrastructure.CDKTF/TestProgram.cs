@@ -12,14 +12,14 @@ namespace Infrastructure.CDKTF{
 
         //[Fact]
         //public void CheckValidity(){
-        //    TerraformStack stack = new TerraformStack(Testing.App(), "stack");
+        //    TerraformStack stack = new TerraformStack(Testing.EnvironmentApp(), "stack");
         //    MyApplicationsAbstraction appAbstraction = new MyApplicationsAbstraction(stack, "construct");
         //    Assert.True(Testing.ToBeValidTerraform(Testing.FullSynth(stack)) );
         //}
 
         //[Fact]
         //public void shouldContainContainer(){
-        //    TerraformStack stack = new TerraformStack(Testing.App(), "stack");
+        //    TerraformStack stack = new TerraformStack(Testing.EnvironmentApp(), "stack");
         //    MyApplicationsAbstraction appAbstraction = new MyApplicationsAbstraction(stack, "construct");
         //    string synthesized = Testing.Synth(stack);
         //    Assert.True(Testing.ToHaveResource(synthesized, Container.TfResourceType) );
@@ -27,7 +27,7 @@ namespace Infrastructure.CDKTF{
 
         //[Fact]
         //public void shouldUseUbuntuImage(){
-        //    TerraformStack stack = new TerraformStack(Testing.App(), "stack");
+        //    TerraformStack stack = new TerraformStack(Testing.EnvironmentApp(), "stack");
         //    MyApplicationsAbstraction appAbstraction = new MyApplicationsAbstraction(stack, "construct");
         //    string synthesized = Testing.Synth(stack);
         //    Assert.True(Testing.ToHaveResourceWithProperties(synthesized, Image.TfResourceType, new Dictionary<String, Object>() {
