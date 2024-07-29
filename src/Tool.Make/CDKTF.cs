@@ -27,9 +27,9 @@ internal sealed class CDKTF
     /// </summary>
     /// <returns></returns>
     [Command("synth")]
-    public async Task Synthesize()
+    public async Task Synthesize(string environment)
     {
-        await "cd ../Infrastructure.CDKTF; cdktf synth --hcl";
+        await $"export APPLICATION_ENVIRONMENT={environment}; cd ../Infrastructure.CDKTF; cdktf synth --hcl";
     }
 
     /// <summary>
