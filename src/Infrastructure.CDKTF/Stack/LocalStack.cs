@@ -1,4 +1,6 @@
+using System;
 using HashiCorp.Cdktf;
+using HashiCorp.Cdktf.Providers.Kubernetes.Namespace;
 using HashiCorp.Cdktf.Providers.Kubernetes.Provider;
 using Infrastructure.CDKTF.StackSet.Shared;
 using Infrastructure.CDKTF.StackSet.Tool;
@@ -6,7 +8,7 @@ using Infrastructure.CDKTF.StackSet.WebApp;
 
 namespace Infrastructure.CDKTF.Stack;
 
-class LocalStack : TerraformStack
+internal sealed class LocalStack : TerraformStack
 {
     public LocalStack(App app, string id) : base(app, id)
     {
