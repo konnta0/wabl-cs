@@ -1,12 +1,17 @@
 using HashiCorp.Cdktf;
-using Infrastructure.CDKTF.Construct;
+using Namespace = Infrastructure.CDKTF.Construct.Namespace;
 
 namespace Infrastructure.CDKTF.StackSet.Shared;
 
-internal sealed class SharedStackSet
+internal sealed class SharedStackSet : TerraformResource
 {
-    public SharedStackSet(App app) 
+    public SharedStackSet(Constructs.Construct construct, TerraformProvider provider) :
+        base(construct, nameof(SharedStackSet), new TerraformResourceConfig
     {
-        var ns = new Namespace(app, "shared").Apply();
+        TerraformResourceType = "stackset",
+        Provider = provider
+    })
+    {
+        var ns = new Namespace(construct, "shared").Apply();
     }
 }

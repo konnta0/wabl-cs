@@ -3,9 +3,9 @@ using HashiCorp.Cdktf.Providers.Helm.Release;
 
 namespace Infrastructure.CDKTF.StackSet.Shared.Certificate;
 
-internal sealed class CertManagerStackSet
+internal sealed class CertManagerStackSet : TerraformResource
 {
-    public CertManagerStackSet(App app, string id)
+    public CertManagerStackSet(App app, string id) : base(app, id, new TerraformResourceConfig())
     {
         // helm search repo cert-manager
         // NAME                                    CHART VERSION   APP VERSION     DESCRIPTION
