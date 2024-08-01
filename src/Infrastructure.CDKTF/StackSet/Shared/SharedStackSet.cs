@@ -5,11 +5,10 @@ namespace Infrastructure.CDKTF.StackSet.Shared;
 
 internal sealed class SharedStackSet : TerraformResource
 {
-    public SharedStackSet(Constructs.Construct construct, TerraformProvider provider) :
+    public SharedStackSet(Constructs.Construct construct) :
         base(construct, nameof(SharedStackSet), new TerraformResourceConfig
     {
         TerraformResourceType = "stackset",
-        Provider = provider
     })
     {
         var ns = new Namespace(construct, "shared").Apply();

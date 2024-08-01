@@ -3,10 +3,14 @@ using Infrastructure.CDKTF.Construct;
 
 namespace Infrastructure.CDKTF.StackSet.WebApp;
 
-internal sealed class WebAppStackSet
+internal sealed class WebAppStackSet : TerraformResource
 {
-    public WebAppStackSet(App app)
+    public WebAppStackSet(Constructs.Construct construct) :
+        base(construct, nameof(WebAppStackSet), new TerraformResourceConfig
+        {
+            TerraformResourceType = "stackset",
+        })
     {
-        var ns = new Namespace(app, "webapp").Apply();
+        var ns = new Namespace(construct, "webapp").Apply();
     }
 }
