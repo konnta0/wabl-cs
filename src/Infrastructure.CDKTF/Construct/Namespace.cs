@@ -15,7 +15,7 @@ public sealed class Namespace(Constructs.Construct construct, string name)
         {
             Metadata = new NamespaceMetadata
             {
-                Name = _name
+                Name = name
             }
         });
     }
