@@ -6,9 +6,9 @@ namespace Infrastructure.CDKTF.StackSet.Tool;
 internal sealed class ToolStackSet : TerraformResource
 {
     public ToolStackSet(Constructs.Construct construct) :
-        base(construct, nameof(ToolStackSet), new TerraformResourceConfig
+        base(construct, ConstructExtension.ToKebabCase<ToolStackSet>(), new TerraformResourceConfig
     {
-        TerraformResourceType = "stackset",
+        TerraformResourceType = "stack-set"
     })
     {
         var ns = new Namespace(construct, "tool").Apply();

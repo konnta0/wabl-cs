@@ -4,7 +4,7 @@ namespace Infrastructure.CDKTF.Construct.Storage;
 
 internal sealed class MinIo : Constructs.Construct
 {
-    public MinIo(Constructs.Construct scope, string id, string[]? values = null) : base(scope, "construct-minio")
+    public MinIo(Constructs.Construct scope, string id, string @namespace, string[]? values = null) : base(scope, "construct-minio")
     {
         _ = new Release(scope, id, new ReleaseConfig
         {
@@ -14,7 +14,8 @@ internal sealed class MinIo : Constructs.Construct
             Repository = "https://charts.min.io",
             Atomic = true,
             CreateNamespace = false,
-            Values = values
+            Values = values,
+            Namespace = @namespace
         });
     }
 }

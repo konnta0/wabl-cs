@@ -7,9 +7,9 @@ namespace Infrastructure.CDKTF.StackSet.Shared.Storage;
 
 internal sealed class MinIoStackSet : TerraformResource
 {
-    public MinIoStackSet(Constructs.Construct scope) : base(scope, nameof(MinIoStackSet), new TerraformResourceConfig
+    public MinIoStackSet(Constructs.Construct scope) : base(scope, ConstructExtension.ToKebabCase<MinIoStackSet>(), new TerraformResourceConfig
     {
-        TerraformResourceType = "stackset",
+        TerraformResourceType = "stack-set",
     })
     {
         // ref: https://github.com/minio/minio/blob/master/helm/minio/values.yaml
@@ -93,6 +93,6 @@ internal sealed class MinIoStackSet : TerraformResource
             }
         };
 
-        _ = new MinIo(scope, "shared-minio", [JsonSerializer.Serialize(values)]);
+        _ = new MinIo(scope, "shared-minio", "shared", [JsonSerializer.Serialize(values)]);
     }
 }
