@@ -16,8 +16,14 @@ internal sealed class LocalStack : TerraformStack
         _ = new KubernetesProvider(this, "k8s-provider", new KubernetesProviderConfig());
         _ = new HelmProvider(this, "helm-provider", new HelmProviderConfig());
 
-        _ = new SharedStackSet(this);
-        _ = new ToolStackSet(this);
-        _ = new WebAppStackSet(this);
+        var shared = new SharedStackSet(this);
+        var tool = new ToolStackSet(this)
+        {
+            DependsOn = [shared.GetId()]
+        };
+        var webapp = new WebAppStackSet(this)
+        {
+            DependsOn = [shared.GetId()]
+        };
     }
 }

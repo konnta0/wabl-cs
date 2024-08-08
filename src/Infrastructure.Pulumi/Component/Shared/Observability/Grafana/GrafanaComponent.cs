@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
 using Infrastructure.Pulumi.Extension;
-using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Kubernetes.Core.V1;
 using Pulumi.Kubernetes.Helm.V3;
