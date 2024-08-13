@@ -1,10 +1,14 @@
+using System.Collections.Generic;
+using System.Text.Json;
+using Infrastructure.CDKTF.Construct.Kubernetes.Config;
+using Infrastructure.CDKTF.Construct.Storage.Tidb.Crd;
 using Release = HashiCorp.Cdktf.Providers.Helm.Release.Release;
 
-namespace Infrastructure.CDKTF.Construct.Storage;
+namespace Infrastructure.CDKTF.Construct.Storage.Tidb;
 
 internal sealed class TiDb : Constructs.Construct
 {
-    public TiDb(Constructs.Construct scope, string id, string @namespace, string[]? values = null) : base(scope, "construct-tidb")
+    public TiDb(Constructs.Construct scope, string id, string @namespace, TidbOperatorValues tidbOperatorValues = null) : base(scope, "construct-tidb")
     {
         var ns = new Namespace(scope, "tidb-admin").Apply();
         
@@ -29,13 +33,80 @@ internal sealed class TiDb : Constructs.Construct
             Repository = "https://charts.pingcap.org",
             Atomic = true,
             CreateNamespace = false,
-            Values = values,
+            Values = tidbOperatorValues.ToArrayString(),
             Namespace = @namespace
         })
         {
             DependsOn = [crd.Id]
         };
-        
-        // custom resource tidbcluster
+
+        var tidbCluster = new TiDbCluster(scope,
+            "tidb-cluster",
+            new Metadata
+            {
+                Name = "tidb-cluster",
+                Namespace = @namespace
+            },
+            new TiDbClusterSpec
+            {
+                Version = "v4.0.0",
+                TidbReplicas = 2,
+                TikvReplicas = 3,
+                ConfigUpdateStrategy = "RollingUpdate",
+                Pd = new TiDbClusterSpec.PdSpec
+                {
+                    BaseImage = "pingcap/pd",
+                    Version = "v7.5.0",
+                    Replicas = 2,
+                    Requests = new Dictionary<string, object>
+                    {
+                        ["storage"] = "10Gi"
+                    },
+                    Config = []
+                },
+                Tikv = new TiDbClusterSpec.TiKvSpec
+                {
+                    BaseImage = "pingcap/tikv",
+                    Version = "v7.5.0",
+                    Replicas = 2,
+                    Requests = new Dictionary<string, object>
+                    {
+                        ["storage"] = "10Gi"
+                    },
+                    Config = []
+                },
+                Tidb = new TiDbClusterSpec.TiDbSpec
+                {
+                    BaseImage = "pingcap/tikv",
+                    Version = "v7.5.0",
+                    Replicas = 2,
+                    Requests = new Dictionary<string, object>
+                    {
+                        ["storage"] = "10Gi"
+                    },
+                    SlowLogTailer = new Dictionary<string, object>
+                    {
+                        ["image"] = "arm64v8/busybox:1.26.2"
+                    },
+                    Config = []
+                }
+            }
+        )
+        {
+            DependsOn = [crd.Id]
+        };
+    }
+}
+
+internal sealed record TidbOperatorValues
+{
+    public Dictionary<string, object> Scheduler { get; init; } = new ()
+    {
+        ["create"] = false
+    };
+
+    public string[] ToArrayString()
+    {
+        return [JsonSerializer.Serialize(this, JsonSerializerOption.Default)];
     }
 }
