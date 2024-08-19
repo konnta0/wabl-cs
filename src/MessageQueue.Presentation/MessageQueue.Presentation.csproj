@@ -5,7 +5,6 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dotnet-MessagingQueueService.Processing-9FBF20A0-7756-4BA5-A4D2-C8D611268191</UserSecretsId>
-        <RootNamespace>MessageQueueService.Presentation</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
