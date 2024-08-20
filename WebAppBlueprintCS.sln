@@ -77,11 +77,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagementConsole.Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Application", "src\Shared.Application\Shared.Application.csproj", "{9F65274C-33A7-48E7-A34B-F7872A649440}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageQueueService", "MessageQueueService", "{E880B6A5-3A0C-42A9-9F6E-675AA5D9FB96}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageQueue", "MessageQueue", "{E880B6A5-3A0C-42A9-9F6E-675AA5D9FB96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueueService.Presentation", "src\MessageQueueService.Presentation\MessageQueueService.Presentation.csproj", "{C44C8317-28A9-47F7-9243-F0F726F89EFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue.Presentation", "src\MessageQueue.Presentation\MessageQueue.Presentation.csproj", "{C44C8317-28A9-47F7-9243-F0F726F89EFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueueService.Test", "tests\MessageQueueService.Test\MessageQueueService.Test.csproj", "{53B41372-A08E-4C8C-8570-4CF1C8831B7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue.Test", "tests\MessageQueue.Test\MessageQueue.Test.csproj", "{116CA500-AFC2-4305-8395-C9AEEC81D468}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -201,10 +201,10 @@ Global
 		{C44C8317-28A9-47F7-9243-F0F726F89EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C44C8317-28A9-47F7-9243-F0F726F89EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C44C8317-28A9-47F7-9243-F0F726F89EFD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53B41372-A08E-4C8C-8570-4CF1C8831B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53B41372-A08E-4C8C-8570-4CF1C8831B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53B41372-A08E-4C8C-8570-4CF1C8831B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53B41372-A08E-4C8C-8570-4CF1C8831B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{116CA500-AFC2-4305-8395-C9AEEC81D468}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116CA500-AFC2-4305-8395-C9AEEC81D468}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116CA500-AFC2-4305-8395-C9AEEC81D468}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116CA500-AFC2-4305-8395-C9AEEC81D468}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6145AC80-F9B9-4C79-B8B2-3D01BB6401C1} = {BA3D143E-3E94-4636-BC4F-931D0DB568A9}
@@ -237,6 +237,6 @@ Global
 		{E835C9D6-894A-41F7-A74E-2517233023A0} = {5F68A2C2-FE70-4C0F-8A19-4BC2F48D777B}
 		{9F65274C-33A7-48E7-A34B-F7872A649440} = {5F68A2C2-FE70-4C0F-8A19-4BC2F48D777B}
 		{C44C8317-28A9-47F7-9243-F0F726F89EFD} = {E880B6A5-3A0C-42A9-9F6E-675AA5D9FB96}
-		{53B41372-A08E-4C8C-8570-4CF1C8831B7F} = {4A6A7A37-BD50-4A5A-A8D3-C09B3EA8F1A9}
+		{116CA500-AFC2-4305-8395-C9AEEC81D468} = {4A6A7A37-BD50-4A5A-A8D3-C09B3EA8F1A9}
 	EndGlobalSection
 EndGlobal
