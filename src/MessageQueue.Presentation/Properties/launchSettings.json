@@ -1,7 +1,7 @@
 ﻿{
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "MessagingQueueService.Processing": {
+    "MessagingQueue.Presentation": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "environmentVariables": {

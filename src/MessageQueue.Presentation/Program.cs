@@ -1,4 +1,4 @@
-using MessageQueueService.Presentation;
+using MessageQueue.Presentation;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddHostedService<Worker>();
