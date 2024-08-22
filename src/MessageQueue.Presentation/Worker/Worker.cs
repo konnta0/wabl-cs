@@ -1,7 +1,6 @@
 using DotPulsar;
 using DotPulsar.Abstractions;
 using DotPulsar.Extensions;
-using DotPulsar.Internal;
 
 namespace MessageQueue.Presentation;
 
