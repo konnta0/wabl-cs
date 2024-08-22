@@ -2,9 +2,9 @@ using DotPulsar;
 using DotPulsar.Abstractions;
 using DotPulsar.Extensions;
 
-namespace MessageQueue.Presentation;
+namespace MessageQueue.Presentation.Worker;
 
-public class Worker(ILogger<Worker> logger) : BackgroundService
+internal sealed class Worker(ILogger<Worker> logger) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
     {
