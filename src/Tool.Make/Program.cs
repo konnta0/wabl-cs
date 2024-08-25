@@ -8,6 +8,7 @@ app.Add<ManagementConsole>("management-console");
 app.Add<Microk8s>("microk8s");
 app.Add<Migration>("migration");
 app.Add<Minikube>("minikube");
+app.Add<Pulsar>("pulsar");
 app.Add<Pulumi>("pulumi");
 app.Add<Setup>("setup");
 app.Add<WebApi>("webapi");

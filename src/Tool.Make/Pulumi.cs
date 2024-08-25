@@ -1,5 +1,3 @@
-using ConsoleAppFramework;
-
 namespace Tool.Make;
 
 public sealed class Pulumi
