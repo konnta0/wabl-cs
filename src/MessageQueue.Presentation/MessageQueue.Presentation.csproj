@@ -11,4 +11,9 @@
         <PackageReference Include="DotPulsar" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MessageQueue.Application\MessageQueue.Application.csproj" />
+      <ProjectReference Include="..\MessageQueue.Infrastructure\MessageQueue.Infrastructure.csproj" />
+    </ItemGroup>
 </Project>
