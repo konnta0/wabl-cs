@@ -10,7 +10,7 @@ internal static class ServiceCollectionExtension
     
     private static IServiceCollection AddMessageQueue(this IServiceCollection services)
     {
-        services.AddHostedService<Worker.Worker>();
+        services.AddHostedService<Worker.KpiLogWorker>();
         return services;
     }
 }

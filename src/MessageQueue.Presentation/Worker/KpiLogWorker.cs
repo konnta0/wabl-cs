@@ -1,10 +1,13 @@
+using System.Text.Json;
 using DotPulsar;
 using DotPulsar.Abstractions;
 using DotPulsar.Extensions;
+using MessageQueue.Domain;
+using MessageQueue.Domain.DataTransferObject;
 
 namespace MessageQueue.Presentation.Worker;
 
-internal sealed class Worker(ILogger<Worker> logger) : BackgroundService
+internal sealed class KpiLogWorker(ILogger<KpiLogWorker> logger) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken cancellationToken)
     {
@@ -15,13 +18,13 @@ internal sealed class Worker(ILogger<Worker> logger) : BackgroundService
             }) // Optional
             .Build(); // Connecting to pulsar://localhost:6650
 
-        await using var consumer = client.NewConsumer(Schema.String)
+        await using var consumer = client.NewConsumer(CustomSchema.KpiLogSchema)
             .StateChangedHandler(x =>
             {
                 logger.LogInformation("Got SateChanged. {Topic}, {Result}", x.Consumer.Topic, x.ConsumerState);
             }) // Optional
-            .SubscriptionName("MySubscription")
-            .Topic("persistent://public/default/mytopic")
+            .SubscriptionName("KpiLog")
+            .Topic("persistent://public/default/kpilog")
             .MessagePrefetchCount(100)
             .Create();
         
@@ -40,31 +43,24 @@ internal sealed class Worker(ILogger<Worker> logger) : BackgroundService
             }, // Invoked when we are in operational state again
             cancellationToken);
 
-        List<IMessage<string>> messages = new(100);
+        const int capacity = 5;
+        List<IMessage<KpiLog>> messages = new(capacity);
         while (!cancellationToken.IsCancellationRequested)
         {
             var message = await consumer.Receive(cancellationToken);
             
             messages.Add(message);
 
-            if (messages.Count is not 100) continue;
+            if (messages.Count is not capacity) continue;
 
             foreach (var msg in messages)
             {
                 var publishedOn = msg.PublishTimeAsDateTime;
                 var payload = msg.Value();
-                logger.LogInformation("{PublishedOn}: {Payload}", publishedOn, payload);
+                logger.LogInformation("{PublishedOn}: {LogType}, {}", publishedOn, payload.LogType, JsonSerializer.Serialize(payload.Message));
             }
             await consumer.AcknowledgeCumulative(messages.Last(), cancellationToken);
             messages.Clear();
         }
-    }
-
-    private ValueTask ProcessMessage(IMessage<string> message, CancellationToken cancellationToken)
-    {
-        var publishedOn = message.PublishTimeAsDateTime;
-        var payload = message.Value();
-        logger.LogInformation("{PublishedOn}: {Payload}", publishedOn, payload);
-        return ValueTask.CompletedTask;
     }
 }
