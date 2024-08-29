@@ -6,8 +6,8 @@ using WebApplication.Domain.Repository;
 using WebApplication.Domain.Repository.Department;
 using WebApplication.Domain.Repository.Department.Core;
 using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Core.Instrumentation.Repository;
 using WebApplication.Infrastructure.Core.RequestHandler;
+using WebApplication.Infrastructure.Instrumentation.Repository;
 
 namespace WebApplication.Infrastructure.Repository.Department.Handler;
 

@@ -1,7 +1,7 @@
 using WebApplication.Application.Core.RepositoryHandler;
 using MessagePipe;
 using WebApplication.Domain.Repository;
-using WebApplication.Infrastructure.Core.Instrumentation.Repository;
+using WebApplication.Infrastructure.Instrumentation.Repository;
 using WebApplication.Infrastructure.Repository;
 
 namespace WebApplication.Infrastructure.Core.RequestHandler;

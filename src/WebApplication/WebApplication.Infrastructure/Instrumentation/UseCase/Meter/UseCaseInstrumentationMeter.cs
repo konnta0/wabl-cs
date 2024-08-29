@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 
-namespace ManagementConsole.Infrastructure.Instrumentation.UseCase.Meter;
+namespace WebApplication.Infrastructure.Instrumentation.UseCase.Meter;
 
 public class UseCaseInstrumentationMeter : IUseCaseInstrumentationMeter
 {

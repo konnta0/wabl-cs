@@ -1,4 +1,4 @@
-namespace WebApplication.Infrastructure.Core.Instrumentation;
+namespace ManagementConsole.Infrastructure.Instrumentation;
 
 public class InstrumentationConfig
 {

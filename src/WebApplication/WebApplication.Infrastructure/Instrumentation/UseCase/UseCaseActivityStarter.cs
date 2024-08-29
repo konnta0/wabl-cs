@@ -2,7 +2,7 @@ using System.Diagnostics;
 using WebApplication.Application.Core.RequestHandler;
 using WebApplication.Domain.Instrumentation;
 
-namespace WebApplication.Infrastructure.Core.Instrumentation.UseCase;
+namespace WebApplication.Infrastructure.Instrumentation.UseCase;
 
 public sealed class UseCaseActivityStarter : IUseCaseActivityStarter
 {

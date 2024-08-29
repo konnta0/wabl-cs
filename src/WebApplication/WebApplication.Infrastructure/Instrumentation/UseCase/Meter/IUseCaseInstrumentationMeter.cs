@@ -1,6 +1,6 @@
 using System.Diagnostics.Metrics;
 
-namespace WebApplication.Infrastructure.Core.Instrumentation.UseCase.Meter;
+namespace WebApplication.Infrastructure.Instrumentation.UseCase.Meter;
 
 public interface IUseCaseInstrumentationMeter : IInstrumentationMeter
 {

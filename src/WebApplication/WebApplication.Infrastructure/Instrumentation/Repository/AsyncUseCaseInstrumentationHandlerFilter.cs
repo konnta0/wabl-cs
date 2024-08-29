@@ -3,7 +3,7 @@ using MessagePipe;
 using Microsoft.Extensions.Logging;
 using ZLogger;
 
-namespace ManagementConsole.Infrastructure.Instrumentation.Repository;
+namespace WebApplication.Infrastructure.Instrumentation.Repository;
 
 internal class AsyncRepositoryInstrumentationHandlerFilter<TInputData, TOutputData> : AsyncRequestHandlerFilter<TInputData, TOutputData>
 {

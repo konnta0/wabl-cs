@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using WebApplication.Infrastructure.Core.Instrumentation.UseCase.Meter;
+using WebApplication.Infrastructure.Instrumentation.UseCase.Meter;
 
 namespace WebApplication.Infrastructure.Core.HealthCheck;
 

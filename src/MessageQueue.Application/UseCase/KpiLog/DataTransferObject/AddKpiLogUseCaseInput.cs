@@ -1,0 +1,3 @@
+namespace MessageQueue.Application.UseCase.KpiLog.DataTransferObject;
+
+public class LoadMemoryDatabaseUseCaseInput : ILoadMemoryDatabaseUseCaseInput;

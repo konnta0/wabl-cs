@@ -8,6 +8,4 @@ namespace WebApplication.Presentation.Core;
 [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
 [ServiceFilter(typeof(TransactionalFlowFilter))]
 [ServiceFilter(typeof(ContinuousProfilerFilter))]
-public class WebApiController : ControllerBase
-{
-}
+public class WebApiController : ControllerBase;

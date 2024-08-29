@@ -1,6 +1,3 @@
-namespace WebApplication.Infrastructure.Core.Instrumentation.Repository;
+namespace ManagementConsole.Infrastructure.Instrumentation.Repository;
 
-public class RepositoryInstrumentationOptions
-{
-    
-}
+public class RepositoryInstrumentationOptions;

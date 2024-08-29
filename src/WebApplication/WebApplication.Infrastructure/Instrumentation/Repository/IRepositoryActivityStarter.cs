@@ -1,6 +1,6 @@
 using Shared.Domain.Instrumentation;
 
-namespace ManagementConsole.Infrastructure.Instrumentation.Repository;
+namespace WebApplication.Infrastructure.Instrumentation.Repository;
 
 public interface IRepositoryActivityStarter : IActivityStarter
 {

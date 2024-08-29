@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace ManagementConsole.Infrastructure.Instrumentation.UseCase;
+namespace WebApplication.Infrastructure.Core.Instrumentation.UseCase;
 
 public class UseCaseInstrumentation : DefaultTraceListener
 { 

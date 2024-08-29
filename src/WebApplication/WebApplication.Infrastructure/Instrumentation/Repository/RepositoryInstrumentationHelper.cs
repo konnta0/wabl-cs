@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace ManagementConsole.Infrastructure.Instrumentation.Repository;
+namespace WebApplication.Infrastructure.Instrumentation.Repository;
 
 public class RepositoryInstrumentationHelper
 {

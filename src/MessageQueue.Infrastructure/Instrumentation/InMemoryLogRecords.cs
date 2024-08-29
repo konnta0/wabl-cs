@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using OpenTelemetry.Logs;
 using ZLogger;
 
-namespace WebApplication.Infrastructure.Core.Instrumentation;
+namespace ManagementConsole.Infrastructure.Instrumentation;
 
 public sealed class InMemoryLogRecords : Collection<LogRecord>
 {
