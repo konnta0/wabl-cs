@@ -1,6 +1,6 @@
 using System.Diagnostics;
 
-namespace WebApplication.Domain.Instrumentation;
+namespace MessageQueue.Domain.Instrumentation;
 
 public static class UseCaseInstrumentationHelper
 {
