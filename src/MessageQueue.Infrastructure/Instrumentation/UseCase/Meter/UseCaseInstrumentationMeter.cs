@@ -1,8 +1,7 @@
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
-using ManagementConsole.Infrastructure.Instrumentation.UseCase.Meter;
 
-namespace WebApplication.Infrastructure.Core.Instrumentation.UseCase.Meter;
+namespace MessageQueue.Infrastructure.Instrumentation.UseCase.Meter;
 
 public class UseCaseInstrumentationMeter : IUseCaseInstrumentationMeter
 {

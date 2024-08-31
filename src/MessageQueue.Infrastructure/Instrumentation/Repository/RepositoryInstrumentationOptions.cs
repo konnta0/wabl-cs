@@ -1,6 +1,3 @@
-namespace WebApplication.Infrastructure.Core.Instrumentation.Repository;
+namespace MessageQueue.Infrastructure.Instrumentation.Repository;
 
-public class RepositoryInstrumentationOptions
-{
-    
-}
+public class RepositoryInstrumentationOptions;

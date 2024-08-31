@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using ManagementConsole.Application.RequestHandler;
-using WebApplication.Domain.Instrumentation;
+using MessageQueue.Application.RequestHandler;
+using MessageQueue.Domain.Instrumentation;
 
-namespace ManagementConsole.Infrastructure.Instrumentation.UseCase;
+namespace MessageQueue.Infrastructure.Instrumentation.UseCase;
 
 public sealed class UseCaseActivityStarter : IUseCaseActivityStarter
 {

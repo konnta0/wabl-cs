@@ -1,9 +1,5 @@
 using Shared.Domain.Instrumentation;
-using WebApplication.Domain.Instrumentation;
 
-namespace WebApplication.Infrastructure.Core.Instrumentation.Repository;
+namespace MessageQueue.Infrastructure.Instrumentation.Repository;
 
-public interface IRepositoryActivityStarter : IActivityStarter
-{
-    
-}
+public interface IRepositoryActivityStarter : IActivityStarter;
