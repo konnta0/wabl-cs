@@ -1,5 +1,5 @@
 using ManagementConsole.Application.RequestHandler;
 
-namespace ManagementConsole.Application.UseCase.MemoryDatabase.Handler;
+namespace ManagementConsole.Application.UseCase.MemoryDatabase.ExecutionResult;
 
 public class LoadMemoryDatabaseExecuteResult : IUseCaseExecuteResult;
