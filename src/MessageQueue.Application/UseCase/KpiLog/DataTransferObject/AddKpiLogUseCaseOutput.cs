@@ -1,3 +1,3 @@
 namespace MessageQueue.Application.UseCase.KpiLog.DataTransferObject;
 
-public class LoadMemoryDatabaseUseCaseOutput : ILoadMemoryDatabaseUseCaseOutput;
+public class AddKpiLogUseCaseOutput : IAddKpiLogUseCaseOutput;

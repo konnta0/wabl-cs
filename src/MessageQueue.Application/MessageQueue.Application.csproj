@@ -5,7 +5,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
+    <ItemGroup>
+        <PackageReference Include="MessagePipe"/>
+    </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\MessageQueue.Domain\MessageQueue.Domain.csproj" />
       <ProjectReference Include="..\Shared.Application\Shared.Application.csproj" />

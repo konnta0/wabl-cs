@@ -1,0 +1,3 @@
+namespace MessageQueue.Application.RequestHandler;
+
+internal interface IAsyncUseCaseRequestHandler;
