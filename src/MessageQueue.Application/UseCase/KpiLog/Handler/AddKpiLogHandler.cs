@@ -1,12 +1,10 @@
 using MessageQueue.Application.RequestHandler;
 using MessageQueue.Application.UseCase.KpiLog.DataTransferObject;
 using MessageQueue.Application.UseCase.KpiLog.ExecutionResult;
-using Shared.Application.Database;
 
 namespace MessageQueue.Application.UseCase.KpiLog.Handler;
 
-internal sealed class AddKpiLogHandler (IUseCaseActivityStarter activityStarter,
-    IMemoryDatabaseLoader memoryDatabaseLoader)
+internal sealed class AddKpiLogHandler (IUseCaseActivityStarter activityStarter)
     : AsyncUseCaseRequestHandlerBase<AddKpiLogUseCaseInput, AddKpiLogExecutionResult>(activityStarter)
 {
     protected override ValueTask ValidateAsync(AddKpiLogUseCaseInput input, CancellationToken cancellationToken = new ())
