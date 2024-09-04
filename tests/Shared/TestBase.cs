@@ -35,7 +35,7 @@ public abstract class TestBase : IAsyncLifetime
 
     protected TestBase(Action<TestBaseOptions>? options = null)
     {
-        _containers = Array.Empty<IContainer>();
+        _containers = [];
         _options = new TestBaseOptions();
         options?.Invoke(_options);
     }
@@ -53,7 +53,7 @@ public abstract class TestBase : IAsyncLifetime
         {
             await container.DisposeAsync();
         }
-        _containers = Array.Empty<IContainer>();
+        _containers = [];
         
         if (_network != null)
         {
