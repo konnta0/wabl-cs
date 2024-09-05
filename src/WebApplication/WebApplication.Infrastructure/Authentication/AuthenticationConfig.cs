@@ -1,4 +1,4 @@
-namespace WebApplication.Infrastructure.Core.Authentication;
+namespace WebApplication.Infrastructure.Authentication;
 
 public sealed class AuthenticationConfig
 {

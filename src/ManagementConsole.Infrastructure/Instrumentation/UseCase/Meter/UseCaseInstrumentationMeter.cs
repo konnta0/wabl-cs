@@ -5,16 +5,14 @@ namespace ManagementConsole.Infrastructure.Instrumentation.UseCase.Meter;
 
 public class UseCaseInstrumentationMeter : IUseCaseInstrumentationMeter
 {
-    private readonly System.Diagnostics.Metrics.Meter _meter;
-
     public Counter<int> HealthCheckCounter { get; init; }
     
     
     public UseCaseInstrumentationMeter()
     {
-        _meter = new System.Diagnostics.Metrics.Meter(nameof(UseCaseInstrumentationMeter));
-        _meter.CreateObservableCounter("thread.cpu_time", () => GetThreadCpuTime(Process.GetCurrentProcess()));
-        HealthCheckCounter = _meter.CreateCounter<int>(nameof(HealthCheckCounter), description: "This is demo");
+        var meter = new System.Diagnostics.Metrics.Meter(nameof(UseCaseInstrumentationMeter));
+        meter.CreateObservableCounter("thread.cpu_time", () => GetThreadCpuTime(Process.GetCurrentProcess()));
+        HealthCheckCounter = meter.CreateCounter<int>(nameof(HealthCheckCounter), description: "This is demo");
     }
 
     private static IEnumerable<Measurement<double>> GetThreadCpuTime(Process process)
