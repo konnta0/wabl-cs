@@ -5,16 +5,10 @@ using ZLogger;
 
 namespace MessageQueue.Infrastructure.Instrumentation.Repository;
 
-internal class AsyncRepositoryInstrumentationHandlerFilter<TInputData, TOutputData> : AsyncRequestHandlerFilter<TInputData, TOutputData>
+internal class AsyncRepositoryInstrumentationHandlerFilter<TInputData, TOutputData>(
+    ILogger<AsyncRepositoryInstrumentationHandlerFilter<TInputData, TOutputData>> logger)
+    : AsyncRequestHandlerFilter<TInputData, TOutputData>
 {
-    private readonly ILogger<AsyncRepositoryInstrumentationHandlerFilter<TInputData, TOutputData>> _logger;
-
-    public AsyncRepositoryInstrumentationHandlerFilter(
-        ILogger<AsyncRepositoryInstrumentationHandlerFilter<TInputData, TOutputData>> logger)
-    {
-        _logger = logger;
-    }
-
     public override async ValueTask<TOutputData> InvokeAsync(TInputData request, CancellationToken cancellationToken, Func<TInputData, CancellationToken, ValueTask<TOutputData>> next)
     {
         using var activity = RepositoryInstrumentationHelper.ActivitySource.StartActivity(
@@ -33,8 +27,8 @@ internal class AsyncRepositoryInstrumentationHandlerFilter<TInputData, TOutputDa
         }
         catch (Exception e)
         {
-            _logger.ZLogError(e.Message);
-            if (e.StackTrace != null) _logger.ZLogError(e.StackTrace);
+            logger.ZLogError(e.Message);
+            if (e.StackTrace != null) logger.ZLogError(e.StackTrace);
             throw;
         }
 
