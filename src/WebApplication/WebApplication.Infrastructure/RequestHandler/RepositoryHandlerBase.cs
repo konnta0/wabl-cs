@@ -3,7 +3,7 @@ using WebApplication.Domain.Repository;
 using WebApplication.Infrastructure.Cache;
 using WebApplication.Infrastructure.Instrumentation.Repository;
 
-namespace WebApplication.Infrastructure.Core.RequestHandler;
+namespace WebApplication.Infrastructure.RequestHandler;
 
 public abstract class RepositoryHandlerBase<TInput, TOutput>(
     IVolatileRedisProvider volatileRedisProvider,

@@ -6,16 +6,10 @@ using ZLogger;
 
 namespace WebApplication.Application.Core.Instrumentation;
 
-internal class AsyncApplicationInstrumentationHandlerFilter<TInputData, TOutputData> : AsyncRequestHandlerFilter<TInputData, TOutputData>
+internal class AsyncApplicationInstrumentationHandlerFilter<TInputData, TOutputData>(
+    ILogger<AsyncApplicationInstrumentationHandlerFilter<TInputData, TOutputData>> logger)
+    : AsyncRequestHandlerFilter<TInputData, TOutputData>
 {
-    private readonly ILogger<AsyncApplicationInstrumentationHandlerFilter<TInputData, TOutputData>> _logger;
-
-    public AsyncApplicationInstrumentationHandlerFilter(
-        ILogger<AsyncApplicationInstrumentationHandlerFilter<TInputData, TOutputData>> logger)
-    {
-        _logger = logger;
-    }
-
     public override async ValueTask<TOutputData> InvokeAsync(TInputData request, CancellationToken cancellationToken, Func<TInputData, CancellationToken, ValueTask<TOutputData>> next)
     {
         using var activity = UseCaseInstrumentationHelper.ActivitySource.StartActivity(
@@ -33,8 +27,8 @@ internal class AsyncApplicationInstrumentationHandlerFilter<TInputData, TOutputD
         }
         catch (System.Exception e)
         {
-            _logger.ZLogError(e.Message);
-            if (e.StackTrace != null) _logger.ZLogError(e.StackTrace);
+            logger.ZLogError(e.Message);
+            if (e.StackTrace != null) logger.ZLogError(e.StackTrace);
             throw;
         }
         activity?.SetTag("OutputData", response);

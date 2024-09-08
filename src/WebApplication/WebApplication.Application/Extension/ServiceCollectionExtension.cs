@@ -1,3 +1,4 @@
+using MessagePipe;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication.Application.Core.RequestHandler;
@@ -9,6 +10,13 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddUseCase(this IServiceCollection serviceCollection,
         IConfiguration configuration)
     {
+        serviceCollection.AddMessagePipe(options =>
+        {
+#if DEBUG
+            options.EnableCaptureStackTrace = true;
+#endif
+            options.InstanceLifetime = InstanceLifetime.Scoped;
+        });
         serviceCollection.AddUseCaseHandler();
         return serviceCollection;
     }

@@ -23,15 +23,6 @@ internal static class ServiceCollectionExtension
             options.InputFormatters.Add(new MessagePackInputFormatter(ContractlessStandardResolver.Options));
         });
 
-        serviceCollection.AddMessagePipe(options =>
-        {
-#if DEBUG
-            options.EnableCaptureStackTrace = true;
-#endif
-            options.InstanceLifetime = InstanceLifetime.Scoped;
-        });
-
-
         serviceCollection.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo

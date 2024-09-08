@@ -1,21 +1,15 @@
-using WebApplication.Domain.Repository.Department;
 using WebApplication.Application.Core.Exception;
 using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Application.Core.RequestHandler;
 using WebApplication.Application.UseCase.Departments.DataTransferObject;
 using WebApplication.Application.UseCase.Departments.ExecutionResult;
+using WebApplication.Domain.Repository.Department;
 
-namespace WebApplication.Application.UseCase.Departments;
+namespace WebApplication.Application.UseCase.Departments.Handler;
 
-internal class AddDepartmentHandler : AsyncUseCaseRequestHandlerBase<AddDepartmentsUseCaseInput, AddDepartmentExecuteResult>
+internal class AddDepartmentHandler(IUseCaseActivityStarter activityStarter, IRepositoryHandler repositoryHandler)
+    : AsyncUseCaseRequestHandlerBase<AddDepartmentsUseCaseInput, AddDepartmentExecuteResult>(activityStarter)
 {
-    private readonly IRepositoryHandler _repositoryHandler;
-
-    public AddDepartmentHandler(IUseCaseActivityStarter activityStarter, IRepositoryHandler repositoryHandler) : base(activityStarter)
-    {
-        _repositoryHandler = repositoryHandler;
-    }
-
     protected override ValueTask ValidateAsync(AddDepartmentsUseCaseInput input,
         CancellationToken cancellationToken = new ())
     {
@@ -29,7 +23,7 @@ internal class AddDepartmentHandler : AsyncUseCaseRequestHandlerBase<AddDepartme
 
     protected override async ValueTask<AddDepartmentExecuteResult> ExecuteAsync(AddDepartmentsUseCaseInput input, CancellationToken cancellationToken = new ())
     {
-        _ = await _repositoryHandler.InvokeAsync<IAddInput, IAddOutput>(addInput =>
+        _ = await repositoryHandler.InvokeAsync<IAddInput, IAddOutput>(addInput =>
         {
             addInput.DepotNo = input.DepotNo;
             addInput.DeptName = input.DeptName;

@@ -1,11 +1,11 @@
-using WebApplication.Domain.Repository.Department;
 using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Application.Core.RequestHandler;
 using WebApplication.Application.Departments.Common;
 using WebApplication.Application.UseCase.Departments.DataTransferObject;
 using WebApplication.Application.UseCase.Departments.ExecutionResult;
+using WebApplication.Domain.Repository.Department;
 
-namespace WebApplication.Application.UseCase.Departments;
+namespace WebApplication.Application.UseCase.Departments.Handler;
 
 internal class ListDepartmentsHandler(
     IUseCaseActivityStarter activityStarter,
