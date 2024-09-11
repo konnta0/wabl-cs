@@ -1,8 +1,9 @@
 using CloudStructures;
 using Microsoft.Extensions.Logging;
+using WebApplication.Infrastructure.Cache;
 using ZLogger;
 
-namespace WebApplication.Infrastructure.Cache;
+namespace Shared.Infrastructure.Cache;
 
 internal abstract class RedisProvider : IRedisProvider
 {

@@ -1,9 +1,9 @@
 using CloudStructures;
+using Shared.Infrastructure.Logging;
 using StackExchange.Redis;
-using WebApplication.Infrastructure.Core.Logging;
 using ZLogger;
 
-namespace WebApplication.Infrastructure.Cache;
+namespace Shared.Infrastructure.Cache;
 
 internal static class RedisConnectionFactory
 {

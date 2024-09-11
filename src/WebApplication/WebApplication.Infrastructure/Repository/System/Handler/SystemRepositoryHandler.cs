@@ -1,9 +1,8 @@
+using Shared.Infrastructure.Cache;
 using Shared.Infrastructure.Database.Context.Employee;
 using WebApplication.Domain.Repository;
 using WebApplication.Domain.Repository.System;
 using WebApplication.Domain.Repository.System.Core;
-using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Core.RequestHandler;
 using WebApplication.Infrastructure.Instrumentation.Repository;
 using WebApplication.Infrastructure.RequestHandler;
 

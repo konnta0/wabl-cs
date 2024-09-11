@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CloudStructures" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
     <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" >
       <PrivateAssets>all</PrivateAssets>
@@ -29,9 +28,7 @@
     <PackageReference Include="OpenTelemetry.Contrib.Instrumentation.EntityFrameworkCore" />
     <PackageReference Include="OpenTelemetry.Instrumentation.StackExchangeRedis" />
     <PackageReference Include="Pyroscope" />
-    <PackageReference Include="StackExchange.Redis" />
     <PackageReference Include="TimeZoneConverter" />
-    <PackageReference Include="ZLogger" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
 using MessagePipe;
+using Shared.Infrastructure.Cache;
 using WebApplication.Domain.Repository;
 using WebApplication.Infrastructure.Cache;
 using WebApplication.Infrastructure.Instrumentation.Repository;

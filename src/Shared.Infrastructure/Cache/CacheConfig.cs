@@ -1,4 +1,4 @@
-namespace WebApplication.Infrastructure.Cache;
+namespace Shared.Infrastructure.Cache;
 
 public class CacheConfig
 {

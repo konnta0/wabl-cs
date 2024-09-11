@@ -4,13 +4,14 @@ using System.Threading.Tasks;
 using Bogus;
 using CloudStructures.Structures;
 using FluentAssertions;
-using WebApplication.Infrastructure.Cache;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication.Infrastructure.Extension;
 using Shared;
 using Shared.Domain.Entity.Employee;
+using Shared.Infrastructure.Cache;
 using Shared.Infrastructure.Database.Context.Employee;
+using Shared.Infrastructure.Extension;
 using Xunit;
 
 namespace WebApplication.Test;

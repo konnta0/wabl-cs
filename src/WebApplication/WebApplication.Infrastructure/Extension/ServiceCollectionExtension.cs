@@ -22,12 +22,12 @@ using OpenTelemetry.Trace;
 using Polly;
 using Polly.Extensions.Http;
 using Shared.Application.Database;
+using Shared.Infrastructure.Cache;
 using Shared.Infrastructure.Database;
 using Shared.Infrastructure.Database.Context;
 using Shared.Infrastructure.Database.Context.Employee;
+using Shared.Infrastructure.Extension;
 using WebApplication.Infrastructure.Authentication;
-using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Core.Logging;
 using WebApplication.Infrastructure.Core.RequestHandler;
 using WebApplication.Infrastructure.Core.Time;
 using WebApplication.Infrastructure.Instrumentation;
@@ -190,24 +190,6 @@ public static class ServiceCollectionExtension
     {
         meterProviderBuilder.AddMeter(nameof(UseCaseInstrumentationMeter));
         return meterProviderBuilder;
-    }
-
-    public static IServiceCollection AddCacheClient(this IServiceCollection serviceCollection, CacheConfig cacheConfig, out RedisConnection volatileRedisConnection, out RedisConnection durableRedisConnection)
-    {
-        volatileRedisConnection = RedisConnectionFactory.CreateVolatileConnection(cacheConfig);
-        var volatileConnection = volatileRedisConnection;
-        serviceCollection.AddTransient<IVolatileRedisProvider>(delegate
-        {
-            return new VolatileRedisProvider(GlobalLogManager.GetLogger<VolatileRedisProvider>()!, volatileConnection);
-        });
-
-        durableRedisConnection = RedisConnectionFactory.CreateVolatileConnection(cacheConfig);
-        var durableConnection = durableRedisConnection;
-        serviceCollection.AddTransient<IDurableRedisProvider>(delegate
-        {
-            return new DurableRedisProvider(GlobalLogManager.GetLogger<DurableRedisProvider>()!, durableConnection);
-        });
-        return serviceCollection;
     }
     
     private static IServiceCollection AddTimeProvider(this IServiceCollection serviceCollection, TimeConfig config)

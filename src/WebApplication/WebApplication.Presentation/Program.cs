@@ -1,12 +1,12 @@
 using WebApplication.Application.Extension;
 using Cysharp.Text;
-using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Core.Logging;
 using WebApplication.Infrastructure.Core.Time;
 using WebApplication.Infrastructure.Extension;
 using Microsoft.AspNetCore.HttpOverrides;
 using OpenTelemetry.Logs;
+using Shared.Infrastructure.Cache;
 using Shared.Infrastructure.Database;
+using Shared.Infrastructure.Logging;
 using WebApplication.Infrastructure.Authentication;
 using WebApplication.Infrastructure.Instrumentation;
 using WebApplication.Presentation.BackgroundService.Extension;

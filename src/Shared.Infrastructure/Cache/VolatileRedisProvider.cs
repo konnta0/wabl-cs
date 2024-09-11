@@ -1,7 +1,7 @@
 using CloudStructures;
 using Microsoft.Extensions.Logging;
 
-namespace WebApplication.Infrastructure.Cache;
+namespace Shared.Infrastructure.Cache;
 
 internal class VolatileRedisProvider(ILogger<VolatileRedisProvider> logger, RedisConnection redisConnection)
     : RedisProvider(logger,

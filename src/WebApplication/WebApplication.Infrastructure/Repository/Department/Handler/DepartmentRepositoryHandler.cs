@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Shared.Domain.Entity.Employee;
+using Shared.Infrastructure.Cache;
 using Shared.Infrastructure.Database.Context.Employee;
 using WebApplication.Domain.Repository;
 using WebApplication.Domain.Repository.Department;

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Shared;
+using Shared.Infrastructure.Cache;
 using Xunit;
 
 namespace WebApplication.Infrastructure.Test.Core.Time;

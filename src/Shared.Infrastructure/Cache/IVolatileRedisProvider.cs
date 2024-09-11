@@ -1,6 +1,7 @@
 using CloudStructures.Structures;
+using WebApplication.Infrastructure.Cache;
 
-namespace WebApplication.Infrastructure.Cache;
+namespace Shared.Infrastructure.Cache;
 
 public interface IVolatileRedisProvider : IRedisProvider
 {
