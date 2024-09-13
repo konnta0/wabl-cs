@@ -1,0 +1,9 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "DebugRoslynSourceGenerator": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "../WebApplication.Infrastructure.SourceGenerator.Sample/WebApplication.Infrastructure.SourceGenerator.Sample.csproj"
+    }
+  }
+}
