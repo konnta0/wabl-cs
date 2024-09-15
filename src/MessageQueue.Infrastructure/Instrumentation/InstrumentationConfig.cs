@@ -1,4 +1,4 @@
-namespace ManagementConsole.Infrastructure.Instrumentation;
+namespace MessageQueue.Infrastructure.Instrumentation;
 
 public class InstrumentationConfig
 {

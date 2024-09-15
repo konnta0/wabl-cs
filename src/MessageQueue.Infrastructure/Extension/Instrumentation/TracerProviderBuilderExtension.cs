@@ -1,9 +1,9 @@
+using MessageQueue.Domain.Instrumentation;
+using MessageQueue.Infrastructure.Instrumentation.Repository;
+using MessageQueue.Infrastructure.Instrumentation.UseCase;
 using OpenTelemetry.Trace;
-using WebApplication.Domain.Instrumentation;
-using WebApplication.Infrastructure.Instrumentation.Repository;
-using WebApplication.Infrastructure.Instrumentation.UseCase;
 
-namespace WebApplication.Infrastructure.Extension.Instrumentation;
+namespace MessageQueue.Infrastructure.Extension.Instrumentation;
 
 internal static class TracerProviderBuilderExtension
 {

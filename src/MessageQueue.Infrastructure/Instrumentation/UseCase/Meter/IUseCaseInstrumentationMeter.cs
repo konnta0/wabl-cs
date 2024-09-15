@@ -1,5 +1,4 @@
 using System.Diagnostics.Metrics;
-using ManagementConsole.Infrastructure.Instrumentation;
 
 namespace MessageQueue.Infrastructure.Instrumentation.UseCase.Meter;
 

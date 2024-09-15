@@ -1,4 +1,4 @@
-namespace WebApplication.Infrastructure.Core.Instrumentation.UseCase;
+namespace MessageQueue.Infrastructure.Instrumentation.UseCase;
 
 public class UseCaseInstrumentationOptions
 {

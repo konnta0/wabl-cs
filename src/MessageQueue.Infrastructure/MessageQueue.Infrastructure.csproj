@@ -19,7 +19,6 @@
         <PackageReference Include="OpenTelemetry.Instrumentation.Http"/>
         <PackageReference Include="OpenTelemetry.Contrib.Instrumentation.EntityFrameworkCore"/>
         <PackageReference Include="OpenTelemetry.Instrumentation.StackExchangeRedis"/>
-        <PackageReference Include="StackExchange.Redis"/>
         <PackageReference Include="ZLogger"/>
     </ItemGroup>
 

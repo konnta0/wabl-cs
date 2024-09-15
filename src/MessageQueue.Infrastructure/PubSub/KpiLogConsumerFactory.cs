@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MessageQueue.Infrastructure.PubSub;
 
-public class KpiLogConsumerFactory(ILogger<KpiLogConsumerFactory> logger) : IConsumerFactory<KpiLog>
+internal sealed class KpiLogConsumerFactory(ILogger<KpiLogConsumerFactory> logger) : IConsumerFactory<KpiLog>
 {
     public async Task<IConsumer<KpiLog>> CreateAsync(
         Action<ConsumerOption>? consumerOption = null,
