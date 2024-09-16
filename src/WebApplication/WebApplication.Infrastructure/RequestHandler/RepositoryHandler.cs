@@ -1,12 +1,12 @@
-using WebApplication.Application.Core.RepositoryHandler;
 using MessagePipe;
+using WebApplication.Application.Core.RepositoryHandler;
 using WebApplication.Domain.Repository;
 using WebApplication.Infrastructure.Instrumentation.Repository;
 using WebApplication.Infrastructure.Repository;
 
-namespace WebApplication.Infrastructure.Core.RequestHandler;
+namespace WebApplication.Infrastructure.RequestHandler;
 
-public class RepositoryHandler(
+internal sealed class RepositoryHandler(
     IAsyncRequestAllHandler<IRepositoryInput, IRepositoryOutput?> asyncRequestHandler,
     IRequestAllHandler<IRepositoryInput, IRepositoryOutput?> requestHandler,
     IRepositoryActivityStarter activityStarter,

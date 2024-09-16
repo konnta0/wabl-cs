@@ -7,7 +7,6 @@ using WebApplication.Domain.Repository;
 using WebApplication.Domain.Repository.Department;
 using WebApplication.Domain.Repository.Department.Core;
 using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Core.RequestHandler;
 using WebApplication.Infrastructure.Instrumentation.Repository;
 using WebApplication.Infrastructure.RequestHandler;
 
