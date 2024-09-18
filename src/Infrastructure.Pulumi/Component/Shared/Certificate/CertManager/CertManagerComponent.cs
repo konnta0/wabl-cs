@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Logging;
 using Pulumi;
 using Pulumi.Crds.Certmanager.V1;
 using Pulumi.Kubernetes.Helm.V3;
