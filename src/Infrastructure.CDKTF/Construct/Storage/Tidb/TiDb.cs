@@ -8,7 +8,7 @@ namespace Infrastructure.CDKTF.Construct.Storage.Tidb;
 
 internal sealed class TiDb : Constructs.Construct
 {
-    public TiDb(Constructs.Construct scope, string id, string @namespace, TidbOperatorValues tidbOperatorValues = null) : base(scope, "construct-tidb")
+    public TiDb(Constructs.Construct scope, string id, string @namespace, TidbOperatorValues tidbOperatorValues) : base(scope, "construct-tidb")
     {
         var ns = new Namespace(scope, "tidb-admin").Apply();
         
@@ -40,6 +40,8 @@ internal sealed class TiDb : Constructs.Construct
             DependsOn = [crd.Id]
         };
 
+        // TODO: Use ckd8s when it supports CRD
+        // https://github.com/cdk8s-team/cdk8s-cli/pull/2519
         var tidbCluster = new TiDbCluster(scope,
             "tidb-cluster",
             new Metadata

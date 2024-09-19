@@ -23,5 +23,9 @@ internal sealed class CertManagerStackSet : TerraformResource
         {
             Path = "https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.crds.yaml"
         });
+        
+        // TODO: Use ckd8s when it supports CRD
+        // ClusterIssuer
+        // Crds.Certmanager.V1.Certificate
     }
 }
