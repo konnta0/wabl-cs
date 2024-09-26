@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using WebApplication.Infrastructure.Instrumentation.UseCase.Meter;
 
-namespace WebApplication.Infrastructure.Core.HealthCheck;
+namespace WebApplication.Infrastructure.HealthCheck;
 
 internal class ApiHealthCheck(IUseCaseInstrumentationMeter useCaseInstrumentationMeter) : IHealthCheck
 {
