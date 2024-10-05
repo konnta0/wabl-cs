@@ -83,7 +83,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageQueue.Domain", "src\MessageQueue.Domain\MessageQueue.Domain.csproj", "{FCCFD591-9E7D-45B6-A2AE-A362B2D13647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Infrastructure.SourceGenerator", "src\WebApplication\WebApplication.Infrastructure.SourceGenerator\WebApplication.Infrastructure.SourceGenerator\WebApplication.Infrastructure.SourceGenerator.csproj", "{79824A25-C60B-40D0-AA5F-7A8F45AE1F82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication.Infrastructure.SourceGenerator", "src\WebApplication\WebApplication.Infrastructure.SourceGenerator\WebApplication.Infrastructure.SourceGenerator.csproj", "{79824A25-C60B-40D0-AA5F-7A8F45AE1F82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
