@@ -1,4 +1,3 @@
-using Infrastructure.Pulumi.Extension;
 using Infrastructure.Pulumi.Component.Shared.Observability.Loki;
 using Microsoft.Extensions.Logging;
 using Pulumi;
