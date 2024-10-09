@@ -57,13 +57,13 @@
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageVersion Include="NSubstitute" Version="5.1.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.0.0-beta.12" />
-    <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.7.0" />
-    <PackageVersion Include="OpenTelemetry.Exporter.InMemory" Version="1.7.0" />
-    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.7.0" />
+    <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Exporter.InMemory" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.9.0" />
     <PackageVersion Include="OpenTelemetry.Exporter.Prometheus" Version="1.2.0-rc1" />
-    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.7.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.7.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.7.0" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.9.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="1.0.0-rc8" />
     <PackageVersion Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0-beta.2" />
     <PackageVersion Include="ProcessX" Version="1.5.5" />
