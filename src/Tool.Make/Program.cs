@@ -18,6 +18,6 @@ app.Add("example", () =>
     Tool.Make.Common.DirectoryUtil.TryGetSolutionDirectoryInfo(out var directory);
     target.Add("test", async () => await $"echo {directory.FullName}");
 
-    return target.RunWithoutExitingAsync(new[] { "test" });
+    return target.RunWithoutExitingAsync(["test"]);
 });
 await app.RunAsync(args);
