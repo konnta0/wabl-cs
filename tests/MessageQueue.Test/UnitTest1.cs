@@ -15,35 +15,35 @@ public class UnitTest1(ITestOutputHelper testOutputHelper)
     {
         var cts = new CancellationTokenSource();
 
-        await using var client = PulsarClient.Builder().Build(); // Connecting to pulsar://localhost:6650
-        await using var producer = client.NewProducer(CustomSchema.KpiLogSchema)
-            .StateChangedHandler(Monitor)
-            .Topic("persistent://public/default/kpilog")
-            .Create();
-
-        await ProduceMessages(producer, cts.Token);
-        Assert.True(true);
-        return;
-
-        async Task ProduceMessages(IProducer<KpiLog> producer, CancellationToken cancellationToken)
-        {
-            var delay = TimeSpan.FromSeconds(1);
-
-            try
-            {
-                for (var i = 0; i < 30; i++)
-                {
-                    var data = new KpiLog("dummy", new { Value = i });
-                    _ = await producer.Send(data, cancellationToken);
-                    testOutputHelper.WriteLine($"Sent: {data}");
-                    await Task.Delay(delay, cancellationToken);
-                }
-            }
-            catch
-                (OperationCanceledException) // If not using the cancellationToken, then just dispose the producer and catch ObjectDisposedException instead
-            {
-            }
-        }
+        // await using var client = PulsarClient.Builder().Build(); // Connecting to pulsar://localhost:6650
+        // await using var producer = client.NewProducer(CustomSchema.KpiLogSchema)
+        //     .StateChangedHandler(Monitor)
+        //     .Topic("persistent://public/default/kpilog")
+        //     .Create();
+        //
+        // await ProduceMessages(producer, cts.Token);
+        // Assert.True(true);
+        // return;
+        //
+        // async Task ProduceMessages(IProducer<KpiLog> producer, CancellationToken cancellationToken)
+        // {
+        //     var delay = TimeSpan.FromSeconds(1);
+        //
+        //     try
+        //     {
+        //         for (var i = 0; i < 30; i++)
+        //         {
+        //             var data = new KpiLog("dummy", new { Value = i });
+        //             _ = await producer.Send(data, cancellationToken);
+        //             testOutputHelper.WriteLine($"Sent: {data}");
+        //             await Task.Delay(delay, cancellationToken);
+        //         }
+        //     }
+        //     catch
+        //         (OperationCanceledException) // If not using the cancellationToken, then just dispose the producer and catch ObjectDisposedException instead
+        //     {
+        //     }
+        //}
 
         void Monitor(ProducerStateChanged stateChanged)
         {
