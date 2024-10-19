@@ -2,12 +2,7 @@ using System.Diagnostics;
 
 namespace WebApplication.Infrastructure.Instrumentation.UseCase;
 
-public class UseCaseInstrumentation : DefaultTraceListener
+public class UseCaseInstrumentation(UseCaseInstrumentationOptions options) : DefaultTraceListener
 { 
-    private readonly UseCaseInstrumentationOptions _options;
-
-    public UseCaseInstrumentation(UseCaseInstrumentationOptions options)
-    {
-        _options = options;
-    }
+    private readonly UseCaseInstrumentationOptions _options = options;
 }
