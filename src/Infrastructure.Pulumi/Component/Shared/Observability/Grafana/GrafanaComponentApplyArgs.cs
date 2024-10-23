@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Grafana
 {
     public sealed class GrafanaComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public required Namespace Namespace { get; set; }
     }
 
     public sealed class GrafanaComponentOutput : IComponentOutput
