@@ -3,6 +3,7 @@ using Infrastructure.Pulumi.Component.Shared.Observability.Loki;
 using Infrastructure.Pulumi.Component.Shared.Observability.Mimir;
 using Infrastructure.Pulumi.Component.Shared.Observability.Promtail;
 using Infrastructure.Pulumi.Component.Shared.Observability.Pyroscope;
+using Infrastructure.Pulumi.Component.Shared.Observability.SigNoz;
 using Infrastructure.Pulumi.Component.Shared.Observability.Tempo;
 using Microsoft.Extensions.Logging;
 
@@ -17,6 +18,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability
         private readonly MimirComponent _mimirComponent;
         private readonly PyroscopeComponent _pyroscopeComponent;
         private readonly PromtailComponent _promtailComponent;
+        private readonly SigNozComponent _sigNozComponent;
 
 
         public ObservabilityComponent(
@@ -26,7 +28,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability
             TempoComponent tempoComponent,
             MimirComponent mimirComponent,
             PyroscopeComponent pyroscopeComponent,
-            PromtailComponent promtailComponent)
+            PromtailComponent promtailComponent,
+            SigNozComponent sigNozComponent)
         {
             _logger = logger;
             _grafana = grafana;
@@ -35,6 +38,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability
             _tempoComponent = tempoComponent;
             _pyroscopeComponent = pyroscopeComponent;
             _promtailComponent = promtailComponent;
+            _sigNozComponent = sigNozComponent;
         }
 
         public ObservabilityComponentOutput Apply(ObservabilityComponentInput input)
@@ -49,6 +53,8 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability
             _mimirComponent.Apply(new MimirComponentInput { Namespace = input.Namespace });
             _pyroscopeComponent.Apply(new PyroscopeComponentInput { Namespace = input.Namespace });
             _promtailComponent.Apply(new PromtailComponentInput { Namespace = input.Namespace });
+
+            _sigNozComponent.Apply(new SigNozComponentInput { Namespace = input.Namespace });
             return new ObservabilityComponentOutput();
         }
     }
