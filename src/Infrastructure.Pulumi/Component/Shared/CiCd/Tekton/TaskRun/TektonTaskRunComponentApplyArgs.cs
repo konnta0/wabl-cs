@@ -5,8 +5,8 @@ namespace Infrastructure.Pulumi.Component.Shared.CiCd.Tekton.TaskRun
 {
     public sealed class TektonTaskRunComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
-        public ConfigFile TektonRelease { get; set; } = null!;
+        public required Namespace Namespace { get; set; }
+        public required ConfigFile TektonRelease { get; set; }
     }
 
     public sealed class TektonTaskRunComponentOutput : IComponentOutput

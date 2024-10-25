@@ -5,9 +5,9 @@ namespace Infrastructure.Pulumi.Component.Shared.CiCd.Tekton.TriggerBinding
 {
     public sealed class TriggerBindingComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
-        public ConfigFile TektonRelease { get; set; } = null!;
-        public ConfigFile TektonTrigger { get; set; } = null!;
+        public required Namespace Namespace { get; set; }
+        public required ConfigFile TektonRelease { get; set; }
+        public required ConfigFile TektonTrigger { get; set; }
     }
 
     public sealed class TriggerBindingComponentOutput : IComponentOutput

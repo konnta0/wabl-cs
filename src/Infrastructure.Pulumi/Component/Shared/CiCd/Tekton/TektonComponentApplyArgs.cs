@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.CiCd.Tekton
 {
     public sealed class TektonComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public required Namespace Namespace { get; set; }
     }
 
     public sealed class TektonComponentOutput : IComponentOutput
