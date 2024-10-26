@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Promtail
 {
     public sealed class PromtailComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public required Namespace Namespace { get; set; }
     }
 
     public sealed class PromtailComponentOutput : IComponentOutput

@@ -5,8 +5,8 @@ namespace Infrastructure.Pulumi.Component.Shared.ContainerRegistry.Harbor
 {
     public sealed class HarborComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
-        public Issuer Issuer { get; set; } = null!;
+        public required Namespace Namespace { get; init; }
+        public required Issuer Issuer { get; init; }
     }
 
     public sealed class HarborComponentOutput : IComponentOutput

@@ -5,8 +5,8 @@ namespace Infrastructure.Pulumi.Component.Shared.ContainerRegistry
 {
     public sealed class ContainerRegistryComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
-        public ClusterIssuer ClusterIssuer { get; set; } = null!;
+        public required Namespace Namespace { get; init; }
+        public required ClusterIssuer ClusterIssuer { get; init; }
     }
 
     public sealed class ContainerRegistryComponentOutput : IComponentOutput

@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Identity.Keycloak;
 
 public sealed class KeycloakComponentInput : IComponentInput
 {
-    public Namespace Namespace { get; init; } = null!;
+    public required Namespace Namespace { get; init; }
 }
 
 public sealed class KeycloakComponentOutput : IComponentOutput

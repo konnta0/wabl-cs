@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Mimir
 {
     public sealed class MimirComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public required Namespace Namespace { get; set; }
     }
 
     public sealed class MimirComponentOutput : IComponentOutput

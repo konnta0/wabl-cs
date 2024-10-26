@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Identity;
 
 public sealed class IdentityComponentInput : IComponentInput
 {
-    public Namespace Namespace { get; init; } = default!;
+    public required Namespace Namespace { get; init; }
 }
 
 public sealed class IdentityComponentOutput : IComponentOutput

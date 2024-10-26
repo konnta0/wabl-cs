@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.CiCd
 {
     public sealed class CiCdComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; init; } = null!;
+        public required Namespace Namespace { get; init; }
     }
 
     public sealed class CiCdComponentOutput : IComponentOutput

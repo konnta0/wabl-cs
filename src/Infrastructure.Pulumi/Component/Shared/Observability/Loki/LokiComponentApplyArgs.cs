@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Loki
 {
     public sealed class LokiComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public required Namespace Namespace { get; init; }
     }
 
     public sealed class LokiComponentOutput : IComponentOutput
