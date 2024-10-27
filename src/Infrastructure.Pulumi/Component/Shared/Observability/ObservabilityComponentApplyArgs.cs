@@ -5,9 +5,9 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability
 {
     public sealed class ObservabilityComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; init; } = null!;
+        public required Namespace Namespace { get; init; }
         
-        public Release MinioRelease { get; init; } = null!;
+        public required Release MinioRelease { get; init; }
     }
 
     public sealed class ObservabilityComponentOutput : IComponentOutput

@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.Dragonfly
 {
     public sealed class DragonflyComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public required Namespace Namespace { get; init; }
     }
 
     public sealed class DragonflyComponentOutput : IComponentOutput

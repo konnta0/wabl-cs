@@ -5,11 +5,11 @@ namespace Infrastructure.Pulumi.Component.Shared.Storage.MinIo
 {
     public sealed class MinIoComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; init; } = null!;
+        public required Namespace Namespace { get; init; }
     }
 
     public sealed class MinIoComponentOutput : IComponentOutput
     {
-        public Release Release { get; set; } = null!;
+        public required Release Release { get; init; }
     }
 }

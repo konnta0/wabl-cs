@@ -9,6 +9,6 @@ public sealed class SharedComponentInput : IComponentInput
 
 public sealed class SharedComponentOutput : IComponentOutput
 {
-    public required Namespace Namespace { get; init; } = null!;
-    public required CertificateComponentOutput CertificateComponentOutput { get; init; } = null!;
+    public required Namespace Namespace { get; init; }
+    public required CertificateComponentOutput CertificateComponentOutput { get; init; }
 }

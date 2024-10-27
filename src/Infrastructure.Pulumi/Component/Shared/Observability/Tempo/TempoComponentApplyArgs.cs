@@ -5,9 +5,9 @@ namespace Infrastructure.Pulumi.Component.Shared.Observability.Tempo
 {
     public sealed class TempoComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; init; } = null!;
+        public required Namespace Namespace { get; init; }
         
-        public Release MinIoRelease { get; init; } = null!;
+        public required Release MinIoRelease { get; init; }
     }
 
     public sealed class TempoComponentOutput : IComponentOutput
