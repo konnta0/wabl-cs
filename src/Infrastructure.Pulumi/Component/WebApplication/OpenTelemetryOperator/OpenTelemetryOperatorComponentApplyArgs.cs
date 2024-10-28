@@ -5,11 +5,11 @@ namespace Infrastructure.Pulumi.Component.WebApplication.OpenTelemetryOperator
 {
     public sealed class OpenTelemetryOperatorComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; set; } = null!;
+        public required Namespace Namespace { get; init; }
     }
 
     public sealed class OpenTelemetryOperatorComponentOutput : IComponentOutput
     {
-        public ConfigFile OpenTelemetryCrd { get; set; } = null!;
+        public required ConfigFile OpenTelemetryCrd { get; init; }
     }
 }

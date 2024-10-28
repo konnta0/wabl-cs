@@ -4,7 +4,7 @@ namespace Infrastructure.Pulumi.Component.Tool.ManagementConsole;
 
 public sealed class ManagementConsoleComponentInput : IComponentInput
 {
-    public Namespace Namespace { get; set; } = null!;
+    public required Namespace Namespace { get; init; }
 }
 
 public sealed class ManagementConsoleComponentOutput : IComponentOutput
