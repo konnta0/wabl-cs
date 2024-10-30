@@ -5,11 +5,11 @@ namespace Infrastructure.Pulumi.Component.Shared.Certificate
 {
     public sealed class CertificateComponentInput : IComponentInput
     {
-        public Namespace Namespace { get; init; } = null!;
+        public required Namespace Namespace { get; init; }
     }
 
     public sealed class CertificateComponentOutput : IComponentOutput
     {
-        public ClusterIssuer ClusterIssuer { get; init; } = null!;
+        public required ClusterIssuer ClusterIssuer { get; init; }
     }
 }
