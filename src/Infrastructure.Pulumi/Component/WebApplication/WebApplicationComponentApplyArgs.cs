@@ -5,7 +5,6 @@ namespace Infrastructure.Pulumi.Component.WebApplication
 {
     public sealed class WebApplicationComponentInput : IComponentInput
     {
-        public required ConfigFile OpenTelemetryCrd { get; init; }
         public required CertificateComponentOutput CertificateComponentOutput { get; init; }
     }
 
