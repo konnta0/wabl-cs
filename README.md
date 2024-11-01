@@ -18,7 +18,7 @@ Also, there is no guarantee that it will work in a production environment.
 ### Using Tools
 
 #### Infrastructure
-- [Minikube](https://github.com/kubernetes/minikube)
+- [k3d](https://k3d.io/)
 - [Pulumi](https://www.pulumi.com/), [Pulumi-dotnet](https://github.com/pulumi/pulumi-dotnet)
 - [Helm](https://github.com/helm/helm)
   - using in Pulumi
