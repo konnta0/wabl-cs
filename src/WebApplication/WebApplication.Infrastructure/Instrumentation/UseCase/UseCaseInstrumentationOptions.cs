@@ -1,6 +1,3 @@
 namespace WebApplication.Infrastructure.Instrumentation.UseCase;
 
-public class UseCaseInstrumentationOptions
-{
-    
-}
+public class UseCaseInstrumentationOptions;

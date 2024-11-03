@@ -1,6 +1,3 @@
 namespace WebApplication.Infrastructure.Instrumentation;
 
-public interface IInstrumentationMeter
-{
-    
-}
+public interface IInstrumentationMeter;
