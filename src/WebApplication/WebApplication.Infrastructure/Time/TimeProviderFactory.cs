@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Shared.Infrastructure.Cache;
-using WebApplication.Infrastructure.Cache;
 
-namespace WebApplication.Infrastructure.Core.Time;
+namespace WebApplication.Infrastructure.Time;
 
 public static class TimeProviderFactory
 {

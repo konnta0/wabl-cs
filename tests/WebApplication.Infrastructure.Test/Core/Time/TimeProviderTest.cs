@@ -2,12 +2,12 @@ using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using WebApplication.Infrastructure.Cache;
-using WebApplication.Infrastructure.Core.Time;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using NSubstitute;
 using Shared;
 using Shared.Infrastructure.Cache;
+using WebApplication.Infrastructure.Time;
 using Xunit;
 
 namespace WebApplication.Infrastructure.Test.Core.Time;

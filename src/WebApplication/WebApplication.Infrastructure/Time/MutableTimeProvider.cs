@@ -1,4 +1,4 @@
-namespace WebApplication.Infrastructure.Core.Time;
+namespace WebApplication.Infrastructure.Time;
 
 public abstract class MutableTimeProvider : TimeProvider
 {

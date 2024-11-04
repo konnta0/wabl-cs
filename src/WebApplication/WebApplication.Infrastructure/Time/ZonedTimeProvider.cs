@@ -1,5 +1,5 @@
 
-namespace WebApplication.Infrastructure.Core.Time;
+namespace WebApplication.Infrastructure.Time;
 
 public class ZonedTimeProvider(TimeConfig config) : MutableTimeProvider
 {
