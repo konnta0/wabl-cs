@@ -6,7 +6,7 @@
     <PackageVersion Include="Bogus" Version="34.0.2" />
     <PackageVersion Include="Bullseye" Version="4.2.1" />
     <PackageVersion Include="CloudStructures" Version="3.2.0" />
-    <PackageVersion Include="ConsoleAppFramework" Version="5.2.1">
+    <PackageVersion Include="ConsoleAppFramework" Version="5.2.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
