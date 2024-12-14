@@ -33,10 +33,10 @@ jobs:
         with:
           pulumi-version: "latest"
 
-      - name: Setup dotnet 8.0.x
-        uses: actions/setup-dotnet@v3
+      - name: Setup dotnet 9.0.x
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: "9.0.x"
           # see: https://github.com/actions/setup-dotnet/issues/327#issuecomment-1277284874
         env:
           DOTNET_INSTALL_DIR: "./.dotnet"
