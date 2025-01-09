@@ -1,7 +1,7 @@
 namespace Tool.Make;
 
 
-internal class K3d
+internal sealed class K3d
 {
     private const string ClusterName = "wabl-cs";
     private const string RegistryName = "wabl-cs-registry.localhost";
