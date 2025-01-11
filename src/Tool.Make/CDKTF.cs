@@ -25,6 +25,7 @@ internal sealed class CDKTF
     /// <summary>
     /// Synthesize Terraform resources
     /// </summary>
+    /// <param name="environment">-e</param>
     /// <returns></returns>
     [Command("synth")]
     public async Task Synthesize(string environment)
@@ -45,12 +46,14 @@ internal sealed class CDKTF
     /// <summary>
     /// Deploy specified stacks using CDKTF
     /// </summary>
-    /// <param name="stacks">An array of stack names to deploy</param>
+    /// <param name="environment">-e</param>
+    /// <param name="stacks">-s</param>
     [Command("deploy")]
-    public async Task Deploy(string[] stacks)
+    public async Task Deploy(string environment, string[] stacks)
     {
         var s = string.Join(' ', stacks);
-        await $"cd ../Infrastructure.CDKTF; cdktf deploy {s}";
+        // note: System.IO.DirectoryNotFoundException occurs when the first command is cd 
+        await $"pwd; cd ../Infrastructure.CDKTF; cdktf deploy {s} --app=\"APPLICATION_ENVIRONMENT={environment}　dotnet run\"";
     }
 
     /// <summary>
