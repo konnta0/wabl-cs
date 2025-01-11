@@ -24,7 +24,7 @@
     <PackageVersion Include="HashiCorp.Cdktf.Providers.Helm" Version="10.2.0" />
     <PackageVersion Include="HashiCorp.Cdktf.Providers.Kubernetes" Version="11.6.0" />
     <PackageVersion Include="HashiCorp.Cdktf.Providers.Local" Version="10.1.0" />
-    <PackageVersion Include="HashiCorp.Cdktf" Version="0.20.8" />
+    <PackageVersion Include="HashiCorp.Cdktf" Version="0.21.0-pre.143" />
     <PackageVersion Include="HashiCorp.Cdktf.Providers.Time" Version="10.1.1" />
     <PackageVersion Include="MasterMemory.MSBuild.Tasks" Version="2.4.4" />
     <PackageVersion Include="MasterMemory" Version="2.4.4" />
