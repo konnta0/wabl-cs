@@ -53,7 +53,7 @@ internal sealed class CDKTF
     {
         var s = string.Join(' ', stacks);
         // note: System.IO.DirectoryNotFoundException occurs when the first command is cd 
-        await $"pwd; cd ../Infrastructure.CDKTF; cdktf deploy {s} --app=\"APPLICATION_ENVIRONMENT={environment}　dotnet run\"";
+        await $"pwd; cd ../Infrastructure.CDKTF; cdktf deploy {s} --app=\"APPLICATION_ENVIRONMENT={environment} dotnet run\"";
     }
 
     /// <summary>
