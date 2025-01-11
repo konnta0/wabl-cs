@@ -21,5 +21,10 @@ internal sealed class SharedStackSet : TerraformResource
         {
             DependsOn = [ns.Id]
         };
+        var redis = new RedisStackSet(construct)
+        {
+            DependsOn = [ns.Id]
+        };
+        
     }
 }
