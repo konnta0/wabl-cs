@@ -17,7 +17,7 @@ sealed class Program
         var app = new App();
         _ = environment.ToLower() switch
         {
-            "local" => new LocalStack(app, "Infrastructure.CDKTF"),
+            "local" => new LocalStack(app, "local"),
             _ => throw new ArgumentException("unknown environment")
         };
 
