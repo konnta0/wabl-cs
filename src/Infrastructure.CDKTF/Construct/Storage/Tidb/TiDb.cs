@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Text.Json;
+using HashiCorp.Cdktf.Providers.Kubernetes.Namespace;
 using Infrastructure.CDKTF.Construct.Kubernetes.Config;
 using Infrastructure.CDKTF.Construct.Storage.Tidb.Crd;
 using Release = HashiCorp.Cdktf.Providers.Helm.Release.Release;
@@ -10,8 +11,8 @@ internal sealed class TiDb : Constructs.Construct
 {
     public TiDb(Constructs.Construct scope, string id, string @namespace, TidbOperatorValues tidbOperatorValues) : base(scope, "construct-tidb")
     {
-        var ns = new Namespace(scope, "tidb-admin").Apply();
-        
+        var ns = new Namespace(scope, "namespace-tidb-admin", new NamespaceConfig { Metadata = new NamespaceMetadata { Name = "tidb-admin"}});
+
         var crd = new Release(scope, "tidb-crd", new HashiCorp.Cdktf.Providers.Helm.Release.ReleaseConfig
         {
             Name = "tidb-crd",
@@ -22,7 +23,7 @@ internal sealed class TiDb : Constructs.Construct
             Namespace = @namespace
         })
         {
-            DependsOn = [ns.Id]
+            DependsOn = ["namespace-tidb-admin"]
         };
 
         var tidbOperator = new Release(scope, "tidb-operator", new HashiCorp.Cdktf.Providers.Helm.Release.ReleaseConfig
@@ -37,10 +38,10 @@ internal sealed class TiDb : Constructs.Construct
             Namespace = @namespace
         })
         {
-            DependsOn = [crd.Id]
+            DependsOn = ["tidb-crd"]
         };
 
-        // TODO: Use ckd8s when it supports CRD
+        // TODO: Use cdk8s when it supports CRD
         // https://github.com/cdk8s-team/cdk8s-cli/pull/2519
         var tidbCluster = new TiDbCluster(scope,
             "tidb-cluster",
@@ -95,7 +96,7 @@ internal sealed class TiDb : Constructs.Construct
             }
         )
         {
-            DependsOn = [crd.Id]
+            DependsOn = ["tidb-crd"]
         };
     }
 }

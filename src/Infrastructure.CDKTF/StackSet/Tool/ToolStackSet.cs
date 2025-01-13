@@ -1,5 +1,5 @@
 using HashiCorp.Cdktf;
-using Infrastructure.CDKTF.Construct;
+using HashiCorp.Cdktf.Providers.Kubernetes.Namespace;
 
 namespace Infrastructure.CDKTF.StackSet.Tool;
 
@@ -11,6 +11,6 @@ internal sealed class ToolStackSet : TerraformResource
         TerraformResourceType = "stack-set"
     })
     {
-        var ns = new Namespace(construct, "tool").Apply();
+        var ns = new Namespace(construct, "namespace-tool", new NamespaceConfig { Metadata = new NamespaceMetadata { Name = "tool"}});
     }
 }

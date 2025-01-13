@@ -1,6 +1,6 @@
 using HashiCorp.Cdktf;
+using HashiCorp.Cdktf.Providers.Kubernetes.Namespace;
 using Infrastructure.CDKTF.StackSet.Shared.Storage;
-using Namespace = Infrastructure.CDKTF.Construct.Namespace;
 
 namespace Infrastructure.CDKTF.StackSet.Shared;
 
@@ -12,18 +12,19 @@ internal sealed class SharedStackSet : TerraformResource
         TerraformResourceType = "stack-set",
     })
     {
-        var ns = new Namespace(construct, "shared").Apply();
+        const string namespaceId = "namespace-shared";
+        var ns = new Namespace(construct, namespaceId, new NamespaceConfig { Metadata = new NamespaceMetadata { Name = "shared"}});
         var minio = new MinIoStackSet(construct)
         {
-            DependsOn = [ns.Id]
+            DependsOn = [namespaceId]
         };
         var tidb = new TiDbStackSet(construct)
         {
-            DependsOn = [ns.Id]
+            DependsOn = [namespaceId]
         };
         var redis = new RedisStackSet(construct)
         {
-            DependsOn = [ns.Id]
+            DependsOn = [namespaceId]
         };
         
     }

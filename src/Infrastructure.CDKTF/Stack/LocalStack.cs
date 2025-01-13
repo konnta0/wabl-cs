@@ -19,11 +19,11 @@ internal sealed class LocalStack : TerraformStack
         var shared = new SharedStackSet(this);
         var tool = new ToolStackSet(this)
         {
-            DependsOn = [shared.GetId()]
+            DependsOn = [ConstructExtension.ToKebabCase<SharedStackSet>()]
         };
         var webapp = new WebAppStackSet(this)
         {
-            DependsOn = [shared.GetId()]
+            DependsOn = [ConstructExtension.ToKebabCase<SharedStackSet>()]
         };
     }
 }

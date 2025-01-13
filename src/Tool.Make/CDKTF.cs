@@ -26,11 +26,12 @@ internal sealed class CDKTF
     /// Synthesize Terraform resources
     /// </summary>
     /// <param name="environment">-e</param>
+    /// <param name="stack">-s</param>
     /// <returns></returns>
     [Command("synth")]
-    public async Task Synthesize(string environment)
+    public async Task Synthesize(string environment, string stack)
     {
-        await $"export APPLICATION_ENVIRONMENT={environment}; cd ../Infrastructure.CDKTF; cdktf synth --hcl";
+        await $"export APPLICATION_ENVIRONMENT={environment}; cd ../Infrastructure.CDKTF; cdktf synth {stack} --hcl";
     }
 
     /// <summary>
