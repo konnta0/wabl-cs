@@ -18,12 +18,12 @@ internal sealed class MemoryDatabaseLoaderService(
         while (!stoppingToken.IsCancellationRequested)
         {
             await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);
+            using var scope = serviceProvider.CreateScope();
+            var useCaseHandler =
+                scope.ServiceProvider.GetRequiredService<IUseCaseHandler>();
+
+            _ = await useCaseHandler.InvokeAsync<LoadMemoryDatabaseUseCaseInput, LoadMemoryDatabaseUseCaseOutput>(
+                new LoadMemoryDatabaseUseCaseInput(), stoppingToken);
         }
-
-        using var scope = serviceProvider.CreateScope();
-        var useCaseHandler =
-            scope.ServiceProvider.GetRequiredService<IUseCaseHandler>();
-
-        _ = await useCaseHandler.InvokeAsync<LoadMemoryDatabaseUseCaseInput, LoadMemoryDatabaseUseCaseOutput>(new LoadMemoryDatabaseUseCaseInput(), stoppingToken);
     }
 }
